@@ -3,56 +3,8 @@ import { QuestionInput } from "./QuestionInput";
 import { AnswerDisplay } from "./AnswerDisplay";
 import { QandAResponse, checkForRefusal, isLeaksRelated } from "./types";
 import { MessageCircle, Info } from "lucide-react";
-
-// Placeholder response generator - will be replaced with AI integration
-function generatePlaceholderResponse(question: string): QandAResponse {
-  // Check for refusal conditions first
-  const refusal = checkForRefusal(question);
-  if (refusal) {
-    return refusal;
-  }
-
-  // Check if leaks-related to set appropriate confidence
-  const leaksRelated = isLeaksRelated(question);
-
-  // Placeholder structured response
-  return {
-    type: "answer",
-    data: {
-      plainAnswer: [
-        "This is a placeholder response. The Q&A component is ready to be connected to an AI system.",
-        "Once connected, answers will be generated based on the content within SEND Reform Navigator.",
-        "All answers will follow this exact structure, with clear confidence labels and links to relevant pages.",
-      ],
-      confidence: leaksRelated ? "unconfirmed" : "unknown",
-      whatWeKnow: [
-        "The Q&A component structure is complete",
-        "Answers will follow a consistent format",
-        "Confidence levels will be clearly labelled",
-      ],
-      whatWeDoNotKnow: [
-        "Specific answers depend on AI integration",
-        "Content will be drawn from SEND Reform Navigator pages",
-      ],
-      clarifications: {
-        doesMean: [
-          "You can ask questions about SEND reform",
-          "Answers will be clearly structured",
-        ],
-        doesNotMean: [
-          "This is not legal advice",
-          "This cannot comment on individual cases",
-        ],
-      },
-      readMore: [
-        { label: "Where we are now", path: "/where-we-are-now" },
-        { label: "What is changing", path: "/what-is-changing" },
-        { label: "What the leaks are saying", path: "/what-the-leaks-are-saying" },
-      ],
-      lastUpdated: "4th February 2026",
-    },
-  };
-}
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 export function QandAComponent() {
   const [isLoading, setIsLoading] = useState(false);
@@ -64,13 +16,99 @@ export function QandAComponent() {
     setCurrentQuestion(question);
     setResponse(null);
 
-    // Simulate processing delay
-    await new Promise((resolve) => setTimeout(resolve, 800));
+    // Check for refusal conditions first (client-side for speed)
+    const refusal = checkForRefusal(question);
+    if (refusal) {
+      setResponse(refusal);
+      setIsLoading(false);
+      return;
+    }
 
-    // Generate placeholder response (will be replaced with AI call)
-    const result = generatePlaceholderResponse(question);
-    setResponse(result);
-    setIsLoading(false);
+    try {
+      // Call the edge function
+      const { data, error } = await supabase.functions.invoke("qanda", {
+        body: { question },
+      });
+
+      if (error) {
+        console.error("Q&A error:", error);
+        
+        // Handle rate limiting
+        if (error.message?.includes("429") || error.message?.includes("rate")) {
+          toast.error("Service is busy. Please try again in a moment.");
+        } else {
+          toast.error("Unable to get an answer. Please try again.");
+        }
+        
+        // Provide a fallback response
+        setResponse({
+          type: "answer",
+          data: {
+            plainAnswer: [
+              "We were unable to generate an answer at this time.",
+              "Please try again, or explore the pages below for relevant information.",
+            ],
+            confidence: "unknown",
+            whatWeKnow: ["Your question has been received"],
+            whatWeDoNotKnow: ["Unable to retrieve specific information at this time"],
+            clarifications: {
+              doesMean: ["You can try asking again or explore the resource directly"],
+              doesNotMean: ["This does not mean the information is unavailable"],
+            },
+            readMore: [
+              { label: "Where we are now", path: "/where-we-are-now" },
+              { label: "What is changing", path: "/what-is-changing" },
+            ],
+            lastUpdated: "4th February 2026",
+          },
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      // Check if the response indicates an error
+      if (data?.error) {
+        toast.error(data.error);
+        setResponse({
+          type: "answer",
+          data: {
+            plainAnswer: [data.error],
+            confidence: "unknown",
+            whatWeKnow: [],
+            whatWeDoNotKnow: [],
+            clarifications: { doesMean: [], doesNotMean: [] },
+            readMore: [{ label: "Where we are now", path: "/where-we-are-now" }],
+            lastUpdated: "4th February 2026",
+          },
+        });
+        setIsLoading(false);
+        return;
+      }
+
+      // Set the response from the AI
+      setResponse(data as QandAResponse);
+    } catch (err) {
+      console.error("Q&A request failed:", err);
+      toast.error("Unable to connect to the Q&A service.");
+      
+      setResponse({
+        type: "answer",
+        data: {
+          plainAnswer: ["We were unable to connect to the Q&A service. Please try again later."],
+          confidence: "unknown",
+          whatWeKnow: [],
+          whatWeDoNotKnow: [],
+          clarifications: { doesMean: [], doesNotMean: [] },
+          readMore: [
+            { label: "Where we are now", path: "/where-we-are-now" },
+            { label: "About this resource", path: "/about" },
+          ],
+          lastUpdated: "4th February 2026",
+        },
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleClear = () => {
@@ -118,15 +156,23 @@ export function QandAComponent() {
         </div>
       )}
 
-      {/* Disclaimer */}
-      <div className="mt-6 pt-4 border-t border-border">
+      {/* Transparency notice - required by Prompt 8 */}
+      <div className="mt-6 pt-4 border-t border-border space-y-3">
         <div className="flex gap-2 text-xs text-muted-foreground">
           <Info className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
-          <p>
-            This is a general explainer, not legal advice. It cannot comment on individual 
-            cases or tell you what to do. For specialist support, please seek appropriate 
-            professional guidance.
-          </p>
+          <div className="space-y-1">
+            <p>
+              <strong>How this works:</strong> Answers are generated from this resource only, 
+              not from general AI knowledge.
+            </p>
+            <p>
+              This is a general explainer, not legal advice. It cannot comment on individual 
+              cases or tell you what to do.
+            </p>
+            <p>
+              Information reflects the current update date shown in each answer.
+            </p>
+          </div>
         </div>
       </div>
     </section>

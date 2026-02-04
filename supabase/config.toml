@@ -1,0 +1,4 @@
+project_id = "ptsjybpbvqjsaoeqkqln"
+
+[functions.qanda]
+verify_jwt = false
