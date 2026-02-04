@@ -1,14 +1,22 @@
 import { Layout } from "@/components/Layout";
 import { PageHeader } from "@/components/PageHeader";
+import {
+  EditorialOwnershipSection,
+  IndependenceDisclosureSection,
+  PerspectivesSection,
+  FeedbackSection,
+  ReviewScheduleSection,
+} from "@/components/governance";
 
 export default function About() {
   return (
     <Layout>
       <PageHeader
         title="About this resource"
-        description="Independence, scope, and limits of SEND Reform Navigator."
+        description="Independence, governance, scope, and accountability of SEND Reform Navigator."
       />
-      <section className="content-section pb-16 prose-calm">
+      
+      <section className="content-section prose-calm">
         <h2>Who this resource is for</h2>
         <ul>
           <li>Parents and carers of children and young people with SEND</li>
@@ -30,7 +38,18 @@ export default function About() {
           This resource covers SEND policy in England only. Scotland, Wales, and Northern Ireland 
           have separate education systems and are not covered here unless explicitly stated as comparison.
         </p>
+      </section>
 
+      {/* Governance sections */}
+      <div className="content-section">
+        <EditorialOwnershipSection />
+        <PerspectivesSection />
+        <IndependenceDisclosureSection />
+        <FeedbackSection />
+        <ReviewScheduleSection />
+      </div>
+
+      <section className="content-section prose-calm pb-16">
         <h2>Update approach</h2>
         <p>
           All pages show a last updated date. When information changes, we note what has changed. 
@@ -39,15 +58,19 @@ export default function About() {
 
         <h2>Error correction</h2>
         <p>
-          If we make an error, we will correct it and note the correction. Transparency is 
-          central to this resource.
+          If we make an error, we will correct it and note the correction. The date will be updated 
+          and the reason for correction will be stated. Prior information is not silently removed. 
+          Transparency takes priority over reputation.
         </p>
 
-        <h2>Independence</h2>
+        <h2>Decision making</h2>
         <p>
-          SEND Reform Navigator is an independent public resource. It exists to reduce confusion 
-          and anxiety, not to persuade or campaign. We respect that people may disagree on 
-          solutions while needing the same factual information.
+          When new information appears, accuracy takes priority over speed. Confirmation must come 
+          before publication. Interpretation is always labelled as such.
+        </p>
+        <p>
+          When sources conflict, both credible positions are represented and the disagreement is 
+          explained in plain English. We do not resolve disagreement by omission.
         </p>
       </section>
     </Layout>
