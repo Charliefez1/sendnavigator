@@ -2,95 +2,126 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* SEND Reform Navigator Design System
+   Calm, accessible, trustworthy public resource
+   Inspired by GOV.UK clarity with warmer human touch
+   All colors in HSL format
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core backgrounds - warm, easy on eyes */
+    --background: 40 20% 98%;
+    --foreground: 220 20% 20%;
 
+    /* Card surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 20% 20%;
 
+    /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 20% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - calming teal, trustworthy */
+    --primary: 186 35% 35%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - warm neutral */
+    --secondary: 40 15% 94%;
+    --secondary-foreground: 220 20% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted - subtle backgrounds */
+    --muted: 40 10% 96%;
+    --muted-foreground: 220 10% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - soft focus */
+    --accent: 186 25% 94%;
+    --accent-foreground: 186 35% 25%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive - muted, not alarming */
+    --destructive: 0 45% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders and inputs */
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 186 35% 45%;
 
-    --radius: 0.5rem;
+    --radius: 0.375rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Information status categories */
+    --status-confirmed: 152 45% 40%;
+    --status-confirmed-bg: 152 40% 95%;
+    --status-confirmed-border: 152 40% 80%;
+    
+    --status-discussed: 38 70% 50%;
+    --status-discussed-bg: 38 60% 95%;
+    --status-discussed-border: 38 60% 80%;
+    
+    --status-unconfirmed: 220 10% 50%;
+    --status-unconfirmed-bg: 220 10% 95%;
+    --status-unconfirmed-border: 220 10% 80%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar */
+    --sidebar-background: 40 15% 97%;
+    --sidebar-foreground: 220 15% 30%;
+    --sidebar-primary: 186 35% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 186 20% 94%;
+    --sidebar-accent-foreground: 186 35% 25%;
+    --sidebar-border: 220 15% 90%;
+    --sidebar-ring: 186 35% 45%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 220 20% 10%;
+    --foreground: 40 10% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 220 20% 12%;
+    --card-foreground: 40 10% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 40 10% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 186 40% 55%;
+    --primary-foreground: 220 20% 10%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 40 10% 90%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 40 10% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 186 25% 20%;
+    --accent-foreground: 186 40% 85%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 50% 45%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+    --ring: 186 40% 55%;
+
+    --status-confirmed: 152 50% 50%;
+    --status-confirmed-bg: 152 30% 15%;
+    --status-confirmed-border: 152 30% 30%;
+    
+    --status-discussed: 38 70% 55%;
+    --status-discussed-bg: 38 40% 15%;
+    --status-discussed-border: 38 40% 30%;
+    
+    --status-unconfirmed: 220 15% 60%;
+    --status-unconfirmed-bg: 220 10% 18%;
+    --status-unconfirmed-border: 220 10% 30%;
+
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 40 10% 90%;
+    --sidebar-primary: 186 40% 55%;
+    --sidebar-primary-foreground: 220 20% 10%;
+    --sidebar-accent: 186 20% 18%;
+    --sidebar-accent-foreground: 186 40% 80%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 186 40% 55%;
   }
 }
 
@@ -100,6 +131,71 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Improved focus states for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  /* Status badges for information categories */
+  .status-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-sm font-medium rounded-md;
+  }
+
+  .status-confirmed {
+    background-color: hsl(var(--status-confirmed-bg));
+    color: hsl(var(--status-confirmed));
+    border: 1px solid hsl(var(--status-confirmed-border));
+  }
+
+  .status-discussed {
+    background-color: hsl(var(--status-discussed-bg));
+    color: hsl(var(--status-discussed));
+    border: 1px solid hsl(var(--status-discussed-border));
+  }
+
+  .status-unconfirmed {
+    background-color: hsl(var(--status-unconfirmed-bg));
+    color: hsl(var(--status-unconfirmed));
+    border: 1px solid hsl(var(--status-unconfirmed-border));
+  }
+
+  /* Content containers */
+  .content-section {
+    @apply max-w-3xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .content-wide {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Calm, readable prose */
+  .prose-calm {
+    @apply text-foreground leading-relaxed;
+  }
+
+  .prose-calm p {
+    @apply mb-4 text-base sm:text-lg;
+  }
+
+  .prose-calm h2 {
+    @apply text-xl sm:text-2xl font-semibold text-foreground mt-8 mb-4;
+  }
+
+  .prose-calm h3 {
+    @apply text-lg sm:text-xl font-medium text-foreground mt-6 mb-3;
+  }
+
+  .prose-calm ul {
+    @apply list-disc list-outside ml-5 mb-4 space-y-2;
+  }
+
+  .prose-calm li {
+    @apply text-base sm:text-lg;
   }
 }
