@@ -15,28 +15,79 @@ export default function About() {
         title="About this resource"
         description="Independence, governance, scope, and accountability of SEND Reform Navigator."
       />
-      
-      <section className="content-section prose-calm">
-        <h2>Who this resource is for</h2>
-        <ul>
-          <li>Parents and carers of children and young people with SEND</li>
-          <li>Teachers, SENCOs, and school leaders</li>
-          <li>Support staff and professionals</li>
-          <li>Governors and interested members of the public</li>
-        </ul>
 
-        <h2>What this resource does not do</h2>
-        <ul>
-          <li>It is not legal advice</li>
-          <li>It is not a lobbying platform</li>
-          <li>It is not a political statement</li>
-          <li>It does not replace specialist support</li>
-        </ul>
+      {/* Why this resource exists */}
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">Why this resource exists</h2>
+        <div className="prose-calm max-w-2xl space-y-4">
+          <p>
+            SEND Reform Navigator exists to help people make sense of SEND reform in England at a time when information can feel fragmented and hard to follow. Changes are being discussed across government, education, health, and local services, often using complex language and published in stages. This resource was created to bring that information together in a clear, calm way, without adding interpretation or pressure.
+          </p>
+          <p>
+            Its aim is to support understanding. It explains what is known, what is being discussed, and what is not yet decided, so readers can orient themselves without needing to track multiple sources or interpret technical documents.
+          </p>
+        </div>
+      </section>
 
-        <h2>Geographic scope</h2>
-        <p>
-          This resource covers SEND policy in England only. Scotland, Wales, and Northern Ireland 
-          have separate education systems and are not covered here unless explicitly stated as comparison.
+      {/* Who this resource is for */}
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">Who this resource is for</h2>
+        <div className="prose-calm max-w-2xl space-y-4">
+          <p>
+            This resource is for parents and carers of children and young people with SEND, for teachers and school leaders, and for professionals working across education, health, and care. It is also relevant to anyone seeking a grounded overview of SEND reform in England.
+          </p>
+          <p>
+            It is written for people who may be feeling overloaded by information and want clarity rather than commentary.
+          </p>
+        </div>
+      </section>
+
+      {/* Independence and neutrality */}
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">Independence and neutrality</h2>
+        <div className="prose-calm max-w-2xl space-y-4">
+          <p>
+            SEND Reform Navigator is independent. It does not represent government, local authorities, schools, or advocacy groups. It does not promote particular outcomes or positions on SEND reform.
+          </p>
+          <p>
+            The content is written to be neutral and factual. Where there are different views or areas of uncertainty, these are stated openly rather than resolved or argued. The resource is designed to inform, not to persuade.
+          </p>
+        </div>
+      </section>
+
+      {/* How information is updated and corrected */}
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">How information is updated and corrected</h2>
+        <div className="prose-calm max-w-2xl space-y-4">
+          <p>
+            Information on this site is reviewed and updated as new, confirmed details are published. When official plans change or new decisions are formally announced, the content is revised to reflect that.
+          </p>
+          <p>
+            If errors or inaccuracies are identified, they are corrected. Where information is incomplete or uncertain, this is made clear rather than filled in with assumptions.
+          </p>
+        </div>
+      </section>
+
+      {/* Limits of this resource */}
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">Limits of this resource</h2>
+        <div className="prose-calm max-w-2xl space-y-4">
+          <p>
+            This resource does not provide legal advice, medical guidance, or professional recommendations. It cannot advise on individual circumstances or decisions.
+          </p>
+          <p>
+            It focuses only on SEND provision and reform in England. It does not cover arrangements in Scotland, Wales, or Northern Ireland.
+          </p>
+          <p>
+            It explains the system at a high level and does not replace support from professionals or statutory services.
+          </p>
+        </div>
+      </section>
+
+      {/* Closing statement */}
+      <section className="content-section py-8 border-t border-border">
+        <p className="text-muted-foreground max-w-2xl">
+          SEND Reform Navigator is committed to transparency, independence, and clarity, offering information without noise so readers can understand what is happening and where uncertainty remains.
         </p>
       </section>
 
@@ -49,30 +100,7 @@ export default function About() {
         <ReviewScheduleSection />
       </div>
 
-      <section className="content-section prose-calm pb-16">
-        <h2>Update approach</h2>
-        <p>
-          All pages show a last updated date. When information changes, we note what has changed. 
-          We aim to update promptly when new confirmed information becomes available.
-        </p>
-
-        <h2>Error correction</h2>
-        <p>
-          If we make an error, we will correct it and note the correction. The date will be updated 
-          and the reason for correction will be stated. Prior information is not silently removed. 
-          Transparency takes priority over reputation.
-        </p>
-
-        <h2>Decision making</h2>
-        <p>
-          When new information appears, accuracy takes priority over speed. Confirmation must come 
-          before publication. Interpretation is always labelled as such.
-        </p>
-        <p>
-          When sources conflict, both credible positions are represented and the disagreement is 
-          explained in plain English. We do not resolve disagreement by omission.
-        </p>
-      </section>
+      <div className="content-section pb-16" />
     </Layout>
   );
 }
