@@ -99,6 +99,12 @@ export default function Timeline() {
 
       <UnknownSection questions={unknownQuestions} />
 
+      <section className="content-section py-8 border-t border-border">
+        <p className="text-muted-foreground">
+          Current SEND rights and statutory processes remain in place unless and until formal changes are made through consultation and law.
+        </p>
+      </section>
+
       <div className="content-section pb-16" />
     </Layout>
   );
