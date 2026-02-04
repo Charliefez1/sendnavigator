@@ -30,7 +30,7 @@ export default function WhatWeDoNotKnow() {
       <SixtySecondSummary
         prose={
           <p>
-            Key decisions about rights, thresholds, and protections have not been made.
+            There are still major unanswered questions. We do not know whether the legal threshold for plans will change, whether any new support levels would be enforceable, or whether appeal rights would be altered. We do not know how funding changes would affect schools or how protections would work outside a plan. Research shows uncertainty itself causes anxiety and drives families to act early out of fear. The key point is that none of these decisions have been made yet, and nothing changes until law and guidance change.
           </p>
         }
       />

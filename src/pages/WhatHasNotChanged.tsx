@@ -22,7 +22,7 @@ export default function WhatHasNotChanged() {
       <SixtySecondSummary
         prose={
           <p>
-            Legal rights and protections remain exactly as they are now.
+            Your legal rights have not changed. Education, Health and Care Plans still carry the same legal weight. Local authorities still have the same duties to assess needs and secure provision. Schools still have duties to support children with SEN. If support is written into a plan, it must still be delivered. Appeals still exist and are still lawful. This matters because a lot of fear has come from rumours, not reality. Until Parliament changes the law, the protections created in 2014 remain in place. Research shows families continue to rely on these protections, and they are still enforceable.
           </p>
         }
       />

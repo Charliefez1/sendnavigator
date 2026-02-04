@@ -22,7 +22,7 @@ export default function WhatIsBeingDiscussed() {
       <SixtySecondSummary
         prose={
           <p>
-            Discussions focus on reducing inconsistency, improving early support, and lowering reliance on legal plans as the only route to help.
+            Most reform discussions focus on one issue: too many children only get help once families fight for a legal plan. The ideas being talked about aim to improve early support in schools, reduce variation between areas, and make the system less dependent on legal escalation. That includes national standards, better trained staff, specialist teams working with schools, and digital systems to reduce delays. At the same time, there is active debate about how to do this without weakening rights. Research and parent feedback consistently show that early support only works if it is reliable, funded, and accountable.
           </p>
         }
       />

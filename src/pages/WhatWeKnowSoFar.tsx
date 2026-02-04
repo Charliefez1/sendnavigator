@@ -22,7 +22,7 @@ export default function WhatWeKnowSoFar() {
       <SixtySecondSummary
         prose={
           <p>
-            The SEND system is under severe strain, with rising demand, long delays, and high costs, while outcomes for children have not improved.
+            The evidence shows the SEND system is overwhelmed. Many more children need support than a decade ago, but support quality and outcomes have not improved. Families wait too long, councils overspend, schools struggle, and too many parents are pushed into legal action just to get help. Research across government, councils, and Parliament agrees this is a system problem, not a parenting problem. The growth in plans and appeals reflects unmet need earlier on. This context is essential because it explains why reform is being discussed at all.
           </p>
         }
       />
