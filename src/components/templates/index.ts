@@ -8,6 +8,13 @@ export { InformationLayers, ConfirmedLayer, DiscussedLayer, UnconfirmedLayer } f
 export { PracticalImplications } from "./PracticalImplications";
 export { UnknownSection } from "./UnknownSection";
 export { WatchNextSection } from "./WatchNextSection";
+export {
+  CurrentPositionSection,
+  CompletedMilestonesSection,
+  UpcomingDecisionPointsSection,
+  LongerTermPossibilitiesSection,
+  WhatChangedSection,
+} from "./TimelineSection";
 export { LeaksBanner } from "./LeaksBanner";
 export { BecomeRealSection } from "./BecomeRealSection";
 export { ProtectionsSection } from "./ProtectionsSection";
