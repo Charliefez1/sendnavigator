@@ -2,7 +2,6 @@ import { Layout } from "@/components/Layout";
 import {
   PageOrientation,
   SixtySecondSummary,
-  InformationLayers,
   StatusSection,
 } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
@@ -28,28 +27,27 @@ export default function WhatIsBeingDiscussed() {
         }
       />
 
-      <InformationLayers
-        confirmedEmpty="See 'What is actually changing' for confirmed reforms."
-        discussed={
-          <>
-            <ul className="space-y-2">
-              <li>A national set of SEND standards to reduce variation between areas.</li>
-              <li>Clearer expectations for support in mainstream schools.</li>
-              <li>Digital first Education, Health and Care Plans.</li>
-              <li>Standardised plan templates and online tracking.</li>
-              <li>Funding changes so support is less tied to individual plans.</li>
-              <li>Stronger early support in mainstream settings.</li>
-              <li>More specialist teams working directly with schools.</li>
-              <li>A tiered support system below a full plan.</li>
-              <li>Digital passports to record needs and support.</li>
-              <li>Possible changes to appeal routes or extra steps before tribunal.</li>
-              <li>Higher thresholds for who qualifies for a full plan.</li>
-              <li>A stronger mainstream first approach with debate about parental choice.</li>
-            </ul>
-          </>
-        }
-        unconfirmedEmpty="See 'What the leaks are saying' for unconfirmed reports."
-      />
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          Reported proposals
+        </h2>
+        <div className="prose-calm">
+          <ul className="space-y-2">
+            <li>A national set of SEND standards to reduce variation between areas.</li>
+            <li>Clearer expectations for support in mainstream schools.</li>
+            <li>Digital first Education, Health and Care Plans.</li>
+            <li>Standardised plan templates and online tracking.</li>
+            <li>Funding changes so support is less tied to individual plans.</li>
+            <li>Stronger early support in mainstream settings.</li>
+            <li>More specialist teams working directly with schools.</li>
+            <li>A tiered support system below a full plan.</li>
+            <li>Digital passports to record needs and support.</li>
+            <li>Possible changes to appeal routes or extra steps before tribunal.</li>
+            <li>Higher thresholds for who qualifies for a full plan.</li>
+            <li>A stronger mainstream first approach with debate about parental choice.</li>
+          </ul>
+        </div>
+      </section>
 
       <StatusSection type="unconfirmed">
         <ul className="space-y-2">
