@@ -3,6 +3,7 @@ import {
   PageOrientation,
   SixtySecondSummary,
   UnknownSection,
+  StatusSection,
 } from "@/components/templates";
 import { HelpCircle } from "lucide-react";
 
@@ -52,29 +53,19 @@ export default function WhatWeDoNotKnow() {
         </ul>
       </section>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          Unconfirmed
-        </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>All items on this page remain unconfirmed by definition.</li>
-            <li>No official decisions have been published on these points.</li>
-          </ul>
-        </div>
-      </section>
+      <StatusSection type="unconfirmed">
+        <ul className="space-y-2">
+          <li>All items on this page remain unconfirmed by definition.</li>
+          <li>No official decisions have been published on these points.</li>
+        </ul>
+      </StatusSection>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          Leaked
-        </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>Leaks speculate on answers to some of these unknowns.</li>
-            <li>These speculations are not confirmed and should not be treated as decisions.</li>
-          </ul>
-        </div>
-      </section>
+      <StatusSection type="leaked">
+        <ul className="space-y-2">
+          <li>Leaks speculate on answers to some of these unknowns.</li>
+          <li>These speculations are not confirmed and should not be treated as decisions.</li>
+        </ul>
+      </StatusSection>
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">

@@ -19,3 +19,4 @@ export { LeaksBanner } from "./LeaksBanner";
 export { BecomeRealSection } from "./BecomeRealSection";
 export { ProtectionsSection } from "./ProtectionsSection";
 export { AudienceSections, AudienceSubsection } from "./AudienceSections";
+export { StatusSection } from "./StatusSection";

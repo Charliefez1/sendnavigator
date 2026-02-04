@@ -4,6 +4,7 @@ import {
   SixtySecondSummary,
   LeaksBanner,
   InformationLayers,
+  StatusSection,
 } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 
@@ -48,29 +49,19 @@ export default function WhatTheLeaksAreSaying() {
         }
       />
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          Unconfirmed
-        </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>All items on this page are unconfirmed by nature.</li>
-            <li>They do not represent agreed policy.</li>
-          </ul>
-        </div>
-      </section>
+      <StatusSection type="unconfirmed">
+        <ul className="space-y-2">
+          <li>All items on this page are unconfirmed by nature.</li>
+          <li>They do not represent agreed policy.</li>
+        </ul>
+      </StatusSection>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          Leaked
-        </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>This entire page is based on leaked and unofficial reporting.</li>
-            <li>None of the proposals listed are confirmed government decisions.</li>
-          </ul>
-        </div>
-      </section>
+      <StatusSection type="leaked">
+        <ul className="space-y-2">
+          <li>This entire page is based on leaked and unofficial reporting.</li>
+          <li>None of the proposals listed are confirmed government decisions.</li>
+        </ul>
+      </StatusSection>
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">

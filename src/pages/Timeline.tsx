@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/PageHeader";
 import {
   SixtySecondSummary,
   InformationLayers,
+  StatusSection,
 } from "@/components/templates";
 
 export default function Timeline() {
@@ -49,29 +50,19 @@ export default function Timeline() {
         </div>
       </section>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          Unconfirmed
-        </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>Exact dates for publications, consultations, and legislation are not confirmed.</li>
-            <li>The pace of reform implementation is not confirmed.</li>
-          </ul>
-        </div>
-      </section>
+      <StatusSection type="unconfirmed">
+        <ul className="space-y-2">
+          <li>Exact dates for publications, consultations, and legislation are not confirmed.</li>
+          <li>The pace of reform implementation is not confirmed.</li>
+        </ul>
+      </StatusSection>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          Leaked
-        </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>No leaked timelines have been confirmed.</li>
-            <li>Media reports have suggested urgency but without dates or formal commitments.</li>
-          </ul>
-        </div>
-      </section>
+      <StatusSection type="leaked">
+        <ul className="space-y-2">
+          <li>No leaked timelines have been confirmed.</li>
+          <li>Media reports have suggested urgency but without dates or formal commitments.</li>
+        </ul>
+      </StatusSection>
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
