@@ -2,7 +2,6 @@ import { Layout } from "@/components/Layout";
 import {
   PageOrientation,
   SixtySecondSummary,
-  InformationLayers,
   StatusSection,
 } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
@@ -28,26 +27,25 @@ export default function WhatWeKnowSoFar() {
         }
       />
 
-      <InformationLayers
-        confirmed={
-          <>
-            <ul className="space-y-2">
-              <li>Over 500,000 children and young people in England have an Education, Health and Care Plan.</li>
-              <li>Education, Health and Care Plan numbers have increased sharply since 2014.</li>
-              <li>About 1.2 million pupils receive SEN Support without an Education, Health and Care Plan.</li>
-              <li>High needs funding increased to £9.4 billion by 2024 to 25.</li>
-              <li>Local authorities have accumulated over £3 billion of SEND funding deficits.</li>
-              <li>Only about half of new Education, Health and Care Plans are issued within the 20 week legal deadline.</li>
-              <li>Many families wait far longer, sometimes over a year.</li>
-              <li>Tribunal appeals have increased significantly, with families winning most decided cases.</li>
-              <li>Mainstream schools report increasing complexity of need and pressure on staff.</li>
-              <li>Demand for specialist school places has continued to rise.</li>
-            </ul>
-          </>
-        }
-        discussedEmpty="This page focuses on confirmed data only."
-        unconfirmedEmpty="This page focuses on confirmed data only."
-      />
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          Confirmed facts
+        </h2>
+        <div className="prose-calm">
+          <ul className="space-y-2">
+            <li>Over 500,000 children and young people in England have an Education, Health and Care Plan.</li>
+            <li>Education, Health and Care Plan numbers have increased sharply since 2014.</li>
+            <li>About 1.2 million pupils receive SEN Support without an Education, Health and Care Plan.</li>
+            <li>High needs funding increased to £9.4 billion by 2024 to 25.</li>
+            <li>Local authorities have accumulated over £3 billion of SEND funding deficits.</li>
+            <li>Only about half of new Education, Health and Care Plans are issued within the 20 week legal deadline.</li>
+            <li>Many families wait far longer, sometimes over a year.</li>
+            <li>Tribunal appeals have increased significantly, with families winning most decided cases.</li>
+            <li>Mainstream schools report increasing complexity of need and pressure on staff.</li>
+            <li>Demand for specialist school places has continued to rise.</li>
+          </ul>
+        </div>
+      </section>
 
       <StatusSection type="unconfirmed">
         <ul className="space-y-2">

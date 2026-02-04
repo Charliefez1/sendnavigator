@@ -2,7 +2,6 @@ import { Layout } from "@/components/Layout";
 import {
   PageOrientation,
   SixtySecondSummary,
-  InformationLayers,
   StatusSection,
 } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
@@ -28,21 +27,20 @@ export default function WhatIsChanging() {
         }
       />
 
-      <InformationLayers
-        confirmed={
-          <>
-            <ul className="space-y-2">
-              <li>No SEND law changes have been made yet as of 04 February 2026.</li>
-              <li>The government has said it will absorb local authority SEND related deficits from 2028 to 29.</li>
-              <li>New special free schools are approved and being built.</li>
-              <li>A national SEND training programme for schools has been announced.</li>
-              <li>Reform work is underway through pilot programmes and implementation activity already in progress.</li>
-            </ul>
-          </>
-        }
-        discussedEmpty="See 'What is being discussed' for proposals under consideration."
-        unconfirmedEmpty="See 'What the leaks are saying' for unconfirmed reports."
-      />
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          Confirmed changes
+        </h2>
+        <div className="prose-calm">
+          <ul className="space-y-2">
+            <li>No SEND law changes have been made yet as of 04 February 2026.</li>
+            <li>The government has said it will absorb local authority SEND related deficits from 2028 to 29.</li>
+            <li>New special free schools are approved and being built.</li>
+            <li>A national SEND training programme for schools has been announced.</li>
+            <li>Reform work is underway through pilot programmes and implementation activity already in progress.</li>
+          </ul>
+        </div>
+      </section>
 
       <StatusSection type="unconfirmed">
         <ul className="space-y-2">

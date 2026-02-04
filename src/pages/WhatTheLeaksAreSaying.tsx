@@ -3,7 +3,6 @@ import {
   PageOrientation,
   SixtySecondSummary,
   LeaksBanner,
-  InformationLayers,
   StatusSection,
 } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
@@ -31,23 +30,22 @@ export default function WhatTheLeaksAreSaying() {
         }
       />
 
-      <InformationLayers
-        confirmedEmpty="This page covers unconfirmed information only. See 'What is actually changing' for confirmed policy."
-        discussedEmpty="See 'What is being discussed' for publicly debated proposals."
-        unconfirmed={
-          <>
-            <ul className="space-y-2">
-              <li>A tiered support model.</li>
-              <li>Digital passports.</li>
-              <li>Fewer full statutory plans.</li>
-              <li>Education only plans for some children.</li>
-              <li>Step by step progression through support levels.</li>
-              <li>School level funding instead of individual plans.</li>
-              <li>Reduced appeal access.</li>
-            </ul>
-          </>
-        }
-      />
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          Reported leaks
+        </h2>
+        <div className="prose-calm">
+          <ul className="space-y-2">
+            <li>A tiered support model.</li>
+            <li>Digital passports.</li>
+            <li>Fewer full statutory plans.</li>
+            <li>Education only plans for some children.</li>
+            <li>Step by step progression through support levels.</li>
+            <li>School level funding instead of individual plans.</li>
+            <li>Reduced appeal access.</li>
+          </ul>
+        </div>
+      </section>
 
       <StatusSection type="unconfirmed">
         <ul className="space-y-2">
