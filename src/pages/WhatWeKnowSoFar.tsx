@@ -3,6 +3,7 @@ import {
   PageOrientation,
   SixtySecondSummary,
   InformationLayers,
+  StatusSection,
 } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 
@@ -48,29 +49,19 @@ export default function WhatWeKnowSoFar() {
         unconfirmedEmpty="This page focuses on confirmed data only."
       />
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          Unconfirmed
-        </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>No unconfirmed data applies to the current system pressures described here.</li>
-            <li>These figures and issues are widely acknowledged across government and sector reports.</li>
-          </ul>
-        </div>
-      </section>
+      <StatusSection type="unconfirmed">
+        <ul className="space-y-2">
+          <li>No unconfirmed data applies to the current system pressures described here.</li>
+          <li>These figures and issues are widely acknowledged across government and sector reports.</li>
+        </ul>
+      </StatusSection>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          Leaked
-        </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>No leaks dispute the scale of demand, delays, or financial pressure described here.</li>
-            <li>Leaks focus on responses to these pressures, not the facts themselves.</li>
-          </ul>
-        </div>
-      </section>
+      <StatusSection type="leaked">
+        <ul className="space-y-2">
+          <li>No leaks dispute the scale of demand, delays, or financial pressure described here.</li>
+          <li>Leaks focus on responses to these pressures, not the facts themselves.</li>
+        </ul>
+      </StatusSection>
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">

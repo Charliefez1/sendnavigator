@@ -3,6 +3,7 @@ import {
   PageOrientation,
   SixtySecondSummary,
   ProtectionsSection,
+  StatusSection,
 } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 
@@ -65,30 +66,20 @@ export default function WhatHasNotChanged() {
         </div>
       </section>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          Unconfirmed
-        </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>There is no confirmation that any existing legal rights or duties will change.</li>
-            <li>No confirmed proposals to remove current protections.</li>
-          </ul>
-        </div>
-      </section>
+      <StatusSection type="unconfirmed">
+        <ul className="space-y-2">
+          <li>There is no confirmation that any existing legal rights or duties will change.</li>
+          <li>No confirmed proposals to remove current protections.</li>
+        </ul>
+      </StatusSection>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          Leaked
-        </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>Leaked discussions suggest future changes could affect rights, thresholds, or appeals.</li>
-            <li>None of these are confirmed.</li>
-            <li>Current rights remain unchanged unless the law is amended.</li>
-          </ul>
-        </div>
-      </section>
+      <StatusSection type="leaked">
+        <ul className="space-y-2">
+          <li>Leaked discussions suggest future changes could affect rights, thresholds, or appeals.</li>
+          <li>None of these are confirmed.</li>
+          <li>Current rights remain unchanged unless the law is amended.</li>
+        </ul>
+      </StatusSection>
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
