@@ -5,11 +5,14 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { path: "/", label: "Home" },
-  { path: "/where-we-are-now", label: "Where we are now" },
-  { path: "/what-is-changing", label: "What is changing" },
-  { path: "/what-the-leaks-are-saying", label: "What the leaks are saying" },
-  { path: "/what-this-could-mean", label: "What this could mean" },
+  { path: "/what-is-changing", label: "What is actually changing" },
+  { path: "/what-has-not-changed", label: "What has not changed" },
+  { path: "/where-we-are-now", label: "What we know so far" },
+  { path: "/what-is-being-discussed", label: "What is being discussed" },
+  { path: "/what-we-do-not-know", label: "What we do not know yet" },
   { path: "/timeline", label: "Timeline and next steps" },
+  { path: "/what-the-leaks-are-saying", label: "What the leaks are saying" },
+  { path: "/what-the-leaks-do-not-mean", label: "What the leaks do not mean" },
   { path: "/questions-and-answers", label: "Questions and answers" },
   { path: "/sources", label: "Sources and how to read them" },
   { path: "/about", label: "About this resource" },
