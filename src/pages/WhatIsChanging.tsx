@@ -45,6 +45,30 @@ export default function WhatIsChanging() {
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
+          Unconfirmed
+        </h2>
+        <div className="prose-calm">
+          <ul className="space-y-2">
+            <li>No unconfirmed changes apply to this page.</li>
+            <li>All changes listed here have been formally announced or are already happening.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          Leaked
+        </h2>
+        <div className="prose-calm">
+          <ul className="space-y-2">
+            <li>No leaks relate directly to confirmed changes already in progress.</li>
+            <li>Leaked proposals focus on future system design, not current changes.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
           What this means for parents
         </h2>
         <div className="prose-calm">
