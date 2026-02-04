@@ -3,6 +3,7 @@ import { Layout } from "@/components/Layout";
 import { StatusExplainer } from "@/components/StatusExplainer";
 import { InfoCard } from "@/components/InfoCard";
 import { QandAComponent } from "@/components/qanda";
+import { TrustSignals } from "@/components/feedback";
 import { Users, BookOpen, ShieldAlert, Clock, ArrowRight } from "lucide-react";
 
 const Index = () => {
@@ -129,6 +130,11 @@ const Index = () => {
             </p>
           </InfoCard>
         </div>
+      </section>
+
+      {/* Trust signals */}
+      <section className="content-section pb-12">
+        <TrustSignals />
       </section>
 
       {/* Update notice */}

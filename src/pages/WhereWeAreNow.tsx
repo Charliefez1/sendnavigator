@@ -8,6 +8,8 @@ import {
   UnknownSection,
   WatchNextSection,
 } from "@/components/templates";
+import { PassiveFeedback, ActiveFeedbackForm } from "@/components/feedback";
+import { useLocation } from "react-router-dom";
 
 export default function WhereWeAreNow() {
   const summaryPoints = [
@@ -31,6 +33,8 @@ export default function WhereWeAreNow() {
       type: "decision" as const,
     },
   ];
+
+  const location = useLocation();
 
   return (
     <Layout>
@@ -135,7 +139,14 @@ export default function WhereWeAreNow() {
 
       <WatchNextSection items={watchItems} />
 
-      <div className="content-section pb-16" />
+      {/* Feedback section */}
+      <div className="content-section pb-8">
+        <PassiveFeedback pageUrl={location.pathname} />
+      </div>
+
+      <div className="content-section pb-16">
+        <ActiveFeedbackForm pageUrl={location.pathname} />
+      </div>
     </Layout>
   );
 }

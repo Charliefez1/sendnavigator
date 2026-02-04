@@ -1,0 +1,28 @@
+import { Bot, Database, HelpCircle, ShieldX } from "lucide-react";
+import { aiTrustSignals } from "@/config/feedback";
+
+export function AITrustNotice() {
+  return (
+    <div className="bg-muted/30 border border-border rounded-lg p-4">
+      <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+        <Bot className="w-4 h-4 text-primary" />
+        About AI-generated answers
+      </h3>
+      
+      <ul className="space-y-2 text-sm text-muted-foreground">
+        <li className="flex items-start gap-2">
+          <Database className="w-4 h-4 flex-shrink-0 mt-0.5 text-primary" />
+          <span>{aiTrustSignals.grounding}</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <HelpCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-primary" />
+          <span>{aiTrustSignals.uncertaintyHandling}</span>
+        </li>
+        <li className="flex items-start gap-2">
+          <ShieldX className="w-4 h-4 flex-shrink-0 mt-0.5 text-primary" />
+          <span>{aiTrustSignals.refusalExplanation}</span>
+        </li>
+      </ul>
+    </div>
+  );
+}
