@@ -50,6 +50,30 @@ export default function WhatWeKnowSoFar() {
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
+          Unconfirmed
+        </h2>
+        <div className="prose-calm">
+          <ul className="space-y-2">
+            <li>No unconfirmed data applies to the current system pressures described here.</li>
+            <li>These figures and issues are widely acknowledged across government and sector reports.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          Leaked
+        </h2>
+        <div className="prose-calm">
+          <ul className="space-y-2">
+            <li>No leaks dispute the scale of demand, delays, or financial pressure described here.</li>
+            <li>Leaks focus on responses to these pressures, not the facts themselves.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
           What this means for parents
         </h2>
         <div className="prose-calm">

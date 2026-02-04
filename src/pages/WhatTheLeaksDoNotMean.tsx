@@ -45,6 +45,31 @@ export default function WhatTheLeaksDoNotMean() {
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
+          Unconfirmed
+        </h2>
+        <div className="prose-calm">
+          <ul className="space-y-2">
+            <li>There is no unconfirmed reduction of rights currently in force.</li>
+            <li>There is no unconfirmed removal of existing plans.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          Leaked
+        </h2>
+        <div className="prose-calm">
+          <ul className="space-y-2">
+            <li>Leaks do not override current law.</li>
+            <li>Leaks do not change how decisions must be made today.</li>
+            <li>Leaks do not cancel existing duties or protections.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
           What this means for parents
         </h2>
         <div className="prose-calm">
