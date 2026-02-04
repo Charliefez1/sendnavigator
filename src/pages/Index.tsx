@@ -13,7 +13,7 @@ const Index = () => {
         {/* Hero section */}
         <section className="content-section py-12 sm:py-16 animate-fade-in">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground leading-tight mb-6">
-            A calm, clear guide to SEND reform in England
+            Guide to SEND reform in England
           </h2>
           <div className="prose-calm max-w-2xl">
             <p>
@@ -83,7 +83,7 @@ const Index = () => {
             <p className="flex items-center gap-2">
               <Clock className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
               <span>
-                <strong className="text-foreground">Last updated:</strong> February 2025 · 
+                <strong className="text-foreground">Last updated:</strong> 4th February 2026 ·
                 This page will be updated as new information becomes available.
               </span>
             </p>
