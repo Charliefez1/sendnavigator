@@ -12,17 +12,18 @@ import { StatusBadge } from "@/components/StatusBadge";
 
 export default function WhatIsChanging() {
   const summaryPoints = [
-    "This page covers confirmed reforms and official government plans.",
-    "Everything listed here has been formally announced or legislated.",
-    "We distinguish between changes that are in effect now and those planned for the future.",
-    "Each item includes the source and date of confirmation.",
-    "Proposed or leaked changes are covered separately in 'What the leaks are saying'.",
+    "Government has an active SEND reform programme.",
+    "Testing of reforms has been underway since 2023.",
+    "A national conversation has completed.",
+    "Investment in training and specialist places has been announced.",
+    "Structural changes are not yet in force.",
+    "Existing legal rights remain in place.",
   ];
 
   const unknownQuestions = [
-    "What is the full implementation timeline for announced changes?",
-    "How will announced funding be allocated across local authorities?",
-    "What guidance will accompany confirmed policy changes?",
+    "Final content of national SEND standards.",
+    "Which elements will require changes to law.",
+    "How reforms will be implemented nationally.",
   ];
 
   const watchItems = [
@@ -41,6 +42,7 @@ export default function WhatIsChanging() {
       <PageOrientation
         title="What is changing"
         description="Confirmed reforms and official plans from government."
+        lastUpdated="4th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
@@ -53,34 +55,29 @@ export default function WhatIsChanging() {
         keyPoints={
           <>
             <p>
-              This section documents changes to SEND policy that have been officially 
-              confirmed by government. This includes announcements, published plans, 
-              and changes to legislation or statutory guidance.
+              The SEND and Alternative Provision Improvement Plan was published on 
+              2 March 2023. A SEND Change Programme is testing reforms with selected 
+              local areas.
             </p>
             <p>
-              We only include information here once it has been formally confirmed. 
-              Proposals that are still being discussed or leaked information appear 
-              in other sections.
+              A national conversation on SEND reform ran from December 2025 to 
+              January 2026. Government announced £3 billion capital funding to expand 
+              specialist places and a £200 million SEND teacher training programme.
             </p>
           </>
         }
         moreDetail={
           <>
-            <h3>How we verify confirmation</h3>
+            <h3>What is being tested</h3>
             <p>
-              Information is marked as confirmed when it appears in official government 
-              publications, ministerial statements, or enacted legislation.
-            </p>
-            <p>
-              We include the date and source for each confirmed item so you can verify 
-              the information yourself.
+              National SEND standards are being developed and tested. Digital approaches 
+              to EHC plans are being piloted in some areas.
             </p>
 
-            <h3>Types of confirmed changes</h3>
+            <h3>Important context</h3>
             <p>
-              Confirmed changes may include: new legislation, amendments to existing law, 
-              changes to statutory guidance, funding announcements, and implementation of 
-              previously announced plans.
+              Pilots are not national policy. No confirmed changes to EHC plan eligibility 
+              have been made.
             </p>
           </>
         }
@@ -90,15 +87,46 @@ export default function WhatIsChanging() {
         confirmed={
           <>
             <p>
-              Specific confirmed changes will be documented here as they are announced. 
-              Each entry will include the source, date, and current implementation status.
+              <strong>The SEND and Alternative Provision Improvement Plan was published.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: Department for Education (government policy) · 02 March 2023</span>
             </p>
             <p>
-              Content is being developed to reflect the latest confirmed policy position.
+              <strong>A SEND Change Programme is testing reforms with selected local areas.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: Department for Education (government programme) · 02 March 2023</span>
+            </p>
+            <p>
+              <strong>A national conversation on SEND reform ran from December 2025 to January 2026.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: Department for Education (government consultation) · 14 January 2026</span>
+            </p>
+            <p>
+              <strong>Government announced £3 billion capital funding to expand specialist places.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: Department for Education (government announcement) · 02 March 2023</span>
+            </p>
+            <p>
+              <strong>Government announced a £200 million SEND teacher training programme.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: Department for Education (government announcement) · 16 January 2026</span>
             </p>
           </>
         }
-        discussedEmpty="This page focuses on confirmed information only."
+        discussed={
+          <>
+            <p>
+              <strong>National SEND standards are being developed and tested.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: Department for Education (government reporting) · ongoing since 2023</span>
+            </p>
+            <p>
+              <strong>Digital approaches to EHC plans are being piloted in some areas.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: Department for Education (government reporting) · ongoing since 2023</span>
+            </p>
+          </>
+        }
         unconfirmedEmpty="This page focuses on confirmed information only. See 'What the leaks are saying' for unconfirmed reports."
       />
 
@@ -110,6 +138,10 @@ export default function WhatIsChanging() {
         <p>
           We will use language like "this could mean" and "some families may notice" 
           rather than making predictions about individual circumstances.
+        </p>
+        <p className="text-sm text-muted-foreground mt-4">
+          <strong>Notes for careful handling:</strong> No confirmed changes to EHC plan eligibility. 
+          Pilots are not national policy.
         </p>
       </PracticalImplications>
 

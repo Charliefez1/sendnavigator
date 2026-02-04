@@ -159,7 +159,7 @@ export const timelineDisplayRules = {
 // =============================================================================
 
 export const currentPositionData: CurrentPosition = {
-  summary: "SEND reform discussions are ongoing. The current legal framework under the Children and Families Act 2014 remains in force.",
+  summary: "Reform activity has been staged over several years. Testing began in 2023. A national conversation closed in early 2026. Formal consultation is planned. Any legal changes would require Parliament. Timings remain indicative.",
   inForceToday: [
     "Children and Families Act 2014 remains the primary legislation",
     "SEND Code of Practice 2015 remains statutory guidance",
@@ -170,66 +170,94 @@ export const currentPositionData: CurrentPosition = {
     "No legislation has been introduced to change the EHCP system",
     "No confirmed timeline for removing or replacing current protections",
     "Local authority duties under current law remain in effect",
+    "No changes apply until legislation is passed",
   ],
   lastUpdated: "4th February 2026",
 };
 
 export const completedMilestones: TimelineMilestone[] = [
   {
-    id: "send-review-2022",
-    title: "SEND Review published",
-    monthYear: "March 2022",
-    explanation: "The government published the SEND and Alternative Provision Green Paper following the SEND Review.",
+    id: "improvement-plan-2023",
+    title: "SEND Improvement Plan launched",
+    monthYear: "March 2023",
+    explanation: "The SEND and Alternative Provision Improvement Plan was published, setting out government intentions for reform.",
     status: "completed",
-    source: "GOV.UK",
+    source: "Department for Education (government policy)",
   },
   {
-    id: "improvement-plan-2023",
-    title: "SEND and AP Improvement Plan published",
-    monthYear: "March 2023",
-    explanation: "The government response to the Green Paper consultation, setting out planned reforms.",
+    id: "change-programme-2023",
+    title: "Change Programme testing began",
+    monthYear: "2023 to present",
+    explanation: "SEND Change Programme testing has run from 2023 onwards with selected local areas.",
     status: "completed",
-    source: "GOV.UK",
+    source: "Department for Education (government programme)",
+  },
+  {
+    id: "national-conversation-closed",
+    title: "National conversation closed",
+    monthYear: "14 January 2026",
+    explanation: "The national conversation on SEND reform ran from December 2025 to January 2026.",
+    status: "completed",
+    source: "Department for Education (government consultation)",
   },
 ];
 
 export const upcomingDecisionPoints: UpcomingDecisionPoint[] = [
   {
-    id: "implementation-review",
-    title: "Review of improvement plan implementation",
+    id: "formal-consultation-2026",
+    title: "Formal consultation on SEND reform",
     estimatedTiming: "2026",
-    whyItMatters: "Will determine whether current reform approach continues or changes direction.",
+    whyItMatters: "Government has stated a formal consultation will take place in 2026. This will be the opportunity for detailed input on proposed changes.",
     whatCouldChange: [
-      "Pace of reform implementation",
-      "Focus areas for next phase",
-      "Funding allocations",
+      "Content of proposed reforms",
+      "Implementation approach",
+      "Scope of changes to current system",
     ],
     whatCouldStaySame: [
-      "Core legal framework",
+      "Core legal framework until legislation passes",
       "EHCP as statutory mechanism",
       "Tribunal rights",
     ],
     status: "upcoming",
+    source: "Department for Education (government statement) · December 2025",
   },
 ];
 
 export const longerTermPossibilities: LongerTermPossibility[] = [
   {
-    id: "funding-model-review",
-    title: "High needs funding model changes",
-    description: "Discussions about reforming how high needs funding is allocated to local authorities.",
-    uncertaintyNote: "No decisions have been made. Any changes would require consultation and potentially legislation. Current funding arrangements remain in place.",
+    id: "schools-white-paper",
+    title: "Schools White Paper with SEND reform proposals",
+    description: "A Schools White Paper is expected to include SEND reform proposals.",
+    uncertaintyNote: "No decisions have been made. This is based on sector reporting (December 2025). Any changes would require consultation, legislation, and parliamentary approval. Future dates are subject to parliamentary process.",
+    status: "uncertain",
+  },
+  {
+    id: "draft-legislation",
+    title: "Draft legislation content",
+    description: "Content of any draft legislation relating to SEND reform.",
+    uncertaintyNote: "No draft legislation has been published. We do not know what it might contain or when it might be introduced.",
+    status: "uncertain",
+  },
+  {
+    id: "implementation-dates",
+    title: "Implementation dates for any legal changes",
+    description: "Specific dates when any new legal requirements would come into force.",
+    uncertaintyNote: "No implementation dates have been confirmed. Any changes would need to complete the full parliamentary process first.",
     status: "uncertain",
   },
 ];
 
 export const recentChanges: WhatChangedEntry[] = [
   {
-    description: "Initial timeline structure established",
+    description: "Timeline updated with confirmed milestones from SEND Improvement Plan, Change Programme, and National Conversation",
     isNew: true,
   },
   {
-    description: "Content being developed based on confirmed sources",
+    description: "Added formal consultation 2026 as upcoming decision point based on government statement",
+    isNew: true,
+  },
+  {
+    description: "Added longer-term possibilities section with Schools White Paper and legislation uncertainty",
     clarifiesExisting: true,
   },
 ];

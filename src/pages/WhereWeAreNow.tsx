@@ -13,17 +13,18 @@ import { useLocation } from "react-router-dom";
 
 export default function WhereWeAreNow() {
   const summaryPoints = [
-    "The current SEND system in England is based on the Children and Families Act 2014.",
-    "Education, Health and Care Plans (EHCPs) are the main legal document for children with more complex needs.",
-    "SEN Support is the first level of help available in schools without an EHCP.",
-    "Local authorities have a legal duty to identify and assess children with SEND.",
-    "The system is under significant pressure, with rising demand and stretched resources.",
-    "Waiting times for assessments and provision vary widely across the country.",
+    "SEND support in England is set out in law through EHC plans and SEN support.",
+    "Demand has grown quickly over the last decade.",
+    "Many plans are late and families often use tribunals to resolve disputes.",
+    "Spending has increased but outcomes have not improved at the same pace.",
+    "Local authorities face serious financial pressure.",
+    "Government bodies agree the system is under strain.",
   ];
 
   const unknownQuestions = [
-    "How will current pressures on the system be addressed in the short term?",
-    "What will happen to children currently awaiting assessment?",
+    "How quickly performance on EHC plan timescales will improve.",
+    "Whether current spending levels will stabilise demand.",
+    "How outcomes beyond attainment will change.",
   ];
 
   const watchItems = [
@@ -41,6 +42,7 @@ export default function WhereWeAreNow() {
       <PageOrientation
         title="Where we are now"
         description="The current SEND system in England as it operates today."
+        lastUpdated="4th February 2026"
       />
 
       <SixtySecondSummary points={summaryPoints} />
@@ -49,52 +51,39 @@ export default function WhereWeAreNow() {
         keyPoints={
           <>
             <p>
-              The SEND system in England is built on the Children and Families Act 2014. 
-              This law created Education, Health and Care Plans (EHCPs) as the main way to 
-              set out support for children and young people with more complex needs.
+              SEND provision in England is governed by the Children and Families Act 2014.
+              This legislation established Education, Health and Care Plans (EHCPs) as the 
+              main mechanism for legally binding support for children and young people with 
+              more complex needs.
             </p>
             <p>
-              Before an EHCP, schools provide SEN Support. This is help within the classroom 
-              and school, without needing a formal plan.
+              In 2024 to 2025, around 482,000 pupils in England had an EHC plan, while 
+              around 1.28 million pupils received SEN support without an EHC plan.
             </p>
             <p>
-              Local authorities must identify children who may have SEND and assess their needs 
-              when asked. However, the system is under pressure, with long waits in many areas.
+              The SEND system has been described as financially unsustainable by the 
+              National Audit Office. High needs funding increased to around £9.4 billion 
+              in 2024 to 2025.
             </p>
           </>
         }
         moreDetail={
           <>
-            <h3>EHCPs explained</h3>
+            <h3>EHC plan timeliness</h3>
             <p>
-              An Education, Health and Care Plan is a legal document. It describes a child's 
-              needs and the support they should receive. Local authorities must provide what 
-              is written in an EHCP.
-            </p>
-            <p>
-              EHCPs cover education, health, and social care needs. They are reviewed annually 
-              and can continue until age 25 if the young person remains in education or training.
-            </p>
-            
-            <h3>SEN Support in schools</h3>
-            <p>
-              SEN Support is the first stage of help. Schools use their own resources to provide 
-              extra support. This might include small group work, different teaching approaches, 
-              or equipment.
-            </p>
-            <p>
-              Schools should follow a cycle called Assess, Plan, Do, Review. They work with 
-              parents and may involve outside specialists.
+              Only around half of EHC plans were issued within the 20 week legal timescale, 
+              according to the Public Accounts Committee (January 2025).
             </p>
 
-            <h3>Current pressures</h3>
+            <h3>Tribunal activity</h3>
             <p>
-              Demand for EHCPs has risen significantly since 2014. Many local authorities 
-              struggle to complete assessments within the 20-week legal timeframe. 
+              Reports state that most SEND tribunal cases are decided in favour of families, 
+              depending on how outcomes are counted.
             </p>
+
+            <h3>Local variation</h3>
             <p>
-              SEND Tribunal appeals have increased, suggesting disagreements between families 
-              and local authorities are common.
+              Reports describe wide variation in SEND provision between local areas.
             </p>
           </>
         }
@@ -104,20 +93,48 @@ export default function WhereWeAreNow() {
         confirmed={
           <>
             <p>
-              The Children and Families Act 2014 remains the primary legislation governing SEND 
-              in England. The SEND Code of Practice (2015) provides statutory guidance.
+              <strong>SEND provision in England is governed by the Children and Families Act 2014.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: UK Parliament (legislation) · 13 March 2014</span>
             </p>
             <p>
-              Local authorities must complete EHCP assessments within 20 weeks. Parents have 
-              the right to request an assessment and to appeal decisions to the SEND Tribunal.
+              <strong>In 2024 to 2025, around 482,000 pupils in England had an EHC plan.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: Department for Education (official statistics) · 26 June 2025</span>
+            </p>
+            <p>
+              <strong>In 2024 to 2025, around 1.28 million pupils received SEN support without an EHC plan.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: Department for Education (official statistics) · 26 June 2025</span>
+            </p>
+            <p>
+              <strong>Only around half of EHC plans were issued within the 20 week legal timescale.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: Public Accounts Committee (parliamentary report) · 15 January 2025</span>
+            </p>
+            <p>
+              <strong>The SEND system has been described as financially unsustainable.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: National Audit Office (audit report) · 24 October 2024</span>
+            </p>
+            <p>
+              <strong>High needs funding increased to around £9.4 billion in 2024 to 2025.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: Local Government Association (government funding data) · 23 April 2025</span>
             </p>
           </>
         }
         discussed={
           <>
             <p>
-              There is ongoing discussion about the sustainability of the current system. 
-              Reports from various bodies have highlighted funding pressures and capacity issues.
+              <strong>Reports describe wide variation in SEND provision between local areas.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: Local Government Association (parliamentary and sector reporting) · December 2025</span>
+            </p>
+            <p>
+              <strong>Reports state that most SEND tribunal cases are decided in favour of families, depending on how outcomes are counted.</strong>
+              <br />
+              <span className="text-sm text-muted-foreground">Source: Public Accounts Committee (parliamentary evidence) · 15 January 2025</span>
             </p>
           </>
         }
@@ -129,10 +146,14 @@ export default function WhereWeAreNow() {
           For families navigating the current system, this could mean:
         </p>
         <ul>
-          <li>Wait times for EHCP assessments may be longer than the legal timeframe in some areas</li>
+          <li>Wait times for EHC plan assessments may be longer than the legal timeframe in some areas</li>
           <li>Schools may have varying levels of capacity to provide SEN Support</li>
           <li>Families may need to understand their legal rights to navigate the process effectively</li>
         </ul>
+        <p className="text-sm text-muted-foreground mt-4">
+          <strong>Notes for careful handling:</strong> Legal rights linked to EHC plans must be described precisely. 
+          Statistics vary depending on age range and dataset used.
+        </p>
       </PracticalImplications>
 
       <UnknownSection questions={unknownQuestions} />
