@@ -44,29 +44,30 @@ export function Navigation() {
           ))}
         </div>
 
-        {/* Mobile navigation */}
+        {/* Mobile navigation - touch-friendly */}
         <div className="lg:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center justify-between w-full py-3 text-foreground"
+            className="flex items-center justify-between w-full min-h-[48px] py-3 text-foreground touch-target"
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
           >
-            <span className="flex items-center gap-2 text-sm font-medium">
+            <span className="flex items-center gap-2 text-base font-medium">
               {currentPage?.label || "Menu"}
               {location.pathname !== "/" && (
-                <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                <ChevronRight className="w-4 h-4 text-muted-foreground" aria-hidden="true" />
               )}
             </span>
             {isOpen ? (
-              <X className="w-5 h-5" aria-hidden="true" />
+              <X className="w-6 h-6" aria-hidden="true" />
             ) : (
-              <Menu className="w-5 h-5" aria-hidden="true" />
+              <Menu className="w-6 h-6" aria-hidden="true" />
             )}
           </button>
 
           {isOpen && (
-            <div id="mobile-menu" className="pb-4 space-y-1">
+            <div id="mobile-menu" className="pb-4 space-y-1" role="navigation">
               {navItems.map((item) => (
                 <NavLink
                   key={item.path}
@@ -74,10 +75,10 @@ export function Navigation() {
                   onClick={() => setIsOpen(false)}
                   className={({ isActive }) =>
                     cn(
-                      "block px-3 py-2 text-sm rounded-md transition-colors",
+                      "block px-4 py-3 text-base rounded-md transition-colors min-h-[48px] flex items-center",
                       isActive
-                        ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                        ? "bg-primary text-primary-foreground font-medium"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted active:bg-muted"
                     )
                   }
                 >
