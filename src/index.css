@@ -3,149 +3,164 @@
 @tailwind utilities;
 
 /* SEND Reform Navigator Design System
-   Calm, accessible, trustworthy public resource
-   Inspired by GOV.UK clarity with warmer human touch
+   Warm, friendly, parent-focused resource
+   Reassuring and approachable
    All colors in HSL format
 */
 
 @layer base {
   :root {
-    /* Core backgrounds - warm, easy on eyes */
-    --background: 40 20% 98%;
-    --foreground: 220 20% 20%;
+    /* Core backgrounds - warm cream tones */
+    --background: 45 30% 97%;
+    --foreground: 220 25% 18%;
 
-    /* Card surfaces */
+    /* Card surfaces - soft white */
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 20%;
+    --card-foreground: 220 25% 18%;
 
     /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 20%;
+    --popover-foreground: 220 25% 18%;
 
-    /* Primary - calming teal, trustworthy */
-    --primary: 186 35% 35%;
+    /* Primary - warm sage green, calming and trustworthy */
+    --primary: 158 35% 38%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - warm neutral */
-    --secondary: 40 15% 94%;
-    --secondary-foreground: 220 20% 25%;
+    /* Secondary - soft warm beige */
+    --secondary: 35 30% 92%;
+    --secondary-foreground: 220 25% 20%;
 
-    /* Muted - subtle backgrounds */
-    --muted: 40 10% 96%;
-    --muted-foreground: 220 10% 45%;
+    /* Muted - gentle warm gray */
+    --muted: 40 20% 95%;
+    --muted-foreground: 220 15% 40%;
 
-    /* Accent - soft focus */
-    --accent: 186 25% 94%;
-    --accent-foreground: 186 35% 25%;
+    /* Accent - soft teal for focus */
+    --accent: 175 35% 92%;
+    --accent-foreground: 175 40% 28%;
 
-    /* Destructive - muted, not alarming */
-    --destructive: 0 45% 50%;
+    /* Destructive - soft, not alarming */
+    --destructive: 0 55% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders and inputs */
-    --border: 220 15% 88%;
-    --input: 220 15% 88%;
-    --ring: 186 35% 45%;
+    /* Borders and inputs - warm gray */
+    --border: 35 15% 85%;
+    --input: 35 15% 85%;
+    --ring: 158 35% 45%;
 
-    --radius: 0.375rem;
+    --radius: 0.75rem;
 
-    /* Information status categories */
-    --status-confirmed: 152 45% 40%;
-    --status-confirmed-bg: 152 40% 95%;
-    --status-confirmed-border: 152 40% 80%;
+    /* Warm highlight for reassurance */
+    --highlight: 45 100% 95%;
+    --highlight-border: 45 50% 75%;
+
+    /* Information status categories - softer, friendlier */
+    --status-confirmed: 158 45% 38%;
+    --status-confirmed-bg: 158 35% 94%;
+    --status-confirmed-border: 158 30% 78%;
     
-    --status-discussed: 38 70% 50%;
-    --status-discussed-bg: 38 60% 95%;
-    --status-discussed-border: 38 60% 80%;
+    --status-discussed: 38 55% 50%;
+    --status-discussed-bg: 38 45% 94%;
+    --status-discussed-border: 38 40% 78%;
     
-    --status-unconfirmed: 220 10% 50%;
-    --status-unconfirmed-bg: 220 10% 95%;
-    --status-unconfirmed-border: 220 10% 80%;
+    --status-unconfirmed: 220 12% 55%;
+    --status-unconfirmed-bg: 220 10% 94%;
+    --status-unconfirmed-border: 220 10% 78%;
 
     /* Timeline status colors */
-    --timeline-completed: 152 45% 35%;
-    --timeline-completed-bg: 152 40% 95%;
-    --timeline-upcoming: 38 65% 45%;
-    --timeline-upcoming-bg: 38 60% 95%;
-    --timeline-uncertain: 220 10% 50%;
-    --timeline-uncertain-bg: 220 10% 95%;
-    --timeline-new: 152 45% 35%;
-    --timeline-new-bg: 152 40% 95%;
-    --timeline-clarification: 210 60% 45%;
-    --timeline-clarification-bg: 210 50% 95%;
+    --timeline-completed: 158 45% 35%;
+    --timeline-completed-bg: 158 35% 94%;
+    --timeline-upcoming: 38 55% 48%;
+    --timeline-upcoming-bg: 38 45% 94%;
+    --timeline-uncertain: 220 12% 55%;
+    --timeline-uncertain-bg: 220 10% 94%;
+    --timeline-new: 158 45% 35%;
+    --timeline-new-bg: 158 35% 94%;
+    --timeline-clarification: 200 50% 45%;
+    --timeline-clarification-bg: 200 40% 94%;
+
+    /* Journey navigation colors */
+    --journey-current: 158 35% 38%;
+    --journey-complete: 158 30% 50%;
+    --journey-pending: 220 10% 70%;
 
     /* Sidebar */
-    --sidebar-background: 40 15% 97%;
-    --sidebar-foreground: 220 15% 30%;
-    --sidebar-primary: 186 35% 35%;
+    --sidebar-background: 45 25% 96%;
+    --sidebar-foreground: 220 20% 25%;
+    --sidebar-primary: 158 35% 38%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 186 20% 94%;
-    --sidebar-accent-foreground: 186 35% 25%;
-    --sidebar-border: 220 15% 90%;
-    --sidebar-ring: 186 35% 45%;
+    --sidebar-accent: 175 25% 92%;
+    --sidebar-accent-foreground: 175 35% 28%;
+    --sidebar-border: 35 15% 88%;
+    --sidebar-ring: 158 35% 45%;
   }
 
   .dark {
     --background: 220 20% 10%;
-    --foreground: 40 10% 95%;
+    --foreground: 40 15% 95%;
 
-    --card: 220 20% 12%;
-    --card-foreground: 40 10% 95%;
+    --card: 220 18% 13%;
+    --card-foreground: 40 15% 95%;
 
-    --popover: 220 20% 12%;
-    --popover-foreground: 40 10% 95%;
+    --popover: 220 18% 13%;
+    --popover-foreground: 40 15% 95%;
 
-    --primary: 186 40% 55%;
+    --primary: 158 40% 50%;
     --primary-foreground: 220 20% 10%;
 
     --secondary: 220 15% 18%;
-    --secondary-foreground: 40 10% 90%;
+    --secondary-foreground: 40 15% 90%;
 
     --muted: 220 15% 18%;
-    --muted-foreground: 40 10% 65%;
+    --muted-foreground: 40 15% 60%;
 
-    --accent: 186 25% 20%;
-    --accent-foreground: 186 40% 85%;
+    --accent: 175 30% 22%;
+    --accent-foreground: 175 40% 80%;
 
     --destructive: 0 50% 45%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 15% 22%;
     --input: 220 15% 22%;
-    --ring: 186 40% 55%;
+    --ring: 158 40% 50%;
 
-    --status-confirmed: 152 50% 50%;
-    --status-confirmed-bg: 152 30% 15%;
-    --status-confirmed-border: 152 30% 30%;
+    --highlight: 45 40% 15%;
+    --highlight-border: 45 30% 30%;
+
+    --status-confirmed: 158 45% 50%;
+    --status-confirmed-bg: 158 25% 15%;
+    --status-confirmed-border: 158 25% 30%;
     
-    --status-discussed: 38 70% 55%;
-    --status-discussed-bg: 38 40% 15%;
-    --status-discussed-border: 38 40% 30%;
+    --status-discussed: 38 60% 55%;
+    --status-discussed-bg: 38 35% 15%;
+    --status-discussed-border: 38 35% 30%;
     
     --status-unconfirmed: 220 15% 60%;
     --status-unconfirmed-bg: 220 10% 18%;
     --status-unconfirmed-border: 220 10% 30%;
 
-    /* Timeline status colors - dark mode */
-    --timeline-completed: 152 50% 50%;
-    --timeline-completed-bg: 152 30% 15%;
-    --timeline-upcoming: 38 70% 55%;
-    --timeline-upcoming-bg: 38 40% 15%;
+    --timeline-completed: 158 45% 50%;
+    --timeline-completed-bg: 158 25% 15%;
+    --timeline-upcoming: 38 60% 55%;
+    --timeline-upcoming-bg: 38 35% 15%;
     --timeline-uncertain: 220 15% 60%;
     --timeline-uncertain-bg: 220 10% 18%;
-    --timeline-new: 152 50% 50%;
-    --timeline-new-bg: 152 30% 15%;
-    --timeline-clarification: 210 60% 55%;
-    --timeline-clarification-bg: 210 40% 15%;
+    --timeline-new: 158 45% 50%;
+    --timeline-new-bg: 158 25% 15%;
+    --timeline-clarification: 200 55% 55%;
+    --timeline-clarification-bg: 200 35% 15%;
+
+    --journey-current: 158 40% 50%;
+    --journey-complete: 158 35% 55%;
+    --journey-pending: 220 10% 45%;
 
     --sidebar-background: 220 20% 8%;
-    --sidebar-foreground: 40 10% 90%;
-    --sidebar-primary: 186 40% 55%;
+    --sidebar-foreground: 40 15% 90%;
+    --sidebar-primary: 158 40% 50%;
     --sidebar-primary-foreground: 220 20% 10%;
-    --sidebar-accent: 186 20% 18%;
-    --sidebar-accent-foreground: 186 40% 80%;
+    --sidebar-accent: 175 25% 18%;
+    --sidebar-accent-foreground: 175 40% 75%;
     --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 186 40% 55%;
+    --sidebar-ring: 158 40% 50%;
   }
 }
 
@@ -157,25 +172,20 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    /* Prevent horizontal overflow on mobile */
     overflow-x: hidden;
-    /* Improve text rendering */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Improved focus states for accessibility */
   :focus-visible {
     @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 
-  /* Respect user font size preferences */
   html {
     font-size: 100%;
     scroll-behavior: smooth;
   }
 
-  /* Ensure minimum touch target size (44px) */
   button, 
   a, 
   [role="button"],
@@ -185,16 +195,22 @@
     min-height: 44px;
   }
 
-  /* Exception for inline links */
   p a, li a {
     min-height: auto;
   }
 }
 
 @layer components {
-  /* Status badges for information categories */
+  /* Reassurance banner - warm highlight */
+  .reassurance-banner {
+    background-color: hsl(var(--highlight));
+    border: 1px solid hsl(var(--highlight-border));
+    @apply rounded-xl p-5;
+  }
+
+  /* Status badges - softer, friendlier */
   .status-badge {
-    @apply inline-flex items-center gap-1.5 px-2.5 py-1.5 text-sm font-medium rounded-md;
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-full;
     min-height: 32px;
   }
 
@@ -219,7 +235,7 @@
   /* Content containers - mobile first */
   .content-section {
     @apply w-full mx-auto px-4;
-    max-width: 42rem; /* ~672px - optimal reading width */
+    max-width: 42rem;
   }
 
   @media (min-width: 640px) {
@@ -236,7 +252,7 @@
 
   .content-wide {
     @apply w-full mx-auto px-4;
-    max-width: 64rem; /* ~1024px */
+    max-width: 64rem;
   }
 
   @media (min-width: 640px) {
@@ -251,14 +267,13 @@
     }
   }
 
-  /* Calm, readable prose - mobile first */
+  /* Calm, readable prose */
   .prose-calm {
     @apply text-foreground leading-relaxed;
   }
 
   .prose-calm p {
     @apply mb-4 text-base leading-7;
-    /* Optimal line length for readability */
     max-width: 65ch;
   }
 
@@ -302,9 +317,23 @@
     }
   }
 
+  /* Journey navigation cards */
+  .journey-card {
+    @apply bg-card border-2 border-border rounded-xl p-5 transition-all duration-200;
+  }
+
+  .journey-card:hover {
+    @apply border-primary/50 shadow-sm;
+    transform: translateY(-2px);
+  }
+
+  .journey-card.active {
+    @apply border-primary bg-accent/30;
+  }
+
   /* Touch-friendly interactive elements */
   .touch-target {
-    @apply min-h-[44px] flex items-center;
+    @apply min-h-[48px] flex items-center;
   }
 
   /* Card spacing for mobile */
@@ -322,5 +351,15 @@
     .card-mobile {
       @apply p-6;
     }
+  }
+
+  /* Friendly button styles */
+  .btn-friendly {
+    @apply bg-primary text-primary-foreground rounded-full px-6 py-3 font-medium transition-all duration-200;
+  }
+
+  .btn-friendly:hover {
+    @apply opacity-90;
+    transform: translateY(-1px);
   }
 }
