@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { QuestionInput } from "./QuestionInput";
 import { AnswerDisplay } from "./AnswerDisplay";
-import { QandAResponse, checkForRefusal, isLeaksRelated } from "./types";
-import { MessageCircle, Info } from "lucide-react";
+import { QandAResponse, checkForRefusal } from "./types";
+import { MessageCircle, Bot } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { AITrustNotice } from "@/components/feedback";
 
 export function QandAComponent() {
   const [isLoading, setIsLoading] = useState(false);
@@ -156,24 +157,16 @@ export function QandAComponent() {
         </div>
       )}
 
-      {/* Transparency notice - required by Prompt 8 */}
-      <div className="mt-6 pt-4 border-t border-border space-y-3">
-        <div className="flex gap-2 text-xs text-muted-foreground">
-          <Info className="w-3.5 h-3.5 flex-shrink-0 mt-0.5" />
-          <div className="space-y-1">
-            <p>
-              <strong>How this works:</strong> Answers are generated from this resource only, 
-              not from general AI knowledge.
-            </p>
-            <p>
-              This is a general explainer, not legal advice. It cannot comment on individual 
-              cases or tell you what to do.
-            </p>
-            <p>
-              Information reflects the current update date shown in each answer.
-            </p>
-          </div>
-        </div>
+      {/* AI Trust Notice - required by Prompt 9 */}
+      <div className="mt-6 pt-4 border-t border-border">
+        <AITrustNotice />
+        <p className="text-xs text-muted-foreground mt-3 flex items-center gap-2">
+          <Bot className="w-3.5 h-3.5 flex-shrink-0" />
+          <span>
+            This is a general explainer. It cannot comment on individual cases or provide legal advice. 
+            For specialist support, please seek appropriate professional guidance.
+          </span>
+        </p>
       </div>
     </section>
   );
