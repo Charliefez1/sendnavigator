@@ -6,7 +6,7 @@ import {
 } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 
-export default function WhereWeAreNow() {
+export default function WhatWeKnowSoFar() {
   return (
     <Layout>
       <PageOrientation
