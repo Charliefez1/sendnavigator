@@ -1,34 +1,50 @@
+import { Link } from "react-router-dom";
+import { Heart } from "lucide-react";
+
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-secondary/50 mt-auto">
+    <footer className="border-t border-border bg-card mt-auto">
       <div className="content-wide py-8 sm:py-10">
-        {/* Stack on mobile, grid on larger screens */}
-        <div className="grid gap-8 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <div>
-            <h3 className="font-medium text-base text-foreground mb-3">About this resource</h3>
-            <p className="text-base sm:text-sm text-muted-foreground leading-relaxed">
-              SEND Reform Navigator is an independent public resource. It is not legal advice 
-              and does not replace specialist support.
-            </p>
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+          {/* Brand */}
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+              <Heart className="w-4 h-4 text-primary" />
+            </div>
+            <div>
+              <p className="font-medium text-foreground text-sm">SEND Reform Navigator</p>
+              <p className="text-xs text-muted-foreground">A guide for families</p>
+            </div>
           </div>
-          <div>
-            <h3 className="font-medium text-base text-foreground mb-3">Scope</h3>
-            <p className="text-base sm:text-sm text-muted-foreground leading-relaxed">
-              This resource covers SEND policy in England only. Scotland, Wales, and 
-              Northern Ireland have separate systems.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-medium text-base text-foreground mb-3">Transparency</h3>
-            <p className="text-base sm:text-sm text-muted-foreground leading-relaxed">
-              All information is clearly labelled as confirmed, being discussed, or unconfirmed. 
-              We state what is unknown.
-            </p>
-          </div>
+
+          {/* Links */}
+          <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+            <Link 
+              to="/about" 
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              About
+            </Link>
+            <Link 
+              to="/sources" 
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Sources
+            </Link>
+            <Link 
+              to="/questions-and-answers" 
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Questions
+            </Link>
+          </nav>
         </div>
-        <div className="mt-8 pt-6 border-t border-border">
-          <p className="text-sm text-muted-foreground text-center leading-relaxed">
-            This is a public resource designed to reduce confusion and anxiety, not to persuade or campaign.
+
+        {/* Disclaimer */}
+        <div className="mt-6 pt-6 border-t border-border">
+          <p className="text-xs text-muted-foreground max-w-2xl">
+            This is an independent public resource. It does not provide legal, medical, or 
+            professional advice. Information applies to England only.
           </p>
         </div>
       </div>

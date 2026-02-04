@@ -1,182 +1,196 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
-import { StatusExplainer } from "@/components/StatusExplainer";
 import { QandAComponent } from "@/components/qanda";
-import { TrustSignals } from "@/components/feedback";
-import { Clock, ArrowRight } from "lucide-react";
+import { 
+  Shield, 
+  ArrowRight, 
+  CheckCircle2, 
+  Clock,
+  Heart,
+  BookOpen,
+  HelpCircle
+} from "lucide-react";
 
 const Index = () => {
   return (
     <Layout>
-      {/* Hero section */}
-      <section className="content-section py-12 sm:py-16 animate-fade-in">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground leading-tight mb-6">
-          Guide to SEND reform in England
-        </h2>
-        
-        {/* 60 second overview */}
-        <div className="bg-card border border-border rounded-lg p-5 mb-8">
-          <h3 className="text-lg font-medium text-foreground mb-4">60 second overview</h3>
-          <div className="prose-calm space-y-4">
-            <p>
-              SEND reform can feel confusing and overwhelming. There are many reports, headlines, and opinions, often saying different things at the same time. Families, teachers, and professionals may be hearing about change without being clear on what is actually happening now, what has been formally agreed, and what is still uncertain.
+      {/* Hero - Reassurance first */}
+      <section className="content-section py-10 sm:py-14 animate-fade-in">
+        {/* Primary reassurance message */}
+        <div className="reassurance-banner mb-8">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+              <Shield className="w-6 h-6 text-primary" />
+            </div>
+            <div>
+              <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-2">
+                Your rights haven't changed
+              </h2>
+              <p className="text-foreground/80 text-lg leading-relaxed">
+                Despite what you may have heard, your child's legal protections are still in place. 
+                EHCPs are still legally binding. The law hasn't changed yet.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Welcome message */}
+        <div className="mb-8">
+          <h1 className="text-2xl sm:text-3xl font-semibold text-foreground mb-4">
+            Welcome to SEND Reform Navigator
+          </h1>
+          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+            We know SEND reform can feel overwhelming. There's a lot of noise, and it's hard to know 
+            what's actually happening. This site is here to help you understand—calmly and clearly.
+          </p>
+        </div>
+
+        {/* What we help with */}
+        <div className="grid gap-4 sm:grid-cols-3 mb-8">
+          <div className="bg-card border border-border rounded-xl p-5">
+            <CheckCircle2 className="w-8 h-8 text-status-confirmed mb-3" />
+            <h3 className="font-medium text-foreground mb-1">What's confirmed</h3>
+            <p className="text-sm text-muted-foreground">
+              Official announcements and decisions that have actually been made
             </p>
-            <p>
-              SEND Reform Navigator exists to provide calm, clear information about SEND reform in England. It focuses on what is known, what is being talked about, and what has not yet been decided, without adding noise or interpretation.
+          </div>
+          <div className="bg-card border border-border rounded-xl p-5">
+            <HelpCircle className="w-8 h-8 text-status-discussed mb-3" />
+            <h3 className="font-medium text-foreground mb-1">What's being discussed</h3>
+            <p className="text-sm text-muted-foreground">
+              Proposals and ideas being debated by government and others
+            </p>
+          </div>
+          <div className="bg-card border border-border rounded-xl p-5">
+            <BookOpen className="w-8 h-8 text-status-unconfirmed mb-3" />
+            <h3 className="font-medium text-foreground mb-1">What's unknown</h3>
+            <p className="text-sm text-muted-foreground">
+              Questions that haven't been answered and decisions not yet made
             </p>
           </div>
         </div>
       </section>
 
-      {/* What this site is for */}
-      <section className="content-section pb-12 border-t border-border pt-8">
+      {/* Start your journey */}
+      <section className="content-section pb-12">
         <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-6">
-          What this site is for
+          Where would you like to start?
         </h2>
-        <div className="prose-calm max-w-2xl space-y-4">
-          <p>
-            This site is a public information resource. Its purpose is to explain the current position on SEND reform in England in plain English. It brings together confirmed information and clearly separates it from discussion or uncertainty, so readers can understand where things stand today.
-          </p>
-          <p>
-            The site is designed to support orientation. It helps readers make sense of the landscape without needing to follow every update or policy announcement themselves. It is written for parents, carers, teachers, and professionals who want clarity rather than commentary.
-          </p>
+        
+        <div className="space-y-3">
+          <Link 
+            to="/where-we-are-now" 
+            className="journey-card flex items-center gap-4"
+          >
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span className="text-lg font-semibold text-primary">1</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-medium text-foreground">Understand the current situation</h3>
+              <p className="text-sm text-muted-foreground">What we know about the SEND system today</p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+          </Link>
+
+          <Link 
+            to="/what-is-changing" 
+            className="journey-card flex items-center gap-4"
+          >
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span className="text-lg font-semibold text-primary">2</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-medium text-foreground">See what's actually changing</h3>
+              <p className="text-sm text-muted-foreground">Confirmed reforms and official plans</p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+          </Link>
+
+          <Link 
+            to="/what-is-being-discussed" 
+            className="journey-card flex items-center gap-4"
+          >
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span className="text-lg font-semibold text-primary">3</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-medium text-foreground">Learn what's being discussed</h3>
+              <p className="text-sm text-muted-foreground">Proposals under consideration</p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+          </Link>
+
+          <Link 
+            to="/what-the-leaks-are-saying" 
+            className="journey-card flex items-center gap-4"
+          >
+            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+              <span className="text-lg font-semibold text-muted-foreground">4</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-medium text-foreground">Understand the rumours</h3>
+              <p className="text-sm text-muted-foreground">Leaked reports and what they mean (and don't mean)</p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+          </Link>
+
+          <Link 
+            to="/timeline" 
+            className="journey-card flex items-center gap-4"
+          >
+            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+              <span className="text-lg font-semibold text-muted-foreground">5</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-medium text-foreground">See what's next</h3>
+              <p className="text-sm text-muted-foreground">Timeline of decisions and milestones</p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+          </Link>
         </div>
       </section>
 
-      {/* What this site is not */}
-      <section className="content-section pb-12 border-t border-border pt-8">
-        <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-6">
-          What this site is not
-        </h2>
-        <div className="prose-calm max-w-2xl space-y-4">
-          <p>
-            This site is not a campaigning platform. It does not argue for or against reform, and it does not promote particular views or outcomes.
-          </p>
-          <p>
-            It does not provide legal, medical, or professional advice. It cannot tell you what should happen in an individual case, or how the system should work for a specific child or family.
-          </p>
-          <p>
-            It also does not report rumours, anonymous briefings, or unconfirmed claims. Where uncertainty exists, that uncertainty is stated plainly.
-          </p>
-        </div>
-      </section>
-
-      {/* How to use this site */}
-      <section className="content-section pb-12 border-t border-border pt-8">
-        <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-6">
-          How to use this site
-        </h2>
-        <div className="prose-calm max-w-2xl space-y-4">
-          <p>
-            Each page is structured to help you quickly understand what matters most. You can start with the summaries to get an overview, then read further if you want more detail.
-          </p>
-          <p>
-            The pages explain what is true now before discussing what may change. They are designed to be read in any order, depending on what you need to understand.
-          </p>
-          <p>
-            All content focuses on SEND provision in England only.
-          </p>
-        </div>
-      </section>
-
-      {/* How information is categorised */}
-      <section className="content-section pb-12 border-t border-border pt-8">
-        <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-6">
-          How information is categorised
-        </h2>
-        <div className="prose-calm max-w-2xl space-y-4">
-          <p>
-            Information on this site is grouped into clear categories. Confirmed information reflects what has been formally published or announced. Reported information reflects what is being publicly discussed by recognised bodies or in mainstream reporting. Unknowns are included where decisions have not yet been made.
-          </p>
-          <p>
-            This separation is deliberate. It helps readers see the difference between fact, discussion, and uncertainty without needing to interpret it themselves.
-          </p>
-        </div>
-      </section>
-
-      {/* Closing statement */}
-      <section className="content-section pb-12 border-t border-border pt-8">
-        <p className="text-muted-foreground">
-          Understanding what is happening is the first step, and reading this information does not change any SEND rights or processes.
-        </p>
-      </section>
-
-      {/* Q&A Component */}
-      <section className="content-section pb-12 border-t border-border pt-8">
+      {/* Q&A */}
+      <section className="content-section pb-12 border-t border-border pt-10">
         <QandAComponent />
       </section>
 
-      {/* Status explainer */}
-      <section className="content-section pb-12">
-        <StatusExplainer />
-      </section>
-
-      {/* Quick navigation */}
-      <section className="content-section pb-12">
-        <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-6">
-          Explore the guide
-        </h2>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          <Link 
-            to="/where-we-are-now" 
-            className="group flex items-center justify-between p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors"
-          >
-            <span className="font-medium text-foreground">Where we are now</span>
-            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-          </Link>
-          <Link 
-            to="/what-is-changing" 
-            className="group flex items-center justify-between p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors"
-          >
-            <span className="font-medium text-foreground">What is changing</span>
-            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-          </Link>
-          <Link 
-            to="/what-the-leaks-are-saying" 
-            className="group flex items-center justify-between p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors"
-          >
-            <span className="font-medium text-foreground">What the leaks are saying</span>
-            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-          </Link>
-          <Link 
-            to="/what-this-could-mean" 
-            className="group flex items-center justify-between p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors"
-          >
-            <span className="font-medium text-foreground">What this could mean</span>
-            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-          </Link>
-          <Link 
-            to="/timeline" 
-            className="group flex items-center justify-between p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors"
-          >
-            <span className="font-medium text-foreground">Timeline and next steps</span>
-            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-          </Link>
-          <Link 
-            to="/questions-and-answers" 
-            className="group flex items-center justify-between p-4 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors"
-          >
-            <span className="font-medium text-foreground">Questions and answers</span>
-            <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-          </Link>
+      {/* About this resource */}
+      <section className="content-section pb-12 border-t border-border pt-10">
+        <div className="flex items-start gap-4">
+          <Heart className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+          <div>
+            <h2 className="text-lg font-semibold text-foreground mb-3">
+              Made for families like yours
+            </h2>
+            <div className="prose-calm space-y-3 text-muted-foreground">
+              <p className="text-base leading-relaxed !mb-3">
+                This is an independent resource—not government, not a campaign. We don't give advice 
+                or tell you what to do. We just help you understand what's happening.
+              </p>
+              <p className="text-base leading-relaxed !mb-0">
+                We know you're busy and may be feeling anxious. That's why we've made everything 
+                as clear and straightforward as possible.
+              </p>
+            </div>
+            <Link 
+              to="/about"
+              className="inline-flex items-center gap-2 text-primary font-medium mt-4 hover:underline"
+            >
+              Learn more about this resource
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Trust signals */}
-      <section className="content-section pb-12">
-        <TrustSignals />
-      </section>
-
-      {/* Update notice */}
+      {/* Last updated */}
       <section className="content-section pb-16">
-        <div className="bg-muted/50 border border-border rounded-lg p-4 text-sm text-muted-foreground">
-          <p className="flex items-center gap-2">
-            <Clock className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
-            <span>
-              <strong className="text-foreground">Last updated:</strong> 4th February 2026 · 
-              This page will be updated as new information becomes available.
-            </span>
-          </p>
+        <div className="bg-secondary/50 rounded-xl p-4 text-sm text-muted-foreground flex items-center gap-3">
+          <Clock className="w-5 h-5 flex-shrink-0" />
+          <span>
+            <strong className="text-foreground">Last updated:</strong> 4th February 2026
+          </span>
         </div>
       </section>
     </Layout>
