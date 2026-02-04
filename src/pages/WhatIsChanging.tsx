@@ -22,7 +22,7 @@ export default function WhatIsChanging() {
       <SixtySecondSummary
         prose={
           <p>
-            Changes so far focus on funding pressure, workforce capacity, and preparation for reform. The legal system itself has not yet changed.
+            Right now, very little has changed in law, but a lot is happening behind the scenes. The government has accepted that the SEND system is under serious financial and capacity pressure. That is why it has agreed to take on council SEND debts in the future, is building more special schools, and is funding large scale training for staff. These actions tell us the system is being stabilised while larger reforms are worked through. What matters for parents is this: your child's rights, plans, and support processes are still the same today. The changes so far are about preparation, not removal of support.
           </p>
         }
       />

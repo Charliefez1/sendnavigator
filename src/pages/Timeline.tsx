@@ -17,7 +17,7 @@ export default function Timeline() {
       <SixtySecondSummary
         prose={
           <p>
-            Reform is being prepared, but significant change would take time.
+            SEND reform is moving slowly because large system changes take time. Pilot programmes and training are already happening, but major decisions still sit ahead. A Schools White Paper and public consultation are expected next. If legal changes are proposed, they must go through Parliament before taking effect. Research from previous reforms shows implementation is usually phased over several years. For parents, this means current support and rights continue while reform is debated. There is time to understand proposals properly before anything changes.
           </p>
         }
       />

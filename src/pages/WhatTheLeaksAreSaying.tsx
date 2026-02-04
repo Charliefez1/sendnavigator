@@ -25,7 +25,7 @@ export default function WhatTheLeaksAreSaying() {
       <SixtySecondSummary
         prose={
           <p>
-            Leaked reports describe possible structural changes to how support and legal rights are organised.
+            Leaked reports describe more radical ideas, including tiered support systems, fewer full legal plans, school level funding, and limits on appeals. These reports are not policy, but they reflect real debates about cost, accountability, and pressure on the system. Research into similar models shows they only work when early support is strong and properly resourced. Parent groups and legal experts have raised concerns because poorly designed tiered systems can leave families stuck without meaningful help.
           </p>
         }
       />

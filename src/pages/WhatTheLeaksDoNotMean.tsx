@@ -22,7 +22,7 @@ export default function WhatTheLeaksDoNotMean() {
       <SixtySecondSummary
         prose={
           <p>
-            Leaked information does not change the current system.
+            Leaks do not change the law. They do not remove your child's rights. They do not cancel existing plans. They do not stop assessments or appeals. Research into past reform cycles shows leaks often surface before decisions are made and are used to test reaction. The most important thing for parents to hold onto is this: decisions about your child must still be made using current law. Rumours do not override legal duties.
           </p>
         }
       />
