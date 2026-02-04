@@ -16,15 +16,96 @@ const Index = () => {
         </h2>
         <div className="prose-calm max-w-2xl">
           <p>
-            SEND Reform Navigator helps you understand what is happening with Special Educational 
-            Needs and Disabilities policy. We explain what is confirmed, what is being discussed, 
-            and what remains unknown.
+            SEND Reform Navigator explains the current position in England. It separates 
+            confirmed facts from discussion and unknowns. It focuses on system level 
+            information.
           </p>
           <p>
-            This is a neutral resource designed to reduce confusion and anxiety. We do not campaign, 
-            persuade, or provide legal advice.
+            This resource does not provide advice or guidance. It reflects information 
+            available as of 04 February 2026 and will be updated as policy changes are 
+            confirmed.
           </p>
         </div>
+        
+        {/* 60 second summary for Home */}
+        <div className="mt-8 bg-card border border-border rounded-lg p-5">
+          <h3 className="text-lg font-medium text-foreground mb-4">60 second summary</h3>
+          <ul className="space-y-3">
+            <li className="flex gap-3 text-foreground">
+              <span className="text-primary font-medium flex-shrink-0">•</span>
+              <span className="leading-relaxed">SEND Reform Navigator explains the current position in England.</span>
+            </li>
+            <li className="flex gap-3 text-foreground">
+              <span className="text-primary font-medium flex-shrink-0">•</span>
+              <span className="leading-relaxed">It separates confirmed facts from discussion and unknowns.</span>
+            </li>
+            <li className="flex gap-3 text-foreground">
+              <span className="text-primary font-medium flex-shrink-0">•</span>
+              <span className="leading-relaxed">It focuses on system level information.</span>
+            </li>
+            <li className="flex gap-3 text-foreground">
+              <span className="text-primary font-medium flex-shrink-0">•</span>
+              <span className="leading-relaxed">It does not provide advice or guidance.</span>
+            </li>
+            <li className="flex gap-3 text-foreground">
+              <span className="text-primary font-medium flex-shrink-0">•</span>
+              <span className="leading-relaxed">It reflects information available as of 04 February 2026.</span>
+            </li>
+            <li className="flex gap-3 text-foreground">
+              <span className="text-primary font-medium flex-shrink-0">•</span>
+              <span className="leading-relaxed">It will be updated as policy changes are confirmed.</span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Information layers for Home */}
+        <div className="mt-8 space-y-6">
+          <div>
+            <h3 className="text-base font-medium text-foreground mb-2">What is confirmed</h3>
+            <div className="prose-calm">
+              <p>
+                <strong>SEND Reform Navigator covers SEND provision in England only.</strong>
+                <br />
+                <span className="text-sm text-muted-foreground">Source: SEND Reform Navigator (project scope) · 04 February 2026</span>
+              </p>
+              <p>
+                <strong>All content is based on published government, parliamentary, and audit sources.</strong>
+                <br />
+                <span className="text-sm text-muted-foreground">Source: SEND Reform Navigator (methodology statement) · 04 February 2026</span>
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-base font-medium text-foreground mb-2">What is being discussed or reported</h3>
+            <div className="prose-calm">
+              <p>
+                <strong>Public debate on SEND reform is ongoing.</strong>
+                <br />
+                <span className="text-sm text-muted-foreground">Source: multiple sources (media and parliamentary reporting) · ongoing</span>
+              </p>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="text-base font-medium text-foreground mb-2">What we do not know yet</h3>
+            <ul className="space-y-2">
+              <li className="flex gap-3 text-foreground">
+                <span className="text-muted-foreground flex-shrink-0">?</span>
+                <span className="leading-relaxed">Which reform options will become law.</span>
+              </li>
+              <li className="flex gap-3 text-foreground">
+                <span className="text-muted-foreground flex-shrink-0">?</span>
+                <span className="leading-relaxed">How fast national changes will occur.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p className="text-sm text-muted-foreground mt-6">
+          <strong>Notes for careful handling:</strong> Avoid mixing confirmed policy with unconfirmed reporting. 
+          Use precise wording when referring to legal rights.
+        </p>
       </section>
 
       {/* Q&A Component */}

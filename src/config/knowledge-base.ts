@@ -18,19 +18,19 @@ export const KNOWLEDGE_BASE = {
     content: `
 The current legal framework for SEND in England is:
 
-- Children and Families Act 2014: This remains the primary legislation governing SEND
-- SEND Code of Practice 2015: This remains the statutory guidance
-- Education, Health and Care Plans (EHCPs): These continue to be the mechanism for legally binding support
-- Tribunal rights: The SEND Tribunal system remains in place
+- SEND provision in England is governed by the Children and Families Act 2014 (UK Parliament, 13 March 2014)
+- SEND Code of Practice 2015 remains the statutory guidance
+- Education, Health and Care Plans (EHCPs) continue to be the mechanism for legally binding support
+- Tribunal rights remain unchanged
+
+Key statistics (2024 to 2025):
+- Around 482,000 pupils in England had an EHC plan (Department for Education, 26 June 2025)
+- Around 1.28 million pupils received SEN support without an EHC plan (Department for Education, 26 June 2025)
+- Only around half of EHC plans were issued within the 20 week legal timescale (Public Accounts Committee, 15 January 2025)
+- The SEND system has been described as financially unsustainable (National Audit Office, 24 October 2024)
+- High needs funding increased to around £9.4 billion in 2024 to 2025 (Local Government Association, 23 April 2025)
 
 These laws and protections are IN FORCE TODAY. No legislation has been passed to change them.
-
-Local authority duties under the current law include:
-- Identifying children with SEND
-- Assessing needs where requested
-- Issuing EHCPs where the legal threshold is met
-- Ensuring provision in the EHCP is delivered
-- Conducting annual reviews
     `.trim(),
   },
 
@@ -42,17 +42,17 @@ Local authority duties under the current law include:
     content: `
 Confirmed government activity on SEND:
 
-March 2022: The SEND Review was published, followed by the Green Paper consultation.
+- The SEND and Alternative Provision Improvement Plan was published (Department for Education, 02 March 2023)
+- A SEND Change Programme is testing reforms with selected local areas (Department for Education, 02 March 2023)
+- A national conversation on SEND reform ran from December 2025 to January 2026 (Department for Education, 14 January 2026)
+- Government announced £3 billion capital funding to expand specialist places (Department for Education, 02 March 2023)
+- Government announced a £200 million SEND teacher training programme (Department for Education, 16 January 2026)
 
-March 2023: The SEND and Alternative Provision Improvement Plan was published. This set out government intentions but is NOT legislation. It includes:
-- Plans to develop national standards
-- Proposals for strengthening early support
-- Intentions around workforce development
-- Commitment to improving local SEND services
+What is being tested:
+- National SEND standards are being developed and tested (Department for Education, ongoing since 2023)
+- Digital approaches to EHC plans are being piloted in some areas (Department for Education, ongoing since 2023)
 
-Implementation is ongoing through pilot programmes and regional work.
-
-IMPORTANT: The Improvement Plan describes intentions and plans. It does not automatically change the law. Any changes to legal rights would require consultation and legislation.
+IMPORTANT: Pilots are not national policy. No confirmed changes to EHC plan eligibility. Any changes to legal rights would require consultation and legislation.
     `.trim(),
   },
 
@@ -124,12 +124,20 @@ Until these steps occur, the current law remains in effect.
     content: `
 Areas where information is not yet available:
 
-- Full implementation timeline for announced improvement plan commitments
-- Detailed guidance to accompany any policy changes
-- How funding will be allocated across local authorities
-- What any future legislation might contain (if any is brought forward)
-- When or if consultations will be launched on specific changes
-- How any changes would affect existing EHCPs
+Where we are now:
+- How quickly performance on EHC plan timescales will improve
+- Whether current spending levels will stabilise demand
+- How outcomes beyond attainment will change
+
+What is changing:
+- Final content of national SEND standards
+- Which elements will require changes to law
+- How reforms will be implemented nationally
+
+Timeline:
+- Exact consultation launch date
+- Content of draft legislation
+- Implementation dates for any legal changes
 
 We do not speculate on these matters. When information becomes available through official sources, this resource will be updated.
     `.trim(),
@@ -148,11 +156,13 @@ For families:
 - Rights to request assessment continue
 - Tribunal rights remain available
 - Local authority duties continue
+- Wait times for EHC plan assessments may be longer than the legal timeframe in some areas
 
 For schools:
 - SENCO duties remain as defined in current law
 - Duties to use best endeavours continue
 - Reasonable adjustments duties continue
+- Schools may have varying levels of capacity to provide SEN Support
 
 For local authorities:
 - Statutory duties under current law remain in force
@@ -175,22 +185,25 @@ When interpreting potential changes:
 Timeline of key events:
 
 Completed:
-- March 2022: SEND Review and Green Paper published
-- March 2023: SEND and AP Improvement Plan published
+- March 2023: SEND Improvement Plan launched (Department for Education)
+- 2023 to present: Change Programme testing has run
+- 14 January 2026: National conversation closed (Department for Education)
 
-Ongoing:
-- Implementation of improvement plan commitments
-- Regional SEND partnerships being developed
-- Pilot programmes in some areas
+Upcoming:
+- 2026: Government has stated a formal consultation will take place (Department for Education, December 2025)
 
-What to watch:
-- Any formal announcement of new consultations
-- Publication of draft legislation (if any)
-- Updates to statutory guidance
+What is being discussed or reported:
+- A Schools White Paper is expected to include SEND reform proposals (sector reporting, December 2025)
 
-We do not include speculative dates. When confirmed dates become available, they will be added.
+What we do not know yet:
+- Exact consultation launch date
+- Content of draft legislation
+- Implementation dates for any legal changes
+
+Important: Future dates are subject to parliamentary process. No changes apply until legislation is passed.
     `.trim(),
   },
+
 
   // ==========================================================================
   // INTERNAL NAVIGATION
