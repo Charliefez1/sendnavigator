@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { StatusExplainer } from "@/components/StatusExplainer";
-import { InfoCard } from "@/components/InfoCard";
 import { QandAComponent } from "@/components/qanda";
 import { TrustSignals } from "@/components/feedback";
-import { Users, BookOpen, ShieldAlert, Clock, ArrowRight } from "lucide-react";
+import { Clock, ArrowRight } from "lucide-react";
 
 const Index = () => {
   return (
@@ -14,102 +13,96 @@ const Index = () => {
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground leading-tight mb-6">
           Guide to SEND reform in England
         </h2>
-        <div className="prose-calm max-w-2xl">
-          <p>
-            SEND Reform Navigator explains the current position in England. It separates 
-            confirmed facts from discussion and unknowns. It focuses on system level 
-            information.
-          </p>
-          <p>
-            This resource does not provide advice or guidance. It reflects information 
-            available as of 04 February 2026 and will be updated as policy changes are 
-            confirmed.
-          </p>
-        </div>
         
-        {/* 60 second summary for Home */}
-        <div className="mt-8 bg-card border border-border rounded-lg p-5">
-          <h3 className="text-lg font-medium text-foreground mb-4">60 second summary</h3>
-          <ul className="space-y-3">
-            <li className="flex gap-3 text-foreground">
-              <span className="text-primary font-medium flex-shrink-0">•</span>
-              <span className="leading-relaxed">SEND Reform Navigator explains the current position in England.</span>
-            </li>
-            <li className="flex gap-3 text-foreground">
-              <span className="text-primary font-medium flex-shrink-0">•</span>
-              <span className="leading-relaxed">It separates confirmed facts from discussion and unknowns.</span>
-            </li>
-            <li className="flex gap-3 text-foreground">
-              <span className="text-primary font-medium flex-shrink-0">•</span>
-              <span className="leading-relaxed">It focuses on system level information.</span>
-            </li>
-            <li className="flex gap-3 text-foreground">
-              <span className="text-primary font-medium flex-shrink-0">•</span>
-              <span className="leading-relaxed">It does not provide advice or guidance.</span>
-            </li>
-            <li className="flex gap-3 text-foreground">
-              <span className="text-primary font-medium flex-shrink-0">•</span>
-              <span className="leading-relaxed">It reflects information available as of 04 February 2026.</span>
-            </li>
-            <li className="flex gap-3 text-foreground">
-              <span className="text-primary font-medium flex-shrink-0">•</span>
-              <span className="leading-relaxed">It will be updated as policy changes are confirmed.</span>
-            </li>
-          </ul>
-        </div>
-
-        {/* Information layers for Home */}
-        <div className="mt-8 space-y-6">
-          <div>
-            <h3 className="text-base font-medium text-foreground mb-2">What is confirmed</h3>
-            <div className="prose-calm">
-              <p>
-                <strong>SEND Reform Navigator covers SEND provision in England only.</strong>
-                <br />
-                <span className="text-sm text-muted-foreground">Source: SEND Reform Navigator (project scope) · 04 February 2026</span>
-              </p>
-              <p>
-                <strong>All content is based on published government, parliamentary, and audit sources.</strong>
-                <br />
-                <span className="text-sm text-muted-foreground">Source: SEND Reform Navigator (methodology statement) · 04 February 2026</span>
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-base font-medium text-foreground mb-2">What is being discussed or reported</h3>
-            <div className="prose-calm">
-              <p>
-                <strong>Public debate on SEND reform is ongoing.</strong>
-                <br />
-                <span className="text-sm text-muted-foreground">Source: multiple sources (media and parliamentary reporting) · ongoing</span>
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-base font-medium text-foreground mb-2">What we do not know yet</h3>
-            <ul className="space-y-2">
-              <li className="flex gap-3 text-foreground">
-                <span className="text-muted-foreground flex-shrink-0">?</span>
-                <span className="leading-relaxed">Which reform options will become law.</span>
-              </li>
-              <li className="flex gap-3 text-foreground">
-                <span className="text-muted-foreground flex-shrink-0">?</span>
-                <span className="leading-relaxed">How fast national changes will occur.</span>
-              </li>
-            </ul>
+        {/* 60 second overview */}
+        <div className="bg-card border border-border rounded-lg p-5 mb-8">
+          <h3 className="text-lg font-medium text-foreground mb-4">60 second overview</h3>
+          <div className="prose-calm space-y-4">
+            <p>
+              SEND reform can feel confusing and overwhelming. There are many reports, headlines, and opinions, often saying different things at the same time. Families, teachers, and professionals may be hearing about change without being clear on what is actually happening now, what has been formally agreed, and what is still uncertain.
+            </p>
+            <p>
+              SEND Reform Navigator exists to provide calm, clear information about SEND reform in England. It focuses on what is known, what is being talked about, and what has not yet been decided, without adding noise or interpretation.
+            </p>
           </div>
         </div>
+      </section>
 
-        <p className="text-sm text-muted-foreground mt-6">
-          <strong>Notes for careful handling:</strong> Avoid mixing confirmed policy with unconfirmed reporting. 
-          Use precise wording when referring to legal rights.
+      {/* What this site is for */}
+      <section className="content-section pb-12 border-t border-border pt-8">
+        <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-6">
+          What this site is for
+        </h2>
+        <div className="prose-calm max-w-2xl space-y-4">
+          <p>
+            This site is a public information resource. Its purpose is to explain the current position on SEND reform in England in plain English. It brings together confirmed information and clearly separates it from discussion or uncertainty, so readers can understand where things stand today.
+          </p>
+          <p>
+            The site is designed to support orientation. It helps readers make sense of the landscape without needing to follow every update or policy announcement themselves. It is written for parents, carers, teachers, and professionals who want clarity rather than commentary.
+          </p>
+        </div>
+      </section>
+
+      {/* What this site is not */}
+      <section className="content-section pb-12 border-t border-border pt-8">
+        <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-6">
+          What this site is not
+        </h2>
+        <div className="prose-calm max-w-2xl space-y-4">
+          <p>
+            This site is not a campaigning platform. It does not argue for or against reform, and it does not promote particular views or outcomes.
+          </p>
+          <p>
+            It does not provide legal, medical, or professional advice. It cannot tell you what should happen in an individual case, or how the system should work for a specific child or family.
+          </p>
+          <p>
+            It also does not report rumours, anonymous briefings, or unconfirmed claims. Where uncertainty exists, that uncertainty is stated plainly.
+          </p>
+        </div>
+      </section>
+
+      {/* How to use this site */}
+      <section className="content-section pb-12 border-t border-border pt-8">
+        <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-6">
+          How to use this site
+        </h2>
+        <div className="prose-calm max-w-2xl space-y-4">
+          <p>
+            Each page is structured to help you quickly understand what matters most. You can start with the summaries to get an overview, then read further if you want more detail.
+          </p>
+          <p>
+            The pages explain what is true now before discussing what may change. They are designed to be read in any order, depending on what you need to understand.
+          </p>
+          <p>
+            All content focuses on SEND provision in England only.
+          </p>
+        </div>
+      </section>
+
+      {/* How information is categorised */}
+      <section className="content-section pb-12 border-t border-border pt-8">
+        <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-6">
+          How information is categorised
+        </h2>
+        <div className="prose-calm max-w-2xl space-y-4">
+          <p>
+            Information on this site is grouped into clear categories. Confirmed information reflects what has been formally published or announced. Reported information reflects what is being publicly discussed by recognised bodies or in mainstream reporting. Unknowns are included where decisions have not yet been made.
+          </p>
+          <p>
+            This separation is deliberate. It helps readers see the difference between fact, discussion, and uncertainty without needing to interpret it themselves.
+          </p>
+        </div>
+      </section>
+
+      {/* Closing statement */}
+      <section className="content-section pb-12 border-t border-border pt-8">
+        <p className="text-muted-foreground">
+          Understanding what is happening is the first step, and reading this information does not change any SEND rights or processes.
         </p>
       </section>
 
       {/* Q&A Component */}
-      <section className="content-section pb-12">
+      <section className="content-section pb-12 border-t border-border pt-8">
         <QandAComponent />
       </section>
 
@@ -166,50 +159,6 @@ const Index = () => {
             <span className="font-medium text-foreground">Questions and answers</span>
             <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
           </Link>
-        </div>
-      </section>
-
-      {/* Who this is for */}
-      <section className="content-section pb-12">
-        <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-6">
-          Who this resource is for
-        </h2>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <InfoCard title="Parents and carers" icon={<Users className="w-5 h-5 text-primary" />}>
-            <p>
-              If your child has SEND, you may be trying to understand how reforms could affect 
-              their education and support. We present the facts clearly.
-            </p>
-          </InfoCard>
-          
-          <InfoCard title="Education professionals" icon={<BookOpen className="w-5 h-5 text-primary" />}>
-            <p>
-              Teachers, SENCOs, school leaders, and support staff can use this resource to 
-              understand policy changes and what they mean in practice.
-            </p>
-          </InfoCard>
-        </div>
-      </section>
-
-      {/* What this is not */}
-      <section className="content-section pb-12">
-        <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-6">
-          What this resource is not
-        </h2>
-        <div className="grid gap-4 sm:grid-cols-2">
-          <InfoCard title="Not legal advice" icon={<ShieldAlert className="w-5 h-5 text-muted-foreground" />}>
-            <p>
-              This resource explains policy, not law. For legal advice about your specific 
-              situation, please consult a qualified professional.
-            </p>
-          </InfoCard>
-          
-          <InfoCard title="Not a campaign" icon={<Clock className="w-5 h-5 text-muted-foreground" />}>
-            <p>
-              We do not advocate for particular positions. We present information as clearly 
-              as possible and respect that people may disagree on solutions.
-            </p>
-          </InfoCard>
         </div>
       </section>
 
