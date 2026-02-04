@@ -11,19 +11,11 @@ import {
 import { StatusBadge } from "@/components/StatusBadge";
 
 export default function WhatIsChanging() {
-  const summaryPoints = [
-    "Government has an active SEND reform programme.",
-    "Testing of reforms has been underway since 2023.",
-    "A national conversation has completed.",
-    "Investment in training and specialist places has been announced.",
-    "Structural changes are not yet in force.",
-    "Existing legal rights remain in place.",
-  ];
-
   const unknownQuestions = [
-    "Final content of national SEND standards.",
-    "Which elements will require changes to law.",
-    "How reforms will be implemented nationally.",
+    "We do not yet know the final content of any national SEND standards.",
+    "We do not yet know which proposals will require changes to legislation.",
+    "We do not yet know when any national changes would take effect.",
+    "We do not yet know how tested approaches would be rolled out across all areas.",
   ];
 
   const watchItems = [
@@ -49,20 +41,27 @@ export default function WhatIsChanging() {
         </div>
       </PageOrientation>
 
-      <SixtySecondSummary points={summaryPoints} />
+      <SixtySecondSummary
+        prose={
+          <>
+            <p>
+              The government has published a formal programme to reform SEND in England, but most changes are not yet in place. Work so far has focused on testing ideas, gathering views, and increasing capacity rather than changing legal rights. Some funding and training commitments have been announced and are beginning to roll out. Larger structural changes are still being developed and have not been finalised.
+            </p>
+            <p>
+              This page explains what has been officially published or announced, what activity is underway, and where decisions have not yet been made.
+            </p>
+          </>
+        }
+      />
 
       <ReadingDepthControl
         keyPoints={
           <>
             <p>
-              The SEND and Alternative Provision Improvement Plan was published on 
-              2 March 2023. A SEND Change Programme is testing reforms with selected 
-              local areas.
+              In 2023, the government published the SEND and Alternative Provision Improvement Plan, establishing a programme of work to test and develop possible improvements.
             </p>
             <p>
-              A national conversation on SEND reform ran from December 2025 to 
-              January 2026. Government announced £3 billion capital funding to expand 
-              specialist places and a £200 million SEND teacher training programme.
+              A national conversation on SEND reform ran from December 2025 to January 2026. The government has stated that any major changes will be subject to formal consultation.
             </p>
           </>
         }
@@ -70,14 +69,12 @@ export default function WhatIsChanging() {
           <>
             <h3>What is being tested</h3>
             <p>
-              National SEND standards are being developed and tested. Digital approaches 
-              to EHC plans are being piloted in some areas.
+              Selected local areas are involved in a Change Programme, testing elements such as clearer descriptions of support and improved coordination between education, health and care services.
             </p>
 
             <h3>Important context</h3>
             <p>
-              Pilots are not national policy. No confirmed changes to EHC plan eligibility 
-              have been made.
+              The Improvement Plan did not amend existing law or alter current entitlements. Testing is designed to inform future proposals rather than replace current arrangements.
             </p>
           </>
         }
@@ -87,43 +84,29 @@ export default function WhatIsChanging() {
         confirmed={
           <>
             <p>
-              <strong>The SEND and Alternative Provision Improvement Plan was published.</strong>
-              <br />
-              <span className="text-sm text-muted-foreground">Source: Department for Education (government policy) · 02 March 2023</span>
+              In 2023, the government published the SEND and Alternative Provision Improvement Plan. This document set out a direction for reform and confirmed that the SEND system would change over time. It did not amend existing law or alter current entitlements. Instead, it established a programme of work to test and develop possible improvements.
             </p>
             <p>
-              <strong>A SEND Change Programme is testing reforms with selected local areas.</strong>
-              <br />
-              <span className="text-sm text-muted-foreground">Source: Department for Education (government programme) · 02 March 2023</span>
+              As part of this programme, selected local areas have been involved in a Change Programme. These areas are testing elements such as clearer descriptions of support, improved coordination between education, health and care services, and new approaches to managing information about support. This testing phase is designed to inform future proposals rather than replace current arrangements.
             </p>
             <p>
-              <strong>A national conversation on SEND reform ran from December 2025 to January 2026.</strong>
-              <br />
-              <span className="text-sm text-muted-foreground">Source: Department for Education (government consultation) · 14 January 2026</span>
+              The government has also carried out a national conversation on SEND reform. This ran from December 2025 to January 2026 and invited views from parents, carers, professionals, and young people. The purpose was to gather evidence and perspectives before publishing formal proposals. Participation in the conversation does not affect access to support or legal rights.
             </p>
             <p>
-              <strong>Government announced £3 billion capital funding to expand specialist places.</strong>
-              <br />
-              <span className="text-sm text-muted-foreground">Source: Department for Education (government announcement) · 02 March 2023</span>
+              Several investment commitments have been formally announced. These include funding to increase specialist school and alternative provision places, and a national programme to expand SEND training for teachers. These measures are intended to address capacity and workforce skills within the existing system.
             </p>
             <p>
-              <strong>Government announced a £200 million SEND teacher training programme.</strong>
-              <br />
-              <span className="text-sm text-muted-foreground">Source: Department for Education (government announcement) · 16 January 2026</span>
+              The government has stated that any major changes will be subject to formal consultation. This consultation is expected to sit alongside a Schools White Paper and would be the point at which detailed proposals are set out publicly.
             </p>
           </>
         }
         discussed={
           <>
             <p>
-              <strong>National SEND standards are being developed and tested.</strong>
-              <br />
-              <span className="text-sm text-muted-foreground">Source: Department for Education (government reporting) · ongoing since 2023</span>
+              It is being reported that national SEND standards are being developed and tested. These are described as a way to bring greater consistency to SEND support across England. At this stage, standards are not final and have not been published for implementation.
             </p>
             <p>
-              <strong>Digital approaches to EHC plans are being piloted in some areas.</strong>
-              <br />
-              <span className="text-sm text-muted-foreground">Source: Department for Education (government reporting) · ongoing since 2023</span>
+              There is also reporting on the use of digital tools to support EHC plan processes. Some areas are testing new systems to manage information and reduce duplication. These are pilots and do not replace existing legal processes.
             </p>
           </>
         }
