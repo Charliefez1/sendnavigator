@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { StatusExplainer } from "@/components/StatusExplainer";
 import { InfoCard } from "@/components/InfoCard";
+import { QandAComponent } from "@/components/qanda";
 import { Users, BookOpen, ShieldAlert, Clock, ArrowRight } from "lucide-react";
 
 const Index = () => {
@@ -23,6 +24,11 @@ const Index = () => {
             persuade, or provide legal advice.
           </p>
         </div>
+      </section>
+
+      {/* Q&A Component */}
+      <section className="content-section pb-12">
+        <QandAComponent />
       </section>
 
       {/* Status explainer */}
