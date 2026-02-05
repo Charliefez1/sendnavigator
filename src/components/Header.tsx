@@ -1,10 +1,22 @@
 import { Heart, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import neurodiversityLogo from "@/assets/neurodiversity-global-logo.jpeg";
 
 export function Header() {
   return (
     <header className="border-b border-border bg-card">
       <div className="content-wide py-4 sm:py-5">
+        {/* Neurodiversity Global logo */}
+        <div className="flex justify-center sm:justify-start mb-4">
+          <Link to="/neurodiversity-global">
+            <img 
+              src={neurodiversityLogo} 
+              alt="Neurodiversity Global - Neuroinclusive Performance" 
+              className="h-10 sm:h-12 w-auto"
+            />
+          </Link>
+        </div>
+        
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <Link to="/" className="group">
             <div className="flex items-center gap-2">
