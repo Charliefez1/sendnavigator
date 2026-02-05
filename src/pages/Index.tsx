@@ -1,200 +1,124 @@
 import { Link } from "react-router-dom";
-import { Layout } from "@/components/Layout";
-import { QandAComponent } from "@/components/qanda";
-import { 
-  Shield, 
-  ArrowRight, 
-  CheckCircle2, 
-  Clock,
-  Heart,
-  BookOpen,
-  HelpCircle
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import neurodiversityLogo from "@/assets/neurodiversity-global-logo.jpeg";
 
-const Index = () => {
+export default function Index() {
   return (
-    <Layout>
-      {/* Hero - Reassurance first */}
-      <section className="content-section py-10 sm:py-14 animate-fade-in">
-        {/* Primary reassurance message */}
-        <div className="reassurance-banner mb-8">
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-              <Shield className="w-6 h-6 text-primary" />
-            </div>
-            <div>
-              <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-2">
-                Your rights haven't changed
-              </h2>
-              <p className="text-foreground/80 text-lg leading-relaxed">
-                Despite what you may have heard, your child's legal protections are still in place. 
-                EHCPs are still legally binding. The law hasn't changed yet.
+    <div className="min-h-screen flex flex-col bg-background">
+      {/* Header with logo */}
+      <header className="py-6 sm:py-8 border-b border-border bg-card">
+        <div className="content-wide flex justify-center">
+          <Link to="/neurodiversity-global">
+            <img 
+              src={neurodiversityLogo} 
+              alt="Neurodiversity Global - Neuroinclusive Performance" 
+              className="h-12 sm:h-16 w-auto"
+            />
+          </Link>
+        </div>
+      </header>
+
+      {/* Main content */}
+      <main className="flex-1 flex flex-col justify-center">
+        <section className="content-section py-12 sm:py-16">
+          {/* Site title */}
+          <div className="text-center mb-10">
+            <h1 className="text-3xl sm:text-4xl font-semibold text-foreground mb-4">
+              SEND Reform Navigator
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              A guide to help you understand what is happening with SEND reform in England, calmly and clearly.
+            </p>
+          </div>
+
+          {/* What this site is */}
+          <div className="bg-card border border-border rounded-xl p-6 sm:p-8 mb-10 max-w-2xl mx-auto">
+            <h2 className="text-lg font-semibold text-foreground mb-4">What this site is</h2>
+            <div className="prose-calm space-y-3 text-muted-foreground">
+              <p>
+                This is an independent public resource. It explains what is confirmed, what is being discussed, 
+                and what is still unknown about SEND reform.
+              </p>
+              <p>
+                We do not give advice or tell you what to do. We help you understand what is actually happening 
+                so you can make your own decisions.
               </p>
             </div>
           </div>
-        </div>
 
-        {/* Welcome message */}
-        <div className="mb-8">
-          <h1 className="text-2xl sm:text-3xl font-semibold text-foreground mb-4">
-            Welcome to SEND Reform Navigator
-          </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-            We know SEND reform can feel overwhelming. There's a lot of noise, and it's hard to know 
-            what's actually happening. This site is here to help you understand, calmly and clearly.
+          {/* Who this is for */}
+          <div className="bg-card border border-border rounded-xl p-6 sm:p-8 mb-10 max-w-2xl mx-auto">
+            <h2 className="text-lg font-semibold text-foreground mb-4">Who this is for</h2>
+            <ul className="space-y-2 text-muted-foreground">
+              <li>Parents and carers of children with SEND</li>
+              <li>Teachers, SENCOs, and school leaders</li>
+              <li>Professionals working with children and young people</li>
+              <li>Anyone trying to understand what SEND reform means</li>
+            </ul>
+          </div>
+
+          {/* Key navigation */}
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-lg font-semibold text-foreground mb-4 text-center">
+              Where would you like to start?
+            </h2>
+            <div className="space-y-3">
+              <Link 
+                to="/start" 
+                className="journey-card flex items-center gap-4"
+              >
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-medium text-foreground">Enter the guide</h3>
+                  <p className="text-sm text-muted-foreground">Start with reassurance and an overview</p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+              </Link>
+
+              <Link 
+                to="/what-is-changing" 
+                className="journey-card flex items-center gap-4"
+              >
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-medium text-foreground">What is actually changing</h3>
+                  <p className="text-sm text-muted-foreground">Confirmed reforms and official plans</p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+              </Link>
+
+              <Link 
+                to="/what-has-not-changed" 
+                className="journey-card flex items-center gap-4"
+              >
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-medium text-foreground">What has not changed</h3>
+                  <p className="text-sm text-muted-foreground">Your rights and protections today</p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+              </Link>
+
+              <Link 
+                to="/questions-and-answers" 
+                className="journey-card flex items-center gap-4"
+              >
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-medium text-foreground">Questions and answers</h3>
+                  <p className="text-sm text-muted-foreground">Ask about SEND reform</p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="py-6 border-t border-border bg-card">
+        <div className="content-wide text-center text-sm text-muted-foreground">
+          <p>
+            This is an independent public resource. Information applies to England only.
           </p>
         </div>
-
-        {/* What we help with */}
-        <div className="grid gap-4 sm:grid-cols-3 mb-8">
-          <div className="bg-card border border-border rounded-xl p-5">
-            <CheckCircle2 className="w-8 h-8 text-status-confirmed mb-3" />
-            <h3 className="font-medium text-foreground mb-1">What's confirmed</h3>
-            <p className="text-sm text-muted-foreground">
-              Official announcements and decisions that have actually been made
-            </p>
-          </div>
-          <div className="bg-card border border-border rounded-xl p-5">
-            <HelpCircle className="w-8 h-8 text-status-discussed mb-3" />
-            <h3 className="font-medium text-foreground mb-1">What's being discussed</h3>
-            <p className="text-sm text-muted-foreground">
-              Proposals and ideas being debated by government and others
-            </p>
-          </div>
-          <div className="bg-card border border-border rounded-xl p-5">
-            <BookOpen className="w-8 h-8 text-status-unconfirmed mb-3" />
-            <h3 className="font-medium text-foreground mb-1">What's unknown</h3>
-            <p className="text-sm text-muted-foreground">
-              Questions that haven't been answered and decisions not yet made
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Start your journey */}
-      <section className="content-section pb-12">
-        <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-6">
-          Where would you like to start?
-        </h2>
-        
-        <div className="space-y-3">
-          <Link 
-            to="/where-we-are-now" 
-            className="journey-card flex items-center gap-4"
-          >
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-primary">1</span>
-            </div>
-            <div className="flex-1 min-w-0">
-              <h3 className="font-medium text-foreground">Understand the current situation</h3>
-              <p className="text-sm text-muted-foreground">What we know about the SEND system today</p>
-            </div>
-            <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-          </Link>
-
-          <Link 
-            to="/what-is-changing" 
-            className="journey-card flex items-center gap-4"
-          >
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-primary">2</span>
-            </div>
-            <div className="flex-1 min-w-0">
-              <h3 className="font-medium text-foreground">See what's actually changing</h3>
-              <p className="text-sm text-muted-foreground">Confirmed reforms and official plans</p>
-            </div>
-            <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-          </Link>
-
-          <Link 
-            to="/what-is-being-discussed" 
-            className="journey-card flex items-center gap-4"
-          >
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-primary">3</span>
-            </div>
-            <div className="flex-1 min-w-0">
-              <h3 className="font-medium text-foreground">Learn what's being discussed</h3>
-              <p className="text-sm text-muted-foreground">Proposals under consideration</p>
-            </div>
-            <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-          </Link>
-
-          <Link 
-            to="/what-the-leaks-are-saying" 
-            className="journey-card flex items-center gap-4"
-          >
-            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-muted-foreground">4</span>
-            </div>
-            <div className="flex-1 min-w-0">
-              <h3 className="font-medium text-foreground">Understand the rumours</h3>
-              <p className="text-sm text-muted-foreground">Leaked reports and what they mean (and don't mean)</p>
-            </div>
-            <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-          </Link>
-
-          <Link 
-            to="/timeline" 
-            className="journey-card flex items-center gap-4"
-          >
-            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-muted-foreground">5</span>
-            </div>
-            <div className="flex-1 min-w-0">
-              <h3 className="font-medium text-foreground">See what's next</h3>
-              <p className="text-sm text-muted-foreground">Timeline of decisions and milestones</p>
-            </div>
-            <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-          </Link>
-        </div>
-      </section>
-
-      {/* Q&A */}
-      <section className="content-section pb-12 border-t border-border pt-10">
-        <QandAComponent />
-      </section>
-
-      {/* About this resource */}
-      <section className="content-section pb-12 border-t border-border pt-10">
-        <div className="flex items-start gap-4">
-          <Heart className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
-          <div>
-            <h2 className="text-lg font-semibold text-foreground mb-3">
-              Made for families like yours
-            </h2>
-            <div className="prose-calm space-y-3 text-muted-foreground">
-              <p className="text-base leading-relaxed !mb-3">
-                This is an independent resource, not government, not a campaign. We don't give advice
-                or tell you what to do. We just help you understand what's happening.
-              </p>
-              <p className="text-base leading-relaxed !mb-0">
-                We know you're busy and may be feeling anxious. That's why we've made everything 
-                as clear and straightforward as possible.
-              </p>
-            </div>
-            <Link 
-              to="/about"
-              className="inline-flex items-center gap-2 text-primary font-medium mt-4 hover:underline"
-            >
-              Learn more about this resource
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Last updated */}
-      <section className="content-section pb-16">
-        <div className="bg-secondary/50 rounded-xl p-4 text-sm text-muted-foreground flex items-center gap-3">
-          <Clock className="w-5 h-5 flex-shrink-0" />
-          <span>
-            <strong className="text-foreground">Last updated:</strong> 4th February 2026
-          </span>
-        </div>
-      </section>
-    </Layout>
+      </footer>
+    </div>
   );
-};
-
-export default Index;
+}

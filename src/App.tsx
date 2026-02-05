@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import Start from "./pages/Start";
 import WhereWeAreNow from "./pages/WhereWeAreNow";
 import WhatIsChanging from "./pages/WhatIsChanging";
 import WhatHasNotChanged from "./pages/WhatHasNotChanged";
@@ -30,6 +31,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/start" element={<Start />} />
           <Route path="/where-we-are-now" element={<WhereWeAreNow />} />
           <Route path="/what-is-changing" element={<WhatIsChanging />} />
           <Route path="/what-has-not-changed" element={<WhatHasNotChanged />} />
