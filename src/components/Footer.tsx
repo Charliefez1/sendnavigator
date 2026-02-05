@@ -37,6 +37,12 @@ export function Footer() {
             >
               Questions
             </Link>
+            <Link 
+              to="/neurodiversity-global" 
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Neurodiversity Global
+            </Link>
           </nav>
         </div>
 

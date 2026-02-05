@@ -17,6 +17,7 @@ import Timeline from "./pages/Timeline";
 import QuestionsAndAnswers from "./pages/QuestionsAndAnswers";
 import Sources from "./pages/Sources";
 import About from "./pages/About";
+import NeurodiversityGlobal from "./pages/NeurodiversityGlobal";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/questions-and-answers" element={<QuestionsAndAnswers />} />
           <Route path="/sources" element={<Sources />} />
           <Route path="/about" element={<About />} />
+          <Route path="/neurodiversity-global" element={<NeurodiversityGlobal />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
