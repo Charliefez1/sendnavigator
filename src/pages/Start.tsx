@@ -41,7 +41,7 @@ const Index = () => {
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
             We know SEND reform can feel overwhelming. There's a lot of noise, and it's hard to know 
-            what's actually happening. This site is here to help you understand, calmly and clearly.
+            what's actually happening. This site is here to help you understand what is confirmed, what is being discussed, and what is still unknown.
           </p>
         </div>
 
