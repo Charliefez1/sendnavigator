@@ -2,8 +2,6 @@ import { Layout } from "@/components/Layout";
 import {
   PageOrientation,
   SixtySecondSummary,
-  ProtectionsSection,
-  StatusSection,
 } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 
@@ -43,21 +41,6 @@ export default function WhatTheLeaksDoNotMean() {
           </ul>
         </div>
       </section>
-
-      <StatusSection type="unconfirmed">
-        <ul className="space-y-2">
-          <li>There is no unconfirmed reduction of rights currently in force.</li>
-          <li>There is no unconfirmed removal of existing plans.</li>
-        </ul>
-      </StatusSection>
-
-      <StatusSection type="leaked">
-        <ul className="space-y-2">
-          <li>Leaks do not override current law.</li>
-          <li>Leaks do not change how decisions must be made today.</li>
-          <li>Leaks do not cancel existing duties or protections.</li>
-        </ul>
-      </StatusSection>
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
