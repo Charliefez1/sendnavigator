@@ -20,6 +20,7 @@ import Sources from "./pages/Sources";
 import StatisticsAndData from "./pages/StatisticsAndData";
 import About from "./pages/About";
 import NeurodiversityGlobal from "./pages/NeurodiversityGlobal";
+import RichFerriman from "./pages/RichFerriman";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -49,6 +50,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/about" element={<About />} />
           <Route path="/neurodiversity-global" element={<NeurodiversityGlobal />} />
+          <Route path="/rich-ferriman" element={<RichFerriman />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
