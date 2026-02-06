@@ -1,6 +1,7 @@
 import { Layout } from "@/components/Layout";
 import { PageHeader } from "@/components/PageHeader";
 import { ShieldAlert } from "lucide-react";
+import { QandAComponent } from "@/components/qanda";
 
 export default function QuestionsAndAnswers() {
   return (
@@ -23,17 +24,11 @@ export default function QuestionsAndAnswers() {
             </div>
           </div>
         </div>
+
+        <QandAComponent />
       </section>
 
-      <section className="content-section pb-16 prose-calm">
-        <p>
-          This section will include common questions about SEND reform, with clear answers that 
-          distinguish between confirmed facts, ongoing discussions, and things that remain unknown.
-        </p>
-        <p>
-          A dynamic Q&A component will be added in a future update. Content is being developed.
-        </p>
-      </section>
+      <div className="content-section pb-16" />
     </Layout>
   );
 }

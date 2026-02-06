@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import neurodiversityLogo from "@/assets/neurodiversity-global-logo.jpeg";
+import { QandAComponent } from "@/components/qanda";
 
 export default function Index() {
   return (
@@ -55,6 +56,11 @@ export default function Index() {
               <li>Professionals working with children and young people</li>
               <li>Anyone trying to understand what SEND reform means</li>
             </ul>
+          </div>
+
+          {/* Q&A Component */}
+          <div className="max-w-2xl mx-auto mb-10">
+            <QandAComponent />
           </div>
 
           {/* Key navigation */}
