@@ -17,6 +17,7 @@ import WhatThisCouldMean from "./pages/WhatThisCouldMean";
 import Timeline from "./pages/Timeline";
 import QuestionsAndAnswers from "./pages/QuestionsAndAnswers";
 import Sources from "./pages/Sources";
+import StatisticsAndData from "./pages/StatisticsAndData";
 import About from "./pages/About";
 import NeurodiversityGlobal from "./pages/NeurodiversityGlobal";
 import NotFound from "./pages/NotFound";
@@ -44,6 +45,8 @@ const App = () => (
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/questions-and-answers" element={<QuestionsAndAnswers />} />
           <Route path="/sources" element={<Sources />} />
+          <Route path="/statistics-and-data" element={<StatisticsAndData />} />
+          <Route path="/about" element={<About />} />
           <Route path="/about" element={<About />} />
           <Route path="/neurodiversity-global" element={<NeurodiversityGlobal />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

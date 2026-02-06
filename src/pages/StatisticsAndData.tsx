@@ -1,0 +1,328 @@
+import { Layout } from "@/components/Layout";
+import { PageOrientation } from "@/components/templates";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { ExternalLink, AlertCircle, TrendingUp } from "lucide-react";
+
+interface StatItem {
+  label: string;
+  value: string;
+}
+
+interface SourceLink {
+  name: string;
+  url: string;
+}
+
+const summaryFacts: string[] = [
+  "SEND demand in England continues to rise, with over 1.7 million pupils identified with SEND.",
+  "The number of children and young people with EHC plans increased by over 10 percent in one year.",
+  "Fewer than half of new EHC plans are completed within the legal 20 week timescale.",
+  "Tribunal activity remains high, with 25,000 appeals registered in the last academic year.",
+  "SEND spending has increased significantly, but local authorities still report large funding gaps.",
+  "Future projections show continued financial pressure without structural change.",
+];
+
+const sourceLinks: { category: string; sources: SourceLink[] }[] = [
+  {
+    category: "Government and official statistics",
+    sources: [
+      {
+        name: "Special educational needs in England 2024/25",
+        url: "https://explore-education-statistics.service.gov.uk/find-statistics/special-educational-needs-in-england/2024-25",
+      },
+      {
+        name: "Education, Health and Care Plans 2025",
+        url: "https://explore-education-statistics.service.gov.uk/find-statistics/education-health-and-care-plans/2025",
+      },
+      {
+        name: "Tribunals statistics quarterly July to September 2025",
+        url: "https://www.gov.uk/government/statistics/tribunals-statistics-quarterly-july-to-september-2025",
+      },
+    ],
+  },
+  {
+    category: "Audit and parliamentary",
+    sources: [
+      {
+        name: "NAO report on support for children with special educational needs",
+        url: "https://www.nao.org.uk/reports/support-for-children-and-young-people-with-special-educational-needs",
+      },
+      {
+        name: "Public Accounts Committee report on SEND",
+        url: "https://publications.parliament.uk/pa/cm5901/cmselect/cmpubacc/353/report.html",
+      },
+      {
+        name: "House of Lords debate on SEND budget funding",
+        url: "https://hansard.parliament.uk/Lords/2025-12-03/debates/46811928-0773-4D27-984F-5802CBBF5824/SENDBudgetFunding",
+      },
+    ],
+  },
+  {
+    category: "Local government",
+    sources: [
+      {
+        name: "LGA briefing on Westminster Hall debate on DSG",
+        url: "https://www.local.gov.uk/parliament/briefings-and-responses/westminster-hall-debate-dedicated-schools-grant-23-april-2025",
+      },
+    ],
+  },
+  {
+    category: "Government announcements",
+    sources: [
+      {
+        name: "£200 million landmark SEND teacher training programme",
+        url: "https://www.gov.uk/government/news/200-million-landmark-send-teacher-training-programme",
+      },
+      {
+        name: "SEND Reform National Conversation",
+        url: "https://consult.education.gov.uk/digital-communication-team/send-reform-national-conversation",
+      },
+    ],
+  },
+];
+
+export default function StatisticsAndData() {
+  return (
+    <Layout>
+      <PageOrientation
+        title="Statistics and data"
+        description="Key SEND statistics for England, using the most recent official data available. These figures show the current scale and pressures in the system."
+        lastUpdated="4th February 2026"
+      />
+
+      {/* Introduction */}
+      <section className="content-section py-8">
+        <p className="text-muted-foreground leading-relaxed max-w-3xl">
+          This page brings together the key SEND statistics for England, using the most recent official data available as of 04 February 2026. It shows how many children and young people are receiving support, how the system is performing against legal timescales, how often disputes reach tribunal, and how funding is changing. The figures are presented to give a clear picture of the current scale and pressures in the system, and to distinguish between what is happening now and what has been projected for the future.
+        </p>
+      </section>
+
+      {/* Summary facts */}
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-lg font-semibold text-foreground mb-4">Summary facts</h2>
+        <ul className="space-y-2">
+          {summaryFacts.map((fact, index) => (
+            <li key={index} className="flex items-start gap-3 text-muted-foreground">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+              <span>{fact}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Confirmed position */}
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-6">Confirmed position as of 04 February 2026</h2>
+
+        <div className="space-y-8">
+          {/* Legal framework */}
+          <div>
+            <h3 className="text-lg font-medium text-foreground mb-3">Legal framework</h3>
+            <p className="text-muted-foreground">
+              The statutory timescale for an EHC needs assessment to a final EHC plan is 20 weeks.
+            </p>
+          </div>
+
+          {/* Children and young people with SEND */}
+          <div>
+            <h3 className="text-lg font-medium text-foreground mb-3">Children and young people with SEND</h3>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>638,700 children and young people aged 0 to 25 in England had an active EHC plan in January 2025.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>This was an increase from 576,500 in January 2024, a rise of 10.8 percent in one year.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>482,640 pupils in schools had an EHC plan in the 2024/25 academic year.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>1,284,284 pupils received SEN support without an EHC plan in 2024/25.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>In total, just over 1.7 million pupils in England were identified as having SEN in 2024/25.</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Placement types */}
+          <div>
+            <h3 className="text-lg font-medium text-foreground mb-3">Placement types</h3>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>278,200 children and young people with EHC plans attended mainstream schools in January 2025, representing 43.6 percent of all EHC plans.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>24,500 attended SEN units or resourced provision within mainstream schools.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>7,200 attended independent mainstream schools.</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* EHC plan timeliness */}
+          <div>
+            <h3 className="text-lg font-medium text-foreground mb-3">EHC plan timeliness</h3>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>46.4 percent of decisions on whether to issue an EHC plan were made within the 20 week timescale in 2024.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>This was down from 50.3 percent in 2023.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>7.3 percent of EHC plans in 2024 took longer than 52 weeks to complete.</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Tribunal activity */}
+          <div>
+            <h3 className="text-lg font-medium text-foreground mb-3">Tribunal activity</h3>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>25,000 SEND tribunal appeals were registered in the 2024/25 academic year.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>20,000 SEND tribunal appeals were disposed of in the same year.</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Funding */}
+          <div>
+            <h3 className="text-lg font-medium text-foreground mb-3">Funding</h3>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>High needs funding increased from £5.3 billion in 2014/15 to £9.4 billion in 2024/25.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>Local authorities reported spending an additional £950 million on SEND in 2023/24 beyond allocated national funding.</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Reform activity */}
+          <div>
+            <h3 className="text-lg font-medium text-foreground mb-3">Reform activity</h3>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>A £200 million national SEND teacher training programme was announced in January 2026.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                <span>The SEND reform national conversation ran from 02 December 2025 to 14 January 2026.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Projected figures */}
+      <section className="content-section py-8 border-t border-border">
+        <div className="flex items-start gap-3 mb-4">
+          <TrendingUp className="w-5 h-5 text-muted-foreground mt-0.5" />
+          <div>
+            <h2 className="text-xl font-semibold text-foreground">Projected and forecast figures</h2>
+            <p className="text-sm text-muted-foreground mt-1">These are not current facts. They are published projections.</p>
+          </div>
+        </div>
+
+        <Card className="bg-muted/30 border-border">
+          <CardContent className="pt-6">
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                <span>The annual Dedicated Schools Grant deficit is projected to exceed £6 billion in 2028/29.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                <span>Parliamentary debate has referenced a projected annual deficit of £6.3 billion in 2028/29, with a larger cumulative deficit across the spending review period.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                <span>Local Government Association analysis projects a SEND funding gap of £2.3 billion in 2025/26, rising to £3.9 billion in 2026/27.</span>
+              </li>
+            </ul>
+          </CardContent>
+        </Card>
+      </section>
+
+      {/* Important clarifications */}
+      <section className="content-section py-8 border-t border-border">
+        <div className="flex items-start gap-3 mb-4">
+          <AlertCircle className="w-5 h-5 text-muted-foreground mt-0.5" />
+          <h2 className="text-lg font-semibold text-foreground">Important clarifications for readers</h2>
+        </div>
+
+        <div className="space-y-4 text-muted-foreground">
+          <div>
+            <p className="mb-2">EHC plan numbers are published using two different measures:</p>
+            <ul className="ml-6 space-y-1">
+              <li className="flex items-start gap-2">
+                <span className="w-1 h-1 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                <span>Pupil counts in school census data.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1 h-1 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                <span>Children and young people aged 0 to 25 with active plans.</span>
+              </li>
+            </ul>
+            <p className="mt-2">These figures describe different populations and will not match.</p>
+          </div>
+          <p>
+            Tribunal outcome percentages are not included here because published sources use different methods and definitions.
+          </p>
+        </div>
+      </section>
+
+      {/* Source links */}
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-lg font-semibold text-foreground mb-6">Source links</h2>
+
+        <div className="space-y-6">
+          {sourceLinks.map((category) => (
+            <div key={category.category}>
+              <h3 className="text-sm font-medium text-foreground mb-2">{category.category}</h3>
+              <ul className="space-y-1.5">
+                {category.sources.map((source) => (
+                  <li key={source.url}>
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+                    >
+                      <span className="group-hover:underline">{source.name}</span>
+                      <ExternalLink className="w-3 h-3 flex-shrink-0 opacity-60" />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="content-section pb-16" />
+    </Layout>
+  );
+}
