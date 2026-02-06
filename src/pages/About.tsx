@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { PageHeader } from "@/components/PageHeader";
 import {
@@ -86,9 +87,17 @@ export default function About() {
 
       {/* Closing statement */}
       <section className="content-section py-8 border-t border-border">
-        <p className="text-muted-foreground max-w-2xl">
+        <p className="text-muted-foreground max-w-2xl mb-6">
           SEND Reform Navigator is committed to transparency, independence, and clarity, offering information without noise so readers can understand what is happening and where uncertainty remains.
         </p>
+        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+          <Link to="/neurodiversity-global" className="text-primary hover:underline font-medium">
+            About Neurodiversity Global
+          </Link>
+          <Link to="/rich-ferriman" className="text-primary hover:underline font-medium">
+            About Rich Ferriman
+          </Link>
+        </div>
       </section>
 
       {/* Governance sections */}

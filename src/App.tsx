@@ -48,7 +48,6 @@ const App = () => (
           <Route path="/sources" element={<Sources />} />
           <Route path="/statistics-and-data" element={<StatisticsAndData />} />
           <Route path="/about" element={<About />} />
-          <Route path="/about" element={<About />} />
           <Route path="/neurodiversity-global" element={<NeurodiversityGlobal />} />
           <Route path="/rich-ferriman" element={<RichFerriman />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
