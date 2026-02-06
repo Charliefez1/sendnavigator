@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { PageOrientation } from "@/components/templates";
+import { ContactDetails } from "@/components/ContactDetails";
 import { ExternalLink } from "lucide-react";
 
 export default function NeurodiversityGlobal() {
@@ -78,6 +79,8 @@ export default function NeurodiversityGlobal() {
           </li>
         </ul>
       </section>
+
+      <ContactDetails />
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
