@@ -36,7 +36,7 @@ export default function WhatWeKnowSoFar() {
             <li>Over 500,000 children and young people in England have an Education, Health and Care Plan.</li>
             <li>Education, Health and Care Plan numbers have increased sharply since 2014.</li>
             <li>About 1.2 million pupils receive SEN Support without an Education, Health and Care Plan.</li>
-            <li>High needs funding increased to £9.4 billion by 2024 to 25.</li>
+            <li>High needs funding reached £9.4 billion in 2024/25.</li>
             <li>Local authorities have accumulated over £3 billion of SEND funding deficits.</li>
             <li>Only about half of new Education, Health and Care Plans are issued within the 20 week legal deadline.</li>
             <li>Many families wait far longer, sometimes over a year.</li>
