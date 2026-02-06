@@ -43,6 +43,12 @@ export function Footer() {
             >
               Neurodiversity Global
             </Link>
+            <Link 
+              to="/rich-ferriman" 
+              className="text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Rich Ferriman
+            </Link>
           </nav>
         </div>
 

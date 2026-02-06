@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { PageOrientation } from "@/components/templates";
+import { ContactDetails } from "@/components/ContactDetails";
 import childhoodPhoto from "@/assets/rich-ferriman-childhood.jpeg";
 
 export default function RichFerriman() {
@@ -66,6 +67,8 @@ export default function RichFerriman() {
           </p>
         </div>
       </section>
+
+      <ContactDetails />
 
       <div className="content-section pb-16" />
     </Layout>
