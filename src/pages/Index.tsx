@@ -27,7 +27,7 @@ export default function Index() {
               SEND Reform Navigator
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              A guide to help you understand what is happening with SEND reform in England, calmly and clearly.
+              A guide to help you understand what is happening with SEND reform in England.
             </p>
           </div>
 
