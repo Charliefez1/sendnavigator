@@ -28,7 +28,7 @@ Key statistics (2024 to 2025):
 - Around 1.28 million pupils received SEN support without an EHC plan (Department for Education, 26 June 2025)
 - Only around half of EHC plans were issued within the 20 week legal timescale (Public Accounts Committee, 15 January 2025)
 - The SEND system has been described as financially unsustainable (National Audit Office, 24 October 2024)
-- High needs funding increased to around £9.4 billion in 2024 to 2025 (Local Government Association, 23 April 2025)
+- High needs funding reached around £9.4 billion in 2024/25 (Local Government Association, 23 April 2025)
 
 These laws and protections are IN FORCE TODAY. No legislation has been passed to change them.
     `.trim(),
