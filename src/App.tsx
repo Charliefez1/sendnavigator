@@ -21,6 +21,7 @@ import StatisticsAndData from "./pages/StatisticsAndData";
 import About from "./pages/About";
 import NeurodiversityGlobal from "./pages/NeurodiversityGlobal";
 import RichFerriman from "./pages/RichFerriman";
+import WhyIBuiltThis from "./pages/WhyIBuiltThis";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/neurodiversity-global" element={<NeurodiversityGlobal />} />
           <Route path="/rich-ferriman" element={<RichFerriman />} />
+          <Route path="/why-i-built-this" element={<WhyIBuiltThis />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
