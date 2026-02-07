@@ -12,7 +12,7 @@ export function Header() {
             <img
               src={neurodiversityLogo}
               alt="Neurodiversity Global Education - Neuroinclusive Performance"
-              className="h-48 sm:h-64 w-auto"
+              className="h-24 sm:h-32 w-auto"
             />
           </Link>
           <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground bg-secondary/80 px-3 py-1.5 rounded-full">
