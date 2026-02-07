@@ -29,6 +29,8 @@ interface UnknownDetail {
   icon: LucideIcon;
   research: string[];
   families: string[];
+  leaked: string[];
+  leakedRelation: string[];
 }
 
 const unknowns: UnknownDetail[] = [
@@ -44,6 +46,14 @@ const unknowns: UnknownDetail[] = [
       "If thresholds changed in the future, some children who currently qualify might be supported in different ways.",
       "Until the law changes, the current legal test still applies.",
     ],
+    leaked: [
+      "Reports suggest the government is exploring limiting full Education, Health and Care Plans to children with the most complex needs.",
+      "Some leaks describe narrowing eligibility so fewer children qualify for a statutory plan.",
+    ],
+    leakedRelation: [
+      "These leaks directly link to concerns about thresholds changing.",
+      "No decision has been made, but the idea of fewer plans being issued is part of leaked discussions.",
+    ],
   },
   {
     icon: Layers,
@@ -56,6 +66,14 @@ const unknowns: UnknownDetail[] = [
     families: [
       "A tiered system could mean support starts earlier.",
       "It could also mean fewer automatic legal protections if lower tiers are not enforceable.",
+    ],
+    leaked: [
+      "Multiple reports describe a tiered SEND system replacing the current single route to a plan.",
+      "This includes lower levels of support below a full statutory plan.",
+    ],
+    leakedRelation: [
+      "This question sits at the centre of leaked proposals.",
+      "A tiered system is one of the most consistently reported leaked ideas, but remains unconfirmed.",
     ],
   },
   {
@@ -70,6 +88,14 @@ const unknowns: UnknownDetail[] = [
       "Enforceability is what allows parents to challenge when support is not delivered.",
       "Without it, families may have fewer ways to resolve problems.",
     ],
+    leaked: [
+      "Leaked models suggest lower tiers would not carry the same legal force as a full plan.",
+      "Some reports describe education only plans or support passports without statutory backing.",
+    ],
+    leakedRelation: [
+      "This is a key gap in leaked proposals.",
+      "Leaks describe new support levels but do not confirm enforceability, raising concerns about accountability.",
+    ],
   },
   {
     icon: Scale,
@@ -83,6 +109,14 @@ const unknowns: UnknownDetail[] = [
       "Appeals are often used when early decisions fail.",
       "Any change could affect how families challenge delays or refusals.",
     ],
+    leaked: [
+      "Leaks suggest the government wants to reduce the number of tribunal appeals.",
+      "Some reports mention restricting appeal routes or adding barriers before tribunal access.",
+    ],
+    leakedRelation: [
+      "These leaks directly relate to uncertainty about future appeal rights.",
+      "No confirmed change exists, but appeals are clearly part of internal discussions.",
+    ],
   },
   {
     icon: FileText,
@@ -94,6 +128,14 @@ const unknowns: UnknownDetail[] = [
     families: [
       "Families with current plans need stability.",
       "Changes are more likely to affect new cases first, but this is not confirmed.",
+    ],
+    leaked: [
+      "Leaks generally focus on future cases rather than existing plans.",
+      "There has been no leaked proposal explicitly stating current plans would be removed.",
+    ],
+    leakedRelation: [
+      "While not confirmed, leaks suggest reforms are aimed at new entrants to the system.",
+      "This leaves uncertainty about how transitions would be managed.",
     ],
   },
   {
@@ -108,6 +150,14 @@ const unknowns: UnknownDetail[] = [
       "Legal standards are harder to ignore.",
       "Guidance relies more on local interpretation and capacity.",
     ],
+    leaked: [
+      "Leaked commentary suggests national standards may be used to define what schools must provide before a plan is considered.",
+      "It is unclear from leaks whether these standards would be legally enforceable.",
+    ],
+    leakedRelation: [
+      "Leaks reinforce uncertainty about the legal strength of future standards.",
+      "This matters because standards without legal force may be applied inconsistently.",
+    ],
   },
   {
     icon: Coins,
@@ -120,6 +170,14 @@ const unknowns: UnknownDetail[] = [
     families: [
       "If schools hold more responsibility, support quality may vary.",
       "Clear accountability would be essential to avoid gaps.",
+    ],
+    leaked: [
+      "Leaks suggest funding could move away from individual plans towards school level or pooled budgets.",
+      "Schools may be expected to manage more support directly.",
+    ],
+    leakedRelation: [
+      "This directly affects how responsibility and accountability could shift.",
+      "Leaks raise concerns about variation between schools if funding is not tightly protected.",
     ],
   },
   {
@@ -134,6 +192,14 @@ const unknowns: UnknownDetail[] = [
       "Without enforceable protection, families may struggle to challenge failures.",
       "This issue is central to trust in any reform.",
     ],
+    leaked: [
+      "Leaked models describe support agreements that sit outside a statutory plan.",
+      "No clear enforcement mechanism is described in leaked information.",
+    ],
+    leakedRelation: [
+      "This is one of the most significant gaps in leaked proposals.",
+      "The lack of clarity about protection if support fails is a major concern raised by parents and legal experts.",
+    ],
   },
   {
     icon: Clock,
@@ -146,6 +212,14 @@ const unknowns: UnknownDetail[] = [
     families: [
       "Current rights and processes remain in place for now.",
       "Families should plan based on what exists today, not future proposals.",
+    ],
+    leaked: [
+      "Media reporting suggests pressure to act quickly due to financial strain.",
+      "No leaked timelines or confirmed implementation dates exist.",
+    ],
+    leakedRelation: [
+      "Leaks suggest urgency, but not speed.",
+      "Major legal reform would still require consultation and legislation.",
     ],
   },
 ];
@@ -200,6 +274,26 @@ export default function WhatWeDoNotKnow() {
                   <h4 className="text-sm font-semibold text-foreground mb-2">Why this matters for families</h4>
                   <ul className="space-y-1.5 text-sm text-muted-foreground">
                     {item.families.map((point, i) => (
+                      <li key={i} className="leading-relaxed">{point}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="border border-status-leaked/30 bg-status-leaked/5 rounded-lg p-4 mt-2">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-status-leaked bg-status-leaked/15 px-2 py-0.5 rounded">
+                      Leaked
+                    </span>
+                    <span className="text-xs text-muted-foreground">Unconfirmed, treat with caution</span>
+                  </div>
+                  <h4 className="text-sm font-semibold text-foreground mb-2">What has been leaked</h4>
+                  <ul className="space-y-1.5 text-sm text-muted-foreground mb-3">
+                    {item.leaked.map((point, i) => (
+                      <li key={i} className="leading-relaxed">{point}</li>
+                    ))}
+                  </ul>
+                  <h4 className="text-sm font-semibold text-foreground mb-2">How this relates to the question</h4>
+                  <ul className="space-y-1.5 text-sm text-muted-foreground">
+                    {item.leakedRelation.map((point, i) => (
                       <li key={i} className="leading-relaxed">{point}</li>
                     ))}
                   </ul>
