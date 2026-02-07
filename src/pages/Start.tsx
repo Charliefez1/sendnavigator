@@ -26,36 +26,36 @@ const Index = () => {
           </div>
           <div className="prose-calm space-y-4 text-muted-foreground">
             <p className="text-lg leading-relaxed">
-              Despite what you may have heard, your child's legal protections are still in place.
+              Despite what you may have heard, <strong className="text-foreground">your child's legal protections are still in place</strong>.
             </p>
             <p className="text-lg leading-relaxed">
-              EHCPs remain legally binding.<br />
-              The law has not changed.
+              <strong className="text-foreground">EHCPs remain legally binding.</strong><br />
+              <strong className="text-foreground">The law has not changed.</strong>
             </p>
             <p className="text-base leading-relaxed">
-              What has changed is the volume of discussion about SEND provision in 2026 and 2027. There is increasing debate across politics, education and local authorities, alongside early signals, leaks and speculation about possible future reforms.
+              What has changed is the <strong className="text-foreground">volume of discussion</strong> about SEND provision in 2026 and 2027. There is increasing debate across politics, education and local authorities, alongside early signals, <strong className="text-foreground">leaks and speculation</strong> about possible future reforms.
             </p>
             <p className="text-base leading-relaxed">
               That uncertainty creates anxiety for parents.
             </p>
             <p className="text-base leading-relaxed">
-              The SEND Navigator is designed to help make sense of this.
+              The <strong className="text-foreground">SEND Navigator is designed to help make sense of this</strong>.
             </p>
             <p className="text-base leading-relaxed font-medium text-foreground">It includes:</p>
             <ul className="space-y-2 text-base list-disc list-inside">
-              <li>Confirmed information based on current law and statutory guidance</li>
-              <li>Clearly labelled sections on speculation and leaks, where relevant</li>
-              <li>Clear separation between what is confirmed, what is being discussed, and what has not changed</li>
+              <li><strong className="text-foreground">Confirmed information</strong> based on current law and statutory guidance</li>
+              <li><strong className="text-foreground">Clearly labelled sections</strong> on speculation and leaks, where relevant</li>
+              <li><strong className="text-foreground">Clear separation</strong> between what is confirmed, what is being discussed, and what has not changed</li>
             </ul>
             <p className="text-base leading-relaxed">
-              Nothing is presented without context.<br />
-              Nothing speculative is presented as fact.
+              <strong className="text-foreground">Nothing is presented without context.</strong><br />
+              <strong className="text-foreground">Nothing speculative is presented as fact.</strong>
             </p>
             <p className="text-base leading-relaxed">
-              The information currently available as of February 2026 is contained within this navigator. As further details are formally released, the navigator will be updated so parents can see what has changed, and what has not.
+              The information currently available as of February 2026 is contained within this navigator. As further details are formally released, the navigator will be <strong className="text-foreground">updated so parents can see what has changed, and what has not</strong>.
             </p>
             <p className="text-base leading-relaxed">
-              The aim is not to remove uncertainty where it genuinely exists, but to make it visible, understandable and manageable.
+              The aim is not to remove uncertainty where it genuinely exists, but to make it <strong className="text-foreground">visible, understandable and manageable</strong>.
             </p>
             <p className="text-base leading-relaxed">
               For more context, please see the{" "}
