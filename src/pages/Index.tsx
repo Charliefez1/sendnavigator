@@ -23,7 +23,7 @@ export default function Index() {
               <span className="text-primary">SEND Reform</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-lg mx-auto leading-relaxed">
-              A friendly guide to help you understand what is happening with SEND reform in England — without the jargon.
+              A friendly guide to help you understand what is happening with SEND reform in England, without the jargon.
             </p>
           </div>
 
@@ -62,7 +62,7 @@ export default function Index() {
               <h2 className="font-display text-lg font-bold text-foreground mb-3">What this site is</h2>
               <div className="space-y-2 text-muted-foreground text-sm leading-relaxed">
                 <p>An independent public resource explaining what is confirmed, discussed, and unknown about SEND reform.</p>
-                <p>We don't give advice — we help you understand what's actually happening.</p>
+                <p>We do not give advice. We help you understand what is actually happening.</p>
               </div>
             </div>
             <div className="bg-card border border-border/60 rounded-2xl p-6 shadow-soft">

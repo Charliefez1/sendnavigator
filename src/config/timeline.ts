@@ -172,7 +172,7 @@ export const currentPositionData: CurrentPosition = {
     "Local authority duties under current law remain in effect",
     "No changes apply until legislation is passed",
   ],
-  lastUpdated: "4th February 2026",
+  lastUpdated: "7th February 2026",
 };
 
 export const completedMilestones: TimelineMilestone[] = [

@@ -11,7 +11,7 @@ export default function WhatTheLeaksDoNotMean() {
       <PageOrientation
         title="What the leaks do not mean"
         description="Clarifications about what leaked information does not change."
-        lastUpdated="4th February 2026"
+        lastUpdated="7th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />

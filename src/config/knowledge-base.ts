@@ -1,14 +1,14 @@
 /**
  * SEND Reform Navigator - Curated Knowledge Base
  * 
- * This is the ONLY source of information the AI may use.
- * AI must NOT introduce external knowledge.
+ * This is the ONLY source of information ADHDi may use.
+ * ADHDi must NOT introduce external knowledge.
  * 
- * Last updated: 4th February 2026
+ * Last updated: 7th February 2026
  */
 
 export const KNOWLEDGE_BASE = {
-  lastUpdated: "4th February 2026",
+  lastUpdated: "7th February 2026",
   
   // ==========================================================================
   // CURRENT LEGAL POSITION

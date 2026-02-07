@@ -6,7 +6,7 @@ export function AITrustNotice() {
     <div className="bg-muted/30 border border-border rounded-lg p-4">
       <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
         <Bot className="w-4 h-4 text-primary" />
-        About AI-generated answers
+        About ADHDi-generated answers
       </h3>
       
       <ul className="space-y-2 text-sm text-muted-foreground">

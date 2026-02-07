@@ -12,7 +12,7 @@ export default function Timeline() {
       <PageHeader
         title="Timeline and next steps"
         description="Key decision points and milestones. We show only confirmed dates and likely windows, avoiding speculation."
-        lastUpdated="4th February 2026"
+        lastUpdated="7th February 2026"
       />
 
       <SixtySecondSummary

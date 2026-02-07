@@ -25,7 +25,7 @@ export default function WhatWeDoNotKnow() {
       <PageOrientation
         title="What we do not know yet"
         description="Key decisions about rights, thresholds, and protections that have not been made."
-        lastUpdated="4th February 2026"
+        lastUpdated="7th February 2026"
       />
 
       <SixtySecondSummary

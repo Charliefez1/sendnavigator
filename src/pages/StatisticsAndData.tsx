@@ -88,13 +88,13 @@ export default function StatisticsAndData() {
       <PageOrientation
         title="Statistics and data"
         description="Key SEND statistics for England, using the most recent official data available. These figures show the current scale and pressures in the system."
-        lastUpdated="4th February 2026"
+        lastUpdated="7th February 2026"
       />
 
       {/* Introduction */}
       <section className="content-section py-8">
         <p className="text-muted-foreground leading-relaxed max-w-3xl">
-          This page brings together the key SEND statistics for England, using the most recent official data available as of 04 February 2026. It shows how many children and young people are receiving support, how the system is performing against legal timescales, how often disputes reach tribunal, and how funding is changing. The figures are presented to give a clear picture of the current scale and pressures in the system, and to distinguish between what is happening now and what has been projected for the future.
+          This page brings together the key SEND statistics for England, using the most recent official data available as of 07 February 2026. It shows how many children and young people are receiving support, how the system is performing against legal timescales, how often disputes reach tribunal, and how funding is changing. The figures are presented to give a clear picture of the current scale and pressures in the system, and to distinguish between what is happening now and what has been projected for the future.
         </p>
       </section>
 
@@ -113,7 +113,7 @@ export default function StatisticsAndData() {
 
       {/* Confirmed position */}
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-6">Confirmed position as of 04 February 2026</h2>
+        <h2 className="text-xl font-semibold text-foreground mb-6">Confirmed position as of 07 February 2026</h2>
 
         <div className="space-y-8">
           {/* Legal framework */}

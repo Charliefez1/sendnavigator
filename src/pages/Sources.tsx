@@ -248,7 +248,7 @@ export default function Sources() {
       <PageOrientation
         title="Data and sources used"
         description="The sources we use across this resource. All factual claims are traceable to these materials."
-        lastUpdated="6th February 2026"
+        lastUpdated="7th February 2026"
       />
 
       <section className="content-section py-8">

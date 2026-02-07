@@ -13,7 +13,7 @@ export default function WhatTheLeaksAreSaying() {
       <PageOrientation
         title="What the leaks are saying"
         description="Unconfirmed proposals and reported briefings. These are not government policy."
-        lastUpdated="4th February 2026"
+        lastUpdated="7th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="unconfirmed" />
