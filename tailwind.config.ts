@@ -73,6 +73,10 @@ export default {
           current: "hsl(var(--journey-current))",
           complete: "hsl(var(--journey-complete))",
           pending: "hsl(var(--journey-pending))",
+          confirmed: "hsl(var(--journey-confirmed))",
+          discussed: "hsl(var(--journey-discussed))",
+          unconfirmed: "hsl(var(--journey-unconfirmed))",
+          next: "hsl(var(--journey-next))",
         },
       },
       borderRadius: {
