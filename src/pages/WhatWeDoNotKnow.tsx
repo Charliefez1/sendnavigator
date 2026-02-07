@@ -281,7 +281,7 @@ export default function WhatWeDoNotKnow() {
                     ))}
                   </ul>
                 </div>
-                <div className="border border-status-leaked/30 bg-status-leaked/5 rounded-lg p-4 mt-2">
+                <div className="border-2 border-status-leaked bg-status-leaked/5 rounded-lg p-4 mt-2">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-status-leaked bg-status-leaked/15 px-2 py-0.5 rounded">
                       Leaked
