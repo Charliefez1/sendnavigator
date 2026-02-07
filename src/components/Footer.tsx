@@ -21,6 +21,7 @@ export function Footer() {
           <nav className="flex flex-wrap gap-x-5 gap-y-3">
             {[
               { to: "/about", label: "About" },
+              { to: "/why-i-built-this", label: "Why I built this" },
               { to: "/sources", label: "Sources" },
               { to: "/questions-and-answers", label: "Questions" },
               { to: "/neurodiversity-global", label: "Neurodiversity Global" },

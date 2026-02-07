@@ -77,10 +77,14 @@
     --timeline-clarification: 200 50% 45%;
     --timeline-clarification-bg: 200 40% 94%;
 
-    /* Journey navigation */
+    /* Journey navigation - cool to warm */
     --journey-current: 16 65% 52%;
     --journey-complete: 155 35% 48%;
     --journey-pending: 25 10% 72%;
+    --journey-confirmed: 190 55% 42%;
+    --journey-discussed: 38 65% 50%;
+    --journey-unconfirmed: 16 70% 55%;
+    --journey-next: 340 50% 50%;
 
     /* Sidebar */
     --sidebar-background: 35 35% 96%;
@@ -151,6 +155,10 @@
     --journey-current: 16 60% 58%;
     --journey-complete: 155 40% 55%;
     --journey-pending: 25 8% 42%;
+    --journey-confirmed: 190 50% 55%;
+    --journey-discussed: 38 60% 55%;
+    --journey-unconfirmed: 16 65% 60%;
+    --journey-next: 340 45% 58%;
 
     --sidebar-background: 25 18% 8%;
     --sidebar-foreground: 35 15% 88%;
@@ -377,5 +385,61 @@
     border-radius: 50% 40% 60% 50%;
     opacity: 0.08;
     pointer-events: none;
+  }
+
+  /* Journey step colour coding - cool to warm */
+  .journey-step-confirmed {
+    color: hsl(var(--journey-confirmed));
+    background-color: hsl(var(--journey-confirmed) / 0.1);
+  }
+  .journey-step-confirmed-active {
+    color: white;
+    background-color: hsl(var(--journey-confirmed));
+  }
+
+  .journey-step-discussed {
+    color: hsl(var(--journey-discussed));
+    background-color: hsl(var(--journey-discussed) / 0.1);
+  }
+  .journey-step-discussed-active {
+    color: white;
+    background-color: hsl(var(--journey-discussed));
+  }
+
+  .journey-step-unconfirmed {
+    color: hsl(var(--journey-unconfirmed));
+    background-color: hsl(var(--journey-unconfirmed) / 0.1);
+  }
+  .journey-step-unconfirmed-active {
+    color: white;
+    background-color: hsl(var(--journey-unconfirmed));
+  }
+
+  .journey-step-next {
+    color: hsl(var(--journey-next));
+    background-color: hsl(var(--journey-next) / 0.1);
+  }
+  .journey-step-next-active {
+    color: white;
+    background-color: hsl(var(--journey-next));
+  }
+
+  /* Hide scrollbar for journey tabs */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

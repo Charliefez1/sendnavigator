@@ -1,9 +1,11 @@
 import { ReactNode } from "react";
 import { Header } from "./Header";
+import { SiteNavigation } from "./SiteNavigation";
 import { JourneyNavigation } from "./JourneyNavigation";
 import { Footer } from "./Footer";
 import { ContactBanner } from "./ContactBanner";
 import { NewsletterSignup } from "./NewsletterSignup";
+import { SkipLink } from "./SkipLink";
 
 interface LayoutProps {
   children: ReactNode;
@@ -12,9 +14,13 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <SkipLink />
       <Header />
+      <SiteNavigation />
       <JourneyNavigation />
-      <main className="flex-1">{children}</main>
+      <main id="main-content" className="flex-1" role="main" tabIndex={-1}>
+        {children}
+      </main>
       <div className="content-section py-8">
         <NewsletterSignup />
       </div>

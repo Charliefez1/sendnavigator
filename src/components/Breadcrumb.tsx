@@ -1,6 +1,17 @@
 import { Link, useLocation } from "react-router-dom";
 import { ChevronRight, Home } from "lucide-react";
-import { navItems } from "./Navigation";
+import { journeySteps } from "./JourneyNavigation";
+
+const allPages = [
+  ...journeySteps.map(s => ({ path: s.path, label: s.label })),
+  { path: "/about", label: "About this resource" },
+  { path: "/why-i-built-this", label: "Why I built this" },
+  { path: "/sources", label: "Sources" },
+  { path: "/questions-and-answers", label: "Questions & answers" },
+  { path: "/rich-ferriman", label: "Rich Ferriman" },
+  { path: "/neurodiversity-global", label: "Neurodiversity Global" },
+  { path: "/statistics-and-data", label: "Statistics and data" },
+];
 
 export function Breadcrumb() {
   const location = useLocation();
@@ -9,7 +20,7 @@ export function Breadcrumb() {
     return null;
   }
 
-  const currentPage = navItems.find((item) => item.path === location.pathname);
+  const currentPage = allPages.find((item) => item.path === location.pathname);
 
   return (
     <nav aria-label="Breadcrumb" className="content-wide py-3">
