@@ -247,7 +247,7 @@
   /* Content containers */
   .content-section {
     @apply w-full mx-auto px-4;
-    max-width: 42rem;
+    max-width: 52rem;
   }
 
   @media (min-width: 640px) {
