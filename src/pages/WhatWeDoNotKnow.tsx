@@ -248,6 +248,9 @@ export default function WhatWeDoNotKnow() {
             Unknowns
           </h2>
         </div>
+        <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+          Each question below includes three layers of information: <strong className="text-foreground">what the research tells us so far</strong> based on published evidence, <strong className="text-foreground">why this matters for families</strong> in practical terms, and <strong className="text-foreground">what has been leaked</strong>, clearly marked as unconfirmed. This structure helps you see what is known, what is uncertain, and where speculation exists.
+        </p>
         <Accordion type="multiple" className="space-y-3">
           {unknowns.map((item, index) => (
             <AccordionItem
