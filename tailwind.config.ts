@@ -68,6 +68,8 @@ export default {
           "discussed-bg": "hsl(var(--status-discussed-bg))",
           unconfirmed: "hsl(var(--status-unconfirmed))",
           "unconfirmed-bg": "hsl(var(--status-unconfirmed-bg))",
+          leaked: "hsl(var(--status-leaked))",
+          "leaked-bg": "hsl(var(--status-leaked-bg))",
         },
         journey: {
           current: "hsl(var(--journey-current))",
