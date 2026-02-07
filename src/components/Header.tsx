@@ -1,6 +1,6 @@
 import { Heart, MapPin, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import neurodiversityLogo from "@/assets/neurodiversity-global-logo.jpeg";
+import neurodiversityLogo from "@/assets/neurodiversity-global-education-logo.png";
 
 export function Header() {
   return (
@@ -11,8 +11,8 @@ export function Header() {
           <Link to="/neurodiversity-global" className="hover:opacity-80 transition-opacity">
             <img
               src={neurodiversityLogo}
-              alt="Neurodiversity Global - Neuroinclusive Performance"
-              className="h-9 sm:h-11 w-auto rounded-lg"
+              alt="Neurodiversity Global Education - Neuroinclusive Performance"
+              className="h-14 sm:h-16 w-auto"
             />
           </Link>
           <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground bg-secondary/80 px-3 py-1.5 rounded-full">
