@@ -83,7 +83,8 @@ export default {
         "2xl": "calc(var(--radius) + 8px)",
       },
       fontFamily: {
-        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['Nunito', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
       },
       keyframes: {
         "accordion-down": {
@@ -110,8 +111,9 @@ export default {
         "slide-up": "slide-up 0.5s ease-out",
       },
       boxShadow: {
-        'soft': '0 2px 8px -2px rgba(0, 0, 0, 0.08)',
-        'warm': '0 4px 16px -4px rgba(0, 0, 0, 0.1)',
+        'soft': '0 2px 8px -2px hsl(25 30% 50% / 0.08)',
+        'warm': '0 6px 20px -6px hsl(16 65% 52% / 0.12)',
+        'glow': '0 8px 30px -8px hsl(16 65% 52% / 0.18)',
       },
     },
   },

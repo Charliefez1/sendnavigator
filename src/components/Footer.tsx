@@ -3,59 +3,44 @@ import { Heart } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-card mt-auto">
-      <div className="content-wide py-8 sm:py-10">
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+    <footer className="border-t border-border/60 bg-secondary/40 mt-auto">
+      <div className="content-wide py-10 sm:py-12">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-8">
           {/* Brand */}
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-              <Heart className="w-4 h-4 text-primary" />
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center">
+              <Heart className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <p className="font-medium text-foreground text-sm">SEND Reform Navigator</p>
-              <p className="text-xs text-muted-foreground">A guide for families</p>
+              <p className="font-display font-bold text-foreground">SEND Reform Navigator</p>
+              <p className="text-sm text-muted-foreground">A friendly guide for families</p>
             </div>
           </div>
 
           {/* Links */}
-          <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-            <Link 
-              to="/about" 
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              About
-            </Link>
-            <Link 
-              to="/sources" 
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Sources
-            </Link>
-            <Link 
-              to="/questions-and-answers" 
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Questions
-            </Link>
-            <Link 
-              to="/neurodiversity-global" 
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Neurodiversity Global
-            </Link>
-            <Link 
-              to="/rich-ferriman" 
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Rich Ferriman
-            </Link>
+          <nav className="flex flex-wrap gap-x-5 gap-y-3">
+            {[
+              { to: "/about", label: "About" },
+              { to: "/sources", label: "Sources" },
+              { to: "/questions-and-answers", label: "Questions" },
+              { to: "/neurodiversity-global", label: "Neurodiversity Global" },
+              { to: "/rich-ferriman", label: "Rich Ferriman" },
+            ].map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors px-3 py-1.5 rounded-full hover:bg-primary/5"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
         </div>
 
         {/* Disclaimer */}
-        <div className="mt-6 pt-6 border-t border-border">
-          <p className="text-xs text-muted-foreground max-w-2xl">
-            This is an independent public resource. It does not provide legal, medical, or 
+        <div className="mt-8 pt-6 border-t border-border/60">
+          <p className="text-xs text-muted-foreground max-w-2xl leading-relaxed">
+            This is an independent public resource. It does not provide legal, medical, or
             professional advice. Information applies to England only.
           </p>
         </div>

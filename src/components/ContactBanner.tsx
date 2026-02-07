@@ -27,34 +27,39 @@ const contacts: ContactPerson[] = [
 
 export function ContactBanner() {
   return (
-    <div className="bg-muted/50 border-b border-border">
-      <div className="content-wide py-3">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div className="bg-primary/5 border-t border-primary/10">
+      <div className="content-wide py-6">
+        <p className="text-sm font-display font-semibold text-foreground mb-4">Get in touch</p>
+        <div className="grid sm:grid-cols-2 gap-4">
           {contacts.map((contact) => (
-            <div key={contact.email} className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm">
-              <div className="font-medium text-foreground">{contact.name}</div>
-              <div className="flex flex-wrap items-center gap-3 text-muted-foreground">
-                <a 
+            <div
+              key={contact.email}
+              className="bg-card rounded-2xl p-4 border border-border/60 shadow-soft"
+            >
+              <p className="font-bold text-foreground text-sm">{contact.name}</p>
+              <p className="text-xs text-muted-foreground mb-3">{contact.role}</p>
+              <div className="flex flex-wrap items-center gap-3 text-xs">
+                <a
                   href={`mailto:${contact.email}`}
-                  className="flex items-center gap-1 hover:text-primary transition-colors"
+                  className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors font-medium"
                 >
                   <Mail className="w-3.5 h-3.5" />
                   <span className="hidden md:inline">{contact.email}</span>
                   <span className="md:hidden">Email</span>
                 </a>
-                <a 
-                  href={`tel:${contact.phone.replace(/\s/g, '')}`}
-                  className="flex items-center gap-1 hover:text-primary transition-colors"
+                <a
+                  href={`tel:${contact.phone.replace(/\s/g, "")}`}
+                  className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors font-medium"
                 >
                   <Phone className="w-3.5 h-3.5" />
                   <span className="hidden lg:inline">{contact.phone}</span>
                   <span className="lg:hidden">Call</span>
                 </a>
-                <a 
+                <a
                   href={contact.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 hover:text-primary transition-colors"
+                  className="flex items-center gap-1.5 text-muted-foreground hover:text-primary transition-colors font-medium"
                 >
                   <Linkedin className="w-3.5 h-3.5" />
                   <span>LinkedIn</span>
