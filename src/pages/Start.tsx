@@ -5,6 +5,7 @@ import {
   ArrowRight, 
   CheckCircle2, 
   Clock,
+  Compass,
   Heart,
   BookOpen,
   HelpCircle
@@ -17,9 +18,12 @@ const Index = () => {
       <section className="content-section py-10 sm:py-14 animate-fade-in">
         {/* Welcome message */}
         <div className="bg-card border border-border rounded-xl p-6 sm:p-8 mb-8">
-          <h1 className="text-2xl sm:text-3xl font-semibold text-foreground mb-4">
-            Welcome to SEND Reform Navigator
-          </h1>
+          <div className="flex items-center gap-3 mb-4">
+            <Compass className="w-8 h-8 text-primary flex-shrink-0" />
+            <h1 className="text-2xl sm:text-3xl font-semibold text-foreground">
+              Welcome to SEND Reform Navigator
+            </h1>
+          </div>
           <div className="prose-calm space-y-4 text-muted-foreground max-w-2xl">
             <p className="text-lg leading-relaxed">
               Despite what you may have heard, your child's legal protections are still in place.
