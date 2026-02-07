@@ -5,12 +5,12 @@ import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 
 const siteLinks = [
+  { path: "/how-to-use", label: "How to use", icon: HelpCircle },
   { path: "/about", label: "About", icon: BookOpen },
   { path: "/why-i-built-this", label: "Why I built this", icon: Heart },
   { path: "/rich-ferriman", label: "Rich Ferriman", icon: User },
   { path: "/neurodiversity-global", label: "Neurodiversity Global", icon: Building2 },
   { path: "/sources", label: "Sources", icon: FileText },
-  { path: "/questions-and-answers", label: "Q&A", icon: HelpCircle },
 ];
 
 export function SiteNavigation() {
