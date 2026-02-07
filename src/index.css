@@ -2,165 +2,164 @@
 @tailwind components;
 @tailwind utilities;
 
-/* SEND Reform Navigator Design System
-   Warm, friendly, parent-focused resource
-   Reassuring and approachable
-   All colors in HSL format
+/* SEND Reform Navigator — Friendly & Illustrated
+   Warm terracotta palette, Nunito + Fraunces typography
+   Approachable, human, and distinctive
 */
 
 @layer base {
   :root {
-    /* Core backgrounds - warm cream tones */
-    --background: 45 30% 97%;
-    --foreground: 220 25% 18%;
+    /* Core backgrounds — warm cream */
+    --background: 35 45% 97%;
+    --foreground: 25 30% 16%;
 
-    /* Card surfaces - soft white */
-    --card: 0 0% 100%;
-    --card-foreground: 220 25% 18%;
+    /* Card surfaces — clean white with warmth */
+    --card: 30 30% 99%;
+    --card-foreground: 25 30% 16%;
 
     /* Popover */
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 25% 18%;
+    --popover: 30 30% 99%;
+    --popover-foreground: 25 30% 16%;
 
-    /* Primary - warm sage green, calming and trustworthy */
-    --primary: 158 35% 38%;
+    /* Primary — warm terracotta */
+    --primary: 16 65% 52%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - soft warm beige */
-    --secondary: 35 30% 92%;
-    --secondary-foreground: 220 25% 20%;
+    /* Secondary — warm sand */
+    --secondary: 32 40% 92%;
+    --secondary-foreground: 25 35% 22%;
 
-    /* Muted - gentle warm gray */
-    --muted: 40 20% 95%;
-    --muted-foreground: 220 15% 40%;
+    /* Muted — warm taupe */
+    --muted: 30 20% 94%;
+    --muted-foreground: 25 15% 45%;
 
-    /* Accent - soft teal for focus */
-    --accent: 175 35% 92%;
-    --accent-foreground: 175 40% 28%;
+    /* Accent — soft sage for contrast */
+    --accent: 155 30% 90%;
+    --accent-foreground: 155 35% 30%;
 
-    /* Destructive - soft, not alarming */
+    /* Destructive — soft brick */
     --destructive: 0 55% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders and inputs - warm gray */
-    --border: 35 15% 85%;
-    --input: 35 15% 85%;
-    --ring: 158 35% 45%;
+    /* Borders — warm beige */
+    --border: 30 25% 87%;
+    --input: 30 25% 87%;
+    --ring: 16 55% 55%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
     /* Warm highlight for reassurance */
-    --highlight: 45 100% 95%;
-    --highlight-border: 45 50% 75%;
+    --highlight: 42 80% 94%;
+    --highlight-border: 42 50% 78%;
 
-    /* Information status categories - softer, friendlier */
-    --status-confirmed: 158 45% 38%;
-    --status-confirmed-bg: 158 35% 94%;
-    --status-confirmed-border: 158 30% 78%;
-    
+    /* Information status categories */
+    --status-confirmed: 155 45% 38%;
+    --status-confirmed-bg: 155 35% 94%;
+    --status-confirmed-border: 155 30% 78%;
+
     --status-discussed: 38 55% 50%;
     --status-discussed-bg: 38 45% 94%;
     --status-discussed-border: 38 40% 78%;
-    
+
     --status-unconfirmed: 220 12% 55%;
     --status-unconfirmed-bg: 220 10% 94%;
     --status-unconfirmed-border: 220 10% 78%;
 
     /* Timeline status colors */
-    --timeline-completed: 158 45% 35%;
-    --timeline-completed-bg: 158 35% 94%;
+    --timeline-completed: 155 45% 35%;
+    --timeline-completed-bg: 155 35% 94%;
     --timeline-upcoming: 38 55% 48%;
     --timeline-upcoming-bg: 38 45% 94%;
     --timeline-uncertain: 220 12% 55%;
     --timeline-uncertain-bg: 220 10% 94%;
-    --timeline-new: 158 45% 35%;
-    --timeline-new-bg: 158 35% 94%;
+    --timeline-new: 155 45% 35%;
+    --timeline-new-bg: 155 35% 94%;
     --timeline-clarification: 200 50% 45%;
     --timeline-clarification-bg: 200 40% 94%;
 
-    /* Journey navigation colors */
-    --journey-current: 158 35% 38%;
-    --journey-complete: 158 30% 50%;
-    --journey-pending: 220 10% 70%;
+    /* Journey navigation */
+    --journey-current: 16 65% 52%;
+    --journey-complete: 155 35% 48%;
+    --journey-pending: 25 10% 72%;
 
     /* Sidebar */
-    --sidebar-background: 45 25% 96%;
-    --sidebar-foreground: 220 20% 25%;
-    --sidebar-primary: 158 35% 38%;
+    --sidebar-background: 35 35% 96%;
+    --sidebar-foreground: 25 25% 25%;
+    --sidebar-primary: 16 65% 52%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 175 25% 92%;
-    --sidebar-accent-foreground: 175 35% 28%;
-    --sidebar-border: 35 15% 88%;
-    --sidebar-ring: 158 35% 45%;
+    --sidebar-accent: 155 25% 92%;
+    --sidebar-accent-foreground: 155 35% 28%;
+    --sidebar-border: 30 20% 88%;
+    --sidebar-ring: 16 55% 55%;
   }
 
   .dark {
-    --background: 220 20% 10%;
-    --foreground: 40 15% 95%;
+    --background: 25 18% 10%;
+    --foreground: 35 20% 93%;
 
-    --card: 220 18% 13%;
-    --card-foreground: 40 15% 95%;
+    --card: 25 15% 13%;
+    --card-foreground: 35 20% 93%;
 
-    --popover: 220 18% 13%;
-    --popover-foreground: 40 15% 95%;
+    --popover: 25 15% 13%;
+    --popover-foreground: 35 20% 93%;
 
-    --primary: 158 40% 50%;
-    --primary-foreground: 220 20% 10%;
+    --primary: 16 60% 58%;
+    --primary-foreground: 25 18% 10%;
 
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 40 15% 90%;
+    --secondary: 25 15% 18%;
+    --secondary-foreground: 35 15% 88%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 40 15% 60%;
+    --muted: 25 12% 18%;
+    --muted-foreground: 30 12% 58%;
 
-    --accent: 175 30% 22%;
-    --accent-foreground: 175 40% 80%;
+    --accent: 155 25% 20%;
+    --accent-foreground: 155 40% 78%;
 
     --destructive: 0 50% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 15% 22%;
-    --input: 220 15% 22%;
-    --ring: 158 40% 50%;
+    --border: 25 12% 22%;
+    --input: 25 12% 22%;
+    --ring: 16 55% 55%;
 
-    --highlight: 45 40% 15%;
-    --highlight-border: 45 30% 30%;
+    --highlight: 42 35% 14%;
+    --highlight-border: 42 25% 28%;
 
-    --status-confirmed: 158 45% 50%;
-    --status-confirmed-bg: 158 25% 15%;
-    --status-confirmed-border: 158 25% 30%;
-    
+    --status-confirmed: 155 45% 50%;
+    --status-confirmed-bg: 155 25% 15%;
+    --status-confirmed-border: 155 25% 30%;
+
     --status-discussed: 38 60% 55%;
     --status-discussed-bg: 38 35% 15%;
     --status-discussed-border: 38 35% 30%;
-    
+
     --status-unconfirmed: 220 15% 60%;
     --status-unconfirmed-bg: 220 10% 18%;
     --status-unconfirmed-border: 220 10% 30%;
 
-    --timeline-completed: 158 45% 50%;
-    --timeline-completed-bg: 158 25% 15%;
+    --timeline-completed: 155 45% 50%;
+    --timeline-completed-bg: 155 25% 15%;
     --timeline-upcoming: 38 60% 55%;
     --timeline-upcoming-bg: 38 35% 15%;
     --timeline-uncertain: 220 15% 60%;
     --timeline-uncertain-bg: 220 10% 18%;
-    --timeline-new: 158 45% 50%;
-    --timeline-new-bg: 158 25% 15%;
+    --timeline-new: 155 45% 50%;
+    --timeline-new-bg: 155 25% 15%;
     --timeline-clarification: 200 55% 55%;
     --timeline-clarification-bg: 200 35% 15%;
 
-    --journey-current: 158 40% 50%;
-    --journey-complete: 158 35% 55%;
-    --journey-pending: 220 10% 45%;
+    --journey-current: 16 60% 58%;
+    --journey-complete: 155 40% 55%;
+    --journey-pending: 25 8% 42%;
 
-    --sidebar-background: 220 20% 8%;
-    --sidebar-foreground: 40 15% 90%;
-    --sidebar-primary: 158 40% 50%;
-    --sidebar-primary-foreground: 220 20% 10%;
-    --sidebar-accent: 175 25% 18%;
-    --sidebar-accent-foreground: 175 40% 75%;
-    --sidebar-border: 220 15% 20%;
-    --sidebar-ring: 158 40% 50%;
+    --sidebar-background: 25 18% 8%;
+    --sidebar-foreground: 35 15% 88%;
+    --sidebar-primary: 16 60% 58%;
+    --sidebar-primary-foreground: 25 18% 10%;
+    --sidebar-accent: 155 20% 16%;
+    --sidebar-accent-foreground: 155 40% 72%;
+    --sidebar-border: 25 12% 20%;
+    --sidebar-ring: 16 55% 55%;
   }
 }
 
@@ -171,10 +170,14 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-family: 'Nunito', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Fraunces', Georgia, serif;
   }
 
   :focus-visible {
@@ -186,13 +189,14 @@
     scroll-behavior: smooth;
   }
 
-  button, 
-  a, 
+  button,
+  a,
   [role="button"],
   input,
   select,
   textarea {
     min-height: 44px;
+    font-family: 'Nunito', system-ui, -apple-system, sans-serif;
   }
 
   p a, li a {
@@ -201,16 +205,16 @@
 }
 
 @layer components {
-  /* Reassurance banner - warm highlight */
+  /* Reassurance banner */
   .reassurance-banner {
     background-color: hsl(var(--highlight));
     border: 1px solid hsl(var(--highlight-border));
-    @apply rounded-xl p-5;
+    @apply rounded-2xl p-5;
   }
 
-  /* Status badges - softer, friendlier */
+  /* Status badges */
   .status-badge {
-    @apply inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-full;
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-semibold rounded-full;
     min-height: 32px;
   }
 
@@ -232,7 +236,7 @@
     border: 1px solid hsl(var(--status-unconfirmed-border));
   }
 
-  /* Content containers - mobile first */
+  /* Content containers */
   .content-section {
     @apply w-full mx-auto px-4;
     max-width: 42rem;
@@ -317,26 +321,28 @@
     }
   }
 
-  /* Journey navigation cards */
+  /* Journey navigation cards — warm & friendly */
   .journey-card {
-    @apply bg-card border-2 border-border rounded-xl p-5 transition-all duration-200;
+    @apply bg-card border-2 border-border rounded-2xl p-5 transition-all duration-300;
+    box-shadow: 0 2px 8px -2px hsl(25 30% 50% / 0.06);
   }
 
   .journey-card:hover {
-    @apply border-primary/50 shadow-sm;
-    transform: translateY(-2px);
+    @apply border-primary/40;
+    box-shadow: 0 8px 24px -8px hsl(16 65% 52% / 0.15);
+    transform: translateY(-3px);
   }
 
   .journey-card.active {
-    @apply border-primary bg-accent/30;
+    @apply border-primary bg-primary/5;
   }
 
-  /* Touch-friendly interactive elements */
+  /* Touch-friendly */
   .touch-target {
     @apply min-h-[48px] flex items-center;
   }
 
-  /* Card spacing for mobile */
+  /* Card spacing */
   .card-mobile {
     @apply p-4;
   }
@@ -353,13 +359,23 @@
     }
   }
 
-  /* Friendly button styles */
+  /* Friendly button */
   .btn-friendly {
-    @apply bg-primary text-primary-foreground rounded-full px-6 py-3 font-medium transition-all duration-200;
+    @apply bg-primary text-primary-foreground rounded-full px-7 py-3 font-bold transition-all duration-300;
+    box-shadow: 0 4px 14px -4px hsl(16 65% 52% / 0.35);
   }
 
   .btn-friendly:hover {
     @apply opacity-90;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px -4px hsl(16 65% 52% / 0.4);
+  }
+
+  /* Illustrated decorative blobs */
+  .blob-decoration {
+    position: absolute;
+    border-radius: 50% 40% 60% 50%;
+    opacity: 0.08;
+    pointer-events: none;
   }
 }
