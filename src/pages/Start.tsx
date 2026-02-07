@@ -24,7 +24,7 @@ const Index = () => {
               Welcome to SEND Reform Navigator
             </h1>
           </div>
-          <div className="prose-calm space-y-4 text-muted-foreground max-w-2xl">
+          <div className="prose-calm space-y-4 text-muted-foreground">
             <p className="text-lg leading-relaxed">
               Despite what you may have heard, your child's legal protections are still in place.
             </p>
