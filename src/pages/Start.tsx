@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { QandAComponent } from "@/components/qanda";
 import { 
-  Shield, 
   ArrowRight, 
   CheckCircle2, 
   Clock,
@@ -16,33 +15,51 @@ const Index = () => {
     <Layout>
       {/* Hero - Reassurance first */}
       <section className="content-section py-10 sm:py-14 animate-fade-in">
-        {/* Primary reassurance message */}
-        <div className="reassurance-banner mb-8">
-          <div className="flex items-start gap-4">
-            <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-              <Shield className="w-6 h-6 text-primary" />
-            </div>
-            <div>
-              <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-2">
-                Your rights haven't changed
-              </h2>
-              <p className="text-foreground/80 text-lg leading-relaxed">
-                Despite what you may have heard, your child's legal protections are still in place. 
-                EHCPs are still legally binding. The law hasn't changed yet.
-              </p>
-            </div>
-          </div>
-        </div>
-
         {/* Welcome message */}
         <div className="mb-8">
           <h1 className="text-2xl sm:text-3xl font-semibold text-foreground mb-4">
             Welcome to SEND Reform Navigator
           </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-            We know SEND reform can feel overwhelming. There's a lot of noise, and it's hard to know 
-            what's actually happening. This site is here to help you understand what is confirmed, what is being discussed, and what is still unknown.
-          </p>
+          <div className="prose-calm space-y-4 text-muted-foreground max-w-2xl">
+            <p className="text-lg leading-relaxed">
+              Despite what you may have heard, your child's legal protections are still in place.
+            </p>
+            <p className="text-lg leading-relaxed">
+              EHCPs remain legally binding.<br />
+              The law has not changed.
+            </p>
+            <p className="text-base leading-relaxed">
+              What has changed is the volume of discussion about SEND provision in 2026 and 2027. There is increasing debate across politics, education and local authorities, alongside early signals, leaks and speculation about possible future reforms.
+            </p>
+            <p className="text-base leading-relaxed">
+              That uncertainty creates anxiety for parents.
+            </p>
+            <p className="text-base leading-relaxed">
+              The SEND Navigator is designed to help make sense of this.
+            </p>
+            <p className="text-base leading-relaxed font-medium text-foreground">It includes:</p>
+            <ul className="space-y-2 text-base list-disc list-inside">
+              <li>Confirmed information based on current law and statutory guidance</li>
+              <li>Clearly labelled sections on speculation and leaks, where relevant</li>
+              <li>Clear separation between what is confirmed, what is being discussed, and what has not changed</li>
+            </ul>
+            <p className="text-base leading-relaxed">
+              Nothing is presented without context.<br />
+              Nothing speculative is presented as fact.
+            </p>
+            <p className="text-base leading-relaxed">
+              The information currently available as of February 2026 is contained within this navigator. As further details are formally released, the navigator will be updated so parents can see what has changed, and what has not.
+            </p>
+            <p className="text-base leading-relaxed">
+              The aim is not to remove uncertainty where it genuinely exists, but to make it visible, understandable and manageable.
+            </p>
+            <p className="text-base leading-relaxed">
+              For more context, please see the{" "}
+              <Link to="/about" className="text-primary hover:underline">About</Link> section and{" "}
+              <Link to="/why-i-built-this" className="text-primary hover:underline">Why I Built This</Link>.
+            </p>
+            <p className="text-base font-medium text-foreground">Rich Ferriman</p>
+          </div>
         </div>
 
         {/* What we help with */}
