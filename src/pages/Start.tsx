@@ -189,7 +189,7 @@ const Index = () => {
         <div className="bg-secondary/50 rounded-xl p-4 text-sm text-muted-foreground flex items-center gap-3">
           <Clock className="w-5 h-5 flex-shrink-0" />
           <span>
-            <strong className="text-foreground">Last updated:</strong> 4th February 2026
+            <strong className="text-foreground">Last updated:</strong> 7th February 2026
           </span>
         </div>
       </section>

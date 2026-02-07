@@ -31,7 +31,7 @@ export const editorialOwnership: EditorialTeam = {
       "Approving corrections and updates",
     ],
   },
-  lastReviewDate: "4th February 2026",
+  lastReviewDate: "7th February 2026",
 };
 
 // =============================================================================
@@ -167,7 +167,7 @@ export const currentDisclosures = {
 };
 
 // =============================================================================
-// AI GOVERNANCE (FORWARD COMPATIBILITY)
+// ADHDi GOVERNANCE (FORWARD COMPATIBILITY)
 // =============================================================================
 
 export const aiGovernanceRules = {

@@ -2,18 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-/* SEND Reform Navigator — Friendly & Illustrated
+/* SEND Reform Navigator - Friendly & Illustrated
    Warm terracotta palette, Nunito + Fraunces typography
    Approachable, human, and distinctive
 */
 
 @layer base {
   :root {
-    /* Core backgrounds — warm cream */
+    /* Core backgrounds - warm cream */
     --background: 35 45% 97%;
     --foreground: 25 30% 16%;
 
-    /* Card surfaces — clean white with warmth */
+    /* Card surfaces - clean white with warmth */
     --card: 30 30% 99%;
     --card-foreground: 25 30% 16%;
 
@@ -21,27 +21,27 @@
     --popover: 30 30% 99%;
     --popover-foreground: 25 30% 16%;
 
-    /* Primary — warm terracotta */
+    /* Primary - warm terracotta */
     --primary: 16 65% 52%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary — warm sand */
+    /* Secondary - warm sand */
     --secondary: 32 40% 92%;
     --secondary-foreground: 25 35% 22%;
 
-    /* Muted — warm taupe */
+    /* Muted - warm taupe */
     --muted: 30 20% 94%;
     --muted-foreground: 25 15% 45%;
 
-    /* Accent — soft sage for contrast */
+    /* Accent - soft sage for contrast */
     --accent: 155 30% 90%;
     --accent-foreground: 155 35% 30%;
 
-    /* Destructive — soft brick */
+    /* Destructive - soft brick */
     --destructive: 0 55% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders — warm beige */
+    /* Borders - warm beige */
     --border: 30 25% 87%;
     --input: 30 25% 87%;
     --ring: 16 55% 55%;
@@ -321,7 +321,7 @@
     }
   }
 
-  /* Journey navigation cards — warm & friendly */
+  /* Journey navigation cards - warm & friendly */
   .journey-card {
     @apply bg-card border-2 border-border rounded-2xl p-5 transition-all duration-300;
     box-shadow: 0 2px 8px -2px hsl(25 30% 50% / 0.06);

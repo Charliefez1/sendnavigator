@@ -11,7 +11,7 @@ export default function WhatIsChanging() {
       <PageOrientation
         title="What is actually changing in SEND"
         description="Confirmed reforms and official plans from government."
-        lastUpdated="4th February 2026"
+        lastUpdated="7th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />

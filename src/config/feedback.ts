@@ -122,14 +122,14 @@ export const trustSignals = {
 };
 
 // =============================================================================
-// AI TRUST SIGNALS
+// ADHDi TRUST SIGNALS
 // =============================================================================
 
 export const aiTrustSignals = {
-  labelling: "Answers are generated using AI",
-  grounding: "Answers are based on the content of this resource only, not general AI knowledge",
+  labelling: "Answers are generated using ADHDi",
+  grounding: "Answers are based on the content of this resource only, not general ADHDi knowledge",
   uncertaintyHandling: "If information is incomplete or uncertain, the answer will say so clearly",
-  refusalExplanation: "The AI will not answer questions about individual cases, give legal advice, or make predictions",
+  refusalExplanation: "ADHDi will not answer questions about individual cases, give legal advice, or make predictions",
   noTechnicalJargon: true,
 };
 

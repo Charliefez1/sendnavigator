@@ -10,7 +10,7 @@ export default function NeurodiversityGlobal() {
       <PageOrientation
         title="About Neurodiversity Global"
         description="The organisation behind SEND Reform Navigator."
-        lastUpdated="5th February 2026"
+        lastUpdated="7th February 2026"
       />
 
       <section className="content-section py-8 border-t border-border">

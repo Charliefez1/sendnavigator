@@ -11,7 +11,7 @@ interface PageOrientationProps {
 export function PageOrientation({ 
   title, 
   description, 
-  lastUpdated = "4th February 2026",
+  lastUpdated = "7th February 2026",
   children 
 }: PageOrientationProps) {
   return (

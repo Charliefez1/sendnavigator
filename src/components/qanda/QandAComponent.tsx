@@ -60,7 +60,7 @@ export function QandAComponent() {
               { label: "Where we are now", path: "/where-we-are-now" },
               { label: "What is changing", path: "/what-is-changing" },
             ],
-            lastUpdated: "4th February 2026",
+            lastUpdated: "7th February 2026",
           },
         });
         setIsLoading(false);
@@ -79,14 +79,14 @@ export function QandAComponent() {
             whatWeDoNotKnow: [],
             clarifications: { doesMean: [], doesNotMean: [] },
             readMore: [{ label: "Where we are now", path: "/where-we-are-now" }],
-            lastUpdated: "4th February 2026",
+            lastUpdated: "7th February 2026",
           },
         });
         setIsLoading(false);
         return;
       }
 
-      // Set the response from the AI
+      // Set the response from ADHDi
       setResponse(data as QandAResponse);
     } catch (err) {
       console.error("Q&A request failed:", err);
@@ -104,7 +104,7 @@ export function QandAComponent() {
             { label: "Where we are now", path: "/where-we-are-now" },
             { label: "About this resource", path: "/about" },
           ],
-          lastUpdated: "4th February 2026",
+          lastUpdated: "7th February 2026",
         },
       });
     } finally {
@@ -157,7 +157,7 @@ export function QandAComponent() {
         </div>
       )}
 
-      {/* AI Trust Notice - required by Prompt 9 */}
+      {/* ADHDi Trust Notice - required by Prompt 9 */}
       <div className="mt-6 pt-4 border-t border-border">
         <AITrustNotice />
         <p className="text-xs text-muted-foreground mt-3 flex items-center gap-2">

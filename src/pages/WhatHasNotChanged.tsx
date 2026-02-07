@@ -13,7 +13,7 @@ export default function WhatHasNotChanged() {
       <PageOrientation
         title="What has not changed"
         description="Legal rights and protections that remain in place."
-        lastUpdated="4th February 2026"
+        lastUpdated="7th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />

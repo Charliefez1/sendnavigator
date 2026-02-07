@@ -8,7 +8,7 @@ interface PageHeaderProps {
   lastUpdated?: string;
 }
 
-export function PageHeader({ title, description, children, lastUpdated = "4th February 2026" }: PageHeaderProps) {
+export function PageHeader({ title, description, children, lastUpdated = "7th February 2026" }: PageHeaderProps) {
   return (
     <header className="content-section py-8 sm:py-12 border-b border-border mb-8">
       <h1 className="text-2xl sm:text-3xl font-semibold text-foreground mb-3">

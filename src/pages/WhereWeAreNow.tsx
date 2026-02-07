@@ -11,7 +11,7 @@ export default function WhereWeAreNow() {
       <PageOrientation
         title="What we know so far"
         description="The current state of the SEND system based on confirmed facts and data."
-        lastUpdated="4th February 2026"
+        lastUpdated="7th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
