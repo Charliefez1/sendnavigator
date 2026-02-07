@@ -4,7 +4,19 @@ import {
   SixtySecondSummary,
   StatusSection,
 } from "@/components/templates";
-import { HelpCircle } from "lucide-react";
+import {
+  HelpCircle,
+  SlidersHorizontal,
+  Layers,
+  Shield,
+  Scale,
+  FileText,
+  BookOpen,
+  Coins,
+  ShieldAlert,
+  Clock,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -14,12 +26,14 @@ import {
 
 interface UnknownDetail {
   question: string;
+  icon: LucideIcon;
   research: string[];
   families: string[];
 }
 
 const unknowns: UnknownDetail[] = [
   {
+    icon: SlidersHorizontal,
     question: "Whether the legal threshold for plans will change",
     research: [
       "There is strong agreement across government and local authorities that Education, Health and Care Plan numbers have grown faster than the system can manage.",
@@ -32,6 +46,7 @@ const unknowns: UnknownDetail[] = [
     ],
   },
   {
+    icon: Layers,
     question: "Whether a tiered system will be introduced",
     research: [
       "Tiered models have been discussed as a way to organise support before a full plan is needed.",
@@ -44,6 +59,7 @@ const unknowns: UnknownDetail[] = [
     ],
   },
   {
+    icon: Shield,
     question: "Whether lower tier plans would be enforceable",
     research: [
       "Current enforceability only applies to Education, Health and Care Plans.",
@@ -56,6 +72,7 @@ const unknowns: UnknownDetail[] = [
     ],
   },
   {
+    icon: Scale,
     question: "Whether appeal rights will change",
     research: [
       "Tribunal appeals have increased sharply, with families winning most cases.",
@@ -68,6 +85,7 @@ const unknowns: UnknownDetail[] = [
     ],
   },
   {
+    icon: FileText,
     question: "Whether reforms would affect existing plans",
     research: [
       "Large scale reforms in the past have usually protected existing plans during transition.",
@@ -79,6 +97,7 @@ const unknowns: UnknownDetail[] = [
     ],
   },
   {
+    icon: BookOpen,
     question: "Whether national standards would be law or guidance",
     research: [
       "National standards are widely discussed as a way to reduce postcode differences.",
@@ -91,6 +110,7 @@ const unknowns: UnknownDetail[] = [
     ],
   },
   {
+    icon: Coins,
     question: "How funding changes would affect school responsibilities",
     research: [
       "There is concern that funding is too tightly linked to plans.",
@@ -103,6 +123,7 @@ const unknowns: UnknownDetail[] = [
     ],
   },
   {
+    icon: ShieldAlert,
     question: "What protections would apply if support is agreed but not delivered",
     research: [
       "Currently, legal protection comes from plans, not informal agreements.",
@@ -115,6 +136,7 @@ const unknowns: UnknownDetail[] = [
     ],
   },
   {
+    icon: Clock,
     question: "How quickly major reforms would take effect",
     research: [
       "Major SEND reforms historically take several years to implement.",
@@ -161,7 +183,7 @@ export default function WhatWeDoNotKnow() {
             >
               <AccordionTrigger className="text-left font-medium text-foreground hover:no-underline gap-3">
                 <span className="flex items-center gap-3">
-                  <span className="text-muted-foreground flex-shrink-0">?</span>
+                  <item.icon className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                   {item.question}
                 </span>
               </AccordionTrigger>
