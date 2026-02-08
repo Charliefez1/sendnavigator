@@ -93,43 +93,42 @@ export function JourneyNavigation() {
     >
       <div className="content-wide">
         {/* Desktop: horizontal scrollable tabs */}
-        <div className="hidden md:block py-1.5">
-          <div className="flex items-center justify-between w-full" role="tablist" aria-label="Journey steps">
-            {journeySteps.map((step, index) => (
-              <div key={step.path} className="flex items-center">
-                <NavLink
-                  to={step.path}
-                  role="tab"
-                  aria-selected={step.path === location.pathname}
-                  aria-label={`${step.label} - ${step.description}`}
-                  className={({ isActive }) =>
-                    cn(
-                      "group flex items-center gap-1.5 px-2 lg:px-3 py-1.5 rounded-lg text-xs lg:text-sm font-semibold transition-all duration-200 whitespace-nowrap",
-                      isActive
-                        ? `${step.colorClass}-active shadow-sm`
-                        : `${step.colorClass} hover:opacity-90 hover:shadow-sm`
-                    )
-                  }
-                >
-                  <span className={cn(
-                    "flex items-center justify-center w-5 h-5 lg:w-6 lg:h-6 rounded-md text-[10px] lg:text-xs font-bold transition-all duration-200",
-                    step.path === location.pathname
-                      ? "bg-white/25"
-                      : "bg-black/8 dark:bg-white/10 group-hover:bg-black/12 dark:group-hover:bg-white/15"
-                  )}>
-                    {index + 1}
-                  </span>
-                  <span className="hidden lg:inline">{step.shortLabel}</span>
-                </NavLink>
-                {index < journeySteps.length - 1 && (
-                  <ChevronRight
-                    className="w-3 h-3 text-border/60 mx-0.5 shrink-0"
-                    aria-hidden="true"
-                  />
-                )}
-              </div>
-            ))}
-          </div>
+        <div className="hidden md:flex items-center justify-between py-1.5 gap-0.5" role="tablist" aria-label="Journey steps">
+          {journeySteps.map((step, index) => (
+            <div key={step.path} className="flex items-center">
+              <NavLink
+                to={step.path}
+                role="tab"
+                aria-selected={step.path === location.pathname}
+                aria-label={`${step.label} - ${step.description}`}
+                title={step.description}
+                className={({ isActive }) =>
+                  cn(
+                    "group flex items-center gap-1 px-1.5 lg:px-2.5 py-1.5 rounded-lg text-[11px] lg:text-xs font-semibold transition-all duration-200 whitespace-nowrap",
+                    isActive
+                      ? `${step.colorClass}-active shadow-sm`
+                      : `${step.colorClass} hover:opacity-90 hover:shadow-sm`
+                  )
+                }
+              >
+                <span className={cn(
+                  "flex items-center justify-center w-5 h-5 rounded-md text-[10px] font-bold shrink-0",
+                  step.path === location.pathname
+                    ? "bg-white/25"
+                    : "bg-black/8 dark:bg-white/10"
+                )}>
+                  {index + 1}
+                </span>
+                <span className="truncate max-w-[4rem] lg:max-w-none">{step.shortLabel}</span>
+              </NavLink>
+              {index < journeySteps.length - 1 && (
+                <ChevronRight
+                  className="w-2.5 h-2.5 text-border/50 mx-px shrink-0 hidden lg:block"
+                  aria-hidden="true"
+                />
+              )}
+            </div>
+          ))}
         </div>
 
         {/* Mobile: collapsible */}
