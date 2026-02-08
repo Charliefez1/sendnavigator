@@ -53,50 +53,50 @@
     --highlight-border: 42 50% 78%;
 
     /* Information status categories */
-    --status-confirmed: 155 45% 38%;
-    --status-confirmed-bg: 155 35% 94%;
-    --status-confirmed-border: 155 30% 78%;
+    --status-confirmed: 175 55% 34%;
+    --status-confirmed-bg: 175 40% 94%;
+    --status-confirmed-border: 175 35% 75%;
 
-    --status-discussed: 38 55% 50%;
-    --status-discussed-bg: 38 45% 94%;
-    --status-discussed-border: 38 40% 78%;
+    --status-discussed: 42 75% 46%;
+    --status-discussed-bg: 42 60% 93%;
+    --status-discussed-border: 42 50% 72%;
 
-    --status-unconfirmed: 220 12% 55%;
-    --status-unconfirmed-bg: 220 10% 94%;
-    --status-unconfirmed-border: 220 10% 78%;
+    --status-unconfirmed: 25 80% 50%;
+    --status-unconfirmed-bg: 25 60% 95%;
+    --status-unconfirmed-border: 25 55% 75%;
 
-    --status-leaked: 0 72% 51%;
+    --status-leaked: 0 72% 48%;
     --status-leaked-bg: 0 60% 96%;
-    --status-leaked-border: 0 60% 70%;
+    --status-leaked-border: 0 55% 68%;
 
     /* Timeline status colors */
-    --timeline-completed: 155 45% 35%;
-    --timeline-completed-bg: 155 35% 94%;
-    --timeline-upcoming: 38 55% 48%;
-    --timeline-upcoming-bg: 38 45% 94%;
-    --timeline-uncertain: 220 12% 55%;
-    --timeline-uncertain-bg: 220 10% 94%;
-    --timeline-new: 155 45% 35%;
-    --timeline-new-bg: 155 35% 94%;
-    --timeline-clarification: 200 50% 45%;
-    --timeline-clarification-bg: 200 40% 94%;
+    --timeline-completed: 175 55% 32%;
+    --timeline-completed-bg: 175 40% 94%;
+    --timeline-upcoming: 42 75% 44%;
+    --timeline-upcoming-bg: 42 60% 93%;
+    --timeline-uncertain: 25 80% 50%;
+    --timeline-uncertain-bg: 25 60% 95%;
+    --timeline-new: 175 55% 32%;
+    --timeline-new-bg: 175 40% 94%;
+    --timeline-clarification: 200 60% 42%;
+    --timeline-clarification-bg: 200 45% 94%;
 
-    /* Journey navigation - cool to warm */
+    /* Journey navigation - distinct spectrum */
     --journey-current: 16 65% 52%;
-    --journey-complete: 155 35% 48%;
-    --journey-pending: 25 10% 72%;
-    --journey-confirmed: 190 55% 42%;
-    --journey-discussed: 38 65% 50%;
-    --journey-unconfirmed: 16 70% 55%;
-    --journey-next: 340 50% 50%;
+    --journey-complete: 175 50% 40%;
+    --journey-pending: 220 8% 68%;
+    --journey-confirmed: 200 65% 42%;
+    --journey-discussed: 42 80% 46%;
+    --journey-unconfirmed: 25 85% 52%;
+    --journey-next: 335 60% 48%;
 
     /* Sidebar */
     --sidebar-background: 35 35% 96%;
-    --sidebar-foreground: 25 25% 25%;
+    --sidebar-foreground: 220 20% 22%;
     --sidebar-primary: 16 65% 52%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 155 25% 92%;
-    --sidebar-accent-foreground: 155 35% 28%;
+    --sidebar-accent: 175 25% 92%;
+    --sidebar-accent-foreground: 175 40% 26%;
     --sidebar-border: 30 20% 88%;
     --sidebar-ring: 16 55% 55%;
   }
@@ -133,47 +133,47 @@
     --highlight: 220 12% 15%;
     --highlight-border: 220 10% 28%;
 
-    --status-confirmed: 155 45% 50%;
-    --status-confirmed-bg: 155 25% 15%;
-    --status-confirmed-border: 155 25% 30%;
+    --status-confirmed: 175 50% 55%;
+    --status-confirmed-bg: 175 30% 15%;
+    --status-confirmed-border: 175 30% 32%;
 
-    --status-discussed: 38 60% 55%;
-    --status-discussed-bg: 38 25% 15%;
-    --status-discussed-border: 38 25% 30%;
+    --status-discussed: 42 70% 60%;
+    --status-discussed-bg: 42 35% 14%;
+    --status-discussed-border: 42 35% 30%;
 
-    --status-unconfirmed: 220 15% 60%;
-    --status-unconfirmed-bg: 220 10% 18%;
-    --status-unconfirmed-border: 220 10% 30%;
+    --status-unconfirmed: 25 80% 62%;
+    --status-unconfirmed-bg: 25 40% 14%;
+    --status-unconfirmed-border: 25 40% 30%;
 
-    --status-leaked: 0 72% 58%;
+    --status-leaked: 0 70% 62%;
     --status-leaked-bg: 0 40% 14%;
-    --status-leaked-border: 0 50% 30%;
+    --status-leaked-border: 0 45% 32%;
 
-    --timeline-completed: 155 45% 50%;
-    --timeline-completed-bg: 155 25% 15%;
-    --timeline-upcoming: 38 60% 55%;
-    --timeline-upcoming-bg: 38 25% 15%;
-    --timeline-uncertain: 220 15% 60%;
-    --timeline-uncertain-bg: 220 10% 18%;
-    --timeline-new: 155 45% 50%;
-    --timeline-new-bg: 155 25% 15%;
-    --timeline-clarification: 200 55% 55%;
-    --timeline-clarification-bg: 200 30% 15%;
+    --timeline-completed: 175 50% 55%;
+    --timeline-completed-bg: 175 30% 15%;
+    --timeline-upcoming: 42 70% 60%;
+    --timeline-upcoming-bg: 42 35% 14%;
+    --timeline-uncertain: 25 80% 62%;
+    --timeline-uncertain-bg: 25 40% 14%;
+    --timeline-new: 175 50% 55%;
+    --timeline-new-bg: 175 30% 15%;
+    --timeline-clarification: 200 60% 58%;
+    --timeline-clarification-bg: 200 35% 15%;
 
-    --journey-current: 16 60% 58%;
-    --journey-complete: 155 40% 55%;
-    --journey-pending: 220 8% 42%;
-    --journey-confirmed: 190 50% 55%;
-    --journey-discussed: 38 60% 55%;
-    --journey-unconfirmed: 16 65% 60%;
-    --journey-next: 340 45% 58%;
+    --journey-current: 16 60% 60%;
+    --journey-complete: 175 45% 55%;
+    --journey-pending: 220 8% 45%;
+    --journey-confirmed: 200 60% 58%;
+    --journey-discussed: 42 75% 58%;
+    --journey-unconfirmed: 25 80% 62%;
+    --journey-next: 335 55% 62%;
 
     --sidebar-background: 220 15% 8%;
     --sidebar-foreground: 210 12% 88%;
-    --sidebar-primary: 16 60% 58%;
+    --sidebar-primary: 16 60% 60%;
     --sidebar-primary-foreground: 220 15% 10%;
-    --sidebar-accent: 155 20% 16%;
-    --sidebar-accent-foreground: 155 40% 72%;
+    --sidebar-accent: 175 20% 16%;
+    --sidebar-accent-foreground: 175 40% 72%;
     --sidebar-border: 220 10% 20%;
     --sidebar-ring: 16 55% 55%;
   }
