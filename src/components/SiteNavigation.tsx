@@ -47,29 +47,29 @@ function DesktopDropdown({ item }: { item: NavItem }) {
       <button
         onClick={() => setOpen(!open)}
         className={cn(
-          "flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-full transition-colors",
+          "flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200",
           isChildActive || location.pathname === item.path
-            ? "bg-primary/10 text-primary"
-            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+            ? "bg-primary text-primary-foreground shadow-sm"
+            : "text-foreground/80 hover:text-foreground hover:bg-primary/8"
         )}
       >
-        <item.icon className="w-3.5 h-3.5" aria-hidden="true" />
+        <item.icon className="w-4 h-4" aria-hidden="true" />
         {item.label}
-        <ChevronDown className={cn("w-3 h-3 transition-transform", open && "rotate-180")} aria-hidden="true" />
+        <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-200", open && "rotate-180")} aria-hidden="true" />
       </button>
       {open && (
-        <div className="absolute top-full left-0 mt-1 bg-card border border-border rounded-xl shadow-warm py-1 min-w-[200px] z-50 animate-fade-in">
+        <div className="absolute top-full left-0 mt-2 bg-card border border-border rounded-xl shadow-lg py-1.5 min-w-[220px] z-50 animate-fade-in">
           <NavLink
             to={item.path}
             onClick={() => setOpen(false)}
             className={({ isActive }) =>
               cn(
-                "flex items-center gap-2 px-4 py-2.5 text-sm transition-colors",
+                "flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium transition-colors",
                 isActive ? "bg-primary/10 text-primary font-semibold" : "text-foreground hover:bg-muted"
               )
             }
           >
-            <item.icon className="w-3.5 h-3.5" aria-hidden="true" />
+            <item.icon className="w-4 h-4" aria-hidden="true" />
             {item.label}
           </NavLink>
           <div className="border-t border-border/50 my-1" />
@@ -80,12 +80,12 @@ function DesktopDropdown({ item }: { item: NavItem }) {
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
                 cn(
-                  "flex items-center gap-2 px-4 py-2.5 text-sm transition-colors",
+                  "flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium transition-colors",
                   isActive ? "bg-primary/10 text-primary font-semibold" : "text-foreground hover:bg-muted"
                 )
               }
             >
-              <child.icon className="w-3.5 h-3.5" aria-hidden="true" />
+              <child.icon className="w-4 h-4" aria-hidden="true" />
               {child.label}
             </NavLink>
           ))}
@@ -103,10 +103,10 @@ export function SiteNavigation() {
     : undefined;
 
   return (
-    <nav className="bg-card/80 border-b border-border/40" aria-label="Site navigation">
+    <nav className="bg-secondary/60 dark:bg-secondary/30 border-b border-border/50" aria-label="Site navigation">
       <div className="content-wide flex items-center justify-between">
         {/* Desktop */}
-        <div className="hidden md:flex items-center justify-center gap-1 py-1.5 flex-1">
+        <div className="hidden md:flex items-center justify-center gap-1.5 py-2.5 flex-1">
           {siteLinks.map((link) =>
             link.children ? (
               <DesktopDropdown key={link.path} item={link} />
@@ -116,14 +116,14 @@ export function SiteNavigation() {
                 to={link.path}
                 className={({ isActive }) =>
                   cn(
-                    "flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-full transition-colors",
+                    "flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200",
                     isActive
-                      ? "bg-primary/10 text-primary"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      ? "bg-primary text-primary-foreground shadow-sm"
+                      : "text-foreground/80 hover:text-foreground hover:bg-primary/8"
                   )
                 }
               >
-                <link.icon className="w-3.5 h-3.5" aria-hidden="true" />
+                <link.icon className="w-4 h-4" aria-hidden="true" />
                 {link.label}
               </NavLink>
             )
@@ -133,7 +133,7 @@ export function SiteNavigation() {
         {/* Mobile toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden flex items-center gap-2 py-3 text-sm font-medium text-muted-foreground min-h-[48px]"
+          className="md:hidden flex items-center gap-2.5 py-3.5 text-sm font-semibold text-foreground/80 min-h-[48px]"
           aria-expanded={isOpen}
           aria-controls="site-menu"
           aria-label={isOpen ? "Close site menu" : "Open site menu"}
@@ -142,14 +142,14 @@ export function SiteNavigation() {
           <span>{currentPage?.label || "Site menu"}</span>
         </button>
 
-        <div className="py-1.5">
+        <div className="py-2">
           <ThemeToggle />
         </div>
       </div>
 
       {/* Mobile dropdown */}
       {isOpen && (
-        <div id="site-menu" className="md:hidden content-wide pb-3 space-y-1 animate-fade-in" role="navigation">
+        <div id="site-menu" className="md:hidden content-wide pb-4 space-y-1 animate-fade-in" role="navigation">
           {siteLinks.map((link) => (
             <div key={link.path}>
               <NavLink
@@ -157,12 +157,12 @@ export function SiteNavigation() {
                 onClick={() => setIsOpen(false)}
                 className={({ isActive }) =>
                   cn(
-                    "flex items-center gap-3 px-4 py-3 rounded-xl text-base transition-colors min-h-[48px]",
-                    isActive ? "bg-primary/10 text-primary font-semibold" : "text-foreground hover:bg-muted"
+                    "flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 min-h-[48px]",
+                    isActive ? "bg-primary text-primary-foreground font-semibold shadow-sm" : "text-foreground hover:bg-primary/8"
                   )
                 }
               >
-                <link.icon className="w-4 h-4" aria-hidden="true" />
+                <link.icon className="w-4.5 h-4.5" aria-hidden="true" />
                 {link.label}
               </NavLink>
               {link.children?.map((child) => (
@@ -172,12 +172,12 @@ export function SiteNavigation() {
                   onClick={() => setIsOpen(false)}
                   className={({ isActive }) =>
                     cn(
-                      "flex items-center gap-3 pl-10 pr-4 py-2.5 rounded-xl text-sm transition-colors min-h-[48px]",
+                      "flex items-center gap-3 pl-11 pr-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 min-h-[48px]",
                       isActive ? "bg-primary/10 text-primary font-semibold" : "text-muted-foreground hover:bg-muted"
                     )
                   }
                 >
-                  <child.icon className="w-3.5 h-3.5" aria-hidden="true" />
+                  <child.icon className="w-4 h-4" aria-hidden="true" />
                   {child.label}
                 </NavLink>
               ))}
