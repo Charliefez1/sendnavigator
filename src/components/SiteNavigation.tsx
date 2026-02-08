@@ -1,47 +1,133 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { Menu, X, BookOpen, User, FileText, HelpCircle, Building2, Heart, MessageCircleQuestion, MessageSquare } from "lucide-react";
+import { Menu, X, BookOpen, User, FileText, HelpCircle, Building2, Heart, MessageCircleQuestion, MessageSquare, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 
-const siteLinks = [
+interface NavItem {
+  path: string;
+  label: string;
+  icon: React.ElementType;
+  children?: NavItem[];
+}
+
+const siteLinks: NavItem[] = [
   { path: "/how-to-use", label: "How to use", icon: HelpCircle },
-  { path: "/about", label: "About", icon: BookOpen },
-  { path: "/why-i-built-this", label: "Why I built this", icon: Heart },
-  { path: "/rich-ferriman", label: "Rich Ferriman", icon: User },
-  { path: "/neurodiversity-global", label: "Neurodiversity Global", icon: Building2 },
+  {
+    path: "/about", label: "About", icon: BookOpen,
+    children: [
+      { path: "/why-i-built-this", label: "Why I built this", icon: Heart },
+      { path: "/rich-ferriman", label: "Rich Ferriman", icon: User },
+      { path: "/neurodiversity-global", label: "Neurodiversity Global", icon: Building2 },
+    ],
+  },
   { path: "/community-questions", label: "Questions", icon: MessageCircleQuestion },
   { path: "/feedback", label: "Feedback", icon: MessageSquare },
   { path: "/sources", label: "Sources", icon: FileText },
 ];
 
+const allPaths = siteLinks.flatMap((l) => [l.path, ...(l.children?.map((c) => c.path) || [])]);
+
+function DesktopDropdown({ item }: { item: NavItem }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+  const isChildActive = item.children?.some((c) => c.path === location.pathname);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className={cn(
+          "flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-full transition-colors",
+          isChildActive || location.pathname === item.path
+            ? "bg-primary/10 text-primary"
+            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+        )}
+      >
+        <item.icon className="w-3.5 h-3.5" aria-hidden="true" />
+        {item.label}
+        <ChevronDown className={cn("w-3 h-3 transition-transform", open && "rotate-180")} aria-hidden="true" />
+      </button>
+      {open && (
+        <div className="absolute top-full left-0 mt-1 bg-card border border-border rounded-xl shadow-warm py-1 min-w-[200px] z-50 animate-fade-in">
+          <NavLink
+            to={item.path}
+            onClick={() => setOpen(false)}
+            className={({ isActive }) =>
+              cn(
+                "flex items-center gap-2 px-4 py-2.5 text-sm transition-colors",
+                isActive ? "bg-primary/10 text-primary font-semibold" : "text-foreground hover:bg-muted"
+              )
+            }
+          >
+            <item.icon className="w-3.5 h-3.5" aria-hidden="true" />
+            {item.label}
+          </NavLink>
+          <div className="border-t border-border/50 my-1" />
+          {item.children!.map((child) => (
+            <NavLink
+              key={child.path}
+              to={child.path}
+              onClick={() => setOpen(false)}
+              className={({ isActive }) =>
+                cn(
+                  "flex items-center gap-2 px-4 py-2.5 text-sm transition-colors",
+                  isActive ? "bg-primary/10 text-primary font-semibold" : "text-foreground hover:bg-muted"
+                )
+              }
+            >
+              <child.icon className="w-3.5 h-3.5" aria-hidden="true" />
+              {child.label}
+            </NavLink>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function SiteNavigation() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const currentPage = siteLinks.find((l) => l.path === location.pathname);
+  const currentPage = allPaths.includes(location.pathname)
+    ? siteLinks.flatMap((l) => [l, ...(l.children || [])]).find((l) => l.path === location.pathname)
+    : undefined;
 
   return (
     <nav className="bg-card/80 border-b border-border/40" aria-label="Site navigation">
       <div className="content-wide flex items-center justify-between">
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-1 py-1.5">
-          {siteLinks.map((link) => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              className={({ isActive }) =>
-                cn(
-                  "flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-full transition-colors",
-                  isActive
-                    ? "bg-primary/10 text-primary"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                )
-              }
-            >
-              <link.icon className="w-3.5 h-3.5" aria-hidden="true" />
-              {link.label}
-            </NavLink>
-          ))}
+          {siteLinks.map((link) =>
+            link.children ? (
+              <DesktopDropdown key={link.path} item={link} />
+            ) : (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                className={({ isActive }) =>
+                  cn(
+                    "flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-full transition-colors",
+                    isActive
+                      ? "bg-primary/10 text-primary"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  )
+                }
+              >
+                <link.icon className="w-3.5 h-3.5" aria-hidden="true" />
+                {link.label}
+              </NavLink>
+            )
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -56,7 +142,6 @@ export function SiteNavigation() {
           <span>{currentPage?.label || "Site menu"}</span>
         </button>
 
-        {/* Theme toggle always visible */}
         <div className="py-1.5">
           <ThemeToggle />
         </div>
@@ -66,22 +151,37 @@ export function SiteNavigation() {
       {isOpen && (
         <div id="site-menu" className="md:hidden content-wide pb-3 space-y-1 animate-fade-in" role="navigation">
           {siteLinks.map((link) => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              onClick={() => setIsOpen(false)}
-              className={({ isActive }) =>
-                cn(
-                  "flex items-center gap-3 px-4 py-3 rounded-xl text-base transition-colors min-h-[48px]",
-                  isActive
-                    ? "bg-primary/10 text-primary font-semibold"
-                    : "text-foreground hover:bg-muted"
-                )
-              }
-            >
-              <link.icon className="w-4 h-4" aria-hidden="true" />
-              {link.label}
-            </NavLink>
+            <div key={link.path}>
+              <NavLink
+                to={link.path}
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  cn(
+                    "flex items-center gap-3 px-4 py-3 rounded-xl text-base transition-colors min-h-[48px]",
+                    isActive ? "bg-primary/10 text-primary font-semibold" : "text-foreground hover:bg-muted"
+                  )
+                }
+              >
+                <link.icon className="w-4 h-4" aria-hidden="true" />
+                {link.label}
+              </NavLink>
+              {link.children?.map((child) => (
+                <NavLink
+                  key={child.path}
+                  to={child.path}
+                  onClick={() => setIsOpen(false)}
+                  className={({ isActive }) =>
+                    cn(
+                      "flex items-center gap-3 pl-10 pr-4 py-2.5 rounded-xl text-sm transition-colors min-h-[48px]",
+                      isActive ? "bg-primary/10 text-primary font-semibold" : "text-muted-foreground hover:bg-muted"
+                    )
+                  }
+                >
+                  <child.icon className="w-3.5 h-3.5" aria-hidden="true" />
+                  {child.label}
+                </NavLink>
+              ))}
+            </div>
           ))}
         </div>
       )}
