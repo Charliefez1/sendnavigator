@@ -93,10 +93,10 @@ export function JourneyNavigation() {
     >
       <div className="content-wide">
         {/* Desktop: horizontal scrollable tabs */}
-        <div className="hidden md:block py-2.5">
-          <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide" role="tablist" aria-label="Journey steps">
+        <div className="hidden md:block py-1.5">
+          <div className="flex items-center justify-between w-full" role="tablist" aria-label="Journey steps">
             {journeySteps.map((step, index) => (
-              <div key={step.path} className="flex items-center shrink-0">
+              <div key={step.path} className="flex items-center">
                 <NavLink
                   to={step.path}
                   role="tab"
@@ -104,7 +104,7 @@ export function JourneyNavigation() {
                   aria-label={`${step.label} - ${step.description}`}
                   className={({ isActive }) =>
                     cn(
-                      "group flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 whitespace-nowrap",
+                      "group flex items-center gap-1.5 px-2 lg:px-3 py-1.5 rounded-lg text-xs lg:text-sm font-semibold transition-all duration-200 whitespace-nowrap",
                       isActive
                         ? `${step.colorClass}-active shadow-sm`
                         : `${step.colorClass} hover:opacity-90 hover:shadow-sm`
@@ -112,18 +112,18 @@ export function JourneyNavigation() {
                   }
                 >
                   <span className={cn(
-                    "flex items-center justify-center w-6 h-6 rounded-lg text-xs font-bold transition-all duration-200",
+                    "flex items-center justify-center w-5 h-5 lg:w-6 lg:h-6 rounded-md text-[10px] lg:text-xs font-bold transition-all duration-200",
                     step.path === location.pathname
                       ? "bg-white/25"
                       : "bg-black/8 dark:bg-white/10 group-hover:bg-black/12 dark:group-hover:bg-white/15"
                   )}>
                     {index + 1}
                   </span>
-                  <span>{step.shortLabel}</span>
+                  <span className="hidden lg:inline">{step.shortLabel}</span>
                 </NavLink>
                 {index < journeySteps.length - 1 && (
                   <ChevronRight
-                    className="w-3.5 h-3.5 text-border/60 mx-0.5 shrink-0"
+                    className="w-3 h-3 text-border/60 mx-0.5 shrink-0"
                     aria-hidden="true"
                   />
                 )}
