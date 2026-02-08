@@ -43,7 +43,7 @@ export default function RichFerriman() {
           </p>
 
           <p>
-            I am an award winning neuroinclusion consultant and trainer, and a father of four neurodivergent children. One of my children lives with acute co occurring conditions and the long term impact of childhood cancer. Over the past decade, I have spent as much time in boardrooms as I have on hospital wards and frontline environments. That dual perspective matters. It keeps strategy anchored in reality and decision making connected to human consequence.
+            I am an award winning neuroinclusion consultant and trainer, and a father of four neurodivergent children. One of my children lives with acute co-occurring neurodivergent conditions and the long term impact and trauma of childhood cancer. Over the past decade, I have spent as much time in boardrooms as I have on the floors of hospital wards. That dual perspective matters. It keeps strategy anchored in reality and decision making connected to human consequence.
           </p>
 
           <p>
