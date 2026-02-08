@@ -39,11 +39,18 @@ export function Footer() {
         </div>
 
         {/* Disclaimer */}
-        <div className="mt-8 pt-6 border-t border-border/60">
+        <div className="mt-8 pt-6 border-t border-border/60 flex items-end justify-between">
           <p className="text-xs text-muted-foreground max-w-2xl leading-relaxed">
             This is an independent public resource. It does not provide legal, medical, or
             professional advice. Information applies to England only.
           </p>
+          <Link
+            to="/admin"
+            className="text-[10px] text-muted-foreground/30 hover:text-muted-foreground/60 transition-colors"
+            aria-label="Admin"
+          >
+            ·
+          </Link>
         </div>
       </div>
     </footer>
