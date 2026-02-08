@@ -46,10 +46,9 @@ export function Footer() {
           </p>
           <Link
             to="/admin"
-            className="text-[10px] text-muted-foreground/30 hover:text-muted-foreground/60 transition-colors"
-            aria-label="Admin"
+            className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors px-3 py-1.5 rounded-full hover:bg-primary/5"
           >
-            ·
+            Admin
           </Link>
         </div>
       </div>
