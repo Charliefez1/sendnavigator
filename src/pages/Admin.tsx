@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Lock, CheckCircle, XCircle, Trash2, MessageCircleQuestion, MessageSquare, Eye } from "lucide-react";
+import { Lock, CheckCircle, XCircle, Trash2, MessageCircleQuestion, MessageSquare, Eye, BookOpen } from "lucide-react";
+import { KnowledgeBaseManager } from "@/components/admin/KnowledgeBaseManager";
 
 interface QuestionItem {
   id: string;
@@ -41,7 +42,7 @@ export default function Admin() {
   const [pin, setPin] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [pinError, setPinError] = useState(false);
-  const [activeTab, setActiveTab] = useState<"questions" | "feedback">("questions");
+  const [activeTab, setActiveTab] = useState<"questions" | "feedback" | "knowledge">("questions");
   const [questions, setQuestions] = useState<QuestionItem[]>([]);
   const [feedbackItems, setFeedbackItems] = useState<FeedbackItem[]>([]);
   const [loading, setLoading] = useState(false);
@@ -184,10 +185,23 @@ export default function Admin() {
             <MessageSquare className="h-4 w-4" />
             Feedback {pendingFeedback > 0 && `(${pendingFeedback})`}
           </button>
+          <button
+            onClick={() => setActiveTab("knowledge")}
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+              activeTab === "knowledge"
+                ? "bg-primary text-primary-foreground"
+                : "bg-secondary text-secondary-foreground"
+            }`}
+          >
+            <BookOpen className="h-4 w-4" />
+            Knowledge Base
+          </button>
         </div>
 
         {/* Content */}
-        {activeTab === "questions" ? (
+        {activeTab === "knowledge" ? (
+          <KnowledgeBaseManager pin={pin} />
+        ) : activeTab === "questions" ? (
           <div className="space-y-3">
             {questions.length === 0 ? (
               <p className="text-muted-foreground text-center py-8">No questions yet.</p>

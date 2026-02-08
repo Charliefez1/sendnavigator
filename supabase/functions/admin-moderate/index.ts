@@ -87,6 +87,52 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Knowledge base CRUD
+    if (action === "kb_list") {
+      const { data, error } = await supabase
+        .from("knowledge_base")
+        .select("*")
+        .order("topic", { ascending: true });
+      if (error) throw error;
+      return new Response(JSON.stringify({ data }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (action === "kb_create") {
+      const { topic, content } = await req.json().catch(() => ({}));
+      const { data, error } = await supabase
+        .from("knowledge_base")
+        .insert({ topic: id.topic, content: id.content })
+        .select()
+        .single();
+      if (error) throw error;
+      return new Response(JSON.stringify({ data }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (action === "kb_update") {
+      const { data, error } = await supabase
+        .from("knowledge_base")
+        .update({ topic: id.topic, content: id.content, status: id.status })
+        .eq("id", id.entryId)
+        .select()
+        .single();
+      if (error) throw error;
+      return new Response(JSON.stringify({ data }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (action === "kb_delete") {
+      const { error } = await supabase.from("knowledge_base").delete().eq("id", id);
+      if (error) throw error;
+      return new Response(JSON.stringify({ success: true }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     if (action === "stats") {
       const [questions, feedback] = await Promise.all([
         supabase.from("user_questions").select("status", { count: "exact" }),

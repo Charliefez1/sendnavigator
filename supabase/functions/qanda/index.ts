@@ -1,100 +1,13 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-// Knowledge base content - the ONLY source AI may use
-const KNOWLEDGE_BASE = `
-# SEND REFORM NAVIGATOR - KNOWLEDGE BASE
-Last updated: 4th February 2026
-
-## CURRENT LEGAL POSITION (CONFIRMED)
-
-The current legal framework for SEND in England is:
-- Children and Families Act 2014: This remains the primary legislation governing SEND
-- SEND Code of Practice 2015: This remains the statutory guidance
-- Education, Health and Care Plans (EHCPs): These continue to be the mechanism for legally binding support
-- Tribunal rights: The SEND Tribunal system remains in place
-
-These laws and protections are IN FORCE TODAY. No legislation has been passed to change them.
-
-Local authority duties under the current law include:
-- Identifying children with SEND
-- Assessing needs where requested
-- Issuing EHCPs where the legal threshold is met
-- Ensuring provision in the EHCP is delivered
-- Conducting annual reviews
-
-## CONFIRMED CHANGES (CONFIRMED)
-
-March 2022: The SEND Review was published, followed by the Green Paper consultation.
-March 2023: The SEND and Alternative Provision Improvement Plan was published.
-
-The Improvement Plan includes:
-- Plans to develop national standards
-- Proposals for strengthening early support
-- Intentions around workforce development
-- Commitment to improving local SEND services
-
-IMPORTANT: The Improvement Plan describes intentions. It does NOT automatically change the law. Any changes to legal rights would require consultation and legislation.
-
-## EHCPS AND RIGHTS (CONFIRMED)
-
-EHCPs remain the legal mechanism for specifying and securing support for children and young people with significant SEND.
-
-Key facts:
-- EHCPs are issued under the Children and Families Act 2014
-- They create legally binding duties on local authorities
-- Parents have the right to request an assessment
-- There is a right of appeal to the SEND Tribunal
-- Annual reviews are required
-
-There is NO confirmed legislation to abolish EHCPs or remove the right to appeal.
-
-## LEAKS AND UNCONFIRMED REPORTS (UNCONFIRMED)
-
-Various media outlets have reported on possible government plans for SEND reform. These include reports about:
-- Possible changes to eligibility thresholds
-- Discussions about funding mechanisms
-- Potential reforms to the EHCP system
-
-CRITICAL CONTEXT:
-- These are NOT government policy
-- They have NOT been formally announced
-- They would require legislation to implement
-
-What would need to happen for changes to become real:
-1. Formal government announcement or white paper
-2. Public consultation period
-3. Draft legislation published
-4. Parliamentary scrutiny and debate
-5. Royal Assent for any Bill
-6. Implementation period
-7. Commencement orders to bring provisions into force
-
-## AREAS WHERE INFORMATION IS NOT KNOWN (UNKNOWN)
-
-- Full implementation timeline for announced improvement plan commitments
-- Detailed guidance to accompany any policy changes
-- How funding will be allocated across local authorities
-- What any future legislation might contain
-- When or if consultations will be launched on specific changes
-- How any changes would affect existing EHCPs
-
-## INTERNAL PAGES FOR REFERENCE
-
-- /where-we-are-now - Current SEND system and law
-- /what-is-changing - Confirmed reforms and plans
-- /what-the-leaks-are-saying - Unconfirmed reports
-- /what-this-could-mean - Practical implications
-- /timeline - Key dates and milestones
-- /about - About this resource
-`;
-
 // System prompt encoding all guardrails
-const SYSTEM_PROMPT = `You are the Q&A assistant for SEND Reform Navigator, a calm, neutral, plain English public resource about SEND reform in England.
+const SYSTEM_PROMPT_TEMPLATE = `You are the Q&A assistant for SEND Reform Navigator, a calm, neutral, plain English public resource about SEND reform in England.
 
 ## YOUR ROLE
 You help parents, teachers, and professionals understand what is happening with SEND reform. You reduce confusion and anxiety. You do NOT persuade, campaign, or provide legal advice.
@@ -153,13 +66,19 @@ Always:
 - No emotive or political language
 - No reassurance without evidence
 
+## INTERNAL PAGES FOR REFERENCE
+- /where-we-are-now - Current SEND system and law
+- /what-is-changing - Confirmed reforms and plans
+- /what-the-leaks-are-saying - Unconfirmed reports
+- /what-this-could-mean - Practical implications
+- /timeline - Key dates and milestones
+- /about - About this resource
+
 ## KNOWLEDGE BASE
 
-${KNOWLEDGE_BASE}
 `;
 
 serve(async (req) => {
-  // Handle CORS
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
@@ -183,7 +102,34 @@ serve(async (req) => {
       );
     }
 
-    // Log the question for audit (without PII)
+    // Fetch knowledge base from database
+    const supabase = createClient(
+      Deno.env.get("SUPABASE_URL")!,
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+    );
+
+    const { data: kbEntries, error: kbError } = await supabase
+      .from("knowledge_base")
+      .select("topic, content")
+      .eq("status", "active")
+      .order("topic");
+
+    if (kbError) {
+      console.error("Failed to fetch knowledge base:", kbError);
+    }
+
+    // Build knowledge base text from DB entries
+    let knowledgeText = "";
+    if (kbEntries && kbEntries.length > 0) {
+      knowledgeText = kbEntries
+        .map((entry: { topic: string; content: string }) => `## ${entry.topic}\n\n${entry.content}`)
+        .join("\n\n");
+    } else {
+      knowledgeText = "No knowledge base entries available. Please inform the user that the knowledge base is being updated.";
+    }
+
+    const systemPrompt = SYSTEM_PROMPT_TEMPLATE + knowledgeText;
+
     console.log(`Q&A query received: ${question.substring(0, 100)}...`);
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
@@ -195,10 +141,10 @@ serve(async (req) => {
       body: JSON.stringify({
         model: "google/gemini-3-flash-preview",
         messages: [
-          { role: "system", content: SYSTEM_PROMPT },
+          { role: "system", content: systemPrompt },
           { role: "user", content: `Question: ${question}\n\nRespond with valid JSON only, following the exact format specified.` },
         ],
-        temperature: 0.2, // Low temperature for consistency
+        temperature: 0.2,
       }),
     });
 
@@ -233,9 +179,7 @@ serve(async (req) => {
       );
     }
 
-    // Parse the JSON response from the AI
     try {
-      // Extract JSON from the response (handle markdown code blocks)
       let jsonContent = content;
       if (content.includes("```json")) {
         jsonContent = content.split("```json")[1].split("```")[0].trim();
@@ -245,28 +189,21 @@ serve(async (req) => {
       
       const parsedAnswer = JSON.parse(jsonContent);
       
-      // Validate required fields
       if (!parsedAnswer.plainAnswer || !parsedAnswer.confidence) {
         throw new Error("Missing required fields");
       }
 
-      // Add last updated date
-      parsedAnswer.lastUpdated = "4th February 2026";
+      parsedAnswer.lastUpdated = "7th February 2026";
 
-      // Log successful response for audit
       console.log(`Q&A response generated with confidence: ${parsedAnswer.confidence}`);
 
       return new Response(
-        JSON.stringify({ 
-          type: "answer",
-          data: parsedAnswer 
-        }),
+        JSON.stringify({ type: "answer", data: parsedAnswer }),
         { headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     } catch (parseError) {
       console.error("Failed to parse AI response:", parseError, content);
       
-      // Return a safe fallback response
       return new Response(
         JSON.stringify({
           type: "answer",
@@ -286,7 +223,7 @@ serve(async (req) => {
               { label: "Where we are now", path: "/where-we-are-now" },
               { label: "What is changing", path: "/what-is-changing" }
             ],
-            lastUpdated: "4th February 2026"
+            lastUpdated: "7th February 2026"
           }
         }),
         { headers: { ...corsHeaders, "Content-Type": "application/json" } }
