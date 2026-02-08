@@ -87,14 +87,14 @@ export function JourneyNavigation() {
 
   return (
     <nav
-      className="border-b border-border/60 bg-card/95 backdrop-blur-md sticky top-0 z-50"
+      className="border-b border-border/40 bg-card/90 dark:bg-card/70 backdrop-blur-md sticky top-0 z-50 shadow-sm"
       aria-label="SEND Navigator journey"
       role="navigation"
     >
       <div className="content-wide">
         {/* Desktop: horizontal scrollable tabs */}
-        <div className="hidden md:block py-2">
-          <div className="flex items-center gap-0.5 overflow-x-auto scrollbar-hide" role="tablist" aria-label="Journey steps">
+        <div className="hidden md:block py-2.5">
+          <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide" role="tablist" aria-label="Journey steps">
             {journeySteps.map((step, index) => (
               <div key={step.path} className="flex items-center shrink-0">
                 <NavLink
@@ -104,16 +104,18 @@ export function JourneyNavigation() {
                   aria-label={`${step.label} - ${step.description}`}
                   className={({ isActive }) =>
                     cn(
-                      "flex items-center gap-1.5 px-3 py-2 rounded-full text-sm font-semibold transition-all duration-200 whitespace-nowrap",
+                      "group flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-semibold transition-all duration-200 whitespace-nowrap",
                       isActive
-                        ? `${step.colorClass}-active`
-                        : `${step.colorClass} hover:opacity-90`
+                        ? `${step.colorClass}-active shadow-sm`
+                        : `${step.colorClass} hover:opacity-90 hover:shadow-sm`
                     )
                   }
                 >
                   <span className={cn(
-                    "flex items-center justify-center w-5 h-5 rounded-full text-xs font-bold",
-                    step.path === location.pathname ? "bg-white/30" : "bg-black/10 dark:bg-white/10"
+                    "flex items-center justify-center w-6 h-6 rounded-lg text-xs font-bold transition-all duration-200",
+                    step.path === location.pathname
+                      ? "bg-white/25"
+                      : "bg-black/8 dark:bg-white/10 group-hover:bg-black/12 dark:group-hover:bg-white/15"
                   )}>
                     {index + 1}
                   </span>
@@ -121,7 +123,7 @@ export function JourneyNavigation() {
                 </NavLink>
                 {index < journeySteps.length - 1 && (
                   <ChevronRight
-                    className="w-3.5 h-3.5 text-border mx-0.5 shrink-0"
+                    className="w-3.5 h-3.5 text-border/60 mx-0.5 shrink-0"
                     aria-hidden="true"
                   />
                 )}
@@ -134,7 +136,7 @@ export function JourneyNavigation() {
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center justify-between w-full min-h-[56px] py-3 text-foreground"
+            className="flex items-center justify-between w-full min-h-[56px] py-3.5 text-foreground"
             aria-expanded={isOpen}
             aria-controls="journey-menu"
             aria-label={isOpen ? "Close journey navigation" : "Open journey navigation"}
@@ -142,7 +144,7 @@ export function JourneyNavigation() {
             <div className="flex items-center gap-3">
               {currentStepIndex >= 0 && (
                 <span className={cn(
-                  "flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold text-white",
+                  "flex items-center justify-center w-9 h-9 rounded-xl text-sm font-bold text-white shadow-sm",
                   currentStep?.colorClass === "journey-step-confirmed" && "bg-journey-confirmed",
                   currentStep?.colorClass === "journey-step-discussed" && "bg-journey-discussed",
                   currentStep?.colorClass === "journey-step-unconfirmed" && "bg-journey-unconfirmed",
@@ -152,23 +154,23 @@ export function JourneyNavigation() {
                 </span>
               )}
               <div className="text-left">
-                <span className="font-bold block leading-tight">
+                <span className="font-bold block leading-tight text-base">
                   {currentStep?.label || "Navigator"}
                 </span>
-                <span className="text-xs text-muted-foreground">
-                  Step {currentStepIndex + 1} of {journeySteps.length}
+                <span className="text-xs text-muted-foreground font-medium">
+                  Step {currentStepIndex + 1} of {journeySteps.length} · {currentStep?.description}
                 </span>
               </div>
             </div>
             {isOpen ? (
-              <ChevronUp className="w-5 h-5" aria-hidden="true" />
+              <ChevronUp className="w-5 h-5 text-muted-foreground" aria-hidden="true" />
             ) : (
-              <ChevronDown className="w-5 h-5" aria-hidden="true" />
+              <ChevronDown className="w-5 h-5 text-muted-foreground" aria-hidden="true" />
             )}
           </button>
 
           {isOpen && (
-            <div id="journey-menu" className="pb-4 space-y-1 animate-fade-in">
+            <div id="journey-menu" className="pb-4 space-y-1.5 animate-fade-in">
               {journeySteps.map((step, index) => (
                 <NavLink
                   key={step.path}
@@ -176,16 +178,16 @@ export function JourneyNavigation() {
                   onClick={() => setIsOpen(false)}
                   className={({ isActive }) =>
                     cn(
-                      "flex items-center gap-3 px-3 py-3 rounded-xl transition-colors min-h-[48px]",
+                      "flex items-center gap-3 px-3 py-3 rounded-xl transition-all duration-200 min-h-[48px]",
                       isActive
-                        ? `${step.colorClass}-active`
+                        ? `${step.colorClass}-active shadow-sm`
                         : "text-foreground hover:bg-muted"
                     )
                   }
                 >
                   <span
                     className={cn(
-                      "flex items-center justify-center w-8 h-8 rounded-full text-sm font-bold shrink-0",
+                      "flex items-center justify-center w-9 h-9 rounded-xl text-sm font-bold shrink-0",
                       step.colorClass === "journey-step-confirmed" && "bg-journey-confirmed/15 text-journey-confirmed",
                       step.colorClass === "journey-step-discussed" && "bg-journey-discussed/15 text-journey-discussed",
                       step.colorClass === "journey-step-unconfirmed" && "bg-journey-unconfirmed/15 text-journey-unconfirmed",
