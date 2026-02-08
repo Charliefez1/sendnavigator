@@ -6,6 +6,7 @@ import { Footer } from "./Footer";
 import { ContactBanner } from "./ContactBanner";
 import { NewsletterSignup } from "./NewsletterSignup";
 import { SkipLink } from "./SkipLink";
+import { AskAICompact } from "./AskAICompact";
 import { AskQuestionCompact } from "./AskQuestionCompact";
 
 interface LayoutProps {
@@ -21,7 +22,8 @@ export function Layout({ children }: LayoutProps) {
       <JourneyNavigation />
       <main id="main-content" className="flex-1" role="main" tabIndex={-1}>
         {children}
-        <div className="content-section py-6">
+        <div className="content-section py-6 space-y-4">
+          <AskAICompact />
           <AskQuestionCompact />
         </div>
       </main>

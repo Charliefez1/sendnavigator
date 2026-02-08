@@ -2,8 +2,12 @@ import { Layout } from "@/components/Layout";
 import { PageHeader } from "@/components/PageHeader";
 import { ShieldAlert } from "lucide-react";
 import { QandAComponent } from "@/components/qanda";
+import { useSearchParams } from "react-router-dom";
 
 export default function QuestionsAndAnswers() {
+  const [searchParams] = useSearchParams();
+  const initialQuestion = searchParams.get("q") || undefined;
+
   return (
     <Layout>
       <PageHeader
@@ -25,7 +29,7 @@ export default function QuestionsAndAnswers() {
           </div>
         </div>
 
-        <QandAComponent />
+        <QandAComponent initialQuestion={initialQuestion} />
       </section>
 
       <div className="content-section pb-16" />

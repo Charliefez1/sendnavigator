@@ -1,0 +1,52 @@
+import { useState } from "react";
+import { Search, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
+
+export function AskAICompact() {
+  const [question, setQuestion] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = question.trim();
+    if (!trimmed) return;
+    navigate(`/questions-and-answers?q=${encodeURIComponent(trimmed)}`);
+  };
+
+  return (
+    <div className="border-2 border-dashed border-primary/30 rounded-2xl p-4 hover:border-primary/50 transition-all duration-200">
+      <form onSubmit={handleSubmit} className="space-y-3">
+        <div className="flex items-center gap-2 text-primary">
+          <MessageCircle className="h-5 w-5" />
+          <span className="font-semibold text-sm">Ask a question about SEND reform</span>
+        </div>
+        <div className="flex gap-2">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <input
+              type="text"
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              placeholder="Type your question..."
+              className="w-full pl-9 pr-3 py-2.5 min-h-[44px] bg-card border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
+              maxLength={500}
+              aria-label="Ask a question about SEND reform"
+            />
+          </div>
+          <Button
+            type="submit"
+            disabled={!question.trim()}
+            size="sm"
+            className="rounded-full px-4 min-h-[44px]"
+          >
+            Ask
+          </Button>
+        </div>
+        <p className="text-xs text-muted-foreground">
+          Get a plain English answer based on what we know so far.
+        </p>
+      </form>
+    </div>
+  );
+}
