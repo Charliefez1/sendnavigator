@@ -102,23 +102,23 @@
   }
 
   .dark {
-    --background: 25 18% 10%;
-    --foreground: 35 20% 93%;
+    --background: 220 15% 10%;
+    --foreground: 210 15% 93%;
 
-    --card: 25 15% 13%;
-    --card-foreground: 35 20% 93%;
+    --card: 220 13% 13%;
+    --card-foreground: 210 15% 93%;
 
-    --popover: 25 15% 13%;
-    --popover-foreground: 35 20% 93%;
+    --popover: 220 13% 13%;
+    --popover-foreground: 210 15% 93%;
 
     --primary: 16 60% 58%;
-    --primary-foreground: 25 18% 10%;
+    --primary-foreground: 220 15% 10%;
 
-    --secondary: 25 15% 18%;
-    --secondary-foreground: 35 15% 88%;
+    --secondary: 220 10% 18%;
+    --secondary-foreground: 210 12% 88%;
 
-    --muted: 25 12% 18%;
-    --muted-foreground: 30 12% 58%;
+    --muted: 220 10% 18%;
+    --muted-foreground: 215 10% 58%;
 
     --accent: 155 25% 20%;
     --accent-foreground: 155 40% 78%;
@@ -126,55 +126,55 @@
     --destructive: 0 50% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 25 12% 22%;
-    --input: 25 12% 22%;
+    --border: 220 10% 22%;
+    --input: 220 10% 22%;
     --ring: 16 55% 55%;
 
-    --highlight: 42 35% 14%;
-    --highlight-border: 42 25% 28%;
+    --highlight: 220 12% 15%;
+    --highlight-border: 220 10% 28%;
 
     --status-confirmed: 155 45% 50%;
     --status-confirmed-bg: 155 25% 15%;
     --status-confirmed-border: 155 25% 30%;
 
     --status-discussed: 38 60% 55%;
-    --status-discussed-bg: 38 35% 15%;
-    --status-discussed-border: 38 35% 30%;
+    --status-discussed-bg: 38 25% 15%;
+    --status-discussed-border: 38 25% 30%;
 
     --status-unconfirmed: 220 15% 60%;
     --status-unconfirmed-bg: 220 10% 18%;
     --status-unconfirmed-border: 220 10% 30%;
 
     --status-leaked: 0 72% 58%;
-    --status-leaked-bg: 0 50% 12%;
+    --status-leaked-bg: 0 40% 14%;
     --status-leaked-border: 0 50% 30%;
 
     --timeline-completed: 155 45% 50%;
     --timeline-completed-bg: 155 25% 15%;
     --timeline-upcoming: 38 60% 55%;
-    --timeline-upcoming-bg: 38 35% 15%;
+    --timeline-upcoming-bg: 38 25% 15%;
     --timeline-uncertain: 220 15% 60%;
     --timeline-uncertain-bg: 220 10% 18%;
     --timeline-new: 155 45% 50%;
     --timeline-new-bg: 155 25% 15%;
     --timeline-clarification: 200 55% 55%;
-    --timeline-clarification-bg: 200 35% 15%;
+    --timeline-clarification-bg: 200 30% 15%;
 
     --journey-current: 16 60% 58%;
     --journey-complete: 155 40% 55%;
-    --journey-pending: 25 8% 42%;
+    --journey-pending: 220 8% 42%;
     --journey-confirmed: 190 50% 55%;
     --journey-discussed: 38 60% 55%;
     --journey-unconfirmed: 16 65% 60%;
     --journey-next: 340 45% 58%;
 
-    --sidebar-background: 25 18% 8%;
-    --sidebar-foreground: 35 15% 88%;
+    --sidebar-background: 220 15% 8%;
+    --sidebar-foreground: 210 12% 88%;
     --sidebar-primary: 16 60% 58%;
-    --sidebar-primary-foreground: 25 18% 10%;
+    --sidebar-primary-foreground: 220 15% 10%;
     --sidebar-accent: 155 20% 16%;
     --sidebar-accent-foreground: 155 40% 72%;
-    --sidebar-border: 25 12% 20%;
+    --sidebar-border: 220 10% 20%;
     --sidebar-ring: 16 55% 55%;
   }
 }
