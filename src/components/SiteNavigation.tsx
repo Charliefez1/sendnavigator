@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { Menu, X, BookOpen, User, FileText, HelpCircle, Building2, Heart } from "lucide-react";
+import { Menu, X, BookOpen, User, FileText, HelpCircle, Building2, Heart, MessageCircleQuestion, MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -10,6 +10,8 @@ const siteLinks = [
   { path: "/why-i-built-this", label: "Why I built this", icon: Heart },
   { path: "/rich-ferriman", label: "Rich Ferriman", icon: User },
   { path: "/neurodiversity-global", label: "Neurodiversity Global", icon: Building2 },
+  { path: "/community-questions", label: "Questions", icon: MessageCircleQuestion },
+  { path: "/feedback", label: "Feedback", icon: MessageSquare },
   { path: "/sources", label: "Sources", icon: FileText },
 ];
 

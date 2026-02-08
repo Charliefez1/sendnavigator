@@ -23,6 +23,9 @@ import About from "./pages/About";
 import NeurodiversityGlobal from "./pages/NeurodiversityGlobal";
 import RichFerriman from "./pages/RichFerriman";
 import WhyIBuiltThis from "./pages/WhyIBuiltThis";
+import CommunityQuestions from "./pages/CommunityQuestions";
+import Feedback from "./pages/Feedback";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -48,12 +51,15 @@ const App = () => (
           <Route path="/what-this-could-mean" element={<WhatThisCouldMean />} />
           <Route path="/timeline" element={<Timeline />} />
           <Route path="/questions-and-answers" element={<QuestionsAndAnswers />} />
+          <Route path="/community-questions" element={<CommunityQuestions />} />
+          <Route path="/feedback" element={<Feedback />} />
           <Route path="/sources" element={<Sources />} />
           <Route path="/statistics-and-data" element={<StatisticsAndData />} />
           <Route path="/about" element={<About />} />
           <Route path="/neurodiversity-global" element={<NeurodiversityGlobal />} />
           <Route path="/rich-ferriman" element={<RichFerriman />} />
           <Route path="/why-i-built-this" element={<WhyIBuiltThis />} />
+          <Route path="/admin" element={<Admin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
