@@ -106,7 +106,7 @@ export function SiteNavigation() {
     <nav className="bg-card/80 border-b border-border/40" aria-label="Site navigation">
       <div className="content-wide flex items-center justify-between">
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-1 py-1.5">
+        <div className="hidden md:flex items-center justify-center gap-1 py-1.5 flex-1">
           {siteLinks.map((link) =>
             link.children ? (
               <DesktopDropdown key={link.path} item={link} />
