@@ -41,6 +41,60 @@ export type Database = {
         }
         Relationships: []
       }
+      user_feedback: {
+        Row: {
+          created_at: string
+          feedback: string
+          feedback_type: string
+          id: string
+          name: string | null
+          status: string
+        }
+        Insert: {
+          created_at?: string
+          feedback: string
+          feedback_type?: string
+          id?: string
+          name?: string | null
+          status?: string
+        }
+        Update: {
+          created_at?: string
+          feedback?: string
+          feedback_type?: string
+          id?: string
+          name?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
+      user_questions: {
+        Row: {
+          answer: string | null
+          created_at: string
+          id: string
+          page_submitted_from: string | null
+          question: string
+          status: string
+        }
+        Insert: {
+          answer?: string | null
+          created_at?: string
+          id?: string
+          page_submitted_from?: string | null
+          question: string
+          status?: string
+        }
+        Update: {
+          answer?: string | null
+          created_at?: string
+          id?: string
+          page_submitted_from?: string | null
+          question?: string
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
