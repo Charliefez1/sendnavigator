@@ -21,7 +21,7 @@ const siteLinks: NavItem[] = [
       { path: "/neurodiversity-global", label: "Neurodiversity Global", icon: Building2 },
     ],
   },
-  { path: "/community-questions", label: "Questions", icon: MessageCircleQuestion },
+  { path: "/community-questions", label: "Lived Experience", icon: MessageCircleQuestion },
   { path: "/feedback", label: "Feedback", icon: MessageSquare },
   { path: "/sources", label: "Sources", icon: FileText },
 ];

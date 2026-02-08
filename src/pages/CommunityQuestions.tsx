@@ -31,8 +31,8 @@ export default function CommunityQuestions() {
     <Layout>
       <div className="content-section py-8 space-y-8">
         <PageHeader
-          title="Community Questions"
-          description="Questions asked by families and professionals about SEND reform. Have a question? Ask below and it may be added to this page."
+          title="Lived Experience &amp; Comments"
+          description="Comments and experiences shared by families and professionals navigating SEND. Share yours below — approved contributions help others."
         />
 
         <AskQuestionCompact />
@@ -68,8 +68,8 @@ export default function CommunityQuestions() {
         ) : (
           <div className="text-center py-12 text-muted-foreground">
             <MessageCircleQuestion className="h-10 w-10 mx-auto mb-3 opacity-40" />
-            <p className="font-semibold">No questions yet</p>
-            <p className="text-sm mt-1">Be the first to ask a question about SEND reform!</p>
+            <p className="font-semibold">No comments yet</p>
+            <p className="text-sm mt-1">Be the first to share your experience of SEND.</p>
           </div>
         )}
       </div>

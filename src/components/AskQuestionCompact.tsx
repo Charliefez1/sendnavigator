@@ -50,7 +50,7 @@ export function AskQuestionCompact() {
       <div className="border border-border rounded-2xl p-4 bg-accent/30 text-center">
         <CheckCircle className="h-6 w-6 text-status-confirmed mx-auto mb-2" />
         <p className="text-sm font-semibold text-foreground">Thank you!</p>
-        <p className="text-xs text-muted-foreground">Your question has been submitted for review.</p>
+        <p className="text-xs text-muted-foreground">Your comment has been submitted for review.</p>
       </div>
     );
   }
@@ -61,11 +61,11 @@ export function AskQuestionCompact() {
         onClick={() => setIsOpen(true)}
         className="w-full border-2 border-dashed border-primary/30 rounded-2xl p-4 hover:border-primary/60 hover:bg-primary/5 transition-all duration-200 group"
       >
-        <div className="flex items-center justify-center gap-2 text-primary">
+      <div className="flex items-center justify-center gap-2 text-primary">
           <MessageCircleQuestion className="h-5 w-5" />
-          <span className="font-semibold text-sm">Have a question about SEND reform?</span>
+          <span className="font-semibold text-sm">Do you have a comment or experience that would be helpful to others?</span>
         </div>
-        <p className="text-xs text-muted-foreground mt-1">Ask here — approved questions help other families too</p>
+        <p className="text-xs text-muted-foreground mt-1">Share your lived experience of SEND — approved comments help other families</p>
       </button>
     );
   }
@@ -74,12 +74,12 @@ export function AskQuestionCompact() {
     <div className="border border-border rounded-2xl p-4 bg-card space-y-3">
       <div className="flex items-center gap-2 text-primary">
         <MessageCircleQuestion className="h-5 w-5" />
-        <span className="font-semibold text-sm">Ask a question about SEND reform</span>
+        <span className="font-semibold text-sm">Share a comment or lived experience</span>
       </div>
       <Textarea
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
-        placeholder="Type your question here..."
+        placeholder="Share your experience, observation, or comment..."
         className="min-h-[80px] text-sm resize-none"
         maxLength={1000}
       />
@@ -97,10 +97,10 @@ export function AskQuestionCompact() {
           className="rounded-full gap-1.5"
         >
           <Send className="h-3.5 w-3.5" />
-          {isSubmitting ? "Submitting..." : "Submit Question"}
+          {isSubmitting ? "Submitting..." : "Submit"}
         </Button>
       </div>
-      <p className="text-xs text-muted-foreground">Questions are reviewed before being published.</p>
+      <p className="text-xs text-muted-foreground">Comments are reviewed before being published.</p>
     </div>
   );
 }
