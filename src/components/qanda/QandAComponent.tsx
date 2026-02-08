@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { QuestionInput } from "./QuestionInput";
 import { AnswerDisplay } from "./AnswerDisplay";
 import { QandAResponse, checkForRefusal } from "./types";
@@ -7,10 +7,22 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { AITrustNotice } from "@/components/feedback";
 
-export function QandAComponent() {
+interface QandAComponentProps {
+  initialQuestion?: string;
+}
+
+export function QandAComponent({ initialQuestion }: QandAComponentProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState<string | null>(null);
   const [response, setResponse] = useState<QandAResponse | null>(null);
+  const hasAutoSubmitted = useRef(false);
+
+  useEffect(() => {
+    if (initialQuestion && !hasAutoSubmitted.current) {
+      hasAutoSubmitted.current = true;
+      handleSubmit(initialQuestion);
+    }
+  }, [initialQuestion]);
 
   const handleSubmit = async (question: string) => {
     setIsLoading(true);
@@ -132,7 +144,7 @@ export function QandAComponent() {
         </div>
       </div>
 
-      <QuestionInput onSubmit={handleSubmit} isLoading={isLoading} />
+      <QuestionInput onSubmit={handleSubmit} isLoading={isLoading} initialValue={initialQuestion} />
 
       {isLoading && (
         <div className="mt-6 p-8 bg-card border border-border rounded-lg text-center">
