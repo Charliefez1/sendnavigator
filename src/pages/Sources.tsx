@@ -252,27 +252,48 @@ export default function Sources() {
       />
 
       <section className="content-section py-8">
-        <div className="space-y-8">
+        <div className="space-y-10">
           {sourceCategories.map((category) => (
             <div key={category.title}>
-              <h2 className="text-lg font-semibold text-foreground mb-3">
+              <h2 className="text-lg font-semibold text-foreground mb-4">
                 {category.title}
               </h2>
-              <ul className="space-y-2">
-                {category.sources.map((source) => (
-                  <li key={source.url}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {category.sources.map((source) => {
+                  const domain = new URL(source.url).hostname;
+                  return (
                     <a
+                      key={source.url}
                       href={source.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors group"
+                      className="group flex items-start gap-3 p-3 rounded-xl border border-border bg-card hover:bg-accent/50 hover:border-primary/20 hover:shadow-md transition-all duration-200"
                     >
-                      <span className="group-hover:underline">{source.name}</span>
-                      <ExternalLink className="w-3.5 h-3.5 flex-shrink-0 opacity-60" />
+                      <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-muted flex items-center justify-center overflow-hidden">
+                        <img
+                          src={`https://www.google.com/s2/favicons?domain=${domain}&sz=32`}
+                          alt=""
+                          className="w-5 h-5"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.parentElement?.classList.add('favicon-fallback');
+                          }}
+                        />
+                        <ExternalLink className="w-4 h-4 text-muted-foreground hidden favicon-fallback:block" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-foreground leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                          {source.name}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-1 truncate">
+                          {domain}
+                        </p>
+                      </div>
+                      <ExternalLink className="w-3.5 h-3.5 text-muted-foreground/50 group-hover:text-primary/70 flex-shrink-0 mt-0.5 transition-colors" />
                     </a>
-                  </li>
-                ))}
-              </ul>
+                  );
+                })}
+              </div>
             </div>
           ))}
         </div>
