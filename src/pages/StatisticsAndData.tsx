@@ -1,8 +1,8 @@
 import { Layout } from "@/components/Layout";
 import { PageOrientation } from "@/components/templates";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { ExternalLink, AlertCircle, TrendingUp } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { SourceCard } from "@/components/SourceCard";
+import { AlertCircle, TrendingUp } from "lucide-react";
 
 interface StatItem {
   label: string;
@@ -298,25 +298,15 @@ export default function StatisticsAndData() {
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-lg font-semibold text-foreground mb-6">Source links</h2>
 
-        <div className="space-y-6">
+        <div className="space-y-8">
           {sourceLinks.map((category) => (
             <div key={category.category}>
-              <h3 className="text-sm font-medium text-foreground mb-2">{category.category}</h3>
-              <ul className="space-y-1.5">
+              <h3 className="text-sm font-medium text-foreground mb-3">{category.category}</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {category.sources.map((source) => (
-                  <li key={source.url}>
-                    <a
-                      href={source.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
-                    >
-                      <span className="group-hover:underline">{source.name}</span>
-                      <ExternalLink className="w-3 h-3 flex-shrink-0 opacity-60" />
-                    </a>
-                  </li>
+                  <SourceCard key={source.url} name={source.name} url={source.url} />
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>
