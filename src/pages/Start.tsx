@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { QandAComponent } from "@/components/qanda";
+import { MoreResources } from "@/components/MoreResources";
 import { 
   ArrowRight, 
   CheckCircle2, 
@@ -97,6 +98,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* More resources */}
+      <MoreResources />
 
       {/* Start your journey */}
       <section className="content-section pb-12">
