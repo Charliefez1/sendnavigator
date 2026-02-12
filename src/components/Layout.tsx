@@ -5,6 +5,7 @@ import { JourneyFloatingBar } from "./JourneyFloatingBar";
 import { Footer } from "./Footer";
 import { ContactBanner } from "./ContactBanner";
 import { MoreResources } from "./MoreResources";
+import { NeurodiversityGlobalCTA } from "./NeurodiversityGlobalCTA";
 import { NewsletterSignup } from "./NewsletterSignup";
 import { SkipLink } from "./SkipLink";
 import { AskAICompact } from "./AskAICompact";
@@ -26,6 +27,7 @@ export function Layout({ children }: LayoutProps) {
           <AskAICompact />
           <AskQuestionCompact />
         </div>
+        <NeurodiversityGlobalCTA />
       </main>
       <MoreResources />
       <div className="content-section py-8">
