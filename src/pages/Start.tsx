@@ -26,7 +26,7 @@ const Index = () => {
         <div className="bg-card border border-border rounded-xl p-6 sm:p-8 mb-8">
           <div className="flex items-center gap-3 mb-4">
             <Compass className="w-8 h-8 text-primary flex-shrink-0" />
-            <h1 className="text-2xl sm:text-3xl font-semibold text-foreground">
+            <h1 className="text-xl sm:text-2xl font-semibold text-foreground">
               Welcome to SEND Reform Navigator
             </h1>
           </div>
