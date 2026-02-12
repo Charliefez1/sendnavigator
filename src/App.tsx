@@ -7,6 +7,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { PageViewTracker } from "@/components/PageViewTracker";
+import { ExperienceModeProvider } from "@/contexts/ExperienceModeContext";
+import { PageSectionsProvider } from "@/contexts/PageSectionsContext";
+import { ExperienceSelector } from "@/components/ExperienceSelector";
 
 // Lazy-loaded pages
 const Start = lazy(() => import("./pages/Start"));
@@ -39,7 +42,7 @@ const queryClient = new QueryClient();
 function LoadingFallback() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-muted-foreground text-sm">Loading…</div>
+      <div className="text-muted-foreground text-sm">Loading...</div>
     </div>
   );
 }
@@ -49,39 +52,44 @@ const App = () => (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <PageViewTracker />
-            <Suspense fallback={<LoadingFallback />}>
-              <Routes>
-                <Route path="/" element={<Start />} />
-                <Route path="/welcome" element={<Index />} />
-                <Route path="/how-to-use" element={<HowToUse />} />
-                <Route path="/where-we-are-now" element={<WhereWeAreNow />} />
-                <Route path="/what-is-changing" element={<WhatIsChanging />} />
-                <Route path="/what-has-not-changed" element={<WhatHasNotChanged />} />
-                <Route path="/what-we-know-so-far" element={<WhatWeKnowSoFar />} />
-                <Route path="/what-is-being-discussed" element={<WhatIsBeingDiscussed />} />
-                <Route path="/what-we-do-not-know" element={<WhatWeDoNotKnow />} />
-                <Route path="/what-the-leaks-are-saying" element={<WhatTheLeaksAreSaying />} />
-                <Route path="/what-the-leaks-do-not-mean" element={<WhatTheLeaksDoNotMean />} />
-                <Route path="/what-this-could-mean" element={<WhatThisCouldMean />} />
-                <Route path="/timeline" element={<Timeline />} />
-                <Route path="/questions-and-answers" element={<QuestionsAndAnswers />} />
-                <Route path="/community-questions" element={<CommunityQuestions />} />
-                <Route path="/feedback" element={<Feedback />} />
-                <Route path="/sources" element={<Sources />} />
-                <Route path="/statistics-and-data" element={<StatisticsAndData />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/neurodiversity-global" element={<NeurodiversityGlobal />} />
-                <Route path="/rich-ferriman" element={<RichFerriman />} />
-                <Route path="/why-i-built-this" element={<WhyIBuiltThis />} />
-                <Route path="/admin" element={<Admin />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-          </BrowserRouter>
+          <ExperienceModeProvider>
+            <PageSectionsProvider>
+              <Toaster />
+              <Sonner />
+              <BrowserRouter>
+                <ExperienceSelector />
+                <PageViewTracker />
+                <Suspense fallback={<LoadingFallback />}>
+                  <Routes>
+                    <Route path="/" element={<Start />} />
+                    <Route path="/welcome" element={<Index />} />
+                    <Route path="/how-to-use" element={<HowToUse />} />
+                    <Route path="/where-we-are-now" element={<WhereWeAreNow />} />
+                    <Route path="/what-is-changing" element={<WhatIsChanging />} />
+                    <Route path="/what-has-not-changed" element={<WhatHasNotChanged />} />
+                    <Route path="/what-we-know-so-far" element={<WhatWeKnowSoFar />} />
+                    <Route path="/what-is-being-discussed" element={<WhatIsBeingDiscussed />} />
+                    <Route path="/what-we-do-not-know" element={<WhatWeDoNotKnow />} />
+                    <Route path="/what-the-leaks-are-saying" element={<WhatTheLeaksAreSaying />} />
+                    <Route path="/what-the-leaks-do-not-mean" element={<WhatTheLeaksDoNotMean />} />
+                    <Route path="/what-this-could-mean" element={<WhatThisCouldMean />} />
+                    <Route path="/timeline" element={<Timeline />} />
+                    <Route path="/questions-and-answers" element={<QuestionsAndAnswers />} />
+                    <Route path="/community-questions" element={<CommunityQuestions />} />
+                    <Route path="/feedback" element={<Feedback />} />
+                    <Route path="/sources" element={<Sources />} />
+                    <Route path="/statistics-and-data" element={<StatisticsAndData />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/neurodiversity-global" element={<NeurodiversityGlobal />} />
+                    <Route path="/rich-ferriman" element={<RichFerriman />} />
+                    <Route path="/why-i-built-this" element={<WhyIBuiltThis />} />
+                    <Route path="/admin" element={<Admin />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </Suspense>
+              </BrowserRouter>
+            </PageSectionsProvider>
+          </ExperienceModeProvider>
         </TooltipProvider>
       </QueryClientProvider>
     </HelmetProvider>
