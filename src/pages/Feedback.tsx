@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import { PageHeader } from "@/components/PageHeader";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
@@ -76,6 +77,7 @@ export default function Feedback() {
 
   return (
     <Layout>
+      <SEOHead title="Feedback & Comments" description="Share your thoughts, report issues, or challenge the information on the site. All submissions are reviewed." path="/feedback" />
       <div className="content-section py-8 space-y-8">
         <PageHeader
           title="Feedback & Comments"

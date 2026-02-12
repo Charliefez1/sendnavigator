@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import {
   PageOrientation,
   SixtySecondSummary,
@@ -10,6 +11,7 @@ import { StatusBadge } from "@/components/StatusBadge";
 export default function WhatTheLeaksAreSaying() {
   return (
     <Layout>
+      <SEOHead title="What the leaks are saying" description="Unconfirmed reports and leaked documents about possible SEND reforms — clearly labelled and contextualised." path="/what-the-leaks-are-saying" />
       <PageOrientation
         title="What the leaks are saying"
         description="Unconfirmed proposals and reported briefings. These are not government policy."

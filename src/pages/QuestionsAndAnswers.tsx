@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import { PageHeader } from "@/components/PageHeader";
 import { ShieldAlert } from "lucide-react";
 import { QandAComponent } from "@/components/qanda";
@@ -10,6 +11,7 @@ export default function QuestionsAndAnswers() {
 
   return (
     <Layout>
+      <SEOHead title="Questions and Answers" description="Ask questions about SEND reform and get grounded answers based on confirmed information." path="/questions-and-answers" />
       <PageHeader
         title="Questions and answers"
         description="A front door to understanding SEND reform. Ask simple questions, receive grounded answers."

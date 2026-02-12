@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import {
   PageOrientation,
   SixtySecondSummary,
@@ -8,6 +9,7 @@ import { StatusBadge } from "@/components/StatusBadge";
 export default function WhatIsChanging() {
   return (
     <Layout>
+      <SEOHead title="What is changing" description="Confirmed SEND reforms and official government plans for education in England." path="/what-is-changing" />
       <PageOrientation
         title="What is actually changing in SEND"
         description="Confirmed reforms and official plans from government."

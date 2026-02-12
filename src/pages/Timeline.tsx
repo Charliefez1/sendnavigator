@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import { PageHeader } from "@/components/PageHeader";
 import {
   SixtySecondSummary,
@@ -9,6 +10,7 @@ import {
 export default function Timeline() {
   return (
     <Layout>
+      <SEOHead title="Timeline" description="Key dates, decisions, and milestones in SEND reform — past, present, and upcoming." path="/timeline" />
       <PageHeader
         title="Timeline and next steps"
         description="Key decision points and milestones. We show only confirmed dates and likely windows, avoiding speculation."
