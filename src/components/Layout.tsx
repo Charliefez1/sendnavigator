@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Header } from "./Header";
+import { JourneyNavBar } from "./JourneyNavBar";
 import { JourneyFloatingBar } from "./JourneyFloatingBar";
 import { Footer } from "./Footer";
 import { ContactBanner } from "./ContactBanner";
@@ -17,6 +18,7 @@ export function Layout({ children }: LayoutProps) {
     <div className="min-h-screen flex flex-col bg-background">
       <SkipLink />
       <Header />
+      <JourneyNavBar />
       <main id="main-content" className="flex-1 pb-24" role="main" tabIndex={-1}>
         {children}
         <div className="content-section py-6 space-y-4">
