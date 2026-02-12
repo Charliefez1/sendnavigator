@@ -31,7 +31,7 @@ export class ErrorBoundary extends Component<Props, State> {
             <Heart className="w-10 h-10 text-primary mx-auto" />
             <h1 className="text-xl font-semibold text-foreground">Something went wrong</h1>
             <p className="text-muted-foreground">
-              We're sorry — an unexpected error occurred. Please try refreshing the page.
+              We're sorry, an unexpected error occurred. Please try refreshing the page.
             </p>
             <button
               onClick={() => window.location.reload()}

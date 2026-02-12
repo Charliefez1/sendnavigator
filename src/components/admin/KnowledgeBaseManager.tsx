@@ -100,7 +100,7 @@ export function KnowledgeBaseManager({ pin }: KnowledgeBaseManagerProps) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <p className="text-sm text-muted-foreground">{entries.length} entries — these drive ADHDi answers</p>
+        <p className="text-sm text-muted-foreground">{entries.length} entries. These drive ADHDi answers.</p>
         <Button size="sm" onClick={() => setIsAdding(true)} disabled={isAdding} className="rounded-full gap-1.5">
           <Plus className="h-4 w-4" /> Add Entry
         </Button>
@@ -109,7 +109,7 @@ export function KnowledgeBaseManager({ pin }: KnowledgeBaseManagerProps) {
       {isAdding && (
         <div className="bg-card border border-border rounded-xl p-4 space-y-3">
           <Input placeholder="Topic (e.g. 'EHCPs and Rights')" value={newTopic} onChange={(e) => setNewTopic(e.target.value)} />
-          <Textarea placeholder="Content — plain text the AI will use as its source" value={newContent} onChange={(e) => setNewContent(e.target.value)} rows={6} />
+          <Textarea placeholder="Content, plain text the AI will use as its source." value={newContent} onChange={(e) => setNewContent(e.target.value)} rows={6} />
           <div className="flex gap-2">
             <Button size="sm" onClick={handleCreate} className="rounded-full gap-1.5"><Save className="h-4 w-4" /> Save</Button>
             <Button size="sm" variant="ghost" onClick={() => { setIsAdding(false); setNewTopic(""); setNewContent(""); }} className="rounded-full gap-1.5"><X className="h-4 w-4" /> Cancel</Button>

@@ -19,7 +19,7 @@ export function Footer() {
               </div>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Helping parents, carers, and professionals understand what is happening with SEND reform in England — clearly, calmly, and honestly.
+              Helping parents, carers, and professionals understand what is happening with SEND reform in England, clearly, calmly, and honestly.
             </p>
           </div>
 

@@ -65,7 +65,7 @@ export function AskQuestionCompact() {
           <MessageCircleQuestion className="h-5 w-5" />
           <span className="font-semibold text-sm">Do you have a comment or experience that would be helpful to others?</span>
         </div>
-        <p className="text-xs text-muted-foreground mt-1">Share your lived experience of SEND — approved comments help other families</p>
+        <p className="text-xs text-muted-foreground mt-1">Share your lived experience of SEND. Approved comments help other families.</p>
       </button>
     );
   }

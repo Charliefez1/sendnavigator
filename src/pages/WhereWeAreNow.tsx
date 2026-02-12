@@ -9,7 +9,7 @@ import { StatusBadge } from "@/components/StatusBadge";
 export default function WhereWeAreNow() {
   return (
     <Layout>
-      <SEOHead title="Where we are now" description="The current state of SEND in England — confirmed facts, funding data, and system pressures." path="/where-we-are-now" />
+      <SEOHead title="Where we are now" description="The current state of SEND in England, confirmed facts, funding data, and system pressures." path="/where-we-are-now" />
       <PageOrientation
         title="What we know so far"
         description="The current state of the SEND system based on confirmed facts and data."
