@@ -1,190 +1,289 @@
 import { useState, useRef, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { Menu, X, BookOpen, User, FileText, HelpCircle, Building2, Heart, MessageCircleQuestion, MessageSquare, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 
-interface NavItem {
-  path: string;
-  label: string;
-  icon: React.ElementType;
-  children?: NavItem[];
-}
-
-const siteLinks: NavItem[] = [
-  { path: "/how-to-use", label: "How to use", icon: HelpCircle },
-  {
-    path: "/about", label: "About", icon: BookOpen,
-    children: [
-      { path: "/why-i-built-this", label: "Why I built this", icon: Heart },
-      { path: "/rich-ferriman", label: "Rich Ferriman", icon: User },
-      { path: "/neurodiversity-global", label: "Neurodiversity Global", icon: Building2 },
-    ],
-  },
-  { path: "/community-questions", label: "Lived Experience", icon: MessageCircleQuestion },
-  { path: "/feedback", label: "Feedback", icon: MessageSquare },
-  { path: "/sources", label: "Sources", icon: FileText },
+const journeySteps = [
+  { path: "/", label: "Start here", shortLabel: "Start", group: "confirmed" },
+  { path: "/where-we-are-now", label: "Current situation", shortLabel: "Now", group: "confirmed" },
+  { path: "/what-is-changing", label: "Confirmed changes", shortLabel: "Changes", group: "confirmed" },
+  { path: "/what-has-not-changed", label: "What has not changed", shortLabel: "Unchanged", group: "confirmed" },
+  { path: "/what-is-being-discussed", label: "Under discussion", shortLabel: "Discussed", group: "discussed" },
+  { path: "/what-we-do-not-know", label: "What we do not know", shortLabel: "Unknown", group: "discussed" },
+  { path: "/what-the-leaks-are-saying", label: "Unconfirmed reports", shortLabel: "Leaks", group: "unconfirmed" },
+  { path: "/what-the-leaks-do-not-mean", label: "What leaks do not mean", shortLabel: "Context", group: "unconfirmed" },
+  { path: "/timeline", label: "What is next", shortLabel: "Timeline", group: "next" },
 ];
 
-const allPaths = siteLinks.flatMap((l) => [l.path, ...(l.children?.map((c) => c.path) || [])]);
+const siteLinks = [
+  { path: "/how-to-use", label: "How to use" },
+  { path: "/questions-and-answers", label: "Ask ADHDi" },
+  { path: "/community-questions", label: "Lived experience" },
+  { path: "/sources", label: "Sources" },
+  { path: "/statistics-and-data", label: "Statistics" },
+  { path: "/feedback", label: "Feedback" },
+  { path: "/about", label: "About" },
+];
 
-function DesktopDropdown({ item }: { item: NavItem }) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+const groupColours: Record<string, { bg: string; text: string; activeBg: string }> = {
+  confirmed: { bg: "bg-journey-confirmed/10", text: "text-journey-confirmed", activeBg: "bg-journey-confirmed" },
+  discussed: { bg: "bg-journey-discussed/10", text: "text-journey-discussed", activeBg: "bg-journey-discussed" },
+  unconfirmed: { bg: "bg-journey-unconfirmed/10", text: "text-journey-unconfirmed", activeBg: "bg-journey-unconfirmed" },
+  next: { bg: "bg-journey-next/10", text: "text-journey-next", activeBg: "bg-journey-next" },
+};
+
+export function SiteNavigation() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
+  const moreRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
-  const isChildActive = item.children?.some((c) => c.path === location.pathname);
 
+  // Close mobile menu on navigation
+  useEffect(() => {
+    setMobileOpen(false);
+    setMoreOpen(false);
+  }, [location.pathname]);
+
+  // Close "More" dropdown on outside click
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) setMoreOpen(false);
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  return (
-    <div ref={ref} className="relative">
-      <button
-        onClick={() => setOpen(!open)}
-        className={cn(
-          "flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200",
-          isChildActive || location.pathname === item.path
-            ? "bg-primary text-primary-foreground shadow-sm"
-            : "text-foreground/80 hover:text-foreground hover:bg-primary/8"
-        )}
-      >
-        <item.icon className="w-4 h-4" aria-hidden="true" />
-        {item.label}
-        <ChevronDown className={cn("w-3.5 h-3.5 transition-transform duration-200", open && "rotate-180")} aria-hidden="true" />
-      </button>
-      {open && (
-        <div className="absolute top-full left-0 mt-2 bg-card border border-border rounded-xl shadow-lg py-1.5 min-w-[220px] z-50 animate-fade-in">
-          <NavLink
-            to={item.path}
-            onClick={() => setOpen(false)}
-            className={({ isActive }) =>
-              cn(
-                "flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium transition-colors",
-                isActive ? "bg-primary/10 text-primary font-semibold" : "text-foreground hover:bg-muted"
-              )
-            }
-          >
-            <item.icon className="w-4 h-4" aria-hidden="true" />
-            {item.label}
-          </NavLink>
-          <div className="border-t border-border/50 my-1" />
-          {item.children!.map((child) => (
-            <NavLink
-              key={child.path}
-              to={child.path}
-              onClick={() => setOpen(false)}
-              className={({ isActive }) =>
-                cn(
-                  "flex items-center gap-2.5 px-4 py-2.5 text-sm font-medium transition-colors",
-                  isActive ? "bg-primary/10 text-primary font-semibold" : "text-foreground hover:bg-muted"
-                )
-              }
-            >
-              <child.icon className="w-4 h-4" aria-hidden="true" />
-              {child.label}
-            </NavLink>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-export function SiteNavigation() {
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
-  const currentPage = allPaths.includes(location.pathname)
-    ? siteLinks.flatMap((l) => [l, ...(l.children || [])]).find((l) => l.path === location.pathname)
-    : undefined;
+  const currentJourney = journeySteps.find((s) => s.path === location.pathname);
+  const currentSite = siteLinks.find((s) => s.path === location.pathname);
+  const currentLabel = currentJourney?.label || currentSite?.label || "Menu";
 
   return (
-    <nav className="bg-secondary/60 dark:bg-secondary/30 border-b border-border/50" aria-label="Site navigation">
-      <div className="content-wide flex items-center justify-between">
-        {/* Desktop */}
-        <div className="hidden md:flex items-center justify-center gap-1.5 py-2.5 flex-1">
-          {siteLinks.map((link) =>
-            link.children ? (
-              <DesktopDropdown key={link.path} item={link} />
-            ) : (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                className={({ isActive }) =>
-                  cn(
-                    "flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200",
-                    isActive
-                      ? "bg-primary text-primary-foreground shadow-sm"
-                      : "text-foreground/80 hover:text-foreground hover:bg-primary/8"
-                  )
-                }
-              >
-                <link.icon className="w-4 h-4" aria-hidden="true" />
-                {link.label}
-              </NavLink>
-            )
-          )}
-        </div>
+    <nav className="bg-card border-b border-border sticky top-0 z-50 shadow-sm" aria-label="Main navigation">
+      <div className="content-wide">
+        {/* === DESKTOP === */}
+        <div className="hidden lg:block">
+          {/* Journey row */}
+          <div className="flex items-center gap-1 py-2 overflow-x-auto scrollbar-hide">
+            {journeySteps.map((step, i) => {
+              const colours = groupColours[step.group];
+              return (
+                <div key={step.path} className="flex items-center shrink-0">
+                  <NavLink
+                    to={step.path}
+                    className={({ isActive }) =>
+                      cn(
+                        "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap",
+                        isActive
+                          ? `${colours.activeBg} text-white shadow-sm`
+                          : `${colours.bg} ${colours.text} hover:opacity-80`
+                      )
+                    }
+                  >
+                    <span className={cn(
+                      "w-5 h-5 rounded text-[10px] font-bold flex items-center justify-center shrink-0",
+                      step.path === location.pathname ? "bg-white/20" : "bg-black/5 dark:bg-white/10"
+                    )}>
+                      {i + 1}
+                    </span>
+                    {step.shortLabel}
+                  </NavLink>
+                  {i < journeySteps.length - 1 && (
+                    <ChevronRight className="w-3 h-3 text-border mx-0.5 shrink-0" aria-hidden="true" />
+                  )}
+                </div>
+              );
+            })}
+          </div>
 
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden flex items-center gap-2.5 py-3.5 text-sm font-semibold text-foreground/80 min-h-[48px]"
-          aria-expanded={isOpen}
-          aria-controls="site-menu"
-          aria-label={isOpen ? "Close site menu" : "Open site menu"}
-        >
-          {isOpen ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
-          <span>{currentPage?.label || "Site menu"}</span>
-        </button>
-
-        <div className="py-2">
-          <ThemeToggle />
-        </div>
-      </div>
-
-      {/* Mobile dropdown */}
-      {isOpen && (
-        <div id="site-menu" className="md:hidden content-wide pb-4 space-y-1 animate-fade-in" role="navigation">
-          {siteLinks.map((link) => (
-            <div key={link.path}>
-              <NavLink
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={({ isActive }) =>
-                  cn(
-                    "flex items-center gap-3 px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 min-h-[48px]",
-                    isActive ? "bg-primary text-primary-foreground font-semibold shadow-sm" : "text-foreground hover:bg-primary/8"
-                  )
-                }
-              >
-                <link.icon className="w-4.5 h-4.5" aria-hidden="true" />
-                {link.label}
-              </NavLink>
-              {link.children?.map((child) => (
+          {/* Site links row */}
+          <div className="flex items-center justify-between border-t border-border/60 py-1.5">
+            <div className="flex items-center gap-1">
+              {siteLinks.map((link) => (
                 <NavLink
-                  key={child.path}
-                  to={child.path}
-                  onClick={() => setIsOpen(false)}
+                  key={link.path}
+                  to={link.path}
                   className={({ isActive }) =>
                     cn(
-                      "flex items-center gap-3 pl-11 pr-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 min-h-[48px]",
-                      isActive ? "bg-primary/10 text-primary font-semibold" : "text-muted-foreground hover:bg-muted"
+                      "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
+                      isActive
+                        ? "bg-primary text-primary-foreground"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
                     )
                   }
                 >
-                  <child.icon className="w-4 h-4" aria-hidden="true" />
-                  {child.label}
+                  {link.label}
                 </NavLink>
               ))}
             </div>
-          ))}
+            <ThemeToggle />
+          </div>
         </div>
-      )}
+
+        {/* === TABLET (md but not lg) === */}
+        <div className="hidden md:block lg:hidden">
+          {/* Journey row - scrollable */}
+          <div className="flex items-center gap-1 py-2 overflow-x-auto scrollbar-hide">
+            {journeySteps.map((step, i) => {
+              const colours = groupColours[step.group];
+              return (
+                <NavLink
+                  key={step.path}
+                  to={step.path}
+                  className={({ isActive }) =>
+                    cn(
+                      "flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all whitespace-nowrap shrink-0",
+                      isActive
+                        ? `${colours.activeBg} text-white shadow-sm`
+                        : `${colours.bg} ${colours.text} hover:opacity-80`
+                    )
+                  }
+                >
+                  <span className={cn(
+                    "w-4 h-4 rounded text-[9px] font-bold flex items-center justify-center shrink-0",
+                    step.path === location.pathname ? "bg-white/20" : "bg-black/5 dark:bg-white/10"
+                  )}>
+                    {i + 1}
+                  </span>
+                  {step.shortLabel}
+                </NavLink>
+              );
+            })}
+          </div>
+
+          {/* Site links row */}
+          <div className="flex items-center justify-between border-t border-border/60 py-1.5">
+            <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide">
+              {siteLinks.slice(0, 4).map((link) => (
+                <NavLink
+                  key={link.path}
+                  to={link.path}
+                  className={({ isActive }) =>
+                    cn(
+                      "px-2.5 py-1.5 text-[11px] font-medium rounded-lg transition-colors whitespace-nowrap shrink-0",
+                      isActive
+                        ? "bg-primary text-primary-foreground"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    )
+                  }
+                >
+                  {link.label}
+                </NavLink>
+              ))}
+              {/* More dropdown */}
+              <div ref={moreRef} className="relative shrink-0">
+                <button
+                  onClick={() => setMoreOpen(!moreOpen)}
+                  className={cn(
+                    "flex items-center gap-1 px-2.5 py-1.5 text-[11px] font-medium rounded-lg transition-colors whitespace-nowrap",
+                    moreOpen ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  )}
+                >
+                  More
+                  <ChevronDown className={cn("w-3 h-3 transition-transform", moreOpen && "rotate-180")} />
+                </button>
+                {moreOpen && (
+                  <div className="absolute top-full right-0 mt-1 bg-card border border-border rounded-lg shadow-lg py-1 min-w-[160px] z-50 animate-fade-in">
+                    {siteLinks.slice(4).map((link) => (
+                      <NavLink
+                        key={link.path}
+                        to={link.path}
+                        className={({ isActive }) =>
+                          cn(
+                            "block px-4 py-2.5 text-sm font-medium transition-colors",
+                            isActive ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
+                          )
+                        }
+                      >
+                        {link.label}
+                      </NavLink>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+            <ThemeToggle />
+          </div>
+        </div>
+
+        {/* === MOBILE === */}
+        <div className="md:hidden flex items-center justify-between py-2">
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="flex items-center gap-2.5 py-2 text-foreground min-h-[44px]"
+            aria-expanded={mobileOpen}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            <span className="text-sm font-semibold">{currentLabel}</span>
+          </button>
+          <ThemeToggle />
+        </div>
+
+        {/* Mobile expanded menu */}
+        {mobileOpen && (
+          <div className="md:hidden pb-4 animate-fade-in">
+            {/* Journey steps */}
+            <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground px-3 pt-2 pb-1">Navigator journey</p>
+            <div className="space-y-0.5 mb-3">
+              {journeySteps.map((step, i) => {
+                const colours = groupColours[step.group];
+                return (
+                  <NavLink
+                    key={step.path}
+                    to={step.path}
+                    className={({ isActive }) =>
+                      cn(
+                        "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all min-h-[44px]",
+                        isActive
+                          ? `${colours.activeBg} text-white font-semibold shadow-sm`
+                          : "text-foreground hover:bg-muted"
+                      )
+                    }
+                  >
+                    <span className={cn(
+                      "w-7 h-7 rounded-lg text-xs font-bold flex items-center justify-center shrink-0",
+                      step.path === location.pathname
+                        ? "bg-white/20"
+                        : `${colours.bg} ${colours.text}`
+                    )}>
+                      {i + 1}
+                    </span>
+                    <div>
+                      <span className="text-sm font-medium block leading-tight">{step.label}</span>
+                    </div>
+                  </NavLink>
+                );
+              })}
+            </div>
+
+            {/* Site links */}
+            <div className="border-t border-border/60 pt-3">
+              <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground px-3 pb-1">Site pages</p>
+              <div className="space-y-0.5">
+                {siteLinks.map((link) => (
+                  <NavLink
+                    key={link.path}
+                    to={link.path}
+                    className={({ isActive }) =>
+                      cn(
+                        "block px-3 py-2.5 rounded-lg text-sm font-medium transition-colors min-h-[44px] flex items-center",
+                        isActive
+                          ? "bg-primary text-primary-foreground font-semibold"
+                          : "text-foreground hover:bg-muted"
+                      )
+                    }
+                  >
+                    {link.label}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </nav>
   );
 }
+
+export { journeySteps };
