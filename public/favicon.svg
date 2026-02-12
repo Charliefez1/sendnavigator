@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#0B3D91"/>
+  <!-- Navigation arrow -->
+  <path d="M32 12 L44 36 L32 30 L20 36 Z" fill="#FFD166"/>
+  <!-- SEND text -->
+  <text x="32" y="54"
+        font-family="Arial, sans-serif"
+        font-size="16"
+        text-anchor="middle"
+        fill="#FFFFFF"
+        font-weight="bold">
+    SEND
+  </text>
+</svg>
