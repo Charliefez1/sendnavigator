@@ -110,8 +110,8 @@ const Index = () => {
         
         <div className="space-y-3">
           <Link to="/where-we-are-now" className="journey-card flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-primary">1</span>
+            <div className="w-10 h-10 rounded-full bg-status-confirmed/15 flex items-center justify-center flex-shrink-0 border-2 border-status-confirmed/30">
+              <span className="text-sm font-semibold text-status-confirmed">1</span>
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-medium text-foreground">Understand the current situation</h3>
@@ -121,8 +121,8 @@ const Index = () => {
           </Link>
 
           <Link to="/what-is-changing" className="journey-card flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-primary">2</span>
+            <div className="w-10 h-10 rounded-full bg-status-confirmed/15 flex items-center justify-center flex-shrink-0 border-2 border-status-confirmed/30">
+              <span className="text-sm font-semibold text-status-confirmed">2</span>
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-medium text-foreground">See what's actually changing</h3>
@@ -132,8 +132,8 @@ const Index = () => {
           </Link>
 
           <Link to="/what-has-not-changed" className="journey-card flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-primary">3</span>
+            <div className="w-10 h-10 rounded-full bg-status-confirmed/15 flex items-center justify-center flex-shrink-0 border-2 border-status-confirmed/30">
+              <span className="text-sm font-semibold text-status-confirmed">3</span>
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-medium text-foreground">Know what has not changed</h3>
@@ -143,8 +143,8 @@ const Index = () => {
           </Link>
 
           <Link to="/what-is-being-discussed" className="journey-card flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-primary">4</span>
+            <div className="w-10 h-10 rounded-full bg-status-discussed/15 flex items-center justify-center flex-shrink-0 border-2 border-status-discussed/30">
+              <span className="text-sm font-semibold text-status-discussed">4</span>
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-medium text-foreground">Learn what's being discussed</h3>
@@ -154,8 +154,8 @@ const Index = () => {
           </Link>
 
           <Link to="/what-we-do-not-know" className="journey-card flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-muted-foreground">5</span>
+            <div className="w-10 h-10 rounded-full bg-status-discussed/15 flex items-center justify-center flex-shrink-0 border-2 border-status-discussed/30">
+              <span className="text-sm font-semibold text-status-discussed">5</span>
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-medium text-foreground">Explore what we don't know</h3>
@@ -165,8 +165,8 @@ const Index = () => {
           </Link>
 
           <Link to="/what-the-leaks-are-saying" className="journey-card flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-muted-foreground">6</span>
+            <div className="w-10 h-10 rounded-full bg-status-unconfirmed/15 flex items-center justify-center flex-shrink-0 border-2 border-status-unconfirmed/30">
+              <span className="text-sm font-semibold text-status-unconfirmed">6</span>
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-medium text-foreground">Understand the rumours</h3>
@@ -176,8 +176,8 @@ const Index = () => {
           </Link>
 
           <Link to="/what-the-leaks-do-not-mean" className="journey-card flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-muted-foreground">7</span>
+            <div className="w-10 h-10 rounded-full bg-status-unconfirmed/15 flex items-center justify-center flex-shrink-0 border-2 border-status-unconfirmed/30">
+              <span className="text-sm font-semibold text-status-unconfirmed">7</span>
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-medium text-foreground">What the leaks do not mean</h3>
@@ -187,8 +187,8 @@ const Index = () => {
           </Link>
 
           <Link to="/timeline" className="journey-card flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-muted-foreground">8</span>
+            <div className="w-10 h-10 rounded-full bg-[hsl(var(--timeline-upcoming)/0.15)] flex items-center justify-center flex-shrink-0 border-2 border-[hsl(var(--timeline-upcoming)/0.3)]">
+              <span className="text-sm font-semibold text-[hsl(var(--timeline-upcoming))]">8</span>
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-medium text-foreground">See what's next</h3>
