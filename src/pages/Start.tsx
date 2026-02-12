@@ -105,10 +105,7 @@ const Index = () => {
         </h2>
         
         <div className="space-y-3">
-          <Link 
-            to="/where-we-are-now" 
-            className="journey-card flex items-center gap-4"
-          >
+          <Link to="/where-we-are-now" className="journey-card flex items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
               <span className="text-lg font-semibold text-primary">1</span>
             </div>
@@ -119,10 +116,7 @@ const Index = () => {
             <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
           </Link>
 
-          <Link 
-            to="/what-is-changing" 
-            className="journey-card flex items-center gap-4"
-          >
+          <Link to="/what-is-changing" className="journey-card flex items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
               <span className="text-lg font-semibold text-primary">2</span>
             </div>
@@ -133,12 +127,20 @@ const Index = () => {
             <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
           </Link>
 
-          <Link 
-            to="/what-is-being-discussed" 
-            className="journey-card flex items-center gap-4"
-          >
+          <Link to="/what-has-not-changed" className="journey-card flex items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
               <span className="text-lg font-semibold text-primary">3</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-medium text-foreground">Know what has not changed</h3>
+              <p className="text-sm text-muted-foreground">Legal protections still in place today</p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+          </Link>
+
+          <Link to="/what-is-being-discussed" className="journey-card flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span className="text-lg font-semibold text-primary">4</span>
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-medium text-foreground">Learn what's being discussed</h3>
@@ -147,26 +149,42 @@ const Index = () => {
             <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
           </Link>
 
-          <Link 
-            to="/what-the-leaks-are-saying" 
-            className="journey-card flex items-center gap-4"
-          >
+          <Link to="/what-we-do-not-know" className="journey-card flex items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-muted-foreground">4</span>
+              <span className="text-lg font-semibold text-muted-foreground">5</span>
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-medium text-foreground">Understand the rumours</h3>
-              <p className="text-sm text-muted-foreground">Leaked reports and what they mean (and don't mean)</p>
+              <h3 className="font-medium text-foreground">Explore what we don't know</h3>
+              <p className="text-sm text-muted-foreground">Gaps in current information</p>
             </div>
             <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
           </Link>
 
-          <Link 
-            to="/timeline" 
-            className="journey-card flex items-center gap-4"
-          >
+          <Link to="/what-the-leaks-are-saying" className="journey-card flex items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
-              <span className="text-lg font-semibold text-muted-foreground">5</span>
+              <span className="text-lg font-semibold text-muted-foreground">6</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-medium text-foreground">Understand the rumours</h3>
+              <p className="text-sm text-muted-foreground">Leaked reports and what they mean</p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+          </Link>
+
+          <Link to="/what-the-leaks-do-not-mean" className="journey-card flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+              <span className="text-lg font-semibold text-muted-foreground">7</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-medium text-foreground">What the leaks do not mean</h3>
+              <p className="text-sm text-muted-foreground">Common misinterpretations addressed</p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+          </Link>
+
+          <Link to="/timeline" className="journey-card flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center flex-shrink-0">
+              <span className="text-lg font-semibold text-muted-foreground">8</span>
             </div>
             <div className="flex-1 min-w-0">
               <h3 className="font-medium text-foreground">See what's next</h3>
