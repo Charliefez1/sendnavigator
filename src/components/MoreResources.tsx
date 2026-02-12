@@ -21,7 +21,7 @@ const resources = [
 
 export function MoreResources() {
   return (
-    <section className="content-section py-8">
+    <section className="content-section py-4">
       <h2 className="text-lg font-semibold text-foreground mb-4">
         More from Neurodiversity Global
       </h2>
