@@ -2,8 +2,6 @@ import { Layout } from "@/components/Layout";
 import {
   PageOrientation,
   SixtySecondSummary,
-  ProtectionsSection,
-  StatusSection,
 } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 
@@ -28,67 +26,129 @@ export default function WhatHasNotChanged() {
         }
       />
 
+      {/* Legal framework still in place */}
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
-          Legal rights
+          The legal framework still in place
         </h2>
         <div className="prose-calm">
           <ul className="space-y-2">
-            <li>The Children and Families Act 2014 still governs SEND in England.</li>
+            <li>The Children and Families Act 2014 still governs SEND.</li>
+            <li>The SEND Code of Practice 0 to 25 still applies.</li>
             <li>Education, Health and Care Plans remain legally binding once issued.</li>
-            <li>Parents and young people still have rights to appeal SEND decisions through the tribunal system.</li>
+            <li>Local authorities remain legally responsible for securing provision written into plans.</li>
+            <li>Parents and young people still have the right to request an assessment.</li>
+            <li>Parents and young people still have the right to appeal decisions to the SEND Tribunal.</li>
+            <li>The 20 week legal timescale for issuing new plans remains in law.</li>
+            <li>Nothing in legislation has been amended.</li>
           </ul>
         </div>
       </section>
 
+      {/* The state of play today */}
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
-          Duties
-        </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>Local authorities still have duties to assess needs when requested and when legal tests are met.</li>
-            <li>Local authorities still have the duty to secure the provision in an Education, Health and Care Plan.</li>
-            <li>Schools still have duties to identify needs and provide SEN Support.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          Protections
-        </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>The legal enforceability of provision written into an Education, Health and Care Plan remains.</li>
-            <li>The 20 week legal timescale for new Education, Health and Care Plans remains.</li>
-          </ul>
-        </div>
-      </section>
-
-      <StatusSection type="unconfirmed">
-        <ul className="space-y-2">
-          <li>There is no confirmation that any existing legal rights or duties will change.</li>
-          <li>No confirmed proposals to remove current protections.</li>
-        </ul>
-      </StatusSection>
-
-      <StatusSection type="leaked">
-        <ul className="space-y-2">
-          <li>Leaked discussions suggest future changes could affect rights, thresholds, or appeals.</li>
-          <li>None of these are confirmed.</li>
-          <li>Current rights remain unchanged unless the law is amended.</li>
-        </ul>
-      </StatusSection>
-
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          What this means for parents
+          The state of play today
         </h2>
         <div className="prose-calm">
           <p>
-            Despite headlines and rumours, nothing about your legal rights has been removed. Research shows families continue to win the vast majority of tribunal cases, which confirms these rights are real and enforceable. If a plan says support must be provided, the law still requires it to happen. This matters because many reform discussions talk about reducing conflict, but the evidence shows appeals rise when early decisions are poor or support is missing. Until the law changes, the current protections still apply in full.
+            While the law has not changed, the system operating under that law is under significant strain.
           </p>
+          <p>Research and official reporting consistently show:</p>
+          <ul className="space-y-2">
+            <li>Record numbers of children now have Education, Health and Care Plans.</li>
+            <li>Over one million additional children receive SEN Support without a plan.</li>
+            <li>Local authorities are carrying large SEND funding deficits.</li>
+            <li>Only around half of new plans are issued within the legal 20 week timeframe.</li>
+            <li>Many families wait much longer.</li>
+            <li>Tribunal appeals have increased sharply.</li>
+            <li>Parents succeed in the vast majority of appeals that reach a decision.</li>
+            <li>Mainstream schools report rising complexity of need.</li>
+            <li>Special school demand continues to grow.</li>
+          </ul>
+          <div className="reassurance-banner mt-6">
+            <p className="font-semibold text-foreground mb-1">The law has not weakened.</p>
+            <p>But delivery under the law is inconsistent and often delayed.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* What the research tells us */}
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          What the research tells us about current problems
+        </h2>
+        <div className="prose-calm">
+          <p>
+            Independent reviews, parliamentary committees, and local government reports all describe similar issues:
+          </p>
+          <ul className="space-y-2">
+            <li>Support is often reactive rather than early.</li>
+            <li>Families feel they must escalate to secure provision.</li>
+            <li>Decisions are frequently overturned at tribunal.</li>
+            <li>Mainstream schools vary widely in capacity and expertise.</li>
+            <li>Funding pressures influence local authority decision making.</li>
+            <li>There is significant variation between areas.</li>
+          </ul>
+          <p>This is why the system is often described as adversarial.</p>
+          <div className="reassurance-banner mt-6">
+            <p className="font-semibold text-foreground mb-1">The legal framework remains strong on paper.</p>
+            <p>The operational system underneath it is struggling.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* What this means for parents today */}
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          What this means for parents today
+        </h2>
+        <div className="prose-calm">
+          <p className="font-medium text-foreground">Right now:</p>
+          <ul className="space-y-2 mb-6">
+            <li>Your legal rights still apply.</li>
+            <li>Plans are still enforceable.</li>
+            <li>Appeals are still lawful.</li>
+            <li>Schools and local authorities still have statutory duties.</li>
+          </ul>
+
+          <p className="font-medium text-foreground">However:</p>
+          <ul className="space-y-2 mb-6">
+            <li>Delays remain common.</li>
+            <li>Capacity varies by area.</li>
+            <li>You may experience resistance linked to funding pressure.</li>
+          </ul>
+
+          <div className="reassurance-banner">
+            <p className="font-semibold text-foreground mb-1">The key distinction is this:</p>
+            <p>The law has not changed. The pressure within the system has increased.</p>
+            <p className="mt-2">Understanding that difference is important when reading about reform.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* The bigger picture */}
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          The bigger picture
+        </h2>
+        <div className="prose-calm">
+          <p>
+            SEND provision in England is not being reformed because rights are considered too strong.
+          </p>
+          <p>It is being reformed because:</p>
+          <ul className="space-y-2">
+            <li>Demand has increased rapidly.</li>
+            <li>Early support has not kept pace.</li>
+            <li>Councils face financial instability.</li>
+            <li>Schools report rising complexity.</li>
+            <li>Outcomes for children have not improved in line with spending.</li>
+          </ul>
+          <p>All major stakeholders agree the system needs change.</p>
+          <div className="reassurance-banner mt-6">
+            <p className="font-semibold text-foreground mb-1">What has not changed is the legal foundation.</p>
+            <p>What is under pressure is how that foundation is delivered in practice.</p>
+          </div>
         </div>
       </section>
 
