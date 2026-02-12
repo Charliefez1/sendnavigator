@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import { Header } from "./Header";
 import { SiteNavigation } from "./SiteNavigation";
-import { JourneyNavigation } from "./JourneyNavigation";
 import { Footer } from "./Footer";
 import { ContactBanner } from "./ContactBanner";
 import { NewsletterSignup } from "./NewsletterSignup";
@@ -19,7 +18,6 @@ export function Layout({ children }: LayoutProps) {
       <SkipLink />
       <Header />
       <SiteNavigation />
-      <JourneyNavigation />
       <main id="main-content" className="flex-1" role="main" tabIndex={-1}>
         {children}
         <div className="content-section py-6 space-y-4">
