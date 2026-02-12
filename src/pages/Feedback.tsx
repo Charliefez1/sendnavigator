@@ -79,7 +79,7 @@ export default function Feedback() {
       <div className="content-section py-8 space-y-8">
         <PageHeader
           title="Feedback & Comments"
-          description="Share your thoughts, suggestions, or report issues. All submissions are reviewed before publishing."
+          description="Share your thoughts, suggestions, or report issues. Let us know if we have made a mistake or you want to challenge the information on the site. All submissions are reviewed before publishing."
         />
 
         {/* Submission form */}

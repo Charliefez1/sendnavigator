@@ -97,6 +97,15 @@ export function Footer() {
         </div>
       </div>
 
+      {/* Disclaimer bar */}
+      <div className="border-t border-border/60 bg-muted/50">
+        <div className="content-wide py-4 text-center">
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Neurodiversity Global Ltd is not responsible for any data published on this site. All data comes from relevant and trusted sources.
+          </p>
+        </div>
+      </div>
+
       {/* Bottom bar */}
       <div className="border-t border-border/60">
         <div className="content-wide py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
