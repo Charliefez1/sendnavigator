@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import { QandAComponent } from "@/components/qanda";
 import { 
   ArrowRight, 
@@ -14,6 +15,11 @@ import {
 const Index = () => {
   return (
     <Layout>
+      <SEOHead
+        title="SEND Reform Navigator"
+        description="A calm, independent guide helping parents and professionals understand SEND reform in England. Clear facts, no spin."
+        path="/"
+      />
       {/* Hero - Reassurance first */}
       <section className="content-section py-10 sm:py-14 animate-fade-in">
         {/* Welcome message */}
