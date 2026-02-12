@@ -49,14 +49,14 @@ export default function HowToUse() {
 
         <div className="space-y-4 ml-14">
           <div className="bg-card border border-border rounded-xl p-5">
-            <h3 className="font-medium text-foreground mb-2">Top bar — Site links</h3>
+            <h3 className="font-medium text-foreground mb-2">Top bar - Site links</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Links to general pages like About, Sources, Q&A, and this guide. 
               On mobile, tap the menu icon to open these.
             </p>
           </div>
           <div className="bg-card border border-border rounded-xl p-5">
-            <h3 className="font-medium text-foreground mb-2">Journey tabs — The Navigator</h3>
+            <h3 className="font-medium text-foreground mb-2">Journey tabs - The Navigator</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
               The colour-coded tabs below the header take you through the SEND reform story 
               step by step. You can follow them in order or jump to any section.
@@ -83,28 +83,28 @@ export default function HowToUse() {
           <div className="flex items-start gap-3 bg-card border border-border rounded-xl p-4">
             <div className="w-4 h-4 rounded-full bg-journey-confirmed flex-shrink-0 mt-0.5" />
             <div>
-              <h3 className="font-medium text-foreground text-sm">Teal — Confirmed</h3>
+              <h3 className="font-medium text-foreground text-sm">Teal - Confirmed</h3>
               <p className="text-xs text-muted-foreground">Official facts and what hasn't changed</p>
             </div>
           </div>
           <div className="flex items-start gap-3 bg-card border border-border rounded-xl p-4">
             <div className="w-4 h-4 rounded-full bg-journey-discussed flex-shrink-0 mt-0.5" />
             <div>
-              <h3 className="font-medium text-foreground text-sm">Amber — Under discussion</h3>
+              <h3 className="font-medium text-foreground text-sm">Amber - Under discussion</h3>
               <p className="text-xs text-muted-foreground">Proposals being debated or considered</p>
             </div>
           </div>
           <div className="flex items-start gap-3 bg-card border border-border rounded-xl p-4">
             <div className="w-4 h-4 rounded-full bg-journey-unconfirmed flex-shrink-0 mt-0.5" />
             <div>
-              <h3 className="font-medium text-foreground text-sm">Orange — Unconfirmed / Leaked</h3>
+              <h3 className="font-medium text-foreground text-sm">Orange - Unconfirmed / Leaked</h3>
               <p className="text-xs text-muted-foreground">Rumours, leaks and unverified reports</p>
             </div>
           </div>
           <div className="flex items-start gap-3 bg-card border border-border rounded-xl p-4">
             <div className="w-4 h-4 rounded-full bg-journey-next flex-shrink-0 mt-0.5" />
             <div>
-              <h3 className="font-medium text-foreground text-sm">Rose — What's next</h3>
+              <h3 className="font-medium text-foreground text-sm">Rose - What's next</h3>
               <p className="text-xs text-muted-foreground">Timeline and upcoming milestones</p>
             </div>
           </div>
@@ -128,7 +128,7 @@ export default function HowToUse() {
         <div className="space-y-3 ml-14">
           {[
             { step: "1", title: "60-second summary", desc: "A quick overview you can read in under a minute" },
-            { step: "2", title: "Reading depth control", desc: "Choose how much detail you want — quick, standard, or detailed" },
+            { step: "2", title: "Reading depth control", desc: "Choose how much detail you want, quick, standard, or detailed." },
             { step: "3", title: "Information layers", desc: "Content is split into confirmed, discussed, and unconfirmed sections" },
           ].map((item) => (
             <div key={item.step} className="flex items-start gap-3 bg-card border border-border rounded-xl p-4">

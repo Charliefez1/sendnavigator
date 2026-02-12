@@ -32,7 +32,7 @@ export default function CommunityQuestions() {
       <div className="content-section py-8 space-y-8">
         <PageHeader
           title="Lived Experience &amp; Comments"
-          description="Comments and experiences shared by families and professionals navigating SEND. Share yours below — approved contributions help others."
+          description="Comments and experiences shared by families and professionals navigating SEND. Share yours below. Approved contributions help others."
         />
 
         <AskQuestionCompact />
