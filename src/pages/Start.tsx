@@ -31,7 +31,7 @@ const Index = () => {
               Welcome to SEND Reform Navigator
             </h1>
           </div>
-          <div className="prose-calm space-y-2.5 text-muted-foreground text-sm">
+          <div className="space-y-2.5 text-muted-foreground text-sm leading-relaxed">
              <p className="leading-relaxed">
                Despite what you may have heard, <strong className="text-foreground">your child's legal protections are still in place</strong>.
              </p>
