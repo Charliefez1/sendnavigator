@@ -1,7 +1,7 @@
 /**
- * SEND Reform Navigator - ADHDi System Prompt
+ * SEND Reform Navigator - SEND AI System Prompt
  * 
- * This prompt governs all ADHDi-powered responses in the Q&A component.
+ * This prompt governs all SEND AI-powered responses in the Q&A component.
  * It encodes the guardrails and grounding rules from Prompt 5.
  */
 

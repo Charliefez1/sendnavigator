@@ -122,14 +122,14 @@ export const trustSignals = {
 };
 
 // =============================================================================
-// ADHDi TRUST SIGNALS
+// SEND AI TRUST SIGNALS
 // =============================================================================
 
 export const aiTrustSignals = {
-  labelling: "Answers are generated using ADHDi.",
+  labelling: "Answers are generated using SEND AI.",
   grounding: "Answers are based on the content of this resource only.",
   uncertaintyHandling: "If information is incomplete or uncertain, the answer will say so clearly.",
-  refusalExplanation: "ADHDi will not answer questions about individual cases, give legal advice, or make predictions.",
+  refusalExplanation: "SEND AI will not answer questions about individual cases, give legal advice, or make predictions.",
   noTechnicalJargon: true,
 };
 
