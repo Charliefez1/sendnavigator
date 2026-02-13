@@ -87,8 +87,8 @@ const Index = () => {
                   <span className="text-xs font-semibold text-status-confirmed">1</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">Understand the current situation</h3>
-                  <p className="text-xs text-muted-foreground">What we know about the SEND system today</p>
+                  <h3 className="font-medium text-foreground text-sm">What we know so far</h3>
+                  <p className="text-xs text-muted-foreground">The current state of the SEND system</p>
                 </div>
                 <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
               </Link>
@@ -98,7 +98,7 @@ const Index = () => {
                   <span className="text-xs font-semibold text-status-confirmed">2</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">See what's actually changing</h3>
+                  <h3 className="font-medium text-foreground text-sm">What is changing</h3>
                   <p className="text-xs text-muted-foreground">Confirmed reforms and official plans</p>
                 </div>
                 <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
@@ -109,7 +109,7 @@ const Index = () => {
                   <span className="text-xs font-semibold text-status-confirmed">3</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">Know what has not changed</h3>
+                  <h3 className="font-medium text-foreground text-sm">What has not changed</h3>
                   <p className="text-xs text-muted-foreground">Legal protections still in place today</p>
                 </div>
                 <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
@@ -120,7 +120,7 @@ const Index = () => {
                   <span className="text-xs font-semibold text-status-discussed">4</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">Learn what's being discussed</h3>
+                  <h3 className="font-medium text-foreground text-sm">What is being discussed</h3>
                   <p className="text-xs text-muted-foreground">Proposals under consideration</p>
                 </div>
                 <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
@@ -131,7 +131,7 @@ const Index = () => {
                   <span className="text-xs font-semibold text-status-discussed">5</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">Explore what we don't know</h3>
+                  <h3 className="font-medium text-foreground text-sm">What we do not know yet</h3>
                   <p className="text-xs text-muted-foreground">Gaps in current information</p>
                 </div>
                 <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
@@ -142,8 +142,8 @@ const Index = () => {
                   <span className="text-xs font-semibold text-status-unconfirmed">6</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">Understand the rumours</h3>
-                  <p className="text-xs text-muted-foreground">Leaked reports and what they mean</p>
+                  <h3 className="font-medium text-foreground text-sm">What the leaks are saying</h3>
+                  <p className="text-xs text-muted-foreground">Unconfirmed reports and what they mean</p>
                 </div>
                 <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
               </Link>
@@ -164,8 +164,8 @@ const Index = () => {
                   <span className="text-xs font-semibold text-[hsl(var(--timeline-upcoming))]">8</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">See what's next</h3>
-                  <p className="text-xs text-muted-foreground">Timeline of decisions and milestones</p>
+                  <h3 className="font-medium text-foreground text-sm">Timeline and next steps</h3>
+                  <p className="text-xs text-muted-foreground">Key dates, decisions and milestones</p>
                 </div>
                 <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
               </Link>
