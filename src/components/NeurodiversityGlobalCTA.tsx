@@ -24,18 +24,18 @@ export function NeurodiversityGlobalCTA() {
   return (
     <div className="content-section py-6">
       <div className="rounded-lg border border-border bg-card p-5">
-        <div className="flex items-center gap-3 mb-3">
+        <div className="flex items-start gap-4 mb-4">
           <img
             src={ndgLogo}
             alt="Neurodiversity Global"
-            className="w-8 h-8 rounded object-contain flex-shrink-0"
+            className="w-20 h-auto object-contain flex-shrink-0 rounded"
           />
           <div>
             <p className="text-sm font-medium text-foreground">
-              Looking for greater awareness at work, school, or club?
+              Looking for greater 'Neurodiversity' awareness at work, school, or club?
             </p>
-            <p className="text-xs text-muted-foreground">
-              Book some time with Rich or Charlie from Neurodiversity Global
+            <p className="text-xs text-muted-foreground mt-1">
+              Book some time with Rich or Charlie from Neurodiversity Global the Father and Son team behind the SEND Navigator.
             </p>
           </div>
         </div>
