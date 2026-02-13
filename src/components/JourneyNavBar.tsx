@@ -1,5 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { ChevronDown } from "lucide-react";
 
 const journeySteps = [
   { path: "/", label: "Start here", color: "confirmed" },
@@ -21,28 +23,70 @@ const dotColors: Record<string, string> = {
 };
 
 export function JourneyNavBar() {
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const ref = useRef<HTMLDivElement>(null);
+
+  const currentStep = journeySteps.find((s) => s.path === location.pathname);
+  const currentIndex = journeySteps.findIndex((s) => s.path === location.pathname);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
   return (
-    <nav className="bg-navy/90 border-b border-white/10" aria-label="Journey steps">
+    <nav className="bg-navy/90 border-b border-white/10 relative" aria-label="Journey steps" ref={ref}>
       <div className="content-wide">
-        <div className="flex items-center gap-0.5 py-1.5 overflow-x-auto scrollbar-hide">
-          {journeySteps.map((step, i) => (
-            <NavLink
-              key={step.path}
-              to={step.path}
-              className={({ isActive }) =>
-                cn(
-                  "px-3 py-1.5 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5",
-                  isActive
-                    ? "bg-white/20 text-white font-semibold"
-                    : "text-white/60 hover:text-white hover:bg-white/10"
-                )
-              }
-            >
-              <span className={cn("w-2 h-2 rounded-full flex-shrink-0", dotColors[step.color])} />
-              {i + 1}. {step.label}
-            </NavLink>
-          ))}
-        </div>
+        <button
+          onClick={() => setOpen(!open)}
+          className="flex items-center justify-between w-full py-2.5 text-white"
+          aria-expanded={open}
+        >
+          <span className="flex items-center gap-2 text-sm font-medium">
+            {currentStep && (
+              <>
+                <span className={cn("w-2 h-2 rounded-full flex-shrink-0", dotColors[currentStep.color])} />
+                <span className="text-white/60 mr-1">{currentIndex + 1}.</span>
+                {currentStep.label}
+              </>
+            )}
+            {!currentStep && "Journey steps"}
+          </span>
+          <ChevronDown className={cn("w-4 h-4 text-white/60 transition-transform", open && "rotate-180")} />
+        </button>
+
+        {open && (
+          <div className="absolute left-0 right-0 top-full bg-card text-card-foreground border border-border rounded-b-xl shadow-lg z-50 animate-fade-in">
+            <div className="py-1">
+              {journeySteps.map((step, i) => (
+                <NavLink
+                  key={step.path}
+                  to={step.path}
+                  className={({ isActive }) =>
+                    cn(
+                      "flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-colors",
+                      isActive
+                        ? "bg-primary/10 text-primary font-semibold"
+                        : "text-foreground hover:bg-muted"
+                    )
+                  }
+                >
+                  <span className={cn("w-2 h-2 rounded-full flex-shrink-0", dotColors[step.color])} />
+                  <span className="text-muted-foreground mr-0.5">{i + 1}.</span>
+                  {step.label}
+                </NavLink>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
