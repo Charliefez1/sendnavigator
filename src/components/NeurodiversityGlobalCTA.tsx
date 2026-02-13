@@ -24,11 +24,11 @@ export function NeurodiversityGlobalCTA() {
   return (
     <div className="content-section py-6">
       <div className="rounded-lg border border-border bg-card p-5">
-        <div className="flex items-start gap-4 mb-4">
+        <div className="flex flex-col items-center gap-4 mb-4 text-center">
           <img
             src={ndgLogo}
             alt="Neurodiversity Global"
-            className="w-40 h-auto object-contain flex-shrink-0 rounded"
+            className="w-40 h-auto object-contain rounded"
           />
           <div>
             <p className="text-sm font-medium text-foreground">
