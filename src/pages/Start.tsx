@@ -24,52 +24,52 @@ const Index = () => {
       {/* Hero - Reassurance first */}
       <section className="content-section py-10 sm:py-14 animate-fade-in">
         {/* Welcome message */}
-        <div className="bg-card border border-border rounded-xl p-6 sm:p-8 mb-8">
-          <div className="flex items-center gap-3 mb-4">
-            <Compass className="w-8 h-8 text-primary flex-shrink-0" />
-            <h1 className="text-base sm:text-lg font-semibold text-foreground">
+        <div className="bg-card border border-border rounded-xl p-5 sm:p-6 mb-8">
+          <div className="flex items-center gap-2.5 mb-3">
+            <Compass className="w-6 h-6 text-primary flex-shrink-0" />
+            <h1 className="text-sm sm:text-base font-semibold text-foreground">
               Welcome to SEND Reform Navigator
             </h1>
           </div>
-          <div className="prose-calm space-y-3 text-muted-foreground">
-             <p className="text-sm leading-relaxed">
+          <div className="prose-calm space-y-2.5 text-muted-foreground">
+             <p className="text-xs leading-relaxed">
                Despite what you may have heard, <strong className="text-foreground">your child's legal protections are still in place</strong>.
              </p>
-             <p className="text-sm leading-relaxed">
+             <p className="text-xs leading-relaxed">
                <strong className="text-foreground">EHCPs remain legally binding.</strong><br />
                <strong className="text-foreground">The law has not changed.</strong>
              </p>
-             <p className="text-sm leading-relaxed">
+             <p className="text-xs leading-relaxed">
                What has changed is the <strong className="text-foreground">volume of discussion</strong> about SEND provision in 2026 and 2027. There is increasing debate across politics, education and local authorities, alongside early signals, <strong className="text-foreground">leaks and speculation</strong> about possible future reforms.
              </p>
-             <p className="text-sm leading-relaxed">
+             <p className="text-xs leading-relaxed">
                That uncertainty creates anxiety for parents.
              </p>
-             <p className="text-sm leading-relaxed">
+             <p className="text-xs leading-relaxed">
                The <strong className="text-foreground">SEND Navigator is designed to help make sense of this</strong>.
              </p>
-             <p className="text-sm leading-relaxed font-medium text-foreground">It includes:</p>
-             <ul className="space-y-1.5 text-sm list-disc list-inside">
+             <p className="text-xs leading-relaxed font-medium text-foreground">It includes:</p>
+             <ul className="space-y-1 text-xs list-disc list-inside">
                <li><strong className="text-foreground">Confirmed information</strong> based on current law and statutory guidance</li>
                <li><strong className="text-foreground">Clearly labelled sections</strong> on speculation and leaks, where relevant</li>
                <li><strong className="text-foreground">Clear separation</strong> between what is confirmed, what is being discussed, and what has not changed</li>
              </ul>
-             <p className="text-sm leading-relaxed">
+             <p className="text-xs leading-relaxed">
                <strong className="text-foreground">Nothing is presented without context.</strong><br />
                <strong className="text-foreground">Nothing speculative is presented as fact.</strong>
              </p>
-             <p className="text-sm leading-relaxed">
+             <p className="text-xs leading-relaxed">
                The information currently available as of February 2026 is contained within this navigator. As further details are formally released, the navigator will be <strong className="text-foreground">updated so parents can see what has changed, and what has not</strong>.
              </p>
-             <p className="text-sm leading-relaxed">
+             <p className="text-xs leading-relaxed">
                The aim is not to remove uncertainty where it genuinely exists, but to make it <strong className="text-foreground">visible, understandable and manageable</strong>.
              </p>
-             <p className="text-sm leading-relaxed">
+             <p className="text-xs leading-relaxed">
                For more context, please see the{" "}
                <Link to="/about" className="text-primary hover:underline">About</Link> section and{" "}
                <Link to="/why-i-built-this" className="text-primary hover:underline">Why I Built This</Link>.
              </p>
-             <p className="text-sm font-medium text-foreground">Rich Ferriman</p>
+             <p className="text-xs font-medium text-foreground">Rich Ferriman</p>
           </div>
         </div>
 
