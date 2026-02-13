@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 
 const journeySteps = [
-  { path: "/", label: "Home", shortLabel: "Home", group: "confirmed" },
   { path: "/where-we-are-now", label: "What we know so far", shortLabel: "Known", group: "confirmed" },
   { path: "/what-is-changing", label: "What is changing", shortLabel: "Changing", group: "confirmed" },
   { path: "/what-has-not-changed", label: "What has not changed", shortLabel: "Unchanged", group: "confirmed" },

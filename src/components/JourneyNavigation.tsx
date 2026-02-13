@@ -12,13 +12,6 @@ import { cn } from "@/lib/utils";
  */
 const journeySteps = [
   {
-    path: "/",
-    label: "Start here",
-    shortLabel: "Start",
-    description: "Your rights have not changed",
-    colorClass: "journey-step-confirmed",
-  },
-  {
     path: "/where-we-are-now",
     label: "Current situation",
     shortLabel: "Now",

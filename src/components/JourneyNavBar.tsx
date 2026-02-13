@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const journeySteps = [
-  { path: "/", label: "Home", shortLabel: "Home", color: "confirmed" },
   { path: "/where-we-are-now", label: "What we know so far", shortLabel: "Known", color: "confirmed" },
   { path: "/what-is-changing", label: "What is changing", shortLabel: "Changing", color: "confirmed" },
   { path: "/what-has-not-changed", label: "What has not changed", shortLabel: "Unchanged", color: "confirmed" },

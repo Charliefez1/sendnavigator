@@ -6,6 +6,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import neurodiversityLogo from "@/assets/neurodiversity-global-education-logo.png";
 
 const siteLinks = [
+  { path: "/", label: "Home" },
   { path: "/how-to-use", label: "How to use" },
   { path: "/questions-and-answers", label: "Ask ADHDi" },
   { path: "/community-questions", label: "Lived experience" },
