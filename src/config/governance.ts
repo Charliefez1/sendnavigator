@@ -167,7 +167,7 @@ export const currentDisclosures = {
 };
 
 // =============================================================================
-// ADHDi GOVERNANCE (FORWARD COMPATIBILITY)
+// SEND AI GOVERNANCE (FORWARD COMPATIBILITY)
 // =============================================================================
 
 export const aiGovernanceRules = {

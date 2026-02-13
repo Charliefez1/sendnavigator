@@ -116,19 +116,19 @@ export const acceptedSourceDescriptions: Record<AcceptedSourceType, {
 };
 
 // =============================================================================
-// ADHDi GROUNDING RULES
+// SEND AI GROUNDING RULES
 // =============================================================================
 
 export const aiGroundingRules = {
   // Rule 1: Source Bound
   sourceBound: {
-    rule: "ADHDi may only answer using information contained within SEND Reform Navigator's curated content.",
+    rule: "SEND AI may only answer using information contained within SEND Reform Navigator's curated content.",
     enforcement: "No external knowledge may be introduced.",
   },
 
   // Rule 2: Respect Confidence Labels
   respectConfidence: {
-    rule: "ADHDi must preserve and surface the correct confidence category for all information.",
+    rule: "SEND AI must preserve and surface the correct confidence category for all information.",
     enforcement: "Every factual claim must include its confidence level.",
   },
 
@@ -172,7 +172,7 @@ export const aiGroundingRules = {
   // Rule 4: Uncertainty Handling
   uncertaintyHandling: {
     incomplete: "If information is incomplete, this must be stated explicitly.",
-    disagreement: "If multiple credible views exist, ADHDi must explain that disagreement exists.",
+    disagreement: "If multiple credible views exist, SEND AI must explain that disagreement exists.",
     unknown: "If something is unknown, say 'This is not yet known' rather than omitting.",
   },
 
@@ -266,7 +266,7 @@ export const editorialRules = {
   templates: "All content must follow the same templates defined in Prompt 3",
   languagePatterns: "Use consistent language patterns across all pages",
   terminology: "Do not introduce new terminology without definition",
-  guardrails: "All contributors and ADHDi outputs must respect the same guardrails",
+  guardrails: "All contributors and SEND AI outputs must respect the same guardrails",
   predictability: "Users should experience consistency across all pages",
 };
 

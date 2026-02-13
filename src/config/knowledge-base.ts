@@ -1,8 +1,8 @@
 /**
  * SEND Reform Navigator - Curated Knowledge Base
  * 
- * This is the ONLY source of information ADHDi may use.
- * ADHDi must NOT introduce external knowledge.
+ * This is the ONLY source of information SEND AI may use.
+ * SEND AI must NOT introduce external knowledge.
  * 
  * Last updated: 7th February 2026
  */
