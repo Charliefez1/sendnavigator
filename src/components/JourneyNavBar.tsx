@@ -1,18 +1,17 @@
-import { useState, useRef, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { ChevronDown } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const journeySteps = [
-  { path: "/", label: "Start here", color: "confirmed" },
-  { path: "/where-we-are-now", label: "Current situation", color: "confirmed" },
-  { path: "/what-is-changing", label: "Confirmed changes", color: "confirmed" },
-  { path: "/what-has-not-changed", label: "What has not changed", color: "confirmed" },
-  { path: "/what-is-being-discussed", label: "Under discussion", color: "discussed" },
-  { path: "/what-we-do-not-know", label: "What we do not know", color: "discussed" },
-  { path: "/what-the-leaks-are-saying", label: "Unconfirmed reports", color: "unconfirmed" },
-  { path: "/what-the-leaks-do-not-mean", label: "What leaks do not mean", color: "unconfirmed" },
-  { path: "/timeline", label: "What is next", color: "next" },
+  { path: "/", label: "Start here", shortLabel: "Start", color: "confirmed" },
+  { path: "/where-we-are-now", label: "Current situation", shortLabel: "Now", color: "confirmed" },
+  { path: "/what-is-changing", label: "Confirmed changes", shortLabel: "Changes", color: "confirmed" },
+  { path: "/what-has-not-changed", label: "What has not changed", shortLabel: "Unchanged", color: "confirmed" },
+  { path: "/what-is-being-discussed", label: "Under discussion", shortLabel: "Discussion", color: "discussed" },
+  { path: "/what-we-do-not-know", label: "What we do not know", shortLabel: "Unknown", color: "discussed" },
+  { path: "/what-the-leaks-are-saying", label: "Unconfirmed reports", shortLabel: "Leaks", color: "unconfirmed" },
+  { path: "/what-the-leaks-do-not-mean", label: "What leaks do not mean", shortLabel: "Context", color: "unconfirmed" },
+  { path: "/timeline", label: "What is next", shortLabel: "Next", color: "next" },
 ];
 
 const dotColors: Record<string, string> = {
@@ -22,71 +21,81 @@ const dotColors: Record<string, string> = {
   next: "bg-[hsl(var(--timeline-upcoming))]",
 };
 
+const activeDotColors: Record<string, string> = {
+  confirmed: "ring-status-confirmed",
+  discussed: "ring-status-discussed",
+  unconfirmed: "ring-status-unconfirmed",
+  next: "ring-[hsl(var(--timeline-upcoming))]",
+};
+
 export function JourneyNavBar() {
-  const [open, setOpen] = useState(false);
   const location = useLocation();
-  const ref = useRef<HTMLDivElement>(null);
-
-  const currentStep = journeySteps.find((s) => s.path === location.pathname);
   const currentIndex = journeySteps.findIndex((s) => s.path === location.pathname);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [location.pathname]);
-
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
+  const prevStep = currentIndex > 0 ? journeySteps[currentIndex - 1] : null;
+  const nextStep = currentIndex < journeySteps.length - 1 ? journeySteps[currentIndex + 1] : null;
 
   return (
-    <nav className="bg-navy/90 border-b border-white/10 relative" aria-label="Journey steps" ref={ref}>
-      <div className="content-wide">
-        <button
-          onClick={() => setOpen(!open)}
-          className="flex items-center justify-between w-full py-2.5 text-white"
-          aria-expanded={open}
-        >
-          <span className="flex items-center gap-2 text-sm font-medium">
-            {currentStep && (
-              <>
-                <span className={cn("w-2 h-2 rounded-full flex-shrink-0", dotColors[currentStep.color])} />
-                <span className="text-white/60 mr-1">{currentIndex + 1}.</span>
-                {currentStep.label}
-              </>
-            )}
-            {!currentStep && "Journey steps"}
-          </span>
-          <ChevronDown className={cn("w-4 h-4 text-white/60 transition-transform", open && "rotate-180")} />
-        </button>
+    <nav className="bg-navy/90 border-b border-white/10" aria-label="Journey progress">
+      <div className="content-wide py-2">
+        {/* Progress dots row */}
+        <div className="flex items-center justify-center gap-1 mb-1.5">
+          {journeySteps.map((step, i) => (
+            <NavLink
+              key={step.path}
+              to={step.path}
+              title={`${i + 1}. ${step.label}`}
+              className="group relative p-0.5"
+            >
+              <span
+                className={cn(
+                  "block w-2.5 h-2.5 rounded-full transition-all",
+                  dotColors[step.color],
+                  i === currentIndex
+                    ? "ring-2 ring-offset-1 ring-offset-navy/90 scale-125 " + activeDotColors[step.color]
+                    : "opacity-40 group-hover:opacity-80 group-hover:scale-110"
+                )}
+              />
+            </NavLink>
+          ))}
+        </div>
 
-        {open && (
-          <div className="absolute left-0 right-0 top-full bg-card text-card-foreground border border-border rounded-b-xl shadow-lg z-50 animate-fade-in">
-            <div className="py-1">
-              {journeySteps.map((step, i) => (
-                <NavLink
-                  key={step.path}
-                  to={step.path}
-                  className={({ isActive }) =>
-                    cn(
-                      "flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-colors",
-                      isActive
-                        ? "bg-primary/10 text-primary font-semibold"
-                        : "text-foreground hover:bg-muted"
-                    )
-                  }
-                >
-                  <span className={cn("w-2 h-2 rounded-full flex-shrink-0", dotColors[step.color])} />
-                  <span className="text-muted-foreground mr-0.5">{i + 1}.</span>
-                  {step.label}
-                </NavLink>
-              ))}
-            </div>
+        {/* Current step + prev/next */}
+        <div className="flex items-center justify-between">
+          {prevStep ? (
+            <NavLink
+              to={prevStep.path}
+              className="flex items-center gap-1 text-white/50 hover:text-white/80 transition-colors text-xs"
+            >
+              <ChevronLeft className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">{prevStep.shortLabel}</span>
+            </NavLink>
+          ) : (
+            <div className="w-8" />
+          )}
+
+          <div className="text-center">
+            <span className="text-white/50 text-xs">
+              {currentIndex >= 0 ? `Step ${currentIndex + 1} of ${journeySteps.length}` : "Guide"}
+            </span>
+            {currentIndex >= 0 && (
+              <p className="text-white text-xs font-medium leading-tight">
+                {journeySteps[currentIndex].label}
+              </p>
+            )}
           </div>
-        )}
+
+          {nextStep ? (
+            <NavLink
+              to={nextStep.path}
+              className="flex items-center gap-1 text-white/50 hover:text-white/80 transition-colors text-xs"
+            >
+              <span className="hidden sm:inline">{nextStep.shortLabel}</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </NavLink>
+          ) : (
+            <div className="w-8" />
+          )}
+        </div>
       </div>
     </nav>
   );
