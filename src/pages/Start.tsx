@@ -213,11 +213,11 @@ const Index = () => {
               Made for families like yours
             </h2>
             <div className="prose-calm space-y-3 text-muted-foreground">
-              <p className="text-base leading-relaxed !mb-3">
+              <p className="text-sm leading-relaxed !mb-2">
                 This is an independent resource, not government, not a campaign. We don't give advice
                 or tell you what to do. We just help you understand what's happening.
               </p>
-              <p className="text-base leading-relaxed !mb-0">
+              <p className="text-sm leading-relaxed !mb-0">
                 We know you're busy and may be feeling anxious. That's why we've made everything 
                 as clear and straightforward as possible.
               </p>
