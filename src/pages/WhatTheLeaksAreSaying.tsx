@@ -74,6 +74,84 @@ export default function WhatTheLeaksAreSaying() {
         </div>
       </section>
 
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          Why governments leak or kite fly ideas
+        </h2>
+        <div className="prose-calm space-y-4">
+          <p>
+            Governments rarely leak information by accident. This is not about conspiracy. It is about managing risk, reaction, and politics in complex systems.
+          </p>
+          <p>Here are the main reasons it happens.</p>
+
+          <h3 className="text-lg font-medium text-foreground mt-6">1. To test public reaction without commitment</h3>
+          <p>
+            Leaking allows government to see how parents, professionals, media, and opposition respond before anything is formally proposed.
+          </p>
+          <p>
+            If the reaction is strong and negative, the idea can be quietly dropped without the cost of a public U-turn.
+          </p>
+          <p>
+            For SEND, this is especially likely because reforms affect children's rights and carry high political risk.
+          </p>
+
+          <h3 className="text-lg font-medium text-foreground mt-6">2. To soften the ground for change</h3>
+          <p>
+            Sometimes leaks are used to make later proposals feel less shocking.
+          </p>
+          <p>
+            When people have already seen a worse version in the media, a more moderate official proposal can appear reasonable by comparison, even if it still represents a significant change.
+          </p>
+          <p>
+            This does not mean the leaked version was ever intended to happen exactly as described.
+          </p>
+
+          <h3 className="text-lg font-medium text-foreground mt-6">3. To surface problems early</h3>
+          <p>
+            In some cases, officials leak incomplete ideas precisely to expose flaws.
+          </p>
+          <p>
+            Feedback from parents, charities, lawyers, and professionals highlights where an idea would fail in the real world. That information feeds back into policy design.
+          </p>
+          <p>
+            This is more common in areas like SEND where lived experience matters.
+          </p>
+
+          <h3 className="text-lg font-medium text-foreground mt-6">4. To manage internal disagreement</h3>
+          <p>
+            Government is not one voice.
+          </p>
+          <p>
+            Departments, advisers, and ministers often disagree. Leaks can reflect internal tensions, with one group signalling concern about the direction of travel or trying to influence the final outcome.
+          </p>
+          <p>
+            In SEND reform, this is likely given the competing pressures of rights, cost, workforce capacity, and outcomes.
+          </p>
+
+          <h3 className="text-lg font-medium text-foreground mt-6">5. To change the narrative</h3>
+          <p>
+            When a system is described as "in crisis", leaks can shift the conversation towards inevitability.
+          </p>
+          <p>
+            The message becomes: something must change, even if we do not yet agree how. That framing makes reform politically easier later.
+          </p>
+
+          <h3 className="text-lg font-medium text-foreground mt-6">What this means for parents</h3>
+          <p>
+            Leaks are not messages aimed at families. They are tools aimed at policy shaping.
+          </p>
+          <p>
+            Parents are not meant to act on them. Parents are meant to react to them, so government can observe the response.
+          </p>
+          <p>
+            Knowing this does not remove anxiety. But it does help explain why leaked ideas often feel extreme, incomplete, and emotionally destabilising.
+          </p>
+          <p>
+            They are not written for care. They are written for impact.
+          </p>
+        </div>
+      </section>
+
       <div className="content-section pb-16" />
     </Layout>
   );
