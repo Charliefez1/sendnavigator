@@ -347,8 +347,7 @@
 
   /* Journey navigation cards */
   .journey-card {
-    @apply bg-card border border-border rounded-xl p-5 transition-all duration-200;
-    box-shadow: 0 2px 8px -2px hsl(220 20% 50% / 0.15);
+    @apply bg-card border border-border rounded-xl p-5 shadow-md transition-all duration-200;
   }
 
   .journey-card:hover {
