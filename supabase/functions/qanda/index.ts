@@ -193,7 +193,7 @@ serve(async (req) => {
         throw new Error("Missing required fields");
       }
 
-      parsedAnswer.lastUpdated = "7th February 2026";
+      parsedAnswer.lastUpdated = "13th February 2026";
 
       console.log(`Q&A response generated with confidence: ${parsedAnswer.confidence}`);
 
