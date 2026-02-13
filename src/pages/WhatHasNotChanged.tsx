@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import {
   PageOrientation,
   SixtySecondSummary,
@@ -8,10 +9,11 @@ import { StatusBadge } from "@/components/StatusBadge";
 export default function WhatHasNotChanged() {
   return (
     <Layout>
+      <SEOHead title="What has not changed in the SEND system" description="Legal rights and protections that remain in place as of February 2026." path="/what-has-not-changed" />
       <PageOrientation
-        title="What has not changed"
+        title="What has not changed: what remains the same in the SEND system as of 14 February 2026"
         description="Legal rights and protections that remain in place."
-        lastUpdated="7th February 2026"
+        lastUpdated="14th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
@@ -20,135 +22,139 @@ export default function WhatHasNotChanged() {
 
       <SixtySecondSummary
         prose={
-          <p>
-            Your legal rights have not changed. Education, Health and Care Plans still carry the same legal weight. Local authorities still have the same duties to assess needs and secure provision. Schools still have duties to support children with SEN. If support is written into a plan, it must still be delivered. Appeals still exist and are still lawful. This matters because a lot of fear has come from rumours, not reality. Until Parliament changes the law, the protections created in 2014 remain in place. Research shows families continue to rely on these protections, and they are still enforceable.
-          </p>
+          <div className="space-y-3">
+            <p>
+              Despite the volume of discussion about reform, the core legal structure of SEND in England has not changed.
+            </p>
+            <p>
+              Education, Health and Care Plans still exist. The Children and Families Act 2014 is still the law. Local authorities are still legally responsible for securing the provision written into an EHCP. Parents still have the right to appeal decisions and to challenge failures.
+            </p>
+            <p>
+              No child has lost their legal protections because of reform discussions. No existing EHCP has been removed or downgraded because of proposed changes. Current processes, however imperfect, remain in force.
+            </p>
+          </div>
         }
       />
 
-      {/* Legal framework still in place */}
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
-          The legal framework still in place
+          How will this impact children and parents
         </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>The Children and Families Act 2014 still governs SEND.</li>
-            <li>The SEND Code of Practice 0 to 25 still applies.</li>
-            <li>Education, Health and Care Plans remain legally binding once issued.</li>
-            <li>Local authorities remain legally responsible for securing provision written into plans.</li>
-            <li>Parents and young people still have the right to request an assessment.</li>
-            <li>Parents and young people still have the right to appeal decisions to the SEND Tribunal.</li>
-            <li>The 20 week legal timescale for issuing new plans remains in law.</li>
-            <li>Nothing in legislation has been amended.</li>
-          </ul>
-        </div>
-      </section>
-
-      {/* The state of play today */}
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          The state of play today
-        </h2>
-        <div className="prose-calm">
+        <div className="prose-calm space-y-3">
           <p>
-            While the law has not changed, the system operating under that law is under significant strain.
+            For families right now, this means certainty in a period of noise.
           </p>
-          <p>Research and official reporting consistently show:</p>
-          <ul className="space-y-2">
-            <li>Record numbers of children now have Education, Health and Care Plans.</li>
-            <li>Over one million additional children receive SEN Support without a plan.</li>
-            <li>Local authorities are carrying large SEND funding deficits.</li>
-            <li>Only around half of new plans are issued within the legal 20 week timeframe.</li>
-            <li>Many families wait much longer.</li>
-            <li>Tribunal appeals have increased sharply.</li>
-            <li>Parents succeed in the vast majority of appeals that reach a decision.</li>
-            <li>Mainstream schools report rising complexity of need.</li>
-            <li>Special school demand continues to grow.</li>
-          </ul>
-          <div className="reassurance-banner mt-6">
-            <p className="font-semibold text-foreground mb-1">The law has not weakened.</p>
-            <p>But delivery under the law is inconsistent and often delayed.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* What the research tells us */}
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          What the research tells us about current problems
-        </h2>
-        <div className="prose-calm">
           <p>
-            Independent reviews, parliamentary committees, and local government reports all describe similar issues:
+            If your child has an EHCP, it is still legally binding. If you are applying for one, the same legal tests apply. If provision is not delivered, you still have routes to challenge.
           </p>
-          <ul className="space-y-2">
-            <li>Support is often reactive rather than early.</li>
-            <li>Families feel they must escalate to secure provision.</li>
-            <li>Decisions are frequently overturned at tribunal.</li>
-            <li>Mainstream schools vary widely in capacity and expertise.</li>
-            <li>Funding pressures influence local authority decision making.</li>
-            <li>There is significant variation between areas.</li>
-          </ul>
-          <p>This is why the system is often described as adversarial.</p>
-          <div className="reassurance-banner mt-6">
-            <p className="font-semibold text-foreground mb-1">The legal framework remains strong on paper.</p>
-            <p>The operational system underneath it is struggling.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* What this means for parents today */}
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          What this means for parents today
-        </h2>
-        <div className="prose-calm">
-          <p className="font-medium text-foreground">Right now:</p>
-          <ul className="space-y-2 mb-6">
-            <li>Your legal rights still apply.</li>
-            <li>Plans are still enforceable.</li>
-            <li>Appeals are still lawful.</li>
-            <li>Schools and local authorities still have statutory duties.</li>
-          </ul>
-
-          <p className="font-medium text-foreground">However:</p>
-          <ul className="space-y-2 mb-6">
-            <li>Delays remain common.</li>
-            <li>Capacity varies by area.</li>
-            <li>You may experience resistance linked to funding pressure.</li>
-          </ul>
-
-          <div className="reassurance-banner">
-            <p className="font-semibold text-foreground mb-1">The key distinction is this:</p>
-            <p>The law has not changed. The pressure within the system has increased.</p>
-            <p className="mt-2">Understanding that difference is important when reading about reform.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* The bigger picture */}
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          The bigger picture
-        </h2>
-        <div className="prose-calm">
           <p>
-            SEND provision in England is not being reformed because rights are considered too strong.
+            At the same time, the pressures you experience have not disappeared. Delays, inconsistency, and conflict remain part of many families' lived experience. Reform discussions do not fix today's problems overnight, but they also do not take away today's rights.
           </p>
-          <p>It is being reformed because:</p>
+        </div>
+      </section>
+
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          Statistics and facts
+        </h2>
+        <div className="prose-calm space-y-3">
+          <p>These facts reflect what has remained unchanged, based on the checked research set.</p>
           <ul className="space-y-2">
-            <li>Demand has increased rapidly.</li>
-            <li>Early support has not kept pace.</li>
-            <li>Councils face financial instability.</li>
-            <li>Schools report rising complexity.</li>
-            <li>Outcomes for children have not improved in line with spending.</li>
+            <li>The Children and Families Act 2014 remains the legal framework for SEND in England.</li>
+            <li>Education, Health and Care Plans remain statutory and legally enforceable.</li>
+            <li>The 20 week statutory timescale for EHCP processes remains unchanged.</li>
+            <li>Parents retain the right to appeal to the SEND Tribunal.</li>
+            <li>Local authorities remain legally responsible for securing EHCP provision.</li>
+            <li>The SEND Code of Practice remains in force.</li>
+            <li>Ofsted and CQC area inspections continue under the existing framework.</li>
+            <li>No confirmed legislative changes have been enacted as of 14 February 2026.</li>
           </ul>
-          <p>All major stakeholders agree the system needs change.</p>
-          <div className="reassurance-banner mt-6">
-            <p className="font-semibold text-foreground mb-1">What has not changed is the legal foundation.</p>
-            <p>What is under pressure is how that foundation is delivered in practice.</p>
+        </div>
+      </section>
+
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          What has stayed the same, in plain language
+        </h2>
+        <div className="prose-calm space-y-6">
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">The law has not changed</h3>
+            <p>
+              The most important point for parents to understand is this. The law has not moved.
+            </p>
+            <p>
+              The Children and Families Act 2014 still governs SEND in England. Any major change to EHCP eligibility, appeal rights, or legal duties would require new primary legislation. That has not happened.
+            </p>
+            <p>
+              This means the legal tests for an EHCP are unchanged. If a child has or may have special educational needs, and may require special educational provision beyond what is ordinarily available, the local authority still has a duty to assess.
+            </p>
           </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">EHCPs are still enforceable</h3>
+            <p>
+              An EHCP is still a legal document. The provision written into it must be delivered. Section F remains enforceable.
+            </p>
+            <p>
+              If provision is missing, delayed, or reduced without agreement, families still have the right to challenge through complaints, mediation, or tribunal.
+            </p>
+            <p>
+              Nothing in the confirmed reform activity removes that protection.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">Appeal rights remain</h3>
+            <p>Parents still have the right to appeal:</p>
+            <ul className="space-y-2">
+              <li>Refusals to assess.</li>
+              <li>Refusals to issue an EHCP.</li>
+              <li>The content of an EHCP.</li>
+              <li>The named placement.</li>
+            </ul>
+            <p>
+              The SEND Tribunal continues to operate under the same powers. High parent success rates in tribunal cases reflect system behaviour, not a change in legal thresholds.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">SEN Support remains variable</h3>
+            <p>
+              SEN Support remains non-statutory and locally variable. There is still no single national definition of what must be provided at this level.
+            </p>
+            <p>
+              This is one of the drivers behind reform, but as of February 2026, this inconsistency remains.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">Timescales remain, even if they are not met</h3>
+            <p>
+              The legal 20 week deadline still exists. Enforcement has not changed. Families still experience delays, but the law itself has not been amended.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">No child is being moved or reclassified because of reform talk</h3>
+            <p>
+              There is no confirmed policy that removes EHCPs from children already holding them. There is no confirmed policy that forces children out of specialist provision or into mainstream.
+            </p>
+            <p>
+              Any claims suggesting that rights have already been taken away are not supported by the checked research set.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">Why this matters in a noisy environment</h3>
+            <p>
+              When there is a lot of discussion, leaks, and commentary, it is easy for families to feel that the ground is shifting under their feet.
+            </p>
+            <p>
+              The reality, as of 14 February 2026, is more stable than the headlines suggest. The system is under pressure. Reform is coming. But the legal foundations remain in place.
+            </p>
+          </div>
+
         </div>
       </section>
 
