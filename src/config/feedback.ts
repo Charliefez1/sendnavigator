@@ -122,14 +122,14 @@ export const trustSignals = {
 };
 
 // =============================================================================
-// SEND AI TRUST SIGNALS
+// Ask SEND TRUST SIGNALS
 // =============================================================================
 
 export const aiTrustSignals = {
-  labelling: "Answers are generated using SEND AI.",
+  labelling: "Answers are generated using Ask SEND.",
   grounding: "Answers are based on the content of this resource only.",
   uncertaintyHandling: "If information is incomplete or uncertain, the answer will say so clearly.",
-  refusalExplanation: "SEND AI will not answer questions about individual cases, give legal advice, or make predictions.",
+  refusalExplanation: "Ask SEND will not answer questions about individual cases, give legal advice, or make predictions.",
   noTechnicalJargon: true,
 };
 

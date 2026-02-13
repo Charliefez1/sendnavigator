@@ -1,7 +1,7 @@
 /**
- * SEND Reform Navigator - SEND AI System Prompt
+ * SEND Reform Navigator - Ask SEND System Prompt
  * 
- * This prompt governs all SEND AI-powered responses in the Q&A component.
+ * This prompt governs all Ask SEND-powered responses in the Q&A component.
  * It encodes the guardrails and grounding rules from Prompt 5.
  */
 

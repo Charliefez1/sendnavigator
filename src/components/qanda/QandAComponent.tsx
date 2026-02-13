@@ -98,7 +98,7 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
         return;
       }
 
-      // Set the response from SEND AI
+      // Set the response from Ask SEND
       setResponse(data as QandAResponse);
     } catch (err) {
       console.error("Q&A request failed:", err);
@@ -169,7 +169,7 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
         </div>
       )}
 
-      {/* SEND AI Trust Notice */}
+      {/* Ask SEND Trust Notice */}
       <div className="mt-6 pt-4 border-t border-border">
         <AITrustNotice />
         <p className="text-xs text-muted-foreground mt-3 flex items-center gap-2">
