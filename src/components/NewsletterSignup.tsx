@@ -45,7 +45,7 @@ export function NewsletterSignup() {
   }
 
   return (
-    <div className="bg-primary/5 border border-primary/20 rounded-2xl p-5 sm:p-6">
+    <div className="bg-primary/5 border border-primary/20 rounded-2xl p-5 sm:p-6 shadow-md">
       <div className="flex items-center gap-2 mb-2">
         <Mail className="w-5 h-5 text-primary" />
         <h3 className="font-display font-bold text-foreground text-sm sm:text-base">
