@@ -37,7 +37,7 @@ export function Header() {
                 SEND Reform Navigator
               </h1>
               <p className="text-xs text-navy-muted font-medium hidden sm:block">
-                A friendly guide for families
+                A practical guide for families
               </p>
             </div>
           </Link>
