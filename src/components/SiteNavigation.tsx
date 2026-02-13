@@ -5,15 +5,15 @@ import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
 
 const journeySteps = [
-  { path: "/", label: "Start here", shortLabel: "Start", group: "confirmed" },
-  { path: "/where-we-are-now", label: "Current situation", shortLabel: "Now", group: "confirmed" },
-  { path: "/what-is-changing", label: "Confirmed changes", shortLabel: "Changes", group: "confirmed" },
+  { path: "/", label: "Home", shortLabel: "Home", group: "confirmed" },
+  { path: "/where-we-are-now", label: "What we know so far", shortLabel: "Known", group: "confirmed" },
+  { path: "/what-is-changing", label: "What is changing", shortLabel: "Changing", group: "confirmed" },
   { path: "/what-has-not-changed", label: "What has not changed", shortLabel: "Unchanged", group: "confirmed" },
-  { path: "/what-is-being-discussed", label: "Under discussion", shortLabel: "Discussed", group: "discussed" },
-  { path: "/what-we-do-not-know", label: "What we do not know", shortLabel: "Unknown", group: "discussed" },
-  { path: "/what-the-leaks-are-saying", label: "Unconfirmed reports", shortLabel: "Leaks", group: "unconfirmed" },
-  { path: "/what-the-leaks-do-not-mean", label: "What leaks do not mean", shortLabel: "Context", group: "unconfirmed" },
-  { path: "/timeline", label: "What is next", shortLabel: "Timeline", group: "next" },
+  { path: "/what-is-being-discussed", label: "What is being discussed", shortLabel: "Discussed", group: "discussed" },
+  { path: "/what-we-do-not-know", label: "What we do not know yet", shortLabel: "Unknown", group: "discussed" },
+  { path: "/what-the-leaks-are-saying", label: "What the leaks are saying", shortLabel: "Leaks", group: "unconfirmed" },
+  { path: "/what-the-leaks-do-not-mean", label: "What the leaks do not mean", shortLabel: "Context", group: "unconfirmed" },
+  { path: "/timeline", label: "Timeline and next steps", shortLabel: "Timeline", group: "next" },
 ];
 
 const siteLinks = [

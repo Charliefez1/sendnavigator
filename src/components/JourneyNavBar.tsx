@@ -3,15 +3,15 @@ import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const journeySteps = [
-  { path: "/", label: "Start here", shortLabel: "Start", color: "confirmed" },
-  { path: "/where-we-are-now", label: "Current situation", shortLabel: "Now", color: "confirmed" },
-  { path: "/what-is-changing", label: "Confirmed changes", shortLabel: "Changes", color: "confirmed" },
+  { path: "/", label: "Home", shortLabel: "Home", color: "confirmed" },
+  { path: "/where-we-are-now", label: "What we know so far", shortLabel: "Known", color: "confirmed" },
+  { path: "/what-is-changing", label: "What is changing", shortLabel: "Changing", color: "confirmed" },
   { path: "/what-has-not-changed", label: "What has not changed", shortLabel: "Unchanged", color: "confirmed" },
-  { path: "/what-is-being-discussed", label: "Under discussion", shortLabel: "Discussion", color: "discussed" },
-  { path: "/what-we-do-not-know", label: "What we do not know", shortLabel: "Unknown", color: "discussed" },
-  { path: "/what-the-leaks-are-saying", label: "Unconfirmed reports", shortLabel: "Leaks", color: "unconfirmed" },
-  { path: "/what-the-leaks-do-not-mean", label: "What leaks do not mean", shortLabel: "Context", color: "unconfirmed" },
-  { path: "/timeline", label: "What is next", shortLabel: "Next", color: "next" },
+  { path: "/what-is-being-discussed", label: "What is being discussed", shortLabel: "Discussed", color: "discussed" },
+  { path: "/what-we-do-not-know", label: "What we do not know yet", shortLabel: "Unknown", color: "discussed" },
+  { path: "/what-the-leaks-are-saying", label: "What the leaks are saying", shortLabel: "Leaks", color: "unconfirmed" },
+  { path: "/what-the-leaks-do-not-mean", label: "What the leaks do not mean", shortLabel: "Context", color: "unconfirmed" },
+  { path: "/timeline", label: "Timeline and next steps", shortLabel: "Timeline", color: "next" },
 ];
 
 const dotColors: Record<string, string> = {
