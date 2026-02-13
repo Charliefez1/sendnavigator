@@ -9,11 +9,11 @@ import { StatusBadge } from "@/components/StatusBadge";
 export default function WhereWeAreNow() {
   return (
     <Layout>
-      <SEOHead title="Where we are now" description="The current state of SEND in England, confirmed facts, funding data, and system pressures." path="/where-we-are-now" />
+      <SEOHead title="Current situation: where is SEND provision today" description="The current state of SEND provision in England, confirmed facts, funding data, and system pressures." path="/where-we-are-now" />
       <PageOrientation
-        title="What we know so far"
-        description="The current state of the SEND system based on confirmed facts and data."
-        lastUpdated="7th February 2026"
+        title="Current situation: where is SEND provision in the UK today"
+        description="Understanding the current state of SEND support in England."
+        lastUpdated="13th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
@@ -22,40 +22,119 @@ export default function WhereWeAreNow() {
 
       <SixtySecondSummary
         prose={
-          <p>
-            The evidence shows the SEND system is overwhelmed. Many more children need support than a decade ago, but support quality and outcomes have not improved. Families wait too long, councils overspend, schools struggle, and too many parents are pushed into legal action just to get help. Research across government, councils, and Parliament agrees this is a system problem, not a parenting problem. The growth in plans and appeals reflects unmet need earlier on. This context is essential because it explains why reform is being discussed at all.
-          </p>
+          <div className="space-y-3">
+            <p>
+              In the UK, SEND support is not one single system. Each nation runs its own framework. This page focuses on England because the legal duties, the plan process, and the rights attached to an Education, Health and Care Plan are specific to England.
+            </p>
+            <p>
+              In England, SEND support mainly sits in two routes. SEN Support is the help a nursery, school or college provides without a legal plan. Education, Health and Care Plans are legal plans that set out a child or young person's needs, outcomes and the provision that must be put in place.
+            </p>
+            <p>
+              The core problem is not that the law is unclear. The law exists. The problem is that the system is overloaded, inconsistent by area, and too often slow and adversarial. Families end up having to push hard for what should be straightforward early help.
+            </p>
+          </div>
         }
       />
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
-          Confirmed facts
+          How will this impact children and parents
         </h2>
-        <div className="prose-calm">
+        <div className="prose-calm space-y-3">
+          <p>If you are a parent or carer, the lived reality can feel like this.</p>
+          <p>
+            You may be told support is available, but it is not consistent or timely. You may be asked to wait, repeat your story, or prove the impact again and again. You may feel you have to become the project manager, advocate, and legal researcher, while also parenting.
+          </p>
+          <p>
+            For children, delays matter. Support that arrives late can mean missed learning, rising anxiety, school refusal, exclusions, or behaviour that gets labelled as the problem instead of the signal. For families, the pressure is cumulative. It affects work, finances, mental health, and trust in services.
+          </p>
+          <p>
+            None of this means good support is impossible. Many settings and professionals work extremely hard. The issue is the system design, the capacity, and the variation.
+          </p>
+        </div>
+      </section>
+
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          Statistics and facts
+        </h2>
+        <div className="prose-calm space-y-3">
+          <p>These figures are from the checked research set and relate to England.</p>
           <ul className="space-y-2">
-            <li>Over 500,000 children and young people in England have an Education, Health and Care Plan.</li>
-            <li>Education, Health and Care Plan numbers have increased sharply since 2014.</li>
-            <li>About 1.2 million pupils receive SEN Support without an Education, Health and Care Plan.</li>
-            <li>High needs funding reached £9.4 billion in 2024/25.</li>
-            <li>Local authorities have accumulated over £3 billion of SEND funding deficits.</li>
-            <li>Only about half of new Education, Health and Care Plans are issued within the 20 week legal deadline.</li>
-            <li>Many families wait far longer, sometimes over a year.</li>
-            <li>Tribunal appeals have increased significantly, with families winning most decided cases.</li>
-            <li>Mainstream schools report increasing complexity of need and pressure on staff.</li>
-            <li>Demand for specialist school places has continued to rise.</li>
+            <li>Legal framework: Children and Families Act 2014 introduced Education, Health and Care Plans.</li>
+            <li>EHCP volume: over 500,000 children and young people have an EHCP.</li>
+            <li>SEN Support volume: around 1.2 million pupils receive SEN Support without an EHCP.</li>
+            <li>Timeliness: the legal timescale for an EHCP process is 20 weeks, but only about 50% of new EHCPs are issued on time.</li>
+            <li>Tribunal pressure: families filed over 21,000 SEND Tribunal appeals in a recent year, and parents won 95% of cases that went to judgement.</li>
+            <li>Funding pressure: the high needs budget grew to £9.4 billion by 2024 to 2025, and councils accumulated over £3 billion in SEND related deficits.</li>
+            <li>System characterisation in the dataset: widely described as bureaucratic, inconsistent and inequitable, with broad consensus it is in crisis.</li>
           </ul>
         </div>
       </section>
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
-          What this means for parents
+          What is happening now, in plain English
         </h2>
-        <div className="prose-calm">
-          <p>
-            Research across government, councils, and Parliament agrees on one thing: the system is not failing because parents are asking for too much. It is failing because needs are identified late, support is inconsistent, and families often have to escalate to get help. The data shows more children are entering the system, but support quality and outcomes have not kept pace. This is why reform is being discussed. It is not about reducing need. It is about the system struggling to respond to it.
-          </p>
+        <div className="prose-calm space-y-6">
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">The structure of support in England</h3>
+            <p>In England, SEND support has two main layers.</p>
+            <p>
+              SEN Support is the day to day support a setting provides without an EHCP. It might include adjustments in the classroom, targeted interventions, small group work, or additional adult support. In theory, this is where most needs should be met early.
+            </p>
+            <p>
+              Education, Health and Care Plans are different. They are legal documents. They set out needs, provision, and outcomes, and they name a placement. The local authority is responsible for making sure the provision in the plan is delivered. This legal enforceability is why EHCPs matter so much to families.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">Why the system feels like a fight</h3>
+            <p>Your dataset describes a consistent pattern.</p>
+            <p>
+              The EHCP route is slow. It is also paperwork heavy. Even though there is a 20 week legal deadline, only around half of new plans are completed on time. Many families wait far longer.
+            </p>
+            <p>
+              When families are refused, delayed, or offered too little, many escalate. The tribunal numbers and parent success rates in the dataset show this is not rare. When parents win 95% of cases that reach judgement, it suggests that a lot of children were initially refused support they were entitled to.
+            </p>
+            <p>This creates a loop:</p>
+            <ul className="space-y-2">
+              <li>Families push harder because they feel they have to.</li>
+              <li>Local authorities feel overwhelmed and financially trapped.</li>
+              <li>Schools feel caught in the middle, trying to cope while waiting for decisions and funding.</li>
+              <li>Trust falls, conflict rises, and children wait.</li>
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">The inconsistency problem</h3>
+            <p>
+              The dataset repeatedly points to postcode variation. Thresholds and practice can differ across areas, which means what works in one place can fail completely in another. That uncertainty drives anxiety and escalation, because families cannot rely on a clear baseline offer.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">Why EHCP demand keeps rising</h3>
+            <p>
+              The research set describes an over-reliance on EHCPs for support that should sit earlier. When SEN Support is not strong enough, an EHCP starts to feel like the only reliable mechanism to secure provision and accountability. That drives demand upwards, which then increases system load and cost, which then drives more rationing behaviour.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">The financial pressure underneath everything</h3>
+            <p>
+              The dataset frames the financial picture as severe. High needs spend has risen, councils have significant deficits, and the system is described as financially unsustainable. That financial stress is not separate from the family experience. It shapes behaviour, delays, and disputes.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">A note on the rest of the UK</h3>
+            <p>
+              Because this resource is for parents, it is important to be clear. Scotland, Wales and Northern Ireland have different systems and legal routes. This section is England only, because that is what the checked dataset covers.
+            </p>
+          </div>
+
         </div>
       </section>
 
