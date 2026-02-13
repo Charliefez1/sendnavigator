@@ -9,7 +9,7 @@
 @layer base {
   :root {
     /* Core backgrounds - visible grey */
-    --background: 220 14% 90%;
+    --background: 220 14% 85%;
     --foreground: 220 25% 14%;
 
     /* Card surfaces - visible grey, no white */
