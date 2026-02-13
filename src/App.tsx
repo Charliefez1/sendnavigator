@@ -24,6 +24,7 @@ const WhatWeDoNotKnow = lazy(() => import("./pages/WhatWeDoNotKnow"));
 const WhatTheLeaksAreSaying = lazy(() => import("./pages/WhatTheLeaksAreSaying"));
 const WhatTheLeaksDoNotMean = lazy(() => import("./pages/WhatTheLeaksDoNotMean"));
 const WhatThisCouldMean = lazy(() => import("./pages/WhatThisCouldMean"));
+const WhatHappensNext = lazy(() => import("./pages/WhatHappensNext"));
 const Timeline = lazy(() => import("./pages/Timeline"));
 const QuestionsAndAnswers = lazy(() => import("./pages/QuestionsAndAnswers"));
 const Sources = lazy(() => import("./pages/Sources"));
@@ -73,6 +74,7 @@ const App = () => (
                     <Route path="/what-the-leaks-are-saying" element={<WhatTheLeaksAreSaying />} />
                     <Route path="/what-the-leaks-do-not-mean" element={<WhatTheLeaksDoNotMean />} />
                     <Route path="/what-this-could-mean" element={<WhatThisCouldMean />} />
+                    <Route path="/what-happens-next" element={<WhatHappensNext />} />
                     <Route path="/timeline" element={<Timeline />} />
                     <Route path="/questions-and-answers" element={<QuestionsAndAnswers />} />
                     <Route path="/community-questions" element={<CommunityQuestions />} />
