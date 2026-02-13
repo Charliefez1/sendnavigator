@@ -74,31 +74,6 @@ const Index = () => {
                 <p className="font-medium text-foreground">Rich Ferriman</p>
               </div>
             </div>
-
-            {/* What we help with */}
-            <div className="grid gap-3 sm:grid-cols-3">
-              <div className="bg-card border border-border rounded-xl p-4">
-                <CheckCircle2 className="w-6 h-6 text-status-confirmed mb-2" />
-                <h3 className="font-medium text-foreground text-sm mb-1">What's confirmed</h3>
-                <p className="text-xs text-muted-foreground">
-                  Official announcements and decisions that have actually been made
-                </p>
-              </div>
-              <div className="bg-card border border-border rounded-xl p-4">
-                <HelpCircle className="w-6 h-6 text-status-discussed mb-2" />
-                <h3 className="font-medium text-foreground text-sm mb-1">What's being discussed</h3>
-                <p className="text-xs text-muted-foreground">
-                  Proposals and ideas being debated by government and others
-                </p>
-              </div>
-              <div className="bg-card border border-border rounded-xl p-4">
-                <BookOpen className="w-6 h-6 text-status-unconfirmed mb-2" />
-                <h3 className="font-medium text-foreground text-sm mb-1">What's unknown</h3>
-                <p className="text-xs text-muted-foreground">
-                  Questions that haven't been answered and decisions not yet made
-                </p>
-              </div>
-            </div>
           </div>
 
           {/* RIGHT: Journey links */}
@@ -194,6 +169,31 @@ const Index = () => {
                 </div>
                 <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
               </Link>
+            </div>
+
+            {/* What we help with */}
+            <div className="grid gap-3 grid-cols-3 mt-6">
+              <div className="bg-card border border-border rounded-xl p-4">
+                <CheckCircle2 className="w-6 h-6 text-status-confirmed mb-2" />
+                <h3 className="font-medium text-foreground text-sm mb-1">What's confirmed</h3>
+                <p className="text-xs text-muted-foreground">
+                  Official announcements and decisions that have actually been made
+                </p>
+              </div>
+              <div className="bg-card border border-border rounded-xl p-4">
+                <HelpCircle className="w-6 h-6 text-status-discussed mb-2" />
+                <h3 className="font-medium text-foreground text-sm mb-1">What's being discussed</h3>
+                <p className="text-xs text-muted-foreground">
+                  Proposals and ideas being debated by government and others
+                </p>
+              </div>
+              <div className="bg-card border border-border rounded-xl p-4">
+                <BookOpen className="w-6 h-6 text-status-unconfirmed mb-2" />
+                <h3 className="font-medium text-foreground text-sm mb-1">What's unknown</h3>
+                <p className="text-xs text-muted-foreground">
+                  Questions that haven't been answered and decisions not yet made
+                </p>
+              </div>
             </div>
           </div>
         </div>
