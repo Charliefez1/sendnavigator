@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { useExperienceMode, ExperienceMode } from "@/contexts/ExperienceModeContext";
 import { usePageSections } from "@/contexts/PageSectionsContext";
+import neurodiversityLogo from "@/assets/neurodiversity-global-logo.jpeg";
 
 const experienceModes: { mode: ExperienceMode; label: string; icon: typeof BookOpen }[] = [
   { mode: "read", label: "Read", icon: BookOpen },
@@ -29,6 +30,8 @@ export function ExperienceSelector() {
   return (
     <div className="bg-navy text-navy-foreground border-b border-white/10">
       <div className="content-wide flex items-center gap-3 py-1.5 overflow-x-auto scrollbar-hide">
+        {/* Spacer to push logo right */}
+        <div className="flex items-center gap-3 flex-1 min-w-0">
         {/* Jump to sections */}
         {sections.length > 0 && (
           <div className="flex items-center gap-0.5 shrink-0">
@@ -97,6 +100,23 @@ export function ExperienceSelector() {
             <span className="hidden sm:inline">{theme === "dark" ? "Light" : "Dark"}</span>
           </button>
         </div>
+        </div>
+
+        {/* Neurodiversity Global logo */}
+        <a
+          href="https://neurodiversityglobal.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 ml-auto"
+          aria-label="Neurodiversity Global"
+          title="Neurodiversity Global"
+        >
+          <img
+            src={neurodiversityLogo}
+            alt="Neurodiversity Global"
+            className="h-6 w-6 rounded-full object-cover"
+          />
+        </a>
       </div>
     </div>
   );
