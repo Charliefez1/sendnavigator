@@ -78,7 +78,7 @@ const App = () => (
                     <Route path="/community-questions" element={<CommunityQuestions />} />
                     <Route path="/feedback" element={<Feedback />} />
                     <Route path="/sources" element={<Sources />} />
-                    <Route path="/statistics-and-data" element={<StatisticsAndData />} />
+                    <Route path="/statistics-and-data" element={<Sources />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/neurodiversity-global" element={<NeurodiversityGlobal />} />
                     <Route path="/rich-ferriman" element={<RichFerriman />} />
