@@ -9,8 +9,7 @@ const siteLinks = [
   { path: "/how-to-use", label: "How to use" },
   { path: "/questions-and-answers", label: "Ask ADHDi" },
   { path: "/community-questions", label: "Lived experience" },
-  { path: "/sources", label: "Sources" },
-  { path: "/statistics-and-data", label: "Statistics" },
+  { path: "/sources", label: "Data & Sources" },
   { path: "/feedback", label: "Feedback" },
   { path: "/about", label: "About" },
 ];
