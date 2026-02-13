@@ -24,12 +24,14 @@ export function NeurodiversityGlobalCTA() {
   return (
     <div className="content-section py-6">
       <div className="rounded-lg border border-border bg-card p-5">
-        <div className="flex flex-col items-center gap-4 mb-4 text-center">
-          <img
-            src={ndgLogo}
-            alt="Neurodiversity Global"
-            className="w-40 h-auto object-contain rounded"
-          />
+        <div className="flex items-center gap-4 mb-4">
+          <div className="flex items-center justify-center flex-shrink-0">
+            <img
+              src={ndgLogo}
+              alt="Neurodiversity Global"
+              className="w-40 h-auto object-contain rounded"
+            />
+          </div>
           <div>
             <p className="text-sm font-medium text-foreground">
               Looking for greater 'Neurodiversity' awareness at work, school, or club?
