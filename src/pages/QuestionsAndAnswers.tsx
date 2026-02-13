@@ -18,7 +18,9 @@ export default function QuestionsAndAnswers() {
       />
       
       <section className="content-section pb-8">
-        <div className="bg-muted/50 border border-border rounded-lg p-4 mb-8">
+        <QandAComponent initialQuestion={initialQuestion} />
+
+        <div className="bg-muted/50 border border-border rounded-lg p-4 mt-8">
           <div className="flex gap-3">
             <ShieldAlert className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
             <div className="text-sm">
@@ -30,8 +32,6 @@ export default function QuestionsAndAnswers() {
             </div>
           </div>
         </div>
-
-        <QandAComponent initialQuestion={initialQuestion} />
       </section>
 
       <div className="content-section pb-16" />
