@@ -130,7 +130,7 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
   };
 
   return (
-    <section className="bg-secondary/30 border border-border rounded-lg p-6">
+    <section className="bg-secondary/30 border-2 border-foreground/30 rounded-lg p-6 shadow-md">
       <div className="flex items-start gap-3 mb-5">
         <MessageCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
         <div>
