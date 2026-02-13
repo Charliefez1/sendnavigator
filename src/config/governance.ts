@@ -167,7 +167,7 @@ export const currentDisclosures = {
 };
 
 // =============================================================================
-// SEND AI GOVERNANCE (FORWARD COMPATIBILITY)
+// Ask SEND GOVERNANCE (FORWARD COMPATIBILITY)
 // =============================================================================
 
 export const aiGovernanceRules = {
