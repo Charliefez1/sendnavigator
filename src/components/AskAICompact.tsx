@@ -15,7 +15,7 @@ export function AskAICompact() {
   };
 
   return (
-    <div className="border-2 border-dashed border-primary/30 rounded-2xl p-4 hover:border-primary/50 transition-all duration-200">
+    <div className="border-2 border-dashed border-primary/30 rounded-2xl p-4 hover:border-primary/50 transition-all duration-200 shadow-md bg-card">
       <form onSubmit={handleSubmit} className="space-y-3">
         <div className="flex items-center gap-2 text-primary">
           <MessageCircle className="h-5 w-5" />

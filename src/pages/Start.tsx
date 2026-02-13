@@ -206,7 +206,7 @@ const Index = () => {
 
       {/* About this resource */}
       <section className="content-section pb-12 border-t border-border pt-10">
-        <div className="flex items-start gap-4">
+        <div className="flex items-start gap-4 bg-card border border-border rounded-xl p-5 shadow-md">
           <Heart className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
           <div>
             <h2 className="text-lg font-semibold text-foreground mb-3">
