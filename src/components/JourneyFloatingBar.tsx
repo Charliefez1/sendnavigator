@@ -4,7 +4,6 @@ import { ChevronLeft, ChevronRight, Map, X, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const journeySteps = [
-  { path: "/", label: "Start here", description: "Begin your journey through SEND reform", group: "confirmed" },
   { path: "/where-we-are-now", label: "Current situation", description: "What the system looks like today", group: "confirmed" },
   { path: "/what-is-changing", label: "Confirmed changes", description: "Changes that have been announced", group: "confirmed" },
   { path: "/what-has-not-changed", label: "What has not changed", description: "Parts of the system that remain the same", group: "confirmed" },
