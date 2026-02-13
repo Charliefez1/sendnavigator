@@ -9,11 +9,11 @@ import { StatusBadge } from "@/components/StatusBadge";
 export default function WhatIsChanging() {
   return (
     <Layout>
-      <SEOHead title="What is changing" description="Confirmed SEND reforms and official government plans for education in England." path="/what-is-changing" />
+      <SEOHead title="Confirmed changes to SEND provision in 2026" description="What changes to SEND in England have been confirmed, funded, or formally announced." path="/what-is-changing" />
       <PageOrientation
-        title="What is actually changing in SEND"
-        description="Confirmed reforms and official plans from government."
-        lastUpdated="7th February 2026"
+        title="Confirmed changes: what changes are coming to SEND provision in 2026 and have been confirmed"
+        description="Changes that have been publicly set out, funded, or formally announced."
+        lastUpdated="13th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
@@ -22,157 +22,149 @@ export default function WhatIsChanging() {
 
       <SixtySecondSummary
         prose={
-          <p>
-            Right now, very little has changed in law, but a lot is happening behind the scenes. The government has accepted that the SEND system is under serious financial and capacity pressure. That is why it has agreed to take on council SEND debts in the future, is building more special schools, and is funding large scale training for staff. These actions tell us the system is being stabilised while larger reforms are worked through. What matters for parents is this: your child's rights, plans, and support processes are still the same today. The changes so far are about preparation, not removal of support.
-          </p>
+          <div className="space-y-3">
+            <p>
+              Some changes to SEND in England are no longer speculative. They have been publicly set out, funded, or formally announced, even if not fully delivered yet.
+            </p>
+            <p>
+              These confirmed changes do not remove current legal rights. Education, Health and Care Plans still exist. Tribunal rights still exist. The Children and Families Act 2014 is still in force.
+            </p>
+            <p>
+              What is changing is how the system is being prepared to work differently. The focus is on clearer national expectations, earlier support, less bureaucracy, better workforce capacity, and reducing the extreme pressure points that currently force families into crisis routes.
+            </p>
+            <p>
+              Most of these changes are being phased in through guidance, programmes, pilots, and capital investment, with legislation expected later.
+            </p>
+          </div>
         }
       />
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
-          Confirmed changes already in motion
+          How will this impact children and parents
         </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>The government has committed to absorbing local authority SEND related deficits from 2028 to 29.</li>
-            <li>National high needs funding has increased in recent years.</li>
-            <li>New special free schools have been approved and are being built.</li>
-            <li>A national SEND training programme for school staff has been announced.</li>
-            <li>Educational Psychologist training places are being expanded.</li>
-            <li>Pilot programmes are testing new approaches to SEND delivery.</li>
-            <li>Digital development work for Education, Health and Care Plan systems is underway in some areas.</li>
-            <li>A national SEND reform conversation ran in late 2025 and early 2026.</li>
-            <li>A Schools White Paper including SEND proposals is expected.</li>
-          </ul>
-          <p className="mt-4 font-medium text-foreground">These actions are confirmed.</p>
+        <div className="prose-calm space-y-3">
+          <p>
+            In the short term, most families will not see an overnight difference. Rights and processes remain the same today.
+          </p>
+          <p>
+            Over time, if these changes work as intended, families should experience clearer expectations, fewer delays, and less need to fight for basic support. Schools should be better equipped to respond earlier. Local authorities should be more consistent and more accountable.
+          </p>
+          <p>
+            However, impact will depend on delivery. Training takes time. Capacity takes time. Digital systems take time. Until those changes bed in, families may still experience the same pressures they face now.
+          </p>
         </div>
       </section>
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
-          What this tells us about direction of travel
+          Statistics and facts
         </h2>
-        <div className="prose-calm">
-          <p className="mb-4">Government has acknowledged that:</p>
-          <ul className="space-y-2 mb-6">
-            <li>The system is financially unstable.</li>
-            <li>Demand for plans is rising.</li>
-            <li>Delays are too long.</li>
-            <li>Outcomes are not improving sufficiently.</li>
-            <li>The process has become adversarial.</li>
+        <div className="prose-calm space-y-3">
+          <p>These points are drawn directly from the checked research set.</p>
+          <ul className="space-y-2">
+            <li>National SEND standards are confirmed as government policy direction, with consultation and phased introduction planned for 2026 to 2027.</li>
+            <li>A digital first, standardised approach to EHCP processes is confirmed, with pilots already running in selected areas.</li>
+            <li>Workforce investment is confirmed, including a £200 million SEND training programme announced in late 2025.</li>
+            <li>Plans include training up to 5,000 early years staff as SENCOs.</li>
+            <li>Funding for training of around 400 additional educational psychologists has been announced.</li>
+            <li>Over 80 new special free schools are in the pipeline, supported by £2.6 billion capital investment between 2022 and 2025.</li>
+            <li>A £70 million Change Programme is underway with selected local authorities testing new approaches.</li>
+            <li>The government has committed to absorbing historic local authority SEND deficits from 2028 to 2029.</li>
+            <li>Ofsted and CQC area SEND inspections are now established as a core accountability mechanism.</li>
           </ul>
-          <p className="mb-4">Current confirmed activity focuses on:</p>
-          <ul className="space-y-2 mb-6">
-            <li>Financial stabilisation</li>
-            <li>Workforce and capacity expansion</li>
-            <li>Preparation for wider system reform</li>
-          </ul>
-          <div className="bg-status-confirmed-bg border border-[hsl(var(--status-confirmed-border))] rounded-lg p-4 mt-4">
-            <p className="font-medium text-foreground">No confirmed action reduces legal rights or removes statutory duties.</p>
-          </div>
         </div>
       </section>
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
-          What has not changed within these developments
+          What has actually been confirmed, in plain language
         </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>The legal test for an Education, Health and Care Plan remains the same.</li>
-            <li>Appeal rights remain the same.</li>
-            <li>Plans remain legally enforceable.</li>
-            <li>The 20 week legal timeframe remains in force.</li>
-          </ul>
-          <div className="bg-status-confirmed-bg border border-[hsl(var(--status-confirmed-border))] rounded-lg p-4 mt-4">
-            <p className="text-foreground">Operational pressure has increased.</p>
-            <p className="font-medium text-foreground">The legal framework has not changed.</p>
+        <div className="prose-calm space-y-6">
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">National SEND standards</h3>
+            <p>
+              The government has confirmed that national SEND standards will be introduced. These standards are intended to set out what support should ordinarily be available for children and young people with SEND, regardless of where they live.
+            </p>
+            <p>
+              The purpose is to reduce postcode variation and to make it clearer what should happen at SEN Support level, before families are pushed towards an EHCP. The standards are being co-produced and consulted on. They are not yet in force, but their introduction is confirmed.
+            </p>
+            <p>
+              For parents, this matters because it should eventually mean clearer expectations and fewer arguments about what support a setting should already be providing.
+            </p>
           </div>
-        </div>
-      </section>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          What this means for parents right now
-        </h2>
-        <div className="prose-calm">
-          <ul className="space-y-2 mb-6">
-            <li>Decisions must still follow current law.</li>
-            <li>Existing plans remain enforceable.</li>
-            <li>New assessments must meet the existing legal test.</li>
-            <li>Appeals remain available.</li>
-          </ul>
-          <p className="mb-4">At the same time:</p>
-          <ul className="space-y-2 mb-6">
-            <li>Local authorities are under financial pressure.</li>
-            <li>Schools are managing rising complexity of need.</li>
-            <li>Reform proposals are being developed.</li>
-          </ul>
-          <div className="bg-muted/50 border border-border rounded-lg p-4">
-            <p className="font-medium text-foreground">This creates uncertainty, but not immediate legal change.</p>
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">Digital first and standardised EHCP processes</h3>
+            <p>
+              The move towards digital EHCP processes is confirmed. The aim is to reduce paperwork, improve transparency, and make it easier for families to see what is happening and when.
+            </p>
+            <p>
+              Pilots are already running in some areas. These allow families to track progress, reuse information, and reduce duplication of reports. Standard templates are also part of this work, so that EHCPs look and read more consistently across England.
+            </p>
+            <p>
+              This is not a new legal process. It is a different way of running the same legal process.
+            </p>
           </div>
-        </div>
-      </section>
 
-      <section className="content-section py-8 border-t border-border">
-        <div className="flex items-center gap-3 mb-4">
-          <h2 className="text-xl font-semibold text-foreground">Unconfirmed</h2>
-          <StatusBadge status="unconfirmed" />
-        </div>
-        <div className="prose-calm">
-          <ul className="space-y-2">
-            <li>No confirmed changes to the legal threshold for plans.</li>
-            <li>No confirmed changes to appeal rights.</li>
-            <li>No confirmed removal of existing plans.</li>
-            <li>No confirmed introduction of a tiered system.</li>
-            <li>No confirmed change to enforceability of support.</li>
-          </ul>
-          <p className="mt-4 text-muted-foreground italic">These areas remain under discussion.</p>
-        </div>
-      </section>
-
-      <section className="content-section py-8 border-t border-border">
-        <div className="flex items-center gap-3 mb-4">
-          <h2 className="text-xl font-semibold text-foreground">Leaked</h2>
-          <StatusBadge status="unconfirmed" />
-        </div>
-        <div className="bg-status-unconfirmed-bg border border-[hsl(var(--status-unconfirmed-border))] rounded-lg p-5">
-          <div className="prose-calm">
-            <p className="mb-4">Media reporting has suggested possible future changes, including:</p>
-            <ul className="space-y-2 mb-6">
-              <li>Limiting full statutory plans to children with the most complex needs.</li>
-              <li>Introducing tiered support below a full plan.</li>
-              <li>Moving funding from individual plans to school level budgets.</li>
-              <li>Reducing tribunal volumes by altering appeal processes.</li>
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">Workforce training and capacity building</h3>
+            <p>
+              The government has confirmed significant investment in SEND workforce development.
+            </p>
+            <p>This includes:</p>
+            <ul className="space-y-2">
+              <li>Mandatory SEND training for teachers.</li>
+              <li>Expanded SENCO training, especially in early years.</li>
+              <li>Increased training routes for educational psychologists.</li>
+              <li>Development of specialist SEND qualifications.</li>
             </ul>
-            <p className="font-medium text-foreground mb-4">These proposals are not confirmed government policy. They relate to potential future reform.</p>
-            <p className="mb-4">If introduced, they could:</p>
-            <ul className="space-y-2 mb-4">
-              <li>Reduce the number of children qualifying for statutory plans.</li>
-              <li>Shift accountability towards schools.</li>
-              <li>Change how appeals operate.</li>
-            </ul>
-            <p className="font-medium text-foreground">No such changes have been legislated.</p>
+            <p>
+              The intention is to improve early identification and day to day support, so that fewer children reach crisis point before help arrives.
+            </p>
           </div>
-        </div>
-      </section>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
-          The position today
-        </h2>
-        <div className="prose-calm">
-          <p className="mb-4">Confirmed change is focused on:</p>
-          <ul className="space-y-2 mb-6">
-            <li>Funding stability</li>
-            <li>Workforce expansion</li>
-            <li>Capacity building</li>
-            <li>Reform preparation</li>
-          </ul>
-          <div className="bg-status-confirmed-bg border border-[hsl(var(--status-confirmed-border))] rounded-lg p-4">
-            <p className="text-foreground mb-2">Structural legal change has not occurred.</p>
-            <p className="font-medium text-foreground">Parents should continue to rely on current law when seeking support or challenging decisions.</p>
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">Expansion of specialist provision</h3>
+            <p>
+              New special schools are being built and funded. This is a confirmed capital programme.
+            </p>
+            <p>
+              The aim is to reduce waiting lists, reduce out of area placements, and reduce reliance on expensive independent provision. This does not remove the presumption of mainstream education, but it acknowledges that some children need specialist environments.
+            </p>
           </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">Local inclusion planning and accountability</h3>
+            <p>
+              Local areas are being required to plan SEND provision across education, health and care more jointly. This is being reinforced through Ofsted and CQC area inspections.
+            </p>
+            <p>
+              Where areas repeatedly fail, the Department for Education now has clearer intervention powers. This is intended to shift the system from reactive firefighting to planned provision.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">Funding direction and deficit absorption</h3>
+            <p>
+              The commitment to absorb historic SEND deficits from 2028 to 2029 is confirmed. This removes a major financial pressure from local authorities.
+            </p>
+            <p>
+              However, future budgets will still be cash limited. This is why the government is focusing on earlier support and system redesign. This funding commitment does not remove the need for reform, but it creates space to implement it.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">What has not changed yet</h3>
+            <p>
+              It is important to be clear. None of these confirmed changes remove existing rights. EHCPs remain legally enforceable. Appeal routes remain. Timescales remain.
+            </p>
+            <p>
+              The confirmed changes are about preparation, capacity, and consistency, not about removing protections.
+            </p>
+          </div>
+
         </div>
       </section>
 
