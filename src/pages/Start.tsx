@@ -26,7 +26,7 @@ const Index = () => {
         <div className="grid lg:grid-cols-2 gap-8 items-start">
           {/* LEFT: Welcome message */}
           <div>
-            <div className="bg-card border border-border rounded-xl p-5 sm:p-6 mb-6">
+            <div className="bg-card border border-border rounded-xl p-5 sm:p-6 mb-6 shadow-md">
               <div className="flex items-center gap-2.5 mb-3">
                 <Compass className="w-6 h-6 text-primary flex-shrink-0" />
                 <h1 className="text-lg sm:text-xl font-semibold text-foreground">
