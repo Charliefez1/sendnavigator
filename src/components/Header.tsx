@@ -30,7 +30,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           <Link to="/" className="group flex items-center gap-3 shrink-0">
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white/15 transition-colors">
-              <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-white" aria-hidden="true" />
+              <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" aria-hidden="true" />
             </div>
             <div>
               <h1 className="text-base sm:text-lg font-display font-bold text-white tracking-tight leading-tight group-hover:opacity-90 transition-opacity">
