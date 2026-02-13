@@ -1,334 +1,185 @@
 import { Layout } from "@/components/Layout";
+import { SEOHead } from "@/components/SEOHead";
 import {
   PageOrientation,
   SixtySecondSummary,
-  StatusSection,
 } from "@/components/templates";
-import {
-  HelpCircle,
-  SlidersHorizontal,
-  Layers,
-  Shield,
-  Scale,
-  FileText,
-  BookOpen,
-  Coins,
-  ShieldAlert,
-  Clock,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
-interface UnknownDetail {
-  question: string;
-  icon: LucideIcon;
-  research: string[];
-  families: string[];
-  leaked: string[];
-  leakedRelation: string[];
-}
-
-const unknowns: UnknownDetail[] = [
-  {
-    icon: SlidersHorizontal,
-    question: "Whether the legal threshold for plans will change",
-    research: [
-      "There is strong agreement across government and local authorities that Education, Health and Care Plan numbers have grown faster than the system can manage.",
-      "Some reform discussions focus on reducing reliance on plans by improving earlier support.",
-      "No confirmed proposal has been published to change the legal test for plans.",
-    ],
-    families: [
-      "If thresholds changed in the future, some children who currently qualify might be supported in different ways.",
-      "Until the law changes, the current legal test still applies.",
-    ],
-    leaked: [
-      "Reports suggest the government is exploring limiting full Education, Health and Care Plans to children with the most complex needs.",
-      "Some leaks describe narrowing eligibility so fewer children qualify for a statutory plan.",
-    ],
-    leakedRelation: [
-      "These leaks directly link to concerns about thresholds changing.",
-      "No decision has been made, but the idea of fewer plans being issued is part of leaked discussions.",
-    ],
-  },
-  {
-    icon: Layers,
-    question: "Whether a tiered system will be introduced",
-    research: [
-      "Tiered models have been discussed as a way to organise support before a full plan is needed.",
-      "Similar systems existed before 2014 and were removed because support was inconsistent and hard to enforce.",
-      "No confirmed decision has been made to reintroduce a tiered system.",
-    ],
-    families: [
-      "A tiered system could mean support starts earlier.",
-      "It could also mean fewer automatic legal protections if lower tiers are not enforceable.",
-    ],
-    leaked: [
-      "Multiple reports describe a tiered SEND system replacing the current single route to a plan.",
-      "This includes lower levels of support below a full statutory plan.",
-    ],
-    leakedRelation: [
-      "This question sits at the centre of leaked proposals.",
-      "A tiered system is one of the most consistently reported leaked ideas, but remains unconfirmed.",
-    ],
-  },
-  {
-    icon: Shield,
-    question: "Whether lower tier plans would be enforceable",
-    research: [
-      "Current enforceability only applies to Education, Health and Care Plans.",
-      "There is no confirmed proposal that new lower tier plans would carry legal force.",
-      "Legal and parent groups consistently raise enforceability as a key risk.",
-    ],
-    families: [
-      "Enforceability is what allows parents to challenge when support is not delivered.",
-      "Without it, families may have fewer ways to resolve problems.",
-    ],
-    leaked: [
-      "Leaked models suggest lower tiers would not carry the same legal force as a full plan.",
-      "Some reports describe education only plans or support passports without statutory backing.",
-    ],
-    leakedRelation: [
-      "This is a key gap in leaked proposals.",
-      "Leaks describe new support levels but do not confirm enforceability, raising concerns about accountability.",
-    ],
-  },
-  {
-    icon: Scale,
-    question: "Whether appeal rights will change",
-    research: [
-      "Tribunal appeals have increased sharply, with families winning most cases.",
-      "Government reports describe the system as adversarial and costly.",
-      "No confirmed change to appeal rights has been published.",
-    ],
-    families: [
-      "Appeals are often used when early decisions fail.",
-      "Any change could affect how families challenge delays or refusals.",
-    ],
-    leaked: [
-      "Leaks suggest the government wants to reduce the number of tribunal appeals.",
-      "Some reports mention restricting appeal routes or adding barriers before tribunal access.",
-    ],
-    leakedRelation: [
-      "These leaks directly relate to uncertainty about future appeal rights.",
-      "No confirmed change exists, but appeals are clearly part of internal discussions.",
-    ],
-  },
-  {
-    icon: FileText,
-    question: "Whether reforms would affect existing plans",
-    research: [
-      "Large scale reforms in the past have usually protected existing plans during transition.",
-      "No confirmed proposal has said existing plans would be removed or rewritten.",
-    ],
-    families: [
-      "Families with current plans need stability.",
-      "Changes are more likely to affect new cases first, but this is not confirmed.",
-    ],
-    leaked: [
-      "Leaks generally focus on future cases rather than existing plans.",
-      "There has been no leaked proposal explicitly stating current plans would be removed.",
-    ],
-    leakedRelation: [
-      "While not confirmed, leaks suggest reforms are aimed at new entrants to the system.",
-      "This leaves uncertainty about how transitions would be managed.",
-    ],
-  },
-  {
-    icon: BookOpen,
-    question: "Whether national standards would be law or guidance",
-    research: [
-      "National standards are widely discussed as a way to reduce postcode differences.",
-      "It is not confirmed whether these would be statutory or advisory.",
-      "Guidance without legal force has historically led to uneven delivery.",
-    ],
-    families: [
-      "Legal standards are harder to ignore.",
-      "Guidance relies more on local interpretation and capacity.",
-    ],
-    leaked: [
-      "Leaked commentary suggests national standards may be used to define what schools must provide before a plan is considered.",
-      "It is unclear from leaks whether these standards would be legally enforceable.",
-    ],
-    leakedRelation: [
-      "Leaks reinforce uncertainty about the legal strength of future standards.",
-      "This matters because standards without legal force may be applied inconsistently.",
-    ],
-  },
-  {
-    icon: Coins,
-    question: "How funding changes would affect school responsibilities",
-    research: [
-      "There is concern that funding is too tightly linked to plans.",
-      "Some discussions suggest more funding held by schools or local partnerships.",
-      "No confirmed funding model has been published.",
-    ],
-    families: [
-      "If schools hold more responsibility, support quality may vary.",
-      "Clear accountability would be essential to avoid gaps.",
-    ],
-    leaked: [
-      "Leaks suggest funding could move away from individual plans towards school level or pooled budgets.",
-      "Schools may be expected to manage more support directly.",
-    ],
-    leakedRelation: [
-      "This directly affects how responsibility and accountability could shift.",
-      "Leaks raise concerns about variation between schools if funding is not tightly protected.",
-    ],
-  },
-  {
-    icon: ShieldAlert,
-    question: "What protections would apply if support is agreed but not delivered",
-    research: [
-      "Currently, legal protection comes from plans, not informal agreements.",
-      "There is no confirmed alternative enforcement mechanism outside plans.",
-      "This is a major concern raised by parents and legal experts.",
-    ],
-    families: [
-      "Without enforceable protection, families may struggle to challenge failures.",
-      "This issue is central to trust in any reform.",
-    ],
-    leaked: [
-      "Leaked models describe support agreements that sit outside a statutory plan.",
-      "No clear enforcement mechanism is described in leaked information.",
-    ],
-    leakedRelation: [
-      "This is one of the most significant gaps in leaked proposals.",
-      "The lack of clarity about protection if support fails is a major concern raised by parents and legal experts.",
-    ],
-  },
-  {
-    icon: Clock,
-    question: "How quickly major reforms would take effect",
-    research: [
-      "Major SEND reforms historically take several years to implement.",
-      "Any legal change would require consultation and parliamentary approval.",
-      "No confirmed implementation timetable exists.",
-    ],
-    families: [
-      "Current rights and processes remain in place for now.",
-      "Families should plan based on what exists today, not future proposals.",
-    ],
-    leaked: [
-      "Media reporting suggests pressure to act quickly due to financial strain.",
-      "No leaked timelines or confirmed implementation dates exist.",
-    ],
-    leakedRelation: [
-      "Leaks suggest urgency, but not speed.",
-      "Major legal reform would still require consultation and legislation.",
-    ],
-  },
-];
+import { StatusBadge } from "@/components/StatusBadge";
 
 export default function WhatWeDoNotKnow() {
   return (
     <Layout>
+      <SEOHead title="What we do not know about SEND reform" description="Questions parents are asking about SEND reform and why they matter." path="/what-we-do-not-know" />
       <PageOrientation
-        title="What we do not know yet"
+        title="What we do not know: questions parents are asking and why they matter"
         description="Key decisions about rights, thresholds, and protections that have not been made."
-        lastUpdated="7th February 2026"
-      />
+        lastUpdated="14th February 2026"
+      >
+        <div className="mt-3">
+          <StatusBadge status="unconfirmed" />
+        </div>
+      </PageOrientation>
 
       <SixtySecondSummary
         prose={
-          <p>
-            There are still major unanswered questions. We do not know whether the legal threshold for plans will change, whether any new support levels would be enforceable, or whether appeal rights would be altered. We do not know how funding changes would affect schools or how protections would work outside a plan. Research shows uncertainty itself causes anxiety and drives families to act early out of fear. The key point is that none of these decisions have been made yet, and nothing changes until law and guidance change.
-          </p>
+          <div className="space-y-3">
+            <p>
+              There is a lot we still do not know about the future of SEND in England. That uncertainty is not accidental. Many decisions have been deliberately delayed while consultation, piloting, and debate take place.
+            </p>
+            <p>
+              For parents, this lack of clarity can be harder than bad news. It makes planning difficult. It keeps families in a constant state of watchfulness. It adds cognitive load to lives that are already full.
+            </p>
+            <p>
+              The key point is this. Uncertainty does not mean decisions have been secretly made. It means the shape of reform is still being argued over.
+            </p>
+          </div>
         }
       />
 
       <section className="content-section py-8 border-t border-border">
-        <div className="flex items-center gap-2 mb-6">
-          <HelpCircle className="w-5 h-5 text-muted-foreground" />
-          <h2 className="text-xl font-semibold text-foreground">
-            Unknowns
-          </h2>
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          How will this impact children and parents
+        </h2>
+        <div className="prose-calm space-y-3">
+          <p>
+            The main impact right now is emotional and practical.
+          </p>
+          <p>
+            Parents are asking whether to push for an EHCP now or wait. They are wondering whether thresholds will change, whether support will shift, and whether their child will still qualify in future.
+          </p>
+          <p>
+            For children, uncertainty can mean delay. Families may hold back or rush forward based on fear rather than need. That is not because parents are overreacting. It is because the system gives them no clear forward map yet.
+          </p>
+          <p>
+            Understanding what is genuinely unknown helps parents make decisions based on the present law, not imagined futures.
+          </p>
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-          Each question below includes three layers of information: <strong className="text-foreground">what the research tells us so far</strong> based on published evidence, <strong className="text-foreground">why this matters for families</strong> in practical terms, and <strong className="text-foreground">what has been leaked</strong>, clearly marked as unconfirmed. This structure helps you see what is known, what is uncertain, and where speculation exists.
-        </p>
-        <Accordion type="multiple" className="space-y-3">
-          {unknowns.map((item, index) => (
-            <AccordionItem
-              key={index}
-              value={`unknown-${index}`}
-              className="bg-card border border-border rounded-xl px-5 py-1"
-            >
-              <AccordionTrigger className="text-left font-medium text-foreground hover:no-underline gap-3">
-                <span className="flex items-center gap-3">
-                  <item.icon className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-                  {item.question}
-                </span>
-              </AccordionTrigger>
-              <AccordionContent className="pt-2 pb-4 space-y-4">
-                <div>
-                  <h4 className="text-sm font-semibold text-foreground mb-2">What the research tells us so far</h4>
-                  <ul className="space-y-1.5 text-sm text-muted-foreground">
-                    {item.research.map((point, i) => (
-                      <li key={i} className="leading-relaxed">{point}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-foreground mb-2">Why this matters for families</h4>
-                  <ul className="space-y-1.5 text-sm text-muted-foreground">
-                    {item.families.map((point, i) => (
-                      <li key={i} className="leading-relaxed">{point}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="border-2 border-status-leaked bg-status-leaked/5 rounded-lg p-4 mt-2">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wide text-status-leaked bg-status-leaked/15 px-2 py-0.5 rounded">
-                      Leaked
-                    </span>
-                    <span className="text-xs text-muted-foreground">Unconfirmed, treat with caution</span>
-                  </div>
-                  <h4 className="text-sm font-semibold text-foreground mb-2">What has been leaked</h4>
-                  <ul className="space-y-1.5 text-sm text-muted-foreground mb-3">
-                    {item.leaked.map((point, i) => (
-                      <li key={i} className="leading-relaxed">{point}</li>
-                    ))}
-                  </ul>
-                  <h4 className="text-sm font-semibold text-foreground mb-2">How this relates to the question</h4>
-                  <ul className="space-y-1.5 text-sm text-muted-foreground">
-                    {item.leakedRelation.map((point, i) => (
-                      <li key={i} className="leading-relaxed">{point}</li>
-                    ))}
-                  </ul>
-                </div>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
       </section>
-
-      <StatusSection type="unconfirmed">
-        <ul className="space-y-2">
-          <li>All items on this page remain unconfirmed by definition.</li>
-          <li>No official decisions have been published on these points.</li>
-        </ul>
-      </StatusSection>
-
-      <StatusSection type="leaked">
-        <ul className="space-y-2">
-          <li>Leaks speculate on answers to some of these unknowns.</li>
-          <li>These speculations are not confirmed and should not be treated as decisions.</li>
-        </ul>
-      </StatusSection>
 
       <section className="content-section py-8 border-t border-border">
         <h2 className="text-xl font-semibold text-foreground mb-4">
-          What this means for parents
+          Statistics and facts
         </h2>
-        <div className="prose-calm">
-          <p>
-            Research shows uncertainty itself causes anxiety and can drive families to seek plans earlier than needed. It is important to be clear that none of these questions have answers yet. Any change that affects rights would require consultation and legislation. Until then, decisions should still be made under current law, even if future reform is being discussed.
-          </p>
+        <div className="prose-calm space-y-3">
+          <p>This section focuses on known unknowns. The checked research set confirms these areas are unresolved.</p>
+          <ul className="space-y-2">
+            <li>No draft legislation has been published setting out changes to EHCP eligibility.</li>
+            <li>No final national SEND standards have been published.</li>
+            <li>No confirmed funding model replacing EHCP linked funding has been agreed.</li>
+            <li>No confirmed changes to tribunal appeal rights have been announced.</li>
+            <li>No confirmed implementation dates beyond broad 2026 to 2028 windows exist for major reforms.</li>
+            <li>No confirmed transitional arrangements for new entrants versus existing EHCP holders have been published.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="content-section py-8 border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4">
+          The unanswered questions parents are rightly asking
+        </h2>
+        <div className="prose-calm space-y-6">
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">Will EHCP eligibility change</h3>
+            <p>
+              This is the biggest question for families.
+            </p>
+            <p>
+              Right now, the legal test for an EHCP is unchanged. What is unknown is whether future legislation will narrow eligibility, keep it the same, or restructure it through tiers.
+            </p>
+            <p>
+              Until legislation is published, no one can say with certainty how eligibility might change or when.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">What will national SEND standards actually include</h3>
+            <p>
+              Parents are being told standards are coming, but the detail matters.
+            </p>
+            <p>Key unanswered questions include:</p>
+            <ul className="space-y-2">
+              <li>What support will schools be required to provide without an EHCP.</li>
+              <li>How differences between need types will be handled.</li>
+              <li>Whether standards will be enforceable or advisory.</li>
+              <li>Who will monitor compliance and what happens when standards are not met.</li>
+            </ul>
+            <p>
+              Without this detail, parents cannot yet rely on standards as a safeguard.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">How funding changes would affect individual children</h3>
+            <p>
+              There is discussion about shifting funding earlier or making it less plan dependent.
+            </p>
+            <p>What we do not know is:</p>
+            <ul className="space-y-2">
+              <li>Whether individual accountability will remain.</li>
+              <li>How schools will be prevented from rationing support.</li>
+              <li>How families will challenge decisions if funding is pooled.</li>
+            </ul>
+            <p>
+              Until this is clear, parents are right to be cautious.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">What happens during transition</h3>
+            <p>
+              Another major unknown is how change will be phased.
+            </p>
+            <p>Parents want to know:</p>
+            <ul className="space-y-2">
+              <li>Whether children with existing EHCPs are fully protected.</li>
+              <li>How children newly identified during reform will be treated.</li>
+              <li>Whether different rules will apply in different areas at different times.</li>
+            </ul>
+            <p>
+              The lack of a published transition plan adds to anxiety.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">How health and care will realistically be involved</h3>
+            <p>
+              Reform relies heavily on multi-agency working.
+            </p>
+            <p>Parents are asking:</p>
+            <ul className="space-y-2">
+              <li>Where the therapists will come from.</li>
+              <li>Whether NHS waiting lists will reduce.</li>
+              <li>How health provision will be accessed without an EHCP.</li>
+            </ul>
+            <p>
+              These questions matter because education alone cannot meet many children's needs.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">What outcomes will be used to judge success</h3>
+            <p>
+              Families also want to know how success will be measured.
+            </p>
+            <p>
+              Is success fewer EHCPs, fewer appeals, lower costs, or better lives for children.
+            </p>
+            <p>
+              Until outcomes are clearly defined, parents will remain sceptical.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <h3 className="text-lg font-medium text-foreground">Why naming the unknowns matters</h3>
+            <p>
+              Uncertainty does not mean families should panic. It does mean families should make decisions based on current rights and current needs, not rumours.
+            </p>
+            <p>
+              The most protective position right now is to work within the system that exists today, while staying informed about what may change tomorrow.
+            </p>
+          </div>
+
         </div>
       </section>
 
