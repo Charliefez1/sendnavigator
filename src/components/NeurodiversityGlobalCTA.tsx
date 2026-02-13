@@ -23,7 +23,7 @@ export function NeurodiversityGlobalCTA() {
 
   return (
     <div className="content-section py-6">
-      <div className="rounded-lg border border-border bg-card p-5">
+      <div className="rounded-lg border border-border bg-card p-5 shadow-md">
         <div className="flex items-center gap-4 mb-4">
           <div className="flex items-center justify-center flex-shrink-0">
             <img
@@ -54,7 +54,7 @@ export function NeurodiversityGlobalCTA() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+              className="flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
             />
             <input
               type="email"
@@ -62,7 +62,7 @@ export function NeurodiversityGlobalCTA() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+              className="flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
             />
             <button
               type="submit"
