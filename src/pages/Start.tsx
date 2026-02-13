@@ -206,18 +206,18 @@ const Index = () => {
 
       {/* About this resource */}
       <section className="content-section pb-12 border-t border-border pt-10">
-        <div className="flex items-center gap-4">
-          <Heart className="w-6 h-6 text-primary flex-shrink-0" />
+        <div className="flex items-start gap-4">
+          <Heart className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
           <div>
             <h2 className="text-lg font-semibold text-foreground mb-3">
               Made for families like yours
             </h2>
-            <div className="prose-calm space-y-3 text-muted-foreground">
-              <p className="text-sm leading-relaxed !mb-2">
+            <div className="space-y-2 text-muted-foreground text-sm leading-relaxed" style={{ fontSize: '14px' }}>
+              <p>
                 This is an independent resource, not government, not a campaign. We don't give advice
                 or tell you what to do. We just help you understand what's happening.
               </p>
-              <p className="text-sm leading-relaxed !mb-0">
+              <p>
                 We know you're busy and may be feeling anxious. That's why we've made everything 
                 as clear and straightforward as possible.
               </p>
