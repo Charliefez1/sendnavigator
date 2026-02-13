@@ -28,7 +28,7 @@ export function NeurodiversityGlobalCTA() {
           <img
             src={ndgLogo}
             alt="Neurodiversity Global"
-            className="w-20 h-auto object-contain flex-shrink-0 rounded"
+            className="w-40 h-auto object-contain flex-shrink-0 rounded"
           />
           <div>
             <p className="text-sm font-medium text-foreground">
