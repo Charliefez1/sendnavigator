@@ -8,16 +8,16 @@
 
 @layer base {
   :root {
-    /* Core backgrounds - light grey */
-    --background: 220 14% 96%;
+    /* Core backgrounds - visible grey */
+    --background: 220 14% 90%;
     --foreground: 220 25% 14%;
 
-    /* Card surfaces - light grey, no white */
-    --card: 220 12% 93%;
+    /* Card surfaces - slightly lighter grey, not white */
+    --card: 220 12% 94%;
     --card-foreground: 220 25% 14%;
 
     /* Popover */
-    --popover: 220 12% 93%;
+    --popover: 220 12% 94%;
     --popover-foreground: 220 25% 14%;
 
     /* Primary - warm terracotta */
