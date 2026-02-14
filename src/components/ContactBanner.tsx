@@ -34,7 +34,7 @@ export function ContactBanner() {
           {contacts.map((contact) => (
             <div
               key={contact.email}
-              className="bg-card rounded-2xl p-4 border border-border/60 shadow-md"
+              className="bg-card rounded-2xl p-4 border border-border/60 shadow-lg"
             >
               <p className="font-bold text-foreground text-sm">{contact.name}</p>
               <p className="text-xs text-muted-foreground mb-3">{contact.role}</p>

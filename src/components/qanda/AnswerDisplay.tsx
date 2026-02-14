@@ -39,7 +39,7 @@ function ConfidenceBadge({ confidence }: { confidence: QandAAnswer["confidence"]
 
 function RefusalDisplay({ refusal, question }: { refusal: QandARefusal; question: string }) {
   return (
-    <div className="bg-muted/50 border border-border rounded-lg p-5 space-y-4">
+    <div className="bg-card border border-border rounded-lg p-5 space-y-4 shadow-lg">
       <div className="flex gap-3">
         <ShieldAlert className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
         <div className="space-y-3">
@@ -78,7 +78,7 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
   const isLeaksRelated = answer.confidence === "unconfirmed";
 
   return (
-    <div className="bg-card border border-border rounded-lg divide-y divide-border">
+    <div className="bg-card border border-border rounded-lg divide-y divide-border shadow-lg">
       {/* Question echo */}
       <div className="p-4 sm:p-5 bg-muted/30">
         <p className="text-sm text-muted-foreground">Your question:</p>

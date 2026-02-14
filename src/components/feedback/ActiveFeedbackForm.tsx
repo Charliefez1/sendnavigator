@@ -61,7 +61,7 @@ export function ActiveFeedbackForm({ pageUrl }: ActiveFeedbackFormProps) {
 
   if (submitted) {
     return (
-      <div className="bg-card border border-border rounded-lg p-4">
+      <div className="bg-card border border-border rounded-lg p-4 shadow-lg">
         <p className="text-sm text-foreground mb-2">Thank you for your feedback.</p>
         <p className="text-sm text-muted-foreground mb-4">
           Your feedback will be reviewed by the editorial team. Changes are only made 
@@ -78,7 +78,7 @@ export function ActiveFeedbackForm({ pageUrl }: ActiveFeedbackFormProps) {
   }
 
   return (
-    <div className="bg-card border border-border rounded-lg p-4">
+    <div className="bg-card border border-border rounded-lg p-4 shadow-lg">
       <div className="flex items-start justify-between mb-4">
         <h3 className="font-medium text-foreground">Suggest an improvement</h3>
         <button

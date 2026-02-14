@@ -36,7 +36,7 @@ export function NewsletterSignup() {
 
   if (submitted) {
     return (
-      <div className="bg-accent/30 border border-accent rounded-2xl p-5 text-center">
+      <div className="bg-card border border-border rounded-2xl p-5 text-center shadow-lg">
         <CheckCircle className="w-8 h-8 text-accent-foreground mx-auto mb-2" />
         <p className="font-semibold text-foreground text-sm">Thank you for signing up!</p>
         <p className="text-xs text-muted-foreground mt-1">Your email client should have opened. Please send the message to complete your signup.</p>
@@ -45,7 +45,7 @@ export function NewsletterSignup() {
   }
 
   return (
-    <div className="bg-primary/5 border border-primary/20 rounded-2xl p-5 sm:p-6 shadow-md">
+    <div className="bg-card border border-border rounded-2xl p-5 sm:p-6 shadow-lg">
       <div className="flex items-center gap-2 mb-2">
         <Mail className="w-5 h-5 text-primary" />
         <h3 className="font-display font-bold text-foreground text-sm sm:text-base">

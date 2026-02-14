@@ -2,7 +2,7 @@ import { StatusBadge } from "./StatusBadge";
 
 export function StatusExplainer() {
   return (
-    <section className="bg-secondary/30 border border-border rounded-lg p-6">
+    <section className="bg-card border border-border rounded-lg p-6 shadow-lg">
       <h2 className="text-lg font-medium text-foreground mb-4">
         How we label information
       </h2>

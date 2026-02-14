@@ -3,7 +3,7 @@ import { trustSignals } from "@/config/feedback";
 
 export function TrustSignals() {
   return (
-    <section className="bg-card border border-border rounded-lg p-6">
+    <section className="bg-card border border-border rounded-lg p-6 shadow-lg">
       <h2 className="text-lg font-medium text-foreground mb-4">
         How we maintain trust
       </h2>

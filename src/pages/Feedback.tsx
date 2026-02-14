@@ -70,9 +70,9 @@ export default function Feedback() {
   };
 
   const typeLabels: Record<string, string> = {
-    comment: "💬 Comment",
-    suggestion: "💡 Suggestion",
-    issue: "⚠️ Issue",
+    comment: "Comment",
+    suggestion: "Suggestion",
+    issue: "Issue",
   };
 
   return (
@@ -85,7 +85,7 @@ export default function Feedback() {
         />
 
         {/* Submission form */}
-        <div className="bg-card border border-border rounded-2xl p-5 space-y-4">
+        <div className="bg-card border border-border rounded-2xl p-5 space-y-4 shadow-lg">
           <h2 className="font-display text-lg font-semibold">Leave Feedback</h2>
 
           {submitted ? (
@@ -150,11 +150,11 @@ export default function Feedback() {
             </div>
           ) : feedbackItems && feedbackItems.length > 0 ? (
             feedbackItems.map((item) => (
-              <div key={item.id} className="bg-card border border-border rounded-2xl p-4 space-y-2">
+              <div key={item.id} className="bg-card border border-border rounded-2xl p-4 space-y-2 shadow-lg">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-semibold bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full">
-                      {typeLabels[item.feedback_type] || "💬 Comment"}
+                      {typeLabels[item.feedback_type] || "Comment"}
                     </span>
                     {item.name && <span className="text-sm font-semibold text-foreground">{item.name}</span>}
                   </div>

@@ -9,7 +9,7 @@ interface InfoCardProps {
 
 export function InfoCard({ title, children, icon }: InfoCardProps) {
   return (
-    <Card className="bg-card border-border shadow-md">
+    <Card className="bg-card border-border shadow-lg">
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-lg font-medium text-foreground">
           {icon}

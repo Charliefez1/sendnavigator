@@ -32,7 +32,7 @@ export function MoreResources() {
             href={r.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group block rounded-lg border border-border bg-card shadow-md overflow-hidden hover:border-primary/40 hover:shadow-lg transition-all"
+            className="group block rounded-lg border border-border bg-card shadow-lg overflow-hidden hover:border-primary/40 hover:shadow-xl transition-all"
           >
             <div className="h-36 overflow-hidden">
               <img
