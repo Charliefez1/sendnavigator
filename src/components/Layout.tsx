@@ -3,7 +3,7 @@ import { Header } from "./Header";
 import { JourneyNavBar } from "./JourneyNavBar";
 import { JourneyFloatingBar } from "./JourneyFloatingBar";
 import { Footer } from "./Footer";
-import { ContactBanner } from "./ContactBanner";
+
 import { MoreResources } from "./MoreResources";
 import { NeurodiversityGlobalCTA } from "./NeurodiversityGlobalCTA";
 import { NewsletterSignup } from "./NewsletterSignup";
