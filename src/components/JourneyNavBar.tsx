@@ -63,36 +63,31 @@ export function JourneyNavBar() {
           {prevStep ? (
             <NavLink
               to={prevStep.path}
-              className="flex items-center gap-1 text-white/50 hover:text-white/80 transition-colors text-xs"
+              className="flex items-center gap-1.5 text-white/60 hover:text-white/90 transition-colors text-xs max-w-[40%]"
             >
-              <ChevronLeft className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">{prevStep.shortLabel}</span>
+              <ChevronLeft className="w-4 h-4 flex-shrink-0" />
+              <span className="truncate">{prevStep.label}</span>
             </NavLink>
           ) : (
-            <div className="w-8" />
+            <div className="max-w-[40%]" />
           )}
 
-          <div className="text-center">
+          <div className="text-center flex-shrink-0 px-2">
             <span className="text-white/50 text-xs">
               {currentIndex >= 0 ? `Step ${currentIndex + 1} of ${journeySteps.length}` : "Guide"}
             </span>
-            {currentIndex >= 0 && (
-              <p className="text-white text-xs font-medium leading-tight">
-                {journeySteps[currentIndex].label}
-              </p>
-            )}
           </div>
 
           {nextStep ? (
             <NavLink
               to={nextStep.path}
-              className="flex items-center gap-1 text-white/50 hover:text-white/80 transition-colors text-xs"
+              className="flex items-center gap-1.5 text-white/60 hover:text-white/90 transition-colors text-xs max-w-[40%] text-right justify-end"
             >
-              <span className="hidden sm:inline">{nextStep.shortLabel}</span>
-              <ChevronRight className="w-3.5 h-3.5" />
+              <span className="truncate">{nextStep.label}</span>
+              <ChevronRight className="w-4 h-4 flex-shrink-0" />
             </NavLink>
           ) : (
-            <div className="w-8" />
+            <div className="max-w-[40%]" />
           )}
         </div>
       </div>
