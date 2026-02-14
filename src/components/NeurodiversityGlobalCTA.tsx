@@ -54,7 +54,7 @@ function ContactCard({ person, showBioImage }: { person: ContactPerson; showBioI
           </a>
         </div>
       </div>
-      {showBioImage && person.bioImage && (
+      {person.bioImage && (
         <img
           src={person.bioImage}
           alt={`${person.name} bio`}
