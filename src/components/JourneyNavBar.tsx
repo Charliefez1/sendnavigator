@@ -14,27 +14,35 @@ const journeySteps = [
 ];
 
 const dotColors: Record<string, string> = {
-  confirmed: "bg-status-confirmed",
-  discussed: "bg-status-discussed",
-  unconfirmed: "bg-status-unconfirmed",
-  next: "bg-[hsl(var(--timeline-upcoming))]",
+  confirmed: "bg-journey-confirmed",
+  discussed: "bg-journey-discussed",
+  unconfirmed: "bg-journey-unconfirmed",
+  next: "bg-journey-next",
 };
 
 const activeDotColors: Record<string, string> = {
-  confirmed: "ring-status-confirmed",
-  discussed: "ring-status-discussed",
-  unconfirmed: "ring-status-unconfirmed",
-  next: "ring-[hsl(var(--timeline-upcoming))]",
+  confirmed: "ring-journey-confirmed",
+  discussed: "ring-journey-discussed",
+  unconfirmed: "ring-journey-unconfirmed",
+  next: "ring-journey-next",
+};
+
+const accentBorderColors: Record<string, string> = {
+  confirmed: "border-t-journey-confirmed",
+  discussed: "border-t-journey-discussed",
+  unconfirmed: "border-t-journey-unconfirmed",
+  next: "border-t-journey-next",
 };
 
 export function JourneyNavBar() {
   const location = useLocation();
   const currentIndex = journeySteps.findIndex((s) => s.path === location.pathname);
+  const currentStep = journeySteps[currentIndex];
   const prevStep = currentIndex > 0 ? journeySteps[currentIndex - 1] : null;
   const nextStep = currentIndex < journeySteps.length - 1 ? journeySteps[currentIndex + 1] : null;
 
   return (
-     <nav className="bg-navy/90 border-b border-white/10" aria-label="Journey progress">
+     <nav className={cn("bg-navy/90 border-b border-white/10", currentStep ? `border-t-[3px] ${accentBorderColors[currentStep.color]}` : "")} aria-label="Journey progress">
       <div className="content-wide py-1">
         {/* Progress dots row */}
         <div className="flex items-center justify-center gap-1 mb-0.5">
