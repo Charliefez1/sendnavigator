@@ -13,9 +13,10 @@ import { AskQuestionCompact } from "./AskQuestionCompact";
 
 interface LayoutProps {
   children: ReactNode;
+  hideGlobalCTA?: boolean;
 }
 
-export function Layout({ children }: LayoutProps) {
+export function Layout({ children, hideGlobalCTA }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SkipLink />
@@ -26,7 +27,7 @@ export function Layout({ children }: LayoutProps) {
         <div className="content-section py-6 space-y-4">
           <AskQuestionCompact />
         </div>
-        <NeurodiversityGlobalCTA />
+        {!hideGlobalCTA && <NeurodiversityGlobalCTA />}
       </main>
       <MoreResources />
       <div className="content-section py-8">

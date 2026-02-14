@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
+import { NeurodiversityGlobalCTA } from "@/components/NeurodiversityGlobalCTA";
 import {
   EditorialOwnershipSection,
   IndependenceDisclosureSection,
@@ -12,7 +13,7 @@ import {
 
 export default function About() {
   return (
-    <Layout>
+    <Layout hideGlobalCTA>
       <SEOHead title="About" description="Independence, governance, scope, and accountability of SEND Reform Navigator." path="/about" />
       <PageOrientation
         title="About this resource"
@@ -110,6 +111,8 @@ export default function About() {
         <FeedbackSection />
         <ReviewScheduleSection />
       </div>
+
+      <NeurodiversityGlobalCTA showBioImages />
 
       <div className="content-section pb-16" />
     </Layout>
