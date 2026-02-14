@@ -3,7 +3,7 @@ import { aiTrustSignals } from "@/config/feedback";
 
 export function AITrustNotice() {
   return (
-    <div className="bg-muted/30 border border-border rounded-lg p-4">
+    <div className="bg-card border border-border rounded-lg p-4 shadow-lg">
       <div className="flex items-start gap-2 mb-3">
         <Bot className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
         <p className="text-sm font-medium text-foreground">

@@ -23,7 +23,7 @@ export function NeurodiversityGlobalCTA() {
 
   return (
     <div className="content-section py-3 pb-1">
-      <div className="rounded-lg border border-border p-5 shadow-md" style={{ backgroundColor: 'hsl(var(--navy))', color: 'hsl(var(--navy-foreground))' }}>
+      <div className="rounded-lg border border-border p-5 shadow-lg" style={{ backgroundColor: 'hsl(var(--navy))', color: 'hsl(var(--navy-foreground))' }}>
         <div className="flex items-center gap-4 mb-4">
           <div className="flex items-center justify-center flex-shrink-0">
             <img

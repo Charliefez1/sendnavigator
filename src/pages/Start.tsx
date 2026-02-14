@@ -26,7 +26,7 @@ const Index = () => {
         <div className="grid lg:grid-cols-2 gap-8 items-start">
           {/* LEFT: Welcome message */}
           <div>
-            <div className="bg-card border border-border rounded-xl p-5 sm:p-6 mb-6 shadow-md">
+            <div className="bg-card border border-border rounded-xl p-5 sm:p-6 mb-6 shadow-lg">
               <div className="flex items-center gap-2.5 mb-3">
                 <Compass className="w-6 h-6 text-primary flex-shrink-0" />
                 <h1 className="text-lg sm:text-xl font-semibold text-foreground">
@@ -206,7 +206,7 @@ const Index = () => {
 
       {/* About this resource */}
       <section className="content-section pb-12 border-t border-border pt-10">
-        <div className="flex items-start gap-4 bg-card border border-border rounded-xl p-5 shadow-md">
+        <div className="flex items-start gap-4 bg-card border border-border rounded-xl p-5 shadow-lg">
           <Heart className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
           <div>
             <h2 className="text-lg font-semibold text-foreground mb-3">
