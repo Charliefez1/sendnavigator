@@ -34,7 +34,7 @@ export function JourneyNavBar() {
   const nextStep = currentIndex < journeySteps.length - 1 ? journeySteps[currentIndex + 1] : null;
 
   return (
-    <nav className="bg-navy/90 border-b border-white/10" aria-label="Journey progress">
+     <nav className="bg-navy/90 border-b border-white/10" aria-label="Journey progress">
       <div className="content-wide py-1">
         {/* Progress dots row */}
         <div className="flex items-center justify-center gap-1 mb-0.5">

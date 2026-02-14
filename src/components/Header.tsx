@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Heart, Sparkles, Menu, X, ChevronDown } from "lucide-react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
+import neurodiversityLogo from "@/assets/neurodiversity-global-education-logo.png";
 
 const siteLinks = [
   { path: "/", label: "Home" },
@@ -25,9 +27,23 @@ export function Header() {
 
   return (
     <header className="bg-navy text-navy-foreground sticky top-0 z-50">
-      <div className="content-wide py-2">
-        {/* Top row: links/hamburger */}
+      <div className="content-wide py-3 sm:py-4">
+        {/* Top row: logo + links/hamburger */}
         <div className="flex items-center justify-between">
+          <Link to="/" className="group flex items-center gap-3 shrink-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white/15 transition-colors">
+              <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" aria-hidden="true" />
+            </div>
+            <div>
+              <span className="text-base sm:text-lg font-display font-bold text-white tracking-tight leading-tight group-hover:opacity-90 transition-opacity">
+                SEND Reform Navigator
+              </span>
+              
+              <p className="text-xs text-navy-muted font-medium hidden sm:block">
+                A practical guide for families
+              </p>
+            </div>
+          </Link>
 
           {/* Desktop site links */}
           <nav className="hidden lg:flex items-center gap-1" aria-label="Site pages">
@@ -47,6 +63,9 @@ export function Header() {
                 {link.label}
               </NavLink>
             ))}
+            <div className="ml-2 border-l border-white/10 pl-2">
+              <ThemeToggle />
+            </div>
           </nav>
 
           {/* Tablet: compact links */}
@@ -68,10 +87,14 @@ export function Header() {
               </NavLink>
             ))}
             <MoreDropdown links={siteLinks.slice(4)} />
+            <div className="ml-1 border-l border-white/10 pl-1">
+              <ThemeToggle />
+            </div>
           </div>
 
-          {/* Mobile: hamburger */}
+          {/* Mobile: hamburger + theme */}
           <div className="flex md:hidden items-center gap-1">
+            <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors"

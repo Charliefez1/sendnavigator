@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { BookOpen, ScanLine, Headphones, Sun, Moon, Type } from "lucide-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
@@ -31,15 +30,7 @@ export function ExperienceSelector() {
   return (
     <div className="bg-navy text-navy-foreground border-b border-white/10">
       <div className="content-wide flex items-center gap-3 py-1.5 overflow-x-auto scrollbar-hide">
-        {/* Site identity */}
-        <Link to="/" className="shrink-0 flex items-center group mr-2">
-          <span className="text-sm sm:text-base font-display font-bold text-white tracking-tight leading-tight group-hover:opacity-90 transition-opacity whitespace-nowrap">
-            SEND Reform Navigator
-          </span>
-        </Link>
-
-        <div className="w-px h-4 bg-white/10 shrink-0" />
-
+        {/* Spacer to push logo right */}
         <div className="flex items-center gap-3 flex-1 min-w-0">
         {/* Jump to sections */}
         {sections.length > 0 && (
