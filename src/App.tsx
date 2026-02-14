@@ -35,6 +35,7 @@ const WhyIBuiltThis = lazy(() => import("./pages/WhyIBuiltThis"));
 const CommunityQuestions = lazy(() => import("./pages/CommunityQuestions"));
 const Feedback = lazy(() => import("./pages/Feedback"));
 const Admin = lazy(() => import("./pages/Admin"));
+const QuickRead = lazy(() => import("./pages/QuickRead"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -62,6 +63,7 @@ const App = () => (
                 <Suspense fallback={<LoadingFallback />}>
                   <Routes>
                     <Route path="/" element={<Start />} />
+                    <Route path="/quick-read" element={<QuickRead />} />
                     <Route path="/how-to-use" element={<HowToUse />} />
                     <Route path="/where-we-are-now" element={<WhereWeAreNow />} />
                     <Route path="/what-is-changing" element={<WhatIsChanging />} />
