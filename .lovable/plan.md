@@ -1,63 +1,36 @@
 
 
-## Fix: Lifted boxes on How to Use + Site-wide font consistency
+## Darken font colours across the entire site
 
-### Problem 1: How to Use boxes are flat
-Every box on the How to Use page uses `bg-card border border-border rounded-xl` but has **no shadow at all**. The rest of the site uses `shadow-lg` on cards. There are 11 box elements on this page that need fixing.
+### The problem
+Text across the site appears too light. The root cause is in the CSS custom properties in `src/index.css`. Two key variables control nearly all text colour:
 
-### Problem 2: Font inconsistency across the site
-The root cause is a conflict between two font systems:
-- `index.css` sets all `h1-h6` tags to Fraunces (the display font) via a CSS rule
-- But Tailwind's utility classes like `font-medium`, `font-semibold` can interfere with inheritance, and some heading elements are rendered as `span`, `p`, or `div` instead of actual heading tags
-- Some pages explicitly add `font-display` (Fraunces) to elements, others rely on the CSS rule, and some elements that should use the display font are not heading tags at all
+- `--foreground: 220 25% 14%` -- main text (already fairly dark)
+- `--muted-foreground: 220 10% 46%` -- used heavily for body paragraphs, descriptions, timestamps, and secondary text (this is the main offender -- 46% lightness is quite washed out on a grey background)
 
-The fix is to add a **global `!important` override** in `index.css` to force Fraunces on all headings regardless of utility class interference, and to ensure all heading-like elements (card titles, section titles) consistently use `font-display`.
+Several other foreground variables also need darkening:
+- `--secondary-foreground: 220 20% 25%`
+- `--accent-foreground: 155 35% 30%`
+- `--card-foreground` and `--popover-foreground` (currently same as foreground)
 
----
+### The fix
+Change **only the CSS variables** in `src/index.css` -- no individual page edits needed. Every component already uses these variables via Tailwind classes (`text-foreground`, `text-muted-foreground`, etc.), so updating the variables propagates everywhere automatically.
 
-### Changes
+### Changes to `src/index.css`
 
-**1. `src/pages/HowToUse.tsx`** -- Add `shadow-lg` to all 11 card/box elements
+**Light mode (`:root`):**
 
-Every `bg-card border border-border rounded-xl` div will get `shadow-lg` added. The `reassurance-banner` CTA at the bottom will also get `shadow-lg`.
+| Variable | Current | New | Reason |
+|---|---|---|---|
+| `--foreground` | `220 25% 14%` | `220 30% 10%` | Slightly deeper for main headings and body |
+| `--card-foreground` | `220 25% 14%` | `220 30% 10%` | Match foreground |
+| `--popover-foreground` | `220 25% 14%` | `220 30% 10%` | Match foreground |
+| `--muted-foreground` | `220 10% 46%` | `220 12% 35%` | The biggest change -- from 46% to 35% lightness makes secondary text noticeably darker and more readable |
+| `--secondary-foreground` | `220 20% 25%` | `220 22% 18%` | Darker secondary text |
+| `--accent-foreground` | `155 35% 30%` | `155 40% 22%` | Darker accent text |
 
-**2. `src/index.css`** -- Strengthen font rules with `!important`
+**Dark mode (`.dark`)** -- left unchanged since dark mode already has light text on dark backgrounds. Changes are light-mode only.
 
-Change the heading font rule from:
-```css
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Fraunces', Georgia, serif;
-}
-```
-to:
-```css
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Fraunces', Georgia, serif !important;
-}
-```
-
-Also add a new rule to ensure `.font-display` works as an override for non-heading elements:
-```css
-.font-display {
-  font-family: 'Fraunces', Georgia, serif !important;
-}
-```
-
-**3. `src/components/templates/PageOrientation.tsx`** -- Add `font-display` to the h1 explicitly for clarity and consistency.
-
-**4. Content pages audit** -- Ensure all `h2` and `h3` tags across content pages use `font-display` class explicitly rather than relying solely on the CSS tag selector. This covers pages:
-- `HowToUse.tsx` (h2 and h3 tags)
-- `WhatTheLeaksDoNotMean.tsx`
-- `WhatIsBeingDiscussed.tsx`
-- `WhatIsChanging.tsx`
-- `WhatWeKnowSoFar.tsx`
-- `WhereWeAreNow.tsx`
-- `WhatHasNotChanged.tsx`
-- `WhatHappensNext.tsx`
-- `WhatThisCouldMean.tsx`
-- `WhatWeDoNotKnow.tsx`
-- `WhatTheLeaksAreSaying.tsx`
-- And any other content pages with headings
-
-This belt-and-braces approach (CSS `!important` + explicit `font-display` classes) ensures the font issue cannot recur regardless of class ordering or specificity conflicts.
+### What this affects
+Every page, every card, every component -- all text gets darker without touching any individual files. This is a single-file, 6-line change.
 
