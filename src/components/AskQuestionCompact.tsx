@@ -59,7 +59,7 @@ export function AskQuestionCompact() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="w-full border-2 border-dashed border-primary/30 rounded-2xl p-4 hover:border-primary/60 hover:bg-primary/5 transition-all duration-200 group shadow-lg bg-card"
+        className="w-full border-2 border-solid border-primary/30 rounded-2xl p-4 hover:border-primary/60 hover:bg-primary/5 transition-all duration-200 group shadow-lg bg-card"
       >
       <div className="flex items-center justify-center gap-2 text-primary">
           <MessageCircleQuestion className="h-5 w-5" />
