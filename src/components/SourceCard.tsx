@@ -53,7 +53,7 @@ export function SourceCard({ name, url }: SourceCardProps) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group flex items-start gap-3 p-3 rounded-xl border border-border bg-card hover:border-primary/30 hover:shadow-md transition-all duration-200"
+      className="group flex items-start gap-3 p-3 rounded-xl border border-border bg-card shadow-md hover:border-primary/30 hover:shadow-lg transition-all duration-200"
     >
       {/* Logo / favicon */}
       <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center overflow-hidden shrink-0">
