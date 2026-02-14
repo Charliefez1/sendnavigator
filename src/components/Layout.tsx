@@ -27,12 +27,12 @@ export function Layout({ children, hideGlobalCTA }: LayoutProps) {
         <div className="content-section py-6 space-y-4">
           <AskQuestionCompact />
         </div>
-        {!hideGlobalCTA && <NeurodiversityGlobalCTA />}
       </main>
       <MoreResources />
       <div className="content-section py-8">
         <NewsletterSignup />
       </div>
+      {!hideGlobalCTA && <NeurodiversityGlobalCTA />}
       <Footer />
       <JourneyFloatingBar />
     </div>
