@@ -23,7 +23,7 @@ export function NeurodiversityGlobalCTA() {
 
   return (
     <div className="content-section py-6">
-      <div className="rounded-lg border border-border bg-card p-5 shadow-md">
+      <div className="rounded-lg border border-border p-5 shadow-md" style={{ backgroundColor: 'hsl(var(--navy))', color: 'hsl(var(--navy-foreground))' }}>
         <div className="flex items-center gap-4 mb-4">
           <div className="flex items-center justify-center flex-shrink-0">
             <img
@@ -33,17 +33,17 @@ export function NeurodiversityGlobalCTA() {
             />
           </div>
           <div>
-            <p className="text-sm font-medium text-foreground">
+            <p className="text-sm font-medium" style={{ color: 'hsl(var(--navy-foreground))' }}>
               Looking for greater 'Neurodiversity' awareness at work, school, or club?
             </p>
-            <p className="text-xs text-muted-foreground mt-1">
+            <p className="text-xs mt-1" style={{ color: 'hsl(var(--navy-muted))' }}>
               Book some time with Rich or Charlie from Neurodiversity Global the Father and Son team behind the SEND Navigator.
             </p>
           </div>
         </div>
 
         {submitted ? (
-          <p className="text-sm text-status-confirmed font-medium">
+          <p className="text-sm font-medium" style={{ color: 'hsl(var(--navy-foreground))' }}>
             Thanks! Your email client should open shortly. We look forward to hearing from you.
           </p>
         ) : (
