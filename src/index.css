@@ -10,15 +10,15 @@
   :root {
     /* Core backgrounds - visible grey */
     --background: 220 14% 90%;
-    --foreground: 220 25% 14%;
+    --foreground: 220 30% 10%;
 
     /* Card surfaces - visible grey, no white */
     --card: 220 13% 87%;
-    --card-foreground: 220 25% 14%;
+    --card-foreground: 220 30% 10%;
 
     /* Popover */
     --popover: 220 13% 87%;
-    --popover-foreground: 220 25% 14%;
+    --popover-foreground: 220 30% 10%;
 
     /* Primary - warm terracotta */
     --primary: 16 65% 52%;
@@ -26,15 +26,15 @@
 
     /* Secondary - soft grey */
     --secondary: 220 14% 92%;
-    --secondary-foreground: 220 20% 25%;
+    --secondary-foreground: 220 22% 18%;
 
     /* Muted */
     --muted: 220 12% 93%;
-    --muted-foreground: 220 10% 46%;
+    --muted-foreground: 220 12% 35%;
 
     /* Accent */
     --accent: 155 30% 90%;
-    --accent-foreground: 155 35% 30%;
+    --accent-foreground: 155 40% 22%;
 
     /* Destructive */
     --destructive: 0 55% 55%;
