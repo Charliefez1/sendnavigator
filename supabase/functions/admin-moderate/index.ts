@@ -64,11 +64,15 @@ Deno.serve(async (req) => {
       });
     }
 
-    if (action === "answer" && table === "user_questions") {
-      const { answer } = await req.json().catch(() => ({}));
-      // Re-parse since we already consumed the body - use the original parsed data
-      return new Response(JSON.stringify({ error: "Use update action" }), {
-        status: 400,
+    if (action === "respond" && table === "user_feedback") {
+      const { data, error } = await supabase
+        .from("user_feedback")
+        .update({ admin_response: id.response })
+        .eq("id", id.feedbackId)
+        .select()
+        .single();
+      if (error) throw error;
+      return new Response(JSON.stringify({ data }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }

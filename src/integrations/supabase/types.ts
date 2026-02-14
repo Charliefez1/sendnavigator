@@ -91,6 +91,7 @@ export type Database = {
       }
       user_feedback: {
         Row: {
+          admin_response: string | null
           created_at: string
           feedback: string
           feedback_type: string
@@ -99,6 +100,7 @@ export type Database = {
           status: string
         }
         Insert: {
+          admin_response?: string | null
           created_at?: string
           feedback: string
           feedback_type?: string
@@ -107,6 +109,7 @@ export type Database = {
           status?: string
         }
         Update: {
+          admin_response?: string | null
           created_at?: string
           feedback?: string
           feedback_type?: string

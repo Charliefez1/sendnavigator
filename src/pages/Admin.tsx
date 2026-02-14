@@ -2,9 +2,10 @@ import { useState, useCallback } from "react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Lock, CheckCircle, XCircle, Trash2, MessageCircleQuestion, MessageSquare, Eye, BookOpen } from "lucide-react";
+import { Lock, CheckCircle, XCircle, Trash2, MessageCircleQuestion, MessageSquare, Eye, BookOpen, Reply, Send } from "lucide-react";
 import { KnowledgeBaseManager } from "@/components/admin/KnowledgeBaseManager";
 
 interface QuestionItem {
@@ -21,6 +22,7 @@ interface FeedbackItem {
   name: string | null;
   feedback: string;
   feedback_type: string;
+  admin_response: string | null;
   status: string;
   created_at: string;
 }
@@ -38,6 +40,127 @@ function StatusBadge({ status }: { status: string }) {
   );
 }
 
+function FeedbackAdmin({ feedbackItems, pin, callAdmin, refreshData, handleAction, respondingTo, setRespondingTo, responseText, setResponseText }: {
+  feedbackItems: FeedbackItem[];
+  pin: string;
+  callAdmin: (body: Record<string, unknown>) => Promise<any>;
+  refreshData: () => Promise<void>;
+  handleAction: (table: string, action: string, id: string) => Promise<void>;
+  respondingTo: string | null;
+  setRespondingTo: (id: string | null) => void;
+  responseText: string;
+  setResponseText: (text: string) => void;
+}) {
+  const { toast } = useToast();
+
+  const handleRespond = async (feedbackId: string) => {
+    if (!responseText.trim()) return;
+    try {
+      await callAdmin({ action: "respond", table: "user_feedback", id: { feedbackId, response: responseText.trim() } });
+      toast({ title: "Response saved" });
+      setRespondingTo(null);
+      setResponseText("");
+      await refreshData();
+    } catch {
+      toast({ title: "Failed to save response", variant: "destructive" });
+    }
+  };
+
+  return (
+    <div className="space-y-3">
+      {feedbackItems.length === 0 ? (
+        <p className="text-muted-foreground text-center py-8">No feedback yet.</p>
+      ) : (
+        feedbackItems.map((f) => (
+          <div key={f.id} className="bg-card border border-border rounded-xl p-4 space-y-2">
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex-1 space-y-1">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <StatusBadge status={f.status} />
+                  <span className="text-xs bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full">
+                    {f.feedback_type}
+                  </span>
+                  {f.name && <span className="text-xs font-semibold">{f.name}</span>}
+                  <span className="text-xs text-muted-foreground">
+                    {new Date(f.created_at).toLocaleDateString()}
+                  </span>
+                </div>
+                <p className="text-sm text-foreground">{f.feedback}</p>
+                {f.admin_response && (
+                  <div className="bg-primary/5 border border-primary/20 rounded-lg p-2 mt-1">
+                    <p className="text-xs font-semibold text-primary mb-0.5">Response:</p>
+                    <p className="text-sm text-foreground">{f.admin_response}</p>
+                  </div>
+                )}
+                {respondingTo === f.id && (
+                  <div className="space-y-2 mt-2">
+                    <Textarea
+                      value={responseText}
+                      onChange={(e) => setResponseText(e.target.value)}
+                      placeholder="Write your response..."
+                      className="min-h-[80px] text-sm resize-none"
+                    />
+                    <div className="flex gap-2">
+                      <Button size="sm" onClick={() => handleRespond(f.id)} className="rounded-full gap-1.5">
+                        <Send className="h-3.5 w-3.5" /> Save Response
+                      </Button>
+                      <Button size="sm" variant="ghost" onClick={() => { setRespondingTo(null); setResponseText(""); }} className="rounded-full">
+                        Cancel
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className="flex gap-1 shrink-0">
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => { setRespondingTo(f.id); setResponseText(f.admin_response || ""); }}
+                  className="h-8 w-8 p-0 text-primary hover:bg-primary/10"
+                  title="Respond"
+                >
+                  <Reply className="h-4 w-4" />
+                </Button>
+                {f.status !== "approved" && (
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => handleAction("user_feedback", "approve", f.id)}
+                    className="h-8 w-8 p-0 text-status-confirmed hover:bg-status-confirmed-bg"
+                    title="Approve"
+                  >
+                    <CheckCircle className="h-4 w-4" />
+                  </Button>
+                )}
+                {f.status !== "rejected" && (
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => handleAction("user_feedback", "reject", f.id)}
+                    className="h-8 w-8 p-0 text-destructive hover:bg-destructive/10"
+                    title="Reject"
+                  >
+                    <XCircle className="h-4 w-4" />
+                  </Button>
+                )}
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  onClick={() => handleAction("user_feedback", "delete", f.id)}
+                  className="h-8 w-8 p-0 text-muted-foreground hover:text-destructive"
+                  title="Delete"
+                >
+                  <Trash2 className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        ))
+      )}
+    </div>
+  );
+}
+
 export default function Admin() {
   const [pin, setPin] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
@@ -46,6 +169,8 @@ export default function Admin() {
   const [questions, setQuestions] = useState<QuestionItem[]>([]);
   const [feedbackItems, setFeedbackItems] = useState<FeedbackItem[]>([]);
   const [loading, setLoading] = useState(false);
+  const [respondingTo, setRespondingTo] = useState<string | null>(null);
+  const [responseText, setResponseText] = useState("");
   const { toast } = useToast();
 
   const callAdmin = useCallback(
@@ -261,64 +386,17 @@ export default function Admin() {
             )}
           </div>
         ) : (
-          <div className="space-y-3">
-            {feedbackItems.length === 0 ? (
-              <p className="text-muted-foreground text-center py-8">No feedback yet.</p>
-            ) : (
-              feedbackItems.map((f) => (
-                <div key={f.id} className="bg-card border border-border rounded-xl p-4 space-y-2">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex-1 space-y-1">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <StatusBadge status={f.status} />
-                        <span className="text-xs bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full">
-                          {f.feedback_type}
-                        </span>
-                        {f.name && <span className="text-xs font-semibold">{f.name}</span>}
-                        <span className="text-xs text-muted-foreground">
-                          {new Date(f.created_at).toLocaleDateString()}
-                        </span>
-                      </div>
-                      <p className="text-sm text-foreground">{f.feedback}</p>
-                    </div>
-                    <div className="flex gap-1 shrink-0">
-                      {f.status !== "approved" && (
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          onClick={() => handleAction("user_feedback", "approve", f.id)}
-                          className="h-8 w-8 p-0 text-status-confirmed hover:bg-status-confirmed-bg"
-                          title="Approve"
-                        >
-                          <CheckCircle className="h-4 w-4" />
-                        </Button>
-                      )}
-                      {f.status !== "rejected" && (
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          onClick={() => handleAction("user_feedback", "reject", f.id)}
-                          className="h-8 w-8 p-0 text-destructive hover:bg-destructive/10"
-                          title="Reject"
-                        >
-                          <XCircle className="h-4 w-4" />
-                        </Button>
-                      )}
-                      <Button
-                        size="sm"
-                        variant="ghost"
-                        onClick={() => handleAction("user_feedback", "delete", f.id)}
-                        className="h-8 w-8 p-0 text-muted-foreground hover:text-destructive"
-                        title="Delete"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ))
-            )}
-          </div>
+          <FeedbackAdmin
+            feedbackItems={feedbackItems}
+            pin={pin}
+            callAdmin={callAdmin}
+            refreshData={refreshData}
+            handleAction={handleAction}
+            respondingTo={respondingTo}
+            setRespondingTo={setRespondingTo}
+            responseText={responseText}
+            setResponseText={setResponseText}
+          />
         )}
       </div>
     </Layout>

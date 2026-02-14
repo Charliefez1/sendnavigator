@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { MessageSquare, Send, CheckCircle, Calendar } from "lucide-react";
+import { MessageSquare, Send, CheckCircle, Calendar, Reply } from "lucide-react";
 import { format } from "date-fns";
 
 interface FeedbackItem {
@@ -16,6 +16,7 @@ interface FeedbackItem {
   name: string | null;
   feedback: string;
   feedback_type: string;
+  admin_response: string | null;
   created_at: string;
 }
 
@@ -70,18 +71,57 @@ export default function Feedback() {
   };
 
   const typeLabels: Record<string, string> = {
-    comment: "Comment",
+    comment: "Feedback",
     suggestion: "Suggestion",
     issue: "Issue",
   };
 
+  // Group items by type
+  const comments = feedbackItems?.filter((f) => f.feedback_type === "comment") || [];
+  const suggestions = feedbackItems?.filter((f) => f.feedback_type === "suggestion") || [];
+  const issues = feedbackItems?.filter((f) => f.feedback_type === "issue") || [];
+
+  const renderFeedbackItem = (item: FeedbackItem) => (
+    <div key={item.id} className="bg-card border border-border rounded-xl p-4 space-y-2 shadow-lg">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          {item.name && <span className="text-sm font-semibold text-foreground">{item.name}</span>}
+        </div>
+        <div className="flex items-center gap-1 text-xs text-muted-foreground">
+          <Calendar className="h-3 w-3" />
+          {format(new Date(item.created_at), "d MMM yyyy")}
+        </div>
+      </div>
+      <p className="text-sm text-foreground leading-relaxed">{item.feedback}</p>
+      {item.admin_response && (
+        <div className="bg-primary/5 border border-primary/20 rounded-lg p-3 mt-2">
+          <div className="flex items-center gap-1.5 text-xs font-semibold text-primary mb-1">
+            <Reply className="h-3 w-3" />
+            SEND Reform Navigator response
+          </div>
+          <p className="text-sm text-foreground leading-relaxed">{item.admin_response}</p>
+        </div>
+      )}
+    </div>
+  );
+
+  const renderSection = (title: string, items: FeedbackItem[]) => {
+    if (items.length === 0) return null;
+    return (
+      <div className="space-y-4">
+        <h2 className="font-display text-xl font-semibold">{title}</h2>
+        {items.map(renderFeedbackItem)}
+      </div>
+    );
+  };
+
   return (
     <Layout>
-      <SEOHead title="Feedback & Comments" description="Share your thoughts, report issues, or challenge the information on the site. All submissions are reviewed." path="/feedback" />
+      <SEOHead title="Feedback, Suggestions and Issues" description="Share your thoughts, suggest improvements, or report issues. All submissions are reviewed." path="/feedback" />
       <div className="content-section py-8 space-y-8">
         <PageOrientation
-          title="Feedback & Comments"
-          description="Share your thoughts, suggestions, or report issues. Let us know if we have made a mistake or you want to challenge the information on the site. All submissions are reviewed before publishing."
+          title="Feedback, Suggestions and Issues"
+          description="Share your thoughts, suggest improvements, or report issues. Let us know if we have made a mistake or you want to challenge the information on the site. All submissions are reviewed before publishing."
         />
 
         {/* Submission form */}
@@ -91,7 +131,7 @@ export default function Feedback() {
           {submitted ? (
             <div className="text-center py-6">
               <CheckCircle className="h-8 w-8 text-status-confirmed mx-auto mb-2" />
-              <p className="font-semibold">Thank you for your feedback!</p>
+              <p className="font-semibold">Thank you for your feedback.</p>
               <p className="text-sm text-muted-foreground">It will appear here once reviewed.</p>
             </div>
           ) : (
@@ -139,41 +179,26 @@ export default function Feedback() {
           )}
         </div>
 
-        {/* Published feedback */}
-        <div className="space-y-4">
-          <h2 className="font-display text-xl font-semibold">Published Feedback</h2>
-          {isLoading ? (
-            <div className="space-y-4">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="h-20 bg-muted animate-pulse rounded-xl" />
-              ))}
-            </div>
-          ) : feedbackItems && feedbackItems.length > 0 ? (
-            feedbackItems.map((item) => (
-              <div key={item.id} className="bg-card border border-border rounded-xl p-4 space-y-2 shadow-lg">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-semibold bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full">
-                      {typeLabels[item.feedback_type] || "Comment"}
-                    </span>
-                    {item.name && <span className="text-sm font-semibold text-foreground">{item.name}</span>}
-                  </div>
-                  <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                    <Calendar className="h-3 w-3" />
-                    {format(new Date(item.created_at), "d MMM yyyy")}
-                  </div>
-                </div>
-                <p className="text-sm text-foreground leading-relaxed">{item.feedback}</p>
-              </div>
-            ))
-          ) : (
-            <div className="text-center py-12 text-muted-foreground">
-              <MessageSquare className="h-10 w-10 mx-auto mb-3 opacity-40" />
-              <p className="font-semibold">No feedback yet</p>
-              <p className="text-sm mt-1">Be the first to share your thoughts!</p>
-            </div>
-          )}
-        </div>
+        {/* Published feedback grouped by type */}
+        {isLoading ? (
+          <div className="space-y-4">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-20 bg-muted animate-pulse rounded-xl" />
+            ))}
+          </div>
+        ) : feedbackItems && feedbackItems.length > 0 ? (
+          <div className="space-y-8">
+            {renderSection("Feedback", comments)}
+            {renderSection("Suggestions", suggestions)}
+            {renderSection("Issues Reported", issues)}
+          </div>
+        ) : (
+          <div className="text-center py-12 text-muted-foreground">
+            <MessageSquare className="h-10 w-10 mx-auto mb-3 opacity-40" />
+            <p className="font-semibold">No feedback yet.</p>
+            <p className="text-sm mt-1">Be the first to share your thoughts.</p>
+          </div>
+        )}
       </div>
     </Layout>
   );
