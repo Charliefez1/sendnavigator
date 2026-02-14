@@ -112,10 +112,11 @@ export default function WhatTheLeaksAreSaying() {
         <div className="space-y-3">
           <p>The unconfirmed reports tend to cluster around a few ideas:</p>
           <ul className="space-y-2">
-            <li>Reducing reliance on EHCPs.</li>
-            <li>Introducing clearer tiers of support.</li>
-            <li>Changing how funding is allocated.</li>
-            <li>Reducing adversarial processes.</li>
+            <li><strong>A four-tier system</strong> where EHCPs are reserved for the most severe and complex needs, with "digital passports" for SEND children at lower tiers (iNews, Financial Times, January 2026).</li>
+            <li><strong>Higher thresholds for EHCPs.</strong> The Guardian (February 2026) reported that reforms "will raise the bar" for EHCPs, with plans for only the most severe cases to qualify.</li>
+            <li><strong>Implementation possibly delayed to 2029 to 2030.</strong> Both iNews and the Financial Times reportedly suggested full implementation might not happen until the 2029 to 2030 academic year.</li>
+            <li><strong>Schools taking on more responsibility</strong> for SEND decision making, with funding shifted to school clusters rather than tied to individual plans.</li>
+            <li><strong>Mandatory mediation</strong> before tribunal appeal in all cases.</li>
           </ul>
           <p>
             What matters is this. <strong>None of these ideas are confirmed in their leaked form.</strong> They are areas of exploration, not settled decisions.
@@ -145,7 +146,10 @@ export default function WhatTheLeaksAreSaying() {
             <strong>Public reaction matters.</strong> Parent groups, professionals, and charities have influenced SEND policy before.
           </p>
           <p>
-            The visibility of concern has already <strong>slowed reform timelines and increased emphasis on co-production</strong>. That shows the system is responsive, even if imperfectly.
+            The Save Our Children's Rights campaign launched in January 2026, gathered <strong>over 130,000 petition signatures</strong>, and was backed by actress Sally Phillips and cross-party MPs. The National Education Union formally urged the government to maintain legal thresholds for EHCPs. Special Needs Jungle published detailed analysis warning against restricting appeals and individual entitlements.
+          </p>
+          <p>
+            That visibility of concern has already <strong>slowed reform timelines and increased emphasis on co-production</strong>. Labour MPs warned internally they would not back cost-saving measures that weaken rights. That shows the system is responsive, even if imperfectly.
           </p>
         </div>
       </ContentBox>

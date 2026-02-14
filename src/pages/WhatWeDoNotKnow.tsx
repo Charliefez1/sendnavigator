@@ -91,7 +91,10 @@ export default function WhatWeDoNotKnow() {
             <strong>This is the biggest question for families.</strong>
           </p>
           <p>
-            Right now, <strong>the legal test for an EHCP is unchanged</strong>. What is unknown is whether future legislation will narrow eligibility, keep it the same, or restructure it through tiers.
+            Right now, <strong>the legal test for an EHCP is unchanged</strong>. What is unknown is whether future legislation will narrow eligibility, keep it the same, or restructure it through tiers. The phrase "most severe and complex" has been used in leaked reports, but it is vague. <strong>What about an autistic child with high anxiety but a normal IQ? Will certain diagnoses automatically qualify?</strong> These questions do not have answers yet.
+          </p>
+          <p>
+            Parents also want to know whether existing EHCPs will be honoured under any new system. The government has signalled they will be retained, but <strong>the exact treatment, whether there will be a "grandfathering" clause, is unknown</strong>.
           </p>
           <p>
             Until legislation is published, no one can say with certainty how eligibility might change or when.
@@ -174,7 +177,10 @@ export default function WhatWeDoNotKnow() {
             Families also want to know how success will be measured.
           </p>
           <p>
-            <strong>Is success fewer EHCPs, fewer appeals, lower costs, or better lives for children.</strong>
+            <strong>Is success fewer EHCPs, fewer appeals, lower costs, or better lives for children?</strong> Right now, there is no clear evidence of improved outcomes despite higher spending. NEET rates for young people with EHCPs remain significantly higher than average. Academic outcomes for SEND children are essentially unchanged.
+          </p>
+          <p>
+            There are also questions nobody is talking about enough. <strong>What happens to post-16 support?</strong> Will the right to an EHCP up to age 25 remain? What about children who do not fit a neat category? And what if the reforms do not work? Is there a plan B?
           </p>
           <p>
             Until outcomes are clearly defined, parents will remain sceptical.
