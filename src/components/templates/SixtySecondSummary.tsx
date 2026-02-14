@@ -16,7 +16,7 @@ export function SixtySecondSummary({ points, prose }: SixtySecondSummaryProps) {
       <h2 id="summary-heading" className="text-lg font-medium text-foreground mb-4">
         60 second summary
       </h2>
-      <div className="bg-card border border-border rounded-lg p-5 shadow-lg">
+      <div className="bg-card border border-border rounded-lg p-5 shadow-lg text-sm">
         {prose ? (
           <div className="prose-calm space-y-4">{prose}</div>
         ) : (
