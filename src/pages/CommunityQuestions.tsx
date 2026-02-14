@@ -3,8 +3,7 @@ import { PageOrientation } from "@/components/templates";
 import { AskQuestionCompact } from "@/components/AskQuestionCompact";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
-import { MessageCircleQuestion, Calendar } from "lucide-react";
-import { format } from "date-fns";
+import { MessageCircleQuestion } from "lucide-react";
 
 interface Question {
   id: string;
@@ -56,10 +55,6 @@ export default function CommunityQuestions() {
                         {q.answer}
                       </div>
                     )}
-                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                      <Calendar className="h-3 w-3" />
-                      <span>{format(new Date(q.created_at), "d MMM yyyy")}</span>
-                    </div>
                   </div>
                 </div>
               </div>
