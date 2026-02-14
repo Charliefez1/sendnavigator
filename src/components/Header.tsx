@@ -26,7 +26,7 @@ export function Header() {
 
   return (
     <header className="bg-navy text-navy-foreground sticky top-0 z-50">
-      <div className="content-wide py-0.5 sm:py-1">
+      <div className="content-wide py-px">
         {/* Top row: logo + links/hamburger */}
         <div className="flex items-center justify-center">
 
