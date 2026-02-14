@@ -83,15 +83,9 @@ export default function Feedback() {
 
   const renderFeedbackItem = (item: FeedbackItem) => (
     <div key={item.id} className="bg-card border border-border rounded-xl p-4 space-y-2 shadow-lg">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2">
           {item.name && <span className="text-sm font-semibold text-foreground">{item.name}</span>}
         </div>
-        <div className="flex items-center gap-1 text-xs text-muted-foreground">
-          <Calendar className="h-3 w-3" />
-          {format(new Date(item.created_at), "d MMM yyyy")}
-        </div>
-      </div>
       <p className="text-sm text-foreground leading-relaxed">{item.feedback}</p>
       {item.admin_response && (
         <div className="bg-primary/5 border border-primary/20 rounded-lg p-3 mt-2">
