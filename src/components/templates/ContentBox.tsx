@@ -18,7 +18,7 @@ export function ContentBox({ id, icon: Icon, title, children }: ContentBoxProps)
           </div>
           <h2 className="text-xl font-display font-semibold text-foreground">{title}</h2>
         </div>
-        <div className="prose-calm text-muted-foreground leading-relaxed">
+        <div className="prose-calm text-sm text-muted-foreground leading-relaxed">
           {children}
         </div>
       </div>
