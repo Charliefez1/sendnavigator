@@ -34,9 +34,10 @@ export function Header() {
               <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" aria-hidden="true" />
             </div>
             <div>
-              <h1 className="text-base sm:text-lg font-display font-bold text-white tracking-tight leading-tight group-hover:opacity-90 transition-opacity">
+              <span className="text-base sm:text-lg font-display font-bold text-white tracking-tight leading-tight group-hover:opacity-90 transition-opacity">
                 SEND Reform Navigator
-              </h1>
+              </span>
+              
               <p className="text-xs text-navy-muted font-medium hidden sm:block">
                 A practical guide for families
               </p>

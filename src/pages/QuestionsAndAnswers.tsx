@@ -1,6 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { PageHeader } from "@/components/PageHeader";
+import { PageOrientation } from "@/components/templates";
 import { ShieldAlert } from "lucide-react";
 import { QandAComponent } from "@/components/qanda";
 import { useSearchParams } from "react-router-dom";
@@ -12,7 +12,7 @@ export default function QuestionsAndAnswers() {
   return (
     <Layout>
       <SEOHead title="Questions and Answers" description="Ask questions about SEND reform and get grounded answers based on confirmed information." path="/questions-and-answers" />
-      <PageHeader
+      <PageOrientation
         title="Questions and answers"
         description="A front door to understanding SEND reform. Ask simple questions, receive grounded answers."
       />
@@ -20,7 +20,7 @@ export default function QuestionsAndAnswers() {
       <section className="content-section pb-8">
         <QandAComponent initialQuestion={initialQuestion} />
 
-        <div className="bg-muted/50 border border-border rounded-lg p-4 mt-8">
+        <div className="bg-card border border-border rounded-xl p-4 mt-8 shadow-lg">
           <div className="flex gap-3">
             <ShieldAlert className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
             <div className="text-sm">

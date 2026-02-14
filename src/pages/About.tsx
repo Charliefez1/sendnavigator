@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { PageHeader } from "@/components/PageHeader";
+import { PageOrientation } from "@/components/templates";
 import {
   EditorialOwnershipSection,
   IndependenceDisclosureSection,
@@ -14,7 +14,7 @@ export default function About() {
   return (
     <Layout>
       <SEOHead title="About" description="Independence, governance, scope, and accountability of SEND Reform Navigator." path="/about" />
-      <PageHeader
+      <PageOrientation
         title="About this resource"
         description="Independence, governance, scope, and accountability of SEND Reform Navigator."
       />

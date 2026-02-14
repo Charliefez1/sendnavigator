@@ -1,5 +1,5 @@
 import { Layout } from "@/components/Layout";
-import { PageHeader } from "@/components/PageHeader";
+import { PageOrientation } from "@/components/templates";
 import { 
   Navigation2, 
   Palette, 
@@ -17,14 +17,14 @@ import { Link } from "react-router-dom";
 export default function HowToUse() {
   return (
     <Layout>
-      <PageHeader
+      <PageOrientation
         title="How to use this guide"
         description="Everything you need to know to get the most from this resource"
         lastUpdated="7th February 2026"
       />
 
       {/* Overview */}
-      <section className="content-section pb-10">
+      <section className="content-section py-8">
         <div className="prose-calm">
           <p className="text-lg text-muted-foreground leading-relaxed">
             This site is designed to be as straightforward as possible. Whether you're a parent, 
@@ -34,7 +34,7 @@ export default function HowToUse() {
       </section>
 
       {/* Navigation explained */}
-      <section className="content-section pb-10 border-t border-border pt-10">
+      <section className="content-section py-8 border-t border-border">
         <div className="flex items-start gap-4 mb-6">
           <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
             <Navigation2 className="w-5 h-5 text-primary" />
@@ -66,7 +66,7 @@ export default function HowToUse() {
       </section>
 
       {/* Colour coding */}
-      <section className="content-section pb-10 border-t border-border pt-10">
+      <section className="content-section py-8 border-t border-border">
         <div className="flex items-start gap-4 mb-6">
           <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
             <Palette className="w-5 h-5 text-primary" />
@@ -112,7 +112,7 @@ export default function HowToUse() {
       </section>
 
       {/* Page structure */}
-      <section className="content-section pb-10 border-t border-border pt-10">
+      <section className="content-section py-8 border-t border-border">
         <div className="flex items-start gap-4 mb-6">
           <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
             <Layers className="w-5 h-5 text-primary" />
@@ -145,7 +145,7 @@ export default function HowToUse() {
       </section>
 
       {/* Features */}
-      <section className="content-section pb-10 border-t border-border pt-10">
+      <section className="content-section py-8 border-t border-border">
         <div className="flex items-start gap-4 mb-6">
           <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
             <BookOpen className="w-5 h-5 text-primary" />
@@ -193,7 +193,7 @@ export default function HowToUse() {
       </section>
 
       {/* CTA */}
-      <section className="content-section pb-16 border-t border-border pt-10">
+      <section className="content-section py-8 border-t border-border">
         <div className="reassurance-banner">
           <div className="flex items-start gap-4">
             <HelpCircle className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />

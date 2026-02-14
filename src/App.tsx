@@ -13,7 +13,6 @@ import { ExperienceSelector } from "@/components/ExperienceSelector";
 
 // Lazy-loaded pages
 const Start = lazy(() => import("./pages/Start"));
-const Index = lazy(() => import("./pages/Index"));
 const HowToUse = lazy(() => import("./pages/HowToUse"));
 const WhereWeAreNow = lazy(() => import("./pages/WhereWeAreNow"));
 const WhatIsChanging = lazy(() => import("./pages/WhatIsChanging"));
@@ -63,7 +62,6 @@ const App = () => (
                 <Suspense fallback={<LoadingFallback />}>
                   <Routes>
                     <Route path="/" element={<Start />} />
-                    <Route path="/welcome" element={<Index />} />
                     <Route path="/how-to-use" element={<HowToUse />} />
                     <Route path="/where-we-are-now" element={<WhereWeAreNow />} />
                     <Route path="/what-is-changing" element={<WhatIsChanging />} />
