@@ -28,10 +28,10 @@ export function Header() {
     <header className="bg-navy text-navy-foreground sticky top-0 z-50">
       <div className="content-wide py-3 sm:py-4">
         {/* Top row: logo + links/hamburger */}
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-center">
 
           {/* Desktop site links */}
-          <nav className="hidden lg:flex items-center gap-1" aria-label="Site pages">
+          <nav className="hidden lg:flex items-center justify-center gap-1" aria-label="Site pages">
             {siteLinks.map((link) => (
               <NavLink
                 key={link.path}
