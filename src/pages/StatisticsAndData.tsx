@@ -100,7 +100,7 @@ export default function StatisticsAndData() {
 
       {/* Summary facts */}
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-lg font-semibold text-foreground mb-4">Summary facts</h2>
+        <h2 className="text-lg font-display font-semibold text-foreground mb-4">Summary facts</h2>
         <ul className="space-y-2">
           {summaryFacts.map((fact, index) => (
             <li key={index} className="flex items-start gap-3 text-muted-foreground">
@@ -113,12 +113,12 @@ export default function StatisticsAndData() {
 
       {/* Confirmed position */}
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-6">Confirmed position as of 07 February 2026</h2>
+        <h2 className="text-xl font-display font-semibold text-foreground mb-6">Confirmed position as of 07 February 2026</h2>
 
         <div className="space-y-8">
           {/* Legal framework */}
           <div>
-            <h3 className="text-lg font-medium text-foreground mb-3">Legal framework</h3>
+            <h3 className="text-lg font-display font-medium text-foreground mb-3">Legal framework</h3>
             <p className="text-muted-foreground">
               The statutory timescale for an EHC needs assessment to a final EHC plan is 20 weeks.
             </p>
@@ -126,7 +126,7 @@ export default function StatisticsAndData() {
 
           {/* Children and young people with SEND */}
           <div>
-            <h3 className="text-lg font-medium text-foreground mb-3">Children and young people with SEND</h3>
+            <h3 className="text-lg font-display font-medium text-foreground mb-3">Children and young people with SEND</h3>
             <ul className="space-y-2">
               <li className="flex items-start gap-3 text-muted-foreground">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
@@ -153,7 +153,7 @@ export default function StatisticsAndData() {
 
           {/* Placement types */}
           <div>
-            <h3 className="text-lg font-medium text-foreground mb-3">Placement types</h3>
+            <h3 className="text-lg font-display font-medium text-foreground mb-3">Placement types</h3>
             <ul className="space-y-2">
               <li className="flex items-start gap-3 text-muted-foreground">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
@@ -172,7 +172,7 @@ export default function StatisticsAndData() {
 
           {/* EHC plan timeliness */}
           <div>
-            <h3 className="text-lg font-medium text-foreground mb-3">EHC plan timeliness</h3>
+            <h3 className="text-lg font-display font-medium text-foreground mb-3">EHC plan timeliness</h3>
             <ul className="space-y-2">
               <li className="flex items-start gap-3 text-muted-foreground">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
@@ -191,7 +191,7 @@ export default function StatisticsAndData() {
 
           {/* Tribunal activity */}
           <div>
-            <h3 className="text-lg font-medium text-foreground mb-3">Tribunal activity</h3>
+            <h3 className="text-lg font-display font-medium text-foreground mb-3">Tribunal activity</h3>
             <ul className="space-y-2">
               <li className="flex items-start gap-3 text-muted-foreground">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
@@ -206,7 +206,7 @@ export default function StatisticsAndData() {
 
           {/* Funding */}
           <div>
-            <h3 className="text-lg font-medium text-foreground mb-3">Funding</h3>
+            <h3 className="text-lg font-display font-medium text-foreground mb-3">Funding</h3>
             <ul className="space-y-2">
               <li className="flex items-start gap-3 text-muted-foreground">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
@@ -221,7 +221,7 @@ export default function StatisticsAndData() {
 
           {/* Reform activity */}
           <div>
-            <h3 className="text-lg font-medium text-foreground mb-3">Reform activity</h3>
+            <h3 className="text-lg font-display font-medium text-foreground mb-3">Reform activity</h3>
             <ul className="space-y-2">
               <li className="flex items-start gap-3 text-muted-foreground">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
@@ -241,7 +241,7 @@ export default function StatisticsAndData() {
         <div className="flex items-start gap-3 mb-4">
           <TrendingUp className="w-5 h-5 text-muted-foreground mt-0.5" />
           <div>
-            <h2 className="text-xl font-semibold text-foreground">Projected and forecast figures</h2>
+            <h2 className="text-xl font-display font-semibold text-foreground">Projected and forecast figures</h2>
             <p className="text-sm text-muted-foreground mt-1">These are not current facts. They are published projections.</p>
           </div>
         </div>
@@ -270,7 +270,7 @@ export default function StatisticsAndData() {
       <section className="content-section py-8 border-t border-border">
         <div className="flex items-start gap-3 mb-4">
           <AlertCircle className="w-5 h-5 text-muted-foreground mt-0.5" />
-          <h2 className="text-lg font-semibold text-foreground">Important clarifications for readers</h2>
+          <h2 className="text-lg font-display font-semibold text-foreground">Important clarifications for readers</h2>
         </div>
 
         <div className="space-y-4 text-muted-foreground">
@@ -296,7 +296,7 @@ export default function StatisticsAndData() {
 
       {/* Source links */}
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-lg font-semibold text-foreground mb-6">Source links</h2>
+        <h2 className="text-lg font-display font-semibold text-foreground mb-6">Source links</h2>
 
         <div className="space-y-8">
           {sourceLinks.map((category) => (

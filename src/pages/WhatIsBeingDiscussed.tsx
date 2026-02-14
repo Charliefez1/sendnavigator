@@ -37,7 +37,7 @@ export default function WhatIsBeingDiscussed() {
       />
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           How will this impact children and parents
         </h2>
         <div className="prose-calm space-y-3">
@@ -57,7 +57,7 @@ export default function WhatIsBeingDiscussed() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           Statistics and facts
         </h2>
         <div className="prose-calm space-y-3">
@@ -73,13 +73,13 @@ export default function WhatIsBeingDiscussed() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           What is actually being discussed, in plain language
         </h2>
         <div className="prose-calm space-y-6">
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Tiered models of support</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Tiered models of support</h3>
             <p>
               One of the most discussed ideas is whether SEND support should be more clearly tiered.
             </p>
@@ -98,7 +98,7 @@ export default function WhatIsBeingDiscussed() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Reducing over-reliance on EHCPs</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Reducing over-reliance on EHCPs</h3>
             <p>
               There is broad agreement that too many families feel forced to seek EHCPs just to secure basic support.
             </p>
@@ -111,7 +111,7 @@ export default function WhatIsBeingDiscussed() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Funding models and incentives</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Funding models and incentives</h3>
             <p>
               Another area under discussion is how SEND funding flows through the system.
             </p>
@@ -124,7 +124,7 @@ export default function WhatIsBeingDiscussed() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Appeals and adversarial processes</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Appeals and adversarial processes</h3>
             <p>
               The volume of tribunal appeals has prompted debate about whether the system has become too legalistic.
             </p>
@@ -137,7 +137,7 @@ export default function WhatIsBeingDiscussed() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Mainstream inclusion and specialist provision</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Mainstream inclusion and specialist provision</h3>
             <p>
               There is active debate about how far a mainstream first approach should go.
             </p>
@@ -150,7 +150,7 @@ export default function WhatIsBeingDiscussed() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">The pace and shape of reform</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">The pace and shape of reform</h3>
             <p>
               Finally, there is debate about timing. Some want rapid change because the system is failing now. Others warn that rushed reform risks unintended harm.
             </p>
@@ -160,7 +160,7 @@ export default function WhatIsBeingDiscussed() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">What this discussion phase really means</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">What this discussion phase really means</h3>
             <p>
               Discussion does not equal decision. Public debate is part of how policy is tested, challenged, and improved.
             </p>

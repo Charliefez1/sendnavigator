@@ -78,7 +78,7 @@ const Index = () => {
 
           {/* RIGHT: Journey links */}
           <div>
-            <h2 className="text-xl sm:text-2xl font-semibold text-foreground mb-5">
+            <h2 className="text-xl sm:text-2xl font-display font-semibold text-foreground mb-5">
               Where would you like to start?
             </h2>
             <div className="space-y-2.5">
@@ -209,7 +209,7 @@ const Index = () => {
         <div className="flex items-start gap-4 bg-card border border-border rounded-xl p-5 shadow-lg">
           <Heart className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
           <div>
-            <h2 className="text-lg font-semibold text-foreground mb-3">
+            <h2 className="text-lg font-display font-semibold text-foreground mb-3">
               Made for families like yours
             </h2>
             <div className="space-y-2 text-muted-foreground text-sm leading-relaxed">

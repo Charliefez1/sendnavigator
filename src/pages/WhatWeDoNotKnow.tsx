@@ -37,7 +37,7 @@ export default function WhatWeDoNotKnow() {
       />
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           How will this impact children and parents
         </h2>
         <div className="prose-calm space-y-3">
@@ -57,7 +57,7 @@ export default function WhatWeDoNotKnow() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           Statistics and facts
         </h2>
         <div className="prose-calm space-y-3">
@@ -74,13 +74,13 @@ export default function WhatWeDoNotKnow() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           The unanswered questions parents are rightly asking
         </h2>
         <div className="prose-calm space-y-6">
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Will EHCP eligibility change</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Will EHCP eligibility change</h3>
             <p>
               This is the biggest question for families.
             </p>
@@ -93,7 +93,7 @@ export default function WhatWeDoNotKnow() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">What will national SEND standards actually include</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">What will national SEND standards actually include</h3>
             <p>
               Parents are being told standards are coming, but the detail matters.
             </p>
@@ -110,7 +110,7 @@ export default function WhatWeDoNotKnow() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">How funding changes would affect individual children</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">How funding changes would affect individual children</h3>
             <p>
               There is discussion about shifting funding earlier or making it less plan dependent.
             </p>
@@ -126,7 +126,7 @@ export default function WhatWeDoNotKnow() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">What happens during transition</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">What happens during transition</h3>
             <p>
               Another major unknown is how change will be phased.
             </p>
@@ -142,7 +142,7 @@ export default function WhatWeDoNotKnow() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">How health and care will realistically be involved</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">How health and care will realistically be involved</h3>
             <p>
               Reform relies heavily on multi-agency working.
             </p>
@@ -158,7 +158,7 @@ export default function WhatWeDoNotKnow() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">What outcomes will be used to judge success</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">What outcomes will be used to judge success</h3>
             <p>
               Families also want to know how success will be measured.
             </p>
@@ -171,7 +171,7 @@ export default function WhatWeDoNotKnow() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Why naming the unknowns matters</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Why naming the unknowns matters</h3>
             <p>
               Uncertainty does not mean families should panic. It does mean families should make decisions based on current rights and current needs, not rumours.
             </p>
