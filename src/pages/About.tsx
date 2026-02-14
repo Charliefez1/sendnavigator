@@ -13,7 +13,7 @@ import {
 
 export default function About() {
   return (
-    <Layout hideGlobalCTA>
+    <Layout>
       <SEOHead title="About" description="Independence, governance, scope, and accountability of SEND Reform Navigator." path="/about" />
       <PageOrientation
         title="About this resource"
@@ -112,7 +112,6 @@ export default function About() {
         <ReviewScheduleSection />
       </div>
 
-      <NeurodiversityGlobalCTA showBioImages />
 
       <div className="content-section pb-16" />
     </Layout>
