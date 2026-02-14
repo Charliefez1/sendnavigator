@@ -3,8 +3,24 @@ import { SEOHead } from "@/components/SEOHead";
 import {
   PageOrientation,
   SixtySecondSummary,
+  OnThisPage,
+  ContentBox,
 } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
+import { Users, BarChart3, Layers, TrendingDown, PoundSterling, Gavel, School, Clock, MessageCircle } from "lucide-react";
+
+const sections: PageSectionDef[] = [
+  { id: "impact", icon: Users, title: "How will this impact children and parents" },
+  { id: "statistics", icon: BarChart3, title: "Statistics and facts" },
+  { id: "tiered", icon: Layers, title: "Tiered models of support" },
+  { id: "reliance", icon: TrendingDown, title: "Reducing over-reliance on EHCPs" },
+  { id: "funding", icon: PoundSterling, title: "Funding models and incentives" },
+  { id: "appeals", icon: Gavel, title: "Appeals and adversarial processes" },
+  { id: "inclusion", icon: School, title: "Mainstream inclusion and specialist provision" },
+  { id: "pace", icon: Clock, title: "The pace and shape of reform" },
+  { id: "meaning", icon: MessageCircle, title: "What this discussion phase really means" },
+];
 
 export default function WhatIsBeingDiscussed() {
   return (
@@ -36,11 +52,10 @@ export default function WhatIsBeingDiscussed() {
         }
       />
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          How will this impact children and parents
-        </h2>
-        <div className="prose-calm space-y-3">
+      <OnThisPage sections={sections} />
+
+      <ContentBox id="impact" icon={Users} title="How will this impact children and parents">
+        <div className="space-y-3">
           <p>
             Right now, <strong>the impact is uncertainty rather than change</strong>.
           </p>
@@ -54,13 +69,10 @@ export default function WhatIsBeingDiscussed() {
             <strong>Understanding what is under discussion, and what is not yet decided, helps reduce that uncertainty.</strong>
           </p>
         </div>
-      </section>
+      </ContentBox>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          Statistics and facts
-        </h2>
-        <div className="prose-calm space-y-3">
+      <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
+        <div className="space-y-3">
           <p>These points reflect themes and issues raised in the checked research set, not enacted policy.</p>
           <ul className="space-y-2">
             <li>A <strong>SEND focused Schools White Paper is planned for late 2026</strong>.</li>
@@ -70,107 +82,105 @@ export default function WhatIsBeingDiscussed() {
             <li>Local authority SEND deficits and workforce shortages are cited repeatedly as <strong>drivers of reform discussion</strong>.</li>
           </ul>
         </div>
-      </section>
+      </ContentBox>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          What is actually being discussed, in plain language
-        </h2>
-        <div className="prose-calm space-y-6">
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Tiered models of support</h3>
-            <p>
-              One of the most discussed ideas is whether <strong>SEND support should be more clearly tiered</strong>.
-            </p>
-            <p>In simple terms, this means:</p>
-            <ul className="space-y-2">
-              <li>Stronger, better defined SEN Support as a first level.</li>
-              <li>Clear expectations about what schools and settings must provide without an EHCP.</li>
-              <li>EHCPs reserved for children with the most complex or multi-agency needs.</li>
-            </ul>
-            <p>
-              Supporters argue this could reduce delay and conflict by making early help reliable and consistent. Critics argue that <strong>tiering risks recreating older systems where children had to fail before qualifying for help</strong>.
-            </p>
-            <p>
-              This debate is ongoing. <strong>No tiered model has been confirmed.</strong>
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Reducing over-reliance on EHCPs</h3>
-            <p>
-              There is broad agreement that <strong>too many families feel forced to seek EHCPs just to secure basic support</strong>.
-            </p>
-            <p>
-              The discussion is about how to strengthen support earlier, not whether EHCPs should exist. However, families are understandably concerned that <strong>reducing reliance could become reducing access if not done carefully</strong>.
-            </p>
-            <p>
-              The question being debated is not whether EHCPs matter, but how to ensure they are used appropriately without leaving children unsupported.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Funding models and incentives</h3>
-            <p>
-              Another area under discussion is how SEND funding flows through the system.
-            </p>
-            <p>
-              At present, <strong>funding is strongly tied to EHCPs</strong>. This creates incentives for escalation and defensiveness. Discussions include whether more funding should sit with schools or local partnerships to provide support earlier.
-            </p>
-            <p>
-              Parents are rightly asking <strong>how accountability would work if funding is less individualised</strong>. That question is central to the debate and remains unanswered.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Appeals and adversarial processes</h3>
-            <p>
-              The volume of tribunal appeals has prompted debate about whether the system has become too legalistic.
-            </p>
-            <p>
-              Some argue the appeal system shows failure earlier in the process. Others worry that <strong>attempts to reduce appeals could weaken safeguards</strong>.
-            </p>
-            <p>
-              <strong>There is no confirmed proposal to remove appeal rights.</strong> The discussion centres on whether better early decisions could reduce the need for appeals at all.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Mainstream inclusion and specialist provision</h3>
-            <p>
-              There is active debate about how far a mainstream first approach should go.
-            </p>
-            <p>
-              Most agree mainstream should be better supported. Families are concerned about <strong>children being kept in unsuitable settings for cost or policy reasons</strong>.
-            </p>
-            <p>
-              The discussion is about balance, not absolutes. <strong>No policy currently forces children into mainstream against their needs.</strong>
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">The pace and shape of reform</h3>
-            <p>
-              Finally, there is debate about timing. Some want rapid change because the system is failing now. Others warn that <strong>rushed reform risks unintended harm</strong>.
-            </p>
-            <p>
-              This is why consultation, piloting, and phased implementation feature so heavily in the current approach.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">What this discussion phase really means</h3>
-            <p>
-              <strong>Discussion does not equal decision.</strong> Public debate is part of how policy is tested, challenged, and improved.
-            </p>
-            <p>
-              For parents, the most important thing to know is that <strong>voices are being heard</strong>. Many of the concerns raised by families are the same concerns shaping the debate.
-            </p>
-          </div>
-
+      <ContentBox id="tiered" icon={Layers} title="Tiered models of support">
+        <div className="space-y-3">
+          <p>
+            One of the most discussed ideas is whether <strong>SEND support should be more clearly tiered</strong>.
+          </p>
+          <p>In simple terms, this means:</p>
+          <ul className="space-y-2">
+            <li>Stronger, better defined SEN Support as a first level.</li>
+            <li>Clear expectations about what schools and settings must provide without an EHCP.</li>
+            <li>EHCPs reserved for children with the most complex or multi-agency needs.</li>
+          </ul>
+          <p>
+            Supporters argue this could reduce delay and conflict by making early help reliable and consistent. Critics argue that <strong>tiering risks recreating older systems where children had to fail before qualifying for help</strong>.
+          </p>
+          <p>
+            This debate is ongoing. <strong>No tiered model has been confirmed.</strong>
+          </p>
         </div>
-      </section>
+      </ContentBox>
+
+      <ContentBox id="reliance" icon={TrendingDown} title="Reducing over-reliance on EHCPs">
+        <div className="space-y-3">
+          <p>
+            There is broad agreement that <strong>too many families feel forced to seek EHCPs just to secure basic support</strong>.
+          </p>
+          <p>
+            The discussion is about how to strengthen support earlier, not whether EHCPs should exist. However, families are understandably concerned that <strong>reducing reliance could become reducing access if not done carefully</strong>.
+          </p>
+          <p>
+            The question being debated is not whether EHCPs matter, but how to ensure they are used appropriately without leaving children unsupported.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="funding" icon={PoundSterling} title="Funding models and incentives">
+        <div className="space-y-3">
+          <p>
+            Another area under discussion is how SEND funding flows through the system.
+          </p>
+          <p>
+            At present, <strong>funding is strongly tied to EHCPs</strong>. This creates incentives for escalation and defensiveness. Discussions include whether more funding should sit with schools or local partnerships to provide support earlier.
+          </p>
+          <p>
+            Parents are rightly asking <strong>how accountability would work if funding is less individualised</strong>. That question is central to the debate and remains unanswered.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="appeals" icon={Gavel} title="Appeals and adversarial processes">
+        <div className="space-y-3">
+          <p>
+            The volume of tribunal appeals has prompted debate about whether the system has become too legalistic.
+          </p>
+          <p>
+            Some argue the appeal system shows failure earlier in the process. Others worry that <strong>attempts to reduce appeals could weaken safeguards</strong>.
+          </p>
+          <p>
+            <strong>There is no confirmed proposal to remove appeal rights.</strong> The discussion centres on whether better early decisions could reduce the need for appeals at all.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="inclusion" icon={School} title="Mainstream inclusion and specialist provision">
+        <div className="space-y-3">
+          <p>
+            There is active debate about how far a mainstream first approach should go.
+          </p>
+          <p>
+            Most agree mainstream should be better supported. Families are concerned about <strong>children being kept in unsuitable settings for cost or policy reasons</strong>.
+          </p>
+          <p>
+            The discussion is about balance, not absolutes. <strong>No policy currently forces children into mainstream against their needs.</strong>
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="pace" icon={Clock} title="The pace and shape of reform">
+        <div className="space-y-3">
+          <p>
+            Finally, there is debate about timing. Some want rapid change because the system is failing now. Others warn that <strong>rushed reform risks unintended harm</strong>.
+          </p>
+          <p>
+            This is why consultation, piloting, and phased implementation feature so heavily in the current approach.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="meaning" icon={MessageCircle} title="What this discussion phase really means">
+        <div className="space-y-3">
+          <p>
+            <strong>Discussion does not equal decision.</strong> Public debate is part of how policy is tested, challenged, and improved.
+          </p>
+          <p>
+            For parents, the most important thing to know is that <strong>voices are being heard</strong>. Many of the concerns raised by families are the same concerns shaping the debate.
+          </p>
+        </div>
+      </ContentBox>
 
       <div className="content-section pb-16" />
     </Layout>

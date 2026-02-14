@@ -3,8 +3,23 @@ import { SEOHead } from "@/components/SEOHead";
 import {
   PageOrientation,
   SixtySecondSummary,
+  OnThisPage,
+  ContentBox,
 } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
+import { Users, BarChart3, FileText, MessageSquare, Landmark, ArrowRightLeft, CheckCircle, Anchor } from "lucide-react";
+
+const sections: PageSectionDef[] = [
+  { id: "impact", icon: Users, title: "How will this impact children and parents" },
+  { id: "statistics", icon: BarChart3, title: "Statistics and facts" },
+  { id: "stage1", icon: FileText, title: "Stage 1: formal proposals" },
+  { id: "stage2", icon: MessageSquare, title: "Stage 2: consultation" },
+  { id: "stage3", icon: Landmark, title: "Stage 3: legislation" },
+  { id: "stage4", icon: ArrowRightLeft, title: "Stage 4: transition planning" },
+  { id: "practical", icon: CheckCircle, title: "What this means practically for parents now" },
+  { id: "closing", icon: Anchor, title: "A grounded closing note" },
+];
 
 export default function WhatHappensNext() {
   return (
@@ -39,11 +54,10 @@ export default function WhatHappensNext() {
         }
       />
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          How will this impact children and parents
-        </h2>
-        <div className="prose-calm space-y-3">
+      <OnThisPage sections={sections} />
+
+      <ContentBox id="impact" icon={Users} title="How will this impact children and parents">
+        <div className="space-y-3">
           <p>
             For most families, <strong>the next phase changes very little day to day</strong>.
           </p>
@@ -57,13 +71,10 @@ export default function WhatHappensNext() {
             <strong>This is a period for awareness, not alarm.</strong>
           </p>
         </div>
-      </section>
+      </ContentBox>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          Statistics and facts
-        </h2>
-        <div className="prose-calm space-y-3">
+      <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
+        <div className="space-y-3">
           <p>From the checked research set:</p>
           <ul className="space-y-2">
             <li><strong>No SEND reform legislation has been introduced</strong> as of mid-February 2026.</li>
@@ -73,111 +84,108 @@ export default function WhatHappensNext() {
             <li><strong>Existing EHCPs cannot be withdrawn without lawful process.</strong></li>
           </ul>
         </div>
-      </section>
+      </ContentBox>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          What the next stages actually look like
-        </h2>
-        <div className="prose-calm space-y-6">
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Stage 1: formal proposals</h3>
-            <p>
-              The next concrete step is <strong>a published White Paper or equivalent policy document</strong>.
-            </p>
-            <p>This matters because it:</p>
-            <ul className="space-y-2">
-              <li>Sets out what government is actually proposing.</li>
-              <li>Explains the rationale, not just the headline.</li>
-              <li>Includes options, not final decisions.</li>
-              <li>Signals which ideas have been dropped.</li>
-            </ul>
-            <p>
-              <strong>Until this exists, everything else remains discussion.</strong>
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Stage 2: consultation</h3>
-            <p>
-              Once proposals are published, <strong>consultation follows</strong>.
-            </p>
-            <p>This is where:</p>
-            <ul className="space-y-2">
-              <li>Parents, carers, young people, schools, councils, and charities respond.</li>
-              <li>Legal and practical flaws are challenged.</li>
-              <li>Equality and rights impacts are examined.</li>
-              <li>Pressure is applied where proposals risk harm.</li>
-            </ul>
-            <p>
-              Consultation responses have already influenced SEND policy in the past. <strong>This stage is where parent voice carries weight.</strong>
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Stage 3: legislation</h3>
-            <p>
-              If government proceeds, <strong>changes affecting rights require legislation</strong>.
-            </p>
-            <p>This involves:</p>
-            <ul className="space-y-2">
-              <li>Parliamentary debate.</li>
-              <li>Committee scrutiny.</li>
-              <li>Amendments.</li>
-              <li>Voting.</li>
-            </ul>
-            <p>
-              This stage takes time. It is public. It is contested. <strong>Nothing happens quietly here.</strong>
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Stage 4: transition planning</h3>
-            <p>
-              Even once legislation passes, <strong>systems do not flip overnight</strong>.
-            </p>
-            <p>Transition planning typically includes:</p>
-            <ul className="space-y-2">
-              <li><strong>Protection for children with existing EHCPs.</strong></li>
-              <li>Phased introduction for new applicants.</li>
-              <li>Training and system changes for schools and councils.</li>
-              <li>Guidance and timelines.</li>
-            </ul>
-            <p>
-              <strong>This is where safeguards usually appear.</strong>
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">What this means practically for parents now</h3>
-            <p><strong>Right now, the most important things are:</strong></p>
-            <ul className="space-y-2">
-              <li><strong>Focus on your child's needs as they are today.</strong></li>
-              <li>Use existing rights and processes when support is not in place.</li>
-              <li>Stay informed, not consumed.</li>
-              <li>Choose when and how to engage with the wider debate.</li>
-            </ul>
-            <p>
-              <strong>You are not expected to prepare for a system that does not yet exist.</strong>
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">A grounded closing note</h3>
-            <p>
-              SEND reform is happening because the current system is failing too many families. That does not mean the solution will automatically be better. It does mean <strong>there is space for challenge, shaping, and accountability</strong>.
-            </p>
-            <p>
-              <strong>Parents are not an afterthought in this process. They are central to it.</strong>
-            </p>
-            <p>
-              The most important truth to hold is this: <strong>your child's rights do not expire while policy is being discussed</strong>.
-            </p>
-          </div>
-
+      <ContentBox id="stage1" icon={FileText} title="Stage 1: formal proposals">
+        <div className="space-y-3">
+          <p>
+            The next concrete step is <strong>a published White Paper or equivalent policy document</strong>.
+          </p>
+          <p>This matters because it:</p>
+          <ul className="space-y-2">
+            <li>Sets out what government is actually proposing.</li>
+            <li>Explains the rationale, not just the headline.</li>
+            <li>Includes options, not final decisions.</li>
+            <li>Signals which ideas have been dropped.</li>
+          </ul>
+          <p>
+            <strong>Until this exists, everything else remains discussion.</strong>
+          </p>
         </div>
-      </section>
+      </ContentBox>
+
+      <ContentBox id="stage2" icon={MessageSquare} title="Stage 2: consultation">
+        <div className="space-y-3">
+          <p>
+            Once proposals are published, <strong>consultation follows</strong>.
+          </p>
+          <p>This is where:</p>
+          <ul className="space-y-2">
+            <li>Parents, carers, young people, schools, councils, and charities respond.</li>
+            <li>Legal and practical flaws are challenged.</li>
+            <li>Equality and rights impacts are examined.</li>
+            <li>Pressure is applied where proposals risk harm.</li>
+          </ul>
+          <p>
+            Consultation responses have already influenced SEND policy in the past. <strong>This stage is where parent voice carries weight.</strong>
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="stage3" icon={Landmark} title="Stage 3: legislation">
+        <div className="space-y-3">
+          <p>
+            If government proceeds, <strong>changes affecting rights require legislation</strong>.
+          </p>
+          <p>This involves:</p>
+          <ul className="space-y-2">
+            <li>Parliamentary debate.</li>
+            <li>Committee scrutiny.</li>
+            <li>Amendments.</li>
+            <li>Voting.</li>
+          </ul>
+          <p>
+            This stage takes time. It is public. It is contested. <strong>Nothing happens quietly here.</strong>
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="stage4" icon={ArrowRightLeft} title="Stage 4: transition planning">
+        <div className="space-y-3">
+          <p>
+            Even once legislation passes, <strong>systems do not flip overnight</strong>.
+          </p>
+          <p>Transition planning typically includes:</p>
+          <ul className="space-y-2">
+            <li><strong>Protection for children with existing EHCPs.</strong></li>
+            <li>Phased introduction for new applicants.</li>
+            <li>Training and system changes for schools and councils.</li>
+            <li>Guidance and timelines.</li>
+          </ul>
+          <p>
+            <strong>This is where safeguards usually appear.</strong>
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="practical" icon={CheckCircle} title="What this means practically for parents now">
+        <div className="space-y-3">
+          <p><strong>Right now, the most important things are:</strong></p>
+          <ul className="space-y-2">
+            <li><strong>Focus on your child's needs as they are today.</strong></li>
+            <li>Use existing rights and processes when support is not in place.</li>
+            <li>Stay informed, not consumed.</li>
+            <li>Choose when and how to engage with the wider debate.</li>
+          </ul>
+          <p>
+            <strong>You are not expected to prepare for a system that does not yet exist.</strong>
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="closing" icon={Anchor} title="A grounded closing note">
+        <div className="space-y-3">
+          <p>
+            SEND reform is happening because the current system is failing too many families. That does not mean the solution will automatically be better. It does mean <strong>there is space for challenge, shaping, and accountability</strong>.
+          </p>
+          <p>
+            <strong>Parents are not an afterthought in this process. They are central to it.</strong>
+          </p>
+          <p>
+            The most important truth to hold is this: <strong>your child's rights do not expire while policy is being discussed</strong>.
+          </p>
+        </div>
+      </ContentBox>
 
       <div className="content-section pb-16" />
     </Layout>
