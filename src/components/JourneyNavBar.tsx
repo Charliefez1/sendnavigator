@@ -47,7 +47,7 @@ export function JourneyNavBar() {
             >
               <span
                 className={cn(
-                  "block w-2.5 h-2.5 rounded-full transition-all",
+                  "block w-4 h-4 rounded-full transition-all",
                   dotColors[step.color],
                   i === currentIndex
                     ? "ring-2 ring-offset-1 ring-offset-navy/90 scale-125 " + activeDotColors[step.color]
@@ -63,7 +63,7 @@ export function JourneyNavBar() {
           {prevStep ? (
             <NavLink
               to={prevStep.path}
-              className="flex items-center gap-1.5 text-white/60 hover:text-white/90 transition-colors text-xs max-w-[40%]"
+              className="flex items-center gap-1.5 text-white/60 hover:text-white/90 transition-colors text-sm max-w-[40%]"
             >
               <ChevronLeft className="w-4 h-4 flex-shrink-0" />
               <span className="truncate">{prevStep.label}</span>
@@ -73,7 +73,7 @@ export function JourneyNavBar() {
           )}
 
           <div className="text-center flex-shrink-0 px-2">
-            <span className="text-white/50 text-xs">
+            <span className="text-white/50 text-sm">
               {currentIndex >= 0 ? `Step ${currentIndex + 1} of ${journeySteps.length}` : "Guide"}
             </span>
           </div>
@@ -81,7 +81,7 @@ export function JourneyNavBar() {
           {nextStep ? (
             <NavLink
               to={nextStep.path}
-              className="flex items-center gap-1.5 text-white/60 hover:text-white/90 transition-colors text-xs max-w-[40%] text-right justify-end"
+              className="flex items-center gap-1.5 text-white/60 hover:text-white/90 transition-colors text-sm max-w-[40%] text-right justify-end"
             >
               <span className="truncate">{nextStep.label}</span>
               <ChevronRight className="w-4 h-4 flex-shrink-0" />
