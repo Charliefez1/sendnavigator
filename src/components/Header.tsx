@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "./ThemeToggle";
+
 
 const siteLinks = [
   { path: "/", label: "Home" },
@@ -48,9 +48,6 @@ export function Header() {
                 {link.label}
               </NavLink>
             ))}
-            <div className="ml-2 border-l border-white/10 pl-2">
-              <ThemeToggle />
-            </div>
           </nav>
 
           {/* Tablet: compact links */}
@@ -72,14 +69,10 @@ export function Header() {
               </NavLink>
             ))}
             <MoreDropdown links={siteLinks.slice(4)} />
-            <div className="ml-1 border-l border-white/10 pl-1">
-              <ThemeToggle />
-            </div>
           </div>
 
           {/* Mobile: hamburger + theme */}
           <div className="flex md:hidden items-center gap-1">
-            <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors"
