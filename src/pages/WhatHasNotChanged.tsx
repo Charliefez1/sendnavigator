@@ -8,6 +8,7 @@ import {
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
+import { RightsChecklist, PercentageRing } from "@/components/templates/DataVisuals";
 import { Users, BarChart3, Scale, Shield, Gavel, AlertTriangle, Clock, ShieldCheck, MessageCircle } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -69,20 +70,34 @@ export default function WhatHasNotChanged() {
       </ContentBox>
 
       <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
-        <div className="space-y-3">
+        <div className="space-y-6">
           <p>These facts reflect what has remained unchanged.</p>
-          <ul className="space-y-2">
-            <li><strong>The Children and Families Act 2014 remains the legal framework</strong> for SEND in England. The government's 2023 Improvement Plan explicitly did not change any laws or remove any rights.</li>
-            <li><strong>Education, Health and Care Plans remain statutory and legally enforceable.</strong> Around 576,000 children have one, and the number continues to rise each quarter.</li>
-            <li>The <strong>20 week statutory timescale</strong> for EHCP processes remains unchanged. In 2024, only about 60% were issued on time, similar to 2023.</li>
-            <li>Parents retain <strong>the right to request an EHCP assessment at any time</strong>, and the council must reply within six weeks.</li>
-            <li>Parents retain <strong>the right to appeal to the SEND Tribunal</strong>. Outcomes still heavily favour parents, with around 90% of decided cases winning some or all of the appeal.</li>
-            <li>The right to <strong>choose a school and have it named in the EHCP</strong> remains.</li>
-            <li>Local authorities <strong>remain legally responsible</strong> for securing EHCP provision. Schools still have their best endeavours duty.</li>
-            <li>The <strong>SEND Code of Practice remains in force</strong>.</li>
-            <li><strong>22% of parents say their child's school is not delivering all the support in the EHCP</strong>, essentially unchanged from previous surveys. The problems persist, but the rights persist too.</li>
-            <li><strong>No confirmed legislative changes have been enacted</strong> as of 14 February 2026.</li>
-          </ul>
+
+          {/* Rights checklist visual */}
+          <RightsChecklist
+            title="Rights still in force as of 14 February 2026"
+            items={[
+              "Children and Families Act 2014 remains the legal framework",
+              "EHCPs remain statutory and legally enforceable",
+              "Right to request an EHCP assessment at any time",
+              "Right to appeal to the SEND Tribunal",
+              "Right to choose a school and have it named in the EHCP",
+              "Local authorities remain legally responsible for EHCP provision",
+              "SEND Code of Practice remains in force",
+              "20-week statutory timescale unchanged",
+            ]}
+          />
+
+          {/* Percentage rings for key unchanged stats */}
+          <div className="flex flex-wrap justify-center gap-8 py-4">
+            <PercentageRing percentage={60} label="EHCPs issued on time" sublabel="Unchanged from 2023" color="discussed" />
+            <PercentageRing percentage={90} label="Parent tribunal win rate" sublabel="Of decided cases" color="confirmed" />
+            <PercentageRing percentage={22} label="Support not delivered" sublabel="Parents reporting gaps" color="unconfirmed" />
+          </div>
+
+          <p className="text-sm text-muted-foreground">
+            <strong>No confirmed legislative changes have been enacted</strong> as of 14 February 2026. The problems persist, but the rights persist too.
+          </p>
         </div>
       </ContentBox>
 

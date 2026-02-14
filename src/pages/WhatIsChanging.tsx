@@ -8,6 +8,7 @@ import {
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
+import { StatCard } from "@/components/templates/DataVisuals";
 import { Users, BarChart3, ClipboardList, Monitor, GraduationCap, Building2, MapPin, PoundSterling, ShieldCheck } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -72,18 +73,26 @@ export default function WhatIsChanging() {
       </ContentBox>
 
       <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
-        <div className="space-y-3">
-          <p>These are the confirmed facts.</p>
-          <ul className="space-y-2">
-            <li>The government confirmed it will <strong>write off 90% of council SEND deficits up to 2025 to 2026</strong>, a rescue package worth over £5 billion. Councils must submit local SEND reform plans by autumn 2026 to qualify.</li>
-            <li>From <strong>2028 to 2029, central government will cover SEND spending in full</strong>, relieving councils of these costs going forward.</li>
-            <li>A <strong>£3.7 billion capital investment</strong> is creating 60,000 new SEND places, including new special schools and specialist units in mainstream schools, roughly a 30 to 40% increase in specialist places nationally.</li>
-            <li>Every secondary school is expected to have an <strong>"inclusion base"</strong>, a dedicated space for SEND students to receive targeted support while staying included in school life.</li>
-            <li>Workforce investment includes a <strong>£200 million SEND training programme</strong>, new qualifications for SENCOs, and training for around 400 additional educational psychologists.</li>
-            <li>Ofsted has introduced a new <strong>"Inclusion" judgement in school inspections</strong>, meaning schools are now formally evaluated on how well they include and support children with SEND.</li>
-            <li>National SEND standards are confirmed as policy direction, with <strong>consultation and phased introduction planned for 2026 to 2027</strong>. The government has said it will legislate so these standards have legal force.</li>
-            <li>Nine Regional Expert Partnerships are testing new approaches, and a <strong>digital EHCP template is being piloted</strong> in several areas.</li>
-            <li><strong>Safety Valve agreements (£300 million)</strong> and the Delivering Better Value in SEND programme (£85 million for 55 councils) continue alongside the broader reforms.</li>
+        <div className="space-y-6">
+          <p>These are the confirmed investment figures.</p>
+
+          {/* Investment stat cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <StatCard value="£5bn+" label="Council debt bailout" sublabel="90% of SEND deficits written off" icon={PoundSterling} accentColor="confirmed" />
+            <StatCard value="£3.7bn" label="Capital investment" sublabel="60,000 new SEND places" icon={Building2} accentColor="confirmed" />
+            <StatCard value="£200m" label="Teacher training" sublabel="SEND specialist programme" icon={GraduationCap} accentColor="confirmed" />
+            <StatCard value="60,000" label="New SEND places" sublabel="30–40% increase nationally" icon={MapPin} accentColor="confirmed" />
+            <StatCard value="£300m" label="Safety Valve agreements" sublabel="Most indebted councils" icon={PoundSterling} accentColor="discussed" />
+            <StatCard value="400+" label="New ed psychologists" sublabel="Training pipeline" icon={Users} accentColor="discussed" />
+          </div>
+
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            <li>From <strong>2028 to 2029, central government will cover SEND spending in full</strong>.</li>
+            <li>Every secondary school is expected to have an <strong>"inclusion base"</strong>.</li>
+            <li>Ofsted has introduced a new <strong>"Inclusion" judgement in school inspections</strong>.</li>
+            <li>National SEND standards are confirmed with <strong>consultation planned for 2026 to 2027</strong>.</li>
+            <li>Nine Regional Expert Partnerships are testing new approaches, and a <strong>digital EHCP template is being piloted</strong>.</li>
+            <li><strong>Safety Valve agreements (£300 million)</strong> and Delivering Better Value in SEND (£85 million for 55 councils) continue.</li>
             <li>All local areas will be inspected under the new <strong>Ofsted and CQC area SEND framework by 2027</strong>.</li>
           </ul>
         </div>

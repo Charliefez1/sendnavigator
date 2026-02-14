@@ -2,7 +2,8 @@ import { Layout } from "@/components/Layout";
 import { PageOrientation } from "@/components/templates";
 import { Card, CardContent } from "@/components/ui/card";
 import { SourceCard } from "@/components/SourceCard";
-import { AlertCircle, TrendingUp } from "lucide-react";
+import { AlertCircle, TrendingUp, Users, BarChart3, PoundSterling, Gavel } from "lucide-react";
+import { StatCard, PercentageRing, HorizontalBarChart } from "@/components/templates/DataVisuals";
 
 interface StatItem {
   label: string;
@@ -124,31 +125,21 @@ export default function StatisticsAndData() {
             </p>
           </div>
 
-          {/* Children and young people with SEND */}
+          {/* Children and young people with SEND - visual */}
           <div>
             <h3 className="text-lg font-display font-medium text-foreground mb-3">Children and young people with SEND</h3>
-            <ul className="space-y-2">
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                <span>638,700 children and young people aged 0 to 25 in England had an active EHC plan in January 2025.</span>
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                <span>This was an increase from 576,500 in January 2024, a rise of 10.8 percent in one year.</span>
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                <span>482,640 pupils in schools had an EHC plan in the 2024/25 academic year.</span>
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                <span>1,284,284 pupils received SEN support without an EHC plan in 2024/25.</span>
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                <span>In total, just over 1.7 million pupils in England were identified as having SEN in 2024/25.</span>
-              </li>
-            </ul>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
+              <StatCard value="638,700" label="Active EHC plans" sublabel="January 2025" icon={Users} accentColor="confirmed" />
+              <StatCard value="10.8%" label="Annual increase" sublabel="From 576,500 in 2024" icon={TrendingUp} accentColor="discussed" />
+              <StatCard value="1.7m+" label="Total pupils with SEN" sublabel="2024/25 academic year" icon={Users} accentColor="confirmed" />
+            </div>
+            <HorizontalBarChart
+              title="EHCP vs SEN Support"
+              items={[
+                { label: "EHC plans in schools", value: 482640, displayValue: "482,640", color: "confirmed" },
+                { label: "SEN Support (no EHCP)", value: 1284284, displayValue: "1,284,284", color: "discussed" },
+              ]}
+            />
           </div>
 
           {/* Placement types */}
@@ -170,53 +161,37 @@ export default function StatisticsAndData() {
             </ul>
           </div>
 
-          {/* EHC plan timeliness */}
+          {/* EHC plan timeliness - visual */}
           <div>
             <h3 className="text-lg font-display font-medium text-foreground mb-3">EHC plan timeliness</h3>
-            <ul className="space-y-2">
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                <span>46.4 percent of decisions on whether to issue an EHC plan were made within the 20 week timescale in 2024.</span>
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                <span>This was down from 50.3 percent in 2023.</span>
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                <span>7.3 percent of EHC plans in 2024 took longer than 52 weeks to complete.</span>
-              </li>
-            </ul>
+            <div className="flex flex-wrap justify-center gap-8 py-4">
+              <PercentageRing percentage={46} label="Issued within 20 weeks" sublabel="2024 (down from 50.3% in 2023)" color="unconfirmed" />
+              <PercentageRing percentage={7} label="Took over 52 weeks" sublabel="2024" color="unconfirmed" size={100} />
+            </div>
           </div>
 
           {/* Tribunal activity */}
           <div>
             <h3 className="text-lg font-display font-medium text-foreground mb-3">Tribunal activity</h3>
-            <ul className="space-y-2">
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                <span>25,000 SEND tribunal appeals were registered in the 2024/25 academic year.</span>
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                <span>20,000 SEND tribunal appeals were disposed of in the same year.</span>
-              </li>
-            </ul>
+            <div className="grid grid-cols-2 gap-3">
+              <StatCard value="25,000" label="Appeals registered" sublabel="2024/25 academic year" icon={Gavel} accentColor="unconfirmed" />
+              <StatCard value="20,000" label="Appeals disposed of" sublabel="Same period" icon={Gavel} accentColor="discussed" />
+            </div>
           </div>
 
-          {/* Funding */}
+          {/* Funding - visual */}
           <div>
             <h3 className="text-lg font-display font-medium text-foreground mb-3">Funding</h3>
-            <ul className="space-y-2">
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                <span>High needs funding increased from £5.3 billion in 2014/15 to £9.4 billion in 2024/25.</span>
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                <span>Local authorities reported spending an additional £950 million on SEND in 2023/24 beyond allocated national funding.</span>
-              </li>
-            </ul>
+            <HorizontalBarChart
+              title="High needs funding growth"
+              items={[
+                { label: "2014/15", value: 5.3, displayValue: "£5.3bn", color: "confirmed" },
+                { label: "2024/25", value: 9.4, displayValue: "£9.4bn", color: "discussed" },
+              ]}
+            />
+            <p className="text-sm text-muted-foreground mt-3">
+              Local authorities reported spending an additional <strong>£950 million</strong> on SEND in 2023/24 beyond allocated national funding.
+            </p>
           </div>
 
           {/* Reform activity */}
