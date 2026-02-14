@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { PageOrientation } from "@/components/templates";
 import { SourceCard } from "@/components/SourceCard";
 import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle, TrendingUp, ShieldAlert, Users, BarChart3, BookOpen, FileCheck, Heart } from "lucide-react";
+import { AlertCircle, TrendingUp, ShieldAlert, Users, BarChart3, BookOpen, FileCheck, ChevronDown, ChevronRight } from "lucide-react";
 import { communitySourceCategories } from "@/config/community-sources";
 
 // ─── Statistics data ───
@@ -199,17 +200,74 @@ function BulletList({ items }: { items: string[] }) {
   );
 }
 
-// ─── Section wrapper ───
+// ─── Section navigation data ───
 
-function PageSection({ icon: Icon, title, summary, children }: {
+const sections = [
+  { id: "statistics", icon: BarChart3, title: "Statistics and data", summary: "Official SEND figures for England covering EHC plans, timeliness, tribunals, funding, and reform activity." },
+  { id: "projections", icon: TrendingUp, title: "Projected and forecast figures", summary: "Published projections about future SEND demand and funding gaps. These are not current facts." },
+  { id: "clarifications", icon: AlertCircle, title: "Important clarifications", summary: "How to interpret the statistics and why some published figures may appear to conflict." },
+  { id: "sources", icon: BookOpen, title: "Sources used", summary: "Government, parliamentary, legal, and media sources traceable to every factual claim in this resource." },
+  { id: "community", icon: Users, title: "SEND Community articles", summary: "Lived experience articles, parent stories, and community voices referenced by the knowledge base." },
+  { id: "how-we-use", icon: FileCheck, title: "How we use sources", summary: "Our approach to verifying and presenting information across the resource." },
+  { id: "disclaimer", icon: ShieldAlert, title: "External content disclaimer", summary: "Important information about linked third-party content and how it should be used." },
+];
+
+// ─── Collapsible section wrapper ───
+
+function CollapsibleSection({ id, icon: Icon, title, summary, defaultOpen = false, children }: {
+  id: string;
+  icon: React.ElementType;
+  title: string;
+  summary: string;
+  defaultOpen?: boolean;
+  children: React.ReactNode;
+}) {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+
+  return (
+    <section id={id} className="content-section py-4 scroll-mt-24">
+      <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex items-start gap-4 w-full text-left group"
+          aria-expanded={isOpen}
+        >
+          <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
+            <Icon className="w-5 h-5 text-primary" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h2 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">{title}</h2>
+            <p className="text-sm text-muted-foreground mt-1">{summary}</p>
+          </div>
+          <div className="flex-shrink-0 mt-1">
+            {isOpen ? (
+              <ChevronDown className="w-5 h-5 text-muted-foreground" />
+            ) : (
+              <ChevronRight className="w-5 h-5 text-muted-foreground" />
+            )}
+          </div>
+        </button>
+        {isOpen && (
+          <div className="mt-6 pt-6 border-t border-border">
+            {children}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+// Non-collapsible version for short sections
+function StaticSection({ id, icon: Icon, title, summary, children }: {
+  id: string;
   icon: React.ElementType;
   title: string;
   summary: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="content-section py-6">
-      <div className="rounded-lg border border-border bg-card p-6 shadow-md">
+    <section id={id} className="content-section py-4 scroll-mt-24">
+      <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
         <div className="flex items-start gap-4 mb-6">
           <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
             <Icon className="w-5 h-5 text-primary" />
@@ -236,11 +294,50 @@ export default function Sources() {
         lastUpdated="7th February 2026"
       />
 
-      {/* ═══ STATISTICS ═══ */}
-      <PageSection
+      {/* ═══ PAGE INTRODUCTION ═══ */}
+      <section className="content-section py-6">
+        <div className="max-w-3xl space-y-3 text-muted-foreground">
+          <p>
+            This page brings together the data, evidence, and source materials used across the SEND Navigator. It is designed to give parents, professionals, and anyone following SEND reform in England a single place to check the facts, trace the sources, and understand how we present information.
+          </p>
+          <p>
+            The statistics section uses the most recent official data available as of February 2026, covering EHC plan numbers, system timeliness, tribunal activity, funding, and reform progress. Projected figures are clearly separated from confirmed facts. The sources section lists every government document, parliamentary report, legal analysis, media article, and community resource referenced across the site.
+          </p>
+          <p>
+            We also include a growing collection of articles and stories from the SEND community, covering lived experience, parent advocacy, and practical guidance written by families navigating the system.
+          </p>
+        </div>
+      </section>
+
+      {/* ═══ TABLE OF CONTENTS ═══ */}
+      <section className="content-section py-4">
+        <div className="rounded-xl border border-border bg-card p-5 shadow-lg">
+          <h2 className="text-base font-semibold text-foreground mb-4">On this page</h2>
+          <nav aria-label="Page sections">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              {sections.map((s) => (
+                <li key={s.id}>
+                  <a
+                    href={`#${s.id}`}
+                    className="flex items-center gap-3 p-2.5 rounded-lg hover:bg-muted/50 transition-colors group"
+                  >
+                    <s.icon className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{s.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </section>
+
+      {/* ═══ STATISTICS (collapsible - large) ═══ */}
+      <CollapsibleSection
+        id="statistics"
         icon={BarChart3}
         title="Statistics and data"
-        summary="The most recent official SEND figures for England, showing system scale and pressures."
+        summary="Official SEND figures for England covering EHC plans, timeliness, tribunals, funding, and reform activity."
+        defaultOpen
       >
         <h3 className="text-lg font-semibold text-foreground mb-4">Summary facts</h3>
         <BulletList items={summaryFacts} />
@@ -259,15 +356,16 @@ export default function Sources() {
             ))}
           </div>
         </div>
-      </PageSection>
+      </CollapsibleSection>
 
-      {/* ═══ PROJECTED FIGURES ═══ */}
-      <PageSection
+      {/* ═══ PROJECTED FIGURES (short - static) ═══ */}
+      <StaticSection
+        id="projections"
         icon={TrendingUp}
         title="Projected and forecast figures"
-        summary="Published projections about future SEND demand and funding. These are not current facts."
+        summary="Published projections about future SEND demand and funding gaps. These are not current facts."
       >
-        <Card className="bg-muted/30 border-border">
+        <Card className="bg-muted/30 border-border shadow-none">
           <CardContent className="pt-6">
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-muted-foreground">
@@ -285,13 +383,14 @@ export default function Sources() {
             </ul>
           </CardContent>
         </Card>
-      </PageSection>
+      </StaticSection>
 
-      {/* ═══ CLARIFICATIONS ═══ */}
-      <PageSection
+      {/* ═══ CLARIFICATIONS (short - static) ═══ */}
+      <StaticSection
+        id="clarifications"
         icon={AlertCircle}
         title="Important clarifications for readers"
-        summary="How to interpret the statistics and why some figures may appear to conflict."
+        summary="How to interpret the statistics and why some published figures may appear to conflict."
       >
         <div className="space-y-4 text-muted-foreground">
           <div>
@@ -310,13 +409,14 @@ export default function Sources() {
           </div>
           <p>Tribunal outcome percentages are not included here because published sources use different methods and definitions.</p>
         </div>
-      </PageSection>
+      </StaticSection>
 
-      {/* ═══ SOURCES ═══ */}
-      <PageSection
+      {/* ═══ SOURCES (collapsible - large) ═══ */}
+      <CollapsibleSection
+        id="sources"
         icon={BookOpen}
         title="Sources used"
-        summary="All factual claims across this resource are traceable to these materials."
+        summary="Government, parliamentary, legal, and media sources traceable to every factual claim in this resource."
       >
         <div className="space-y-10">
           {sourceCategories.map((category) => (
@@ -330,10 +430,11 @@ export default function Sources() {
             </div>
           ))}
         </div>
-      </PageSection>
+      </CollapsibleSection>
 
-      {/* ═══ COMMUNITY SOURCES ═══ */}
-      <PageSection
+      {/* ═══ COMMUNITY SOURCES (collapsible - large) ═══ */}
+      <CollapsibleSection
+        id="community"
         icon={Users}
         title="Articles and information from the SEND Community"
         summary="Lived experience articles, parent stories, and community voices referenced by the knowledge base."
@@ -350,10 +451,11 @@ export default function Sources() {
             </div>
           ))}
         </div>
-      </PageSection>
+      </CollapsibleSection>
 
-      {/* ═══ HOW WE USE SOURCES ═══ */}
-      <PageSection
+      {/* ═══ HOW WE USE SOURCES (short - static) ═══ */}
+      <StaticSection
+        id="how-we-use"
         icon={FileCheck}
         title="How we use sources"
         summary="Our approach to verifying and presenting information across the resource."
@@ -363,10 +465,11 @@ export default function Sources() {
           <p>We reference established news outlets and specialist education media when reporting on developments being discussed or leaked.</p>
           <p>Where sources disagree or information is contested, we note this clearly. We do not present contested information as fact.</p>
         </div>
-      </PageSection>
+      </StaticSection>
 
-      {/* ═══ EXTERNAL CONTENT DISCLAIMER ═══ */}
-      <PageSection
+      {/* ═══ EXTERNAL CONTENT DISCLAIMER (short - static) ═══ */}
+      <StaticSection
+        id="disclaimer"
         icon={ShieldAlert}
         title="External content disclaimer"
         summary="Important information about linked third-party content and how it should be used."
@@ -378,7 +481,7 @@ export default function Sources() {
           <p>Information shared in linked resources should not be treated as professional, medical, legal, or educational advice. Readers should use their own judgement and, where appropriate, seek independent professional guidance.</p>
           <p>External content may change or be removed without notice.</p>
         </div>
-      </PageSection>
+      </StaticSection>
 
       <div className="content-section pb-16" />
     </Layout>
