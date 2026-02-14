@@ -8,6 +8,7 @@ import {
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
+import { TierDiagram, StatCard } from "@/components/templates/DataVisuals";
 import { Users, BarChart3, Layers, TrendingDown, PoundSterling, Gavel, School, Clock, MessageCircle } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -72,33 +73,42 @@ export default function WhatIsBeingDiscussed() {
       </ContentBox>
 
       <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
-        <div className="space-y-3">
+        <div className="space-y-6">
           <p>These points reflect themes and issues being raised publicly, not enacted policy.</p>
-          <ul className="space-y-2">
-            <li>A <strong>SEND focused Schools White Paper is expected in 2026</strong>.</li>
-            <li>The DfE held <strong>over 100 engagement events</strong> as part of its consultation work.</li>
-            <li>A national SEND reform consultation process ran from December 2025 to January 2026.</li>
-            <li>Parliamentary committees and All Party Parliamentary Groups on SEND are <strong>actively scrutinising reform proposals</strong>.</li>
-            <li>The <strong>Save Our Children's Rights campaign gathered over 130,000 petition signatures</strong> opposing the loss of legal rights.</li>
-            <li>The National Education Union has formally urged the government to <strong>maintain legal thresholds for EHCPs</strong> and focus on funding mainstream properly.</li>
-            <li>Tribunal volumes have increased significantly, with <strong>parents winning 90% of decided cases</strong>, prompting debate about system design and incentives.</li>
-            <li>Local authority SEND deficits and workforce shortages are cited repeatedly as <strong>drivers of reform discussion</strong>.</li>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <StatCard value="100+" label="DfE engagement events" sublabel="Consultation work" icon={MessageCircle} accentColor="discussed" />
+            <StatCard value="130,000+" label="Petition signatures" sublabel="Save Our Children's Rights" icon={Users} accentColor="unconfirmed" />
+            <StatCard value="90%" label="Parent tribunal win rate" sublabel="Prompting system design debate" icon={Gavel} accentColor="confirmed" />
+          </div>
+
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            <li>A SEND focused <strong>Schools White Paper is expected in 2026</strong>.</li>
+            <li>A national SEND reform consultation ran from December 2025 to January 2026.</li>
+            <li>Parliamentary committees are <strong>actively scrutinising reform proposals</strong>.</li>
+            <li>The NEU has formally urged the government to <strong>maintain legal thresholds for EHCPs</strong>.</li>
+            <li>Local authority deficits and workforce shortages are cited repeatedly as <strong>drivers of reform discussion</strong>.</li>
           </ul>
         </div>
       </ContentBox>
 
       <ContentBox id="tiered" icon={Layers} title="Tiered models of support">
-        <div className="space-y-3">
+        <div className="space-y-6">
           <p>
             One of the most discussed ideas is whether <strong>SEND support should be more clearly tiered</strong>.
           </p>
-          <p>The reported model has four levels:</p>
-          <ul className="space-y-2">
-            <li><strong>Tier 1 (Universal)</strong>: teacher-led classroom accommodations for all pupils.</li>
-            <li><strong>Tier 2 (Targeted)</strong>: small group interventions and additional support.</li>
-            <li><strong>Tier 3 (Specialist)</strong>: specialist involvement without a full EHCP.</li>
-            <li><strong>Tier 4 (EHCP)</strong>: a full Education, Health and Care Plan for children with the most severe and complex needs.</li>
-          </ul>
+
+          <TierDiagram
+            title="Proposed tiered model under discussion"
+            tiers={[
+              { tier: "Tier 4", title: "EHCP", description: "Full legal plan for children with the most severe and complex needs. Enforceable provision.", color: "unconfirmed" },
+              { tier: "Tier 3", title: "Specialist", description: "Specialist involvement without a full EHCP. Key question: would this be legally enforceable?", color: "discussed" },
+              { tier: "Tier 2", title: "Targeted", description: "Small group interventions and additional support, coordinated by the school.", color: "discussed" },
+              { tier: "Tier 1", title: "Universal", description: "Teacher-led accommodations available to all pupils as standard classroom practice.", color: "confirmed" },
+            ]}
+            note="No tiered model has been confirmed. This reflects ideas under discussion, not policy."
+          />
+
           <p>
             Supporters argue this could reduce delay and conflict by making early help reliable and consistent. Critics argue that <strong>tiering risks recreating older systems where children had to fail before qualifying for help</strong>. A key concern is what happens at Tier 3: if that support is not legally enforceable, families lose their ability to challenge when it is not delivered.
           </p>

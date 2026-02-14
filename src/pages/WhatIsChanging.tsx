@@ -30,7 +30,7 @@ export default function WhatIsChanging() {
       <PageOrientation
         title="Confirmed changes: what changes are coming to SEND provision in 2026 and have been confirmed"
         description="Changes that have been publicly set out, funded, or formally announced."
-        lastUpdated="13th February 2026"
+        lastUpdated="14th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />

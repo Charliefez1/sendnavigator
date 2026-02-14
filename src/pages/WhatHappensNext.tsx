@@ -8,7 +8,7 @@ import {
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
-import { Users, BarChart3, FileText, MessageSquare, Landmark, ArrowRightLeft, CheckCircle, Anchor } from "lucide-react";
+import { Users, BarChart3, FileText, MessageSquare, Landmark, ArrowRightLeft, CheckCircle, Anchor, ArrowDown } from "lucide-react";
 
 const sections: PageSectionDef[] = [
   { id: "impact", icon: Users, title: "How will this impact children and parents" },
@@ -74,17 +74,49 @@ export default function WhatHappensNext() {
       </ContentBox>
 
       <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
-        <div className="space-y-3">
+        <div className="space-y-6">
           <p>Here is what we know about the timeline:</p>
-          <ul className="space-y-2">
-            <li><strong>No SEND reform legislation has been introduced</strong> as of mid-February 2026.</li>
-            <li>A SEND focused <strong>White Paper is expected in early 2026</strong>, not yet published. It was originally expected in autumn 2025 but was delayed for further consultation.</li>
-            <li>Councils must submit <strong>local SEND reform plans by autumn 2026</strong> to qualify for the deficit bailout.</li>
-            <li>All local areas will be inspected under the <strong>new Ofsted and CQC SEND framework by 2027</strong>.</li>
-            <li>From <strong>2028 to 2029, central government takes full responsibility</strong> for SEND spending growth.</li>
-            <li>Leaked reports (unconfirmed) suggest <strong>full implementation of major reforms might not happen until 2029 to 2030</strong>.</li>
-            <li>Any legislative change would take <strong>at least one Parliamentary session to pass</strong>.</li>
-            <li><strong>Existing EHCPs cannot be withdrawn without lawful process.</strong> Any transition is expected to be phased gradually.</li>
+
+          {/* Process stages visual */}
+          <div className="space-y-0">
+            {[
+              { step: "1", title: "White Paper published", timing: "Expected 2026", status: "Next step", color: "bg-[hsl(var(--timeline-upcoming))]", textColor: "text-[hsl(var(--timeline-upcoming))]", bgColor: "bg-[hsl(var(--timeline-upcoming-bg))]" },
+              { step: "2", title: "Formal consultation", timing: "2026", status: "Planned", color: "bg-[hsl(var(--timeline-upcoming))]", textColor: "text-[hsl(var(--timeline-upcoming))]", bgColor: "bg-[hsl(var(--timeline-upcoming-bg))]" },
+              { step: "3", title: "Legislation introduced", timing: "TBC", status: "If needed", color: "bg-[hsl(var(--timeline-uncertain))]", textColor: "text-[hsl(var(--timeline-uncertain))]", bgColor: "bg-[hsl(var(--timeline-uncertain-bg))]" },
+              { step: "4", title: "Parliamentary process", timing: "TBC", status: "Uncertain", color: "bg-[hsl(var(--timeline-uncertain))]", textColor: "text-[hsl(var(--timeline-uncertain))]", bgColor: "bg-[hsl(var(--timeline-uncertain-bg))]" },
+              { step: "5", title: "Transition and implementation", timing: "Possibly 2029–30", status: "Uncertain", color: "bg-[hsl(var(--timeline-uncertain))]", textColor: "text-[hsl(var(--timeline-uncertain))]", bgColor: "bg-[hsl(var(--timeline-uncertain-bg))]" },
+            ].map((stage, i, arr) => (
+              <div key={i}>
+                <div className={`flex items-center gap-3 sm:gap-4 rounded-lg border border-border p-3 sm:p-4 ${stage.bgColor}`}>
+                  <div className={`w-8 h-8 rounded-full ${stage.color} flex items-center justify-center flex-shrink-0`}>
+                    <span className="text-xs font-bold text-white">{stage.step}</span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-foreground">{stage.title}</p>
+                    <p className="text-xs text-muted-foreground">{stage.timing}</p>
+                  </div>
+                  <span className={`text-xs font-medium px-2 py-0.5 rounded ${stage.textColor} ${stage.bgColor} border border-current/20`}>
+                    {stage.status}
+                  </span>
+                </div>
+                {i < arr.length - 1 && (
+                  <div className="flex justify-center py-1">
+                    <ArrowDown className="w-4 h-4 text-muted-foreground" />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <p className="text-xs text-muted-foreground italic text-center">
+            Current law stays in place at every stage until new legislation is passed and implemented.
+          </p>
+
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            <li>Councils must submit <strong>local SEND reform plans by autumn 2026</strong>.</li>
+            <li>All local areas inspected under <strong>new Ofsted/CQC framework by 2027</strong>.</li>
+            <li>From <strong>2028–29, central government takes full SEND spending responsibility</strong>.</li>
+            <li><strong>Existing EHCPs cannot be withdrawn without lawful process.</strong></li>
           </ul>
         </div>
       </ContentBox>

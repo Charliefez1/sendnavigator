@@ -8,6 +8,7 @@ import {
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
+import { RightsChecklist } from "@/components/templates/DataVisuals";
 import { Users, BarChart3, HelpCircle, ClipboardList, PoundSterling, ArrowRightLeft, Heart, Target, Shield } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -72,16 +73,20 @@ export default function WhatWeDoNotKnow() {
       </ContentBox>
 
       <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
-        <div className="space-y-3">
+        <div className="space-y-6">
           <p>These areas remain genuinely unresolved.</p>
-          <ul className="space-y-2">
-            <li><strong>No draft legislation has been published</strong> setting out changes to EHCP eligibility.</li>
-            <li><strong>No final national SEND standards have been published.</strong></li>
-            <li>No confirmed funding model replacing EHCP linked funding has been agreed.</li>
-            <li><strong>No confirmed changes to tribunal appeal rights</strong> have been announced.</li>
-            <li>No confirmed implementation dates beyond broad 2026 to 2028 windows exist for major reforms.</li>
-            <li>No confirmed transitional arrangements for new entrants versus existing EHCP holders have been published.</li>
-          </ul>
+
+          <RightsChecklist
+            title="Key unanswered questions"
+            items={[
+              "No draft legislation has been published setting out changes to EHCP eligibility",
+              "No final national SEND standards have been published",
+              "No confirmed funding model replacing EHCP-linked funding has been agreed",
+              "No confirmed changes to tribunal appeal rights have been announced",
+              "No confirmed implementation dates beyond broad 2026–2028 windows",
+              "No confirmed transitional arrangements for existing vs new EHCP holders",
+            ]}
+          />
         </div>
       </ContentBox>
 

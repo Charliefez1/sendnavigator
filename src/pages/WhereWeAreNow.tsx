@@ -29,7 +29,7 @@ export default function WhereWeAreNow() {
       <PageOrientation
         title="Current situation: where is SEND provision in the UK today"
         description="Understanding the current state of SEND support in England."
-        lastUpdated="13th February 2026"
+        lastUpdated="14th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
