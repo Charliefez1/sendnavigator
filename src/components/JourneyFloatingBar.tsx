@@ -64,20 +64,20 @@ export function JourneyFloatingBar() {
               className="flex-1 flex flex-col items-center gap-1.5 py-1 hover:bg-white/5 rounded-xl transition-colors min-h-[44px] justify-center"
               aria-label="Open journey map"
             >
-              {/* Progress dots */}
-              <div className="flex items-center gap-1">
+              {/* Progress bar */}
+              <div className="flex items-center gap-1.5 w-full max-w-xs">
                 {journeySteps.map((step, i) => {
                   const gm = groupMeta[step.group];
                   return (
                     <div
                       key={step.path}
                       className={cn(
-                        "rounded-full transition-all",
+                        "flex-1 rounded-full transition-all",
                         i === currentIndex
-                          ? `w-6 h-2 ${gm.dotColour}`
+                          ? `h-3 ${gm.dotColour}`
                           : i < currentIndex
-                          ? `w-2 h-2 ${gm.dotColour} opacity-40`
-                          : "w-2 h-2 bg-white/20"
+                          ? `h-3 ${gm.dotColour} opacity-50`
+                          : "h-3 bg-white/15"
                       )}
                     />
                   );

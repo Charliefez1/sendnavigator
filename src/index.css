@@ -302,36 +302,34 @@
   /* Calm, readable prose */
   .prose-calm {
     @apply text-foreground leading-relaxed;
+    font-size: 0.875rem;
+    line-height: 1.625;
   }
 
   .prose-calm p {
-    @apply mb-4 text-base leading-7;
+    @apply mb-4;
+    font-size: inherit;
+    line-height: inherit;
     max-width: 65ch;
   }
 
-  @media (min-width: 640px) {
-    .prose-calm p {
-      @apply text-lg leading-8;
-    }
-  }
-
   .prose-calm h2 {
-    @apply text-xl font-semibold text-foreground mt-8 mb-4;
+    @apply text-lg font-semibold text-foreground mt-8 mb-4;
   }
 
   @media (min-width: 640px) {
     .prose-calm h2 {
-      @apply text-2xl;
+      @apply text-xl;
     }
   }
 
   .prose-calm h3 {
-    @apply text-lg font-medium text-foreground mt-6 mb-3;
+    @apply text-base font-medium text-foreground mt-6 mb-3;
   }
 
   @media (min-width: 640px) {
     .prose-calm h3 {
-      @apply text-xl;
+      @apply text-lg;
     }
   }
 
@@ -340,13 +338,8 @@
   }
 
   .prose-calm li {
-    @apply text-base leading-7;
-  }
-
-  @media (min-width: 640px) {
-    .prose-calm li {
-      @apply text-lg leading-8;
-    }
+    font-size: inherit;
+    line-height: inherit;
   }
 
   /* Journey navigation cards */
