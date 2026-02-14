@@ -1,7 +1,6 @@
-import { NavLink, useLocation, Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const journeySteps = [
   { path: "/where-we-are-now", label: "What we know so far", shortLabel: "Known", color: "confirmed" },
@@ -36,45 +35,27 @@ export function JourneyNavBar() {
 
   return (
     <nav className="bg-navy/90 border-b border-white/10" aria-label="Journey progress">
-      <div className="content-wide py-1.5">
-        {/* Logo + dots + toggle row */}
-        <div className="flex items-center justify-between gap-3 mb-0.5">
-          {/* Logo */}
-          <Link to="/" className="group flex items-center gap-2 shrink-0">
-            <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white/15 transition-colors">
-              <Heart className="w-3.5 h-3.5 text-red-500" aria-hidden="true" />
-            </div>
-            <span className="text-sm font-display font-bold text-white tracking-tight leading-tight group-hover:opacity-90 transition-opacity hidden sm:inline">
-              SEND Reform Navigator
-            </span>
-          </Link>
-
-          {/* Progress dots */}
-          <div className="flex items-center gap-1">
-            {journeySteps.map((step, i) => (
-              <NavLink
-                key={step.path}
-                to={step.path}
-                title={`${i + 1}. ${step.label}`}
-                className="group relative p-0.5"
-              >
-                <span
-                  className={cn(
-                    "block w-2.5 h-2.5 rounded-full transition-all",
-                    dotColors[step.color],
-                    i === currentIndex
-                      ? "ring-2 ring-offset-1 ring-offset-navy/90 scale-125 " + activeDotColors[step.color]
-                      : "opacity-40 group-hover:opacity-80 group-hover:scale-110"
-                  )}
-                />
-              </NavLink>
-            ))}
-          </div>
-
-          {/* Theme toggle */}
-          <div className="shrink-0">
-            <ThemeToggle />
-          </div>
+      <div className="content-wide py-2">
+        {/* Progress dots row */}
+        <div className="flex items-center justify-center gap-1 mb-1.5">
+          {journeySteps.map((step, i) => (
+            <NavLink
+              key={step.path}
+              to={step.path}
+              title={`${i + 1}. ${step.label}`}
+              className="group relative p-0.5"
+            >
+              <span
+                className={cn(
+                  "block w-2.5 h-2.5 rounded-full transition-all",
+                  dotColors[step.color],
+                  i === currentIndex
+                    ? "ring-2 ring-offset-1 ring-offset-navy/90 scale-125 " + activeDotColors[step.color]
+                    : "opacity-40 group-hover:opacity-80 group-hover:scale-110"
+                )}
+              />
+            </NavLink>
+          ))}
         </div>
 
         {/* Current step + prev/next */}
