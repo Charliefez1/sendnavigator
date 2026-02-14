@@ -3,7 +3,8 @@ import { PageOrientation } from "@/components/templates";
 import { SourceCard } from "@/components/SourceCard";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
-import { AlertCircle, TrendingUp } from "lucide-react";
+import { AlertCircle, TrendingUp, ShieldAlert, Users } from "lucide-react";
+import { communitySourceCategories } from "@/config/community-sources";
 
 // ─── Statistics data ───
 
@@ -327,6 +328,33 @@ export default function Sources() {
             </AccordionContent>
           </AccordionItem>
 
+          {/* ═══ COMMUNITY SOURCES ═══ */}
+          <AccordionItem value="community" className="border border-border rounded-lg px-4">
+            <AccordionTrigger className="hover:no-underline">
+              <div className="flex items-center gap-3">
+                <Users className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                <span className="text-xl font-semibold text-foreground">Articles and information from the SEND Community</span>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent>
+              <p className="text-muted-foreground mb-8">
+                Lived experience articles, parent stories, and community voices referenced by the knowledge base.
+              </p>
+              <div className="space-y-10">
+                {communitySourceCategories.map((category) => (
+                  <div key={category.title}>
+                    <h3 className="text-base font-semibold text-foreground mb-4">{category.title}</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                      {category.sources.map((source) => (
+                        <SourceCard key={source.url} name={source.name} url={source.url} />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
           {/* ═══ HOW WE USE SOURCES ═══ */}
           <AccordionItem value="how-we-use" className="border border-border rounded-lg px-4">
             <AccordionTrigger className="text-lg font-semibold text-foreground hover:no-underline">
@@ -337,6 +365,25 @@ export default function Sources() {
                 <p>Government announcements, legislation, and official consultations form our primary sources. These are always marked as confirmed.</p>
                 <p>We reference established news outlets and specialist education media when reporting on developments being discussed or leaked.</p>
                 <p>Where sources disagree or information is contested, we note this clearly. We do not present contested information as fact.</p>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+          {/* ═══ EXTERNAL CONTENT DISCLAIMER ═══ */}
+          <AccordionItem value="disclaimer" className="border border-border rounded-lg px-4">
+            <AccordionTrigger className="hover:no-underline">
+              <div className="flex items-center gap-3">
+                <ShieldAlert className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                <span className="text-lg font-semibold text-foreground">External content disclaimer</span>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-3 text-muted-foreground">
+                <p>This website includes links to external articles, blogs, forums, and third-party resources.</p>
+                <p>These links are provided for information and context only. The views, opinions, experiences, and accuracy of the content belong entirely to the original authors or publishers.</p>
+                <p>We do not control, endorse, verify, or take responsibility for the content of external websites, including any advice, claims, or conclusions they present.</p>
+                <p>Information shared in linked resources should not be treated as professional, medical, legal, or educational advice. Readers should use their own judgement and, where appropriate, seek independent professional guidance.</p>
+                <p>External content may change or be removed without notice.</p>
               </div>
             </AccordionContent>
           </AccordionItem>
