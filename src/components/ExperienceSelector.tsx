@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { BookOpen, ScanLine, Headphones, Sun, Moon, Type } from "lucide-react";
+import { BookOpen, ScanLine, Headphones, Sun, Moon, Type, Heart } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { useExperienceMode, ExperienceMode } from "@/contexts/ExperienceModeContext";
@@ -102,6 +103,20 @@ export function ExperienceSelector() {
         </div>
         </div>
 
+        {/* Site identity */}
+        <Link to="/" className="group flex items-center gap-2 shrink-0 ml-auto">
+          <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white/15 transition-colors">
+            <Heart className="w-3.5 h-3.5 text-red-500" aria-hidden="true" />
+          </div>
+          <div>
+            <span className="text-xs font-display font-bold text-white tracking-tight leading-tight group-hover:opacity-90 transition-opacity">
+              SEND Reform Navigator
+            </span>
+            <p className="text-[9px] text-white/40 font-medium hidden sm:block">
+              A practical guide for families
+            </p>
+          </div>
+        </Link>
       </div>
     </div>
   );

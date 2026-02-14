@@ -1,9 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import { Heart, Sparkles, Menu, X, ChevronDown } from "lucide-react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { NavLink, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
-import neurodiversityLogo from "@/assets/neurodiversity-global-education-logo.png";
 
 const siteLinks = [
   { path: "/", label: "Home" },
@@ -29,21 +28,7 @@ export function Header() {
     <header className="bg-navy text-navy-foreground sticky top-0 z-50">
       <div className="content-wide py-3 sm:py-4">
         {/* Top row: logo + links/hamburger */}
-        <div className="flex items-center justify-between flex-row-reverse">
-          <Link to="/" className="group flex items-center gap-3 shrink-0">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-white/15 transition-colors">
-              <Heart className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" aria-hidden="true" />
-            </div>
-            <div>
-              <span className="text-base sm:text-lg font-display font-bold text-white tracking-tight leading-tight group-hover:opacity-90 transition-opacity">
-                SEND Reform Navigator
-              </span>
-              
-              <p className="text-xs text-navy-muted font-medium hidden sm:block">
-                A practical guide for families
-              </p>
-            </div>
-          </Link>
+        <div className="flex items-center justify-between">
 
           {/* Desktop site links */}
           <nav className="hidden lg:flex items-center gap-1" aria-label="Site pages">
