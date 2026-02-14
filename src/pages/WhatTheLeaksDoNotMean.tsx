@@ -82,7 +82,7 @@ export default function WhatTheLeaksDoNotMean() {
       <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
         <div className="space-y-3">
           <p>This section is about interpretation, not new policy data.</p>
-          <p>From the checked research set:</p>
+          <p>From the evidence:</p>
           <ul className="space-y-2">
             <li><strong>No leaked SEND reform proposal has been published as a White Paper.</strong></li>
             <li><strong>No leaked proposal has been introduced to Parliament.</strong></li>
