@@ -34,7 +34,8 @@ export default function CommunityQuestions() {
           description="Comments and experiences shared by families and professionals navigating SEND. Share yours below. Approved contributions help others."
         />
 
-        
+
+        <AskQuestionCompact />
 
         {isLoading ? (
           <div className="space-y-4">
