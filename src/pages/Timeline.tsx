@@ -9,9 +9,74 @@ import {
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
-import { History, CalendarClock, Users, AlertTriangle, FileQuestion, ShieldCheck } from "lucide-react";
+import { VisualTimeline } from "@/components/templates/VisualTimeline";
+import { History, CalendarClock, Users, AlertTriangle, FileQuestion, ShieldCheck, GitBranch } from "lucide-react";
+
+const timelineMilestones = [
+  {
+    date: "March 2023",
+    title: "SEND Improvement Plan published",
+    description: "The government published its SEND and Alternative Provision Improvement Plan, setting out reform intentions including national standards and a tiered support model.",
+    type: "confirmed" as const,
+  },
+  {
+    date: "2023–present",
+    title: "Change Programme pilot testing",
+    description: "Nine Regional Expert Partnerships began testing new ways of working, including trialling proposed National Standards and a standard digital EHCP template.",
+    type: "confirmed" as const,
+  },
+  {
+    date: "Dec 2025 – Jan 2026",
+    title: "National conversation on SEND",
+    description: "A national conversation ran from December 2025 to January 2026, gathering views from parents, professionals, and young people on the future of SEND.",
+    type: "confirmed" as const,
+  },
+  {
+    date: "February 2026",
+    title: "Debt bailout and 10-year renewal plan",
+    description: "Government confirmed a write-off of 90% of council SEND deficits (over £5 billion), launched a 10-year education renewal plan with inclusion units in all secondary schools, and committed £3.7 billion for 60,000 new SEND places.",
+    type: "confirmed" as const,
+  },
+  {
+    date: "Autumn 2026",
+    title: "Council local SEND reform plans due",
+    description: "Local authorities must submit local SEND reform plans by autumn 2026 to qualify for the debt bailout package.",
+    type: "upcoming" as const,
+  },
+  {
+    date: "2026",
+    title: "Formal public consultation expected",
+    description: "Government has stated a formal consultation on SEND reform proposals will take place in 2026. This will be the key opportunity for detailed input on proposed changes.",
+    type: "upcoming" as const,
+  },
+  {
+    date: "2027",
+    title: "New Ofsted inclusion judgement",
+    description: "Ofsted's new 'Inclusion' judgement in school inspections is being rolled out, evaluating how well schools include and support children with SEND.",
+    type: "upcoming" as const,
+  },
+  {
+    date: "2028–2029",
+    title: "Central government takes over SEND spending",
+    description: "From 2028–29, central government is planned to cover SEND spending in full, relieving councils of these costs — a fundamental shift in responsibility.",
+    type: "uncertain" as const,
+  },
+  {
+    date: "TBC",
+    title: "Schools White Paper with SEND proposals",
+    description: "A Schools White Paper is expected to include SEND reform proposals, but no publication date has been confirmed.",
+    type: "uncertain" as const,
+  },
+  {
+    date: "TBC",
+    title: "Possible legislation",
+    description: "If legal changes are proposed, they must pass through Parliament. No draft legislation has been published and no timeline for this has been confirmed.",
+    type: "uncertain" as const,
+  },
+];
 
 const sections: PageSectionDef[] = [
+  { id: "visual-timeline", icon: GitBranch, title: "Visual timeline" },
   { id: "already-happened", icon: History, title: "What has already happened" },
   { id: "expected-next", icon: CalendarClock, title: "What is expected next" },
   { id: "unconfirmed", icon: AlertTriangle, title: "Unconfirmed timelines" },
@@ -43,6 +108,10 @@ export default function Timeline() {
       />
 
       <OnThisPage sections={sections} />
+
+      <ContentBox id="visual-timeline" icon={GitBranch} title="Visual timeline">
+        <VisualTimeline milestones={timelineMilestones} />
+      </ContentBox>
 
       <ContentBox id="already-happened" icon={History} title="What has already happened">
         <div className="space-y-3">
