@@ -32,7 +32,6 @@ export function Layout({ children }: LayoutProps) {
       <div className="content-section py-8">
         <NewsletterSignup />
       </div>
-      <ContactBanner />
       <Footer />
       <JourneyFloatingBar />
     </div>
