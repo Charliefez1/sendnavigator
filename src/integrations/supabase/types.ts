@@ -71,21 +71,30 @@ export type Database = {
       page_views: {
         Row: {
           created_at: string
+          device_type: string | null
           id: string
           path: string
           referrer: string | null
+          session_id: string | null
+          visitor_id: string | null
         }
         Insert: {
           created_at?: string
+          device_type?: string | null
           id?: string
           path: string
           referrer?: string | null
+          session_id?: string | null
+          visitor_id?: string | null
         }
         Update: {
           created_at?: string
+          device_type?: string | null
           id?: string
           path?: string
           referrer?: string | null
+          session_id?: string | null
+          visitor_id?: string | null
         }
         Relationships: []
       }

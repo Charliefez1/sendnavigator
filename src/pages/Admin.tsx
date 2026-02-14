@@ -5,8 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Lock, CheckCircle, XCircle, Trash2, MessageCircleQuestion, MessageSquare, Eye, BookOpen, Reply, Send } from "lucide-react";
+import { Lock, CheckCircle, XCircle, Trash2, MessageCircleQuestion, MessageSquare, Eye, BookOpen, Reply, Send, BarChart3 } from "lucide-react";
 import { KnowledgeBaseManager } from "@/components/admin/KnowledgeBaseManager";
+import { AnalyticsDashboard } from "@/components/admin/AnalyticsDashboard";
+import { Helmet } from "react-helmet-async";
 
 interface QuestionItem {
   id: string;
@@ -165,7 +167,7 @@ export default function Admin() {
   const [pin, setPin] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [pinError, setPinError] = useState(false);
-  const [activeTab, setActiveTab] = useState<"questions" | "feedback" | "knowledge">("questions");
+  const [activeTab, setActiveTab] = useState<"questions" | "feedback" | "knowledge" | "analytics">("questions");
   const [questions, setQuestions] = useState<QuestionItem[]>([]);
   const [feedbackItems, setFeedbackItems] = useState<FeedbackItem[]>([]);
   const [loading, setLoading] = useState(false);
@@ -227,6 +229,9 @@ export default function Admin() {
   if (!authenticated) {
     return (
       <Layout>
+        <Helmet>
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
         <div className="content-section py-16">
           <div className="max-w-sm mx-auto text-center space-y-6">
             <Lock className="h-12 w-12 text-muted-foreground mx-auto" />
@@ -258,6 +263,9 @@ export default function Admin() {
 
   return (
     <Layout>
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <div className="content-wide py-8 space-y-6">
         <div className="flex items-center justify-between">
           <h1 className="font-display text-2xl font-bold">Admin Dashboard</h1>
@@ -321,10 +329,23 @@ export default function Admin() {
             <BookOpen className="h-4 w-4" />
             Knowledge Base
           </button>
+          <button
+            onClick={() => setActiveTab("analytics")}
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+              activeTab === "analytics"
+                ? "bg-primary text-primary-foreground"
+                : "bg-secondary text-secondary-foreground"
+            }`}
+          >
+            <BarChart3 className="h-4 w-4" />
+            Analytics
+          </button>
         </div>
 
         {/* Content */}
-        {activeTab === "knowledge" ? (
+        {activeTab === "analytics" ? (
+          <AnalyticsDashboard pin={pin} />
+        ) : activeTab === "knowledge" ? (
           <KnowledgeBaseManager pin={pin} />
         ) : activeTab === "questions" ? (
           <div className="space-y-3">
