@@ -208,17 +208,19 @@ function PageSection({ icon: Icon, title, summary, children }: {
   children: React.ReactNode;
 }) {
   return (
-    <section className="content-section py-10 border-t border-border">
-      <div className="flex items-start gap-4 mb-6">
-        <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
-          <Icon className="w-5 h-5 text-primary" />
+    <section className="content-section py-6">
+      <div className="rounded-lg border border-border bg-card p-6 shadow-md">
+        <div className="flex items-start gap-4 mb-6">
+          <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
+            <Icon className="w-5 h-5 text-primary" />
+          </div>
+          <div>
+            <h2 className="text-xl font-semibold text-foreground">{title}</h2>
+            <p className="text-sm text-muted-foreground mt-1">{summary}</p>
+          </div>
         </div>
-        <div>
-          <h2 className="text-xl font-semibold text-foreground">{title}</h2>
-          <p className="text-sm text-muted-foreground mt-1">{summary}</p>
-        </div>
+        {children}
       </div>
-      {children}
     </section>
   );
 }
