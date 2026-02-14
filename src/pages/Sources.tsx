@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { PageOrientation } from "@/components/templates";
 import { SourceCard } from "@/components/SourceCard";
 import { Card, CardContent } from "@/components/ui/card";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { AlertCircle, TrendingUp } from "lucide-react";
 
 // ─── Statistics data ───
@@ -209,122 +210,139 @@ export default function Sources() {
         lastUpdated="7th February 2026"
       />
 
-      {/* ═══ STATISTICS SECTION ═══ */}
+      <div className="content-section py-8">
+        <Accordion type="multiple" defaultValue={["statistics", "sources"]} className="space-y-4">
 
-      {/* Introduction */}
-      <section className="content-section py-8">
-        <h2 className="text-xl font-semibold text-foreground mb-4">Statistics and data</h2>
-        <p className="text-muted-foreground leading-relaxed max-w-3xl">
-          Key SEND statistics for England, using the most recent official data available as of 07 February 2026. These figures show the current scale and pressures in the system.
-        </p>
-      </section>
+          {/* ═══ STATISTICS SECTION ═══ */}
+          <AccordionItem value="statistics" className="border border-border rounded-lg px-4">
+            <AccordionTrigger className="text-xl font-semibold text-foreground hover:no-underline">
+              Statistics and data
+            </AccordionTrigger>
+            <AccordionContent>
+              <p className="text-muted-foreground leading-relaxed max-w-3xl mb-6">
+                Key SEND statistics for England, using the most recent official data available as of 07 February 2026. These figures show the current scale and pressures in the system.
+              </p>
 
-      {/* Summary facts */}
-      <section className="content-section py-8 border-t border-border">
-        <h3 className="text-lg font-semibold text-foreground mb-4">Summary facts</h3>
-        <BulletList items={summaryFacts} />
-      </section>
+              <h3 className="text-lg font-semibold text-foreground mb-4">Summary facts</h3>
+              <BulletList items={summaryFacts} />
 
-      {/* Confirmed position */}
-      <section className="content-section py-8 border-t border-border">
-        <h3 className="text-lg font-semibold text-foreground mb-6">Confirmed position as of 07 February 2026</h3>
-        <p className="text-muted-foreground mb-6">
-          The statutory timescale for an EHC needs assessment to a final EHC plan is 20 weeks.
-        </p>
-        <div className="space-y-8">
-          {statSections.map((section) => (
-            <div key={section.title}>
-              <h4 className="text-base font-medium text-foreground mb-3">{section.title}</h4>
-              <BulletList items={section.items} />
-            </div>
-          ))}
-        </div>
-      </section>
+              <div className="mt-8">
+                <h3 className="text-lg font-semibold text-foreground mb-6">Confirmed position as of 07 February 2026</h3>
+                <p className="text-muted-foreground mb-6">
+                  The statutory timescale for an EHC needs assessment to a final EHC plan is 20 weeks.
+                </p>
+                <div className="space-y-8">
+                  {statSections.map((section) => (
+                    <div key={section.title}>
+                      <h4 className="text-base font-medium text-foreground mb-3">{section.title}</h4>
+                      <BulletList items={section.items} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
 
-      {/* Projected figures */}
-      <section className="content-section py-8 border-t border-border">
-        <div className="flex items-start gap-3 mb-4">
-          <TrendingUp className="w-5 h-5 text-muted-foreground mt-0.5" />
-          <div>
-            <h3 className="text-lg font-semibold text-foreground">Projected and forecast figures</h3>
-            <p className="text-sm text-muted-foreground mt-1">These are not current facts. They are published projections.</p>
-          </div>
-        </div>
-        <Card className="bg-muted/30 border-border">
-          <CardContent className="pt-6">
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
-                <span>The annual Dedicated Schools Grant deficit is projected to exceed £6 billion in 2028/29.</span>
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
-                <span>Parliamentary debate has referenced a projected annual deficit of £6.3 billion in 2028/29, with a larger cumulative deficit across the spending review period.</span>
-              </li>
-              <li className="flex items-start gap-3 text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
-                <span>Local Government Association analysis projects a SEND funding gap of £2.3 billion in 2025/26, rising to £3.9 billion in 2026/27.</span>
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
-      </section>
+          {/* ═══ PROJECTED FIGURES ═══ */}
+          <AccordionItem value="projections" className="border border-border rounded-lg px-4">
+            <AccordionTrigger className="hover:no-underline">
+              <div className="flex items-center gap-3">
+                <TrendingUp className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                <span className="text-lg font-semibold text-foreground">Projected and forecast figures</span>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent>
+              <p className="text-sm text-muted-foreground mb-4">These are not current facts. They are published projections.</p>
+              <Card className="bg-muted/30 border-border">
+                <CardContent className="pt-6">
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-3 text-muted-foreground">
+                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                      <span>The annual Dedicated Schools Grant deficit is projected to exceed £6 billion in 2028/29.</span>
+                    </li>
+                    <li className="flex items-start gap-3 text-muted-foreground">
+                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                      <span>Parliamentary debate has referenced a projected annual deficit of £6.3 billion in 2028/29, with a larger cumulative deficit across the spending review period.</span>
+                    </li>
+                    <li className="flex items-start gap-3 text-muted-foreground">
+                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                      <span>Local Government Association analysis projects a SEND funding gap of £2.3 billion in 2025/26, rising to £3.9 billion in 2026/27.</span>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </AccordionContent>
+          </AccordionItem>
 
-      {/* Important clarifications */}
-      <section className="content-section py-8 border-t border-border">
-        <div className="flex items-start gap-3 mb-4">
-          <AlertCircle className="w-5 h-5 text-muted-foreground mt-0.5" />
-          <h3 className="text-lg font-semibold text-foreground">Important clarifications for readers</h3>
-        </div>
-        <div className="space-y-4 text-muted-foreground">
-          <div>
-            <p className="mb-2">EHC plan numbers are published using two different measures:</p>
-            <ul className="ml-6 space-y-1">
-              <li className="flex items-start gap-2">
-                <span className="w-1 h-1 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
-                <span>Pupil counts in school census data.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="w-1 h-1 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
-                <span>Children and young people aged 0 to 25 with active plans.</span>
-              </li>
-            </ul>
-            <p className="mt-2">These figures describe different populations and will not match.</p>
-          </div>
-          <p>Tribunal outcome percentages are not included here because published sources use different methods and definitions.</p>
-        </div>
-      </section>
+          {/* ═══ CLARIFICATIONS ═══ */}
+          <AccordionItem value="clarifications" className="border border-border rounded-lg px-4">
+            <AccordionTrigger className="hover:no-underline">
+              <div className="flex items-center gap-3">
+                <AlertCircle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
+                <span className="text-lg font-semibold text-foreground">Important clarifications for readers</span>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-4 text-muted-foreground">
+                <div>
+                  <p className="mb-2">EHC plan numbers are published using two different measures:</p>
+                  <ul className="ml-6 space-y-1">
+                    <li className="flex items-start gap-2">
+                      <span className="w-1 h-1 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                      <span>Pupil counts in school census data.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="w-1 h-1 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                      <span>Children and young people aged 0 to 25 with active plans.</span>
+                    </li>
+                  </ul>
+                  <p className="mt-2">These figures describe different populations and will not match.</p>
+                </div>
+                <p>Tribunal outcome percentages are not included here because published sources use different methods and definitions.</p>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
 
-      {/* ═══ SOURCES SECTION ═══ */}
-
-      <section className="content-section py-8 border-t-2 border-primary/20">
-        <h2 className="text-xl font-semibold text-foreground mb-4">Sources used</h2>
-        <p className="text-muted-foreground mb-8">
-          All factual claims across this resource are traceable to these materials.
-        </p>
-        <div className="space-y-10">
-          {sourceCategories.map((category) => (
-            <div key={category.title}>
-              <h3 className="text-base font-semibold text-foreground mb-4">{category.title}</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {category.sources.map((source) => (
-                  <SourceCard key={source.url} name={source.name} url={source.url} />
+          {/* ═══ SOURCES SECTION ═══ */}
+          <AccordionItem value="sources" className="border border-border rounded-lg px-4">
+            <AccordionTrigger className="text-xl font-semibold text-foreground hover:no-underline">
+              Sources used
+            </AccordionTrigger>
+            <AccordionContent>
+              <p className="text-muted-foreground mb-8">
+                All factual claims across this resource are traceable to these materials.
+              </p>
+              <div className="space-y-10">
+                {sourceCategories.map((category) => (
+                  <div key={category.title}>
+                    <h3 className="text-base font-semibold text-foreground mb-4">{category.title}</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                      {category.sources.map((source) => (
+                        <SourceCard key={source.url} name={source.name} url={source.url} />
+                      ))}
+                    </div>
+                  </div>
                 ))}
               </div>
-            </div>
-          ))}
-        </div>
-      </section>
+            </AccordionContent>
+          </AccordionItem>
 
-      {/* How we use sources */}
-      <section className="content-section py-8 border-t border-border">
-        <h3 className="text-lg font-semibold text-foreground mb-3">How we use sources</h3>
-        <div className="space-y-3 text-muted-foreground">
-          <p>Government announcements, legislation, and official consultations form our primary sources. These are always marked as confirmed.</p>
-          <p>We reference established news outlets and specialist education media when reporting on developments being discussed or leaked.</p>
-          <p>Where sources disagree or information is contested, we note this clearly. We do not present contested information as fact.</p>
-        </div>
-      </section>
+          {/* ═══ HOW WE USE SOURCES ═══ */}
+          <AccordionItem value="how-we-use" className="border border-border rounded-lg px-4">
+            <AccordionTrigger className="text-lg font-semibold text-foreground hover:no-underline">
+              How we use sources
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="space-y-3 text-muted-foreground">
+                <p>Government announcements, legislation, and official consultations form our primary sources. These are always marked as confirmed.</p>
+                <p>We reference established news outlets and specialist education media when reporting on developments being discussed or leaked.</p>
+                <p>Where sources disagree or information is contested, we note this clearly. We do not present contested information as fact.</p>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+
+        </Accordion>
+      </div>
 
       <div className="content-section pb-16" />
     </Layout>
