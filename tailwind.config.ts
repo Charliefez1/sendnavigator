@@ -94,7 +94,7 @@ export default {
         "2xl": "calc(var(--radius) + 8px)",
       },
       fontFamily: {
-        sans: ['Roboto', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
         display: ['Fraunces', 'Georgia', 'serif'],
       },
       keyframes: {
