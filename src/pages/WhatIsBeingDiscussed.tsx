@@ -27,10 +27,10 @@ export default function WhatIsBeingDiscussed() {
               Alongside confirmed changes, there is active public discussion about deeper reform of SEND in England. These discussions are happening in Parliament, in select committees, across the sector, and in the media.
             </p>
             <p>
-              Nothing in this section is law. Nothing here has been enacted. These are ideas, proposals, and areas of debate that may shape future policy but are not settled.
+              <strong>Nothing in this section is law. Nothing here has been enacted.</strong> These are ideas, proposals, and areas of debate that may shape future policy but are not settled.
             </p>
             <p>
-              The common thread is this. The government is trying to reduce delay, conflict, and unsustainable cost, while families and professionals are trying to protect children's rights and access to real support. The tension sits between system efficiency and individual safeguards.
+              The common thread is this. The government is trying to reduce delay, conflict, and unsustainable cost, while families and professionals are trying to protect children's rights and access to real support. <strong>The tension sits between system efficiency and individual safeguards.</strong>
             </p>
           </div>
         }
@@ -42,16 +42,16 @@ export default function WhatIsBeingDiscussed() {
         </h2>
         <div className="prose-calm space-y-3">
           <p>
-            Right now, the impact is uncertainty rather than change.
+            Right now, <strong>the impact is uncertainty rather than change</strong>.
           </p>
           <p>
-            Parents may feel anxious because discussions are often reported without context. It can sound as if decisions have already been made, when they have not.
+            Parents may feel anxious because discussions are often reported without context. <strong>It can sound as if decisions have already been made, when they have not.</strong>
           </p>
           <p>
             For children, nothing changes today because of these debates. For families, the risk is emotional and cognitive load. Trying to plan for a future that is still being argued over can be exhausting, especially when you are already stretched.
           </p>
           <p>
-            Understanding what is under discussion, and what is not yet decided, helps reduce that uncertainty.
+            <strong>Understanding what is under discussion, and what is not yet decided, helps reduce that uncertainty.</strong>
           </p>
         </div>
       </section>
@@ -63,11 +63,11 @@ export default function WhatIsBeingDiscussed() {
         <div className="prose-calm space-y-3">
           <p>These points reflect themes and issues raised in the checked research set, not enacted policy.</p>
           <ul className="space-y-2">
-            <li>A SEND focused Schools White Paper is planned for late 2026.</li>
+            <li>A <strong>SEND focused Schools White Paper is planned for late 2026</strong>.</li>
             <li>A national SEND reform consultation process ran from December 2025 to January 2026.</li>
-            <li>Parliamentary committees and All Party Parliamentary Groups on SEND are actively scrutinising reform proposals.</li>
+            <li>Parliamentary committees and All Party Parliamentary Groups on SEND are <strong>actively scrutinising reform proposals</strong>.</li>
             <li>Tribunal volumes have increased significantly over the past decade, prompting debate about system design and incentives.</li>
-            <li>Local authority SEND deficits and workforce shortages are cited repeatedly as drivers of reform discussion.</li>
+            <li>Local authority SEND deficits and workforce shortages are cited repeatedly as <strong>drivers of reform discussion</strong>.</li>
           </ul>
         </div>
       </section>
@@ -81,7 +81,7 @@ export default function WhatIsBeingDiscussed() {
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">Tiered models of support</h3>
             <p>
-              One of the most discussed ideas is whether SEND support should be more clearly tiered.
+              One of the most discussed ideas is whether <strong>SEND support should be more clearly tiered</strong>.
             </p>
             <p>In simple terms, this means:</p>
             <ul className="space-y-2">
@@ -90,20 +90,20 @@ export default function WhatIsBeingDiscussed() {
               <li>EHCPs reserved for children with the most complex or multi-agency needs.</li>
             </ul>
             <p>
-              Supporters argue this could reduce delay and conflict by making early help reliable and consistent. Critics argue that tiering risks recreating older systems where children had to fail before qualifying for help.
+              Supporters argue this could reduce delay and conflict by making early help reliable and consistent. Critics argue that <strong>tiering risks recreating older systems where children had to fail before qualifying for help</strong>.
             </p>
             <p>
-              This debate is ongoing. No tiered model has been confirmed.
+              This debate is ongoing. <strong>No tiered model has been confirmed.</strong>
             </p>
           </div>
 
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">Reducing over-reliance on EHCPs</h3>
             <p>
-              There is broad agreement that too many families feel forced to seek EHCPs just to secure basic support.
+              There is broad agreement that <strong>too many families feel forced to seek EHCPs just to secure basic support</strong>.
             </p>
             <p>
-              The discussion is about how to strengthen support earlier, not whether EHCPs should exist. However, families are understandably concerned that reducing reliance could become reducing access if not done carefully.
+              The discussion is about how to strengthen support earlier, not whether EHCPs should exist. However, families are understandably concerned that <strong>reducing reliance could become reducing access if not done carefully</strong>.
             </p>
             <p>
               The question being debated is not whether EHCPs matter, but how to ensure they are used appropriately without leaving children unsupported.
@@ -116,10 +116,10 @@ export default function WhatIsBeingDiscussed() {
               Another area under discussion is how SEND funding flows through the system.
             </p>
             <p>
-              At present, funding is strongly tied to EHCPs. This creates incentives for escalation and defensiveness. Discussions include whether more funding should sit with schools or local partnerships to provide support earlier.
+              At present, <strong>funding is strongly tied to EHCPs</strong>. This creates incentives for escalation and defensiveness. Discussions include whether more funding should sit with schools or local partnerships to provide support earlier.
             </p>
             <p>
-              Parents are rightly asking how accountability would work if funding is less individualised. That question is central to the debate and remains unanswered.
+              Parents are rightly asking <strong>how accountability would work if funding is less individualised</strong>. That question is central to the debate and remains unanswered.
             </p>
           </div>
 
@@ -129,10 +129,10 @@ export default function WhatIsBeingDiscussed() {
               The volume of tribunal appeals has prompted debate about whether the system has become too legalistic.
             </p>
             <p>
-              Some argue the appeal system shows failure earlier in the process. Others worry that attempts to reduce appeals could weaken safeguards.
+              Some argue the appeal system shows failure earlier in the process. Others worry that <strong>attempts to reduce appeals could weaken safeguards</strong>.
             </p>
             <p>
-              There is no confirmed proposal to remove appeal rights. The discussion centres on whether better early decisions could reduce the need for appeals at all.
+              <strong>There is no confirmed proposal to remove appeal rights.</strong> The discussion centres on whether better early decisions could reduce the need for appeals at all.
             </p>
           </div>
 
@@ -142,17 +142,17 @@ export default function WhatIsBeingDiscussed() {
               There is active debate about how far a mainstream first approach should go.
             </p>
             <p>
-              Most agree mainstream should be better supported. Families are concerned about children being kept in unsuitable settings for cost or policy reasons.
+              Most agree mainstream should be better supported. Families are concerned about <strong>children being kept in unsuitable settings for cost or policy reasons</strong>.
             </p>
             <p>
-              The discussion is about balance, not absolutes. No policy currently forces children into mainstream against their needs.
+              The discussion is about balance, not absolutes. <strong>No policy currently forces children into mainstream against their needs.</strong>
             </p>
           </div>
 
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">The pace and shape of reform</h3>
             <p>
-              Finally, there is debate about timing. Some want rapid change because the system is failing now. Others warn that rushed reform risks unintended harm.
+              Finally, there is debate about timing. Some want rapid change because the system is failing now. Others warn that <strong>rushed reform risks unintended harm</strong>.
             </p>
             <p>
               This is why consultation, piloting, and phased implementation feature so heavily in the current approach.
@@ -162,10 +162,10 @@ export default function WhatIsBeingDiscussed() {
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">What this discussion phase really means</h3>
             <p>
-              Discussion does not equal decision. Public debate is part of how policy is tested, challenged, and improved.
+              <strong>Discussion does not equal decision.</strong> Public debate is part of how policy is tested, challenged, and improved.
             </p>
             <p>
-              For parents, the most important thing to know is that voices are being heard. Many of the concerns raised by families are the same concerns shaping the debate.
+              For parents, the most important thing to know is that <strong>voices are being heard</strong>. Many of the concerns raised by families are the same concerns shaping the debate.
             </p>
           </div>
 

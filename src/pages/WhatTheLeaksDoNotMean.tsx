@@ -28,13 +28,13 @@ export default function WhatTheLeaksDoNotMean() {
         prose={
           <div className="space-y-3">
             <p>
-              Leaks are not designed to help parents. They are designed to test ideas, manage risk, and shape reaction.
+              Leaks are not designed to help parents. <strong>They are designed to test ideas, manage risk, and shape reaction.</strong>
             </p>
             <p>
               They arrive without safeguards, without timelines, and without explanation. In a system where many parents already feel unsafe, they land hard.
             </p>
             <p>
-              A leak does not mean a decision has been made. It does not mean your child is about to lose support. It does not change the law.
+              <strong>A leak does not mean a decision has been made.</strong> It does not mean your child is about to lose support. It does not change the law.
             </p>
             <p>
               This section exists to help you read leaks without being pulled into panic or forced into rushed decisions that may not serve your child.
@@ -49,16 +49,16 @@ export default function WhatTheLeaksDoNotMean() {
         </h2>
         <div className="prose-calm space-y-3">
           <p>
-            Leaks affect parents first. They heighten fear, urgency, and exhaustion. They can push families into action before they are ready or before it is actually needed.
+            Leaks affect parents first. <strong>They heighten fear, urgency, and exhaustion.</strong> They can push families into action before they are ready or before it is actually needed.
           </p>
           <p>
             Children then feel the impact indirectly. Adults under threat behave differently. Home becomes more tense. School decisions feel heavier. Trust feels fragile.
           </p>
           <p>
-            The real risk is not the leak itself. It is the pressure it puts on families to act from fear rather than need.
+            <strong>The real risk is not the leak itself. It is the pressure it puts on families to act from fear rather than need.</strong>
           </p>
           <p>
-            Understanding what leaks are, and what they are not, helps protect both you and your child.
+            Understanding what leaks are, and what they are not, <strong>helps protect both you and your child</strong>.
           </p>
         </div>
       </section>
@@ -71,11 +71,11 @@ export default function WhatTheLeaksDoNotMean() {
           <p>This section is about interpretation, not new policy data.</p>
           <p>From the checked research set:</p>
           <ul className="space-y-2">
-            <li>No leaked SEND reform proposal has been published as a White Paper.</li>
-            <li>No leaked proposal has been introduced to Parliament.</li>
-            <li>No leaked idea has legal force.</li>
-            <li>Any change to EHCP rights, thresholds, or appeals would require primary legislation.</li>
-            <li>Existing statutory SEND rights remain in place as of mid-February 2026.</li>
+            <li><strong>No leaked SEND reform proposal has been published as a White Paper.</strong></li>
+            <li><strong>No leaked proposal has been introduced to Parliament.</strong></li>
+            <li><strong>No leaked idea has legal force.</strong></li>
+            <li>Any change to EHCP rights, thresholds, or appeals would require <strong>primary legislation</strong>.</li>
+            <li>Existing statutory SEND rights <strong>remain in place as of mid-February 2026</strong>.</li>
           </ul>
         </div>
       </section>
@@ -88,7 +88,7 @@ export default function WhatTheLeaksDoNotMean() {
 
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">Start with what cannot change overnight</h3>
-            <p>Until the law changes, these facts hold:</p>
+            <p><strong>Until the law changes, these facts hold:</strong></p>
             <ul className="space-y-2">
               <li>EHCPs remain statutory and enforceable.</li>
               <li>Local authorities remain responsible for securing provision in EHCPs.</li>
@@ -96,7 +96,7 @@ export default function WhatTheLeaksDoNotMean() {
               <li>Parents retain the right to appeal decisions.</li>
             </ul>
             <p>
-              A leak cannot switch these off. A headline does not override legislation.
+              <strong>A leak cannot switch these off. A headline does not override legislation.</strong>
             </p>
             <p>
               This is the ground you stand on, even when everything feels uncertain.
@@ -115,7 +115,7 @@ export default function WhatTheLeaksDoNotMean() {
               <li>Shifting the narrative towards change being inevitable.</li>
             </ul>
             <p>
-              SEND reform is politically sensitive, legally complex, and expensive. Leaks allow ideas to be floated without owning them.
+              SEND reform is politically sensitive, legally complex, and expensive. <strong>Leaks allow ideas to be floated without owning them.</strong>
             </p>
             <p>
               These messages are not written for parents. They are written for policy shaping.
@@ -124,7 +124,7 @@ export default function WhatTheLeaksDoNotMean() {
 
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">What leaks usually leave out</h3>
-            <p>Leaks strip away the parts that matter most to families:</p>
+            <p><strong>Leaks strip away the parts that matter most to families:</strong></p>
             <ul className="space-y-2">
               <li>Who would be protected.</li>
               <li>What happens to children who already have EHCPs.</li>
@@ -133,13 +133,13 @@ export default function WhatTheLeaksDoNotMean() {
               <li>What challenge or appeal routes would exist.</li>
             </ul>
             <p>
-              Without these details, any idea will sound harsher and more threatening than it would be in practice.
+              <strong>Without these details, any idea will sound harsher and more threatening than it would be in practice.</strong>
             </p>
           </div>
 
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">The fear underneath the headline</h3>
-            <p>Most parents are not afraid of reform in theory. They are afraid of loss.</p>
+            <p>Most parents are not afraid of reform in theory. <strong>They are afraid of loss.</strong></p>
             <p>Common fears include:</p>
             <ul className="space-y-2">
               <li>My child will lose the support that is keeping them safe.</li>
@@ -149,20 +149,20 @@ export default function WhatTheLeaksDoNotMean() {
               <li>I do not have the strength for another fight.</li>
             </ul>
             <p>
-              These fears are rational. They come from lived experience, not overreaction.
+              <strong>These fears are rational. They come from lived experience, not overreaction.</strong>
             </p>
           </div>
 
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">A simple way to filter leaks</h3>
-            <p>When you see a leak, ask three questions:</p>
+            <p><strong>When you see a leak, ask three questions:</strong></p>
             <ul className="space-y-2">
               <li>What exactly is this source.</li>
               <li>What would have to happen for this to become real.</li>
               <li>What does my child need this month.</li>
             </ul>
             <p>
-              The third question matters most. It protects your child now, not an imagined future system.
+              <strong>The third question matters most.</strong> It protects your child now, not an imagined future system.
             </p>
           </div>
 
@@ -173,7 +173,7 @@ export default function WhatTheLeaksDoNotMean() {
             </p>
             <p>The difference is motive.</p>
             <p>
-              Acting because your child needs protection is grounded.
+              <strong>Acting because your child needs protection is grounded.</strong>
             </p>
             <p>
               Acting only because of a headline often leads to burnout.
@@ -191,24 +191,24 @@ export default function WhatTheLeaksDoNotMean() {
               <li>Which rights may be under threat.</li>
               <li>Where parent voices will matter most.</li>
             </ul>
-            <p>They are signals, not instructions.</p>
+            <p><strong>They are signals, not instructions.</strong></p>
           </div>
 
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">The bottom line, without false reassurance</h3>
-            <p>You are allowed to feel scared and still think clearly.</p>
+            <p><strong>You are allowed to feel scared and still think clearly.</strong></p>
             <p>Right now:</p>
             <ul className="space-y-2">
               <li>Reform is being discussed.</li>
               <li>Some improvements are confirmed and underway.</li>
-              <li>Major rights changes are not confirmed.</li>
-              <li>The law protecting your child has not changed.</li>
+              <li><strong>Major rights changes are not confirmed.</strong></li>
+              <li><strong>The law protecting your child has not changed.</strong></li>
             </ul>
             <p>
-              If a change would seriously affect your child's rights, it would not arrive quietly. It would come with consultation, scrutiny, and time.
+              If a change would seriously affect your child's rights, <strong>it would not arrive quietly</strong>. It would come with consultation, scrutiny, and time.
             </p>
             <p>
-              You are not missing a secret deadline. You are not already too late.
+              <strong>You are not missing a secret deadline. You are not already too late.</strong>
             </p>
           </div>
 
