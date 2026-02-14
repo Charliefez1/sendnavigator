@@ -172,7 +172,7 @@ const Index = () => {
             </div>
 
             {/* What we help with */}
-            <div className="grid gap-3 grid-cols-3 mt-6">
+            <div className="grid gap-3 grid-cols-1 sm:grid-cols-3 mt-6">
               <div className="bg-card border border-border rounded-xl p-4">
                 <CheckCircle2 className="w-6 h-6 text-status-confirmed mb-2" />
                 <h3 className="font-medium text-foreground text-sm mb-1">What's confirmed</h3>
@@ -200,19 +200,19 @@ const Index = () => {
       </section>
 
       {/* Q&A */}
-      <section className="content-section pb-12 border-t border-border pt-10">
+      <section className="content-section py-8 border-t border-border">
         <QandAComponent />
       </section>
 
       {/* About this resource */}
-      <section className="content-section pb-12 border-t border-border pt-10">
+      <section className="content-section py-8 border-t border-border">
         <div className="flex items-start gap-4 bg-card border border-border rounded-xl p-5 shadow-lg">
           <Heart className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
           <div>
             <h2 className="text-lg font-semibold text-foreground mb-3">
               Made for families like yours
             </h2>
-            <div className="space-y-2 text-muted-foreground text-sm leading-relaxed" style={{ fontSize: '14px' }}>
+            <div className="space-y-2 text-muted-foreground text-sm leading-relaxed">
               <p>
                 This is an independent resource, not government, not a campaign. We don't give advice
                 or tell you what to do. We just help you understand what's happening.

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Search, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 
 export function AskAICompact() {
@@ -23,13 +24,13 @@ export function AskAICompact() {
         </div>
         <div className="flex gap-2">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <input
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+            <Input
               type="text"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
               placeholder="Type your question..."
-              className="w-full pl-9 pr-3 py-2.5 min-h-[44px] bg-background border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent shadow-sm"
+              className="pl-9"
               maxLength={500}
               aria-label="Ask a question about SEND reform"
             />

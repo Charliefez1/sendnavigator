@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { PageHeader } from "@/components/PageHeader";
+import { PageOrientation } from "@/components/templates";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
@@ -79,14 +79,14 @@ export default function Feedback() {
     <Layout>
       <SEOHead title="Feedback & Comments" description="Share your thoughts, report issues, or challenge the information on the site. All submissions are reviewed." path="/feedback" />
       <div className="content-section py-8 space-y-8">
-        <PageHeader
+        <PageOrientation
           title="Feedback & Comments"
           description="Share your thoughts, suggestions, or report issues. Let us know if we have made a mistake or you want to challenge the information on the site. All submissions are reviewed before publishing."
         />
 
         {/* Submission form */}
-        <div className="bg-card border border-border rounded-2xl p-5 space-y-4 shadow-lg">
-          <h2 className="font-display text-lg font-semibold">Leave Feedback</h2>
+        <div className="bg-card border border-border rounded-xl p-5 space-y-4 shadow-lg">
+          <h2 className="text-lg font-semibold text-foreground">Leave Feedback</h2>
 
           {submitted ? (
             <div className="text-center py-6">
@@ -145,12 +145,12 @@ export default function Feedback() {
           {isLoading ? (
             <div className="space-y-4">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="h-20 bg-muted animate-pulse rounded-2xl" />
+                <div key={i} className="h-20 bg-muted animate-pulse rounded-xl" />
               ))}
             </div>
           ) : feedbackItems && feedbackItems.length > 0 ? (
             feedbackItems.map((item) => (
-              <div key={item.id} className="bg-card border border-border rounded-2xl p-4 space-y-2 shadow-lg">
+              <div key={item.id} className="bg-card border border-border rounded-xl p-4 space-y-2 shadow-lg">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <span className="text-xs font-semibold bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full">

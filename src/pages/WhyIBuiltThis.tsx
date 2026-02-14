@@ -1,11 +1,11 @@
 import { Layout } from "@/components/Layout";
-import { PageHeader } from "@/components/PageHeader";
+import { PageOrientation } from "@/components/templates";
 import { Link } from "react-router-dom";
 
 const WhyIBuiltThis = () => {
   return (
     <Layout>
-      <PageHeader
+      <PageOrientation
         title="Why I Built the SEND Navigator"
         description="A personal statement from Rich Ferriman"
         lastUpdated="7th February 2026"

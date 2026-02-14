@@ -44,7 +44,7 @@ export function ContactDetails({ showTitle = true }: ContactDetailsProps) {
         {contacts.map((contact) => (
           <div 
             key={contact.email} 
-            className="p-4 rounded-lg bg-muted/30 border border-border space-y-3"
+            className="p-4 rounded-xl bg-card border border-border shadow-lg space-y-3"
           >
             <div>
               <h3 className="font-semibold text-foreground">{contact.name}</h3>

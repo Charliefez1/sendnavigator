@@ -1,5 +1,5 @@
 import { Layout } from "@/components/Layout";
-import { PageHeader } from "@/components/PageHeader";
+import { PageOrientation } from "@/components/templates";
 import { AskQuestionCompact } from "@/components/AskQuestionCompact";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
@@ -30,8 +30,8 @@ export default function CommunityQuestions() {
   return (
     <Layout>
       <div className="content-section py-8 space-y-8">
-        <PageHeader
-          title="Lived Experience &amp; Comments"
+        <PageOrientation
+          title="Lived Experience & Comments"
           description="Comments and experiences shared by families and professionals navigating SEND. Share yours below. Approved contributions help others."
         />
 
@@ -40,13 +40,13 @@ export default function CommunityQuestions() {
         {isLoading ? (
           <div className="space-y-4">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="h-24 bg-muted animate-pulse rounded-2xl" />
+              <div key={i} className="h-24 bg-muted animate-pulse rounded-xl" />
             ))}
           </div>
         ) : questions && questions.length > 0 ? (
           <div className="space-y-4">
             {questions.map((q) => (
-              <div key={q.id} className="bg-card border border-border rounded-2xl p-5 space-y-3">
+              <div key={q.id} className="bg-card border border-border rounded-xl p-5 space-y-3 shadow-lg">
                 <div className="flex items-start gap-3">
                   <MessageCircleQuestion className="h-5 w-5 text-primary mt-0.5 shrink-0" />
                   <div className="space-y-2 flex-1">
