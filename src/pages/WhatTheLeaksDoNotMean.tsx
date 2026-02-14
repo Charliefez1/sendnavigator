@@ -8,6 +8,7 @@ import {
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
+import { RightsChecklist } from "@/components/templates/DataVisuals";
 import { Users, BarChart3, Shield, HelpCircle, EyeOff, Heart, Filter, Zap, Lightbulb, Anchor } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -34,7 +35,7 @@ export default function WhatTheLeaksDoNotMean() {
       <PageOrientation
         title="What leaks do not mean, and why they happen at all"
         description="Understanding leaked proposals without being pulled into panic or rushed decisions."
-        lastUpdated="13th February 2026"
+        lastUpdated="14th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
@@ -94,19 +95,18 @@ export default function WhatTheLeaksDoNotMean() {
       </ContentBox>
 
       <ContentBox id="ground" icon={Shield} title="Start with what cannot change overnight">
-        <div className="space-y-3">
-          <p><strong>Until the law changes, these facts hold:</strong></p>
-          <ul className="space-y-2">
-            <li>EHCPs remain statutory and enforceable.</li>
-            <li>Local authorities remain responsible for securing provision in EHCPs.</li>
-            <li>Parents retain the right to request assessment.</li>
-            <li>Parents retain the right to appeal decisions.</li>
-          </ul>
-          <p>
-            <strong>A leak cannot switch these off. A headline does not override legislation.</strong>
-          </p>
-          <p>
-            This is the ground you stand on, even when everything feels uncertain.
+        <div className="space-y-4">
+          <RightsChecklist
+            title="Until the law changes, these facts hold"
+            items={[
+              "EHCPs remain statutory and enforceable",
+              "Local authorities remain responsible for securing provision in EHCPs",
+              "Parents retain the right to request assessment",
+              "Parents retain the right to appeal decisions",
+            ]}
+          />
+          <p className="text-sm text-muted-foreground">
+            <strong>A leak cannot switch these off. A headline does not override legislation.</strong> This is the ground you stand on, even when everything feels uncertain.
           </p>
         </div>
       </ContentBox>
