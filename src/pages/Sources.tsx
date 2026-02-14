@@ -2,8 +2,7 @@ import { Layout } from "@/components/Layout";
 import { PageOrientation } from "@/components/templates";
 import { SourceCard } from "@/components/SourceCard";
 import { Card, CardContent } from "@/components/ui/card";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
-import { AlertCircle, TrendingUp, ShieldAlert, Users } from "lucide-react";
+import { AlertCircle, TrendingUp, ShieldAlert, Users, BarChart3, BookOpen, FileCheck, Heart } from "lucide-react";
 import { communitySourceCategories } from "@/config/community-sources";
 
 // ─── Statistics data ───
@@ -200,6 +199,30 @@ function BulletList({ items }: { items: string[] }) {
   );
 }
 
+// ─── Section wrapper ───
+
+function PageSection({ icon: Icon, title, summary, children }: {
+  icon: React.ElementType;
+  title: string;
+  summary: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="content-section py-10 border-t border-border">
+      <div className="flex items-start gap-4 mb-6">
+        <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
+          <Icon className="w-5 h-5 text-primary" />
+        </div>
+        <div>
+          <h2 className="text-xl font-semibold text-foreground">{title}</h2>
+          <p className="text-sm text-muted-foreground mt-1">{summary}</p>
+        </div>
+      </div>
+      {children}
+    </section>
+  );
+}
+
 // ─── Page ───
 
 export default function Sources() {
@@ -211,185 +234,149 @@ export default function Sources() {
         lastUpdated="7th February 2026"
       />
 
-      <div className="content-section py-8">
-        <Accordion type="multiple" defaultValue={["statistics", "sources"]} className="space-y-4">
+      {/* ═══ STATISTICS ═══ */}
+      <PageSection
+        icon={BarChart3}
+        title="Statistics and data"
+        summary="The most recent official SEND figures for England, showing system scale and pressures."
+      >
+        <h3 className="text-lg font-semibold text-foreground mb-4">Summary facts</h3>
+        <BulletList items={summaryFacts} />
 
-          {/* ═══ STATISTICS SECTION ═══ */}
-          <AccordionItem value="statistics" className="border border-border rounded-lg px-4">
-            <AccordionTrigger className="text-xl font-semibold text-foreground hover:no-underline">
-              Statistics and data
-            </AccordionTrigger>
-            <AccordionContent>
-              <p className="text-muted-foreground leading-relaxed max-w-3xl mb-6">
-                Key SEND statistics for England, using the most recent official data available as of 07 February 2026. These figures show the current scale and pressures in the system.
-              </p>
-
-              <h3 className="text-lg font-semibold text-foreground mb-4">Summary facts</h3>
-              <BulletList items={summaryFacts} />
-
-              <div className="mt-8">
-                <h3 className="text-lg font-semibold text-foreground mb-6">Confirmed position as of 07 February 2026</h3>
-                <p className="text-muted-foreground mb-6">
-                  The statutory timescale for an EHC needs assessment to a final EHC plan is 20 weeks.
-                </p>
-                <div className="space-y-8">
-                  {statSections.map((section) => (
-                    <div key={section.title}>
-                      <h4 className="text-base font-medium text-foreground mb-3">{section.title}</h4>
-                      <BulletList items={section.items} />
-                    </div>
-                  ))}
-                </div>
+        <div className="mt-8">
+          <h3 className="text-lg font-semibold text-foreground mb-6">Confirmed position as of 07 February 2026</h3>
+          <p className="text-muted-foreground mb-6">
+            The statutory timescale for an EHC needs assessment to a final EHC plan is 20 weeks.
+          </p>
+          <div className="space-y-8">
+            {statSections.map((section) => (
+              <div key={section.title}>
+                <h4 className="text-base font-medium text-foreground mb-3">{section.title}</h4>
+                <BulletList items={section.items} />
               </div>
-            </AccordionContent>
-          </AccordionItem>
+            ))}
+          </div>
+        </div>
+      </PageSection>
 
-          {/* ═══ PROJECTED FIGURES ═══ */}
-          <AccordionItem value="projections" className="border border-border rounded-lg px-4">
-            <AccordionTrigger className="hover:no-underline">
-              <div className="flex items-center gap-3">
-                <TrendingUp className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-                <span className="text-lg font-semibold text-foreground">Projected and forecast figures</span>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              <p className="text-sm text-muted-foreground mb-4">These are not current facts. They are published projections.</p>
-              <Card className="bg-muted/30 border-border">
-                <CardContent className="pt-6">
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3 text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
-                      <span>The annual Dedicated Schools Grant deficit is projected to exceed £6 billion in 2028/29.</span>
-                    </li>
-                    <li className="flex items-start gap-3 text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
-                      <span>Parliamentary debate has referenced a projected annual deficit of £6.3 billion in 2028/29, with a larger cumulative deficit across the spending review period.</span>
-                    </li>
-                    <li className="flex items-start gap-3 text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
-                      <span>Local Government Association analysis projects a SEND funding gap of £2.3 billion in 2025/26, rising to £3.9 billion in 2026/27.</span>
-                    </li>
-                  </ul>
-                </CardContent>
-              </Card>
-            </AccordionContent>
-          </AccordionItem>
+      {/* ═══ PROJECTED FIGURES ═══ */}
+      <PageSection
+        icon={TrendingUp}
+        title="Projected and forecast figures"
+        summary="Published projections about future SEND demand and funding. These are not current facts."
+      >
+        <Card className="bg-muted/30 border-border">
+          <CardContent className="pt-6">
+            <ul className="space-y-3">
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                <span>The annual Dedicated Schools Grant deficit is projected to exceed £6 billion in 2028/29.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                <span>Parliamentary debate has referenced a projected annual deficit of £6.3 billion in 2028/29, with a larger cumulative deficit across the spending review period.</span>
+              </li>
+              <li className="flex items-start gap-3 text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                <span>Local Government Association analysis projects a SEND funding gap of £2.3 billion in 2025/26, rising to £3.9 billion in 2026/27.</span>
+              </li>
+            </ul>
+          </CardContent>
+        </Card>
+      </PageSection>
 
-          {/* ═══ CLARIFICATIONS ═══ */}
-          <AccordionItem value="clarifications" className="border border-border rounded-lg px-4">
-            <AccordionTrigger className="hover:no-underline">
-              <div className="flex items-center gap-3">
-                <AlertCircle className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-                <span className="text-lg font-semibold text-foreground">Important clarifications for readers</span>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              <div className="space-y-4 text-muted-foreground">
-                <div>
-                  <p className="mb-2">EHC plan numbers are published using two different measures:</p>
-                  <ul className="ml-6 space-y-1">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1 h-1 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
-                      <span>Pupil counts in school census data.</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1 h-1 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
-                      <span>Children and young people aged 0 to 25 with active plans.</span>
-                    </li>
-                  </ul>
-                  <p className="mt-2">These figures describe different populations and will not match.</p>
-                </div>
-                <p>Tribunal outcome percentages are not included here because published sources use different methods and definitions.</p>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
+      {/* ═══ CLARIFICATIONS ═══ */}
+      <PageSection
+        icon={AlertCircle}
+        title="Important clarifications for readers"
+        summary="How to interpret the statistics and why some figures may appear to conflict."
+      >
+        <div className="space-y-4 text-muted-foreground">
+          <div>
+            <p className="mb-2">EHC plan numbers are published using two different measures:</p>
+            <ul className="ml-6 space-y-1">
+              <li className="flex items-start gap-2">
+                <span className="w-1 h-1 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                <span>Pupil counts in school census data.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1 h-1 rounded-full bg-muted-foreground mt-2 flex-shrink-0" />
+                <span>Children and young people aged 0 to 25 with active plans.</span>
+              </li>
+            </ul>
+            <p className="mt-2">These figures describe different populations and will not match.</p>
+          </div>
+          <p>Tribunal outcome percentages are not included here because published sources use different methods and definitions.</p>
+        </div>
+      </PageSection>
 
-          {/* ═══ SOURCES SECTION ═══ */}
-          <AccordionItem value="sources" className="border border-border rounded-lg px-4">
-            <AccordionTrigger className="text-xl font-semibold text-foreground hover:no-underline">
-              Sources used
-            </AccordionTrigger>
-            <AccordionContent>
-              <p className="text-muted-foreground mb-8">
-                All factual claims across this resource are traceable to these materials.
-              </p>
-              <div className="space-y-10">
-                {sourceCategories.map((category) => (
-                  <div key={category.title}>
-                    <h3 className="text-base font-semibold text-foreground mb-4">{category.title}</h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                      {category.sources.map((source) => (
-                        <SourceCard key={source.url} name={source.name} url={source.url} />
-                      ))}
-                    </div>
-                  </div>
+      {/* ═══ SOURCES ═══ */}
+      <PageSection
+        icon={BookOpen}
+        title="Sources used"
+        summary="All factual claims across this resource are traceable to these materials."
+      >
+        <div className="space-y-10">
+          {sourceCategories.map((category) => (
+            <div key={category.title}>
+              <h3 className="text-base font-semibold text-foreground mb-4">{category.title}</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {category.sources.map((source) => (
+                  <SourceCard key={source.url} name={source.name} url={source.url} />
                 ))}
               </div>
-            </AccordionContent>
-          </AccordionItem>
+            </div>
+          ))}
+        </div>
+      </PageSection>
 
-          {/* ═══ COMMUNITY SOURCES ═══ */}
-          <AccordionItem value="community" className="border border-border rounded-lg px-4">
-            <AccordionTrigger className="hover:no-underline">
-              <div className="flex items-center gap-3">
-                <Users className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-                <span className="text-xl font-semibold text-foreground">Articles and information from the SEND Community</span>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              <p className="text-muted-foreground mb-8">
-                Lived experience articles, parent stories, and community voices referenced by the knowledge base.
-              </p>
-              <div className="space-y-10">
-                {communitySourceCategories.map((category) => (
-                  <div key={category.title}>
-                    <h3 className="text-base font-semibold text-foreground mb-4">{category.title}</h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                      {category.sources.map((source) => (
-                        <SourceCard key={source.url} name={source.name} url={source.url} />
-                      ))}
-                    </div>
-                  </div>
+      {/* ═══ COMMUNITY SOURCES ═══ */}
+      <PageSection
+        icon={Users}
+        title="Articles and information from the SEND Community"
+        summary="Lived experience articles, parent stories, and community voices referenced by the knowledge base."
+      >
+        <div className="space-y-10">
+          {communitySourceCategories.map((category) => (
+            <div key={category.title}>
+              <h3 className="text-base font-semibold text-foreground mb-4">{category.title}</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {category.sources.map((source) => (
+                  <SourceCard key={source.url} name={source.name} url={source.url} />
                 ))}
               </div>
-            </AccordionContent>
-          </AccordionItem>
+            </div>
+          ))}
+        </div>
+      </PageSection>
 
-          {/* ═══ HOW WE USE SOURCES ═══ */}
-          <AccordionItem value="how-we-use" className="border border-border rounded-lg px-4">
-            <AccordionTrigger className="text-lg font-semibold text-foreground hover:no-underline">
-              How we use sources
-            </AccordionTrigger>
-            <AccordionContent>
-              <div className="space-y-3 text-muted-foreground">
-                <p>Government announcements, legislation, and official consultations form our primary sources. These are always marked as confirmed.</p>
-                <p>We reference established news outlets and specialist education media when reporting on developments being discussed or leaked.</p>
-                <p>Where sources disagree or information is contested, we note this clearly. We do not present contested information as fact.</p>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
+      {/* ═══ HOW WE USE SOURCES ═══ */}
+      <PageSection
+        icon={FileCheck}
+        title="How we use sources"
+        summary="Our approach to verifying and presenting information across the resource."
+      >
+        <div className="space-y-3 text-muted-foreground">
+          <p>Government announcements, legislation, and official consultations form our primary sources. These are always marked as confirmed.</p>
+          <p>We reference established news outlets and specialist education media when reporting on developments being discussed or leaked.</p>
+          <p>Where sources disagree or information is contested, we note this clearly. We do not present contested information as fact.</p>
+        </div>
+      </PageSection>
 
-          {/* ═══ EXTERNAL CONTENT DISCLAIMER ═══ */}
-          <AccordionItem value="disclaimer" className="border border-border rounded-lg px-4">
-            <AccordionTrigger className="hover:no-underline">
-              <div className="flex items-center gap-3">
-                <ShieldAlert className="w-5 h-5 text-muted-foreground flex-shrink-0" />
-                <span className="text-lg font-semibold text-foreground">External content disclaimer</span>
-              </div>
-            </AccordionTrigger>
-            <AccordionContent>
-              <div className="space-y-3 text-muted-foreground">
-                <p>This website includes links to external articles, blogs, forums, and third-party resources.</p>
-                <p>These links are provided for information and context only. The views, opinions, experiences, and accuracy of the content belong entirely to the original authors or publishers.</p>
-                <p>We do not control, endorse, verify, or take responsibility for the content of external websites, including any advice, claims, or conclusions they present.</p>
-                <p>Information shared in linked resources should not be treated as professional, medical, legal, or educational advice. Readers should use their own judgement and, where appropriate, seek independent professional guidance.</p>
-                <p>External content may change or be removed without notice.</p>
-              </div>
-            </AccordionContent>
-          </AccordionItem>
-
-        </Accordion>
-      </div>
+      {/* ═══ EXTERNAL CONTENT DISCLAIMER ═══ */}
+      <PageSection
+        icon={ShieldAlert}
+        title="External content disclaimer"
+        summary="Important information about linked third-party content and how it should be used."
+      >
+        <div className="space-y-3 text-muted-foreground">
+          <p>This website includes links to external articles, blogs, forums, and third-party resources.</p>
+          <p>These links are provided for information and context only. The views, opinions, experiences, and accuracy of the content belong entirely to the original authors or publishers.</p>
+          <p>We do not control, endorse, verify, or take responsibility for the content of external websites, including any advice, claims, or conclusions they present.</p>
+          <p>Information shared in linked resources should not be treated as professional, medical, legal, or educational advice. Readers should use their own judgement and, where appropriate, seek independent professional guidance.</p>
+          <p>External content may change or be removed without notice.</p>
+        </div>
+      </PageSection>
 
       <div className="content-section pb-16" />
     </Layout>
