@@ -4,7 +4,7 @@ import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { useExperienceMode, ExperienceMode } from "@/contexts/ExperienceModeContext";
 import { usePageSections } from "@/contexts/PageSectionsContext";
-import neurodiversityLogo from "@/assets/neurodiversity-global-logo.jpeg";
+
 
 const experienceModes: { mode: ExperienceMode; label: string; icon: typeof BookOpen }[] = [
   { mode: "read", label: "Read", icon: BookOpen },
@@ -102,21 +102,6 @@ export function ExperienceSelector() {
         </div>
         </div>
 
-        {/* Neurodiversity Global logo */}
-        <a
-          href="https://neurodiversityglobal.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="shrink-0 ml-auto"
-          aria-label="Neurodiversity Global"
-          title="Neurodiversity Global"
-        >
-          <img
-            src={neurodiversityLogo}
-            alt="Neurodiversity Global"
-            className="h-6 w-6 rounded-full object-cover"
-          />
-        </a>
       </div>
     </div>
   );
