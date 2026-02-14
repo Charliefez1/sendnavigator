@@ -75,7 +75,7 @@ export default function WhatHappensNext() {
 
       <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
         <div className="space-y-3">
-          <p>From the checked research set:</p>
+          <p>Here is what we know about the timeline:</p>
           <ul className="space-y-2">
             <li><strong>No SEND reform legislation has been introduced</strong> as of mid-February 2026.</li>
             <li>A SEND focused White Paper is <strong>expected later in 2026</strong>, not yet published.</li>

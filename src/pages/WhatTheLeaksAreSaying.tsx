@@ -70,12 +70,12 @@ export default function WhatTheLeaksAreSaying() {
 
       <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
         <div className="space-y-3">
-          <p>These points describe the nature of reporting, not enacted change.</p>
+          <p>These points describe the nature of the reporting, not enacted change.</p>
           <ul className="space-y-2">
             <li><strong>No unconfirmed report has been adopted into law.</strong></li>
             <li><strong>No leaked proposal has been formally published as government policy.</strong></li>
             <li>All major changes to SEND would require <strong>primary legislation, which has not been introduced</strong>.</li>
-            <li>Media reports referenced in the checked research set are attributed to anonymous sources, not formal announcements.</li>
+            <li>Media reports are attributed to anonymous sources, not formal announcements.</li>
           </ul>
         </div>
       </ContentBox>

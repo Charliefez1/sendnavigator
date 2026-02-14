@@ -70,7 +70,7 @@ export default function WhatHasNotChanged() {
 
       <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
         <div className="space-y-3">
-          <p>These facts reflect what has remained unchanged, based on the checked research set.</p>
+          <p>These facts reflect what has remained unchanged.</p>
           <ul className="space-y-2">
             <li><strong>The Children and Families Act 2014 remains the legal framework</strong> for SEND in England.</li>
             <li><strong>Education, Health and Care Plans remain statutory and legally enforceable.</strong></li>
@@ -152,7 +152,7 @@ export default function WhatHasNotChanged() {
             <strong>There is no confirmed policy that removes EHCPs from children already holding them.</strong> There is no confirmed policy that forces children out of specialist provision or into mainstream.
           </p>
           <p>
-            Any claims suggesting that rights have already been taken away are <strong>not supported by the checked research set</strong>.
+            Any claims suggesting that rights have already been taken away are <strong>not supported by the evidence</strong>.
           </p>
         </div>
       </ContentBox>

@@ -73,7 +73,7 @@ export default function WhatIsBeingDiscussed() {
 
       <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
         <div className="space-y-3">
-          <p>These points reflect themes and issues raised in the checked research set, not enacted policy.</p>
+          <p>These points reflect themes and issues being raised publicly, not enacted policy.</p>
           <ul className="space-y-2">
             <li>A <strong>SEND focused Schools White Paper is planned for late 2026</strong>.</li>
             <li>A national SEND reform consultation process ran from December 2025 to January 2026.</li>

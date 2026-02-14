@@ -73,7 +73,7 @@ export default function WhatIsChanging() {
 
       <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
         <div className="space-y-3">
-          <p>These points are drawn directly from the checked research set.</p>
+          <p>These are the confirmed facts.</p>
           <ul className="space-y-2">
             <li>National SEND standards are confirmed as government policy direction, with <strong>consultation and phased introduction planned for 2026 to 2027</strong>.</li>
             <li>A digital first, standardised approach to EHCP processes is confirmed, with <strong>pilots already running in selected areas</strong>.</li>

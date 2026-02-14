@@ -73,7 +73,7 @@ export default function WhatWeDoNotKnow() {
 
       <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
         <div className="space-y-3">
-          <p>This section focuses on known unknowns. The checked research set confirms these areas are unresolved.</p>
+          <p>These areas remain genuinely unresolved.</p>
           <ul className="space-y-2">
             <li><strong>No draft legislation has been published</strong> setting out changes to EHCP eligibility.</li>
             <li><strong>No final national SEND standards have been published.</strong></li>
