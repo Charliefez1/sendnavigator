@@ -78,10 +78,13 @@ export default function WhatHappensNext() {
           <p>Here is what we know about the timeline:</p>
           <ul className="space-y-2">
             <li><strong>No SEND reform legislation has been introduced</strong> as of mid-February 2026.</li>
-            <li>A SEND focused White Paper is <strong>expected later in 2026</strong>, not yet published.</li>
+            <li>A SEND focused <strong>White Paper is expected in early 2026</strong>, not yet published. It was originally expected in autumn 2025 but was delayed for further consultation.</li>
+            <li>Councils must submit <strong>local SEND reform plans by autumn 2026</strong> to qualify for the deficit bailout.</li>
+            <li>All local areas will be inspected under the <strong>new Ofsted and CQC SEND framework by 2027</strong>.</li>
+            <li>From <strong>2028 to 2029, central government takes full responsibility</strong> for SEND spending growth.</li>
+            <li>Leaked reports (unconfirmed) suggest <strong>full implementation of major reforms might not happen until 2029 to 2030</strong>.</li>
             <li>Any legislative change would take <strong>at least one Parliamentary session to pass</strong>.</li>
-            <li>Implementation would require phased transition, <strong>likely extending into 2027 or beyond</strong>.</li>
-            <li><strong>Existing EHCPs cannot be withdrawn without lawful process.</strong></li>
+            <li><strong>Existing EHCPs cannot be withdrawn without lawful process.</strong> Any transition is expected to be phased gradually.</li>
           </ul>
         </div>
       </ContentBox>

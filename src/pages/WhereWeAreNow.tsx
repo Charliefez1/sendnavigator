@@ -72,13 +72,15 @@ export default function WhereWeAreNow() {
         <div className="space-y-3">
           <p>These figures relate to England.</p>
           <ul className="space-y-2">
-            <li>Legal framework: Children and Families Act 2014 introduced Education, Health and Care Plans.</li>
-            <li>EHCP volume: <strong>over 500,000 children and young people have an EHCP</strong>.</li>
-            <li>SEN Support volume: <strong>around 1.2 million pupils receive SEN Support</strong> without an EHCP.</li>
-            <li>Timeliness: the legal timescale for an EHCP process is 20 weeks, but <strong>only about 50% of new EHCPs are issued on time</strong>.</li>
-            <li>Tribunal pressure: families filed over 21,000 SEND Tribunal appeals in a recent year, and <strong>parents won 95% of cases that went to judgement</strong>.</li>
-            <li>Funding pressure: the high needs budget grew to £9.4 billion by 2024 to 2025, and <strong>councils accumulated over £3 billion in SEND related deficits</strong>.</li>
-            <li>The system is widely described as bureaucratic, inconsistent and inequitable, with <strong>broad consensus it is in crisis</strong>.</li>
+            <li>Legal framework: the Children and Families Act 2014 introduced Education, Health and Care Plans. It remains in force today.</li>
+            <li>EHCP volume: <strong>around 576,000 children and young people have an EHCP</strong>, a 140% increase since 2015. Over 5% of all pupils now have one, up from 3% in 2018.</li>
+            <li>Total SEND population: <strong>nearly 1.9 million young people are identified with SEND in England</strong>, about 11% of the 0 to 25 age group. A further 1.1 million pupils receive SEN Support in schools without an EHCP.</li>
+            <li>Timeliness: the legal timescale for an EHCP process is 20 weeks, but <strong>only around 60% of new EHCPs are issued on time</strong>. Many families wait six to twelve months or longer.</li>
+            <li>Tribunal pressure: appeals have surged, and <strong>parents win around 90% of cases that reach a decision</strong>, which points to systemic problems in how councils are making decisions, not parent overreach.</li>
+            <li>Parent experience: <strong>nearly 50% of parents describe securing SEND support as stressful</strong>. 22% say their child's school is not delivering the support written into the EHCP.</li>
+            <li>Council finances: <strong>95% of local authorities are running SEND budget deficits</strong>. Council spending on high needs rose from £7.8 billion in 2015 to 2016 to £13.1 billion in 2024 to 2025. Cumulative deficits are projected to reach £4.3 to £4.9 billion by 2026.</li>
+            <li>Independent provision: the cost of independent special school places has risen <strong>206% since 2015 to £1.7 billion a year</strong>, driven by a shortage of state capacity.</li>
+            <li>The National Audit Office calls the system "not delivering value for money". The Institute for Fiscal Studies warns SEND cost pressures are <strong>"crowding out" funds for mainstream education</strong>.</li>
           </ul>
         </div>
       </ContentBox>
@@ -133,7 +135,13 @@ export default function WhereWeAreNow() {
       <ContentBox id="funding" icon={PoundSterling} title="The financial pressure underneath everything">
         <div className="space-y-3">
           <p>
-            The financial picture is severe. High needs spend has risen, councils have significant deficits, and <strong>the system is widely regarded as financially unsustainable</strong>. That financial stress is not separate from the family experience. It shapes behaviour, delays, and disputes.
+            The financial picture is severe. Council spending on high needs has risen from £7.8 billion to £13.1 billion in under a decade. <strong>95% of councils are running SEND deficits</strong>, and by March 2026, 43% are forecast to have deficits so large they equal or exceed their available reserves.
+          </p>
+          <p>
+            Without intervention, <strong>79% of councils risked insolvency by 2028</strong> due to SEND debts alone. That financial stress is not separate from the family experience. It shapes behaviour, delays, gatekeeping, and disputes.
+          </p>
+          <p>
+            There are also perverse incentives baked in. Schools do not get extra funding per child unless there is an EHCP, so there is a financial disincentive to take high needs pupils without one. <strong>Councils are financially liable for EHCPs but not for early intervention</strong>, so money gets spent reactively on crisis placements and legal battles rather than early support.
           </p>
         </div>
       </ContentBox>

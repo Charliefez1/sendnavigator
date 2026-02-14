@@ -72,13 +72,15 @@ export default function WhatHasNotChanged() {
         <div className="space-y-3">
           <p>These facts reflect what has remained unchanged.</p>
           <ul className="space-y-2">
-            <li><strong>The Children and Families Act 2014 remains the legal framework</strong> for SEND in England.</li>
-            <li><strong>Education, Health and Care Plans remain statutory and legally enforceable.</strong></li>
-            <li>The <strong>20 week statutory timescale</strong> for EHCP processes remains unchanged.</li>
-            <li>Parents retain <strong>the right to appeal to the SEND Tribunal</strong>.</li>
-            <li>Local authorities <strong>remain legally responsible</strong> for securing EHCP provision.</li>
+            <li><strong>The Children and Families Act 2014 remains the legal framework</strong> for SEND in England. The government's 2023 Improvement Plan explicitly did not change any laws or remove any rights.</li>
+            <li><strong>Education, Health and Care Plans remain statutory and legally enforceable.</strong> Around 576,000 children have one, and the number continues to rise each quarter.</li>
+            <li>The <strong>20 week statutory timescale</strong> for EHCP processes remains unchanged. In 2024, only about 60% were issued on time, similar to 2023.</li>
+            <li>Parents retain <strong>the right to request an EHCP assessment at any time</strong>, and the council must reply within six weeks.</li>
+            <li>Parents retain <strong>the right to appeal to the SEND Tribunal</strong>. Outcomes still heavily favour parents, with around 90% of decided cases winning some or all of the appeal.</li>
+            <li>The right to <strong>choose a school and have it named in the EHCP</strong> remains.</li>
+            <li>Local authorities <strong>remain legally responsible</strong> for securing EHCP provision. Schools still have their best endeavours duty.</li>
             <li>The <strong>SEND Code of Practice remains in force</strong>.</li>
-            <li>Ofsted and CQC area inspections continue under the existing framework.</li>
+            <li><strong>22% of parents say their child's school is not delivering all the support in the EHCP</strong>, essentially unchanged from previous surveys. The problems persist, but the rights persist too.</li>
             <li><strong>No confirmed legislative changes have been enacted</strong> as of 14 February 2026.</li>
           </ul>
         </div>

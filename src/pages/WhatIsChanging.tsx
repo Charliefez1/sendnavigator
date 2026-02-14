@@ -75,15 +75,16 @@ export default function WhatIsChanging() {
         <div className="space-y-3">
           <p>These are the confirmed facts.</p>
           <ul className="space-y-2">
-            <li>National SEND standards are confirmed as government policy direction, with <strong>consultation and phased introduction planned for 2026 to 2027</strong>.</li>
-            <li>A digital first, standardised approach to EHCP processes is confirmed, with <strong>pilots already running in selected areas</strong>.</li>
-            <li>Workforce investment is confirmed, including a <strong>£200 million SEND training programme</strong> announced in late 2025.</li>
-            <li>Plans include <strong>training up to 5,000 early years staff as SENCOs</strong>.</li>
-            <li>Funding for training of <strong>around 400 additional educational psychologists</strong> has been announced.</li>
-            <li><strong>Over 80 new special free schools</strong> are in the pipeline, supported by £2.6 billion capital investment between 2022 and 2025.</li>
-            <li>A <strong>£70 million Change Programme</strong> is underway with selected local authorities testing new approaches.</li>
-            <li>The government has committed to <strong>absorbing historic local authority SEND deficits from 2028 to 2029</strong>.</li>
-            <li>Ofsted and CQC area SEND inspections are now established as <strong>a core accountability mechanism</strong>.</li>
+            <li>The government confirmed it will <strong>write off 90% of council SEND deficits up to 2025 to 2026</strong>, a rescue package worth over £5 billion. Councils must submit local SEND reform plans by autumn 2026 to qualify.</li>
+            <li>From <strong>2028 to 2029, central government will cover SEND spending in full</strong>, relieving councils of these costs going forward.</li>
+            <li>A <strong>£3.7 billion capital investment</strong> is creating 60,000 new SEND places, including new special schools and specialist units in mainstream schools, roughly a 30 to 40% increase in specialist places nationally.</li>
+            <li>Every secondary school is expected to have an <strong>"inclusion base"</strong>, a dedicated space for SEND students to receive targeted support while staying included in school life.</li>
+            <li>Workforce investment includes a <strong>£200 million SEND training programme</strong>, new qualifications for SENCOs, and training for around 400 additional educational psychologists.</li>
+            <li>Ofsted has introduced a new <strong>"Inclusion" judgement in school inspections</strong>, meaning schools are now formally evaluated on how well they include and support children with SEND.</li>
+            <li>National SEND standards are confirmed as policy direction, with <strong>consultation and phased introduction planned for 2026 to 2027</strong>. The government has said it will legislate so these standards have legal force.</li>
+            <li>Nine Regional Expert Partnerships are testing new approaches, and a <strong>digital EHCP template is being piloted</strong> in several areas.</li>
+            <li><strong>Safety Valve agreements (£300 million)</strong> and the Delivering Better Value in SEND programme (£85 million for 55 councils) continue alongside the broader reforms.</li>
+            <li>All local areas will be inspected under the new <strong>Ofsted and CQC area SEND framework by 2027</strong>.</li>
           </ul>
         </div>
       </ContentBox>
@@ -159,10 +160,13 @@ export default function WhatIsChanging() {
       <ContentBox id="funding" icon={PoundSterling} title="Funding direction and deficit absorption">
         <div className="space-y-3">
           <p>
-            The commitment to <strong>absorb historic SEND deficits from 2028 to 2029 is confirmed</strong>. This removes a major financial pressure from local authorities.
+            In February 2026, the government confirmed it will <strong>write off 90% of council SEND deficits</strong>, a rescue package worth over £5 billion. Previously, 95% of councils were running SEND budget deficits, and 79% risked insolvency by 2028.
           </p>
           <p>
-            However, <strong>future budgets will still be cash limited</strong>. This is why the government is focusing on earlier support and system redesign. This funding commitment does not remove the need for reform, but it creates space to implement it.
+            From 2028 to 2029, <strong>central government will take full responsibility for SEND spending growth</strong>. This is a fundamental shift. Councils will no longer carry the financial risk of rising demand on their own.
+          </p>
+          <p>
+            For parents, this matters because <strong>the council deficit bailout removes the most dire financial excuses for denying support</strong>. Councils can no longer point to near-bankruptcy as a reason to ration. However, future budgets will still be cash limited, which is why the government is also focusing on earlier support and system redesign.
           </p>
         </div>
       </ContentBox>

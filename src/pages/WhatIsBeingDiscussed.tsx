@@ -75,10 +75,13 @@ export default function WhatIsBeingDiscussed() {
         <div className="space-y-3">
           <p>These points reflect themes and issues being raised publicly, not enacted policy.</p>
           <ul className="space-y-2">
-            <li>A <strong>SEND focused Schools White Paper is planned for late 2026</strong>.</li>
+            <li>A <strong>SEND focused Schools White Paper is expected in 2026</strong>.</li>
+            <li>The DfE held <strong>over 100 engagement events</strong> as part of its consultation work.</li>
             <li>A national SEND reform consultation process ran from December 2025 to January 2026.</li>
             <li>Parliamentary committees and All Party Parliamentary Groups on SEND are <strong>actively scrutinising reform proposals</strong>.</li>
-            <li>Tribunal volumes have increased significantly over the past decade, prompting debate about system design and incentives.</li>
+            <li>The <strong>Save Our Children's Rights campaign gathered over 130,000 petition signatures</strong> opposing the loss of legal rights.</li>
+            <li>The National Education Union has formally urged the government to <strong>maintain legal thresholds for EHCPs</strong> and focus on funding mainstream properly.</li>
+            <li>Tribunal volumes have increased significantly, with <strong>parents winning 90% of decided cases</strong>, prompting debate about system design and incentives.</li>
             <li>Local authority SEND deficits and workforce shortages are cited repeatedly as <strong>drivers of reform discussion</strong>.</li>
           </ul>
         </div>
@@ -89,14 +92,15 @@ export default function WhatIsBeingDiscussed() {
           <p>
             One of the most discussed ideas is whether <strong>SEND support should be more clearly tiered</strong>.
           </p>
-          <p>In simple terms, this means:</p>
+          <p>The reported model has four levels:</p>
           <ul className="space-y-2">
-            <li>Stronger, better defined SEN Support as a first level.</li>
-            <li>Clear expectations about what schools and settings must provide without an EHCP.</li>
-            <li>EHCPs reserved for children with the most complex or multi-agency needs.</li>
+            <li><strong>Tier 1 (Universal)</strong>: teacher-led classroom accommodations for all pupils.</li>
+            <li><strong>Tier 2 (Targeted)</strong>: small group interventions and additional support.</li>
+            <li><strong>Tier 3 (Specialist)</strong>: specialist involvement without a full EHCP.</li>
+            <li><strong>Tier 4 (EHCP)</strong>: a full Education, Health and Care Plan for children with the most severe and complex needs.</li>
           </ul>
           <p>
-            Supporters argue this could reduce delay and conflict by making early help reliable and consistent. Critics argue that <strong>tiering risks recreating older systems where children had to fail before qualifying for help</strong>.
+            Supporters argue this could reduce delay and conflict by making early help reliable and consistent. Critics argue that <strong>tiering risks recreating older systems where children had to fail before qualifying for help</strong>. A key concern is what happens at Tier 3: if that support is not legally enforceable, families lose their ability to challenge when it is not delivered.
           </p>
           <p>
             This debate is ongoing. <strong>No tiered model has been confirmed.</strong>
@@ -124,10 +128,10 @@ export default function WhatIsBeingDiscussed() {
             Another area under discussion is how SEND funding flows through the system.
           </p>
           <p>
-            At present, <strong>funding is strongly tied to EHCPs</strong>. This creates incentives for escalation and defensiveness. Discussions include whether more funding should sit with schools or local partnerships to provide support earlier.
+            At present, <strong>funding is strongly tied to EHCPs</strong>. This creates incentives for escalation and defensiveness. One idea being discussed is <strong>giving groups of schools pooled budgets to commission services like speech therapy or educational psychology collectively</strong>, rather than each family fighting for services through separate EHCPs.
           </p>
           <p>
-            Parents are rightly asking <strong>how accountability would work if funding is less individualised</strong>. That question is central to the debate and remains unanswered.
+            Parents are rightly asking <strong>how accountability would work if funding is less individualised</strong>. As Special Needs Jungle has pointed out, removing individual funding and giving it to schools essentially removes the child's legal entitlement. That question is central to the debate and remains unanswered.
           </p>
         </div>
       </ContentBox>
@@ -138,7 +142,10 @@ export default function WhatIsBeingDiscussed() {
             The volume of tribunal appeals has prompted debate about whether the system has become too legalistic.
           </p>
           <p>
-            Some argue the appeal system shows failure earlier in the process. Others worry that <strong>attempts to reduce appeals could weaken safeguards</strong>.
+            One proposal under discussion is <strong>making mediation a compulsory step before tribunal appeal</strong>. Currently parents must consider mediation but can opt out. Under the proposed change, parents would have to go through mediation first.
+          </p>
+          <p>
+            Some argue the appeal system shows failure earlier in the process. Others worry that <strong>attempts to reduce appeals could weaken safeguards</strong>, especially given that parents win 90% of decided cases, which suggests the problem is poor decision making, not excessive appealing.
           </p>
           <p>
             <strong>There is no confirmed proposal to remove appeal rights.</strong> The discussion centres on whether better early decisions could reduce the need for appeals at all.
