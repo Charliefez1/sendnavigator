@@ -37,7 +37,7 @@ export default function WhatHasNotChanged() {
       />
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           How will this impact children and parents
         </h2>
         <div className="prose-calm space-y-3">
@@ -54,7 +54,7 @@ export default function WhatHasNotChanged() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           Statistics and facts
         </h2>
         <div className="prose-calm space-y-3">
@@ -73,13 +73,13 @@ export default function WhatHasNotChanged() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           What has stayed the same, in plain language
         </h2>
         <div className="prose-calm space-y-6">
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">The law has not changed</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">The law has not changed</h3>
             <p>
               The most important point for parents to understand is this. The law has not moved.
             </p>
@@ -92,7 +92,7 @@ export default function WhatHasNotChanged() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">EHCPs are still enforceable</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">EHCPs are still enforceable</h3>
             <p>
               An EHCP is still a legal document. The provision written into it must be delivered. Section F remains enforceable.
             </p>
@@ -105,7 +105,7 @@ export default function WhatHasNotChanged() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Appeal rights remain</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Appeal rights remain</h3>
             <p>Parents still have the right to appeal:</p>
             <ul className="space-y-2">
               <li>Refusals to assess.</li>
@@ -119,7 +119,7 @@ export default function WhatHasNotChanged() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">SEN Support remains variable</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">SEN Support remains variable</h3>
             <p>
               SEN Support remains non-statutory and locally variable. There is still no single national definition of what must be provided at this level.
             </p>
@@ -129,14 +129,14 @@ export default function WhatHasNotChanged() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Timescales remain, even if they are not met</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Timescales remain, even if they are not met</h3>
             <p>
               The legal 20 week deadline still exists. Enforcement has not changed. Families still experience delays, but the law itself has not been amended.
             </p>
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">No child is being moved or reclassified because of reform talk</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">No child is being moved or reclassified because of reform talk</h3>
             <p>
               There is no confirmed policy that removes EHCPs from children already holding them. There is no confirmed policy that forces children out of specialist provision or into mainstream.
             </p>
@@ -146,7 +146,7 @@ export default function WhatHasNotChanged() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Why this matters in a noisy environment</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Why this matters in a noisy environment</h3>
             <p>
               When there is a lot of discussion, leaks, and commentary, it is easy for families to feel that the ground is shifting under their feet.
             </p>

@@ -40,7 +40,7 @@ export default function WhatHappensNext() {
       />
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           How will this impact children and parents
         </h2>
         <div className="prose-calm space-y-3">
@@ -60,7 +60,7 @@ export default function WhatHappensNext() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           Statistics and facts
         </h2>
         <div className="prose-calm space-y-3">
@@ -76,13 +76,13 @@ export default function WhatHappensNext() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           What the next stages actually look like
         </h2>
         <div className="prose-calm space-y-6">
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Stage 1: formal proposals</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Stage 1: formal proposals</h3>
             <p>
               The next concrete step is a published White Paper or equivalent policy document.
             </p>
@@ -99,7 +99,7 @@ export default function WhatHappensNext() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Stage 2: consultation</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Stage 2: consultation</h3>
             <p>
               Once proposals are published, consultation follows.
             </p>
@@ -116,7 +116,7 @@ export default function WhatHappensNext() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Stage 3: legislation</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Stage 3: legislation</h3>
             <p>
               If government proceeds, changes affecting rights require legislation.
             </p>
@@ -133,7 +133,7 @@ export default function WhatHappensNext() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Stage 4: transition planning</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Stage 4: transition planning</h3>
             <p>
               Even once legislation passes, systems do not flip overnight.
             </p>
@@ -150,7 +150,7 @@ export default function WhatHappensNext() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">What this means practically for parents now</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">What this means practically for parents now</h3>
             <p>Right now, the most important things are:</p>
             <ul className="space-y-2">
               <li>Focus on your child's needs as they are today.</li>
@@ -164,7 +164,7 @@ export default function WhatHappensNext() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">A grounded closing note</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">A grounded closing note</h3>
             <p>
               SEND reform is happening because the current system is failing too many families. That does not mean the solution will automatically be better. It does mean there is space for challenge, shaping, and accountability.
             </p>

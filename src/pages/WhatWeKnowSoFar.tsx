@@ -27,7 +27,7 @@ export default function WhatWeKnowSoFar() {
       />
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           Confirmed facts
         </h2>
         <div className="prose-calm">
@@ -47,7 +47,7 @@ export default function WhatWeKnowSoFar() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           What this means for parents
         </h2>
         <div className="prose-calm">

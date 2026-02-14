@@ -16,7 +16,7 @@ export function PageOrientation({
 }: PageOrientationProps) {
   return (
     <header className="content-section py-8 sm:py-10 border-b border-border">
-      <h1 className="text-2xl sm:text-3xl font-semibold text-foreground mb-3">
+      <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">
         {title}
       </h1>
       {description && (

@@ -37,7 +37,7 @@ export default function WhatTheLeaksAreSaying() {
       />
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           How will this impact children and parents
         </h2>
         <div className="prose-calm space-y-3">
@@ -54,7 +54,7 @@ export default function WhatTheLeaksAreSaying() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           Statistics and facts
         </h2>
         <div className="prose-calm space-y-3">
@@ -69,13 +69,13 @@ export default function WhatTheLeaksAreSaying() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           Understanding unconfirmed reports without panic
         </h2>
         <div className="prose-calm space-y-6">
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">What kite flying is</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">What kite flying is</h3>
             <p>
               Kite flying is a common policy practice. Ideas are discussed privately, then selectively shared to test reaction.
             </p>
@@ -88,7 +88,7 @@ export default function WhatTheLeaksAreSaying() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Why SEND is particularly sensitive</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Why SEND is particularly sensitive</h3>
             <p>
               SEND affects children, families, and legal rights. Any suggestion of reduced support understandably triggers strong reactions.
             </p>
@@ -101,7 +101,7 @@ export default function WhatTheLeaksAreSaying() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Common themes in unconfirmed reports</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Common themes in unconfirmed reports</h3>
             <p>The unconfirmed reports tend to cluster around a few ideas:</p>
             <ul className="space-y-2">
               <li>Reducing reliance on EHCPs.</li>
@@ -115,7 +115,7 @@ export default function WhatTheLeaksAreSaying() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">What unconfirmed reports do not tell you</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">What unconfirmed reports do not tell you</h3>
             <p>They do not tell you:</p>
             <ul className="space-y-2">
               <li>What safeguards would be in place.</li>
@@ -130,7 +130,7 @@ export default function WhatTheLeaksAreSaying() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Why strong reactions still matter</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Why strong reactions still matter</h3>
             <p>
               Public reaction matters. Parent groups, professionals, and charities have influenced SEND policy before.
             </p>
@@ -140,7 +140,7 @@ export default function WhatTheLeaksAreSaying() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">How to read unconfirmed reports safely as a parent</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">How to read unconfirmed reports safely as a parent</h3>
             <p>Ask three questions:</p>
             <ul className="space-y-2">
               <li>Is this a law, a consultation, or a comment.</li>
@@ -153,7 +153,7 @@ export default function WhatTheLeaksAreSaying() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">A grounding reminder</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">A grounding reminder</h3>
             <p>
               Your child's rights today are real. They are enforceable. They do not disappear because of a headline.
             </p>

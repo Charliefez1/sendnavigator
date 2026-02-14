@@ -37,7 +37,7 @@ export default function WhereWeAreNow() {
       />
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           How will this impact children and parents
         </h2>
         <div className="prose-calm space-y-3">
@@ -55,7 +55,7 @@ export default function WhereWeAreNow() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           Statistics and facts
         </h2>
         <div className="prose-calm space-y-3">
@@ -73,13 +73,13 @@ export default function WhereWeAreNow() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           What is happening now, in plain English
         </h2>
         <div className="prose-calm space-y-6">
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">The structure of support in England</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">The structure of support in England</h3>
             <p>In England, SEND support has two main layers.</p>
             <p>
               SEN Support is the day to day support a setting provides without an EHCP. It might include adjustments in the classroom, targeted interventions, small group work, or additional adult support. In theory, this is where most needs should be met early.
@@ -90,7 +90,7 @@ export default function WhereWeAreNow() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Why the system feels like a fight</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Why the system feels like a fight</h3>
             <p>Your dataset describes a consistent pattern.</p>
             <p>
               The EHCP route is slow. It is also paperwork heavy. Even though there is a 20 week legal deadline, only around half of new plans are completed on time. Many families wait far longer.
@@ -108,28 +108,28 @@ export default function WhereWeAreNow() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">The inconsistency problem</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">The inconsistency problem</h3>
             <p>
               The dataset repeatedly points to postcode variation. Thresholds and practice can differ across areas, which means what works in one place can fail completely in another. That uncertainty drives anxiety and escalation, because families cannot rely on a clear baseline offer.
             </p>
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Why EHCP demand keeps rising</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Why EHCP demand keeps rising</h3>
             <p>
               The research set describes an over-reliance on EHCPs for support that should sit earlier. When SEN Support is not strong enough, an EHCP starts to feel like the only reliable mechanism to secure provision and accountability. That drives demand upwards, which then increases system load and cost, which then drives more rationing behaviour.
             </p>
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">The financial pressure underneath everything</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">The financial pressure underneath everything</h3>
             <p>
               The dataset frames the financial picture as severe. High needs spend has risen, councils have significant deficits, and the system is described as financially unsustainable. That financial stress is not separate from the family experience. It shapes behaviour, delays, and disputes.
             </p>
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">A note on the rest of the UK</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">A note on the rest of the UK</h3>
             <p>
               Because this resource is for parents, it is important to be clear. Scotland, Wales and Northern Ireland have different systems and legal routes. This section is England only, because that is what the checked dataset covers.
             </p>

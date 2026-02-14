@@ -40,7 +40,7 @@ export default function WhatIsChanging() {
       />
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           How will this impact children and parents
         </h2>
         <div className="prose-calm space-y-3">
@@ -57,7 +57,7 @@ export default function WhatIsChanging() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           Statistics and facts
         </h2>
         <div className="prose-calm space-y-3">
@@ -77,13 +77,13 @@ export default function WhatIsChanging() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           What has actually been confirmed, in plain language
         </h2>
         <div className="prose-calm space-y-6">
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">National SEND standards</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">National SEND standards</h3>
             <p>
               The government has confirmed that national SEND standards will be introduced. These standards are intended to set out what support should ordinarily be available for children and young people with SEND, regardless of where they live.
             </p>
@@ -96,7 +96,7 @@ export default function WhatIsChanging() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Digital first and standardised EHCP processes</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Digital first and standardised EHCP processes</h3>
             <p>
               The move towards digital EHCP processes is confirmed. The aim is to reduce paperwork, improve transparency, and make it easier for families to see what is happening and when.
             </p>
@@ -109,7 +109,7 @@ export default function WhatIsChanging() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Workforce training and capacity building</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Workforce training and capacity building</h3>
             <p>
               The government has confirmed significant investment in SEND workforce development.
             </p>
@@ -126,7 +126,7 @@ export default function WhatIsChanging() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Expansion of specialist provision</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Expansion of specialist provision</h3>
             <p>
               New special schools are being built and funded. This is a confirmed capital programme.
             </p>
@@ -136,7 +136,7 @@ export default function WhatIsChanging() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Local inclusion planning and accountability</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Local inclusion planning and accountability</h3>
             <p>
               Local areas are being required to plan SEND provision across education, health and care more jointly. This is being reinforced through Ofsted and CQC area inspections.
             </p>
@@ -146,7 +146,7 @@ export default function WhatIsChanging() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Funding direction and deficit absorption</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Funding direction and deficit absorption</h3>
             <p>
               The commitment to absorb historic SEND deficits from 2028 to 2029 is confirmed. This removes a major financial pressure from local authorities.
             </p>
@@ -156,7 +156,7 @@ export default function WhatIsChanging() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">What has not changed yet</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">What has not changed yet</h3>
             <p>
               It is important to be clear. None of these confirmed changes remove existing rights. EHCPs remain legally enforceable. Appeal routes remain. Timescales remain.
             </p>

@@ -44,7 +44,7 @@ export default function WhatTheLeaksDoNotMean() {
       />
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           How will this impact children and parents
         </h2>
         <div className="prose-calm space-y-3">
@@ -64,7 +64,7 @@ export default function WhatTheLeaksDoNotMean() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           Statistics and facts
         </h2>
         <div className="prose-calm space-y-3">
@@ -81,13 +81,13 @@ export default function WhatTheLeaksDoNotMean() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
           Reading leaks as a parent, not a policymaker
         </h2>
         <div className="prose-calm space-y-6">
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Start with what cannot change overnight</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Start with what cannot change overnight</h3>
             <p>Until the law changes, these facts hold:</p>
             <ul className="space-y-2">
               <li>EHCPs remain statutory and enforceable.</li>
@@ -104,7 +104,7 @@ export default function WhatTheLeaksDoNotMean() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Why governments leak or kite fly ideas</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Why governments leak or kite fly ideas</h3>
             <p>Governments rarely leak by accident. This is about process, not malice.</p>
             <p>Common reasons include:</p>
             <ul className="space-y-2">
@@ -123,7 +123,7 @@ export default function WhatTheLeaksDoNotMean() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">What leaks usually leave out</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">What leaks usually leave out</h3>
             <p>Leaks strip away the parts that matter most to families:</p>
             <ul className="space-y-2">
               <li>Who would be protected.</li>
@@ -138,7 +138,7 @@ export default function WhatTheLeaksDoNotMean() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">The fear underneath the headline</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">The fear underneath the headline</h3>
             <p>Most parents are not afraid of reform in theory. They are afraid of loss.</p>
             <p>Common fears include:</p>
             <ul className="space-y-2">
@@ -154,7 +154,7 @@ export default function WhatTheLeaksDoNotMean() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">A simple way to filter leaks</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">A simple way to filter leaks</h3>
             <p>When you see a leak, ask three questions:</p>
             <ul className="space-y-2">
               <li>What exactly is this source.</li>
@@ -167,7 +167,7 @@ export default function WhatTheLeaksDoNotMean() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">Acting versus reacting</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">Acting versus reacting</h3>
             <p>
               Some families will choose to push for statutory protection because support is not in place now. That can be the right decision.
             </p>
@@ -184,7 +184,7 @@ export default function WhatTheLeaksDoNotMean() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">What leaks are actually useful for</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">What leaks are actually useful for</h3>
             <p>Leaks do have value when used properly. They show:</p>
             <ul className="space-y-2">
               <li>Where government pressure points are.</li>
@@ -195,7 +195,7 @@ export default function WhatTheLeaksDoNotMean() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-medium text-foreground">The bottom line, without false reassurance</h3>
+            <h3 className="text-lg font-display font-medium text-foreground">The bottom line, without false reassurance</h3>
             <p>You are allowed to feel scared and still think clearly.</p>
             <p>Right now:</p>
             <ul className="space-y-2">
