@@ -11,7 +11,7 @@ const siteLinks = [
   { path: "/questions-and-answers", label: "Ask SEND" },
   { path: "/community-questions", label: "Lived experience" },
   { path: "/sources", label: "Data & Sources" },
-  { path: "/feedback", label: "Feedback" },
+  { path: "/feedback", label: "Feedback & Issues" },
   { path: "/about", label: "About" },
 ];
 
