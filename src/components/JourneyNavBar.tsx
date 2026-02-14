@@ -35,9 +35,9 @@ export function JourneyNavBar() {
 
   return (
     <nav className="bg-navy/90 border-b border-white/10" aria-label="Journey progress">
-      <div className="content-wide py-2">
+      <div className="content-wide py-1">
         {/* Progress dots row */}
-        <div className="flex items-center justify-center gap-1 mb-1.5">
+        <div className="flex items-center justify-center gap-1 mb-0.5">
           {journeySteps.map((step, i) => (
             <NavLink
               key={step.path}
