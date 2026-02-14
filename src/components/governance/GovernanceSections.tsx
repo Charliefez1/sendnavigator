@@ -24,7 +24,7 @@ export function EditorialOwnershipSection() {
         </h2>
       </div>
       
-      <div className="bg-card border border-border rounded-lg p-4 mb-4">
+      <div className="bg-muted/50 border border-border rounded-lg p-4 mb-4">
         <h3 className="font-medium text-foreground mb-3">
           {editorialOwnership.owner.role}
         </h3>
@@ -61,17 +61,17 @@ export function IndependenceDisclosureSection() {
       </div>
       
       <div className="space-y-4">
-        <div className="bg-card border border-border rounded-lg p-4">
+        <div className="bg-muted/50 border border-border rounded-lg p-4">
           <h3 className="font-medium text-foreground mb-2">Funding</h3>
           <p className="text-sm text-muted-foreground">{currentDisclosures.funding}</p>
         </div>
         
-        <div className="bg-card border border-border rounded-lg p-4">
+        <div className="bg-muted/50 border border-border rounded-lg p-4">
           <h3 className="font-medium text-foreground mb-2">Affiliations</h3>
           <p className="text-sm text-muted-foreground">{currentDisclosures.affiliations}</p>
         </div>
         
-        <div className="bg-card border border-border rounded-lg p-4">
+        <div className="bg-muted/50 border border-border rounded-lg p-4">
           <h3 className="font-medium text-foreground mb-2">Partnerships</h3>
           <p className="text-sm text-muted-foreground">{currentDisclosures.partnerships}</p>
         </div>
@@ -102,7 +102,7 @@ export function PerspectivesSection() {
         {representedPerspectives.map((perspective, index) => (
           <li 
             key={index}
-            className="text-sm text-muted-foreground bg-card border border-border rounded-lg px-3 py-2"
+            className="text-sm text-muted-foreground bg-muted/50 border border-border rounded-lg px-3 py-2"
           >
             {perspective}
           </li>
@@ -144,7 +144,7 @@ export function FeedbackSection() {
             className={`text-left p-4 rounded-lg border transition-colors ${
               selectedType === type 
                 ? "border-primary bg-accent" 
-                : "border-border bg-card hover:bg-accent/50"
+                : "border-border bg-muted/50 hover:bg-accent/50"
             }`}
           >
             <span className="font-medium text-foreground block mb-1">
@@ -205,7 +205,7 @@ export function ReviewScheduleSection() {
         {reviewSchedule.map((review, index) => (
           <div 
             key={index}
-            className="bg-card border border-border rounded-lg p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2"
+            className="bg-muted/50 border border-border rounded-lg p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2"
           >
             <div>
               <span className="font-medium text-foreground block">
