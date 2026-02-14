@@ -8,6 +8,7 @@ import {
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
+import { TierDiagram } from "@/components/templates/DataVisuals";
 import { Users, BarChart3, Wind, AlertTriangle, List, EyeOff, Megaphone, Filter, Shield } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -109,10 +110,22 @@ export default function WhatTheLeaksAreSaying() {
       </ContentBox>
 
       <ContentBox id="themes" icon={List} title="Common themes in unconfirmed reports">
-        <div className="space-y-3">
+        <div className="space-y-6">
           <p>The unconfirmed reports tend to cluster around a few ideas:</p>
+
+          {/* Tier diagram */}
+          <TierDiagram
+            title="Proposed four-tier system (unconfirmed)"
+            tiers={[
+              { tier: "Tier 4", title: "EHCP", description: "Reserved for the most severe and complex needs only. Full legal plan with enforceable provision.", color: "unconfirmed" },
+              { tier: "Tier 3", title: "Specialist", description: "Specialist involvement and targeted support without a full EHCP. Possibly via school clusters.", color: "discussed" },
+              { tier: "Tier 2", title: "Targeted", description: "Small group interventions, additional support coordinated by the school. Possible 'digital passport'.", color: "discussed" },
+              { tier: "Tier 1", title: "Universal", description: "Teacher-led accommodations and adjustments available to all pupils as standard practice.", color: "confirmed" },
+            ]}
+            note="This tier model is based on media reports (iNews, Financial Times, January 2026). It is NOT confirmed government policy."
+          />
+
           <ul className="space-y-2">
-            <li><strong>A four-tier system</strong> where EHCPs are reserved for the most severe and complex needs, with "digital passports" for SEND children at lower tiers (iNews, Financial Times, January 2026).</li>
             <li><strong>Higher thresholds for EHCPs.</strong> The Guardian (February 2026) reported that reforms "will raise the bar" for EHCPs, with plans for only the most severe cases to qualify.</li>
             <li><strong>Implementation possibly delayed to 2029 to 2030.</strong> Both iNews and the Financial Times reportedly suggested full implementation might not happen until the 2029 to 2030 academic year.</li>
             <li><strong>Schools taking on more responsibility</strong> for SEND decision making, with funding shifted to school clusters rather than tied to individual plans.</li>

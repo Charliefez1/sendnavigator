@@ -7,6 +7,7 @@ import {
   UnknownSection,
   WatchNextSection,
 } from "@/components/templates";
+import { ComparisonColumns } from "@/components/templates/DataVisuals";
 
 export default function WhatThisCouldMean() {
   const summaryPoints = [
@@ -74,6 +75,31 @@ export default function WhatThisCouldMean() {
           </>
         }
       />
+
+      {/* Before/after comparison */}
+      <section className="content-section py-8">
+        <h2 className="text-lg font-display font-semibold text-foreground mb-4">Current system vs proposed direction</h2>
+        <ComparisonColumns
+          leftTitle="Current system"
+          rightTitle="Proposed direction"
+          leftItems={[
+            { label: "EHCP is the main route to enforceable support" },
+            { label: "Each council sets its own thresholds" },
+            { label: "Schools funded per EHCP, not per need" },
+            { label: "Councils carry full financial risk" },
+            { label: "Mediation optional before tribunal" },
+          ]}
+          rightItems={[
+            { label: "Tiered support: universal, targeted, specialist, then EHCP" },
+            { label: "National standards define what every school must offer" },
+            { label: "School clusters pool budgets for specialists" },
+            { label: "Central government takes over SEND spending from 2028" },
+            { label: "Possible mandatory mediation before appeal" },
+          ]}
+          leftColor="confirmed"
+          rightColor="discussed"
+        />
+      </section>
 
       <AudienceSections
         parents={

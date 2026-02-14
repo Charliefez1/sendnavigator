@@ -8,6 +8,7 @@ import {
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
+import { StatCard, PercentageRing, HorizontalBarChart } from "@/components/templates/DataVisuals";
 import { Users, BarChart3, MapPin, TrendingUp, PoundSterling, Globe, AlertTriangle, Scale } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -69,18 +70,38 @@ export default function WhereWeAreNow() {
       </ContentBox>
 
       <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
-        <div className="space-y-3">
+        <div className="space-y-6">
           <p>These figures relate to England.</p>
-          <ul className="space-y-2">
-            <li>Legal framework: the Children and Families Act 2014 introduced Education, Health and Care Plans. It remains in force today.</li>
-            <li>EHCP volume: <strong>around 576,000 children and young people have an EHCP</strong>, a 140% increase since 2015. Over 5% of all pupils now have one, up from 3% in 2018.</li>
-            <li>Total SEND population: <strong>nearly 1.9 million young people are identified with SEND in England</strong>, about 11% of the 0 to 25 age group. A further 1.1 million pupils receive SEN Support in schools without an EHCP.</li>
-            <li>Timeliness: the legal timescale for an EHCP process is 20 weeks, but <strong>only around 60% of new EHCPs are issued on time</strong>. Many families wait six to twelve months or longer.</li>
-            <li>Tribunal pressure: appeals have surged, and <strong>parents win around 90% of cases that reach a decision</strong>, which points to systemic problems in how councils are making decisions, not parent overreach.</li>
-            <li>Parent experience: <strong>nearly 50% of parents describe securing SEND support as stressful</strong>. 22% say their child's school is not delivering the support written into the EHCP.</li>
-            <li>Council finances: <strong>95% of local authorities are running SEND budget deficits</strong>. Council spending on high needs rose from £7.8 billion in 2015 to 2016 to £13.1 billion in 2024 to 2025. Cumulative deficits are projected to reach £4.3 to £4.9 billion by 2026.</li>
-            <li>Independent provision: the cost of independent special school places has risen <strong>206% since 2015 to £1.7 billion a year</strong>, driven by a shortage of state capacity.</li>
-            <li>The National Audit Office calls the system "not delivering value for money". The Institute for Fiscal Studies warns SEND cost pressures are <strong>"crowding out" funds for mainstream education</strong>.</li>
+
+          {/* Stat cards grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <StatCard value="1.9m" label="Young people with SEND" sublabel="0–25 age group" icon={Users} />
+            <StatCard value="576,000" label="Children with an EHCP" sublabel="140% rise since 2015" icon={BarChart3} accentColor="confirmed" />
+            <StatCard value="£13.1bn" label="Council SEND spending" sublabel="Up from £7.8bn in 2015" icon={PoundSterling} accentColor="discussed" />
+            <StatCard value="95%" label="Councils in SEND deficit" sublabel="79% risked insolvency" icon={AlertTriangle} accentColor="unconfirmed" />
+          </div>
+
+          {/* Percentage rings */}
+          <div className="flex flex-wrap justify-center gap-8 py-4">
+            <PercentageRing percentage={60} label="EHCPs issued on time" sublabel="Within 20-week limit" color="discussed" />
+            <PercentageRing percentage={90} label="Parents win at tribunal" sublabel="Of decided cases" color="confirmed" />
+            <PercentageRing percentage={50} label="Parents find it stressful" sublabel="Securing SEND support" color="unconfirmed" />
+          </div>
+
+          {/* Spending bar chart */}
+          <HorizontalBarChart
+            title="High-needs spending growth"
+            items={[
+              { label: "2015–16", value: 7.8, displayValue: "£7.8bn", color: "confirmed" },
+              { label: "2020–21", value: 9.5, displayValue: "£9.5bn", color: "discussed" },
+              { label: "2024–25", value: 13.1, displayValue: "£13.1bn", color: "unconfirmed" },
+            ]}
+          />
+
+          <ul className="space-y-2 text-sm text-muted-foreground">
+            <li>Independent special school costs have risen <strong>206% since 2015 to £1.7 billion a year</strong>.</li>
+            <li>The National Audit Office calls the system "not delivering value for money".</li>
+            <li>The IFS warns SEND cost pressures are <strong>"crowding out" mainstream education funds</strong>.</li>
           </ul>
         </div>
       </ContentBox>
