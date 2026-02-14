@@ -27,10 +27,10 @@ export default function WhatTheLeaksAreSaying() {
               Alongside formal consultation and public debate, there has been a steady flow of unconfirmed reports about SEND reform. These often come from anonymous briefings, sector gossip, selective leaks, or early media coverage.
             </p>
             <p>
-              This is sometimes called kite flying. Ideas are floated to see how people react. Strong reactions shape what moves forward and what gets dropped.
+              This is sometimes called kite flying. <strong>Ideas are floated to see how people react.</strong> Strong reactions shape what moves forward and what gets dropped.
             </p>
             <p>
-              These reports are not policy. They are signals about the direction of thinking, not decisions. Treating them as facts creates unnecessary fear and confusion for families.
+              <strong>These reports are not policy.</strong> They are signals about the direction of thinking, not decisions. Treating them as facts creates unnecessary fear and confusion for families.
             </p>
           </div>
         }
@@ -42,13 +42,13 @@ export default function WhatTheLeaksAreSaying() {
         </h2>
         <div className="prose-calm space-y-3">
           <p>
-            The main impact is psychological, not practical.
+            <strong>The main impact is psychological, not practical.</strong>
           </p>
           <p>
-            Parents read headlines and worry that support is about to disappear. Some feel pressured to rush into applications or legal action out of fear of losing future access.
+            Parents read headlines and worry that support is about to disappear. Some feel pressured to <strong>rush into applications or legal action out of fear of losing future access</strong>.
           </p>
           <p>
-            For children, the risk is indirect. Anxiety in adults affects decision making, relationships with schools, and emotional safety at home. Understanding what is unconfirmed helps parents stay grounded and focused on what actually protects their child right now.
+            For children, the risk is indirect. Anxiety in adults affects decision making, relationships with schools, and emotional safety at home. <strong>Understanding what is unconfirmed helps parents stay grounded</strong> and focused on what actually protects their child right now.
           </p>
         </div>
       </section>
@@ -60,9 +60,9 @@ export default function WhatTheLeaksAreSaying() {
         <div className="prose-calm space-y-3">
           <p>These points describe the nature of reporting, not enacted change.</p>
           <ul className="space-y-2">
-            <li>No unconfirmed report has been adopted into law.</li>
-            <li>No leaked proposal has been formally published as government policy.</li>
-            <li>All major changes to SEND would require primary legislation, which has not been introduced.</li>
+            <li><strong>No unconfirmed report has been adopted into law.</strong></li>
+            <li><strong>No leaked proposal has been formally published as government policy.</strong></li>
+            <li>All major changes to SEND would require <strong>primary legislation, which has not been introduced</strong>.</li>
             <li>Media reports referenced in the checked research set are attributed to anonymous sources, not formal announcements.</li>
           </ul>
         </div>
@@ -77,7 +77,7 @@ export default function WhatTheLeaksAreSaying() {
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">What kite flying is</h3>
             <p>
-              Kite flying is a common policy practice. Ideas are discussed privately, then selectively shared to test reaction.
+              Kite flying is a common policy practice. <strong>Ideas are discussed privately, then selectively shared to test reaction.</strong>
             </p>
             <p>
               If the response is hostile, the idea may be dropped or reshaped. If the response is muted or supportive, it may progress to consultation.
@@ -90,10 +90,10 @@ export default function WhatTheLeaksAreSaying() {
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">Why SEND is particularly sensitive</h3>
             <p>
-              SEND affects children, families, and legal rights. Any suggestion of reduced support understandably triggers strong reactions.
+              SEND affects children, families, and legal rights. <strong>Any suggestion of reduced support understandably triggers strong reactions.</strong>
             </p>
             <p>
-              Because the system is already under strain, rumours land harder. Families are already exhausted. Trust is already fragile.
+              Because the system is already under strain, rumours land harder. Families are already exhausted. <strong>Trust is already fragile.</strong>
             </p>
             <p>
               This makes SEND especially vulnerable to anxiety driven narratives.
@@ -110,7 +110,7 @@ export default function WhatTheLeaksAreSaying() {
               <li>Reducing adversarial processes.</li>
             </ul>
             <p>
-              What matters is this. None of these ideas are confirmed in their leaked form. They are areas of exploration, not settled decisions.
+              What matters is this. <strong>None of these ideas are confirmed in their leaked form.</strong> They are areas of exploration, not settled decisions.
             </p>
           </div>
 
@@ -125,37 +125,37 @@ export default function WhatTheLeaksAreSaying() {
               <li>Whether ideas would survive consultation.</li>
             </ul>
             <p>
-              Leaked summaries rarely include detail, nuance, or impact assessment. That is why they are dangerous if treated as certainty.
+              <strong>Leaked summaries rarely include detail, nuance, or impact assessment.</strong> That is why they are dangerous if treated as certainty.
             </p>
           </div>
 
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">Why strong reactions still matter</h3>
             <p>
-              Public reaction matters. Parent groups, professionals, and charities have influenced SEND policy before.
+              <strong>Public reaction matters.</strong> Parent groups, professionals, and charities have influenced SEND policy before.
             </p>
             <p>
-              The visibility of concern has already slowed reform timelines and increased emphasis on co-production. That shows the system is responsive, even if imperfectly.
+              The visibility of concern has already <strong>slowed reform timelines and increased emphasis on co-production</strong>. That shows the system is responsive, even if imperfectly.
             </p>
           </div>
 
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">How to read unconfirmed reports safely as a parent</h3>
-            <p>Ask three questions:</p>
+            <p><strong>Ask three questions:</strong></p>
             <ul className="space-y-2">
               <li>Is this a law, a consultation, or a comment.</li>
               <li>Has anything actually changed today because of this.</li>
               <li>What protections still exist right now.</li>
             </ul>
             <p>
-              In almost all cases, the answer to the second question is no.
+              <strong>In almost all cases, the answer to the second question is no.</strong>
             </p>
           </div>
 
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">A grounding reminder</h3>
             <p>
-              Your child's rights today are real. They are enforceable. They do not disappear because of a headline.
+              <strong>Your child's rights today are real. They are enforceable. They do not disappear because of a headline.</strong>
             </p>
             <p>
               Unconfirmed reports are part of a noisy policy environment, not a countdown clock.

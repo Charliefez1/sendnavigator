@@ -24,13 +24,13 @@ export default function WhatWeDoNotKnow() {
         prose={
           <div className="space-y-3">
             <p>
-              There is a lot we still do not know about the future of SEND in England. That uncertainty is not accidental. Many decisions have been deliberately delayed while consultation, piloting, and debate take place.
+              There is a lot we still do not know about the future of SEND in England. That uncertainty is not accidental. <strong>Many decisions have been deliberately delayed</strong> while consultation, piloting, and debate take place.
             </p>
             <p>
-              For parents, this lack of clarity can be harder than bad news. It makes planning difficult. It keeps families in a constant state of watchfulness. It adds cognitive load to lives that are already full.
+              For parents, this lack of clarity can be harder than bad news. It makes planning difficult. It keeps families in a constant state of watchfulness. <strong>It adds cognitive load to lives that are already full.</strong>
             </p>
             <p>
-              The key point is this. Uncertainty does not mean decisions have been secretly made. It means the shape of reform is still being argued over.
+              The key point is this. <strong>Uncertainty does not mean decisions have been secretly made.</strong> It means the shape of reform is still being argued over.
             </p>
           </div>
         }
@@ -42,16 +42,16 @@ export default function WhatWeDoNotKnow() {
         </h2>
         <div className="prose-calm space-y-3">
           <p>
-            The main impact right now is emotional and practical.
+            <strong>The main impact right now is emotional and practical.</strong>
           </p>
           <p>
             Parents are asking whether to push for an EHCP now or wait. They are wondering whether thresholds will change, whether support will shift, and whether their child will still qualify in future.
           </p>
           <p>
-            For children, uncertainty can mean delay. Families may hold back or rush forward based on fear rather than need. That is not because parents are overreacting. It is because the system gives them no clear forward map yet.
+            For children, uncertainty can mean delay. <strong>Families may hold back or rush forward based on fear rather than need.</strong> That is not because parents are overreacting. It is because the system gives them no clear forward map yet.
           </p>
           <p>
-            Understanding what is genuinely unknown helps parents make decisions based on the present law, not imagined futures.
+            <strong>Understanding what is genuinely unknown helps parents make decisions based on the present law, not imagined futures.</strong>
           </p>
         </div>
       </section>
@@ -63,10 +63,10 @@ export default function WhatWeDoNotKnow() {
         <div className="prose-calm space-y-3">
           <p>This section focuses on known unknowns. The checked research set confirms these areas are unresolved.</p>
           <ul className="space-y-2">
-            <li>No draft legislation has been published setting out changes to EHCP eligibility.</li>
-            <li>No final national SEND standards have been published.</li>
+            <li><strong>No draft legislation has been published</strong> setting out changes to EHCP eligibility.</li>
+            <li><strong>No final national SEND standards have been published.</strong></li>
             <li>No confirmed funding model replacing EHCP linked funding has been agreed.</li>
-            <li>No confirmed changes to tribunal appeal rights have been announced.</li>
+            <li><strong>No confirmed changes to tribunal appeal rights</strong> have been announced.</li>
             <li>No confirmed implementation dates beyond broad 2026 to 2028 windows exist for major reforms.</li>
             <li>No confirmed transitional arrangements for new entrants versus existing EHCP holders have been published.</li>
           </ul>
@@ -82,10 +82,10 @@ export default function WhatWeDoNotKnow() {
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">Will EHCP eligibility change</h3>
             <p>
-              This is the biggest question for families.
+              <strong>This is the biggest question for families.</strong>
             </p>
             <p>
-              Right now, the legal test for an EHCP is unchanged. What is unknown is whether future legislation will narrow eligibility, keep it the same, or restructure it through tiers.
+              Right now, <strong>the legal test for an EHCP is unchanged</strong>. What is unknown is whether future legislation will narrow eligibility, keep it the same, or restructure it through tiers.
             </p>
             <p>
               Until legislation is published, no one can say with certainty how eligibility might change or when.
@@ -95,17 +95,17 @@ export default function WhatWeDoNotKnow() {
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">What will national SEND standards actually include</h3>
             <p>
-              Parents are being told standards are coming, but the detail matters.
+              Parents are being told standards are coming, but <strong>the detail matters</strong>.
             </p>
             <p>Key unanswered questions include:</p>
             <ul className="space-y-2">
               <li>What support will schools be required to provide without an EHCP.</li>
               <li>How differences between need types will be handled.</li>
-              <li>Whether standards will be enforceable or advisory.</li>
+              <li><strong>Whether standards will be enforceable or advisory.</strong></li>
               <li>Who will monitor compliance and what happens when standards are not met.</li>
             </ul>
             <p>
-              Without this detail, parents cannot yet rely on standards as a safeguard.
+              <strong>Without this detail, parents cannot yet rely on standards as a safeguard.</strong>
             </p>
           </div>
 
@@ -116,12 +116,12 @@ export default function WhatWeDoNotKnow() {
             </p>
             <p>What we do not know is:</p>
             <ul className="space-y-2">
-              <li>Whether individual accountability will remain.</li>
+              <li><strong>Whether individual accountability will remain.</strong></li>
               <li>How schools will be prevented from rationing support.</li>
               <li>How families will challenge decisions if funding is pooled.</li>
             </ul>
             <p>
-              Until this is clear, parents are right to be cautious.
+              <strong>Until this is clear, parents are right to be cautious.</strong>
             </p>
           </div>
 
@@ -132,12 +132,12 @@ export default function WhatWeDoNotKnow() {
             </p>
             <p>Parents want to know:</p>
             <ul className="space-y-2">
-              <li>Whether children with existing EHCPs are fully protected.</li>
+              <li><strong>Whether children with existing EHCPs are fully protected.</strong></li>
               <li>How children newly identified during reform will be treated.</li>
               <li>Whether different rules will apply in different areas at different times.</li>
             </ul>
             <p>
-              The lack of a published transition plan adds to anxiety.
+              <strong>The lack of a published transition plan adds to anxiety.</strong>
             </p>
           </div>
 
@@ -150,10 +150,10 @@ export default function WhatWeDoNotKnow() {
             <ul className="space-y-2">
               <li>Where the therapists will come from.</li>
               <li>Whether NHS waiting lists will reduce.</li>
-              <li>How health provision will be accessed without an EHCP.</li>
+              <li><strong>How health provision will be accessed without an EHCP.</strong></li>
             </ul>
             <p>
-              These questions matter because education alone cannot meet many children's needs.
+              These questions matter because <strong>education alone cannot meet many children's needs</strong>.
             </p>
           </div>
 
@@ -163,7 +163,7 @@ export default function WhatWeDoNotKnow() {
               Families also want to know how success will be measured.
             </p>
             <p>
-              Is success fewer EHCPs, fewer appeals, lower costs, or better lives for children.
+              <strong>Is success fewer EHCPs, fewer appeals, lower costs, or better lives for children.</strong>
             </p>
             <p>
               Until outcomes are clearly defined, parents will remain sceptical.
@@ -173,10 +173,10 @@ export default function WhatWeDoNotKnow() {
           <div className="space-y-3">
             <h3 className="text-lg font-display font-medium text-foreground">Why naming the unknowns matters</h3>
             <p>
-              Uncertainty does not mean families should panic. It does mean families should make decisions based on current rights and current needs, not rumours.
+              Uncertainty does not mean families should panic. It does mean <strong>families should make decisions based on current rights and current needs, not rumours</strong>.
             </p>
             <p>
-              The most protective position right now is to work within the system that exists today, while staying informed about what may change tomorrow.
+              <strong>The most protective position right now is to work within the system that exists today</strong>, while staying informed about what may change tomorrow.
             </p>
           </div>
 
