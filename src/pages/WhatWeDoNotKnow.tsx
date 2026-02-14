@@ -3,8 +3,24 @@ import { SEOHead } from "@/components/SEOHead";
 import {
   PageOrientation,
   SixtySecondSummary,
+  OnThisPage,
+  ContentBox,
 } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
+import { Users, BarChart3, HelpCircle, ClipboardList, PoundSterling, ArrowRightLeft, Heart, Target, Shield } from "lucide-react";
+
+const sections: PageSectionDef[] = [
+  { id: "impact", icon: Users, title: "How will this impact children and parents" },
+  { id: "statistics", icon: BarChart3, title: "Statistics and facts" },
+  { id: "eligibility", icon: HelpCircle, title: "Will EHCP eligibility change" },
+  { id: "standards", icon: ClipboardList, title: "What will national SEND standards actually include" },
+  { id: "funding", icon: PoundSterling, title: "How funding changes would affect individual children" },
+  { id: "transition", icon: ArrowRightLeft, title: "What happens during transition" },
+  { id: "health", icon: Heart, title: "How health and care will realistically be involved" },
+  { id: "outcomes", icon: Target, title: "What outcomes will be used to judge success" },
+  { id: "why-naming", icon: Shield, title: "Why naming the unknowns matters" },
+];
 
 export default function WhatWeDoNotKnow() {
   return (
@@ -36,11 +52,10 @@ export default function WhatWeDoNotKnow() {
         }
       />
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          How will this impact children and parents
-        </h2>
-        <div className="prose-calm space-y-3">
+      <OnThisPage sections={sections} />
+
+      <ContentBox id="impact" icon={Users} title="How will this impact children and parents">
+        <div className="space-y-3">
           <p>
             <strong>The main impact right now is emotional and practical.</strong>
           </p>
@@ -54,13 +69,10 @@ export default function WhatWeDoNotKnow() {
             <strong>Understanding what is genuinely unknown helps parents make decisions based on the present law, not imagined futures.</strong>
           </p>
         </div>
-      </section>
+      </ContentBox>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          Statistics and facts
-        </h2>
-        <div className="prose-calm space-y-3">
+      <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
+        <div className="space-y-3">
           <p>This section focuses on known unknowns. The checked research set confirms these areas are unresolved.</p>
           <ul className="space-y-2">
             <li><strong>No draft legislation has been published</strong> setting out changes to EHCP eligibility.</li>
@@ -71,117 +83,115 @@ export default function WhatWeDoNotKnow() {
             <li>No confirmed transitional arrangements for new entrants versus existing EHCP holders have been published.</li>
           </ul>
         </div>
-      </section>
+      </ContentBox>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          The unanswered questions parents are rightly asking
-        </h2>
-        <div className="prose-calm space-y-6">
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Will EHCP eligibility change</h3>
-            <p>
-              <strong>This is the biggest question for families.</strong>
-            </p>
-            <p>
-              Right now, <strong>the legal test for an EHCP is unchanged</strong>. What is unknown is whether future legislation will narrow eligibility, keep it the same, or restructure it through tiers.
-            </p>
-            <p>
-              Until legislation is published, no one can say with certainty how eligibility might change or when.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">What will national SEND standards actually include</h3>
-            <p>
-              Parents are being told standards are coming, but <strong>the detail matters</strong>.
-            </p>
-            <p>Key unanswered questions include:</p>
-            <ul className="space-y-2">
-              <li>What support will schools be required to provide without an EHCP.</li>
-              <li>How differences between need types will be handled.</li>
-              <li><strong>Whether standards will be enforceable or advisory.</strong></li>
-              <li>Who will monitor compliance and what happens when standards are not met.</li>
-            </ul>
-            <p>
-              <strong>Without this detail, parents cannot yet rely on standards as a safeguard.</strong>
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">How funding changes would affect individual children</h3>
-            <p>
-              There is discussion about shifting funding earlier or making it less plan dependent.
-            </p>
-            <p>What we do not know is:</p>
-            <ul className="space-y-2">
-              <li><strong>Whether individual accountability will remain.</strong></li>
-              <li>How schools will be prevented from rationing support.</li>
-              <li>How families will challenge decisions if funding is pooled.</li>
-            </ul>
-            <p>
-              <strong>Until this is clear, parents are right to be cautious.</strong>
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">What happens during transition</h3>
-            <p>
-              Another major unknown is how change will be phased.
-            </p>
-            <p>Parents want to know:</p>
-            <ul className="space-y-2">
-              <li><strong>Whether children with existing EHCPs are fully protected.</strong></li>
-              <li>How children newly identified during reform will be treated.</li>
-              <li>Whether different rules will apply in different areas at different times.</li>
-            </ul>
-            <p>
-              <strong>The lack of a published transition plan adds to anxiety.</strong>
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">How health and care will realistically be involved</h3>
-            <p>
-              Reform relies heavily on multi-agency working.
-            </p>
-            <p>Parents are asking:</p>
-            <ul className="space-y-2">
-              <li>Where the therapists will come from.</li>
-              <li>Whether NHS waiting lists will reduce.</li>
-              <li><strong>How health provision will be accessed without an EHCP.</strong></li>
-            </ul>
-            <p>
-              These questions matter because <strong>education alone cannot meet many children's needs</strong>.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">What outcomes will be used to judge success</h3>
-            <p>
-              Families also want to know how success will be measured.
-            </p>
-            <p>
-              <strong>Is success fewer EHCPs, fewer appeals, lower costs, or better lives for children.</strong>
-            </p>
-            <p>
-              Until outcomes are clearly defined, parents will remain sceptical.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Why naming the unknowns matters</h3>
-            <p>
-              Uncertainty does not mean families should panic. It does mean <strong>families should make decisions based on current rights and current needs, not rumours</strong>.
-            </p>
-            <p>
-              <strong>The most protective position right now is to work within the system that exists today</strong>, while staying informed about what may change tomorrow.
-            </p>
-          </div>
-
+      <ContentBox id="eligibility" icon={HelpCircle} title="Will EHCP eligibility change">
+        <div className="space-y-3">
+          <p>
+            <strong>This is the biggest question for families.</strong>
+          </p>
+          <p>
+            Right now, <strong>the legal test for an EHCP is unchanged</strong>. What is unknown is whether future legislation will narrow eligibility, keep it the same, or restructure it through tiers.
+          </p>
+          <p>
+            Until legislation is published, no one can say with certainty how eligibility might change or when.
+          </p>
         </div>
-      </section>
+      </ContentBox>
+
+      <ContentBox id="standards" icon={ClipboardList} title="What will national SEND standards actually include">
+        <div className="space-y-3">
+          <p>
+            Parents are being told standards are coming, but <strong>the detail matters</strong>.
+          </p>
+          <p>Key unanswered questions include:</p>
+          <ul className="space-y-2">
+            <li>What support will schools be required to provide without an EHCP.</li>
+            <li>How differences between need types will be handled.</li>
+            <li><strong>Whether standards will be enforceable or advisory.</strong></li>
+            <li>Who will monitor compliance and what happens when standards are not met.</li>
+          </ul>
+          <p>
+            <strong>Without this detail, parents cannot yet rely on standards as a safeguard.</strong>
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="funding" icon={PoundSterling} title="How funding changes would affect individual children">
+        <div className="space-y-3">
+          <p>
+            There is discussion about shifting funding earlier or making it less plan dependent.
+          </p>
+          <p>What we do not know is:</p>
+          <ul className="space-y-2">
+            <li><strong>Whether individual accountability will remain.</strong></li>
+            <li>How schools will be prevented from rationing support.</li>
+            <li>How families will challenge decisions if funding is pooled.</li>
+          </ul>
+          <p>
+            <strong>Until this is clear, parents are right to be cautious.</strong>
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="transition" icon={ArrowRightLeft} title="What happens during transition">
+        <div className="space-y-3">
+          <p>
+            Another major unknown is how change will be phased.
+          </p>
+          <p>Parents want to know:</p>
+          <ul className="space-y-2">
+            <li><strong>Whether children with existing EHCPs are fully protected.</strong></li>
+            <li>How children newly identified during reform will be treated.</li>
+            <li>Whether different rules will apply in different areas at different times.</li>
+          </ul>
+          <p>
+            <strong>The lack of a published transition plan adds to anxiety.</strong>
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="health" icon={Heart} title="How health and care will realistically be involved">
+        <div className="space-y-3">
+          <p>
+            Reform relies heavily on multi-agency working.
+          </p>
+          <p>Parents are asking:</p>
+          <ul className="space-y-2">
+            <li>Where the therapists will come from.</li>
+            <li>Whether NHS waiting lists will reduce.</li>
+            <li><strong>How health provision will be accessed without an EHCP.</strong></li>
+          </ul>
+          <p>
+            These questions matter because <strong>education alone cannot meet many children's needs</strong>.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="outcomes" icon={Target} title="What outcomes will be used to judge success">
+        <div className="space-y-3">
+          <p>
+            Families also want to know how success will be measured.
+          </p>
+          <p>
+            <strong>Is success fewer EHCPs, fewer appeals, lower costs, or better lives for children.</strong>
+          </p>
+          <p>
+            Until outcomes are clearly defined, parents will remain sceptical.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="why-naming" icon={Shield} title="Why naming the unknowns matters">
+        <div className="space-y-3">
+          <p>
+            Uncertainty does not mean families should panic. It does mean <strong>families should make decisions based on current rights and current needs, not rumours</strong>.
+          </p>
+          <p>
+            <strong>The most protective position right now is to work within the system that exists today</strong>, while staying informed about what may change tomorrow.
+          </p>
+        </div>
+      </ContentBox>
 
       <div className="content-section pb-16" />
     </Layout>

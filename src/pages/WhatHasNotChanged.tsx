@@ -3,8 +3,24 @@ import { SEOHead } from "@/components/SEOHead";
 import {
   PageOrientation,
   SixtySecondSummary,
+  OnThisPage,
+  ContentBox,
 } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
+import { Users, BarChart3, Scale, Shield, Gavel, AlertTriangle, Clock, ShieldCheck, MessageCircle } from "lucide-react";
+
+const sections: PageSectionDef[] = [
+  { id: "impact", icon: Users, title: "How will this impact children and parents" },
+  { id: "statistics", icon: BarChart3, title: "Statistics and facts" },
+  { id: "law", icon: Scale, title: "The law has not changed" },
+  { id: "ehcps", icon: Shield, title: "EHCPs are still enforceable" },
+  { id: "appeals", icon: Gavel, title: "Appeal rights remain" },
+  { id: "sen-support", icon: AlertTriangle, title: "SEN Support remains variable" },
+  { id: "timescales", icon: Clock, title: "Timescales remain, even if they are not met" },
+  { id: "no-reclassification", icon: ShieldCheck, title: "No child is being moved or reclassified" },
+  { id: "noisy", icon: MessageCircle, title: "Why this matters in a noisy environment" },
+];
 
 export default function WhatHasNotChanged() {
   return (
@@ -36,11 +52,10 @@ export default function WhatHasNotChanged() {
         }
       />
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          How will this impact children and parents
-        </h2>
-        <div className="prose-calm space-y-3">
+      <OnThisPage sections={sections} />
+
+      <ContentBox id="impact" icon={Users} title="How will this impact children and parents">
+        <div className="space-y-3">
           <p>
             For families right now, this means <strong>certainty in a period of noise</strong>.
           </p>
@@ -51,13 +66,10 @@ export default function WhatHasNotChanged() {
             At the same time, the pressures you experience have not disappeared. Delays, inconsistency, and conflict remain part of many families' lived experience. <strong>Reform discussions do not fix today's problems overnight, but they also do not take away today's rights.</strong>
           </p>
         </div>
-      </section>
+      </ContentBox>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          Statistics and facts
-        </h2>
-        <div className="prose-calm space-y-3">
+      <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
+        <div className="space-y-3">
           <p>These facts reflect what has remained unchanged, based on the checked research set.</p>
           <ul className="space-y-2">
             <li><strong>The Children and Families Act 2014 remains the legal framework</strong> for SEND in England.</li>
@@ -70,93 +82,91 @@ export default function WhatHasNotChanged() {
             <li><strong>No confirmed legislative changes have been enacted</strong> as of 14 February 2026.</li>
           </ul>
         </div>
-      </section>
+      </ContentBox>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          What has stayed the same, in plain language
-        </h2>
-        <div className="prose-calm space-y-6">
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">The law has not changed</h3>
-            <p>
-              The most important point for parents to understand is this. <strong>The law has not moved.</strong>
-            </p>
-            <p>
-              The Children and Families Act 2014 still governs SEND in England. <strong>Any major change to EHCP eligibility, appeal rights, or legal duties would require new primary legislation.</strong> That has not happened.
-            </p>
-            <p>
-              This means the legal tests for an EHCP are unchanged. If a child has or may have special educational needs, and may require special educational provision beyond what is ordinarily available, <strong>the local authority still has a duty to assess</strong>.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">EHCPs are still enforceable</h3>
-            <p>
-              <strong>An EHCP is still a legal document.</strong> The provision written into it must be delivered. Section F remains enforceable.
-            </p>
-            <p>
-              If provision is missing, delayed, or reduced without agreement, <strong>families still have the right to challenge</strong> through complaints, mediation, or tribunal.
-            </p>
-            <p>
-              Nothing in the confirmed reform activity removes that protection.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Appeal rights remain</h3>
-            <p><strong>Parents still have the right to appeal:</strong></p>
-            <ul className="space-y-2">
-              <li>Refusals to assess.</li>
-              <li>Refusals to issue an EHCP.</li>
-              <li>The content of an EHCP.</li>
-              <li>The named placement.</li>
-            </ul>
-            <p>
-              The SEND Tribunal continues to operate under the same powers. <strong>High parent success rates in tribunal cases reflect system behaviour, not a change in legal thresholds.</strong>
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">SEN Support remains variable</h3>
-            <p>
-              <strong>SEN Support remains non-statutory and locally variable.</strong> There is still no single national definition of what must be provided at this level.
-            </p>
-            <p>
-              This is one of the drivers behind reform, but as of February 2026, this inconsistency remains.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Timescales remain, even if they are not met</h3>
-            <p>
-              <strong>The legal 20 week deadline still exists.</strong> Enforcement has not changed. Families still experience delays, but the law itself has not been amended.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">No child is being moved or reclassified because of reform talk</h3>
-            <p>
-              <strong>There is no confirmed policy that removes EHCPs from children already holding them.</strong> There is no confirmed policy that forces children out of specialist provision or into mainstream.
-            </p>
-            <p>
-              Any claims suggesting that rights have already been taken away are <strong>not supported by the checked research set</strong>.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Why this matters in a noisy environment</h3>
-            <p>
-              When there is a lot of discussion, leaks, and commentary, it is easy for families to feel that the ground is shifting under their feet.
-            </p>
-            <p>
-              The reality, as of 14 February 2026, is more stable than the headlines suggest. The system is under pressure. Reform is coming. But <strong>the legal foundations remain in place</strong>.
-            </p>
-          </div>
-
+      <ContentBox id="law" icon={Scale} title="The law has not changed">
+        <div className="space-y-3">
+          <p>
+            The most important point for parents to understand is this. <strong>The law has not moved.</strong>
+          </p>
+          <p>
+            The Children and Families Act 2014 still governs SEND in England. <strong>Any major change to EHCP eligibility, appeal rights, or legal duties would require new primary legislation.</strong> That has not happened.
+          </p>
+          <p>
+            This means the legal tests for an EHCP are unchanged. If a child has or may have special educational needs, and may require special educational provision beyond what is ordinarily available, <strong>the local authority still has a duty to assess</strong>.
+          </p>
         </div>
-      </section>
+      </ContentBox>
+
+      <ContentBox id="ehcps" icon={Shield} title="EHCPs are still enforceable">
+        <div className="space-y-3">
+          <p>
+            <strong>An EHCP is still a legal document.</strong> The provision written into it must be delivered. Section F remains enforceable.
+          </p>
+          <p>
+            If provision is missing, delayed, or reduced without agreement, <strong>families still have the right to challenge</strong> through complaints, mediation, or tribunal.
+          </p>
+          <p>
+            Nothing in the confirmed reform activity removes that protection.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="appeals" icon={Gavel} title="Appeal rights remain">
+        <div className="space-y-3">
+          <p><strong>Parents still have the right to appeal:</strong></p>
+          <ul className="space-y-2">
+            <li>Refusals to assess.</li>
+            <li>Refusals to issue an EHCP.</li>
+            <li>The content of an EHCP.</li>
+            <li>The named placement.</li>
+          </ul>
+          <p>
+            The SEND Tribunal continues to operate under the same powers. <strong>High parent success rates in tribunal cases reflect system behaviour, not a change in legal thresholds.</strong>
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="sen-support" icon={AlertTriangle} title="SEN Support remains variable">
+        <div className="space-y-3">
+          <p>
+            <strong>SEN Support remains non-statutory and locally variable.</strong> There is still no single national definition of what must be provided at this level.
+          </p>
+          <p>
+            This is one of the drivers behind reform, but as of February 2026, this inconsistency remains.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="timescales" icon={Clock} title="Timescales remain, even if they are not met">
+        <div className="space-y-3">
+          <p>
+            <strong>The legal 20 week deadline still exists.</strong> Enforcement has not changed. Families still experience delays, but the law itself has not been amended.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="no-reclassification" icon={ShieldCheck} title="No child is being moved or reclassified because of reform talk">
+        <div className="space-y-3">
+          <p>
+            <strong>There is no confirmed policy that removes EHCPs from children already holding them.</strong> There is no confirmed policy that forces children out of specialist provision or into mainstream.
+          </p>
+          <p>
+            Any claims suggesting that rights have already been taken away are <strong>not supported by the checked research set</strong>.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="noisy" icon={MessageCircle} title="Why this matters in a noisy environment">
+        <div className="space-y-3">
+          <p>
+            When there is a lot of discussion, leaks, and commentary, it is easy for families to feel that the ground is shifting under their feet.
+          </p>
+          <p>
+            The reality, as of 14 February 2026, is more stable than the headlines suggest. The system is under pressure. Reform is coming. But <strong>the legal foundations remain in place</strong>.
+          </p>
+        </div>
+      </ContentBox>
 
       <div className="content-section pb-16" />
     </Layout>

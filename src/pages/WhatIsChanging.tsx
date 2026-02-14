@@ -3,8 +3,24 @@ import { SEOHead } from "@/components/SEOHead";
 import {
   PageOrientation,
   SixtySecondSummary,
+  OnThisPage,
+  ContentBox,
 } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
+import { Users, BarChart3, ClipboardList, Monitor, GraduationCap, Building2, MapPin, PoundSterling, ShieldCheck } from "lucide-react";
+
+const sections: PageSectionDef[] = [
+  { id: "impact", icon: Users, title: "How will this impact children and parents" },
+  { id: "statistics", icon: BarChart3, title: "Statistics and facts" },
+  { id: "standards", icon: ClipboardList, title: "National SEND standards" },
+  { id: "digital", icon: Monitor, title: "Digital first and standardised EHCP processes" },
+  { id: "workforce", icon: GraduationCap, title: "Workforce training and capacity building" },
+  { id: "specialist", icon: Building2, title: "Expansion of specialist provision" },
+  { id: "inclusion", icon: MapPin, title: "Local inclusion planning and accountability" },
+  { id: "funding", icon: PoundSterling, title: "Funding direction and deficit absorption" },
+  { id: "unchanged", icon: ShieldCheck, title: "What has not changed yet" },
+];
 
 export default function WhatIsChanging() {
   return (
@@ -39,11 +55,10 @@ export default function WhatIsChanging() {
         }
       />
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          How will this impact children and parents
-        </h2>
-        <div className="prose-calm space-y-3">
+      <OnThisPage sections={sections} />
+
+      <ContentBox id="impact" icon={Users} title="How will this impact children and parents">
+        <div className="space-y-3">
           <p>
             In the short term, <strong>most families will not see an overnight difference</strong>. Rights and processes remain the same today.
           </p>
@@ -54,13 +69,10 @@ export default function WhatIsChanging() {
             However, <strong>impact will depend on delivery</strong>. Training takes time. Capacity takes time. Digital systems take time. Until those changes bed in, families may still experience the same pressures they face now.
           </p>
         </div>
-      </section>
+      </ContentBox>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          Statistics and facts
-        </h2>
-        <div className="prose-calm space-y-3">
+      <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
+        <div className="space-y-3">
           <p>These points are drawn directly from the checked research set.</p>
           <ul className="space-y-2">
             <li>National SEND standards are confirmed as government policy direction, with <strong>consultation and phased introduction planned for 2026 to 2027</strong>.</li>
@@ -74,99 +86,97 @@ export default function WhatIsChanging() {
             <li>Ofsted and CQC area SEND inspections are now established as <strong>a core accountability mechanism</strong>.</li>
           </ul>
         </div>
-      </section>
+      </ContentBox>
 
-      <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">
-          What has actually been confirmed, in plain language
-        </h2>
-        <div className="prose-calm space-y-6">
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">National SEND standards</h3>
-            <p>
-              The government has confirmed that <strong>national SEND standards will be introduced</strong>. These standards are intended to set out what support should ordinarily be available for children and young people with SEND, regardless of where they live.
-            </p>
-            <p>
-              The purpose is to <strong>reduce postcode variation</strong> and to make it clearer what should happen at SEN Support level, before families are pushed towards an EHCP. The standards are being co-produced and consulted on. They are not yet in force, but their introduction is confirmed.
-            </p>
-            <p>
-              For parents, this matters because it should eventually mean <strong>clearer expectations and fewer arguments about what support a setting should already be providing</strong>.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Digital first and standardised EHCP processes</h3>
-            <p>
-              The move towards digital EHCP processes is confirmed. The aim is to <strong>reduce paperwork, improve transparency, and make it easier for families to see what is happening and when</strong>.
-            </p>
-            <p>
-              Pilots are already running in some areas. These allow families to track progress, reuse information, and reduce duplication of reports. Standard templates are also part of this work, so that EHCPs look and read more consistently across England.
-            </p>
-            <p>
-              <strong>This is not a new legal process. It is a different way of running the same legal process.</strong>
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Workforce training and capacity building</h3>
-            <p>
-              The government has confirmed <strong>significant investment in SEND workforce development</strong>.
-            </p>
-            <p>This includes:</p>
-            <ul className="space-y-2">
-              <li>Mandatory SEND training for teachers.</li>
-              <li>Expanded SENCO training, especially in early years.</li>
-              <li>Increased training routes for educational psychologists.</li>
-              <li>Development of specialist SEND qualifications.</li>
-            </ul>
-            <p>
-              The intention is to <strong>improve early identification and day to day support</strong>, so that fewer children reach crisis point before help arrives.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Expansion of specialist provision</h3>
-            <p>
-              <strong>New special schools are being built and funded.</strong> This is a confirmed capital programme.
-            </p>
-            <p>
-              The aim is to reduce waiting lists, reduce out of area placements, and reduce reliance on expensive independent provision. <strong>This does not remove the presumption of mainstream education</strong>, but it acknowledges that some children need specialist environments.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Local inclusion planning and accountability</h3>
-            <p>
-              Local areas are being required to <strong>plan SEND provision across education, health and care more jointly</strong>. This is being reinforced through Ofsted and CQC area inspections.
-            </p>
-            <p>
-              Where areas repeatedly fail, the Department for Education now has <strong>clearer intervention powers</strong>. This is intended to shift the system from reactive firefighting to planned provision.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">Funding direction and deficit absorption</h3>
-            <p>
-              The commitment to <strong>absorb historic SEND deficits from 2028 to 2029 is confirmed</strong>. This removes a major financial pressure from local authorities.
-            </p>
-            <p>
-              However, <strong>future budgets will still be cash limited</strong>. This is why the government is focusing on earlier support and system redesign. This funding commitment does not remove the need for reform, but it creates space to implement it.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-display font-medium text-foreground">What has not changed yet</h3>
-            <p>
-              It is important to be clear. <strong>None of these confirmed changes remove existing rights.</strong> EHCPs remain legally enforceable. Appeal routes remain. Timescales remain.
-            </p>
-            <p>
-              The confirmed changes are about <strong>preparation, capacity, and consistency, not about removing protections</strong>.
-            </p>
-          </div>
-
+      <ContentBox id="standards" icon={ClipboardList} title="National SEND standards">
+        <div className="space-y-3">
+          <p>
+            The government has confirmed that <strong>national SEND standards will be introduced</strong>. These standards are intended to set out what support should ordinarily be available for children and young people with SEND, regardless of where they live.
+          </p>
+          <p>
+            The purpose is to <strong>reduce postcode variation</strong> and to make it clearer what should happen at SEN Support level, before families are pushed towards an EHCP. The standards are being co-produced and consulted on. They are not yet in force, but their introduction is confirmed.
+          </p>
+          <p>
+            For parents, this matters because it should eventually mean <strong>clearer expectations and fewer arguments about what support a setting should already be providing</strong>.
+          </p>
         </div>
-      </section>
+      </ContentBox>
+
+      <ContentBox id="digital" icon={Monitor} title="Digital first and standardised EHCP processes">
+        <div className="space-y-3">
+          <p>
+            The move towards digital EHCP processes is confirmed. The aim is to <strong>reduce paperwork, improve transparency, and make it easier for families to see what is happening and when</strong>.
+          </p>
+          <p>
+            Pilots are already running in some areas. These allow families to track progress, reuse information, and reduce duplication of reports. Standard templates are also part of this work, so that EHCPs look and read more consistently across England.
+          </p>
+          <p>
+            <strong>This is not a new legal process. It is a different way of running the same legal process.</strong>
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="workforce" icon={GraduationCap} title="Workforce training and capacity building">
+        <div className="space-y-3">
+          <p>
+            The government has confirmed <strong>significant investment in SEND workforce development</strong>.
+          </p>
+          <p>This includes:</p>
+          <ul className="space-y-2">
+            <li>Mandatory SEND training for teachers.</li>
+            <li>Expanded SENCO training, especially in early years.</li>
+            <li>Increased training routes for educational psychologists.</li>
+            <li>Development of specialist SEND qualifications.</li>
+          </ul>
+          <p>
+            The intention is to <strong>improve early identification and day to day support</strong>, so that fewer children reach crisis point before help arrives.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="specialist" icon={Building2} title="Expansion of specialist provision">
+        <div className="space-y-3">
+          <p>
+            <strong>New special schools are being built and funded.</strong> This is a confirmed capital programme.
+          </p>
+          <p>
+            The aim is to reduce waiting lists, reduce out of area placements, and reduce reliance on expensive independent provision. <strong>This does not remove the presumption of mainstream education</strong>, but it acknowledges that some children need specialist environments.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="inclusion" icon={MapPin} title="Local inclusion planning and accountability">
+        <div className="space-y-3">
+          <p>
+            Local areas are being required to <strong>plan SEND provision across education, health and care more jointly</strong>. This is being reinforced through Ofsted and CQC area inspections.
+          </p>
+          <p>
+            Where areas repeatedly fail, the Department for Education now has <strong>clearer intervention powers</strong>. This is intended to shift the system from reactive firefighting to planned provision.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="funding" icon={PoundSterling} title="Funding direction and deficit absorption">
+        <div className="space-y-3">
+          <p>
+            The commitment to <strong>absorb historic SEND deficits from 2028 to 2029 is confirmed</strong>. This removes a major financial pressure from local authorities.
+          </p>
+          <p>
+            However, <strong>future budgets will still be cash limited</strong>. This is why the government is focusing on earlier support and system redesign. This funding commitment does not remove the need for reform, but it creates space to implement it.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="unchanged" icon={ShieldCheck} title="What has not changed yet">
+        <div className="space-y-3">
+          <p>
+            It is important to be clear. <strong>None of these confirmed changes remove existing rights.</strong> EHCPs remain legally enforceable. Appeal routes remain. Timescales remain.
+          </p>
+          <p>
+            The confirmed changes are about <strong>preparation, capacity, and consistency, not about removing protections</strong>.
+          </p>
+        </div>
+      </ContentBox>
 
       <div className="content-section pb-16" />
     </Layout>
