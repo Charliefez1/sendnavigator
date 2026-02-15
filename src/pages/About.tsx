@@ -78,49 +78,49 @@ export default function About() {
 
       <SectionBox id="why" icon={BookOpen} title="Why this resource exists">
         <p>
-          SEND Reform Navigator exists to help people make sense of SEND reform in England at a time when information can feel fragmented and hard to follow. Changes are being discussed across government, education, health, and local services, often using complex language and published in stages. This resource was created to bring that information together in a clear, calm way, without adding interpretation or pressure.
+          SEND Reform Navigator exists to help people <strong>make sense of SEND reform in England</strong> at a time when information can feel fragmented and hard to follow. Changes are being discussed across government, education, health, and local services, often using complex language and published in stages. This resource was created to <strong>bring that information together in a clear, calm way</strong>, without adding interpretation or pressure.
         </p>
         <p>
-          Its aim is to support understanding. It explains what is known, what is being discussed, and what is not yet decided, so readers can orient themselves without needing to track multiple sources or interpret technical documents.
+          Its aim is to support understanding. It explains <strong>what is known, what is being discussed, and what is not yet decided</strong>, so readers can orient themselves without needing to track multiple sources or interpret technical documents.
         </p>
       </SectionBox>
 
       <SectionBox id="who" icon={Users} title="Who this resource is for">
         <p>
-          This resource is for parents and carers of children and young people with SEND, for teachers and school leaders, and for professionals working across education, health, and care. It is also relevant to anyone seeking a grounded overview of SEND reform in England.
+          This resource is for <strong>parents and carers</strong> of children and young people with SEND, for <strong>teachers and school leaders</strong>, and for professionals working across education, health, and care. It is also relevant to anyone seeking a grounded overview of SEND reform in England.
         </p>
         <p>
-          It is written for people who may be feeling overloaded by information and want clarity rather than commentary.
+          It is written for people who may be feeling overloaded by information and want <strong>clarity rather than commentary</strong>.
         </p>
       </SectionBox>
 
       <SectionBox id="independence" icon={Shield} title="Independence and neutrality">
         <p>
-          SEND Reform Navigator is independent. It does not represent government, local authorities, schools, or advocacy groups. It does not promote particular outcomes or positions on SEND reform.
+          SEND Reform Navigator is <strong>independent</strong>. It does not represent government, local authorities, schools, or advocacy groups. It does not promote particular outcomes or positions on SEND reform.
         </p>
         <p>
-          The content is written to be neutral and factual. Where there are different views or areas of uncertainty, these are stated openly rather than resolved or argued. The resource is designed to inform, not to persuade.
+          The content is written to be <strong>neutral and factual</strong>. Where there are different views or areas of uncertainty, these are stated openly rather than resolved or argued. The resource is designed to <strong>inform, not to persuade</strong>.
         </p>
       </SectionBox>
 
       <SectionBox id="updates" icon={RefreshCw} title="How information is updated and corrected">
         <p>
-          Information on this site is reviewed and updated as new, confirmed details are published. When official plans change or new decisions are formally announced, the content is revised to reflect that.
+          Information on this site is <strong>reviewed and updated as new, confirmed details are published</strong>. When official plans change or new decisions are formally announced, the content is revised to reflect that.
         </p>
         <p>
-          If errors or inaccuracies are identified, they are corrected. Where information is incomplete or uncertain, this is made clear rather than filled in with assumptions.
+          If errors or inaccuracies are identified, <strong>they are corrected</strong>. Where information is incomplete or uncertain, this is made clear rather than filled in with assumptions.
         </p>
       </SectionBox>
 
       <SectionBox id="limits" icon={AlertTriangle} title="Limits of this resource">
         <p>
-          This resource does not provide legal advice, medical guidance, or professional recommendations. It cannot advise on individual circumstances or decisions.
+          This resource <strong>does not provide legal advice, medical guidance, or professional recommendations</strong>. It cannot advise on individual circumstances or decisions.
         </p>
         <p>
-          It focuses only on SEND provision and reform in England. It does not cover arrangements in Scotland, Wales, or Northern Ireland.
+          It focuses only on <strong>SEND provision and reform in England</strong>. It does not cover arrangements in Scotland, Wales, or Northern Ireland.
         </p>
         <p>
-          It explains the system at a high level and does not replace support from professionals or statutory services.
+          It explains the system at a high level and <strong>does not replace support from professionals or statutory services</strong>.
         </p>
       </SectionBox>
 
