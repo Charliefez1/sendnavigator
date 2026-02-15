@@ -233,15 +233,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Last updated */}
-      <section className="content-section pb-16">
-        <div className="bg-secondary/50 rounded-xl p-4 text-sm text-muted-foreground flex items-center gap-3">
-          <Clock className="w-5 h-5 flex-shrink-0" />
-          <span>
-            <strong className="text-foreground">Last updated:</strong> 15th February 2026
-          </span>
-        </div>
-      </section>
     </Layout>
   );
 };

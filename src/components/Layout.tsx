@@ -31,6 +31,12 @@ export function Layout({ children, hideGlobalCTA }: LayoutProps) {
       <Header />
       <JourneyNavBar />
       <ScanModeBanner />
+      <div className="content-section pt-3 pb-1">
+        <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-status-confirmed flex-shrink-0" />
+          <span><strong className="text-foreground">Last updated:</strong> 15th February 2026</span>
+        </p>
+      </div>
       <main id="main-content" className="flex-1 pb-24" role="main" tabIndex={-1}>
         {children}
         <div className="content-section py-6 space-y-4">
