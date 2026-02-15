@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { BookOpen, ScanLine, Headphones, Sun, Moon, Type, Heart } from "lucide-react";
-import { Link } from "react-router-dom";
+import { BookOpen, ScanLine, Headphones, Sun, Moon, Type, Heart, Zap } from "lucide-react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { useExperienceMode, ExperienceMode } from "@/contexts/ExperienceModeContext";
@@ -17,7 +17,10 @@ export function ExperienceSelector() {
   const { mode, setMode } = useExperienceMode();
   const { sections } = usePageSections();
   const { theme, setTheme } = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [largeText, setLargeText] = useState(false);
+  const isQuickRead = location.pathname === "/quick-read";
 
   useEffect(() => {
     document.documentElement.style.fontSize = largeText ? "112.5%" : "";
@@ -61,17 +64,31 @@ export function ExperienceSelector() {
               onClick={() => setMode(m)}
               className={cn(
                 "flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-medium transition-colors",
-                mode === m
+                mode === m && !isQuickRead
                   ? "bg-white/20 text-white"
                   : "text-white/50 hover:text-white hover:bg-white/10"
               )}
-              aria-pressed={mode === m}
+              aria-pressed={mode === m && !isQuickRead}
               aria-label={`${label} mode`}
             >
               <Icon className="w-3 h-3" />
               <span className="hidden sm:inline">{label}</span>
             </button>
           ))}
+          <button
+            onClick={() => navigate("/quick-read")}
+            className={cn(
+              "flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-medium transition-colors",
+              isQuickRead
+                ? "bg-white/20 text-white"
+                : "text-white/50 hover:text-white hover:bg-white/10"
+            )}
+            aria-pressed={isQuickRead}
+            aria-label="Quick Read mode"
+          >
+            <Zap className="w-3 h-3" />
+            <span className="hidden sm:inline">Quick Read</span>
+          </button>
           <div className="w-px h-4 bg-white/10 mx-1.5" />
         </div>
 
