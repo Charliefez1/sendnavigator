@@ -1,5 +1,6 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, useEffect } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
+import { useExperienceMode } from "@/contexts/ExperienceModeContext";
 import { cn } from "@/lib/utils";
 
 interface ReadingDepthSectionProps {
@@ -48,6 +49,8 @@ interface ReadingDepthControlProps {
 }
 
 export function ReadingDepthControl({ keyPoints, moreDetail }: ReadingDepthControlProps) {
+  const { mode } = useExperienceMode();
+  
   return (
     <section className="content-section py-6" aria-label="Reading depth options">
       <p className="text-sm text-muted-foreground mb-4">
@@ -57,9 +60,11 @@ export function ReadingDepthControl({ keyPoints, moreDetail }: ReadingDepthContr
         <ReadingDepthSection title="Read the key points" defaultOpen={true}>
           {keyPoints}
         </ReadingDepthSection>
-        <ReadingDepthSection title="Read more detail">
-          {moreDetail}
-        </ReadingDepthSection>
+        {mode !== "scan" && (
+          <ReadingDepthSection title="Read more detail">
+            {moreDetail}
+          </ReadingDepthSection>
+        )}
       </div>
     </section>
   );
