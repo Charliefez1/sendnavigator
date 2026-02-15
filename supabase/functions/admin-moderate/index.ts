@@ -289,6 +289,31 @@ Deno.serve(async (req) => {
       });
     }
 
+    // News items management
+    if (action === "news_list") {
+      const { data, error } = await supabase
+        .from("news_items")
+        .select("*")
+        .order("discovered_at", { ascending: false });
+      if (error) throw error;
+      return new Response(JSON.stringify({ data }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (action === "news_update_status") {
+      const { data, error } = await supabase
+        .from("news_items")
+        .update({ status: id.status })
+        .eq("id", id.itemId)
+        .select()
+        .single();
+      if (error) throw error;
+      return new Response(JSON.stringify({ data }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     if (action === "stats") {
       const [questions, feedback] = await Promise.all([
         supabase.from("user_questions").select("status", { count: "exact" }),

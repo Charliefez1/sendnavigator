@@ -3,8 +3,9 @@ import { Layout } from "@/components/Layout";
 import { PageOrientation } from "@/components/templates";
 import { SourceCard } from "@/components/SourceCard";
 import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle, TrendingUp, ShieldAlert, Users, BarChart3, BookOpen, FileCheck, ChevronDown, ChevronRight } from "lucide-react";
+import { AlertCircle, TrendingUp, ShieldAlert, Users, BarChart3, BookOpen, FileCheck, ChevronDown, ChevronRight, Newspaper } from "lucide-react";
 import { communitySourceCategories } from "@/config/community-sources";
+import { NewsTracker } from "@/components/NewsTracker";
 
 // ─── Statistics data ───
 
@@ -203,6 +204,7 @@ function BulletList({ items }: { items: string[] }) {
 // ─── Section navigation data ───
 
 const sections = [
+  { id: "news-tracker", icon: Newspaper, title: "Latest SEND news", summary: "Automatically tracked news from government, parliamentary, and sector sources about SEND and EHCPs." },
   { id: "statistics", icon: BarChart3, title: "Statistics and data", summary: "Official SEND figures for England covering EHC plans, timeliness, tribunals, funding, and reform activity." },
   { id: "projections", icon: TrendingUp, title: "Projected and forecast figures", summary: "Published projections about future SEND demand and funding gaps. These are not current facts." },
   { id: "clarifications", icon: AlertCircle, title: "Important clarifications", summary: "How to interpret the statistics and why some published figures may appear to conflict." },
@@ -331,13 +333,23 @@ export default function Sources() {
         </div>
       </section>
 
+      {/* ═══ NEWS TRACKER ═══ */}
+      <CollapsibleSection
+        id="news-tracker"
+        icon={Newspaper}
+        title="Latest SEND news"
+        summary="Automatically tracked news from government, parliamentary, and sector sources about SEND and EHCPs."
+        defaultOpen
+      >
+        <NewsTracker />
+      </CollapsibleSection>
+
       {/* ═══ STATISTICS (collapsible - large) ═══ */}
       <CollapsibleSection
         id="statistics"
         icon={BarChart3}
         title="Statistics and data"
         summary="Official SEND figures for England covering EHC plans, timeliness, tribunals, funding, and reform activity."
-        defaultOpen
       >
         <h3 className="text-lg font-semibold text-foreground mb-4">Summary facts</h3>
         <BulletList items={summaryFacts} />
