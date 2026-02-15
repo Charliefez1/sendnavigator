@@ -179,16 +179,16 @@ export function NeurodiversityGlobalAd() {
       <div className="content-section py-3">
         <button
           onClick={() => setDialogOpen(true)}
-          className="w-full text-left rounded-lg border border-border/60 bg-card/50 px-4 py-3 hover:border-primary/30 hover:bg-card transition-all group"
+          className="w-full text-left rounded-lg border-2 border-navy bg-card/50 px-4 py-3 hover:bg-card transition-all group shadow-lg"
         >
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1 min-w-0">
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground/60 mb-1">Neurodiversity Global</p>
+              <p className="text-[10px] uppercase tracking-wider text-navy-muted mb-1">Neurodiversity Global</p>
               <p className="text-sm font-medium text-foreground leading-snug mb-1">{ad.headline}</p>
               <p className="text-xs text-muted-foreground leading-relaxed">{ad.body}</p>
               <p className="text-[10px] text-muted-foreground/50 mt-1.5">Neurodiversity in work training, workshops, and consultancy.</p>
             </div>
-            <span className="flex items-center gap-1 text-xs text-primary font-medium whitespace-nowrap pt-1 group-hover:gap-1.5 transition-all">
+            <span className="flex items-center gap-1 text-xs text-navy font-medium whitespace-nowrap pt-1 group-hover:gap-1.5 transition-all">
               {ad.cta} <ArrowRight className="w-3 h-3" />
             </span>
           </div>
