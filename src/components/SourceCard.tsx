@@ -3,6 +3,7 @@ import { ExternalLink } from "lucide-react";
 interface SourceCardProps {
   name: string;
   url: string;
+  description?: string;
 }
 
 // Map known domains to high-quality logo URLs
@@ -42,7 +43,7 @@ const domainLabels: Record<string, string> = {
   "www.disabilityrightsuk.org": "Disability Rights UK",
 };
 
-export function SourceCard({ name, url }: SourceCardProps) {
+export function SourceCard({ name, url, description }: SourceCardProps) {
   const domain = new URL(url).hostname;
   const logoUrl = domainLogos[domain];
   const faviconUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
@@ -74,6 +75,11 @@ export function SourceCard({ name, url }: SourceCardProps) {
         <p className="text-sm font-medium text-foreground leading-snug group-hover:text-primary transition-colors line-clamp-2">
           {name}
         </p>
+        {description && (
+          <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2 leading-relaxed">
+            {description}
+          </p>
+        )}
         <div className="flex items-center gap-1.5 mt-1">
           <span className="text-xs text-muted-foreground truncate">{label}</span>
           <ExternalLink className="w-3 h-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
