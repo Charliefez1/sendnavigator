@@ -10,6 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Send, CheckCircle, ArrowRight } from "lucide-react";
+import adLogo from "@/assets/neurodiversity-global-ad-logo.png";
 
 const ads = [
   {
@@ -181,7 +182,8 @@ export function NeurodiversityGlobalAd() {
           onClick={() => setDialogOpen(true)}
           className="w-full text-left rounded-lg border-2 border-navy bg-card/50 px-4 py-3 hover:bg-card transition-all group shadow-lg"
         >
-          <div className="flex items-start justify-between gap-3">
+          <div className="flex items-start gap-3">
+            <img src={adLogo} alt="Neurodiversity Global" className="w-10 h-10 rounded-md object-contain flex-shrink-0 mt-0.5" />
             <div className="flex-1 min-w-0">
               <p className="text-[10px] uppercase tracking-wider text-navy-muted mb-1">Neurodiversity Global</p>
               <p className="text-sm font-medium text-foreground leading-snug mb-1">{ad.headline}</p>
