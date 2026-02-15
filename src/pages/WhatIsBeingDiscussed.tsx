@@ -30,7 +30,7 @@ export default function WhatIsBeingDiscussed() {
       <PageOrientation
         title="Under discussion: what is being debated publicly right now"
         description="Ideas, proposals, and areas of debate that may shape future policy but are not settled."
-        lastUpdated="14th February 2026"
+        lastUpdated="15th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="discussed" />
@@ -86,6 +86,7 @@ export default function WhatIsBeingDiscussed() {
             <li>A SEND focused <strong>Schools White Paper is expected in 2026</strong>.</li>
             <li>A national SEND reform consultation ran from December 2025 to January 2026.</li>
             <li>Parliamentary committees are <strong>actively scrutinising reform proposals</strong>.</li>
+            <li>The Education and Health and Social Care committees have launched a <strong>new joint inquiry into children and young people's mental health</strong>, with explicit interest in education system support including SEND.</li>
             <li>The NEU has formally urged the government to <strong>maintain legal thresholds for EHCPs</strong>.</li>
             <li>Local authority deficits and workforce shortages are cited repeatedly as <strong>drivers of reform discussion</strong>.</li>
           </ul>

@@ -28,9 +28,9 @@ export default function WhatHasNotChanged() {
     <Layout>
       <SEOHead title="What has not changed in the SEND system" description="Legal rights and protections that remain in place as of February 2026." path="/what-has-not-changed" />
       <PageOrientation
-        title="What has not changed: what remains the same in the SEND system as of 14 February 2026"
+        title="What has not changed: what remains the same in the SEND system as of 15 February 2026"
         description="Legal rights and protections that remain in place."
-        lastUpdated="14th February 2026"
+        lastUpdated="15th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
@@ -44,7 +44,7 @@ export default function WhatHasNotChanged() {
               Despite the volume of discussion about reform, <strong>the core legal structure of SEND in England has not changed</strong>.
             </p>
             <p>
-              Education, Health and Care Plans still exist. <strong>The Children and Families Act 2014 is still the law.</strong> Local authorities are still legally responsible for securing the provision written into an EHCP. Parents still have the right to appeal decisions and to challenge failures.
+              Education, Health and Care Plans still exist. <strong>The Children and Families Act 2014 is still the law.</strong> Local authorities are still legally responsible for securing the provision written into an EHCP. Parents still have the right to appeal decisions and to challenge failures. In February 2026, <strong>Education Minister Georgia Gould publicly confirmed that children with special needs will keep their current support and placements</strong>.
             </p>
             <p>
               <strong>No child has lost their legal protections because of reform discussions.</strong> No existing EHCP has been removed or downgraded because of proposed changes. Current processes, however imperfect, remain in force.
@@ -75,7 +75,7 @@ export default function WhatHasNotChanged() {
 
           {/* Rights checklist visual */}
           <RightsChecklist
-            title="Rights still in force as of 14 February 2026"
+            title="Rights still in force as of 15 February 2026"
             items={[
               "Children and Families Act 2014 remains the legal framework",
               "EHCPs remain statutory and legally enforceable",
@@ -96,7 +96,7 @@ export default function WhatHasNotChanged() {
           </div>
 
           <p className="text-sm text-muted-foreground">
-            <strong>No confirmed legislative changes have been enacted</strong> as of 14 February 2026. The problems persist, but the rights persist too.
+            <strong>No confirmed legislative changes have been enacted</strong> as of 15 February 2026. The problems persist, but the rights persist too.
           </p>
         </div>
       </ContentBox>
@@ -180,7 +180,7 @@ export default function WhatHasNotChanged() {
             When there is a lot of discussion, leaks, and commentary, it is easy for families to feel that the ground is shifting under their feet.
           </p>
           <p>
-            The reality, as of 14 February 2026, is more stable than the headlines suggest. The system is under pressure. Reform is coming. But <strong>the legal foundations remain in place</strong>.
+            The reality, as of 15 February 2026, is more stable than the headlines suggest. The system is under pressure. Reform is coming. But <strong>the legal foundations remain in place</strong>.
           </p>
         </div>
       </ContentBox>

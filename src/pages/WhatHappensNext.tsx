@@ -28,7 +28,7 @@ export default function WhatHappensNext() {
       <PageOrientation
         title="What happens next and when: the path from now to change"
         description="Understanding the stages between discussion and implementation."
-        lastUpdated="14th February 2026"
+        lastUpdated="15th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="discussed" />

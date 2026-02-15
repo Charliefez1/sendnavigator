@@ -30,7 +30,7 @@ export default function WhatIsChanging() {
       <PageOrientation
         title="Confirmed changes: what changes are coming to SEND provision in 2026 and have been confirmed"
         description="Changes that have been publicly set out, funded, or formally announced."
-        lastUpdated="14th February 2026"
+        lastUpdated="15th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
@@ -50,7 +50,7 @@ export default function WhatIsChanging() {
               What is changing is how the system is being prepared to work differently. The focus is on <strong>clearer national expectations, earlier support, less bureaucracy, better workforce capacity, and reducing the extreme pressure points</strong> that currently force families into crisis routes.
             </p>
             <p>
-              Most of these changes are being <strong>phased in through guidance, programmes, pilots, and capital investment</strong>, with legislation expected later.
+              Most of these changes are being <strong>phased in through guidance, programmes, pilots, and capital investment</strong>, with legislation expected later. As of February 2026, <strong>local systems are already being instructed to prepare for reform</strong>, making this a transition phase rather than a waiting phase.
             </p>
           </div>
         }
@@ -94,6 +94,7 @@ export default function WhatIsChanging() {
             <li>Nine Regional Expert Partnerships are testing new approaches, and a <strong>digital EHCP template is being piloted</strong>.</li>
             <li><strong>Safety Valve agreements (£300 million)</strong> and Delivering Better Value in SEND (£85 million for 55 councils) continue.</li>
             <li>All local areas will be inspected under the new <strong>Ofsted and CQC area SEND framework by 2027</strong>.</li>
+            <li>A <strong>joint DfE and NHS England letter</strong> has instructed local authorities and Integrated Care Boards to begin preparing for SEND reform now, including baselining, metrics, and adviser involvement.</li>
           </ul>
         </div>
       </ContentBox>
