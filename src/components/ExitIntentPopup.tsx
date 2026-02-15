@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { X, ExternalLink, Mail, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -31,39 +31,81 @@ const furtherReading = [
 export function ExitIntentPopup() {
   const [show, setShow] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const armedRef = useRef(false);
+  const lastScrollY = useRef(0);
+  const scrollingUp = useRef(0);
+
+  const triggerPopup = useCallback(() => {
+    if (!armedRef.current || sessionStorage.getItem("exitIntentDismissed")) return;
+    setShow(true);
+  }, []);
 
   const handleMouseLeave = useCallback(
     (e: MouseEvent) => {
-      if (e.clientY <= 0 && !dismissed) {
-        setShow(true);
-      }
+      if (e.clientY <= 0) triggerPopup();
     },
-    [dismissed]
+    [triggerPopup]
   );
 
+  // Mobile: detect rapid scroll-to-top (user pulling up to leave)
+  const handleScroll = useCallback(() => {
+    const currentY = window.scrollY;
+    if (currentY < lastScrollY.current && currentY < 100) {
+      scrollingUp.current++;
+      if (scrollingUp.current >= 3) {
+        triggerPopup();
+        scrollingUp.current = 0;
+      }
+    } else {
+      scrollingUp.current = 0;
+    }
+    lastScrollY.current = currentY;
+  }, [triggerPopup]);
+
+  // Mobile: detect back button / popstate
+  const handlePopState = useCallback(() => {
+    // Push state back so user stays, then show popup
+    window.history.pushState(null, "", window.location.href);
+    triggerPopup();
+  }, [triggerPopup]);
+
   useEffect(() => {
-    // Don't show if already dismissed this session
     if (sessionStorage.getItem("exitIntentDismissed")) {
       setDismissed(true);
       return;
     }
 
-    // Wait 10 seconds before arming
+    // Arm after 10 seconds
     const timer = setTimeout(() => {
+      armedRef.current = true;
+
+      // Desktop: mouse leave
       document.addEventListener("mouseleave", handleMouseLeave);
+
+      // Mobile: scroll-to-top detection
+      window.addEventListener("scroll", handleScroll, { passive: true });
+
+      // Mobile: back button interception
+      window.history.pushState(null, "", window.location.href);
+      window.addEventListener("popstate", handlePopState);
     }, 10000);
 
     return () => {
       clearTimeout(timer);
       document.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("popstate", handlePopState);
     };
-  }, [handleMouseLeave]);
+  }, [handleMouseLeave, handleScroll, handlePopState]);
 
   const dismiss = () => {
     setShow(false);
     setDismissed(true);
+    armedRef.current = false;
     sessionStorage.setItem("exitIntentDismissed", "true");
     document.removeEventListener("mouseleave", handleMouseLeave);
+    window.removeEventListener("scroll", handleScroll);
+    window.removeEventListener("popstate", handlePopState);
   };
 
   const handleNewsletterClick = () => {
