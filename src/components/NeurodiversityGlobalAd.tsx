@@ -180,19 +180,16 @@ export function NeurodiversityGlobalAd() {
       <div className="content-section py-3">
         <button
           onClick={() => setDialogOpen(true)}
-          className="w-full text-left rounded-lg border-2 border-navy bg-card/50 px-4 py-3 hover:bg-card transition-all group shadow-lg"
+          className="w-full rounded-lg border-2 border-navy bg-card/50 px-4 py-5 hover:bg-card transition-all group shadow-lg"
         >
-          <div className="flex items-start gap-3">
-            <img src={adLogo} alt="Neurodiversity Global" className="w-60 h-60 rounded-md object-contain flex-shrink-0 mt-0.5" />
-            <div className="flex-1 min-w-0">
-              <p className="text-[10px] uppercase tracking-wider text-navy-muted mb-1">Neurodiversity Global</p>
-              <p className="text-sm font-medium text-foreground leading-snug mb-1">{ad.headline}</p>
-              <p className="text-xs text-muted-foreground leading-relaxed">{ad.body}</p>
-              <p className="text-[10px] text-muted-foreground/50 mt-1.5">Neurodiversity in work training, workshops, and consultancy.</p>
-            </div>
-            <span className="flex items-center gap-1 text-xs text-navy font-medium whitespace-nowrap pt-1 group-hover:gap-1.5 transition-all">
+          <div className="flex flex-col items-center text-center gap-3">
+            <img src={adLogo} alt="Neurodiversity Global" className="w-48 h-auto rounded-md object-contain" />
+            <p className="text-sm font-medium text-foreground leading-snug">{ad.headline}</p>
+            <p className="text-xs text-muted-foreground leading-relaxed max-w-md">{ad.body}</p>
+            <span className="inline-flex items-center gap-1.5 text-xs text-navy font-medium group-hover:gap-2 transition-all mt-1">
               {ad.cta} <ArrowRight className="w-3 h-3" />
             </span>
+            <p className="text-[10px] text-muted-foreground/50">Neurodiversity in work training, workshops, and consultancy.</p>
           </div>
         </button>
       </div>
