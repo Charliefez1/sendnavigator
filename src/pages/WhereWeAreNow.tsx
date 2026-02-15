@@ -29,7 +29,7 @@ export default function WhereWeAreNow() {
       <PageOrientation
         title="Current situation: where is SEND provision in the UK today"
         description="Understanding the current state of SEND support in England."
-        lastUpdated="14th February 2026"
+        lastUpdated="15th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
@@ -77,6 +77,7 @@ export default function WhereWeAreNow() {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <StatCard value="1.9m" label="Young people with SEND" sublabel="0–25 age group" icon={Users} />
             <StatCard value="576,000" label="Children with an EHCP" sublabel="140% rise since 2015" icon={BarChart3} accentColor="confirmed" />
+            <StatCard value="1 in 5" label="KS4 pupils with SEND" sublabel="Nearly 20% and rising" icon={TrendingUp} accentColor="discussed" />
             <StatCard value="£13.1bn" label="Council SEND spending" sublabel="Up from £7.8bn in 2015" icon={PoundSterling} accentColor="discussed" />
             <StatCard value="95%" label="Councils in SEND deficit" sublabel="79% risked insolvency" icon={AlertTriangle} accentColor="unconfirmed" />
           </div>
