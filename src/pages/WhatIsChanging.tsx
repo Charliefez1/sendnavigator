@@ -148,10 +148,10 @@ export default function WhatIsChanging() {
       <ContentBox id="specialist" icon={Building2} title="Expansion of specialist provision">
         <div className="space-y-3">
           <p>
-            <strong>New special schools are being built and funded.</strong> This is a confirmed capital programme.
+            <strong>New specialist schools are being built and funded.</strong> This is a confirmed capital programme.
           </p>
           <p>
-            The aim is to reduce waiting lists, reduce out of area placements, and reduce reliance on expensive independent provision. <strong>This does not remove the presumption of mainstream education</strong>, but it acknowledges that some children need specialist environments.
+            The aim is to reduce waiting lists, reduce out-of-area placements, and reduce reliance on expensive independent specialist provision. <strong>This does not remove the presumption of mainstream education</strong>, but it acknowledges that some children need specialist environments.
           </p>
         </div>
       </ContentBox>

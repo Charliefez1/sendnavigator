@@ -101,10 +101,10 @@ export default function WhatWeKnowSoFar() {
             <strong>Mainstream schools report increasing complexity of need</strong> and pressure on staff. Many feel under-resourced and unsupported.
           </p>
           <p>
-            Demand for specialist school places has continued to rise. The share of pupils in special schools has grown from <strong>1.6% in 2019 to 2.2% in 2025</strong>, with more children sent to expensive independent special schools due to state capacity shortfalls.
+            Demand for specialist school places has continued to rise. The share of pupils in specialist schools has grown from <strong>1.6% in 2019 to 2.2% in 2025</strong>, with more children placed in expensive independent specialist provision due to state capacity shortfalls.
           </p>
           <p>
-            Independent special school costs have risen <strong>206% since 2015 to £1.7 billion a year</strong>.
+            Independent specialist school costs have risen <strong>206% since 2015 to £1.7 billion a year</strong>.
           </p>
         </div>
       </ContentBox>

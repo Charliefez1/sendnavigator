@@ -75,7 +75,7 @@ export default function QuickRead() {
           </p>
           <ul className="space-y-2">
             <li>The government will <strong>write off 90% of council SEND deficits</strong>, a rescue package worth over £5 billion. From 2028 to 2029, central government takes full responsibility for SEND spending growth.</li>
-            <li><strong>£3.7 billion is creating 60,000 new SEND places</strong>, including new special schools and specialist units in mainstream.</li>
+            <li><strong>£3.7 billion is creating 60,000 new SEND places</strong>, including new specialist schools and specialist units in mainstream.</li>
             <li>Every secondary school is expected to have an <strong>inclusion base</strong>.</li>
             <li><strong>£200 million is going into SEND teacher training.</strong> Ofsted now has an "Inclusion" judgement in school inspections.</li>
             <li>National SEND standards are being developed, with the government saying <strong>it will legislate to give them legal force</strong>.</li>
