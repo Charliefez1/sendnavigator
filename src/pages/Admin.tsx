@@ -5,8 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Lock, CheckCircle, XCircle, Trash2, MessageCircleQuestion, MessageSquare, Eye, BookOpen, Reply, Send, BarChart3 } from "lucide-react";
+import { Lock, CheckCircle, XCircle, Trash2, MessageCircleQuestion, MessageSquare, Eye, BookOpen, Reply, Send, BarChart3, Newspaper } from "lucide-react";
 import { KnowledgeBaseManager } from "@/components/admin/KnowledgeBaseManager";
+import { NewsManager } from "@/components/admin/NewsManager";
 import { AnalyticsDashboard } from "@/components/admin/AnalyticsDashboard";
 import { Helmet } from "react-helmet-async";
 
@@ -167,7 +168,7 @@ export default function Admin() {
   const [pin, setPin] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [pinError, setPinError] = useState(false);
-  const [activeTab, setActiveTab] = useState<"questions" | "feedback" | "knowledge" | "analytics">("questions");
+  const [activeTab, setActiveTab] = useState<"questions" | "feedback" | "knowledge" | "news" | "analytics">("questions");
   const [questions, setQuestions] = useState<QuestionItem[]>([]);
   const [feedbackItems, setFeedbackItems] = useState<FeedbackItem[]>([]);
   const [loading, setLoading] = useState(false);
@@ -330,6 +331,17 @@ export default function Admin() {
             Knowledge Base
           </button>
           <button
+            onClick={() => setActiveTab("news")}
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+              activeTab === "news"
+                ? "bg-primary text-primary-foreground"
+                : "bg-secondary text-secondary-foreground"
+            }`}
+          >
+            <Newspaper className="h-4 w-4" />
+            News Tracker
+          </button>
+          <button
             onClick={() => setActiveTab("analytics")}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
               activeTab === "analytics"
@@ -345,6 +357,8 @@ export default function Admin() {
         {/* Content */}
         {activeTab === "analytics" ? (
           <AnalyticsDashboard pin={pin} />
+        ) : activeTab === "news" ? (
+          <NewsManager pin={pin} />
         ) : activeTab === "knowledge" ? (
           <KnowledgeBaseManager pin={pin} />
         ) : activeTab === "questions" ? (
