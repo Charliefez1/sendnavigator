@@ -6,6 +6,11 @@ import {
   OnThisPage,
   ContentBox,
 } from "@/components/templates";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { StatCard, PercentageRing, HorizontalBarChart, RightsChecklist } from "@/components/templates/DataVisuals";
@@ -13,7 +18,7 @@ import { EHCPProcessDiagram } from "@/components/templates/EHCPProcessDiagram";
 import { AskEHCP } from "@/components/AskEHCP";
 import {
   FileText, BarChart3, Users, ClipboardList, Scale, School,
-  RefreshCw, AlertTriangle, Gavel, Search, PoundSterling, Clock, ShieldCheck
+  RefreshCw, AlertTriangle, Gavel, Search, PoundSterling, Clock, ShieldCheck, ChevronDown
 } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -166,27 +171,39 @@ export default function EHCPs() {
           </p>
           <div className="space-y-2">
             {[
-              { section: "A", title: "Views and aspirations", desc: "The child's and family's views, interests, and hopes for the future. Not legally enforceable but sets context." },
-              { section: "B", title: "Special educational needs", desc: "All identified SEN across cognition, communication, social-emotional, and sensory-physical domains. Every need here must have matching provision in Section F." },
-              { section: "C", title: "Health needs", desc: "Health care needs related to SEN or disability that impact education." },
-              { section: "D", title: "Social care needs", desc: "Social care needs related to SEN. Often left blank, which is a common criticism." },
-              { section: "E", title: "Outcomes", desc: "Goals for the next 2–3 years including preparing for adulthood from Year 9." },
-              { section: "F", title: "Special educational provision", desc: "The most important section. All support the child must receive, detailed, specific, and quantified. Legally binding on the LA." },
-              { section: "G", title: "Health provision", desc: "NHS services: speech therapy, OT, CAMHS, physiotherapy. The NHS should deliver these." },
-              { section: "H1/H2", title: "Social care provision", desc: "Services under the Chronically Sick & Disabled Persons Act 1970 (H1) and other social care (H2)." },
-              { section: "I", title: "School placement", desc: "Names the school. Once named, the school must admit the child." },
-              { section: "J", title: "Personal budget", desc: "Optional funding for families to arrange some services themselves. Only about 3% of plans include one." },
-              { section: "K", title: "Appendices", desc: "All assessment reports and evidence." },
+              { section: "A", title: "Views and aspirations", desc: "The child's and family's views, interests, and hopes for the future. Not legally enforceable but sets context.", explainer: "This section captures your child's personality, interests, and what matters to them. It also includes your views as parents and the child's own voice where possible. While Section A is not legally enforceable, it sets the tone for the entire plan. A well-written Section A helps professionals understand your child as a person, not just a set of needs. If this section feels generic or impersonal, ask for it to be rewritten. It should sound like your child." },
+              { section: "B", title: "Special educational needs", desc: "All identified SEN across cognition, communication, social-emotional, and sensory-physical domains. Every need here must have matching provision in Section F.", explainer: "This is where every special educational need must be identified and described clearly. Each need listed here must have a corresponding provision in Section F. If a need appears in Section B but has no matching support in Section F, that is a drafting failure you can challenge. Be specific: 'difficulty with reading' is weaker than 'specific learning difficulty affecting phonological processing and reading fluency'. The more precisely needs are described, the harder it is for provision to be vague." },
+              { section: "C", title: "Health needs", desc: "Health care needs related to SEN or disability that impact education.", explainer: "This covers health needs that relate to the child's SEN or disability — for example, epilepsy management in school, continence support, or mental health needs that affect learning. Health provision linked to SEN can sometimes be treated as educational provision (and therefore legally enforceable). Speech and language therapy is a common example. If your child has health needs that affect their education, make sure they appear here and are not omitted because 'health will deal with it separately'." },
+              { section: "D", title: "Social care needs", desc: "Social care needs related to SEN. Often left blank, which is a common criticism.", explainer: "Section D covers social care needs arising from the child's SEN or disability. In practice, this section is frequently left blank or contains minimal information, even when children clearly have social care needs. If your child needs short breaks, support with daily living, or social skills development outside school, this should be recorded here. An empty Section D does not necessarily mean there are no needs — it may mean no one has properly assessed them." },
+              { section: "E", title: "Outcomes", desc: "Goals for the next 2–3 years including preparing for adulthood from Year 9.", explainer: "Outcomes should be specific, measurable goals that the provision in the plan is designed to achieve. Good outcomes describe where the child should be in 2–3 years, not vague aspirations. From Year 9 onwards, outcomes must include Preparing for Adulthood goals covering employment, independent living, community participation, and health. If outcomes are too vague to measure ('will make progress in literacy'), push back. You should be able to tell at annual review whether the outcome has been met." },
+              { section: "F", title: "Special educational provision", desc: "The most important section. All support the child must receive, detailed, specific, and quantified. Legally binding on the LA.", explainer: "Section F is the most legally significant part of the EHCP. Everything written here must be delivered — it is legally binding on the local authority. Provision should be specific and quantified: '3 x 30-minute sessions per week of 1:1 speech and language therapy delivered by a qualified speech and language therapist' is enforceable. 'Access to speech therapy as needed' is not. If you see words like 'access to', 'opportunities for', or 'as appropriate', challenge them. Vague provision is unenforceable provision." },
+              { section: "G", title: "Health provision", desc: "NHS services: speech therapy, OT, CAMHS, physiotherapy. The NHS should deliver these.", explainer: "Section G sets out health provision that must be made for the child. This typically includes therapies like speech and language therapy, occupational therapy, physiotherapy, or CAMHS input. The NHS is responsible for delivering what is written here. However, if health provision is 'educational' in nature (speech therapy often is), it can be written into Section F instead, making the local authority responsible. This distinction matters because NHS provision in Section G has weaker enforcement routes than educational provision in Section F." },
+              { section: "H1/H2", title: "Social care provision", desc: "Services under the Chronically Sick & Disabled Persons Act 1970 (H1) and other social care (H2).", explainer: "H1 covers social care provision under the Chronically Sick and Disabled Persons Act 1970, such as home adaptations, travel assistance, or recreational facilities. H1 provision is legally enforceable. H2 covers any other social care provision reasonably required, which may include short breaks, after-school clubs, or family support services. H2 provision is not directly enforceable in the same way. If your child receives social care support, check whether it is recorded under H1 or H2, as this affects your ability to challenge if it is not delivered." },
+              { section: "I", title: "School placement", desc: "Names the school. Once named, the school must admit the child.", explainer: "Section I names the school or setting your child will attend. Once a school is named in the final EHCP, that school has a legal duty to admit your child. You have the right to request a particular school, and the local authority must name it unless it would be unsuitable for the child, incompatible with the efficient education of other children, or an inefficient use of resources. 'The school is full' is not a lawful standalone reason to refuse. Disputes over Section I are one of the most common reasons families go to tribunal." },
+              { section: "J", title: "Personal budget", desc: "Optional funding for families to arrange some services themselves. Only about 3% of plans include one.", explainer: "A personal budget allows families to receive funding directly to arrange some of the provision in the EHCP themselves. This can give families more control and flexibility. However, only about 3% of EHCPs include a personal budget, and many local authorities are reluctant to offer them. You have the right to request a personal budget. It can cover education, health, or social care provision. The local authority must consider your request, though they do not have to agree." },
+              { section: "K", title: "Appendices", desc: "All assessment reports and evidence.", explainer: "Section K contains all the professional reports, assessments, and evidence that informed the EHCP. This includes educational psychology reports, speech and language assessments, medical reports, and any private assessments you have submitted. Check that all reports you provided are included. If a report recommends specific provision that does not appear in Section F, raise this — the local authority should explain why a professional recommendation has not been followed." },
             ].map((s) => (
-              <div key={s.section} className="flex gap-3 p-3 rounded-lg bg-muted/30 border border-border/50">
-                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                  <span className="text-xs font-bold text-primary">{s.section}</span>
+              <Collapsible key={s.section}>
+                <div className="rounded-lg bg-muted/30 border border-border/50 overflow-hidden">
+                  <CollapsibleTrigger className="flex items-center gap-3 p-3 w-full text-left hover:bg-muted/50 transition-colors group">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                      <span className="text-xs font-bold text-primary">{s.section}</span>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-foreground">{s.title}</p>
+                      <p className="text-sm text-muted-foreground">{s.desc}</p>
+                    </div>
+                    <ChevronDown className="w-4 h-4 text-muted-foreground shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <div className="px-3 pb-3 pt-0">
+                      <div className="border-t border-border/50 pt-3 ml-11">
+                        <p className="text-sm text-muted-foreground leading-relaxed">{s.explainer}</p>
+                      </div>
+                    </div>
+                  </CollapsibleContent>
                 </div>
-                <div>
-                  <p className="text-sm font-medium text-foreground">{s.title}</p>
-                  <p className="text-sm text-muted-foreground">{s.desc}</p>
-                </div>
-              </div>
+              </Collapsible>
             ))}
           </div>
           <div className="bg-muted/50 border border-border rounded-lg p-4">
