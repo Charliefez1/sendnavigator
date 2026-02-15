@@ -14,6 +14,9 @@ import { ListenModePlayer } from "./ListenModePlayer";
 import { ScanModeBanner } from "./ScanModeBanner";
 import { ExitIntentPopup } from "./ExitIntentPopup";
 import { CookieConsent } from "./CookieConsent";
+import { LivedExperienceCTA } from "./LivedExperienceCTA";
+import { NeurodivergenceUpdatesCTA } from "./NeurodivergenceUpdatesCTA";
+import { AskSendFloating } from "./AskSendFloating";
 
 interface LayoutProps {
   children: ReactNode;
@@ -32,6 +35,8 @@ export function Layout({ children, hideGlobalCTA }: LayoutProps) {
         <div className="content-section py-6 space-y-4">
           <AskQuestionCompact />
         </div>
+        <NeurodivergenceUpdatesCTA />
+        <LivedExperienceCTA />
       </main>
       <MoreResources />
       <div className="content-section py-8">
@@ -40,6 +45,7 @@ export function Layout({ children, hideGlobalCTA }: LayoutProps) {
       {!hideGlobalCTA && <NeurodiversityGlobalCTA />}
       <Footer />
       <JourneyFloatingBar />
+      <AskSendFloating />
       <ListenModePlayer />
       <ExitIntentPopup />
       <CookieConsent />

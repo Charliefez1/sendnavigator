@@ -9,7 +9,8 @@ import {
   FeedbackSection,
   ReviewScheduleSection,
 } from "@/components/governance";
-import { BookOpen, Users, Shield, RefreshCw, AlertTriangle, Scale, Eye, MessageSquare, Calendar } from "lucide-react";
+import { BookOpen, Users, Shield, RefreshCw, AlertTriangle, Scale, Eye, MessageSquare, Calendar, User } from "lucide-react";
+import richBio from "@/assets/rich-ferriman-bio.png";
 
 const sections = [
   { id: "why", icon: BookOpen, title: "Why this resource exists" },
@@ -17,6 +18,7 @@ const sections = [
   { id: "independence", icon: Shield, title: "Independence and neutrality" },
   { id: "updates", icon: RefreshCw, title: "How information is updated and corrected" },
   { id: "limits", icon: AlertTriangle, title: "Limits of this resource" },
+  { id: "author", icon: User, title: "About the author" },
   { id: "governance", icon: Scale, title: "Governance and accountability" },
 ];
 
@@ -122,6 +124,39 @@ export default function About() {
         </p>
       </SectionBox>
 
+      {/* Author section */}
+      <section id="author" className="content-section py-4 scroll-mt-24">
+        <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
+          <div className="flex items-start gap-4 mb-4">
+            <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
+              <User className="w-5 h-5 text-primary" />
+            </div>
+            <h2 className="text-lg font-display font-semibold text-foreground">About the author</h2>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-6">
+            <img
+              src={richBio}
+              alt="Rich Ferriman"
+              className="w-24 h-24 rounded-lg object-cover flex-shrink-0"
+            />
+            <div className="space-y-3 text-sm text-muted-foreground leading-relaxed max-w-2xl">
+              <p>
+                <strong>Rich Ferriman</strong> is the creator and editorial lead of SEND Reform Navigator. He is an award-winning neuroinclusion consultant, co-founder of Neurodiversity Global, and a father of four neurodivergent children.
+              </p>
+              <p>
+                With over 30 years in senior executive roles and lived experience of late diagnosis, Rich brings both strategic insight and personal understanding to this resource. His work sits at the intersection of inclusion and business strategy.
+              </p>
+              <p>
+                He has advised organisations including the NHS, NASA, University of Oxford, the London School of Economics, and the Foreign Commonwealth and Development Office.
+              </p>
+              <Link to="/rich-ferriman" className="inline-block text-primary hover:underline font-medium">
+                Read more about Rich →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Governance section */}
       <section id="governance" className="content-section py-4 scroll-mt-24">
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
@@ -139,9 +174,6 @@ export default function About() {
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm mb-6">
             <Link to="/neurodiversity-global" className="text-primary hover:underline font-medium">
               About Neurodiversity Global
-            </Link>
-            <Link to="/rich-ferriman" className="text-primary hover:underline font-medium">
-              About Rich Ferriman
             </Link>
           </div>
           <div className="space-y-6 border-t border-border pt-6 text-sm">
