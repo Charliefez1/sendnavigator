@@ -38,7 +38,7 @@ export function AskEHCP() {
               type="text"
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
-              placeholder="e.g. Can my child's EHCP name a special school?"
+              placeholder="e.g. Can my child's EHCP name a specialist school?"
               className="pl-9"
               maxLength={500}
               aria-label="Ask a question about EHCPs"

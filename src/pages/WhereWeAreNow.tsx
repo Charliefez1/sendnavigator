@@ -100,7 +100,7 @@ export default function WhereWeAreNow() {
           />
 
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>Independent special school costs have risen <strong>206% since 2015 to £1.7 billion a year</strong>.</li>
+            <li>Independent specialist school costs have risen <strong>206% since 2015 to £1.7 billion a year</strong>.</li>
             <li>The National Audit Office calls the system "not delivering value for money".</li>
             <li>The IFS warns SEND cost pressures are <strong>"crowding out" mainstream education funds</strong>.</li>
           </ul>

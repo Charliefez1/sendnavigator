@@ -244,7 +244,7 @@ export default function EHCPs() {
       <ContentBox id="placement" icon={School} title="School placement and Section I">
         <div className="space-y-3">
           <p>
-            Parents have a <strong>right to request a particular school</strong> to be named in Section I of the EHCP. This includes mainstream schools, special schools, academies, and certain approved independent special schools.
+            Parents have a <strong>right to request a particular school</strong> to be named in Section I of the EHCP. This includes mainstream schools, specialist schools (legally called special schools), academies, and certain approved independent specialist schools.
           </p>
           <p>
             The LA must consult the school and <strong>must name it</strong> unless one of the legal exceptions applies: the placement would be unsuitable for the child, incompatible with efficient education of other children, or incompatible with efficient use of resources. <strong>"The school is full" is not by itself a lawful reason to refuse.</strong>

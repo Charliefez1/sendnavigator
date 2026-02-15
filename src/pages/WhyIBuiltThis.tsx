@@ -8,7 +8,7 @@ const WhyIBuiltThis = () => {
       <PageOrientation
         title="Why I Built the SEND Navigator"
         description="A personal statement from Rich Ferriman"
-        lastUpdated="7th February 2026"
+        lastUpdated="15th February 2026"
       />
 
       <section className="content-section py-8 border-t border-border">
