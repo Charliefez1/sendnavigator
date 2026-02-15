@@ -110,12 +110,7 @@ export function NewsTracker() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {dateItems.map((item) => (
                   <div key={item.id} className="relative">
-                    <SourceCard name={item.title} url={item.url} />
-                    {item.summary && (
-                      <p className="text-xs text-muted-foreground mt-1 px-3 line-clamp-2">
-                        {item.summary}
-                      </p>
-                    )}
+                    <SourceCard name={item.title} url={item.url} description={item.summary || undefined} />
                     <div className="flex items-center gap-1.5 mt-1 px-3">
                       <span className="text-[10px] bg-primary/10 text-primary px-1.5 py-0.5 rounded-full font-medium">
                         {topicLabels[item.topic] || item.topic}
