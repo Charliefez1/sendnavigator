@@ -108,15 +108,22 @@ export function ExitIntentPopup() {
     window.removeEventListener("popstate", handlePopState);
   };
 
-  const handleNewsletterClick = () => {
-    const subject = encodeURIComponent("Newsletter signup");
+  const [nlName, setNlName] = useState("");
+  const [nlEmail, setNlEmail] = useState("");
+  const [nlSent, setNlSent] = useState(false);
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!nlName.trim() || !nlEmail.trim()) return;
+    const subject = encodeURIComponent("SEND Newsletter sign up");
     const body = encodeURIComponent(
-      "Please add me to your mailing list to keep up to date with the world of Neurodivergence."
+      `Name: ${nlName}\nEmail: ${nlEmail}\n\nPlease add me to the SEND Newsletter mailing list.`
     );
     window.open(
       `mailto:rich@neurodiversityglobal.com?subject=${subject}&body=${body}`,
       "_blank"
     );
+    setNlSent(true);
   };
 
   if (!show) return null;
@@ -205,12 +212,35 @@ export function ExitIntentPopup() {
               <Mail className="w-4 h-4 text-primary" />
               <h3 className="text-sm font-semibold text-foreground">SEND Newsletter</h3>
             </div>
-            <p className="text-xs text-muted-foreground mb-3">
-              Stay informed on SEND reform updates delivered to your inbox.
-            </p>
-            <Button onClick={handleNewsletterClick} size="sm" className="w-full">
-              Sign up for the newsletter
-            </Button>
+            {nlSent ? (
+              <p className="text-xs text-primary font-medium">Thank you! Please send the email that opened to complete your sign up.</p>
+            ) : (
+              <>
+                <p className="text-xs text-muted-foreground mb-3">
+                  Stay informed on SEND reform updates delivered to your inbox.
+                </p>
+                <form onSubmit={handleNewsletterSubmit} className="space-y-2">
+                  <Input
+                    placeholder="Your name"
+                    value={nlName}
+                    onChange={(e) => setNlName(e.target.value)}
+                    className="h-9 text-sm"
+                    required
+                  />
+                  <Input
+                    type="email"
+                    placeholder="Your email"
+                    value={nlEmail}
+                    onChange={(e) => setNlEmail(e.target.value)}
+                    className="h-9 text-sm"
+                    required
+                  />
+                  <Button type="submit" size="sm" className="w-full">
+                    Sign up for the newsletter
+                  </Button>
+                </form>
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -23,9 +23,9 @@ export function NewsletterSignup() {
   });
 
   function onSubmit(values: SignupValues) {
-    const subject = encodeURIComponent("Newsletter signup");
+    const subject = encodeURIComponent("SEND Newsletter sign up");
     const body = encodeURIComponent(
-      `Name: ${values.name}\nEmail: ${values.email}\n\nPlease add me to your mailing list to keep up to date with the world of Neurodivergence.`
+      `Name: ${values.name}\nEmail: ${values.email}\n\nPlease add me to the SEND Newsletter mailing list.`
     );
     window.open(
       `mailto:rich@neurodiversityglobal.com?subject=${subject}&body=${body}`,
