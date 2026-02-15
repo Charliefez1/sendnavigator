@@ -37,8 +37,6 @@ export function Layout({ children, hideGlobalCTA }: LayoutProps) {
         <div className="content-section py-6 space-y-4">
           <AskQuestionCompact />
         </div>
-        <NeurodivergenceUpdatesCTA />
-        <LivedExperienceCTA />
       </main>
       <MoreResources />
       <div className="content-section py-8">
