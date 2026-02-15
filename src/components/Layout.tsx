@@ -33,10 +33,10 @@ export function Layout({ children, hideGlobalCTA }: LayoutProps) {
       <ScanModeBanner />
       <main id="main-content" className="flex-1 pb-24" role="main" tabIndex={-1}>
         {children}
-        <NeurodiversityGlobalAd />
         <div className="content-section py-6 space-y-4">
           <AskQuestionCompact />
         </div>
+        <NeurodiversityGlobalAd />
       </main>
       <MoreResources />
       <div className="content-section py-8">
