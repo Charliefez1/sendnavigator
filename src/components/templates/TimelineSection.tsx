@@ -20,7 +20,7 @@ export function CurrentPositionSection({ data }: CurrentPositionSectionProps) {
     <section className="content-section py-8 border-b border-border">
       <div className="flex items-center gap-2 mb-4">
         <Calendar className="w-5 h-5 text-primary" aria-hidden="true" />
-        <h2 className="text-xl font-semibold text-foreground">
+        <h2 className="text-lg font-semibold text-foreground">
           Current position
         </h2>
       </div>
@@ -89,7 +89,7 @@ export function CompletedMilestonesSection({ milestones }: CompletedMilestonesSe
           style={{ color: "hsl(var(--timeline-completed))" }}
           aria-hidden="true" 
         />
-        <h2 className="text-xl font-semibold text-foreground">
+        <h2 className="text-lg font-semibold text-foreground">
           Completed milestones
         </h2>
       </div>
@@ -158,7 +158,7 @@ export function UpcomingDecisionPointsSection({ decisionPoints }: UpcomingDecisi
           style={{ color: "hsl(var(--timeline-upcoming))" }}
           aria-hidden="true" 
         />
-        <h2 className="text-xl font-semibold text-foreground">
+        <h2 className="text-lg font-semibold text-foreground">
           Upcoming decision points
         </h2>
       </div>
@@ -250,7 +250,7 @@ export function LongerTermPossibilitiesSection({ possibilities }: LongerTermPoss
     <section className="content-section py-8 border-b border-border">
       <div className="flex items-center gap-2 mb-4">
         <HelpCircle className="w-5 h-5 text-muted-foreground" aria-hidden="true" />
-        <h2 className="text-xl font-semibold text-foreground">
+        <h2 className="text-lg font-semibold text-foreground">
           Longer term possibilities
         </h2>
       </div>

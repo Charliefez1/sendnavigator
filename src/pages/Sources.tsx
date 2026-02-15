@@ -260,7 +260,7 @@ function CollapsibleSection({ id, icon: Icon, title, summary, defaultOpen = fals
             <Icon className="w-5 h-5 text-primary" />
           </div>
           <div className="flex-1 min-w-0">
-            <h2 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">{title}</h2>
+            <h2 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">{title}</h2>
             <p className="text-sm text-muted-foreground mt-1">{summary}</p>
           </div>
           <div className="flex-shrink-0 mt-1">
@@ -297,7 +297,7 @@ function StaticSection({ id, icon: Icon, title, summary, children }: {
             <Icon className="w-5 h-5 text-primary" />
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-foreground">{title}</h2>
+            <h2 className="text-lg font-semibold text-foreground">{title}</h2>
             <p className="text-sm text-muted-foreground mt-1">{summary}</p>
           </div>
         </div>
@@ -315,7 +315,7 @@ export default function Sources() {
       <PageOrientation
         title="Data and sources"
         description="Key SEND statistics for England and the sources used across this resource. All factual claims are traceable to these materials."
-        lastUpdated="7th February 2026"
+        lastUpdated="15th February 2026"
       />
 
       {/* ═══ PAGE INTRODUCTION ═══ */}
@@ -373,11 +373,11 @@ export default function Sources() {
         title="Statistics and data"
         summary="Official SEND figures for England covering EHC plans, timeliness, tribunals, funding, and reform activity."
       >
-        <h3 className="text-lg font-semibold text-foreground mb-4">Summary facts</h3>
+        <h3 className="text-base font-semibold text-foreground mb-4">Summary facts</h3>
         <BulletList items={summaryFacts} />
 
         <div className="mt-8">
-          <h3 className="text-lg font-semibold text-foreground mb-6">Confirmed position as of 07 February 2026</h3>
+          <h3 className="text-base font-semibold text-foreground mb-6">Confirmed position as of 15 February 2026</h3>
           <p className="text-muted-foreground mb-6">
             The statutory timescale for an EHC needs assessment to a final EHC plan is 20 weeks.
           </p>

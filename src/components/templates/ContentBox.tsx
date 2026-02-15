@@ -40,7 +40,7 @@ export function ContentBox({ id, icon: Icon, title, children }: ContentBoxProps)
           </div>
           <h2 className={cn(
             "font-display font-semibold text-foreground flex-1",
-            isScan && !expanded ? "text-sm" : "text-xl"
+            isScan && !expanded ? "text-sm" : "text-lg"
           )}>{title}</h2>
           {isScan && (
             expanded

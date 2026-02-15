@@ -107,7 +107,7 @@ export function InformationLayers({
 }: InformationLayersProps) {
   return (
     <section className="content-section py-8 border-t border-border">
-      <h2 className="text-xl font-semibold text-foreground mb-6">Information by certainty</h2>
+      <h2 className="text-lg font-semibold text-foreground mb-6">Information by certainty</h2>
       <ConfirmedLayer emptyMessage={confirmedEmpty}>{confirmed}</ConfirmedLayer>
       <DiscussedLayer emptyMessage={discussedEmpty}>{discussed}</DiscussedLayer>
       <UnconfirmedLayer emptyMessage={unconfirmedEmpty}>{unconfirmed}</UnconfirmedLayer>

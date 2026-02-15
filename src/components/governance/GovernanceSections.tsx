@@ -19,7 +19,7 @@ export function EditorialOwnershipSection() {
     <section className="py-6">
       <div className="flex items-center gap-2 mb-4">
         <Shield className="w-5 h-5 text-primary" aria-hidden="true" />
-        <h2 className="text-xl font-semibold text-foreground">
+        <h2 className="text-lg font-semibold text-foreground">
           Editorial responsibility
         </h2>
       </div>
@@ -55,7 +55,7 @@ export function IndependenceDisclosureSection() {
     <section className="py-6 border-t border-border">
       <div className="flex items-center gap-2 mb-4">
         <AlertCircle className="w-5 h-5 text-primary" aria-hidden="true" />
-        <h2 className="text-xl font-semibold text-foreground">
+        <h2 className="text-lg font-semibold text-foreground">
           Independence and disclosures
         </h2>
       </div>
@@ -89,7 +89,7 @@ export function PerspectivesSection() {
     <section className="py-6 border-t border-border">
       <div className="flex items-center gap-2 mb-4">
         <Users className="w-5 h-5 text-primary" aria-hidden="true" />
-        <h2 className="text-xl font-semibold text-foreground">
+        <h2 className="text-lg font-semibold text-foreground">
           Perspectives represented
         </h2>
       </div>
@@ -127,7 +127,7 @@ export function FeedbackSection() {
     <section className="py-6 border-t border-border">
       <div className="flex items-center gap-2 mb-4">
         <MessageSquare className="w-5 h-5 text-primary" aria-hidden="true" />
-        <h2 className="text-xl font-semibold text-foreground">
+        <h2 className="text-lg font-semibold text-foreground">
           Feedback and corrections
         </h2>
       </div>
@@ -192,7 +192,7 @@ export function ReviewScheduleSection() {
     <section className="py-6 border-t border-border">
       <div className="flex items-center gap-2 mb-4">
         <Calendar className="w-5 h-5 text-primary" aria-hidden="true" />
-        <h2 className="text-xl font-semibold text-foreground">
+        <h2 className="text-lg font-semibold text-foreground">
           Review schedule
         </h2>
       </div>

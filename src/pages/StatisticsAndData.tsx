@@ -114,7 +114,7 @@ export default function StatisticsAndData() {
 
       {/* Confirmed position */}
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-6">Confirmed position as of 07 February 2026</h2>
+        <h2 className="text-lg font-display font-semibold text-foreground mb-6">Confirmed position as of 15 February 2026</h2>
 
         <div className="space-y-8">
           {/* Legal framework */}
@@ -216,7 +216,7 @@ export default function StatisticsAndData() {
         <div className="flex items-start gap-3 mb-4">
           <TrendingUp className="w-5 h-5 text-muted-foreground mt-0.5" />
           <div>
-            <h2 className="text-xl font-display font-semibold text-foreground">Projected and forecast figures</h2>
+            <h2 className="text-lg font-display font-semibold text-foreground">Projected and forecast figures</h2>
             <p className="text-sm text-muted-foreground mt-1">These are not current facts. They are published projections.</p>
           </div>
         </div>

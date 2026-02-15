@@ -7,7 +7,7 @@ interface PracticalImplicationsProps {
 export function PracticalImplications({ children }: PracticalImplicationsProps) {
   return (
     <section className="content-section py-8 border-t border-border">
-      <h2 className="text-xl font-semibold text-foreground mb-4">
+      <h2 className="text-lg font-semibold text-foreground mb-4">
         What this could mean in practice
       </h2>
       <p className="text-sm text-muted-foreground mb-6">
