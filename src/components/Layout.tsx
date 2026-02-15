@@ -13,6 +13,7 @@ import { AskQuestionCompact } from "./AskQuestionCompact";
 import { ListenModePlayer } from "./ListenModePlayer";
 import { ScanModeBanner } from "./ScanModeBanner";
 import { ExitIntentPopup } from "./ExitIntentPopup";
+import { CookieConsent } from "./CookieConsent";
 
 interface LayoutProps {
   children: ReactNode;
@@ -41,6 +42,7 @@ export function Layout({ children, hideGlobalCTA }: LayoutProps) {
       <JourneyFloatingBar />
       <ListenModePlayer />
       <ExitIntentPopup />
+      <CookieConsent />
     </div>
   );
 }
