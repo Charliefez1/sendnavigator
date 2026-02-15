@@ -182,7 +182,9 @@ export function NeurodiversityGlobalAd() {
           onClick={() => setDialogOpen(true)}
           className="w-full rounded-xl overflow-hidden border-2 border-navy shadow-lg hover:shadow-xl transition-all group"
         >
-          <img src={adHero} alt="Neurodiversity Global – Be Seen, Be Valued, Be Supported, Be Empowered" className="w-full h-auto object-cover" />
+          <div className="bg-navy">
+            <img src={adHero} alt="Neurodiversity Global – Be Seen, Be Valued, Be Supported, Be Empowered" className="w-full h-auto object-cover" />
+          </div>
           <div className="bg-navy px-5 py-3">
             <p className="text-white/60 text-[10px] uppercase tracking-widest font-medium mb-1">Neurodiversity Global</p>
             <p className="text-white font-display font-semibold text-base leading-tight">{ad.headline}</p>
