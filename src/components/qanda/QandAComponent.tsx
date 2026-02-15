@@ -138,8 +138,7 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
             Ask a question about SEND reform
           </h2>
           <p className="text-sm text-muted-foreground mt-1">
-            Get a plain English explanation based on what we know, what is being discussed, 
-            and what remains uncertain.
+            Answers are based on the content of this resource only. This search is not searching external content. Mistakes do happen, please use this resource as a guide only.
           </p>
         </div>
       </div>
