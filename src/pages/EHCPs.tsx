@@ -48,6 +48,8 @@ export default function EHCPs() {
         </div>
       </PageOrientation>
 
+      <AskEHCP />
+
       <SixtySecondSummary
         prose={
           <p>
