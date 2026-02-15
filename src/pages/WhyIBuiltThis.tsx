@@ -14,12 +14,12 @@ const WhyIBuiltThis = () => {
       <section className="content-section py-8 border-t border-border">
         <div className="prose-calm max-w-2xl space-y-4">
           <p>
-            I built the SEND Navigator because too many parents are fighting battles they should never have had to fight.
+            I built the SEND Navigator because <strong>too many parents are fighting battles they should never have had to fight</strong>.
           </p>
           <p>
             Battles to be believed.<br />
             Battles to be listened to.<br />
-            Battles to stop their children being reduced to behaviour, labels or problems to manage.
+            Battles to stop their children being <strong>reduced to behaviour, labels or problems to manage</strong>.
           </p>
           <p className="font-semibold">
             And because doing nothing costs too much.
@@ -31,10 +31,10 @@ const WhyIBuiltThis = () => {
         <h2 className="text-lg font-display font-semibold text-foreground mb-4">The reality for families</h2>
         <div className="prose-calm max-w-2xl space-y-4">
           <p>
-            For most families, it starts small. A concern raised. A conversation with school. A referral suggested. Then the waiting begins. Meetings. Forms. Reports. More waiting. Being told to wait longer. Being told your child will grow out of it. Being told the system knows best, even when your lived experience tells you otherwise.
+            For most families, it starts small. A concern raised. A conversation with school. A referral suggested. Then <strong>the waiting begins</strong>. Meetings. Forms. Reports. More waiting. Being told to wait longer. Being told your child will grow out of it. Being told <strong>the system knows best</strong>, even when your lived experience tells you otherwise.
           </p>
           <p>
-            What should be support quickly turns into years of advocacy.
+            What should be support <strong>quickly turns into years of advocacy</strong>.
           </p>
         </div>
       </section>
@@ -45,10 +45,10 @@ const WhyIBuiltThis = () => {
           <p>
             It changes how you see education.<br />
             It changes how you see health services.<br />
-            It changes how you understand power, responsibility, and who carries the consequences when systems fail.
+            It changes how you understand <strong>power, responsibility, and who carries the consequences</strong> when systems fail.
           </p>
           <p>
-            Parents end up doing jobs they never trained for. Learning policy language. Interpreting guidance. Chasing referrals. Preparing evidence. Explaining their child again and again to people who hold decision-making power but not lived experience.
+            Parents end up doing jobs they never trained for. <strong>Learning policy language. Interpreting guidance. Chasing referrals. Preparing evidence.</strong> Explaining their child again and again to people who hold decision-making power but not lived experience.
           </p>
         </div>
       </section>
@@ -60,7 +60,7 @@ const WhyIBuiltThis = () => {
             The SEND Navigator exists because parents should not have to become legal experts, case managers and campaigners just to protect their children's wellbeing.
           </p>
           <p>
-            It exists because what families are dealing with is not individual failure. It is systemic failure. Fragmented systems. Inconsistent processes. Information that is technically available but practically inaccessible when you are exhausted, emotional and under pressure.
+            It exists because what families are dealing with is <strong>not individual failure</strong>. It is <strong>systemic failure</strong>. Fragmented systems. Inconsistent processes. Information that is technically available but <strong>practically inaccessible</strong> when you are exhausted, emotional and under pressure.
           </p>
           <p className="font-semibold">
             And it exists because silence has never protected our children.
@@ -72,14 +72,14 @@ const WhyIBuiltThis = () => {
         <h2 className="text-lg font-display font-semibold text-foreground mb-4">Built to change that</h2>
         <div className="prose-calm max-w-2xl space-y-4">
           <p>
-            The reality of navigating SEND support is still too often minimised. The emotional toll on families is treated as unfortunate rather than unacceptable. The language of support is everywhere, while the burden of coping is quietly pushed back onto parents.
+            The reality of navigating SEND support is <strong>still too often minimised</strong>. The emotional toll on families is treated as unfortunate rather than unacceptable. The language of support is everywhere, while <strong>the burden of coping is quietly pushed back onto parents</strong>.
           </p>
           <p className="font-semibold text-primary">
             The SEND Navigator was built to change that.
           </p>
           <p>
             Not as another resource telling parents what they should do.<br />
-            But as a tool that helps them understand what is happening, what should be happening, and where they stand in the process.
+            But as a tool that helps them <strong>understand what is happening, what should be happening, and where they stand</strong> in the process.
           </p>
         </div>
       </section>
@@ -92,7 +92,7 @@ const WhyIBuiltThis = () => {
         </div>
         <div className="prose-calm max-w-2xl space-y-4">
           <p>
-            Advocacy should not depend on who shouts the loudest or who has the time, energy or confidence to push hardest. Parents are not being difficult when they ask questions, challenge decisions or refuse to accept harm as normal. They are filling the gaps the system has left.
+            Advocacy should not depend on <strong>who shouts the loudest</strong> or who has the time, energy or confidence to push hardest. Parents are not being difficult when they ask questions, challenge decisions or refuse to accept harm as normal. They are <strong>filling the gaps the system has left</strong>.
           </p>
           <p className="font-semibold">
             The SEND Navigator exists to support that reality.

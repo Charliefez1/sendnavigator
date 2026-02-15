@@ -51,15 +51,15 @@ export default function HowToUse() {
           <div className="bg-card border border-border rounded-xl p-5 shadow-lg">
             <h3 className="font-display font-medium text-foreground mb-2">Top bar - Site links</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Links to general pages like About, Sources, Q&A, and this guide. 
+              Links to general pages like <strong>About, Sources, Q&A</strong>, and this guide. 
               On mobile, tap the menu icon to open these.
             </p>
           </div>
           <div className="bg-card border border-border rounded-xl p-5 shadow-lg">
             <h3 className="font-display font-medium text-foreground mb-2">Journey tabs - The Navigator</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              The colour-coded tabs below the header take you through the SEND reform story 
-              step by step. You can follow them in order or jump to any section.
+              The <strong>colour-coded tabs</strong> below the header take you through the SEND reform story 
+              step by step. You can <strong>follow them in order or jump to any section</strong>.
             </p>
           </div>
         </div>
@@ -163,7 +163,7 @@ export default function HowToUse() {
               <h3 className="font-display font-medium text-foreground">Dark & light mode</h3>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Use the toggle in the top navigation to switch between light and dark themes. 
+              Use the toggle in the top navigation to <strong>switch between light and dark themes</strong>. 
               The site will remember your preference.
             </p>
           </div>
@@ -174,7 +174,7 @@ export default function HowToUse() {
               <h3 className="font-display font-medium text-foreground">Ask a question</h3>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              On many pages you'll find a Q&A section where you can ask questions in plain English 
+              On many pages you'll find a Q&A section where you can <strong>ask questions in plain English</strong> 
               and get answers based on what we know.
             </p>
           </div>
@@ -185,7 +185,7 @@ export default function HowToUse() {
               <h3 className="font-display font-medium text-foreground">Reassurance first</h3>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              We always lead with what hasn't changed and what your current rights are, 
+              We always <strong>lead with what hasn't changed</strong> and what your current rights are, 
               before explaining what might be changing.
             </p>
           </div>

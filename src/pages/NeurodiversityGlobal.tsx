@@ -16,11 +16,11 @@ export default function NeurodiversityGlobal() {
       <section className="content-section py-8 border-t border-border">
         <div className="prose-calm space-y-6">
           <p className="text-lg leading-relaxed">
-            Neurodiversity Global is a UK based, neurodivergent led consultancy that helps organisations redesign how work, leadership, and systems operate so neurodivergent people can succeed.
+            Neurodiversity Global is a <strong>UK based, neurodivergent led consultancy</strong> that helps organisations redesign how work, leadership, and systems operate so neurodivergent people can succeed.
           </p>
 
           <p>
-            We work with employers, education providers, and public bodies to move beyond awareness and into practical change. Our focus is performance, retention, psychological safety, and reducing risk through better system design.
+            We work with employers, education providers, and public bodies to <strong>move beyond awareness and into practical change</strong>. Our focus is performance, retention, psychological safety, and <strong>reducing risk through better system design</strong>.
           </p>
         </div>
       </section>
