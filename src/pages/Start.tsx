@@ -29,7 +29,7 @@ const Index = () => {
             <div className="bg-card border border-border rounded-xl p-5 sm:p-6 mb-6 shadow-lg">
               <div className="flex items-center gap-2.5 mb-3">
                 <Compass className="w-6 h-6 text-primary flex-shrink-0" />
-                <h1 className="text-lg sm:text-xl font-semibold text-foreground">
+                <h1 className="text-lg font-semibold text-foreground">
                   Welcome to SEND Reform Navigator
                 </h1>
               </div>
@@ -78,7 +78,7 @@ const Index = () => {
 
           {/* RIGHT: Journey links */}
           <div>
-            <h2 className="text-xl sm:text-2xl font-display font-semibold text-foreground mb-5">
+            <h2 className="text-lg font-display font-semibold text-foreground mb-5">
               Where would you like to start?
             </h2>
             <div className="space-y-2.5">

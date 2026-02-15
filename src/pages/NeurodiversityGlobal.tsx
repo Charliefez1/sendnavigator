@@ -26,7 +26,7 @@ export default function NeurodiversityGlobal() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-lg font-semibold text-foreground mb-4">
           What we deliver
         </h2>
         <ul className="space-y-3 text-foreground/90">
@@ -58,7 +58,7 @@ export default function NeurodiversityGlobal() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-lg font-semibold text-foreground mb-4">
           How we work
         </h2>
         <ul className="space-y-3 text-foreground/90">
@@ -88,7 +88,7 @@ export default function NeurodiversityGlobal() {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-lg font-semibold text-foreground mb-4">
           Learn more
         </h2>
         <div className="space-y-3">

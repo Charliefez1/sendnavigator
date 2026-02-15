@@ -103,7 +103,7 @@ export default function Feedback() {
     if (items.length === 0) return null;
     return (
       <div className="space-y-4">
-        <h2 className="font-display text-xl font-semibold">{title}</h2>
+        <h2 className="font-display text-lg font-semibold">{title}</h2>
         {items.map(renderFeedbackItem)}
       </div>
     );

@@ -33,7 +33,7 @@ function SectionBox({ id, icon: Icon, title, children }: {
           <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
             <Icon className="w-5 h-5 text-primary" />
           </div>
-          <h2 className="text-xl font-display font-semibold text-foreground">{title}</h2>
+          <h2 className="text-lg font-display font-semibold text-foreground">{title}</h2>
         </div>
         <div className="space-y-3 text-sm text-muted-foreground leading-relaxed max-w-2xl">
           {children}
@@ -129,7 +129,7 @@ export default function About() {
             <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
               <Scale className="w-5 h-5 text-primary" />
             </div>
-            <h2 className="text-xl font-display font-semibold text-foreground">Governance and accountability</h2>
+            <h2 className="text-lg font-display font-semibold text-foreground">Governance and accountability</h2>
           </div>
           <div className="text-sm text-muted-foreground leading-relaxed max-w-2xl mb-6">
             <p>

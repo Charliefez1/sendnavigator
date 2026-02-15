@@ -28,7 +28,7 @@ const WhyIBuiltThis = () => {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">The reality for families</h2>
+        <h2 className="text-lg font-display font-semibold text-foreground mb-4">The reality for families</h2>
         <div className="prose-calm max-w-2xl space-y-4">
           <p>
             For most families, it starts small. A concern raised. A conversation with school. A referral suggested. Then the waiting begins. Meetings. Forms. Reports. More waiting. Being told to wait longer. Being told your child will grow out of it. Being told the system knows best, even when your lived experience tells you otherwise.
@@ -40,7 +40,7 @@ const WhyIBuiltThis = () => {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">That experience changes you</h2>
+        <h2 className="text-lg font-display font-semibold text-foreground mb-4">That experience changes you</h2>
         <div className="prose-calm max-w-2xl space-y-4">
           <p>
             It changes how you see education.<br />
@@ -54,7 +54,7 @@ const WhyIBuiltThis = () => {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">Why the SEND Navigator exists</h2>
+        <h2 className="text-lg font-display font-semibold text-foreground mb-4">Why the SEND Navigator exists</h2>
         <div className="prose-calm max-w-2xl space-y-4">
           <p className="font-semibold text-primary">
             The SEND Navigator exists because parents should not have to become legal experts, case managers and campaigners just to protect their children's wellbeing.
@@ -69,7 +69,7 @@ const WhyIBuiltThis = () => {
       </section>
 
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-xl font-display font-semibold text-foreground mb-4">Built to change that</h2>
+        <h2 className="text-lg font-display font-semibold text-foreground mb-4">Built to change that</h2>
         <div className="prose-calm max-w-2xl space-y-4">
           <p>
             The reality of navigating SEND support is still too often minimised. The emotional toll on families is treated as unfortunate rather than unacceptable. The language of support is everywhere, while the burden of coping is quietly pushed back onto parents.

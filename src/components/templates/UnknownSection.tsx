@@ -11,7 +11,7 @@ export function UnknownSection({ questions }: UnknownSectionProps) {
     <section className="content-section py-8 border-t border-border">
       <div className="flex items-center gap-2 mb-4">
         <HelpCircle className="w-5 h-5 text-muted-foreground" />
-        <h2 className="text-xl font-semibold text-foreground">
+        <h2 className="text-lg font-semibold text-foreground">
           What is unknown or undecided
         </h2>
       </div>

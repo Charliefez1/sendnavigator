@@ -29,7 +29,7 @@ export class ErrorBoundary extends Component<Props, State> {
         <div className="min-h-screen flex items-center justify-center bg-background p-6">
           <div className="max-w-md text-center space-y-4">
             <Heart className="w-10 h-10 text-primary mx-auto" />
-            <h1 className="text-xl font-semibold text-foreground">Something went wrong</h1>
+            <h1 className="text-lg font-semibold text-foreground">Something went wrong</h1>
             <p className="text-muted-foreground">
               We're sorry, an unexpected error occurred. Please try refreshing the page.
             </p>

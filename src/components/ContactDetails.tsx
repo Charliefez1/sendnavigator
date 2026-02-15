@@ -36,7 +36,7 @@ export function ContactDetails({ showTitle = true }: ContactDetailsProps) {
   return (
     <section className="content-section py-8 border-t border-border">
       {showTitle && (
-        <h2 className="text-xl font-semibold text-foreground mb-6">
+        <h2 className="text-lg font-semibold text-foreground mb-6">
           Contact us
         </h2>
       )}

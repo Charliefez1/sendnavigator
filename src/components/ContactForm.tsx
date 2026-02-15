@@ -72,7 +72,7 @@ export function ContactForm() {
 
   return (
     <div className="bg-card border border-border rounded-xl p-6 sm:p-8 shadow-lg">
-      <h2 className="text-xl font-semibold text-foreground mb-2">Get in touch</h2>
+      <h2 className="text-lg font-semibold text-foreground mb-2">Get in touch</h2>
       <p className="text-muted-foreground mb-6">
         Send us a message and we will get back to you.
       </p>

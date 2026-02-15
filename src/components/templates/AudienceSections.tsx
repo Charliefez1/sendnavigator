@@ -40,7 +40,7 @@ interface AudienceSectionsProps {
 export function AudienceSections({ parents, children, schools, authorities }: AudienceSectionsProps) {
   return (
     <section className="content-section py-8 border-t border-border">
-      <h2 className="text-xl font-semibold text-foreground mb-2">
+      <h2 className="text-lg font-semibold text-foreground mb-2">
         What this could mean for different groups
       </h2>
       <p className="text-sm text-muted-foreground mb-6">

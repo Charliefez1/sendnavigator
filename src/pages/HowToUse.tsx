@@ -40,7 +40,7 @@ export default function HowToUse() {
             <Navigation2 className="w-5 h-5 text-primary" />
           </div>
           <div>
-            <h2 className="text-xl font-display font-semibold text-foreground mb-2">Two navigation bars</h2>
+            <h2 className="text-lg font-display font-semibold text-foreground mb-2">Two navigation bars</h2>
             <p className="text-muted-foreground leading-relaxed">
               You'll see two navigation areas on every page:
             </p>
@@ -72,7 +72,7 @@ export default function HowToUse() {
             <Palette className="w-5 h-5 text-primary" />
           </div>
           <div>
-            <h2 className="text-xl font-display font-semibold text-foreground mb-2">What the colours mean</h2>
+            <h2 className="text-lg font-display font-semibold text-foreground mb-2">What the colours mean</h2>
             <p className="text-muted-foreground leading-relaxed">
               The journey tabs and content sections use colours to show how certain information is:
             </p>
@@ -118,7 +118,7 @@ export default function HowToUse() {
             <Layers className="w-5 h-5 text-primary" />
           </div>
           <div>
-            <h2 className="text-xl font-display font-semibold text-foreground mb-2">How each page is structured</h2>
+            <h2 className="text-lg font-display font-semibold text-foreground mb-2">How each page is structured</h2>
             <p className="text-muted-foreground leading-relaxed">
               Every information page follows the same pattern so you always know where to look:
             </p>
@@ -151,7 +151,7 @@ export default function HowToUse() {
             <BookOpen className="w-5 h-5 text-primary" />
           </div>
           <div>
-            <h2 className="text-xl font-display font-semibold text-foreground mb-2">Helpful features</h2>
+            <h2 className="text-lg font-display font-semibold text-foreground mb-2">Helpful features</h2>
           </div>
         </div>
 
