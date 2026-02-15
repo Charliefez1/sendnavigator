@@ -53,7 +53,9 @@ export default function EHCPs() {
         </div>
       </PageOrientation>
 
-      <AskEHCP />
+      <div className="content-section py-4">
+        <AskEHCP />
+      </div>
 
       <SixtySecondSummary
         prose={
