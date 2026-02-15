@@ -3,6 +3,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { QandAComponent } from "@/components/qanda";
 import { MoreResources } from "@/components/MoreResources";
+import { NewsHeadlines } from "@/components/NewsHeadlines";
 import { 
   ArrowRight, 
   CheckCircle2, 
@@ -197,6 +198,11 @@ const Index = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Breaking News */}
+      <section className="content-section py-6">
+        <NewsHeadlines />
       </section>
 
       {/* Q&A */}

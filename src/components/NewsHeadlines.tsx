@@ -8,6 +8,7 @@ interface NewsItem {
   url: string;
   source_name: string;
   discovered_at: string;
+  published_at: string | null;
 }
 
 function getUniqueBySource(items: NewsItem[], count: number): NewsItem[] {
@@ -40,7 +41,7 @@ export function NewsHeadlines() {
     const fetch = async () => {
       const { data } = await (supabase as any)
         .from("news_items")
-        .select("id, title, url, source_name, discovered_at")
+        .select("id, title, url, source_name, discovered_at, published_at")
         .eq("status", "published")
         .order("discovered_at", { ascending: false })
         .limit(20);
@@ -78,7 +79,7 @@ export function NewsHeadlines() {
               <div className="flex items-center gap-2 mt-1">
                 <span className="text-[11px] font-medium text-primary">{item.source_name}</span>
                 <span className="text-[11px] text-muted-foreground">·</span>
-                <span className="text-[11px] text-muted-foreground">{timeAgo(item.discovered_at)}</span>
+                <span className="text-[11px] text-muted-foreground">{timeAgo(item.published_at || item.discovered_at)}</span>
               </div>
             </div>
             <ExternalLink className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0 mt-1 opacity-0 group-hover:opacity-100 transition-opacity" />
