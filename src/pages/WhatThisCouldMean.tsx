@@ -47,12 +47,12 @@ export default function WhatThisCouldMean() {
           <>
             <p>
               Changes to SEND policy may affect different groups in different ways. 
-              A change that simplifies processes for local authorities might create 
-              uncertainty for families, or vice versa.
+              <strong>A change that simplifies processes for local authorities might create 
+              uncertainty for families</strong>, or vice versa.
             </p>
             <p>
-              We present possible implications without making predictions. The actual 
-              impact of any change depends on how it is implemented and individual 
+              We present possible implications without making predictions. <strong>The actual 
+              impact of any change depends on how it is implemented</strong> and individual 
               circumstances.
             </p>
           </>
@@ -61,14 +61,14 @@ export default function WhatThisCouldMean() {
           <>
             <h3>Why we focus on possibilities</h3>
             <p>
-              Policy changes often work differently in practice than expected. Local 
+              Policy changes often <strong>work differently in practice than expected</strong>. Local 
               implementation varies. Individual circumstances matter. For these reasons, 
               we describe what could happen rather than what will happen.
             </p>
             
             <h3>Limitations of this section</h3>
             <p>
-              This section cannot replace specialist advice about your specific situation. 
+              This section <strong>cannot replace specialist advice</strong> about your specific situation. 
               If you need guidance about your child's education or your school's obligations, 
               please seek appropriate professional support.
             </p>
@@ -106,23 +106,23 @@ export default function WhatThisCouldMean() {
           <>
             <p>
               This section will explain what confirmed and proposed changes could mean 
-              for families navigating SEND support. Content is being developed based on 
+              for <strong>families navigating SEND support</strong>. Content is being developed based on 
               the latest confirmed information.
             </p>
             <p>
-              We will cover topics such as assessment processes, plan content, review 
-              arrangements, and routes for resolving disagreements.
+              We will cover topics such as <strong>assessment processes, plan content, review 
+              arrangements, and routes for resolving disagreements</strong>.
             </p>
           </>
         }
         children={
           <>
             <p>
-              This section will explain what changes could mean for the day-to-day 
-              experience of children and young people with SEND.
+              This section will explain what changes could mean for the <strong>day-to-day 
+              experience of children and young people</strong> with SEND.
             </p>
             <p>
-              We will focus on educational support, transitions between settings, and 
+              We will focus on <strong>educational support, transitions between settings</strong>, and 
               preparation for adulthood where relevant.
             </p>
           </>
@@ -130,11 +130,11 @@ export default function WhatThisCouldMean() {
         schools={
           <>
             <p>
-              This section will cover implications for SENCOs, class teachers, school 
-              leaders, and support staff.
+              This section will cover implications for <strong>SENCOs, class teachers, school 
+              leaders, and support staff</strong>.
             </p>
             <p>
-              Topics may include identification responsibilities, provision mapping, 
+              Topics may include <strong>identification responsibilities, provision mapping</strong>, 
               working with external agencies, and managing resources.
             </p>
           </>
@@ -142,11 +142,11 @@ export default function WhatThisCouldMean() {
         authorities={
           <>
             <p>
-              This section will address implications for local authority SEND services, 
-              commissioning, and partnership working.
+              This section will address implications for <strong>local authority SEND services, 
+              commissioning, and partnership working</strong>.
             </p>
             <p>
-              We will consider assessment duties, provision sufficiency, and 
+              We will consider <strong>assessment duties, provision sufficiency</strong>, and 
               accountability arrangements.
             </p>
           </>
