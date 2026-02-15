@@ -10,7 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
 import { Send, CheckCircle, ArrowRight } from "lucide-react";
-import adLogo from "@/assets/neurodiversity-global-ad-logo.png";
+import adHero from "@/assets/neurodiversity-global-ad-hero.png";
 
 const ads = [
   {
@@ -182,7 +182,7 @@ export function NeurodiversityGlobalAd() {
           onClick={() => setDialogOpen(true)}
           className="w-full rounded-xl overflow-hidden border-2 border-navy shadow-lg hover:shadow-xl transition-all group"
         >
-          <img src={adLogo} alt="Neurodiversity Global" className="w-full h-48 object-cover" />
+          <img src={adHero} alt="Neurodiversity Global – Be Seen, Be Valued, Be Supported, Be Empowered" className="w-full h-auto object-cover" />
           <div className="bg-navy px-5 py-3">
             <p className="text-white/60 text-[10px] uppercase tracking-widest font-medium mb-1">Neurodiversity Global</p>
             <p className="text-white font-display font-semibold text-base leading-tight">{ad.headline}</p>
