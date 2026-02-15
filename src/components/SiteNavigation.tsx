@@ -16,7 +16,7 @@ const journeySteps = [
 ];
 
 const siteLinks = [
-  { path: "/quick-read", label: "Quick Read" },
+  
   { path: "/how-to-use", label: "How to use" },
   { path: "/questions-and-answers", label: "Ask SEND" },
   { path: "/community-questions", label: "Lived experience" },
