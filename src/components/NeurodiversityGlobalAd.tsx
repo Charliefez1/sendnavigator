@@ -183,7 +183,7 @@ export function NeurodiversityGlobalAd() {
           className="w-full rounded-xl overflow-hidden border-2 border-navy shadow-lg hover:shadow-xl transition-all group"
         >
           <div className="bg-navy px-5 py-4 flex items-center gap-4">
-            <img src={adLogo} alt="Neurodiversity Global" className="w-14 h-14 rounded-lg object-contain bg-white/10 p-1" />
+            <img src={adLogo} alt="Neurodiversity Global" className="w-14 h-14 rounded-lg object-contain bg-white p-1.5" />
             <div className="text-left flex-1">
               <p className="text-white/60 text-[10px] uppercase tracking-widest font-medium">Neurodiversity Global</p>
               <p className="text-white font-display font-semibold text-base leading-tight mt-0.5">{ad.headline}</p>
