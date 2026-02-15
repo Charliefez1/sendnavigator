@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { AlertCircle, TrendingUp, ShieldAlert, Users, BarChart3, BookOpen, FileCheck, ChevronDown, ChevronRight, Newspaper } from "lucide-react";
 import { communitySourceCategories } from "@/config/community-sources";
 import { NewsTracker } from "@/components/NewsTracker";
+import { NewsHeadlines } from "@/components/NewsHeadlines";
 
 // ─── Statistics data ───
 
@@ -353,6 +354,11 @@ export default function Sources() {
             </ul>
           </nav>
         </div>
+      </section>
+
+      {/* ═══ BREAKING HEADLINES ═══ */}
+      <section className="content-section py-4">
+        <NewsHeadlines />
       </section>
 
       {/* ═══ NEWS TRACKER ═══ */}
