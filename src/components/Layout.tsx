@@ -10,6 +10,8 @@ import { NewsletterSignup } from "./NewsletterSignup";
 import { SkipLink } from "./SkipLink";
 import { AskAICompact } from "./AskAICompact";
 import { AskQuestionCompact } from "./AskQuestionCompact";
+import { ListenModePlayer } from "./ListenModePlayer";
+import { ScanModeBanner } from "./ScanModeBanner";
 
 interface LayoutProps {
   children: ReactNode;
@@ -22,6 +24,7 @@ export function Layout({ children, hideGlobalCTA }: LayoutProps) {
       <SkipLink />
       <Header />
       <JourneyNavBar />
+      <ScanModeBanner />
       <main id="main-content" className="flex-1 pb-24" role="main" tabIndex={-1}>
         {children}
         <div className="content-section py-6 space-y-4">
@@ -35,6 +38,7 @@ export function Layout({ children, hideGlobalCTA }: LayoutProps) {
       {!hideGlobalCTA && <NeurodiversityGlobalCTA />}
       <Footer />
       <JourneyFloatingBar />
+      <ListenModePlayer />
     </div>
   );
 }
