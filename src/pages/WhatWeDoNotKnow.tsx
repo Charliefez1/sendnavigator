@@ -30,7 +30,7 @@ export default function WhatWeDoNotKnow() {
       <PageOrientation
         title="What we do not know: questions parents are asking and why they matter"
         description="Key decisions about rights, thresholds, and protections that have not been made."
-        lastUpdated="14th February 2026"
+        lastUpdated="15th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="unconfirmed" />

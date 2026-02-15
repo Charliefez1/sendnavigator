@@ -35,7 +35,7 @@ export default function WhatTheLeaksDoNotMean() {
       <PageOrientation
         title="What leaks do not mean, and why they happen at all"
         description="Understanding leaked proposals without being pulled into panic or rushed decisions."
-        lastUpdated="14th February 2026"
+        lastUpdated="15th February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
