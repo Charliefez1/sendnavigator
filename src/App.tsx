@@ -46,6 +46,9 @@ const Sendiass = lazy(() => import("./pages/Sendiass"));
 const HaveYourSay = lazy(() => import("./pages/HaveYourSay"));
 const WhatWeOweOurChildren = lazy(() => import("./pages/WhatWeOweOurChildren"));
 const StateOfSend2026 = lazy(() => import("./pages/StateOfSend2026"));
+const UnderstandingYourChild = lazy(() => import("./pages/UnderstandingYourChild"));
+const UnderstandingAutism = lazy(() => import("./pages/UnderstandingAutism"));
+const UnderstandingADHD = lazy(() => import("./pages/UnderstandingADHD"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -86,6 +89,9 @@ const App = () => (
                       <Route path="/sendiass" element={<Sendiass />} />
                       <Route path="/have-your-say" element={<HaveYourSay />} />
                       <Route path="/what-we-owe-our-children" element={<WhatWeOweOurChildren />} />
+                      <Route path="/understanding-your-child" element={<UnderstandingYourChild />} />
+                      <Route path="/understanding-your-child/autism" element={<UnderstandingAutism />} />
+                      <Route path="/understanding-your-child/adhd" element={<UnderstandingADHD />} />
 
                       {/* Protected routes */}
                       <Route path="/" element={<ProtectedRoute><Start /></ProtectedRoute>} />
