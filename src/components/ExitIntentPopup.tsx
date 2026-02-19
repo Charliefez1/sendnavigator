@@ -34,17 +34,28 @@ export function ExitIntentPopup() {
   const armedRef = useRef(false);
   const lastScrollY = useRef(0);
   const scrollingUp = useRef(0);
+  const cooldownRef = useRef(false);
 
   const triggerPopup = useCallback(() => {
-    if (!armedRef.current || sessionStorage.getItem("exitIntentDismissed")) return;
+    if (!armedRef.current || cooldownRef.current || sessionStorage.getItem("exitIntentDismissed")) return;
     setShow(true);
+  }, []);
+
+  const startCooldown = useCallback(() => {
+    cooldownRef.current = true;
+    setTimeout(() => { cooldownRef.current = false; }, 5000);
   }, []);
 
   const handleMouseLeave = useCallback(
     (e: MouseEvent) => {
-      if (e.clientY <= 0) triggerPopup();
+      // Only trigger when mouse leaves via the very top of the viewport
+      // and with clear upward intent (not just brushing the toolbar)
+      if (e.clientY <= 0 && e.relatedTarget === null) {
+        triggerPopup();
+        startCooldown();
+      }
     },
-    [triggerPopup]
+    [triggerPopup, startCooldown]
   );
 
   // Mobile: detect rapid scroll-to-top (user pulling up to leave)
