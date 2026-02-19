@@ -61,7 +61,7 @@ export function NewsTicker() {
         {/* LIVE badge */}
         <div className="flex-shrink-0 bg-destructive flex items-center gap-1.5 px-3 py-1.5">
           <Radio className="w-3 h-3 text-white animate-pulse" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-white">
+          <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-white">
             Live
           </span>
         </div>
@@ -74,10 +74,10 @@ export function NewsTicker() {
           className="flex-shrink-0 flex items-center gap-2 px-4 py-1.5 border-r border-white/10 hover:bg-white/5 transition-colors max-w-[420px] group"
         >
           <div className="min-w-0">
-            <p className="text-xs font-semibold truncate group-hover:text-primary transition-colors">
+            <p className="text-sm font-semibold truncate group-hover:text-primary transition-colors">
               {current.title}
             </p>
-            <p className="text-[10px] text-white/50">
+            <p className="text-xs text-white/50">
               {current.source_name} · {timeAgo(current.published_at || current.discovered_at)}
             </p>
           </div>
@@ -95,11 +95,11 @@ export function NewsTicker() {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-[11px] text-white/70 hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs text-white/70 hover:text-white transition-colors"
               >
                 <span className="w-1 h-1 rounded-full bg-destructive flex-shrink-0" />
                 <span>{item.title}</span>
-                <span className="text-white/30 text-[10px]">{item.source_name}</span>
+                <span className="text-white/30 text-[11px]">{item.source_name}</span>
               </a>
             ))}
           </div>
