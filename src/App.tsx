@@ -54,6 +54,7 @@ const Exclusions = lazy(() => import("./pages/Exclusions"));
 const EHCPHealth = lazy(() => import("./pages/EHCPHealth"));
 const AlternativeProvision = lazy(() => import("./pages/AlternativeProvision"));
 const LocalVariation = lazy(() => import("./pages/LocalVariation"));
+const DevolvedNations = lazy(() => import("./pages/DevolvedNations"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -102,6 +103,7 @@ const App = () => (
                       <Route path="/ehcp-health" element={<EHCPHealth />} />
                       <Route path="/alternative-provision" element={<AlternativeProvision />} />
                       <Route path="/local-variation" element={<LocalVariation />} />
+                      <Route path="/devolved-nations" element={<DevolvedNations />} />
 
                       {/* Protected routes */}
                       <Route path="/" element={<ProtectedRoute><Start /></ProtectedRoute>} />
