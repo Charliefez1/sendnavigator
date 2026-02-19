@@ -36,11 +36,28 @@ const Landing = () => {
 
       {/* Main content */}
       <main className="flex-1">
-        <section className="content-section py-8 sm:py-12">
-          <div className="grid lg:grid-cols-5 gap-8 items-start">
+        {/* Hero: Auth + Image */}
+        <section className="content-section py-8 sm:py-10">
+          <div className="grid md:grid-cols-2 gap-6 items-center max-w-3xl mx-auto">
+            <div className="flex justify-center">
+              <AuthForm />
+            </div>
+            <div className="flex justify-center">
+              <div className="bg-navy rounded-xl p-5 shadow-lg border border-navy/80">
+                <img
+                  src={neurodiversityLanding}
+                  alt="Neurodiversity Global — The SEND Navigator is an independent Neurodiversityglobal.com free parents & carers resource"
+                  className="w-full max-w-xs rounded-lg"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
-            {/* LEFT: Welcome — 3 cols */}
-            <div className="lg:col-span-3">
+        {/* About section */}
+        <section className="content-section pb-8 sm:pb-12">
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-card border border-border rounded-xl p-5 sm:p-6 shadow-lg">
               <div className="flex items-center gap-2.5 mb-3">
                 <Compass className="w-6 h-6 text-primary flex-shrink-0" />
                 <h1 className="text-lg sm:text-xl font-display font-semibold text-foreground">
@@ -95,17 +112,6 @@ const Landing = () => {
                 </div>
               </div>
             </div>
-
-            {/* RIGHT: Auth form + image — 2 cols */}
-            <div className="lg:col-span-2 flex flex-col items-center gap-5">
-              <AuthForm />
-              <img
-                src={neurodiversityLanding}
-                alt="Neurodiversity Global — The SEND Navigator is an independent Neurodiversityglobal.com free parents & carers resource"
-                className="w-full max-w-xs rounded-lg"
-              />
-            </div>
-
           </div>
         </section>
       </main>
