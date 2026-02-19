@@ -12,40 +12,105 @@ import {
   Shield,
   Scale,
   Megaphone,
-  LogOut
+  LogOut,
+  FileText,
+  Users,
+  Brain,
+  GraduationCap,
+  AlertTriangle,
+  Building2,
+  MapPin,
+  Globe,
+  MessageCircleQuestion,
+  MessageSquare,
+  Lightbulb,
+  HandHeart,
+  HelpCircle,
+  ClipboardList,
+  Stethoscope,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const quickLinks = [
-  {
-    path: "/state-of-send-2026",
-    title: "The State of SEND 2026",
-    summary: "Our 8-part report tracking SEND reform — from confirmed changes to unanswered questions.",
-    icon: BookOpen,
-    accent: "bg-primary/10 text-primary",
-  },
-  {
-    path: "/ehcps",
-    title: "The EHCP Guide",
-    summary: "Everything you need to know about Education, Health and Care Plans — your rights, the process, and what to do when things go wrong.",
-    icon: Shield,
-    accent: "bg-status-confirmed/10 text-status-confirmed",
-  },
-  {
-    path: "/what-to-do-right-now",
-    title: "What to do right now",
-    summary: "Practical steps if your child is not getting the support they need today. Based on current law.",
-    icon: Scale,
-    accent: "bg-status-discussed/10 text-status-discussed",
-  },
-  {
-    path: "/have-your-say",
-    title: "Have your say on reform",
-    summary: "How to respond to the consultation, contact your MP, and make your voice count.",
-    icon: Megaphone,
-    accent: "bg-status-unconfirmed/10 text-status-unconfirmed",
-  },
+interface ContentLink {
+  path: string;
+  title: string;
+  summary: string;
+  icon: React.ElementType;
+}
+
+const reportSections: ContentLink[] = [
+  { path: "/state-of-send-2026", title: "Report Overview", summary: "The full 8-part report hub", icon: BookOpen },
+  { path: "/state-of-send-2026/where-we-are-now", title: "Where we are now", summary: "The current state of SEND", icon: MapPin },
+  { path: "/state-of-send-2026/what-is-changing", title: "What is changing", summary: "Confirmed reforms", icon: FileText },
+  { path: "/state-of-send-2026/what-has-not-changed", title: "What has not changed", summary: "Your existing rights", icon: Shield },
+  { path: "/state-of-send-2026/what-is-being-discussed", title: "What is being discussed", summary: "Proposals and consultations", icon: Megaphone },
+  { path: "/state-of-send-2026/what-we-do-not-know", title: "What we don't know", summary: "Unanswered questions", icon: HelpCircle },
+  { path: "/state-of-send-2026/what-the-leaks-are-saying", title: "What the leaks say", summary: "Leaked documents analysed", icon: AlertTriangle },
+  { path: "/state-of-send-2026/what-the-leaks-do-not-mean", title: "What the leaks don't mean", summary: "Avoiding misinterpretation", icon: Scale },
+  { path: "/state-of-send-2026/timeline", title: "Timeline & next steps", summary: "Key dates and milestones", icon: ClipboardList },
 ];
+
+const parentGuides: ContentLink[] = [
+  { path: "/ehcps", title: "The EHCP Guide", summary: "Rights, process, and what to do when things go wrong", icon: Shield },
+  { path: "/ehcp-health", title: "Health in EHCPs", summary: "NHS responsibilities and therapy provision", icon: Stethoscope },
+  { path: "/understanding-your-child", title: "Understanding your child", summary: "Neurodivergence explained for families", icon: Brain },
+  { path: "/understanding-your-child/autism", title: "Understanding Autism", summary: "What autism means in the SEND system", icon: Brain },
+  { path: "/understanding-your-child/adhd", title: "Understanding ADHD", summary: "ADHD rights and school support", icon: Lightbulb },
+  { path: "/exclusions", title: "Exclusions & rights", summary: "School exclusions and SEND protections", icon: AlertTriangle },
+  { path: "/alternative-provision", title: "Alternative Provision", summary: "When mainstream doesn't work", icon: Building2 },
+  { path: "/post-16-and-transition", title: "Post-16 & Transition", summary: "Moving into adulthood", icon: GraduationCap },
+  { path: "/what-to-do-right-now", title: "What to do right now", summary: "Practical steps based on current law", icon: Scale },
+  { path: "/sendiass", title: "Free help — SENDIASS", summary: "Free independent advice near you", icon: HandHeart },
+];
+
+const systemPages: ContentLink[] = [
+  { path: "/local-variation", title: "Why where you live matters", summary: "Local authority variation in SEND", icon: MapPin },
+  { path: "/devolved-nations", title: "Wales, Scotland & NI", summary: "If you're not in England", icon: Globe },
+];
+
+const takeAction: ContentLink[] = [
+  { path: "/have-your-say", title: "Have your say on reform", summary: "Respond to the consultation and contact your MP", icon: Megaphone },
+  { path: "/questions-and-answers", title: "Ask Rich", summary: "Ask a question and get a plain-English answer", icon: MessageCircleQuestion },
+  { path: "/community-questions", title: "Lived experience", summary: "Real stories from families navigating SEND", icon: MessageSquare },
+  { path: "/for-parents", title: "You are carrying a lot", summary: "Support and wellbeing for parents and carers", icon: Heart },
+  { path: "/what-we-owe-our-children", title: "Reality Bites", summary: "What the system really looks like", icon: Users },
+];
+
+const aboutLinks: ContentLink[] = [
+  { path: "/about", title: "About this resource", summary: "What this site is and isn't", icon: HelpCircle },
+  { path: "/sources", title: "Sources & evidence", summary: "Every claim traced to its source", icon: FileText },
+  { path: "/how-to-use", title: "How to use this site", summary: "Getting the most from the Navigator", icon: BookOpen },
+  { path: "/feedback", title: "Feedback", summary: "Tell us what's working and what isn't", icon: MessageSquare },
+];
+
+function ContentSection({ title, description, links, accent }: { title: string; description: string; links: ContentLink[]; accent: string }) {
+  return (
+    <section className="space-y-3">
+      <div>
+        <h2 className="text-base font-display font-semibold text-foreground">{title}</h2>
+        <p className="text-xs text-muted-foreground mt-0.5">{description}</p>
+      </div>
+      <div className="grid gap-2 sm:grid-cols-2">
+        {links.map((link) => (
+          <Link
+            key={link.path}
+            to={link.path}
+            className={`flex items-start gap-3 p-3.5 bg-card border border-border rounded-lg hover:shadow-md transition-all group`}
+          >
+            <div className={`w-8 h-8 rounded-md ${accent} flex items-center justify-center flex-shrink-0`}>
+              <link.icon className="w-4 h-4" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors leading-tight">{link.title}</h3>
+              <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{link.summary}</p>
+            </div>
+            <ArrowRight className="w-3.5 h-3.5 text-muted-foreground/50 flex-shrink-0 mt-1 group-hover:text-primary transition-colors" />
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 const Index = () => {
   const { user, signOut } = useAuth();
@@ -58,11 +123,11 @@ const Index = () => {
         path="/"
       />
 
-      {/* Header with sign out */}
+      {/* Header */}
       <section className="content-section pt-6 pb-2">
         <div className="flex items-center justify-between">
           <h1 className="text-lg sm:text-xl font-display font-semibold text-foreground">
-            Where would you like to start?
+            Explore the Navigator
           </h1>
           {user && (
             <Button
@@ -77,36 +142,52 @@ const Index = () => {
           )}
         </div>
         <p className="text-sm text-muted-foreground mt-1">
-          Choose a section below to get started, or explore in any order.
+          Everything on this site, organised by topic. Pick a section or browse.
         </p>
       </section>
 
-      {/* Main navigation cards */}
-      <section className="content-section py-4">
-        <div className="grid gap-3 sm:grid-cols-2">
-          {quickLinks.map((card) => (
-            <Link
-              key={card.path}
-              to={card.path}
-              className="flex items-start gap-4 p-5 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group"
-            >
-              <div className={`w-10 h-10 rounded-lg ${card.accent} flex items-center justify-center flex-shrink-0`}>
-                <card.icon className="w-5 h-5" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <h2 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors">{card.title}</h2>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{card.summary}</p>
-              </div>
-              <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-1 group-hover:text-primary transition-colors" />
-            </Link>
-          ))}
-        </div>
-      </section>
-
       {/* Breaking News */}
-      <section className="content-section py-6">
+      <section className="content-section py-4">
         <NewsHeadlines />
       </section>
+
+      {/* ALL CONTENT SECTIONS */}
+      <div className="content-section py-4 space-y-8">
+        <ContentSection
+          title="📊 The State of SEND 2026"
+          description="Our 8-part report tracking every aspect of SEND reform"
+          links={reportSections}
+          accent="bg-primary/10 text-primary"
+        />
+
+        <ContentSection
+          title="📖 Parent Guides"
+          description="Practical guides for navigating the SEND system right now"
+          links={parentGuides}
+          accent="bg-status-confirmed/10 text-status-confirmed"
+        />
+
+        <ContentSection
+          title="🏛️ Understanding the System"
+          description="How the system works — and why it works differently depending on where you are"
+          links={systemPages}
+          accent="bg-status-discussed/10 text-status-discussed"
+        />
+
+        <ContentSection
+          title="📢 Take Action & Community"
+          description="Make your voice heard, ask questions, and connect with other families"
+          links={takeAction}
+          accent="bg-status-unconfirmed/10 text-status-unconfirmed"
+        />
+
+        <ContentSection
+          title="ℹ️ About & Resources"
+          description="How we work, our sources, and how to give feedback"
+          links={aboutLinks}
+          accent="bg-muted text-muted-foreground"
+        />
+      </div>
 
       {/* SENDIASS signpost */}
       <section className="content-section py-4">
@@ -131,10 +212,6 @@ const Index = () => {
                 This is an independent resource, not government, not a campaign. We don't give advice
                 or tell you what to do. We just help you understand what's happening.
               </p>
-              <p>
-                We know you're busy and may be feeling anxious. That's why we've made everything 
-                as clear and straightforward as possible.
-              </p>
             </div>
             <Link 
               to="/about"
@@ -146,7 +223,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
     </Layout>
   );
 };
