@@ -43,6 +43,7 @@ const QuickRead = lazy(() => import("./pages/QuickRead"));
 const EHCPs = lazy(() => import("./pages/EHCPs"));
 const Post16AndTransition = lazy(() => import("./pages/Post16AndTransition"));
 const Sendiass = lazy(() => import("./pages/Sendiass"));
+const HaveYourSay = lazy(() => import("./pages/HaveYourSay"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -81,6 +82,7 @@ const App = () => (
                       <Route path="/neurodiversity-global" element={<NeurodiversityGlobal />} />
                       <Route path="/feedback" element={<Feedback />} />
                       <Route path="/sendiass" element={<Sendiass />} />
+                      <Route path="/have-your-say" element={<HaveYourSay />} />
 
                       {/* Protected routes */}
                       <Route path="/" element={<ProtectedRoute><Start /></ProtectedRoute>} />

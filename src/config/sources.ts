@@ -833,6 +833,48 @@ export const sourceRegistry: ContentSource[] = [
     usedIn: ["/sendiass"],
     dateAccessed: "2026-02-19",
   },
+
+  // ── Consultation and participation sources ─────────────────────────────────
+  {
+    id: "uk-parliament-petitions",
+    type: "parliamentary",
+    name: "UK Parliament petitions",
+    url: "https://petition.parliament.uk",
+    description: "Start or sign a parliamentary petition — 10,000 signatures triggers a government response, 100,000 triggers a debate.",
+    category: "Consultation and engagement material",
+    usedIn: ["/have-your-say"],
+    dateAccessed: "2026-02-19",
+  },
+  {
+    id: "writetothem",
+    type: "sector_briefing",
+    name: "WriteToThem — contact your MP",
+    url: "https://www.writetothem.com",
+    description: "Find and write to your MP directly about SEND issues in your local area.",
+    category: "Consultation and engagement material",
+    usedIn: ["/have-your-say"],
+    dateAccessed: "2026-02-19",
+  },
+  {
+    id: "appg-send",
+    type: "parliamentary",
+    name: "SEND All-Party Parliamentary Group",
+    url: "https://appg-send.org.uk",
+    description: "Cross-party group of MPs and peers focused on SEND — publishes reports and signals parliamentary direction.",
+    category: "Parliamentary reports and briefings",
+    usedIn: ["/have-your-say"],
+    dateAccessed: "2026-02-19",
+  },
+  {
+    id: "contact-white-paper",
+    type: "sector_briefing",
+    name: "Contact: what happens after the White Paper",
+    url: "https://contact.org.uk/about-contact/news-and-views/send-reforms-white-paper-what-happens-next/",
+    description: "Analysis of what families should expect once the White Paper is published.",
+    category: "Parent-led and sector analysis",
+    usedIn: ["/have-your-say"],
+    dateAccessed: "2026-02-19",
+  },
 ];
 
 // =============================================================================
