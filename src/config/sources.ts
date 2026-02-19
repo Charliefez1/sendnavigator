@@ -1067,6 +1067,36 @@ export const sourceRegistry: ContentSource[] = [
     usedIn: ["/ehcp-health"],
     dateAccessed: "2026-02-19",
   },
+  {
+    id: "dfe-ap-statutory-guidance",
+    type: "government_primary",
+    name: "DfE Alternative Provision statutory guidance",
+    url: "https://www.gov.uk/government/publications/alternative-provision",
+    description: "Statutory guidance on the use of alternative provision, including off-site direction, quality requirements, and local authority duties.",
+    category: "Statutory guidance and frameworks",
+    usedIn: ["/alternative-provision"],
+    dateAccessed: "2026-02-19",
+  },
+  {
+    id: "dfe-pupils-characteristics-2024-25",
+    type: "government_primary",
+    name: "DfE schools and pupils characteristics 2024/25",
+    url: "https://explore-education-statistics.service.gov.uk/find-statistics/school-pupils-and-their-characteristics/2024-25",
+    description: "Official statistics on school and AP pupil demographics, SEN status, and free school meals eligibility.",
+    category: "Government policy and operational documents",
+    usedIn: ["/alternative-provision"],
+    dateAccessed: "2026-02-19",
+  },
+  {
+    id: "send-ap-improvement-plan",
+    type: "government_primary",
+    name: "SEND and AP Improvement Plan",
+    url: "https://www.gov.uk/government/publications/send-and-alternative-provision-improvement-plan",
+    description: "Government policy document setting out proposals for reform of SEND and Alternative Provision, including the three-tier AP model.",
+    category: "Government policy and operational documents",
+    usedIn: ["/alternative-provision", "/state-of-send-2026"],
+    dateAccessed: "2026-02-19",
+  },
 ];
 
 // =============================================================================
