@@ -32,6 +32,7 @@ const QuestionsAndAnswers = lazy(() => import("./pages/QuestionsAndAnswers"));
 const Sources = lazy(() => import("./pages/Sources"));
 const StatisticsAndData = lazy(() => import("./pages/StatisticsAndData"));
 const About = lazy(() => import("./pages/About"));
+const WhatToDoRightNow = lazy(() => import("./pages/WhatToDoRightNow"));
 const NeurodiversityGlobal = lazy(() => import("./pages/NeurodiversityGlobal"));
 const RichFerriman = lazy(() => import("./pages/RichFerriman"));
 const WhyIBuiltThis = lazy(() => import("./pages/WhyIBuiltThis"));
@@ -82,6 +83,7 @@ const App = () => (
                       <Route path="/" element={<ProtectedRoute><Start /></ProtectedRoute>} />
                       <Route path="/quick-read" element={<ProtectedRoute><QuickRead /></ProtectedRoute>} />
                       <Route path="/ehcps" element={<ProtectedRoute><EHCPs /></ProtectedRoute>} />
+                      <Route path="/what-to-do-right-now" element={<ProtectedRoute><WhatToDoRightNow /></ProtectedRoute>} />
                       <Route path="/where-we-are-now" element={<ProtectedRoute><WhereWeAreNow /></ProtectedRoute>} />
                       <Route path="/what-is-changing" element={<ProtectedRoute><WhatIsChanging /></ProtectedRoute>} />
                       <Route path="/what-has-not-changed" element={<ProtectedRoute><WhatHasNotChanged /></ProtectedRoute>} />
