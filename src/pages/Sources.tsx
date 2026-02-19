@@ -131,6 +131,12 @@ function CollapsibleSection({ id, icon: Icon, title, summary, defaultOpen = fals
           <div className="flex-1 min-w-0">
             <h2 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">{title}</h2>
             <p className="text-sm text-muted-foreground mt-1">{summary}</p>
+            {!isOpen && (
+              <p className="text-xs text-primary mt-2 font-medium flex items-center gap-1">
+                <ChevronDown className="w-3 h-3" />
+                Click to expand
+              </p>
+            )}
           </div>
           <div className="flex-shrink-0 mt-1">
             {isOpen ? (
