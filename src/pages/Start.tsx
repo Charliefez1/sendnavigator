@@ -2,19 +2,104 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { QandAComponent } from "@/components/qanda";
-import { MoreResources } from "@/components/MoreResources";
 import { NewsHeadlines } from "@/components/NewsHeadlines";
+import { useAuth } from "@/contexts/AuthContext";
 import { 
   ArrowRight, 
   CheckCircle2, 
   Clock,
-  Compass,
   Heart,
   BookOpen,
-  HelpCircle
+  HelpCircle,
+  LogOut
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const journeyCards = [
+  {
+    path: "/where-we-are-now",
+    title: "What we know so far",
+    summary: "The current state of the SEND system, existing legal protections, and how the system is performing right now.",
+    color: "confirmed",
+    number: 1,
+  },
+  {
+    path: "/what-is-changing",
+    title: "What is changing",
+    summary: "Confirmed reforms, the 10 year schools plan, operational direction to councils, and the three tier model being embedded.",
+    color: "confirmed",
+    number: 2,
+  },
+  {
+    path: "/what-has-not-changed",
+    title: "What has not changed",
+    summary: "Your legal rights under the Children and Families Act 2014, EHCP protections, and tribunal appeal routes that remain in force.",
+    color: "confirmed",
+    number: 3,
+  },
+  {
+    path: "/what-is-being-discussed",
+    title: "What is being discussed",
+    summary: "Proposals under consideration including tiered support models, mainstream inclusion expansion, and funding mechanism changes.",
+    color: "discussed",
+    number: 4,
+  },
+  {
+    path: "/what-we-do-not-know",
+    title: "What we do not know yet",
+    summary: "Unanswered questions about the White Paper content, assessment thresholds, appeal rights, and implementation timelines.",
+    color: "discussed",
+    number: 5,
+  },
+  {
+    path: "/what-the-leaks-are-saying",
+    title: "What the leaks are saying",
+    summary: "BBC and media reports on potential EHCP redesign, the three tier ladder, and ministerial concern about political backlash.",
+    color: "unconfirmed",
+    number: 6,
+  },
+  {
+    path: "/what-the-leaks-do-not-mean",
+    title: "What the leaks do not mean",
+    summary: "Common misinterpretations of leaked proposals addressed — what the reports actually say versus what people fear.",
+    color: "unconfirmed",
+    number: 7,
+  },
+  {
+    path: "/timeline",
+    title: "Timeline and next steps",
+    summary: "Key dates, decision points and milestones from the national conversation to the expected White Paper and beyond.",
+    color: "next",
+    number: 8,
+  },
+];
+
+const colorMap: Record<string, { bg: string; border: string; text: string }> = {
+  confirmed: {
+    bg: "bg-status-confirmed/15",
+    border: "border-status-confirmed/30",
+    text: "text-status-confirmed",
+  },
+  discussed: {
+    bg: "bg-status-discussed/15",
+    border: "border-status-discussed/30",
+    text: "text-status-discussed",
+  },
+  unconfirmed: {
+    bg: "bg-status-unconfirmed/15",
+    border: "border-status-unconfirmed/30",
+    text: "text-status-unconfirmed",
+  },
+  next: {
+    bg: "bg-[hsl(var(--timeline-upcoming)/0.15)]",
+    border: "border-[hsl(var(--timeline-upcoming)/0.3)]",
+    text: "text-[hsl(var(--timeline-upcoming))]",
+  },
+};
 
 const Index = () => {
+  const { user, signOut } = useAuth();
+
   return (
     <Layout>
       <SEOHead
@@ -22,180 +107,78 @@ const Index = () => {
         description="A calm, independent guide helping parents and professionals understand SEND reform in England. Clear facts, no spin."
         path="/"
       />
-      {/* Two-column hero layout */}
-      <section className="content-section py-10 sm:py-14 animate-fade-in">
-        <div className="grid lg:grid-cols-2 gap-8 items-start">
-          {/* LEFT: Welcome message */}
-          <div>
-            <div className="bg-card border border-border rounded-xl p-5 sm:p-6 mb-6 shadow-lg">
-              <div className="flex items-center gap-2.5 mb-3">
-                <Compass className="w-6 h-6 text-primary flex-shrink-0" />
-                <h1 className="text-lg font-semibold text-foreground">
-                  Welcome to SEND Reform Navigator
-                </h1>
-              </div>
-              <div className="space-y-2.5 text-muted-foreground text-sm leading-relaxed">
-                <p>
-                  Despite what you may have heard, <strong className="text-foreground">your child's legal protections are still in place</strong>.
-                </p>
-                <p>
-                  <strong className="text-foreground">EHCPs remain legally binding.</strong><br />
-                  <strong className="text-foreground">The law has not changed.</strong>
-                </p>
-                <p>
-                  What has changed is the <strong className="text-foreground">volume of discussion</strong> about SEND provision in 2026 and 2027. There is increasing debate across politics, education and local authorities, alongside early signals, <strong className="text-foreground">leaks and speculation</strong> about possible future reforms.
-                </p>
-                <p>
-                  That uncertainty creates anxiety for parents.
-                </p>
-                <p>
-                  The <strong className="text-foreground">SEND Navigator is designed to help make sense of this</strong>.
-                </p>
-                <p className="font-medium text-foreground">It includes:</p>
-                <ul className="space-y-1 list-disc list-inside">
-                  <li><strong className="text-foreground">Confirmed information</strong> based on current law and statutory guidance</li>
-                  <li><strong className="text-foreground">Clearly labelled sections</strong> on speculation and leaks, where relevant</li>
-                  <li><strong className="text-foreground">Clear separation</strong> between what is confirmed, what is being discussed, and what has not changed</li>
-                </ul>
-                <p>
-                  <strong className="text-foreground">Nothing is presented without context.</strong><br />
-                  <strong className="text-foreground">Nothing speculative is presented as fact.</strong>
-                </p>
-                <p>
-                  The information currently available as of February 2026 is contained within this navigator. As further details are formally released, the navigator will be <strong className="text-foreground">updated so parents can see what has changed, and what has not</strong>.
-                </p>
-                <p>
-                  The aim is not to remove uncertainty where it genuinely exists, but to make it <strong className="text-foreground">visible, understandable and manageable</strong>.
-                </p>
-                <p>
-                  For more context, please see the{" "}
-                  <Link to="/about" className="text-primary hover:underline">About</Link> section and{" "}
-                  <Link to="/why-i-built-this" className="text-primary hover:underline">Why I Built This</Link>.
-                </p>
-                <p className="font-medium text-foreground">Rich Ferriman</p>
-              </div>
-            </div>
+
+      {/* Header with sign out */}
+      <section className="content-section pt-6 pb-2">
+        <div className="flex items-center justify-between">
+          <h1 className="text-lg sm:text-xl font-display font-semibold text-foreground">
+            Where would you like to start?
+          </h1>
+          {user && (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => signOut()}
+              className="gap-1.5 text-xs text-muted-foreground"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              Sign out
+            </Button>
+          )}
+        </div>
+        <p className="text-sm text-muted-foreground mt-1">
+          Choose a starting point below. Each section builds on the last, or explore in any order.
+        </p>
+      </section>
+
+      {/* Journey cards - expanded with summaries */}
+      <section className="content-section py-4">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {journeyCards.map((card) => {
+            const colors = colorMap[card.color];
+            return (
+              <Link
+                key={card.path}
+                to={card.path}
+                className="journey-card flex items-start gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className={`w-9 h-9 rounded-full ${colors.bg} flex items-center justify-center flex-shrink-0 border-2 ${colors.border} mt-0.5`}>
+                  <span className={`text-xs font-semibold ${colors.text}`}>{card.number}</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-medium text-foreground text-sm">{card.title}</h3>
+                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{card.summary}</p>
+                </div>
+                <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-1" />
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Status cards */}
+      <section className="content-section py-4">
+        <div className="grid gap-3 grid-cols-1 sm:grid-cols-3">
+          <div className="bg-card border border-border rounded-xl p-4">
+            <CheckCircle2 className="w-6 h-6 text-status-confirmed mb-2" />
+            <h3 className="font-medium text-foreground text-sm mb-1">What's confirmed</h3>
+            <p className="text-xs text-muted-foreground">
+              Official announcements and decisions that have actually been made
+            </p>
           </div>
-
-          {/* RIGHT: Journey links */}
-          <div>
-            <h2 className="text-lg font-display font-semibold text-foreground mb-5">
-              Where would you like to start?
-            </h2>
-            <div className="space-y-2.5">
-              <Link to="/where-we-are-now" className="journey-card flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-status-confirmed/15 flex items-center justify-center flex-shrink-0 border-2 border-status-confirmed/30">
-                  <span className="text-xs font-semibold text-status-confirmed">1</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">What we know so far</h3>
-                  <p className="text-xs text-muted-foreground">The current state of the SEND system</p>
-                </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-              </Link>
-
-              <Link to="/what-is-changing" className="journey-card flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-status-confirmed/15 flex items-center justify-center flex-shrink-0 border-2 border-status-confirmed/30">
-                  <span className="text-xs font-semibold text-status-confirmed">2</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">What is changing</h3>
-                  <p className="text-xs text-muted-foreground">Confirmed reforms and official plans</p>
-                </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-              </Link>
-
-              <Link to="/what-has-not-changed" className="journey-card flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-status-confirmed/15 flex items-center justify-center flex-shrink-0 border-2 border-status-confirmed/30">
-                  <span className="text-xs font-semibold text-status-confirmed">3</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">What has not changed</h3>
-                  <p className="text-xs text-muted-foreground">Legal protections still in place today</p>
-                </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-              </Link>
-
-              <Link to="/what-is-being-discussed" className="journey-card flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-status-discussed/15 flex items-center justify-center flex-shrink-0 border-2 border-status-discussed/30">
-                  <span className="text-xs font-semibold text-status-discussed">4</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">What is being discussed</h3>
-                  <p className="text-xs text-muted-foreground">Proposals under consideration</p>
-                </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-              </Link>
-
-              <Link to="/what-we-do-not-know" className="journey-card flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-status-discussed/15 flex items-center justify-center flex-shrink-0 border-2 border-status-discussed/30">
-                  <span className="text-xs font-semibold text-status-discussed">5</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">What we do not know yet</h3>
-                  <p className="text-xs text-muted-foreground">Gaps in current information</p>
-                </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-              </Link>
-
-              <Link to="/what-the-leaks-are-saying" className="journey-card flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-status-unconfirmed/15 flex items-center justify-center flex-shrink-0 border-2 border-status-unconfirmed/30">
-                  <span className="text-xs font-semibold text-status-unconfirmed">6</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">What the leaks are saying</h3>
-                  <p className="text-xs text-muted-foreground">Unconfirmed reports and what they mean</p>
-                </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-              </Link>
-
-              <Link to="/what-the-leaks-do-not-mean" className="journey-card flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-status-unconfirmed/15 flex items-center justify-center flex-shrink-0 border-2 border-status-unconfirmed/30">
-                  <span className="text-xs font-semibold text-status-unconfirmed">7</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">What the leaks do not mean</h3>
-                  <p className="text-xs text-muted-foreground">Common misinterpretations addressed</p>
-                </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-              </Link>
-
-              <Link to="/timeline" className="journey-card flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-[hsl(var(--timeline-upcoming)/0.15)] flex items-center justify-center flex-shrink-0 border-2 border-[hsl(var(--timeline-upcoming)/0.3)]">
-                  <span className="text-xs font-semibold text-[hsl(var(--timeline-upcoming))]">8</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">Timeline and next steps</h3>
-                  <p className="text-xs text-muted-foreground">Key dates, decisions and milestones</p>
-                </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0" />
-              </Link>
-            </div>
-
-            {/* What we help with */}
-            <div className="grid gap-3 grid-cols-1 sm:grid-cols-3 mt-6">
-              <div className="bg-card border border-border rounded-xl p-4">
-                <CheckCircle2 className="w-6 h-6 text-status-confirmed mb-2" />
-                <h3 className="font-medium text-foreground text-sm mb-1">What's confirmed</h3>
-                <p className="text-xs text-muted-foreground">
-                  Official announcements and decisions that have actually been made
-                </p>
-              </div>
-              <div className="bg-card border border-border rounded-xl p-4">
-                <HelpCircle className="w-6 h-6 text-status-discussed mb-2" />
-                <h3 className="font-medium text-foreground text-sm mb-1">What's being discussed</h3>
-                <p className="text-xs text-muted-foreground">
-                  Proposals and ideas being debated by government and others
-                </p>
-              </div>
-              <div className="bg-card border border-border rounded-xl p-4">
-                <BookOpen className="w-6 h-6 text-status-unconfirmed mb-2" />
-                <h3 className="font-medium text-foreground text-sm mb-1">What's unknown</h3>
-                <p className="text-xs text-muted-foreground">
-                  Questions that haven't been answered and decisions not yet made
-                </p>
-              </div>
-            </div>
+          <div className="bg-card border border-border rounded-xl p-4">
+            <HelpCircle className="w-6 h-6 text-status-discussed mb-2" />
+            <h3 className="font-medium text-foreground text-sm mb-1">What's being discussed</h3>
+            <p className="text-xs text-muted-foreground">
+              Proposals and ideas being debated by government and others
+            </p>
+          </div>
+          <div className="bg-card border border-border rounded-xl p-4">
+            <BookOpen className="w-6 h-6 text-status-unconfirmed mb-2" />
+            <h3 className="font-medium text-foreground text-sm mb-1">What's unknown</h3>
+            <p className="text-xs text-muted-foreground">
+              Questions that haven't been answered and decisions not yet made
+            </p>
           </div>
         </div>
       </section>
