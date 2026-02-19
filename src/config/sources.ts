@@ -46,6 +46,15 @@ export interface ContentSource {
 // =============================================================================
 
 export const sourceCategoryOrder: string[] = [
+  "Primary legislation",
+  "Statutory guidance",
+  "Government policy documents and official data",
+  "Parliamentary sources",
+  "Regulatory and oversight bodies",
+  "Legal and advice organisations",
+  "Established sector and investigative media",
+  "Research and analysis",
+  // Legacy categories kept for existing sources not yet remapped
   "SEND law and legal framework",
   "Government announcements and programmes",
   "Official statistics",
