@@ -5,6 +5,7 @@ import { QandAComponent } from "@/components/qanda";
 import { NewsHeadlines } from "@/components/NewsHeadlines";
 import { useAuth } from "@/contexts/AuthContext";
 import { SendiassSignpost } from "@/components/SendiassSignpost";
+import { WordFromRich } from "@/components/WordFromRich";
 import { 
   ArrowRight, 
   BookOpen,
@@ -188,6 +189,11 @@ const Index = () => {
           accent="bg-muted text-muted-foreground"
         />
       </div>
+
+      {/* Word from Rich */}
+      <WordFromRich>
+        <p>Your child is not broken. I need you to hear that before anything else on this site. They may see the world differently, process it differently, move through it differently. That is not a fault. It is not something to fix. The system around them may be struggling. The waiting lists may be shameful. But your child? They are exactly who they are supposed to be. This site exists to help you get them what they need from a world that was not designed with them in mind.</p>
+      </WordFromRich>
 
       {/* SENDIASS signpost */}
       <section className="content-section py-4">

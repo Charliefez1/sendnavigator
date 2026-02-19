@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { CheckCircle2, ExternalLink, Phone, Heart } from "lucide-react";
+import { WordFromRich } from "@/components/WordFromRich";
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -61,6 +62,11 @@ export default function ForParents() {
           </p>
         </div>
       </header>
+
+      <WordFromRich>
+        <p>Nobody tells you this part. The forms at midnight. The meetings where you feel like you are fighting for something that should just be given. The school gate where you are watching other children while yours is at home again. The grief that is not for your child but for the version of this you thought it would be. And underneath all of it, still the love. Still showing up. Still pushing.</p>
+        <p>I have been in that place. I know what it takes. You are not failing. And in most cases, neither are the people trying to help you. The system around all of you is under enormous strain. That distinction matters more than you might realise right now.</p>
+      </WordFromRich>
 
       {/* What this experience actually costs */}
       <section className="content-section py-6">

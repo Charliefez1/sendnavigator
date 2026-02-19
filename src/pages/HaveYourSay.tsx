@@ -4,6 +4,7 @@ import { PageOrientation } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ExternalLink, Megaphone, PenLine, Users, Landmark, FileText, AlertCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { WordFromRich } from "@/components/WordFromRich";
 
 function ResourceLink({ label, url }: { label: string; url: string }) {
   return (
@@ -60,6 +61,10 @@ export default function HaveYourSay() {
           <p className="text-xs text-muted-foreground">The DfE has confirmed a formal consultation will launch alongside the White Paper.</p>
         </div>
       </section>
+
+      <WordFromRich>
+        <p>I have sat in rooms where policy about neurodivergent people has been made, and the people making it had never spoken to a neurodivergent person, or a parent, or a teacher in a classroom that is not coping. Consultations matter not because government always listens, but because when they do not, the record exists. Your response is evidence. Your experience is data. Submit it. It counts.</p>
+      </WordFromRich>
 
       {/* ═══ WHAT HAS ALREADY HAPPENED ═══ */}
       <section className="content-section py-6">

@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Clock } from "lucide-react";
+import { WordFromRich } from "@/components/WordFromRich";
 
 const anchors = [
   { id: "sections-c-g", label: "Sections C & G" },
@@ -127,6 +128,10 @@ export default function EHCPHealth() {
           <ConfidenceConfirmed>Children and Families Act 2014, Section 42. The health commissioning body (in most cases the local ICB) has a legal duty to provide health care provision specified in Section G of an EHC plan.</ConfidenceConfirmed>
         </div>
       </section>
+
+      <WordFromRich>
+        <p>The health sections of an EHCP are where the most provision falls through the gaps. I have spoken to hundreds of families whose child's therapy is written into the plan and simply not happening. Speech and language. Occupational therapy. CAMHS. Legally required. Not delivered. This is the part of the system where knowing your rights and being specific about what is owed makes the most difference. Section G provision is not aspirational. It is a legal duty. If it is not being delivered, that is enforceable.</p>
+      </WordFromRich>
 
       {/* Why this matters */}
       <section className="content-section py-4">

@@ -4,6 +4,7 @@ import { PageOrientation } from "@/components/templates";
 import { ExternalLink, FileText, Phone, MapPin, Scale, AlertTriangle, Clock, CheckCircle, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SendiassSignpost } from "@/components/SendiassSignpost";
+import { WordFromRich } from "@/components/WordFromRich";
 import {
   Accordion,
   AccordionContent,
@@ -201,6 +202,12 @@ export default function WhatToDoRightNow() {
           </div>
         </div>
       </section>
+
+      <WordFromRich>
+        <p>I want to say something about how to approach this, because it matters as much as any legal right.</p>
+        <p>The local authorities, schools, and teachers navigating SEND are under enormous pressure. Most of them are doing their jobs and more. They are not the enemy. But they are stretched. Your child is one name on a very long list. I know this because I was the parent standing outside offices, writing letters at midnight, calling and emailing until I was seen.</p>
+        <p>The families who get the best outcomes are not always the ones who push hardest. They are the ones who are most prepared. Who know their child. Who bring clear evidence into conversations rather than frustration. Be assertive where you need to be. Put things in writing. Know your rights. But bring the school and the LA with you if you possibly can, rather than setting yourself against them. That approach will get your child further.</p>
+      </WordFromRich>
 
       {/* Situations accordion */}
       <section className="content-section py-4">

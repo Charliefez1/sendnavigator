@@ -3,6 +3,7 @@ import { PageOrientation } from "@/components/templates";
 import { SourceCard } from "@/components/SourceCard";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ExternalLink } from "lucide-react";
+import { WordFromRich } from "@/components/WordFromRich";
 
 // ─── Source categories with descriptions and entries ───
 
@@ -255,6 +256,10 @@ export default function Sources() {
           </p>
         </div>
       </section>
+
+      <WordFromRich>
+        <p>Everything on this site should be checkable. That matters to me. I have been in meetings where someone quoted something confidently and it was wrong, and the person across the table did not have the information to push back. This page is here so you do. If you ever read something on this site and want to know where it comes from, start here.</p>
+      </WordFromRich>
 
       {/* ═══ SOURCE CATEGORIES ═══ */}
       {sourceCategories.map((category) => (

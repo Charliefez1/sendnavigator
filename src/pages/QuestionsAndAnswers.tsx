@@ -4,6 +4,7 @@ import { PageOrientation } from "@/components/templates";
 import { ShieldAlert } from "lucide-react";
 import { QandAComponent } from "@/components/qanda";
 import { useSearchParams } from "react-router-dom";
+import { WordFromRich } from "@/components/WordFromRich";
 
 export default function QuestionsAndAnswers() {
   const [searchParams] = useSearchParams();
@@ -17,6 +18,10 @@ export default function QuestionsAndAnswers() {
         description="Ask me anything about SEND reform. I'll give you a straight answer based on what we actually know."
       />
       
+      <WordFromRich>
+        <p>I set this up because the most useful thing I can do is answer the actual question someone has right now. Not the theoretical question. Not the one that fits neatly into a category. The one that is keeping them awake at three in the morning wondering what they are supposed to do next. I cannot give legal advice and I will say so if that is what you need. But I can often point you in the right direction, tell you what I would do, and let you know if your situation sounds familiar. Ask the real question. I will give you an honest answer.</p>
+      </WordFromRich>
+
       <section className="content-section pb-8">
         <QandAComponent initialQuestion={initialQuestion} />
 

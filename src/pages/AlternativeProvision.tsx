@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight } from "lucide-react";
+import { WordFromRich } from "@/components/WordFromRich";
 
 const anchors = [
   { id: "what-ap-is", label: "What AP is" },
@@ -87,6 +88,10 @@ export default function AlternativeProvision() {
           ))}
         </div>
       </nav>
+
+      <WordFromRich>
+        <p>Alternative Provision is where the system sends children it has not found a way to include. Some of it is excellent. Some of it is a holding space that changes very little. If your child is moving towards AP, or is already in it, the questions to ask are the same as for any setting: what does my child need, is this place able to meet it, and what is the plan from here? AP is not the end of the road. But it needs scrutiny, and you are entitled to apply it.</p>
+      </WordFromRich>
 
       {/* What AP is */}
       <section className="content-section py-6">

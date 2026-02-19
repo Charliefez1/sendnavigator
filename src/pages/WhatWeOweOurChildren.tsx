@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import { WordFromRich } from "@/components/WordFromRich";
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -63,6 +64,10 @@ export default function WhatWeOweOurChildren() {
           This is the first in a series called <strong>Reality Bites</strong>. These pieces do not tell you what the system owes you. They tell you what we owe our children — regardless of what the system does next.
         </p>
       </header>
+
+      <WordFromRich>
+        <p>I built this section because I think parents deserve honesty. The system is under real pressure. EHC plan numbers have more than doubled since 2015. Local authority high needs funding has not kept pace. The professionals trying to help your child are often working in conditions that make doing the job well very hard. None of that changes your child's rights. None of it is a reason to accept less than what your child is entitled to. But understanding why the system behaves the way it does helps you navigate it without taking it personally, and without assuming that every delay or refusal is bad faith. Some of it is. Most of it is a system that is broken and under-resourced, not a conspiracy against your family.</p>
+      </WordFromRich>
 
       {/* Opening */}
       <section className="content-section py-6">

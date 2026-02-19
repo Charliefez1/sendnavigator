@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { CheckCircle2, ExternalLink, ArrowLeft } from "lucide-react";
+import { WordFromRich } from "@/components/WordFromRich";
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -36,6 +37,12 @@ export default function UnderstandingAutism() {
           Autism is a <strong>lifelong neurological difference</strong>. It affects how a person processes sensory information, communicates, builds social understanding, and experiences the world around them. It is not a mental health condition. It is not caused by parenting. It is not something to grow out of.
         </p>
       </header>
+
+      <WordFromRich>
+        <p>I am autistic. I have ADHD. I am dyslexic. For a long time I thought those things were problems to manage. They are not. They are a different operating system. One that most schools and systems were not designed around.</p>
+        <p>What I know from the inside is this. Your child is probably working very hard to hold it together in school. Masking takes real effort. And when they get home, all of that effort collapses. That is not them being difficult at home. That is the cost of the day.</p>
+        <p>Understanding what your child is experiencing means understanding the detail. Not just the label. When do they feel dysregulated? What are the flash points? Do they stim, and if so, is anyone stopping them when they should not be? Stimming — rocking, tapping, humming, flapping — is a regulation strategy, not a problem. If your child is stimming and being told to stop, that needs a conversation. The more you understand your child's specific experience, the more useful you are to everyone trying to help them.</p>
+      </WordFromRich>
 
       {/* What autism actually is */}
       <section className="content-section py-6">
