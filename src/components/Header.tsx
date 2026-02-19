@@ -15,6 +15,7 @@ const siteLinks: SiteLink[] = [
   { path: "#guides", label: "Parent Guides", children: [
     { path: "/understanding-your-child", label: "Understanding your child" },
     { path: "/ehcps", label: "The EHCP Guide" },
+    { path: "/exclusions", label: "Exclusions & rights" },
     { path: "/post-16-and-transition", label: "Post-16 & Transition" },
     { path: "/what-to-do-right-now", label: "What to do right now" },
     { path: "/sendiass", label: "Free help — SENDIASS" },
