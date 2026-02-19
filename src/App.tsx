@@ -44,6 +44,7 @@ const EHCPs = lazy(() => import("./pages/EHCPs"));
 const Post16AndTransition = lazy(() => import("./pages/Post16AndTransition"));
 const Sendiass = lazy(() => import("./pages/Sendiass"));
 const HaveYourSay = lazy(() => import("./pages/HaveYourSay"));
+const WhatWeOweOurChildren = lazy(() => import("./pages/WhatWeOweOurChildren"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -83,6 +84,7 @@ const App = () => (
                       <Route path="/feedback" element={<Feedback />} />
                       <Route path="/sendiass" element={<Sendiass />} />
                       <Route path="/have-your-say" element={<HaveYourSay />} />
+                      <Route path="/what-we-owe-our-children" element={<WhatWeOweOurChildren />} />
 
                       {/* Protected routes */}
                       <Route path="/" element={<ProtectedRoute><Start /></ProtectedRoute>} />

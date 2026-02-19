@@ -875,6 +875,38 @@ export const sourceRegistry: ContentSource[] = [
     usedIn: ["/have-your-say"],
     dateAccessed: "2026-02-19",
   },
+
+  // ── Reality Bites series sources ──────────────────────────────────────────
+  {
+    id: "smartphone-free-dopamine",
+    type: "sector_briefing",
+    name: "The Day We Gave Children Dopamine on Demand",
+    url: "https://smartphonefree.neurodiversityglobal.com/",
+    description: "Rich Ferriman's analysis of neurodivergence, screens, and what families can do about dopamine-driven behaviour.",
+    category: "Parent-led and sector analysis",
+    usedIn: ["/what-we-owe-our-children"],
+    dateAccessed: "2026-02-19",
+  },
+  {
+    id: "awbp-open-letter",
+    type: "sector_briefing",
+    name: "Are We Bad Parents? — An Open Letter",
+    url: "https://awbp.neuro.support/",
+    description: "Rich Ferriman's open letter to neurodivergent families — honest, direct, and grounded in lived experience.",
+    category: "Parent-led and sector analysis",
+    usedIn: ["/what-we-owe-our-children"],
+    dateAccessed: "2026-02-19",
+  },
+  {
+    id: "pda-society",
+    type: "sector_briefing",
+    name: "PDA Society — guidance for families and schools",
+    url: "https://www.pdasociety.org.uk",
+    description: "Specialist guidance on Pathological Demand Avoidance profiles, strategies, and school support.",
+    category: "Legal and advice organisations",
+    usedIn: ["/what-we-owe-our-children"],
+    dateAccessed: "2026-02-19",
+  },
 ];
 
 // =============================================================================
