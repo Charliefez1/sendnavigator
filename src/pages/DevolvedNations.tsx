@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { CheckCircle2, ExternalLink, AlertTriangle, ArrowRight, Clock, Info } from "lucide-react";
+import { WordFromRich } from "@/components/WordFromRich";
 
 const anchors = [
   { id: "reference-table", label: "Quick reference" },
@@ -76,6 +77,10 @@ export default function DevolvedNations() {
           <span>Last reviewed: February 2026.</span>
         </div>
       </header>
+
+      <WordFromRich>
+        <p>If you are in Wales, Scotland, or Northern Ireland, I want to be straight with you. Most of this site was built around the English system. I am sorry this page cannot do more. What I can do is point you to the people who understand your system deeply, in your nation, with your legislation. The organisations listed here are the real thing. They know your rights. Use them.</p>
+      </WordFromRich>
 
       {/* Anchor nav */}
       <nav className="content-section py-4 border-b border-border" aria-label="Page sections">

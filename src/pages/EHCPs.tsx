@@ -6,6 +6,7 @@ import {
   OnThisPage,
   ContentBox,
 } from "@/components/templates";
+import { WordFromRich } from "@/components/WordFromRich";
 import {
   Collapsible,
   CollapsibleContent,
@@ -215,6 +216,10 @@ export default function EHCPs() {
           </div>
         </div>
       </ContentBox>
+
+      <WordFromRich>
+        <p>Section F is the most important part of the EHCP. It is the section that is legally enforceable. Everything in it must happen. What is in every other section — your child's needs, the outcomes, the health and social care provision — informs it. But Section F is where the duty sits. If the language in Section F is vague, aspirational, or describes inputs rather than specific outcomes with frequency and quantity, it is harder to enforce. That matters enormously when you are trying to hold provision to account later. Specific, measurable, and named. Those are the words to look for.</p>
+      </WordFromRich>
 
       {/* ── Your rights ── */}
       <ContentBox id="rights" icon={Scale} title="Your rights at every stage">

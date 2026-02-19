@@ -4,6 +4,7 @@ import { PageOrientation } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ExternalLink, MapPin, Phone, Scale, Users, ShieldCheck, HelpCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { WordFromRich } from "@/components/WordFromRich";
 
 function ResourceLink({ label, url }: { label: string; url: string }) {
   return (
@@ -72,6 +73,10 @@ export default function Sendiass() {
           </p>
         </div>
       </section>
+
+      <WordFromRich>
+        <p>Most parents I speak to have never heard of SENDIASS. That is not their fault. It is a failure of how the system communicates. Free, independent, legally grounded advice, available to every family in England, and most people navigating the hardest experiences of their parenting lives have no idea it exists. Find yours. Use it. That is what it is there for.</p>
+      </WordFromRich>
 
       {/* ═══ WHAT SENDIASS DOES ═══ */}
       <section className="content-section py-6">

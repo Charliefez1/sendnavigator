@@ -3,6 +3,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ExternalLink, GraduationCap, Scale, Users, Briefcase, CalendarDays, AlertTriangle, ShieldCheck } from "lucide-react";
+import { WordFromRich } from "@/components/WordFromRich";
 import {
   Accordion,
   AccordionContent,
@@ -78,6 +79,11 @@ export default function Post16AndTransition() {
           </p>
         </div>
       </section>
+
+      <WordFromRich>
+        <p>The transition to adulthood is where the system most often loses the thread. I have seen young people reach 18 or 25 and fall off a cliff that was entirely predictable and entirely avoidable. Not because of anyone's bad intentions. Because planning started too late, conversations did not happen early enough, and nobody joined the dots between education and what comes after.</p>
+        <p>Start earlier than feels necessary. The year 9 review is the legal starting point for transition planning. Use it. Push for it to be real, not a box-ticking exercise. Your young person deserves a plan for their life, not just their next school year.</p>
+      </WordFromRich>
 
       {/* ═══ BANNER ═══ */}
       <section className="content-section py-2">

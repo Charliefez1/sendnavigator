@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight } from "lucide-react";
+import { WordFromRich } from "@/components/WordFromRich";
 
 const anchors = [
   { id: "numbers", label: "The numbers" },
@@ -115,6 +116,11 @@ export default function Exclusions() {
           <ConfidenceConfirmed>DfE autumn term 2024/25 exclusion statistics, published 20 November 2025.</ConfidenceConfirmed>
         </div>
       </section>
+
+      <WordFromRich>
+        <p>Schools are under enormous pressure around SEND. Most teachers are doing more than their job description asks. I want to say that clearly, because this is not about blame and it is not about battle.</p>
+        <p>But when behaviour keeps happening in the same setting, at the same time, in the same lesson, that pattern is information. It is your child telling you something. Your job is to become the expert on what that pattern means. What is happening just before things go wrong? What does the environment feel like for them at that point? Write it down. Dates, times, what came before. That evidence is not for a fight. It is for a conversation. It gives the teacher something real to work with. The more clearly you can describe your child's experience, the more you give the people around them the chance to make the adjustments that actually help.</p>
+      </WordFromRich>
 
       {/* What an exclusion is */}
       <section className="content-section py-4">
