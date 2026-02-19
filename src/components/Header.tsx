@@ -13,6 +13,7 @@ const siteLinks: SiteLink[] = [
   { path: "/", label: "Home" },
   { path: "/state-of-send-2026", label: "State of SEND 2026" },
   { path: "#guides", label: "Parent Guides", children: [
+    { path: "/understanding-your-child", label: "Understanding your child" },
     { path: "/ehcps", label: "The EHCP Guide" },
     { path: "/post-16-and-transition", label: "Post-16 & Transition" },
     { path: "/what-to-do-right-now", label: "What to do right now" },
