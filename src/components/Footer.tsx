@@ -52,7 +52,7 @@ export function Footer() {
             <h3 className="font-display font-bold text-white text-sm uppercase tracking-wider">Resources</h3>
             <ul className="space-y-2.5">
               {[
-                { to: "/questions-and-answers", label: "Ask SEND", icon: MessageCircleQuestion },
+                { to: "/questions-and-answers", label: "Ask Rich", icon: MessageCircleQuestion },
                 { to: "/community-questions", label: "Lived Experience", icon: MessageSquare },
                 { to: "/sources", label: "Sources", icon: FileText },
                 { to: "/how-to-use", label: "How to use this site", icon: HelpCircle },

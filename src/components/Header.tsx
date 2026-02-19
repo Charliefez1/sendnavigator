@@ -1,110 +1,225 @@
-import { useState, useRef, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { NavLink, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
+import { NavLink, useLocation, Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
-interface SiteLink {
+interface NavItem {
   path: string;
   label: string;
-  children?: { path: string; label: string }[];
 }
 
-const siteLinks: SiteLink[] = [
-  { path: "/", label: "Home" },
-  { path: "/state-of-send-2026", label: "State of SEND 2026" },
-  { path: "#guides", label: "Parent Guides", children: [
-    { path: "/understanding-your-child", label: "Understanding your child" },
-    { path: "/ehcps", label: "The EHCP Guide" },
-    { path: "/exclusions", label: "Exclusions & rights" },
-    { path: "/post-16-and-transition", label: "Post-16 & Transition" },
-    { path: "/what-to-do-right-now", label: "What to do right now" },
-    { path: "/sendiass", label: "Free help — SENDIASS" },
-  ]},
-  { path: "#action", label: "Take Action", children: [
-    { path: "/have-your-say", label: "Have your say" },
-    { path: "/for-parents", label: "You are carrying a lot" },
-    { path: "/questions-and-answers", label: "Ask Rich" },
-    { path: "/community-questions", label: "Lived experience" },
-    { path: "/what-we-owe-our-children", label: "Reality Bites" },
-  ]},
-  { path: "#about", label: "About", children: [
-    { path: "/about", label: "About this resource" },
-    { path: "/sources", label: "Sources & Evidence" },
-    { path: "/how-to-use", label: "How to use this site" },
-    { path: "/feedback", label: "Feedback" },
-  ]},
+interface NavGroup {
+  label: string;
+  items: NavItem[];
+}
+
+const navGroups: NavGroup[] = [
+  {
+    label: "Reform Report",
+    items: [
+      { path: "/state-of-send-2026", label: "Report Overview" },
+      { path: "/state-of-send-2026/where-we-are-now", label: "Where we are now" },
+      { path: "/state-of-send-2026/what-is-changing", label: "What is changing" },
+      { path: "/state-of-send-2026/what-has-not-changed", label: "What has not changed" },
+      { path: "/state-of-send-2026/what-is-being-discussed", label: "What is being discussed" },
+      { path: "/state-of-send-2026/what-we-do-not-know", label: "What we don't know" },
+      { path: "/state-of-send-2026/what-the-leaks-are-saying", label: "What the leaks say" },
+      { path: "/state-of-send-2026/what-the-leaks-do-not-mean", label: "What the leaks don't mean" },
+      { path: "/state-of-send-2026/timeline", label: "Timeline & next steps" },
+    ],
+  },
+  {
+    label: "Parent Guides",
+    items: [
+      { path: "/ehcps", label: "The EHCP Guide" },
+      { path: "/ehcp-health", label: "Health in EHCPs" },
+      { path: "/understanding-your-child", label: "Understanding your child" },
+      { path: "/understanding-your-child/autism", label: "Understanding Autism" },
+      { path: "/understanding-your-child/adhd", label: "Understanding ADHD" },
+      { path: "/exclusions", label: "Exclusions & rights" },
+      { path: "/alternative-provision", label: "Alternative Provision" },
+      { path: "/post-16-and-transition", label: "Post-16 & Transition" },
+      { path: "/what-to-do-right-now", label: "What to do right now" },
+      { path: "/sendiass", label: "Free help — SENDIASS" },
+    ],
+  },
+  {
+    label: "Take Action",
+    items: [
+      { path: "/have-your-say", label: "Have your say" },
+      { path: "/questions-and-answers", label: "Ask Rich" },
+      { path: "/community-questions", label: "Lived experience" },
+      { path: "/for-parents", label: "You are carrying a lot" },
+      { path: "/what-we-owe-our-children", label: "Reality Bites" },
+    ],
+  },
+  {
+    label: "The System",
+    items: [
+      { path: "/local-variation", label: "Why where you live matters" },
+      { path: "/devolved-nations", label: "Wales, Scotland & NI" },
+    ],
+  },
+  {
+    label: "About",
+    items: [
+      { path: "/about", label: "About this resource" },
+      { path: "/sources", label: "Sources & evidence" },
+      { path: "/how-to-use", label: "How to use this site" },
+      { path: "/feedback", label: "Feedback" },
+    ],
+  },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     setMobileMenuOpen(false);
+    setMegaMenuOpen(false);
   }, [location.pathname]);
 
-  // Check if any child route is active for a dropdown
-  const isChildActive = (link: SiteLink) => {
-    return link.children?.some(child => location.pathname === child.path || location.pathname.startsWith(child.path + "/"));
-  };
+  // Close mega menu on click outside
+  useEffect(() => {
+    if (!megaMenuOpen) return;
+    const handler = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('[data-mega-menu]')) setMegaMenuOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [megaMenuOpen]);
 
   return (
     <header className="bg-navy text-navy-foreground sticky top-0 z-50">
-      <div className="content-wide py-px">
-        <div className="flex items-center justify-center">
-
-          {/* Desktop site links */}
-          <nav className="hidden lg:flex items-center justify-center gap-1" aria-label="Site pages">
-            {siteLinks.map((link) =>
-              link.children ? (
-                <MoreDropdown key={link.path} label={link.label} links={link.children} isActive={isChildActive(link)} />
-              ) : (
-                <NavLink
-                  key={link.path}
-                  to={link.path}
-                  end={link.path === "/"}
-                  className={({ isActive }) =>
-                    cn(
-                      "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
-                      isActive || (link.path === "/state-of-send-2026" && location.pathname.startsWith("/state-of-send-2026"))
-                        ? "bg-white/20 text-white"
-                        : "text-white/60 hover:text-white hover:bg-white/10"
-                    )
-                  }
-                >
-                  {link.label}
-                </NavLink>
+      <div className="content-wide py-1">
+        <div className="flex items-center justify-between h-10">
+          {/* Left: Home */}
+          <NavLink
+            to="/"
+            end
+            className={({ isActive }) =>
+              cn(
+                "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
+                isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
               )
-            )}
+            }
+          >
+            Home
+          </NavLink>
+
+          {/* Center: Key direct links (desktop) */}
+          <nav className="hidden lg:flex items-center gap-1" aria-label="Site pages">
+            <NavLink
+              to="/state-of-send-2026"
+              className={({ isActive }) =>
+                cn(
+                  "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
+                  isActive || location.pathname.startsWith("/state-of-send-2026")
+                    ? "bg-white/20 text-white"
+                    : "text-white/60 hover:text-white hover:bg-white/10"
+                )
+              }
+            >
+              Reform Report
+            </NavLink>
+            <NavLink
+              to="/ehcps"
+              className={({ isActive }) =>
+                cn(
+                  "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
+                  isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
+                )
+              }
+            >
+              EHCP Guide
+            </NavLink>
+            <NavLink
+              to="/what-to-do-right-now"
+              className={({ isActive }) =>
+                cn(
+                  "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
+                  isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
+                )
+              }
+            >
+              What to do now
+            </NavLink>
+            <NavLink
+              to="/questions-and-answers"
+              className={({ isActive }) =>
+                cn(
+                  "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
+                  isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
+                )
+              }
+            >
+              Ask Rich
+            </NavLink>
           </nav>
 
-          {/* Tablet: compact links */}
-          <div className="hidden md:flex lg:hidden items-center gap-1">
-            {siteLinks.filter(l => !l.children).map((link) => (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                end={link.path === "/"}
-                className={({ isActive }) =>
-                  cn(
-                    "px-2 py-1.5 text-[11px] font-medium rounded-lg transition-colors whitespace-nowrap",
-                    isActive || (link.path === "/state-of-send-2026" && location.pathname.startsWith("/state-of-send-2026"))
-                      ? "bg-white/20 text-white"
-                      : "text-white/60 hover:text-white hover:bg-white/10"
-                  )
-                }
+          {/* Right: Explore All (desktop) + hamburger (mobile) */}
+          <div className="flex items-center gap-1">
+            {/* Desktop mega-menu trigger */}
+            <div data-mega-menu className="relative hidden md:block">
+              <button
+                onClick={() => setMegaMenuOpen(!megaMenuOpen)}
+                className={cn(
+                  "flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
+                  megaMenuOpen ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
+                )}
               >
-                {link.label}
-              </NavLink>
-            ))}
-            <MoreDropdown label="More" links={siteLinks.filter(l => l.children).flatMap(l => l.children ?? [])} />
-          </div>
+                Explore all
+                <ChevronDown className={cn("w-3 h-3 transition-transform", megaMenuOpen && "rotate-180")} />
+              </button>
 
-          {/* Mobile: hamburger */}
-          <div className="flex md:hidden items-center gap-1">
+              {megaMenuOpen && (
+                <div className="absolute top-full right-0 mt-2 bg-card text-card-foreground border border-border rounded-xl shadow-2xl py-5 px-6 z-50 animate-fade-in w-[640px]">
+                  <div className="grid grid-cols-3 gap-6">
+                    {navGroups.map((group) => (
+                      <div key={group.label}>
+                        <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-2">{group.label}</p>
+                        <ul className="space-y-0.5">
+                          {group.items.map((item) => (
+                            <li key={item.path}>
+                              <NavLink
+                                to={item.path}
+                                onClick={() => setMegaMenuOpen(false)}
+                                className={({ isActive }) =>
+                                  cn(
+                                    "block px-2 py-1.5 text-sm rounded-md transition-colors",
+                                    isActive ? "bg-primary/10 text-primary font-medium" : "text-foreground hover:bg-muted"
+                                  )
+                                }
+                              >
+                                {item.label}
+                              </NavLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 pt-3 border-t border-border">
+                    <Link
+                      to="/"
+                      onClick={() => setMegaMenuOpen(false)}
+                      className="flex items-center gap-2 text-sm text-primary font-medium hover:underline"
+                    >
+                      View full site map on Home
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Mobile hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors"
+              className="md:hidden w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors"
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
@@ -113,108 +228,34 @@ export function Header() {
           </div>
         </div>
 
-        {/* Mobile dropdown */}
+        {/* Mobile menu */}
         {mobileMenuOpen && (
-          <nav className="md:hidden mt-3 pt-3 border-t border-white/10 animate-fade-in pb-4" aria-label="Site pages">
-            {siteLinks.map((link) => (
-              <div key={link.path}>
-                {link.children ? (
-                  <MobileSection label={link.label} links={link.children} onNavigate={() => setMobileMenuOpen(false)} />
-                ) : (
-                  <NavLink
-                    to={link.path}
-                    end={link.path === "/"}
-                    className={({ isActive }) =>
-                      cn(
-                        "flex items-center px-3 py-2.5 rounded-xl text-sm font-medium transition-colors min-h-[44px]",
-                        isActive || (link.path === "/state-of-send-2026" && location.pathname.startsWith("/state-of-send-2026"))
-                          ? "bg-white/20 text-white font-semibold"
-                          : "text-white/70 hover:text-white hover:bg-white/10"
-                      )
-                    }
-                  >
-                    {link.label}
-                  </NavLink>
-                )}
+          <nav className="md:hidden mt-2 pt-3 border-t border-white/10 animate-fade-in pb-4 max-h-[70vh] overflow-y-auto" aria-label="Site pages">
+            {navGroups.map((group) => (
+              <div key={group.label} className="mt-3 first:mt-0">
+                <p className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white/40">{group.label}</p>
+                <div className="space-y-0.5 mt-1">
+                  {group.items.map((item) => (
+                    <NavLink
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={({ isActive }) =>
+                        cn(
+                          "flex items-center px-3 py-2.5 rounded-xl text-sm font-medium transition-colors min-h-[44px]",
+                          isActive ? "bg-white/20 text-white font-semibold" : "text-white/70 hover:text-white hover:bg-white/10"
+                        )
+                      }
+                    >
+                      {item.label}
+                    </NavLink>
+                  ))}
+                </div>
               </div>
             ))}
           </nav>
         )}
       </div>
     </header>
-  );
-}
-
-function MobileSection({ label, links, onNavigate }: { label: string; links: { path: string; label: string }[]; onNavigate: () => void }) {
-  return (
-    <div className="mt-2">
-      <p className="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white/40">{label}</p>
-      <div className="grid grid-cols-2 gap-1">
-        {links.map((link) => (
-          <NavLink
-            key={link.path}
-            to={link.path}
-            onClick={onNavigate}
-            className={({ isActive }) =>
-              cn(
-                "flex items-center px-3 py-2.5 rounded-xl text-sm font-medium transition-colors min-h-[44px]",
-                isActive
-                  ? "bg-white/20 text-white font-semibold"
-                  : "text-white/70 hover:text-white hover:bg-white/10"
-              )
-            }
-          >
-            {link.label}
-          </NavLink>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function MoreDropdown({ label, links, isActive }: { label: string; links: { path: string; label: string }[]; isActive?: boolean }) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, []);
-
-  return (
-    <div ref={ref} className="relative">
-      <button
-        onClick={() => setOpen(!open)}
-        className={cn(
-          "flex items-center gap-1 px-2 py-1.5 text-[11px] lg:text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
-          open || isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
-        )}
-      >
-        {label}
-        <ChevronDown className={cn("w-3 h-3 transition-transform", open && "rotate-180")} />
-      </button>
-      {open && (
-        <div className="absolute top-full right-0 mt-1 bg-card text-card-foreground border border-border rounded-xl shadow-lg py-1 min-w-[180px] z-50 animate-fade-in">
-          {links.map((link) => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              onClick={() => setOpen(false)}
-              className={({ isActive }) =>
-                cn(
-                  "block px-4 py-2.5 text-sm font-medium transition-colors",
-                  isActive ? "bg-primary/10 text-primary" : "text-foreground hover:bg-muted"
-                )
-              }
-            >
-              {link.label}
-            </NavLink>
-          ))}
-        </div>
-      )}
-    </div>
   );
 }
