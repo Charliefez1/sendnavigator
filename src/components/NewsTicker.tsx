@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Radio } from "lucide-react";
 
 interface NewsItem {
   id: string;
@@ -13,8 +13,10 @@ interface NewsItem {
 
 function timeAgo(dateStr: string): string {
   const diff = Date.now() - new Date(dateStr).getTime();
-  const hours = Math.floor(diff / 3600000);
-  if (hours < 1) return "Just now";
+  const mins = Math.floor(diff / 60000);
+  if (mins < 1) return "Just now";
+  if (mins < 60) return `${mins}m ago`;
+  const hours = Math.floor(mins / 60);
   if (hours < 24) return `${hours}h ago`;
   const days = Math.floor(hours / 24);
   if (days === 1) return "1d ago";
@@ -23,6 +25,7 @@ function timeAgo(dateStr: string): string {
 
 export function NewsTicker() {
   const [items, setItems] = useState<NewsItem[]>([]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -37,40 +40,83 @@ export function NewsTicker() {
     fetchNews();
   }, []);
 
+  // Cycle through headlines
+  const cycleNext = useCallback(() => {
+    setActiveIndex((prev) => (prev + 1) % Math.max(items.length, 1));
+  }, [items.length]);
+
+  useEffect(() => {
+    if (items.length <= 1) return;
+    const interval = setInterval(cycleNext, 5000);
+    return () => clearInterval(interval);
+  }, [cycleNext, items.length]);
+
   if (items.length === 0) return null;
 
+  const current = items[activeIndex];
+
   return (
-    <div className="w-full overflow-hidden bg-destructive/10 border-y border-destructive/20">
-      <div className="flex items-center">
-        {/* Fixed label */}
-        <div className="flex-shrink-0 bg-destructive px-3 py-2 flex items-center gap-2 z-10">
-          <span className="inline-block w-2 h-2 rounded-full bg-white animate-pulse" />
-          <span className="text-destructive-foreground text-xs font-bold uppercase tracking-widest whitespace-nowrap">
-            Breaking
+    <div className="w-full bg-[hsl(220,20%,12%)] text-white overflow-hidden">
+      <div className="flex items-stretch">
+        {/* LIVE badge */}
+        <div className="flex-shrink-0 bg-destructive flex items-center gap-1.5 px-3 py-1.5">
+          <Radio className="w-3 h-3 text-white animate-pulse" />
+          <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-white">
+            Live
           </span>
         </div>
 
-        {/* Scrolling ticker */}
-        <div className="overflow-hidden flex-1">
-          <div className="animate-ticker flex items-center gap-8 whitespace-nowrap py-2 px-4">
-            {/* Duplicate items for seamless loop */}
+        {/* Featured headline — cycles */}
+        <a
+          href={current.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-shrink-0 flex items-center gap-2 px-4 py-1.5 border-r border-white/10 hover:bg-white/5 transition-colors max-w-[420px] group"
+        >
+          <div className="min-w-0">
+            <p className="text-xs font-semibold truncate group-hover:text-primary transition-colors">
+              {current.title}
+            </p>
+            <p className="text-[10px] text-white/50">
+              {current.source_name} · {timeAgo(current.published_at || current.discovered_at)}
+            </p>
+          </div>
+          <ExternalLink className="w-3 h-3 text-white/30 flex-shrink-0 group-hover:text-primary transition-colors" />
+        </a>
+
+        {/* Scrolling ticker tape */}
+        <div className="overflow-hidden flex-1 relative">
+          <div className="absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-[hsl(220,20%,12%)] to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-[hsl(220,20%,12%)] to-transparent z-10 pointer-events-none" />
+          <div className="animate-ticker flex items-center gap-6 whitespace-nowrap py-1.5 px-4">
             {[...items, ...items].map((item, i) => (
               <a
                 key={`${item.id}-${i}`}
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors group"
+                className="inline-flex items-center gap-1.5 text-[11px] text-white/70 hover:text-white transition-colors"
               >
-                <span className="font-medium">{item.title}</span>
-                <span className="text-xs text-muted-foreground">
-                  {item.source_name} · {timeAgo(item.published_at || item.discovered_at)}
-                </span>
-                <ExternalLink className="w-3 h-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span className="text-muted-foreground/30 mx-2">|</span>
+                <span className="w-1 h-1 rounded-full bg-destructive flex-shrink-0" />
+                <span>{item.title}</span>
+                <span className="text-white/30 text-[10px]">{item.source_name}</span>
               </a>
             ))}
           </div>
+        </div>
+
+        {/* Headline count / dots */}
+        <div className="flex-shrink-0 flex items-center gap-1 px-3 border-l border-white/10">
+          {items.slice(0, 5).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActiveIndex(i)}
+              className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                i === activeIndex ? "bg-destructive" : "bg-white/20 hover:bg-white/40"
+              }`}
+              aria-label={`Headline ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
     </div>
