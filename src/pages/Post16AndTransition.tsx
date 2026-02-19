@@ -28,7 +28,7 @@ function ResourceLink({ label, url }: { label: string; url: string }) {
 
 const ageTimeline = [
   { age: "Year 9 (age 13–14)", event: "Transition focus must start at annual review", colour: "bg-status-confirmed" },
-  { age: "Year 10", event: "Post-16 options discussed; adult health and social care should attend review", colour: "bg-accent" },
+  { age: "Year 10", event: "Post-16 options discussed; adult health and social care should attend review", colour: "bg-status-discussed" },
   { age: "Year 11 (by 31 March)", event: "LA must issue amended plan naming post-16 setting", colour: "bg-status-confirmed" },
   { age: "Age 16", event: "Decision-making rights transfer to young person", colour: "bg-status-confirmed" },
   { age: "Age 18", event: "Parental responsibility ends; Care Act assessment should be in place", colour: "bg-status-confirmed" },
