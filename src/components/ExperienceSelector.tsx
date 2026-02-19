@@ -31,6 +31,9 @@ export function ExperienceSelector() {
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  // Hide on landing page
+  if (location.pathname === "/landing") return null;
+
   return (
     <div className="bg-navy text-navy-foreground border-b border-white/10">
       <div className="content-wide flex items-center gap-3 py-1.5 overflow-x-auto scrollbar-hide">
