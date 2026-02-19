@@ -15,7 +15,7 @@ const Landing = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'hsl(220, 14%, 93%)' }}>
       <SEOHead
         title="SEND Reform Navigator — Independent SEND reform guide for parents"
         description="A calm, independent guide helping parents and professionals understand SEND reform in England. Clear facts, no spin."
