@@ -15,6 +15,7 @@ const siteLinks: SiteLink[] = [
   { path: "/ehcps", label: "EHCPs" },
   { path: "/post-16-and-transition", label: "Post-16 & Transition" },
   { path: "/what-to-do-right-now", label: "What to do right now" },
+  { path: "/sendiass", label: "SENDIASS" },
   { path: "/questions-and-answers", label: "Ask SEND" },
   { path: "/community-questions", label: "Lived experience" },
   { path: "/about", label: "About", children: [

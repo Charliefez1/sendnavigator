@@ -821,6 +821,18 @@ export const sourceRegistry: ContentSource[] = [
     datePublished: "2014-05-14",
     dateAccessed: "2026-02-19",
   },
+
+  // ── SENDIASS sources ───────────────────────────────────────────────────────
+  {
+    id: "iass-network",
+    type: "public_body",
+    name: "IASS Network — national body for SENDIASS services",
+    url: "https://iassnetwork.org.uk",
+    description: "The national network supporting local SENDIASS services across England.",
+    category: "Practical support and template letters",
+    usedIn: ["/sendiass"],
+    dateAccessed: "2026-02-19",
+  },
 ];
 
 // =============================================================================
