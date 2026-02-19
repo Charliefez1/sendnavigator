@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Heart, BookOpen, FileText, MessageCircleQuestion, MessageSquare, HelpCircle, ExternalLink } from "lucide-react";
+import { Heart, BookOpen, FileText, MessageCircleQuestion, MessageSquare, HelpCircle, ExternalLink, MapPin } from "lucide-react";
 
 export function Footer() {
   return (
@@ -80,6 +80,7 @@ export function Footer() {
                 { to: "/why-i-built-this", label: "Why I built this" },
                 { to: "/rich-ferriman", label: "Rich Ferriman" },
                 { to: "/neurodiversity-global", label: "Neurodiversity Global" },
+                { to: "/sendiass", label: "Free help — SENDIASS" },
                 { to: "/feedback", label: "Give feedback" },
                 { to: "/admin", label: "Admin" },
               ].map((link) => (

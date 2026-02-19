@@ -4,6 +4,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { QandAComponent } from "@/components/qanda";
 import { NewsHeadlines } from "@/components/NewsHeadlines";
 import { useAuth } from "@/contexts/AuthContext";
+import { SendiassSignpost } from "@/components/SendiassSignpost";
 import { 
   ArrowRight, 
   CheckCircle2, 
@@ -186,6 +187,11 @@ const Index = () => {
       {/* Breaking News */}
       <section className="content-section py-6">
         <NewsHeadlines />
+      </section>
+
+      {/* SENDIASS signpost */}
+      <section className="content-section py-4">
+        <SendiassSignpost />
       </section>
 
       {/* Q&A */}

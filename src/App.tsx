@@ -42,6 +42,7 @@ const Admin = lazy(() => import("./pages/Admin"));
 const QuickRead = lazy(() => import("./pages/QuickRead"));
 const EHCPs = lazy(() => import("./pages/EHCPs"));
 const Post16AndTransition = lazy(() => import("./pages/Post16AndTransition"));
+const Sendiass = lazy(() => import("./pages/Sendiass"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -79,6 +80,7 @@ const App = () => (
                       <Route path="/rich-ferriman" element={<RichFerriman />} />
                       <Route path="/neurodiversity-global" element={<NeurodiversityGlobal />} />
                       <Route path="/feedback" element={<Feedback />} />
+                      <Route path="/sendiass" element={<Sendiass />} />
 
                       {/* Protected routes */}
                       <Route path="/" element={<ProtectedRoute><Start /></ProtectedRoute>} />

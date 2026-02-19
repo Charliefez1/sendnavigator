@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
 import { ExternalLink, FileText, Phone, MapPin, Scale, AlertTriangle, Clock, CheckCircle, ChevronDown } from "lucide-react";
+import { SendiassSignpost } from "@/components/SendiassSignpost";
 import {
   Accordion,
   AccordionContent,
@@ -254,6 +255,11 @@ export default function WhatToDoRightNow() {
             />
           </div>
         </div>
+      </section>
+
+      {/* SENDIASS signpost */}
+      <section className="content-section py-4">
+        <SendiassSignpost />
       </section>
 
       {/* Reform note */}
