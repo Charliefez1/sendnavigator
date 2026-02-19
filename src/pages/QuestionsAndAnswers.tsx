@@ -11,10 +11,10 @@ export default function QuestionsAndAnswers() {
 
   return (
     <Layout>
-      <SEOHead title="Questions and Answers" description="Ask questions about SEND reform and get grounded answers based on confirmed information." path="/questions-and-answers" />
+      <SEOHead title="Ask Rich — SEND Reform Q&A" description="Ask Rich a question about SEND reform and get a grounded, plain English answer based on confirmed information." path="/questions-and-answers" />
       <PageOrientation
-        title="Questions and answers"
-        description="A front door to understanding SEND reform. Ask simple questions, receive grounded answers."
+        title="Ask Rich"
+        description="Ask me anything about SEND reform. I'll give you a straight answer based on what we actually know."
       />
       
       <section className="content-section pb-8">

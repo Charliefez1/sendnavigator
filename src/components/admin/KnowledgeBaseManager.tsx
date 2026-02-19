@@ -100,7 +100,7 @@ export function KnowledgeBaseManager({ pin }: KnowledgeBaseManagerProps) {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <p className="text-sm text-muted-foreground">{entries.length} entries. These drive Ask SEND answers.</p>
+        <p className="text-sm text-muted-foreground">{entries.length} entries. These drive Ask Rich answers.</p>
         <Button size="sm" onClick={() => setIsAdding(true)} disabled={isAdding} className="rounded-full gap-1.5">
           <Plus className="h-4 w-4" /> Add Entry
         </Button>

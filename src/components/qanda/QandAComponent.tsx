@@ -135,10 +135,10 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
         <MessageCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
         <div>
           <h2 className="text-lg font-medium text-foreground">
-            Ask a question about SEND reform
+            Ask Rich
           </h2>
           <p className="text-sm text-muted-foreground mt-1">
-            Answers are based on the content of this resource only. This search is not searching external content. Mistakes do happen, please use this resource as a guide only.
+            Ask me anything about SEND reform. My answers come from everything we've researched and published on this site — not from the wider internet. I do my best but I'm not perfect, so treat this as a guide.
           </p>
         </div>
       </div>
@@ -168,14 +168,14 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
         </div>
       )}
 
-      {/* Ask SEND Trust Notice */}
+      {/* Ask Rich Trust Notice */}
       <div className="mt-6 pt-4 border-t border-border">
         <AITrustNotice />
         <p className="text-xs text-muted-foreground mt-3 flex items-center gap-2">
           <Bot className="w-3.5 h-3.5 flex-shrink-0" />
           <span>
-            This is a general explainer. It cannot comment on individual cases or provide legal advice. 
-            For specialist support, please seek appropriate professional guidance.
+            I can explain the big picture but I can't comment on your individual situation or give legal advice. 
+            If you need that kind of support, please speak to a specialist.
           </span>
         </p>
       </div>
