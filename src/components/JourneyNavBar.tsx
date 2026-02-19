@@ -3,14 +3,14 @@ import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const journeySteps = [
-  { path: "/where-we-are-now", label: "What we know so far", shortLabel: "Known", color: "confirmed" },
-  { path: "/what-is-changing", label: "What is changing", shortLabel: "Changing", color: "confirmed" },
-  { path: "/what-has-not-changed", label: "What has not changed", shortLabel: "Unchanged", color: "confirmed" },
-  { path: "/what-is-being-discussed", label: "What is being discussed", shortLabel: "Discussed", color: "discussed" },
-  { path: "/what-we-do-not-know", label: "What we do not know yet", shortLabel: "Unknown", color: "discussed" },
-  { path: "/what-the-leaks-are-saying", label: "What the leaks are saying", shortLabel: "Leaks", color: "unconfirmed" },
-  { path: "/what-the-leaks-do-not-mean", label: "What the leaks do not mean", shortLabel: "Context", color: "unconfirmed" },
-  { path: "/timeline", label: "Timeline and next steps", shortLabel: "Timeline", color: "next" },
+  { path: "/state-of-send-2026/where-we-are-now", label: "What we know so far", shortLabel: "Known", color: "confirmed" },
+  { path: "/state-of-send-2026/what-is-changing", label: "What is changing", shortLabel: "Changing", color: "confirmed" },
+  { path: "/state-of-send-2026/what-has-not-changed", label: "What has not changed", shortLabel: "Unchanged", color: "confirmed" },
+  { path: "/state-of-send-2026/what-is-being-discussed", label: "What is being discussed", shortLabel: "Discussed", color: "discussed" },
+  { path: "/state-of-send-2026/what-we-do-not-know", label: "What we do not know yet", shortLabel: "Unknown", color: "discussed" },
+  { path: "/state-of-send-2026/what-the-leaks-are-saying", label: "What the leaks are saying", shortLabel: "Leaks", color: "unconfirmed" },
+  { path: "/state-of-send-2026/what-the-leaks-do-not-mean", label: "What the leaks do not mean", shortLabel: "Context", color: "unconfirmed" },
+  { path: "/state-of-send-2026/timeline", label: "Timeline and next steps", shortLabel: "Timeline", color: "next" },
 ];
 
 const dotColors: Record<string, string> = {
@@ -41,66 +41,10 @@ export function JourneyNavBar() {
   const prevStep = currentIndex > 0 ? journeySteps[currentIndex - 1] : null;
   const nextStep = currentIndex < journeySteps.length - 1 ? journeySteps[currentIndex + 1] : null;
 
-  return (
-     <nav className={cn("bg-navy/90 border-b border-white/10", currentStep ? `border-t-[3px] ${accentBorderColors[currentStep.color]}` : "")} aria-label="Journey progress">
-      <div className="content-wide py-1">
-        {/* Progress dots row */}
-        <div className="flex items-center justify-center gap-1 mb-0.5">
-          {journeySteps.map((step, i) => (
-            <NavLink
-              key={step.path}
-              to={step.path}
-              title={`${i + 1}. ${step.label}`}
-              className="group relative p-0.5"
-            >
-              <span
-                className={cn(
-                  "block w-4 h-4 rounded-full transition-all",
-                  dotColors[step.color],
-                  i === currentIndex
-                    ? "ring-2 ring-offset-1 ring-offset-navy/90 scale-125 " + activeDotColors[step.color]
-                    : "opacity-40 group-hover:opacity-80 group-hover:scale-110"
-                )}
-              />
-            </NavLink>
-          ))}
-        </div>
+  // Don't render on non-report pages — sidebar handles navigation now
+  if (currentIndex === -1) return null;
 
-        {/* Current step + prev/next */}
-        <div className="flex items-center justify-between">
-          {prevStep ? (
-            <NavLink
-              to={prevStep.path}
-              className="flex items-center gap-1.5 text-white/60 hover:text-white/90 transition-colors text-sm max-w-[40%]"
-            >
-              <ChevronLeft className="w-4 h-4 flex-shrink-0" />
-              <span className="truncate">{prevStep.label}</span>
-            </NavLink>
-          ) : (
-            <div className="max-w-[40%]" />
-          )}
-
-          <div className="text-center flex-shrink-0 px-2">
-            <span className="text-white/50 text-sm">
-              {currentIndex >= 0 ? `Step ${currentIndex + 1} of ${journeySteps.length}` : "Guide"}
-            </span>
-          </div>
-
-          {nextStep ? (
-            <NavLink
-              to={nextStep.path}
-              className="flex items-center gap-1.5 text-white/60 hover:text-white/90 transition-colors text-sm max-w-[40%] text-right justify-end"
-            >
-              <span className="truncate">{nextStep.label}</span>
-              <ChevronRight className="w-4 h-4 flex-shrink-0" />
-            </NavLink>
-          ) : (
-            <div className="max-w-[40%]" />
-          )}
-        </div>
-      </div>
-    </nav>
-  );
+  return null; // Sidebar handles navigation now
 }
 
 export { journeySteps, dotColors };

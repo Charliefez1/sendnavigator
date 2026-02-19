@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { PageViewTracker } from "@/components/PageViewTracker";
@@ -45,6 +45,7 @@ const Post16AndTransition = lazy(() => import("./pages/Post16AndTransition"));
 const Sendiass = lazy(() => import("./pages/Sendiass"));
 const HaveYourSay = lazy(() => import("./pages/HaveYourSay"));
 const WhatWeOweOurChildren = lazy(() => import("./pages/WhatWeOweOurChildren"));
+const StateOfSend2026 = lazy(() => import("./pages/StateOfSend2026"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -92,17 +93,31 @@ const App = () => (
                       <Route path="/ehcps" element={<ProtectedRoute><EHCPs /></ProtectedRoute>} />
                       <Route path="/post-16-and-transition" element={<ProtectedRoute><Post16AndTransition /></ProtectedRoute>} />
                       <Route path="/what-to-do-right-now" element={<ProtectedRoute><WhatToDoRightNow /></ProtectedRoute>} />
-                      <Route path="/where-we-are-now" element={<ProtectedRoute><WhereWeAreNow /></ProtectedRoute>} />
-                      <Route path="/what-is-changing" element={<ProtectedRoute><WhatIsChanging /></ProtectedRoute>} />
-                      <Route path="/what-has-not-changed" element={<ProtectedRoute><WhatHasNotChanged /></ProtectedRoute>} />
-                      <Route path="/what-we-know-so-far" element={<ProtectedRoute><WhatWeKnowSoFar /></ProtectedRoute>} />
-                      <Route path="/what-is-being-discussed" element={<ProtectedRoute><WhatIsBeingDiscussed /></ProtectedRoute>} />
-                      <Route path="/what-we-do-not-know" element={<ProtectedRoute><WhatWeDoNotKnow /></ProtectedRoute>} />
-                      <Route path="/what-the-leaks-are-saying" element={<ProtectedRoute><WhatTheLeaksAreSaying /></ProtectedRoute>} />
-                      <Route path="/what-the-leaks-do-not-mean" element={<ProtectedRoute><WhatTheLeaksDoNotMean /></ProtectedRoute>} />
-                      <Route path="/what-this-could-mean" element={<ProtectedRoute><WhatThisCouldMean /></ProtectedRoute>} />
-                      <Route path="/what-happens-next" element={<ProtectedRoute><WhatHappensNext /></ProtectedRoute>} />
-                      <Route path="/timeline" element={<ProtectedRoute><Timeline /></ProtectedRoute>} />
+
+                      {/* State of SEND 2026 — report hub and sections */}
+                      <Route path="/state-of-send-2026" element={<ProtectedRoute><StateOfSend2026 /></ProtectedRoute>} />
+                      <Route path="/state-of-send-2026/where-we-are-now" element={<ProtectedRoute><WhereWeAreNow /></ProtectedRoute>} />
+                      <Route path="/state-of-send-2026/what-is-changing" element={<ProtectedRoute><WhatIsChanging /></ProtectedRoute>} />
+                      <Route path="/state-of-send-2026/what-has-not-changed" element={<ProtectedRoute><WhatHasNotChanged /></ProtectedRoute>} />
+                      <Route path="/state-of-send-2026/what-is-being-discussed" element={<ProtectedRoute><WhatIsBeingDiscussed /></ProtectedRoute>} />
+                      <Route path="/state-of-send-2026/what-we-do-not-know" element={<ProtectedRoute><WhatWeDoNotKnow /></ProtectedRoute>} />
+                      <Route path="/state-of-send-2026/what-the-leaks-are-saying" element={<ProtectedRoute><WhatTheLeaksAreSaying /></ProtectedRoute>} />
+                      <Route path="/state-of-send-2026/what-the-leaks-do-not-mean" element={<ProtectedRoute><WhatTheLeaksDoNotMean /></ProtectedRoute>} />
+                      <Route path="/state-of-send-2026/timeline" element={<ProtectedRoute><Timeline /></ProtectedRoute>} />
+
+                      {/* Redirects from old paths */}
+                      <Route path="/where-we-are-now" element={<Navigate to="/state-of-send-2026/where-we-are-now" replace />} />
+                      <Route path="/what-is-changing" element={<Navigate to="/state-of-send-2026/what-is-changing" replace />} />
+                      <Route path="/what-has-not-changed" element={<Navigate to="/state-of-send-2026/what-has-not-changed" replace />} />
+                      <Route path="/what-we-know-so-far" element={<Navigate to="/state-of-send-2026/where-we-are-now" replace />} />
+                      <Route path="/what-is-being-discussed" element={<Navigate to="/state-of-send-2026/what-is-being-discussed" replace />} />
+                      <Route path="/what-we-do-not-know" element={<Navigate to="/state-of-send-2026/what-we-do-not-know" replace />} />
+                      <Route path="/what-the-leaks-are-saying" element={<Navigate to="/state-of-send-2026/what-the-leaks-are-saying" replace />} />
+                      <Route path="/what-the-leaks-do-not-mean" element={<Navigate to="/state-of-send-2026/what-the-leaks-do-not-mean" replace />} />
+                      <Route path="/what-this-could-mean" element={<Navigate to="/state-of-send-2026/what-is-being-discussed" replace />} />
+                      <Route path="/what-happens-next" element={<Navigate to="/state-of-send-2026/timeline" replace />} />
+                      <Route path="/timeline" element={<Navigate to="/state-of-send-2026/timeline" replace />} />
+
                       <Route path="/questions-and-answers" element={<ProtectedRoute><QuestionsAndAnswers /></ProtectedRoute>} />
                       <Route path="/community-questions" element={<ProtectedRoute><CommunityQuestions /></ProtectedRoute>} />
                       <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
