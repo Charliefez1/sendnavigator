@@ -1,8 +1,8 @@
 /**
  * SEND Reform Navigator - Curated Knowledge Base
  * 
- * This is the ONLY source of information Ask SEND may use.
- * Ask SEND must NOT introduce external knowledge.
+ * This is the ONLY source of information Ask Rich may use.
+ * Ask Rich must NOT introduce external knowledge.
  * 
  * Last updated: 20th February 2026
  */

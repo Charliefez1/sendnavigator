@@ -7,7 +7,7 @@ export function AITrustNotice() {
       <div className="flex items-start gap-2 mb-3">
         <Bot className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
         <p className="text-sm font-medium text-foreground">
-          Ask SEND uses AI technology to produce the answers it gives, however all research has been fully researched by the human team behind the SEND Reform Navigator.
+          Ask Rich uses AI to help me get answers to you quickly, but every piece of information it draws on has been researched and written by me personally.
         </p>
       </div>
       

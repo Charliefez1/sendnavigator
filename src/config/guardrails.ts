@@ -116,19 +116,19 @@ export const acceptedSourceDescriptions: Record<AcceptedSourceType, {
 };
 
 // =============================================================================
-// Ask SEND GROUNDING RULES
+// ASK RICH GROUNDING RULES
 // =============================================================================
 
 export const aiGroundingRules = {
   // Rule 1: Source Bound
   sourceBound: {
-    rule: "Ask SEND may only answer using information contained within SEND Reform Navigator's curated content.",
+    rule: "Ask Rich may only answer using information contained within SEND Reform Navigator's curated content.",
     enforcement: "No external knowledge may be introduced.",
   },
 
   // Rule 2: Respect Confidence Labels
   respectConfidence: {
-    rule: "Ask SEND must preserve and surface the correct confidence category for all information.",
+    rule: "Ask Rich must preserve and surface the correct confidence category for all information.",
     enforcement: "Every factual claim must include its confidence level.",
   },
 
@@ -172,7 +172,7 @@ export const aiGroundingRules = {
   // Rule 4: Uncertainty Handling
   uncertaintyHandling: {
     incomplete: "If information is incomplete, this must be stated explicitly.",
-    disagreement: "If multiple credible views exist, Ask SEND must explain that disagreement exists.",
+    disagreement: "If multiple credible views exist, Ask Rich must explain that disagreement exists.",
     unknown: "If something is unknown, say 'This is not yet known' rather than omitting.",
   },
 
@@ -266,7 +266,7 @@ export const editorialRules = {
   templates: "All content must follow the same templates defined in Prompt 3",
   languagePatterns: "Use consistent language patterns across all pages",
   terminology: "Do not introduce new terminology without definition",
-  guardrails: "All contributors and Ask SEND outputs must respect the same guardrails",
+  guardrails: "All contributors and Ask Rich outputs must respect the same guardrails",
   predictability: "Users should experience consistency across all pages",
 };
 

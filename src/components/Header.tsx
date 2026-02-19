@@ -23,7 +23,7 @@ const siteLinks: SiteLink[] = [
   { path: "#action", label: "Take Action", children: [
     { path: "/have-your-say", label: "Have your say" },
     { path: "/for-parents", label: "You are carrying a lot" },
-    { path: "/questions-and-answers", label: "Ask SEND" },
+    { path: "/questions-and-answers", label: "Ask Rich" },
     { path: "/community-questions", label: "Lived experience" },
     { path: "/what-we-owe-our-children", label: "Reality Bites" },
   ]},

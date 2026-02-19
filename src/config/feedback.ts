@@ -122,14 +122,14 @@ export const trustSignals = {
 };
 
 // =============================================================================
-// Ask SEND TRUST SIGNALS
+// ASK RICH TRUST SIGNALS
 // =============================================================================
 
 export const aiTrustSignals = {
-  labelling: "Answers are generated using Ask SEND.",
-  grounding: "Answers are based on the content of this resource only.",
-  uncertaintyHandling: "If information is incomplete or uncertain, the answer will say so clearly.",
-  refusalExplanation: "Ask SEND will not answer questions about individual cases, give legal advice, or make predictions.",
+  labelling: "Answers are generated using Ask Rich.",
+  grounding: "Everything I tell you comes from the content we've researched and published on this site — nothing else.",
+  uncertaintyHandling: "If I don't know something or the picture is incomplete, I'll tell you that straight.",
+  refusalExplanation: "I can't comment on individual cases, give legal advice, or predict what's going to happen. But I can help you understand what we know right now.",
   noTechnicalJargon: true,
 };
 

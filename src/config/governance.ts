@@ -167,7 +167,7 @@ export const currentDisclosures = {
 };
 
 // =============================================================================
-// Ask SEND GOVERNANCE (FORWARD COMPATIBILITY)
+// ASK RICH GOVERNANCE (FORWARD COMPATIBILITY)
 // =============================================================================
 
 export const aiGovernanceRules = {

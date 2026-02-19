@@ -23,7 +23,7 @@ export function AskSendFloating() {
       {isOpen && (
         <div className="w-72 rounded-xl border border-border bg-card shadow-xl p-4 animate-in slide-in-from-bottom-2 fade-in duration-200">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-semibold text-foreground">Ask SEND</span>
+            <span className="text-sm font-semibold text-foreground">Ask Rich</span>
             <button
               onClick={() => setIsOpen(false)}
               className="text-muted-foreground hover:text-foreground transition-colors"
@@ -33,7 +33,7 @@ export function AskSendFloating() {
             </button>
           </div>
           <p className="text-xs text-muted-foreground mb-3">
-            Ask a plain English question about SEND reform.
+            Ask me anything about SEND reform — I'll give you a straight answer.
           </p>
           <form onSubmit={handleSubmit} className="flex gap-2">
             <Input
@@ -59,7 +59,7 @@ export function AskSendFloating() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors"
-        aria-label="Ask SEND a question"
+        aria-label="Ask Rich a question"
       >
         <MessageCircle className="w-5 h-5" />
       </button>
