@@ -41,6 +41,7 @@ const Feedback = lazy(() => import("./pages/Feedback"));
 const Admin = lazy(() => import("./pages/Admin"));
 const QuickRead = lazy(() => import("./pages/QuickRead"));
 const EHCPs = lazy(() => import("./pages/EHCPs"));
+const Post16AndTransition = lazy(() => import("./pages/Post16AndTransition"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -83,6 +84,7 @@ const App = () => (
                       <Route path="/" element={<ProtectedRoute><Start /></ProtectedRoute>} />
                       <Route path="/quick-read" element={<ProtectedRoute><QuickRead /></ProtectedRoute>} />
                       <Route path="/ehcps" element={<ProtectedRoute><EHCPs /></ProtectedRoute>} />
+                      <Route path="/post-16-and-transition" element={<ProtectedRoute><Post16AndTransition /></ProtectedRoute>} />
                       <Route path="/what-to-do-right-now" element={<ProtectedRoute><WhatToDoRightNow /></ProtectedRoute>} />
                       <Route path="/where-we-are-now" element={<ProtectedRoute><WhereWeAreNow /></ProtectedRoute>} />
                       <Route path="/what-is-changing" element={<ProtectedRoute><WhatIsChanging /></ProtectedRoute>} />
