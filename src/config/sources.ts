@@ -59,6 +59,7 @@ export const sourceCategoryOrder: string[] = [
   "Legal and sector analysis",
   "Parent-led and sector analysis",
   "Media reporting referenced",
+  "Practical support and template letters",
 ];
 
 // =============================================================================
@@ -694,6 +695,58 @@ export const sourceRegistry: ContentSource[] = [
     category: "Media reporting referenced",
     usedIn: ["/what-the-leaks-are-saying"],
     dateAccessed: "2026-02-15",
+  },
+
+  // ── Practical support and template letters ─────────────────────────────────
+  {
+    id: "ipsea-model-letter-6",
+    type: "sector_briefing",
+    name: "IPSEA Model Letter 6: provision not being made",
+    url: "https://www.ipsea.org.uk/complaining-when-the-provision-in-an-ehc-plan-is-not-being-made-model-letter-6",
+    description: "Template letter for formally complaining when EHCP provision is not being delivered.",
+    category: "Practical support and template letters",
+    usedIn: ["/what-to-do-right-now"],
+    dateAccessed: "2026-02-19",
+  },
+  {
+    id: "ipsea-model-letter-10",
+    type: "sector_briefing",
+    name: "IPSEA Model Letter 10: LA delays on draft/final plan",
+    url: "https://www.ipsea.org.uk/complaining-when-a-local-authority-does-not-send-a-draft-or-final-education-health-and-care-plan-on-time-model-letter-10",
+    description: "Template letter for when a local authority misses statutory timescales for issuing an EHCP.",
+    category: "Practical support and template letters",
+    usedIn: ["/what-to-do-right-now"],
+    dateAccessed: "2026-02-19",
+  },
+  {
+    id: "gov-uk-appeal-ehcp",
+    type: "government_primary",
+    name: "GOV.UK — How to appeal an EHCP decision",
+    url: "https://www.gov.uk/appeal-ehc-plan-decision",
+    description: "Official guidance on the process for appealing EHCP decisions to the SEND Tribunal.",
+    category: "Practical support and template letters",
+    usedIn: ["/what-to-do-right-now"],
+    dateAccessed: "2026-02-19",
+  },
+  {
+    id: "lgsco-send-fact-sheet",
+    type: "public_body",
+    name: "LGSCO SEND fact sheet",
+    url: "https://www.lgo.org.uk/make-a-complaint/fact-sheets/education/special-educational-needs",
+    description: "Complaints guidance from the Local Government and Social Care Ombudsman for SEND issues.",
+    category: "Practical support and template letters",
+    usedIn: ["/what-to-do-right-now"],
+    dateAccessed: "2026-02-19",
+  },
+  {
+    id: "find-local-sendiass",
+    type: "public_body",
+    name: "Find your local SENDIASS",
+    url: "https://councilfordisabledchildren.org.uk/iassnetwork/find-your-local-iass",
+    description: "Service finder for free, impartial SEND Information, Advice and Support Services in every local authority.",
+    category: "Practical support and template letters",
+    usedIn: ["/what-to-do-right-now"],
+    dateAccessed: "2026-02-19",
   },
 ];
 
