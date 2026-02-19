@@ -81,6 +81,7 @@ export function Footer() {
                 { to: "/rich-ferriman", label: "Rich Ferriman" },
                 { to: "/neurodiversity-global", label: "Neurodiversity Global" },
                 { to: "/sendiass", label: "Free help — SENDIASS" },
+                { to: "/what-we-owe-our-children", label: "Reality Bites series" },
                 { to: "/feedback", label: "Give feedback" },
                 { to: "/admin", label: "Admin" },
               ].map((link) => (

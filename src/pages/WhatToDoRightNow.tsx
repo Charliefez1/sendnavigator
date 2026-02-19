@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
 import { ExternalLink, FileText, Phone, MapPin, Scale, AlertTriangle, Clock, CheckCircle, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
 import { SendiassSignpost } from "@/components/SendiassSignpost";
 import {
   Accordion,
@@ -157,6 +158,19 @@ export default function WhatToDoRightNow() {
         title="What to do right now"
         description="This page is for parents whose child is not getting the support they need today. Not next year. Now."
       />
+
+      {/* Reality Bites callout */}
+      <section className="content-section py-4">
+        <div className="rounded-xl border border-foreground/15 bg-foreground/5 p-5">
+          <p className="text-sm font-semibold text-foreground mb-2">Before you make the call or write the letter.</p>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+            Knowing your rights matters. So does <strong>knowing your child</strong>. The parents who get the best outcomes are prepared, specific, and evidence-led — not just legally informed.
+          </p>
+          <Link to="/what-we-owe-our-children" className="inline-flex items-center gap-1.5 text-primary hover:underline font-medium text-sm">
+            → What we owe our children
+          </Link>
+        </div>
+      </section>
 
       {/* Confidence banner */}
       <section className="content-section py-4">
