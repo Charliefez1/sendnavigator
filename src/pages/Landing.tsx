@@ -4,6 +4,7 @@ import { AuthForm } from "@/components/AuthForm";
 import { NewsTicker } from "@/components/NewsTicker";
 import { useAuth } from "@/contexts/AuthContext";
 import { Compass, Shield, BookOpen, Heart } from "lucide-react";
+import neurodiversityLanding from "@/assets/neurodiversity-global-landing.png";
 
 const Landing = () => {
   const { user, loading } = useAuth();
@@ -99,8 +100,13 @@ const Landing = () => {
             </div>
 
             {/* RIGHT: Auth form */}
-            <div className="flex justify-center lg:justify-end lg:pt-8">
+            <div className="flex flex-col items-center lg:items-end lg:pt-8 gap-6">
               <AuthForm />
+              <img
+                src={neurodiversityLanding}
+                alt="Neurodiversity Global — The SEND Navigator is an independent Neurodiversityglobal.com free parents & carers resource"
+                className="w-full max-w-sm rounded-lg"
+              />
             </div>
           </div>
         </section>
