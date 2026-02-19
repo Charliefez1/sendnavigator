@@ -49,6 +49,7 @@ const StateOfSend2026 = lazy(() => import("./pages/StateOfSend2026"));
 const UnderstandingYourChild = lazy(() => import("./pages/UnderstandingYourChild"));
 const UnderstandingAutism = lazy(() => import("./pages/UnderstandingAutism"));
 const UnderstandingADHD = lazy(() => import("./pages/UnderstandingADHD"));
+const ForParents = lazy(() => import("./pages/ForParents"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -92,6 +93,7 @@ const App = () => (
                       <Route path="/understanding-your-child" element={<UnderstandingYourChild />} />
                       <Route path="/understanding-your-child/autism" element={<UnderstandingAutism />} />
                       <Route path="/understanding-your-child/adhd" element={<UnderstandingADHD />} />
+                      <Route path="/for-parents" element={<ForParents />} />
 
                       {/* Protected routes */}
                       <Route path="/" element={<ProtectedRoute><Start /></ProtectedRoute>} />
