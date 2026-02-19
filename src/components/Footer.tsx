@@ -28,11 +28,11 @@ export function Footer() {
             <h3 className="font-display font-bold text-white text-sm uppercase tracking-wider">Navigate</h3>
             <ul className="space-y-2.5">
               {[
-                { to: "/where-we-are-now", label: "Where we are now", icon: BookOpen },
-                { to: "/what-is-changing", label: "What is changing", icon: FileText },
-                { to: "/what-the-leaks-are-saying", label: "What the leaks say", icon: ExternalLink },
-                { to: "/what-this-could-mean", label: "What this could mean", icon: HelpCircle },
-                { to: "/timeline", label: "Timeline", icon: FileText },
+                { to: "/state-of-send-2026", label: "State of SEND 2026", icon: BookOpen },
+                { to: "/state-of-send-2026/what-is-changing", label: "What is changing", icon: FileText },
+                { to: "/state-of-send-2026/what-the-leaks-are-saying", label: "What the leaks say", icon: ExternalLink },
+                { to: "/state-of-send-2026/what-is-being-discussed", label: "What is discussed", icon: HelpCircle },
+                { to: "/state-of-send-2026/timeline", label: "Timeline", icon: FileText },
               ].map((link) => (
                 <li key={link.to}>
                   <Link

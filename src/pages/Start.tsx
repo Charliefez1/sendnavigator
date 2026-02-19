@@ -7,96 +7,45 @@ import { useAuth } from "@/contexts/AuthContext";
 import { SendiassSignpost } from "@/components/SendiassSignpost";
 import { 
   ArrowRight, 
-  CheckCircle2, 
-  Clock,
-  Heart,
   BookOpen,
-  HelpCircle,
+  Heart,
+  Shield,
+  Scale,
+  Megaphone,
   LogOut
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const journeyCards = [
+const quickLinks = [
   {
-    path: "/where-we-are-now",
-    title: "What we know so far",
-    summary: "The current state of the SEND system, existing legal protections, and how the system is performing right now.",
-    color: "confirmed",
-    number: 1,
+    path: "/state-of-send-2026",
+    title: "The State of SEND 2026",
+    summary: "Our 8-part report tracking SEND reform — from confirmed changes to unanswered questions.",
+    icon: BookOpen,
+    accent: "bg-primary/10 text-primary",
   },
   {
-    path: "/what-is-changing",
-    title: "What is changing",
-    summary: "Confirmed reforms, the 10 year schools plan, operational direction to councils, and the three tier model being embedded.",
-    color: "confirmed",
-    number: 2,
+    path: "/ehcps",
+    title: "The EHCP Guide",
+    summary: "Everything you need to know about Education, Health and Care Plans — your rights, the process, and what to do when things go wrong.",
+    icon: Shield,
+    accent: "bg-status-confirmed/10 text-status-confirmed",
   },
   {
-    path: "/what-has-not-changed",
-    title: "What has not changed",
-    summary: "Your legal rights under the Children and Families Act 2014, EHCP protections, and tribunal appeal routes that remain in force.",
-    color: "confirmed",
-    number: 3,
+    path: "/what-to-do-right-now",
+    title: "What to do right now",
+    summary: "Practical steps if your child is not getting the support they need today. Based on current law.",
+    icon: Scale,
+    accent: "bg-status-discussed/10 text-status-discussed",
   },
   {
-    path: "/what-is-being-discussed",
-    title: "What is being discussed",
-    summary: "Proposals under consideration including tiered support models, mainstream inclusion expansion, and funding mechanism changes.",
-    color: "discussed",
-    number: 4,
-  },
-  {
-    path: "/what-we-do-not-know",
-    title: "What we do not know yet",
-    summary: "Unanswered questions about the White Paper content, assessment thresholds, appeal rights, and implementation timelines.",
-    color: "discussed",
-    number: 5,
-  },
-  {
-    path: "/what-the-leaks-are-saying",
-    title: "What the leaks are saying",
-    summary: "BBC and media reports on potential EHCP redesign, the three tier ladder, and ministerial concern about political backlash.",
-    color: "unconfirmed",
-    number: 6,
-  },
-  {
-    path: "/what-the-leaks-do-not-mean",
-    title: "What the leaks do not mean",
-    summary: "Common misinterpretations of leaked proposals addressed — what the reports actually say versus what people fear.",
-    color: "unconfirmed",
-    number: 7,
-  },
-  {
-    path: "/timeline",
-    title: "Timeline and next steps",
-    summary: "Key dates, decision points and milestones from the national conversation to the expected White Paper and beyond.",
-    color: "next",
-    number: 8,
+    path: "/have-your-say",
+    title: "Have your say on reform",
+    summary: "How to respond to the consultation, contact your MP, and make your voice count.",
+    icon: Megaphone,
+    accent: "bg-status-unconfirmed/10 text-status-unconfirmed",
   },
 ];
-
-const colorMap: Record<string, { bg: string; border: string; text: string }> = {
-  confirmed: {
-    bg: "bg-status-confirmed/15",
-    border: "border-status-confirmed/30",
-    text: "text-status-confirmed",
-  },
-  discussed: {
-    bg: "bg-status-discussed/15",
-    border: "border-status-discussed/30",
-    text: "text-status-discussed",
-  },
-  unconfirmed: {
-    bg: "bg-status-unconfirmed/15",
-    border: "border-status-unconfirmed/30",
-    text: "text-status-unconfirmed",
-  },
-  next: {
-    bg: "bg-[hsl(var(--timeline-upcoming)/0.15)]",
-    border: "border-[hsl(var(--timeline-upcoming)/0.3)]",
-    text: "text-[hsl(var(--timeline-upcoming))]",
-  },
-};
 
 const Index = () => {
   const { user, signOut } = useAuth();
@@ -128,59 +77,29 @@ const Index = () => {
           )}
         </div>
         <p className="text-sm text-muted-foreground mt-1">
-          Choose a starting point below. Each section builds on the last, or explore in any order.
+          Choose a section below to get started, or explore in any order.
         </p>
       </section>
 
-      {/* Journey cards - expanded with summaries */}
+      {/* Main navigation cards */}
       <section className="content-section py-4">
         <div className="grid gap-3 sm:grid-cols-2">
-          {journeyCards.map((card) => {
-            const colors = colorMap[card.color];
-            return (
-              <Link
-                key={card.path}
-                to={card.path}
-                className="journey-card flex items-start gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className={`w-9 h-9 rounded-full ${colors.bg} flex items-center justify-center flex-shrink-0 border-2 ${colors.border} mt-0.5`}>
-                  <span className={`text-xs font-semibold ${colors.text}`}>{card.number}</span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-foreground text-sm">{card.title}</h3>
-                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{card.summary}</p>
-                </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-1" />
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Status cards */}
-      <section className="content-section py-4">
-        <div className="grid gap-3 grid-cols-1 sm:grid-cols-3">
-          <div className="bg-card border border-border rounded-xl p-4">
-            <CheckCircle2 className="w-6 h-6 text-status-confirmed mb-2" />
-            <h3 className="font-medium text-foreground text-sm mb-1">What's confirmed</h3>
-            <p className="text-xs text-muted-foreground">
-              Official announcements and decisions that have actually been made
-            </p>
-          </div>
-          <div className="bg-card border border-border rounded-xl p-4">
-            <HelpCircle className="w-6 h-6 text-status-discussed mb-2" />
-            <h3 className="font-medium text-foreground text-sm mb-1">What's being discussed</h3>
-            <p className="text-xs text-muted-foreground">
-              Proposals and ideas being debated by government and others
-            </p>
-          </div>
-          <div className="bg-card border border-border rounded-xl p-4">
-            <BookOpen className="w-6 h-6 text-status-unconfirmed mb-2" />
-            <h3 className="font-medium text-foreground text-sm mb-1">What's unknown</h3>
-            <p className="text-xs text-muted-foreground">
-              Questions that haven't been answered and decisions not yet made
-            </p>
-          </div>
+          {quickLinks.map((card) => (
+            <Link
+              key={card.path}
+              to={card.path}
+              className="flex items-start gap-4 p-5 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group"
+            >
+              <div className={`w-10 h-10 rounded-lg ${card.accent} flex items-center justify-center flex-shrink-0`}>
+                <card.icon className="w-5 h-5" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h2 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors">{card.title}</h2>
+                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{card.summary}</p>
+              </div>
+              <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-1 group-hover:text-primary transition-colors" />
+            </Link>
+          ))}
         </div>
       </section>
 
