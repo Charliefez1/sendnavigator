@@ -1,46 +1,699 @@
 /**
  * SEND Reform Navigator - Content Sources Registry
- * 
- * This file tracks the sources used for all content in the resource.
- * Every factual claim must have a traceable source.
+ *
+ * Single source of truth for all referenced sources across the site.
+ * Every factual claim must have a traceable source listed here.
+ *
+ * HOW TO ADD A NEW SOURCE:
+ * 1. Pick the correct `type` from AcceptedSourceType (see guardrails.ts)
+ * 2. Give it a unique `id` (lowercase, hyphenated)
+ * 3. Fill in name, url, description, and category
+ * 4. List the page paths where the source is referenced in `usedIn`
+ * 5. The Sources page auto-renders from this file — no other changes needed
  */
 
-import { SourceReference, AcceptedSourceType } from "./guardrails";
+import { type AcceptedSourceType } from "./guardrails";
+
+// =============================================================================
+// TYPES
+// =============================================================================
+
+export interface ContentSource {
+  /** Unique identifier, e.g. "cfa-2014" */
+  id: string;
+  /** Source type category from guardrails */
+  type: AcceptedSourceType;
+  /** Display name shown on the Sources page */
+  name: string;
+  /** Full URL to the source */
+  url: string;
+  /** Short description explaining what this source covers and why it matters */
+  description: string;
+  /** Grouping label for the Sources page (e.g. "SEND law and legal framework") */
+  category: string;
+  /** Page paths where this source is referenced */
+  usedIn: string[];
+  /** ISO date string of when the source was last accessed */
+  dateAccessed?: string;
+  /** ISO date string of when the source was published */
+  datePublished?: string;
+  /** Internal editorial notes */
+  notes?: string;
+}
+
+// =============================================================================
+// CATEGORY DISPLAY ORDER
+// =============================================================================
+
+export const sourceCategoryOrder: string[] = [
+  "SEND law and legal framework",
+  "Government announcements and programmes",
+  "Official statistics",
+  "Parliamentary reports and briefings",
+  "Audit and fiscal bodies",
+  "Local government",
+  "Consultation and engagement material",
+  "Ofsted and inspection information",
+  "Tribunal and appeals information",
+  "Education sector press",
+  "Legal and sector analysis",
+  "Parent-led and sector analysis",
+  "Media reporting referenced",
+];
 
 // =============================================================================
 // SOURCE REGISTRY
 // =============================================================================
 
-export interface ContentSource extends SourceReference {
-  id: string;
-  usedIn: string[]; // Page paths where this source is referenced
-}
-
-/**
- * Registry of all sources used in SEND Reform Navigator
- * This will be populated as content is added
- */
 export const sourceRegistry: ContentSource[] = [
-  // Example structure - to be populated with actual sources
+  // ── SEND law and legal framework ──────────────────────────────────────────
   {
     id: "cfa-2014",
     type: "government_primary",
     name: "Children and Families Act 2014",
     url: "https://www.legislation.gov.uk/ukpga/2014/6/contents/enacted",
-    dateAccessed: "2026-02-04",
+    description: "The primary legislation that created EHCPs and defines parental rights in SEND.",
+    category: "SEND law and legal framework",
+    usedIn: ["/where-we-are-now", "/what-has-not-changed", "/ehcps", "/about"],
     datePublished: "2014-03-13",
-    usedIn: ["/where-we-are-now", "/about"],
-    notes: "Primary legislation governing SEND in England",
+    dateAccessed: "2026-02-04",
   },
   {
     id: "send-cop-2015",
     type: "government_primary",
     name: "SEND Code of Practice: 0 to 25 years",
     url: "https://www.gov.uk/government/publications/send-code-of-practice-0-to-25",
-    dateAccessed: "2026-02-04",
+    description: "Statutory guidance explaining how the law works in practice — schools and LAs must follow this.",
+    category: "SEND law and legal framework",
+    usedIn: ["/where-we-are-now", "/what-has-not-changed", "/ehcps"],
     datePublished: "2015-01-01",
+    dateAccessed: "2026-02-04",
+  },
+
+  // ── Government announcements and programmes ───────────────────────────────
+  {
+    id: "send-ap-improvement-plan",
+    type: "government_primary",
+    name: "SEND and Alternative Provision Improvement Plan",
+    url: "https://www.gov.uk/government/publications/send-and-alternative-provision-improvement-plan",
+    description: "The government's original 2023 plan for reforming SEND — many current changes stem from this.",
+    category: "Government announcements and programmes",
+    usedIn: ["/what-is-changing", "/what-we-know-so-far"],
+    datePublished: "2023-03-02",
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "send-transformational-reform",
+    type: "government_primary",
+    name: "Transformational reform begins for children and young people with SEND",
+    url: "https://www.gov.uk/government/news/transformational-reform-begins-for-children-and-young-people-with-send",
+    description: "Announcement of the £5bn council deficit bailout and central government taking over SEND spending.",
+    category: "Government announcements and programmes",
+    usedIn: ["/what-is-changing"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "3bn-send-investment",
+    type: "government_primary",
+    name: "£3bn investment to end postcode lottery for children with SEND",
+    url: "https://www.gov.uk/government/news/3bn-investment-to-end-postcode-lottery-for-children-with-send",
+    description: "Capital investment creating 60,000 new specialist and mainstream SEND places.",
+    category: "Government announcements and programmes",
+    usedIn: ["/what-is-changing"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "national-conversation-launch",
+    type: "government_primary",
+    name: "Government launches national conversation on SEND",
+    url: "https://www.gov.uk/government/news/government-launches-national-conversation-on-send",
+    description: "Launch of the public consultation that ran Dec 2025 to Jan 2026 — parents could respond directly.",
+    category: "Government announcements and programmes",
+    usedIn: ["/what-is-changing", "/what-is-being-discussed"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "200m-send-training",
+    type: "government_primary",
+    name: "£200 million landmark SEND teacher training programme",
+    url: "https://www.gov.uk/government/news/200-million-landmark-send-teacher-training-programme",
+    description: "Confirmed funding for mandatory SEND training for all teachers and expanded SENCO routes.",
+    category: "Government announcements and programmes",
+    usedIn: ["/what-is-changing"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "10-year-schools-plan",
+    type: "government_primary",
+    name: "10 Year Plan to Revitalise Schools and Colleges for Every Child",
+    url: "https://www.gov.uk/government/publications/10-year-plan-to-revitalise-schools-and-colleges",
+    description: "Wider schools strategy — includes inclusion bases, Ofsted reforms, and SEND capital plans.",
+    category: "Government announcements and programmes",
+    usedIn: ["/what-is-changing", "/what-we-know-so-far"],
+    datePublished: "2026-02-10",
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "dfe-fe-update",
+    type: "government_primary",
+    name: "DfE Update to the Further Education Sector (February 2026)",
+    url: "https://www.gov.uk/government/publications/dfe-update-further-education-sector",
+    description: "Guidance on how SEND changes affect post-16 colleges and further education settings.",
+    category: "Government announcements and programmes",
+    usedIn: ["/what-is-changing"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "kcsie-hansard",
+    type: "parliamentary",
+    name: "Keeping Children Safe in Education consultation statement (Hansard, 12 Feb 2026)",
+    url: "https://hansard.parliament.uk/",
+    description: "Ministerial statement on safeguarding guidance — relevant to SEND children in all settings.",
+    category: "Government announcements and programmes",
+    usedIn: ["/what-is-changing"],
+    dateAccessed: "2026-02-15",
+  },
+
+  // ── Official statistics ───────────────────────────────────────────────────
+  {
+    id: "sen-statistics",
+    type: "government_primary",
+    name: "Special educational needs in England statistics",
+    url: "https://explore-education-statistics.service.gov.uk/find-statistics/special-educational-needs-in-england",
+    description: "Official data on how many children have SEND, what type, and where they are educated.",
+    category: "Official statistics",
+    usedIn: ["/where-we-are-now", "/what-we-know-so-far"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "ehcp-data-tables",
+    type: "government_primary",
+    name: "Education, Health and Care Plan data tables",
+    url: "https://explore-education-statistics.service.gov.uk/find-statistics/education-health-and-care-plans",
+    description: "Detailed breakdowns of EHCP numbers, timeliness, refusal rates, and trends over time.",
+    category: "Official statistics",
+    usedIn: ["/where-we-are-now", "/ehcps", "/what-we-know-so-far"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "tribunals-stats",
+    type: "government_primary",
+    name: "Tribunals statistics quarterly",
+    url: "https://www.gov.uk/government/statistics/tribunals-statistics-quarterly",
+    description: "How many SEND tribunal appeals are filed, how long they take, and what outcomes parents get.",
+    category: "Official statistics",
+    usedIn: ["/where-we-are-now", "/ehcps"],
+    dateAccessed: "2026-02-15",
+  },
+
+  // ── Parliamentary reports and briefings ────────────────────────────────────
+  {
+    id: "commons-library-send",
+    type: "parliamentary",
+    name: "House of Commons Library briefing on SEND",
+    url: "https://researchbriefings.files.parliament.uk/documents/SN07020/SN07020.pdf",
+    description: "Comprehensive background briefing used by MPs — covers law, statistics, and policy context.",
+    category: "Parliamentary reports and briefings",
+    usedIn: ["/what-we-know-so-far"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "pac-send-report",
+    type: "parliamentary",
+    name: "Public Accounts Committee report on SEND",
+    url: "https://publications.parliament.uk/pa/cm5901/cmselect/cmpubacc/353/report.html",
+    description: "Investigation into whether SEND spending delivers value for money — found it does not.",
+    category: "Parliamentary reports and briefings",
+    usedIn: ["/what-we-know-so-far", "/where-we-are-now"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "edcom-send-report",
+    type: "parliamentary",
+    name: "Education Committee report on SEND",
+    url: "https://publications.parliament.uk/pa/cm5901/cmselect/cmeduc/492/report.html",
+    description: "Cross-party examination of how SEND reform should be designed to protect children's rights.",
+    category: "Parliamentary reports and briefings",
+    usedIn: ["/what-is-being-discussed"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "lords-send-debate",
+    type: "parliamentary",
+    name: "House of Lords debate on SEND budget funding",
+    url: "https://hansard.parliament.uk/Lords/2025-12-03/debates/46811928-0773-4D27-984F-5802CBBF5824/SENDBudgetFunding",
+    description: "Lords raised concerns about council insolvency and the impact of deficits on SEND provision.",
+    category: "Parliamentary reports and briefings",
+    usedIn: ["/what-we-know-so-far"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "edcom-committee",
+    type: "parliamentary",
+    name: "House of Commons Education Committee",
+    url: "https://committees.parliament.uk/committee/203/education-committee/",
+    description: "The committee actively scrutinising SEND reform proposals — publishes evidence and recommendations.",
+    category: "Parliamentary reports and briefings",
+    usedIn: ["/what-is-being-discussed"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "health-ed-mh-inquiry",
+    type: "parliamentary",
+    name: "Health and Social Care and Education Committees inquiry into children and young people's mental health (13 Feb 2026)",
+    url: "https://committees.parliament.uk/",
+    description: "New joint inquiry examining how education and health services support children's mental health, including SEND.",
+    category: "Parliamentary reports and briefings",
+    usedIn: ["/what-is-being-discussed"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "commons-library-briefing",
+    type: "parliamentary",
+    name: "Commons Library briefing on SEND in England",
+    url: "https://commonslibrary.parliament.uk/research-briefings/sn07020/",
+    description: "Regularly updated research briefing — good single-page summary of the current SEND landscape.",
+    category: "Parliamentary reports and briefings",
+    usedIn: ["/what-we-know-so-far"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "westminster-hall-send",
+    type: "parliamentary",
+    name: "Westminster Hall debates on SEND and EHCPs",
+    url: "https://hansard.parliament.uk/",
+    description: "MPs sharing constituent experiences and pressing ministers on EHCP delays and funding.",
+    category: "Parliamentary reports and briefings",
+    usedIn: ["/what-is-being-discussed"],
+    dateAccessed: "2026-02-15",
+  },
+
+  // ── Audit and fiscal bodies ───────────────────────────────────────────────
+  {
+    id: "nao-send-report",
+    type: "public_body",
+    name: "NAO report on support for children with special educational needs",
+    url: "https://www.nao.org.uk/reports/support-for-children-and-young-people-with-special-educational-needs",
+    description: "Found the SEND system is 'not delivering value for money' — key evidence behind reform calls.",
+    category: "Audit and fiscal bodies",
+    usedIn: ["/where-we-are-now", "/what-we-know-so-far"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "nao-send-sustainability",
+    type: "public_body",
+    name: "NAO press release on SEND system financial sustainability",
+    url: "https://www.nao.org.uk/press-releases/special-educational-needs-system-is-financially-unsustainable",
+    description: "Warned that without intervention, most councils would face insolvency from SEND debts alone.",
+    category: "Audit and fiscal bodies",
     usedIn: ["/where-we-are-now"],
-    notes: "Statutory guidance for organisations working with children with SEND",
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "ifs-send-spending",
+    type: "public_body",
+    name: "IFS analysis on SEND and childcare spending",
+    url: "https://ifs.org.uk/news/rapid-rises-send-and-childcare-spending-are-reshaping-education-spending-england",
+    description: "Shows how rising SEND costs are crowding out mainstream education spending across England.",
+    category: "Audit and fiscal bodies",
+    usedIn: ["/where-we-are-now", "/what-we-know-so-far"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "pac-findings",
+    type: "parliamentary",
+    name: "Public Accounts Committee findings on SEND",
+    url: "https://committees.parliament.uk/committee/127/public-accounts-committee/",
+    description: "Parliamentary scrutiny of how taxpayer money is being spent on SEND — highlights waste and delay.",
+    category: "Audit and fiscal bodies",
+    usedIn: ["/what-we-know-so-far"],
+    dateAccessed: "2026-02-15",
+  },
+
+  // ── Local government ──────────────────────────────────────────────────────
+  {
+    id: "lga-send-reform",
+    type: "sector_briefing",
+    name: "LGA briefing on SEND reform",
+    url: "https://www.local.gov.uk/parliament/briefings-and-responses/special-educational-needs-and-disabilities-send-reform",
+    description: "How councils are preparing for reform and what they say they need from central government.",
+    category: "Local government",
+    usedIn: ["/what-is-being-discussed"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "lga-dsg-debate",
+    type: "sector_briefing",
+    name: "LGA briefing on Westminster Hall debate on DSG",
+    url: "https://www.local.gov.uk/parliament/briefings-and-responses/westminster-hall-debate-dedicated-schools-grant-23-april-2025",
+    description: "Council perspective on the Dedicated Schools Grant and why SEND deficits keep growing.",
+    category: "Local government",
+    usedIn: ["/where-we-are-now"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "lga-send-reports",
+    type: "sector_briefing",
+    name: "LGA SEND reports and briefings",
+    url: "https://www.local.gov.uk/topics/education-and-schools/send",
+    description: "Ongoing council analysis of SEND provision, workforce, and financial pressures.",
+    category: "Local government",
+    usedIn: ["/where-we-are-now", "/what-is-changing"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "lga-send-deficits-feb26",
+    type: "sector_briefing",
+    name: "LGA: SEND deficits and insolvency risk for councils (February 2026)",
+    url: "https://www.local.gov.uk/topics/education-and-schools/send",
+    description: "Latest council data showing 43% forecast deficits equal to or exceeding their reserves.",
+    category: "Local government",
+    usedIn: ["/where-we-are-now"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "ccn-deficit-coverage",
+    type: "sector_briefing",
+    name: "County Councils Network: Government commits to covering 90% of SEND deficits (12 Feb 2026)",
+    url: "https://www.countycouncilsnetwork.org.uk/",
+    description: "Confirmation that central government will absorb the majority of accumulated council SEND debt.",
+    category: "Local government",
+    usedIn: ["/what-is-changing"],
+    dateAccessed: "2026-02-15",
+  },
+
+  // ── Consultation and engagement material ──────────────────────────────────
+  {
+    id: "send-national-conversation",
+    type: "government_primary",
+    name: "SEND Reform National Conversation",
+    url: "https://consult.education.gov.uk/digital-communication-team/send-reform-national-conversation",
+    description: "The official consultation where parents, schools, and professionals could submit views on reform.",
+    category: "Consultation and engagement material",
+    usedIn: ["/what-is-being-discussed", "/what-is-changing"],
+    dateAccessed: "2026-02-04",
+  },
+
+  // ── Ofsted and inspection information ─────────────────────────────────────
+  {
+    id: "ofsted-area-send",
+    type: "public_body",
+    name: "Ofsted and CQC area SEND inspections",
+    url: "https://www.gov.uk/government/collections/local-area-send-inspections",
+    description: "Reports on how well each local area supports children with SEND — your area may have one.",
+    category: "Ofsted and inspection information",
+    usedIn: ["/what-is-changing"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "ofsted-inclusion",
+    type: "public_body",
+    name: "Ofsted reports on inclusion and SEND",
+    url: "https://www.gov.uk/government/organisations/ofsted",
+    description: "Inspection findings on how schools are including and supporting children with SEND.",
+    category: "Ofsted and inspection information",
+    usedIn: ["/what-is-changing"],
+    dateAccessed: "2026-02-15",
+  },
+
+  // ── Tribunal and appeals information ──────────────────────────────────────
+  {
+    id: "send-tribunal-guidance",
+    type: "government_primary",
+    name: "SEND Tribunal guidance",
+    url: "https://www.gov.uk/courts-tribunals/first-tier-tribunal-special-educational-needs-and-disability",
+    description: "How to appeal an EHCP decision — process, timescales, what to expect, and how to prepare.",
+    category: "Tribunal and appeals information",
+    usedIn: ["/ehcps", "/what-has-not-changed"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "moj-tribunal-stats",
+    type: "government_primary",
+    name: "Ministry of Justice tribunal statistics",
+    url: "https://www.gov.uk/government/collections/tribunals-statistics",
+    description: "Official data on appeal volumes, wait times, and outcomes — parents win around 95% of decided cases.",
+    category: "Tribunal and appeals information",
+    usedIn: ["/ehcps", "/where-we-are-now"],
+    dateAccessed: "2026-02-15",
+  },
+
+  // ── Education sector press ────────────────────────────────────────────────
+  {
+    id: "schools-week-reform-planning",
+    type: "established_media",
+    name: "Schools Week: DfE orders councils to begin SEND reform planning (6 Feb 2026)",
+    url: "https://schoolsweek.co.uk/",
+    description: "Councils told to submit local reform plans by autumn 2026 to qualify for deficit bailout funding.",
+    category: "Education sector press",
+    usedIn: ["/what-is-changing"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "schools-week-inclusion-bases",
+    type: "established_media",
+    name: "Schools Week: DfE expects all secondary schools to have inclusion bases (11 Feb 2026)",
+    url: "https://schoolsweek.co.uk/",
+    description: "Government expectation that every secondary will have dedicated space for SEND support.",
+    category: "Education sector press",
+    usedIn: ["/what-is-changing"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "tes-ks4-send",
+    type: "established_media",
+    name: "TES: Nearly a fifth of KS4 pupils now recorded with SEND (10 Feb 2026)",
+    url: "https://www.tes.com/",
+    description: "Shows the scale of SEND identification — one in five Year 10 and 11 pupils now have identified needs.",
+    category: "Education sector press",
+    usedIn: ["/where-we-are-now"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "tes-estates-inclusion",
+    type: "established_media",
+    name: "TES: DfE estates strategy signals inclusion bases in every secondary (11 Feb 2026)",
+    url: "https://www.tes.com/",
+    description: "Details on the building and estates plans behind the inclusion base rollout.",
+    category: "Education sector press",
+    usedIn: ["/what-is-changing"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "unherd-send-children",
+    type: "established_media",
+    name: "UnHerd: Who will defend SEND children (February 2026)",
+    url: "https://unherd.com/",
+    description: "Opinion piece questioning whether reform will protect or weaken children's rights.",
+    category: "Education sector press",
+    usedIn: ["/what-is-being-discussed"],
+    dateAccessed: "2026-02-15",
+  },
+
+  // ── Legal and sector analysis ─────────────────────────────────────────────
+  {
+    id: "farrer-sen-reforms",
+    type: "sector_briefing",
+    name: "Farrer and Co on proposed reforms to SEN support",
+    url: "https://www.farrer.co.uk/news-and-insights/proposed-reforms-to-sen-support-in-england-what-schools-need-to-know",
+    description: "Law firm analysis of what reforms mean for schools and how duties might change.",
+    category: "Legal and sector analysis",
+    usedIn: ["/what-is-being-discussed"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "lexology-send",
+    type: "sector_briefing",
+    name: "Lexology SEND legal analysis",
+    url: "https://www.lexology.com/library/detail.aspx?g=de0f0d8c-a678-47b3-8d25-e448f90a7d2e",
+    description: "Legal commentary on proposed SEND changes and their implications for rights and enforcement.",
+    category: "Legal and sector analysis",
+    usedIn: ["/what-is-being-discussed"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "russell-cooke-send",
+    type: "sector_briefing",
+    name: "Russell Cooke SEND law briefings",
+    url: "https://www.russell-cooke.co.uk/insights/send/",
+    description: "Specialist SEND solicitors explaining legal developments in plain language for parents.",
+    category: "Legal and sector analysis",
+    usedIn: ["/what-has-not-changed"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "farrer-send-updates",
+    type: "sector_briefing",
+    name: "Farrer and Co SEND legal updates",
+    url: "https://www.farrer.co.uk/insights/schools/",
+    description: "Ongoing legal updates on SEND policy, case law, and what schools need to know.",
+    category: "Legal and sector analysis",
+    usedIn: ["/what-is-being-discussed"],
+    dateAccessed: "2026-02-15",
+  },
+
+  // ── Parent-led and sector analysis ────────────────────────────────────────
+  {
+    id: "snj",
+    type: "sector_briefing",
+    name: "Special Needs Jungle",
+    url: "https://www.specialneedsjungle.com/",
+    description: "Independent parent-led site — detailed analysis of SEND policy, rights, and reform proposals.",
+    category: "Parent-led and sector analysis",
+    usedIn: ["/what-is-being-discussed", "/what-the-leaks-are-saying"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "contact-charity",
+    type: "sector_briefing",
+    name: "Contact charity SEND policy and analysis",
+    url: "https://contact.org.uk/",
+    description: "National charity providing practical SEND guidance, helplines, and policy briefings for families.",
+    category: "Parent-led and sector analysis",
+    usedIn: ["/what-is-being-discussed"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "contact-inclusion-bases",
+    type: "sector_briefing",
+    name: "Contact: Inclusion bases in mainstream secondary schools explained (Feb 2026)",
+    url: "https://contact.org.uk/",
+    description: "What inclusion bases are, how they work, and what they mean for children currently in specialist provision.",
+    category: "Parent-led and sector analysis",
+    usedIn: ["/what-is-changing"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "contact-ehcp-deadlines",
+    type: "sector_briefing",
+    name: "Contact: EHCP transition deadline reminders for parents (Feb 2026)",
+    url: "https://contact.org.uk/",
+    description: "Key dates and deadlines parents need to know for EHCP annual reviews and phase transfers.",
+    category: "Parent-led and sector analysis",
+    usedIn: ["/ehcps"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "druk",
+    type: "sector_briefing",
+    name: "Disability Rights UK policy briefings",
+    url: "https://www.disabilityrightsuk.org/",
+    description: "Rights-based analysis of SEND reform from a disability equality perspective.",
+    category: "Parent-led and sector analysis",
+    usedIn: ["/what-is-being-discussed"],
+    dateAccessed: "2026-02-04",
+  },
+
+  // ── Media reporting referenced ────────────────────────────────────────────
+  {
+    id: "guardian-campaign-send-rights",
+    type: "established_media",
+    name: "The Guardian: Campaign urges Starmer not to diminish SEND rights",
+    url: "https://www.theguardian.com/education/2026/jan/12/new-campaign-urges-starmer-not-to-diminish-legal-rights-of-send-children",
+    description: "Coverage of the Save Our Children's Rights campaign and its 130,000+ petition signatures.",
+    category: "Media reporting referenced",
+    usedIn: ["/what-the-leaks-are-saying", "/what-is-being-discussed"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "guardian-parents-fear",
+    type: "established_media",
+    name: "The Guardian: Parents fear losing support due to SEND reforms",
+    url: "https://www.theguardian.com/education/2026/jan/29/parents-in-england-fear-losing-support-for-disabled-children-due-to-special-needs-reforms-send",
+    description: "Parent voices on anxiety about whether reforms will reduce access to support.",
+    category: "Media reporting referenced",
+    usedIn: ["/what-the-leaks-are-saying"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "guardian-disabled-children-rights",
+    type: "established_media",
+    name: "The Guardian: Disabled children legal rights and SEND ministers",
+    url: "https://www.theguardian.com/education/2026/feb/02/disabled-children-legal-rights-send-ministers-special-needs-education-england",
+    description: "Reporting on ministerial statements about maintaining legal protections during reform.",
+    category: "Media reporting referenced",
+    usedIn: ["/what-has-not-changed"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "guardian-labour-rebellion",
+    type: "established_media",
+    name: "The Guardian: Ministers lobbying blitz to avoid Labour rebellion",
+    url: "https://www.theguardian.com/politics/2026/feb/01/ministers-lobbying-blitz-avoid-labour-rebellion-send-changes",
+    description: "Internal Labour pushback against reforms seen as weakening children's rights.",
+    category: "Media reporting referenced",
+    usedIn: ["/what-the-leaks-are-saying"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "guardian-autistic-absence",
+    type: "established_media",
+    name: "The Guardian: One in six autistic pupils have not attended school",
+    url: "https://www.theguardian.com/education/2026/feb/04/one-in-six-autistic-pupils-in-uk-have-not-attended-school-at-all-since-september",
+    description: "Investigation into school absence among autistic children — one in six not attending at all.",
+    category: "Media reporting referenced",
+    usedIn: ["/where-we-are-now"],
+    dateAccessed: "2026-02-04",
+  },
+  {
+    id: "guardian-keep-support",
+    type: "established_media",
+    name: "The Guardian: Children with special needs will keep current support (9 Feb 2026)",
+    url: "https://www.theguardian.com/education/2026/feb/09/children-special-needs-keep-current-support",
+    description: "Minister Georgia Gould confirms existing EHCPs and placements will be protected during reform.",
+    category: "Media reporting referenced",
+    usedIn: ["/what-has-not-changed"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "guardian-deprived-areas",
+    type: "established_media",
+    name: "The Guardian: SEND provision leaving deprived areas behind (11 Feb 2026)",
+    url: "https://www.theguardian.com/education/2026/feb/11/send-provision-deprived-areas",
+    description: "Evidence that SEND support quality varies by deprivation — poorer areas get worse outcomes.",
+    category: "Media reporting referenced",
+    usedIn: ["/where-we-are-now"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "guardian-treasury-pressure",
+    type: "established_media",
+    name: "The Guardian: Treasury pressure over £6bn SEND costs (13 Feb 2026)",
+    url: "https://www.theguardian.com/education/2026/feb/13/treasury-pressure-send-costs",
+    description: "Treasury pushing for cost control on SEND — raises concerns about financial pressure shaping reform.",
+    category: "Media reporting referenced",
+    usedIn: ["/what-the-leaks-are-saying"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "guardian-send-coverage",
+    type: "established_media",
+    name: "The Guardian education and SEND reporting",
+    url: "https://www.theguardian.com/education/send",
+    description: "Ongoing Guardian coverage of SEND policy, parent stories, and reform developments.",
+    category: "Media reporting referenced",
+    usedIn: ["/what-the-leaks-are-saying"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "times-school-changes",
+    type: "established_media",
+    name: "The Times: Schools to get list of changes for special needs (14 Feb 2026)",
+    url: "https://www.thetimes.com/education",
+    description: "Report that schools will receive specific guidance on what SEND changes they need to prepare for.",
+    category: "Media reporting referenced",
+    usedIn: ["/what-is-changing"],
+    dateAccessed: "2026-02-15",
+  },
+  {
+    id: "ft-send-reform",
+    type: "established_media",
+    name: "Financial Times reporting on SEND reform",
+    url: "https://www.ft.com/education",
+    description: "FT coverage focusing on the financial and economic dimensions of SEND reform.",
+    category: "Media reporting referenced",
+    usedIn: ["/what-the-leaks-are-saying"],
+    dateAccessed: "2026-02-15",
   },
 ];
 
@@ -48,25 +701,42 @@ export const sourceRegistry: ContentSource[] = [
 // SOURCE LOOKUP FUNCTIONS
 // =============================================================================
 
-/**
- * Get all sources used on a specific page
- */
+/** Get all sources used on a specific page */
 export function getSourcesForPage(pagePath: string): ContentSource[] {
   return sourceRegistry.filter(source => source.usedIn.includes(pagePath));
 }
 
-/**
- * Get a source by its ID
- */
+/** Get a source by its ID */
 export function getSourceById(id: string): ContentSource | undefined {
   return sourceRegistry.find(source => source.id === id);
 }
 
-/**
- * Get sources by type
- */
+/** Get sources by type */
 export function getSourcesByType(type: AcceptedSourceType): ContentSource[] {
   return sourceRegistry.filter(source => source.type === type);
+}
+
+/** Get sources grouped by category, respecting display order */
+export function getSourcesByCategory(): { category: string; sources: ContentSource[] }[] {
+  const grouped = new Map<string, ContentSource[]>();
+
+  for (const source of sourceRegistry) {
+    const list = grouped.get(source.category) || [];
+    list.push(source);
+    grouped.set(source.category, list);
+  }
+
+  // Sort by predefined order, then alphabetically for any new categories
+  return Array.from(grouped.entries())
+    .sort(([a], [b]) => {
+      const ai = sourceCategoryOrder.indexOf(a);
+      const bi = sourceCategoryOrder.indexOf(b);
+      if (ai === -1 && bi === -1) return a.localeCompare(b);
+      if (ai === -1) return 1;
+      if (bi === -1) return -1;
+      return ai - bi;
+    })
+    .map(([category, sources]) => ({ category, sources }));
 }
 
 // =============================================================================
@@ -80,18 +750,3 @@ export const sourceTypeLabels: Record<AcceptedSourceType, string> = {
   established_media: "Media report",
   sector_briefing: "Sector briefing",
 };
-
-/**
- * Format a source for display
- */
-export function formatSourceForDisplay(source: ContentSource): {
-  label: string;
-  typeLabel: string;
-  date: string;
-} {
-  return {
-    label: source.name,
-    typeLabel: sourceTypeLabels[source.type],
-    date: source.datePublished || source.dateAccessed,
-  };
-}
