@@ -15,7 +15,7 @@ import { ScanModeBanner } from "./ScanModeBanner";
 import { ExitIntentPopup } from "./ExitIntentPopup";
 import { CookieConsent } from "./CookieConsent";
 import { AskSendFloating } from "./AskSendFloating";
-import { NeurodiversityGlobalAd } from "./NeurodiversityGlobalAd";
+
 
 interface LayoutProps {
   children: ReactNode;
@@ -46,7 +46,6 @@ export function Layout({ children, hideGlobalCTA }: LayoutProps) {
             <div className="content-section py-6 space-y-4">
               <AskQuestionCompact />
             </div>
-            <NeurodiversityGlobalAd />
           </main>
         </ReportLayout>
       ) : (
@@ -63,7 +62,7 @@ export function Layout({ children, hideGlobalCTA }: LayoutProps) {
             <div className="content-section py-6 space-y-4">
               <AskQuestionCompact />
             </div>
-            <NeurodiversityGlobalAd />
+            
           </main>
         </>
       )}
