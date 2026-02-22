@@ -6,7 +6,7 @@ interface SEOHeadProps {
   path?: string;
 }
 
-const SITE_NAME = "SEND Reform Navigator";
+const SITE_NAME = "Beacon SEND Navigator";
 const BASE_URL = "https://sendnavigator.lovable.app";
 
 export function SEOHead({ title, description, path = "" }: SEOHeadProps) {
