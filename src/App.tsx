@@ -55,6 +55,7 @@ const EHCPHealth = lazy(() => import("./pages/EHCPHealth"));
 const AlternativeProvision = lazy(() => import("./pages/AlternativeProvision"));
 const LocalVariation = lazy(() => import("./pages/LocalVariation"));
 const DevolvedNations = lazy(() => import("./pages/DevolvedNations"));
+const MyChildProfile = lazy(() => import("./pages/MyChildProfile"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -104,6 +105,7 @@ const App = () => (
                       <Route path="/alternative-provision" element={<AlternativeProvision />} />
                       <Route path="/local-variation" element={<LocalVariation />} />
                       <Route path="/devolved-nations" element={<DevolvedNations />} />
+                      <Route path="/my-child-profile" element={<MyChildProfile />} />
 
                       {/* Protected routes */}
                       <Route path="/" element={<ProtectedRoute><Start /></ProtectedRoute>} />

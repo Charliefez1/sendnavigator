@@ -41,6 +41,7 @@ const navGroups: NavGroup[] = [
       { path: "/post-16-and-transition", label: "Post-16 & Transition" },
       { path: "/what-to-do-right-now", label: "What to do right now" },
       { path: "/sendiass", label: "Free help - SENDIASS" },
+      { path: "/my-child-profile", label: "My Child: A Profile" },
     ],
   },
   {
