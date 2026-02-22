@@ -8,12 +8,24 @@ interface ReportData {
   aiReport: string;
 }
 
+// === Colour palette (RGB) ===
+const NAVY = [30, 41, 59];       // headings, section titles
+const DARK_TEXT = [15, 23, 42];   // body text
+const MID_TEXT = [71, 85, 105];   // secondary text
+const LIGHT_TEXT = [100, 116, 139]; // footer, subtle
+const WARM_BG = [248, 245, 240];  // parent words background
+const WARM_BORDER = [220, 210, 195]; // parent words border
+const WHITE = [255, 255, 255];
+const PAGE_BG = [252, 251, 249];  // very subtle warm white
+
 export function generateProfilePDF({ state, aiReport }: ReportData) {
   const doc = new jsPDF({ unit: "mm", format: "a4" });
   const pageWidth = doc.internal.pageSize.getWidth();
-  const margin = 20;
+  const pageHeight = doc.internal.pageSize.getHeight();
+  const margin = 22;
   const contentWidth = pageWidth - margin * 2;
   const childName = state.setup.childName || "Child";
+  const filledBy = state.setup.filledBy || "their parent";
   const today = new Date().toLocaleDateString("en-GB", {
     day: "numeric",
     month: "long",
@@ -21,12 +33,32 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
   });
   const dateCompact = new Date().toISOString().split("T")[0].replace(/-/g, "");
 
-  const footer = (doc: jsPDF) => {
-    doc.setFontSize(7);
+  // === Helpers ===
+
+  const setColor = (rgb: number[]) => doc.setTextColor(rgb[0], rgb[1], rgb[2]);
+  const setFill = (rgb: number[]) => doc.setFillColor(rgb[0], rgb[1], rgb[2]);
+  const setDraw = (rgb: number[]) => doc.setDrawColor(rgb[0], rgb[1], rgb[2]);
+
+  const footer = () => {
+    doc.setFontSize(7.5);
     doc.setFont("helvetica", "normal");
-    doc.setTextColor(130, 130, 130);
-    doc.text("This is not a diagnostic document. sendnavigator.neuro.support", margin, 285);
-    doc.setTextColor(0, 0, 0);
+    setColor(LIGHT_TEXT);
+    doc.text(
+      "This is not a diagnostic document.  sendnavigator.neuro.support",
+      pageWidth / 2,
+      pageHeight - 10,
+      { align: "center" }
+    );
+    setColor(DARK_TEXT);
+  };
+
+  const checkPageBreak = (y: number, needed: number): number => {
+    if (y + needed > pageHeight - 18) {
+      footer();
+      doc.addPage();
+      return margin;
+    }
+    return y;
   };
 
   const addWrappedText = (
@@ -35,112 +67,150 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
     y: number,
     maxWidth: number,
     fontSize: number,
-    style: "normal" | "bold" | "italic" = "normal"
+    style: "normal" | "bold" | "italic" = "normal",
+    lineHeightMultiplier = 1.6
   ): number => {
     doc.setFontSize(fontSize);
     doc.setFont("helvetica", style);
-    const lines = doc.splitTextToSize(text, maxWidth);
+    const lines: string[] = doc.splitTextToSize(text, maxWidth);
+    const lineHeight = fontSize * 0.353 * lineHeightMultiplier;
     for (const line of lines) {
-      if (y > 268) {
-        footer(doc);
-        doc.addPage();
-        y = margin;
-      }
+      y = checkPageBreak(y, lineHeight + 2);
       doc.text(line, x, y);
-      y += fontSize * 0.45;
+      y += lineHeight;
     }
     return y;
+  };
+
+  // Measure text height without rendering
+  const measureText = (text: string, maxWidth: number, fontSize: number, lineHeightMultiplier = 1.6): number => {
+    doc.setFontSize(fontSize);
+    const lines: string[] = doc.splitTextToSize(text, maxWidth);
+    return lines.length * fontSize * 0.353 * lineHeightMultiplier;
   };
 
   // Parse AI report into sections
   const parseAIReport = (report: string) => {
     const sections: Record<string, string> = {};
-    let waysOfWorking = "";
-
-    // Split by section headings
     const lines = report.split("\n");
     let currentKey = "";
     let currentContent: string[] = [];
 
     for (const line of lines) {
-      // Check for "Ways of Working" heading
       if (/^#+\s*Ways of Working/i.test(line) || /^\*\*Ways of Working\*\*/i.test(line) || line.trim() === "Ways of Working") {
-        if (currentKey) {
-          sections[currentKey] = currentContent.join("\n").trim();
-        }
+        if (currentKey) sections[currentKey] = currentContent.join("\n").trim();
         currentKey = "__ways_of_working__";
         currentContent = [];
         continue;
       }
 
-      // Check for section headings matching our titles
       for (let i = 0; i < SECTION_TITLES.length; i++) {
         const title = SECTION_TITLES[i];
-        if (
-          line.includes(title) &&
-          (line.startsWith("#") || line.startsWith("**") || /^\d+\./.test(line.trim()))
-        ) {
-          if (currentKey) {
-            sections[currentKey] = currentContent.join("\n").trim();
-          }
+        if (line.includes(title) && (line.startsWith("#") || line.startsWith("**") || /^\d+\./.test(line.trim()))) {
+          if (currentKey) sections[currentKey] = currentContent.join("\n").trim();
           currentKey = `section_${i}`;
           currentContent = [];
           break;
         }
       }
 
-      if (currentKey) {
-        currentContent.push(line);
-      }
+      if (currentKey) currentContent.push(line);
     }
 
-    // Save the last section
-    if (currentKey) {
-      sections[currentKey] = currentContent.join("\n").trim();
-    }
+    if (currentKey) sections[currentKey] = currentContent.join("\n").trim();
 
-    waysOfWorking = sections["__ways_of_working__"] || "";
+    const waysOfWorking = sections["__ways_of_working__"] || "";
     delete sections["__ways_of_working__"];
 
-    // Get the opening line
     const openingLine = lines.find(l => l.includes("This profile was built by someone")) || "";
-
     return { sections, waysOfWorking, openingLine };
   };
 
+  const cleanMarkdown = (text: string): string =>
+    text
+      .replace(/^#+\s+.*$/gm, "")
+      .replace(/\*\*/g, "")
+      .replace(/\*/g, "")
+      .replace(/^[-–—]\s+/gm, "")
+      .trim();
+
   const parsed = parseAIReport(aiReport);
 
-  // === PAGE 1: COVER ===
-  doc.setFontSize(32);
+  // =============================================
+  // PAGE 1: COVER
+  // =============================================
+
+  // Subtle warm page background
+  setFill(PAGE_BG);
+  doc.rect(0, 0, pageWidth, pageHeight, "F");
+
+  // Top decorative line
+  setDraw(NAVY);
+  doc.setLineWidth(0.8);
+  doc.line(margin, 55, pageWidth - margin, 55);
+
+  // Child's name — large, centred
+  doc.setFontSize(36);
   doc.setFont("helvetica", "bold");
-  doc.text("My Child: A Profile", margin, 70);
+  setColor(NAVY);
+  doc.text(childName, pageWidth / 2, 80, { align: "center" });
 
-  doc.setFontSize(20);
+  // Subtitle
+  doc.setFontSize(16);
   doc.setFont("helvetica", "normal");
-  doc.text(childName, margin, 85);
+  setColor(MID_TEXT);
+  doc.text("A Profile", pageWidth / 2, 92, { align: "center" });
 
-  doc.setFontSize(12);
-  doc.text(today, margin, 98);
+  // Date
+  doc.setFontSize(11);
+  setColor(MID_TEXT);
+  doc.text(today, pageWidth / 2, 108, { align: "center" });
 
+  // Built by
+  doc.setFontSize(11);
+  doc.setFont("helvetica", "normal");
+  setColor(DARK_TEXT);
+  doc.text(`This profile was built by ${filledBy}.`, pageWidth / 2, 125, { align: "center" });
+
+  // Bottom decorative line
+  doc.setLineWidth(0.4);
+  setDraw(WARM_BORDER);
+  doc.line(margin + 30, 140, pageWidth - margin - 30, 140);
+
+  // Disclaimer block
   doc.setFontSize(9);
-  doc.setFont("helvetica", "normal");
-  doc.text("This is not a diagnostic document. It is a parent prepared profile.", margin, 260);
-  doc.text("sendnavigator.neuro.support", margin, 266);
-  footer(doc);
+  setColor(LIGHT_TEXT);
+  doc.text(
+    "This is not a diagnostic document. It is a parent-prepared profile.",
+    pageWidth / 2,
+    pageHeight - 40,
+    { align: "center" }
+  );
+  doc.setFontSize(8.5);
+  doc.text("sendnavigator.neuro.support", pageWidth / 2, pageHeight - 34, { align: "center" });
 
-  // === PAGE 2: WHY WE BUILT THIS ===
+  // =============================================
+  // PAGE 2: WHY WE BUILT THIS
+  // =============================================
   doc.addPage();
+  setFill(WHITE);
+  doc.rect(0, 0, pageWidth, pageHeight, "F");
   let y = margin;
 
-  doc.setFontSize(16);
+  doc.setFontSize(18);
   doc.setFont("helvetica", "bold");
+  setColor(NAVY);
   doc.text("Why we built this profile", margin, y);
-  y += 12;
+  y += 14;
+
+  // Thin accent line under heading
+  setDraw(NAVY);
+  doc.setLineWidth(0.5);
+  doc.line(margin, y - 6, margin + 50, y - 6);
+  y += 4;
 
   const reasonParts: string[] = [];
-  if (state.setup.reason) {
-    reasonParts.push(state.setup.reason);
-  }
+  if (state.setup.reason) reasonParts.push(state.setup.reason);
   if (state.setup.sharedWith.length > 0) {
     reasonParts.push(`We intend to share this with: ${state.setup.sharedWith.join(", ")}.`);
   }
@@ -148,28 +218,32 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
     ? `I am building this profile for ${childName} because ${reasonParts.join(" ").toLowerCase()}. This document contains what I know about my child. It is written from experience, not from a textbook.`
     : `I am building this profile for ${childName}. This document contains what I know about my child. It is written from experience, not from a textbook.`;
 
-  y = addWrappedText(whyText, margin, y, contentWidth, 10);
-  y += 8;
+  setColor(DARK_TEXT);
+  y = addWrappedText(whyText, margin, y, contentWidth, 11);
+  y += 10;
 
   if (parsed.openingLine) {
-    y = addWrappedText(parsed.openingLine, margin, y, contentWidth, 10, "italic");
+    setColor(MID_TEXT);
+    y = addWrappedText(parsed.openingLine, margin, y, contentWidth, 10.5, "italic");
+    setColor(DARK_TEXT);
   }
 
-  footer(doc);
+  footer();
 
-  // === SECTION PAGES ===
+  // =============================================
+  // SECTION PAGES
+  // =============================================
   SECTION_TITLES.forEach((title, index) => {
     const section = state.sections[index];
     if (!section) return;
 
     const hasAnswers = Object.entries(section.answers).some(([key, v]) => {
-      if (key.startsWith("cv_")) return false; // child voice handled separately
+      if (key.startsWith("cv_")) return false;
       return Array.isArray(v) ? v.length > 0 : v.trim().length > 0;
     });
     const hasReflection = section.reflection.trim().length > 0;
     const aiContent = parsed.sections[`section_${index}`];
 
-    // Check for child voice answers
     const cvQuestions = childVoiceQuestions[index];
     const hasChildVoice = cvQuestions?.some(q => {
       const val = section.answers?.[q.id];
@@ -178,160 +252,207 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
 
     if (!hasAnswers && !hasReflection && !hasChildVoice) return;
 
+    // New page for each section
     doc.addPage();
+    setFill(WHITE);
+    doc.rect(0, 0, pageWidth, pageHeight, "F");
     y = margin;
 
-    // Section title
-    doc.setFontSize(16);
-    doc.setFont("helvetica", "bold");
-    doc.text(`${index + 1}. ${title}`, margin, y);
-    y += 12;
+    // Section number + title
+    doc.setFontSize(9);
+    doc.setFont("helvetica", "normal");
+    setColor(LIGHT_TEXT);
+    doc.text(`Section ${index + 1}`, margin, y);
+    y += 6;
 
-    // Part 1: Parent answers as flowing prose
+    doc.setFontSize(17);
+    doc.setFont("helvetica", "bold");
+    setColor(NAVY);
+    doc.text(title, margin, y);
+    y += 6;
+
+    // Accent line
+    setDraw(NAVY);
+    doc.setLineWidth(0.5);
+    doc.line(margin, y, margin + 40, y);
+    y += 10;
+
+    // --- PARENT'S WORDS BLOCK ---
     const content = sectionContent[index];
+    const parentTexts: string[] = [];
     if (content && hasAnswers) {
-      const answerTexts: string[] = [];
       content.questions.forEach((q) => {
         const val = section.answers?.[q.id];
         const displayValue = Array.isArray(val) ? val.join(", ") : val;
         if (displayValue && displayValue.trim()) {
-          answerTexts.push(displayValue.trim());
+          parentTexts.push(displayValue.trim());
         }
       });
-
-      if (answerTexts.length > 0) {
-        const prose = answerTexts.join(". ").replace(/\.\./g, ".");
-        y = addWrappedText(prose, margin, y, contentWidth, 10);
-        y += 8;
-      }
     }
 
-    // Part 2: Child voice block
-    if (hasChildVoice && cvQuestions) {
-      // Draw a light background box
-      const cvStartY = y;
-      y += 2;
+    if (parentTexts.length > 0) {
+      const parentProse = parentTexts.join(". ").replace(/\.\./g, ".");
 
-      doc.setFontSize(11);
+      // Label
+      doc.setFontSize(10);
       doc.setFont("helvetica", "bold");
-      doc.setTextColor(80, 60, 20);
-      y = addWrappedText(`In ${childName}'s own words`, margin + 4, y + 4, contentWidth - 8, 11, "bold");
-      doc.setTextColor(0, 0, 0);
-      y += 4;
+      setColor(MID_TEXT);
+      doc.text(`In ${childName}'s parent's words`, margin + 5, y + 1);
+      y += 7;
 
+      // Measure content to draw background box
+      const textHeight = measureText(parentProse, contentWidth - 14, 11);
+      const boxHeight = textHeight + 10;
+
+      y = checkPageBreak(y, boxHeight + 4);
+
+      // Draw warm background box
+      setFill(WARM_BG);
+      setDraw(WARM_BORDER);
+      doc.setLineWidth(0.3);
+      doc.roundedRect(margin, y - 3, contentWidth, boxHeight, 2, 2, "FD");
+
+      // Render text inside box
+      setColor(DARK_TEXT);
+      y = addWrappedText(parentProse, margin + 7, y + 4, contentWidth - 14, 11);
+      y += 10;
+    }
+
+    // --- CHILD VOICE BLOCK ---
+    if (hasChildVoice && cvQuestions) {
       const childTexts: string[] = [];
       cvQuestions.forEach((q) => {
         const val = section.answers?.[q.id];
         const strVal = Array.isArray(val) ? val.join(", ") : val;
-        if (strVal && strVal.toString().trim()) {
-          childTexts.push(strVal.toString().trim());
-        }
+        if (strVal && strVal.toString().trim()) childTexts.push(strVal.toString().trim());
       });
 
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "normal");
-      for (const text of childTexts) {
-        y = addWrappedText(text, margin + 4, y, contentWidth - 8, 10);
-        y += 3;
+      if (childTexts.length > 0) {
+        y = checkPageBreak(y, 30);
+
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "bold");
+        setColor([120, 90, 40]);
+        doc.text(`In ${childName}'s own words`, margin + 5, y);
+        y += 6;
+
+        setColor(DARK_TEXT);
+        for (const text of childTexts) {
+          y = addWrappedText(text, margin + 7, y, contentWidth - 14, 10.5, "italic");
+          y += 3;
+        }
+        y += 6;
       }
-
-      // Draw background rectangle
-      const cvHeight = y - cvStartY + 4;
-      doc.setFillColor(255, 248, 235);
-      doc.setDrawColor(220, 200, 160);
-      doc.roundedRect(margin, cvStartY, contentWidth, cvHeight, 2, 2, "FD");
-
-      // Re-render text on top of background (jsPDF renders in order)
-      // Since jsPDF doesn't support z-index, we need to render bg first then text
-      // Let's restructure: collect child voice content, draw bg, then text
-      y = cvStartY + 2;
-      doc.setFontSize(11);
-      doc.setFont("helvetica", "bold");
-      doc.setTextColor(80, 60, 20);
-      y = addWrappedText(`In ${childName}'s own words`, margin + 4, y + 4, contentWidth - 8, 11, "bold");
-      doc.setTextColor(0, 0, 0);
-      y += 4;
-
-      for (const text of childTexts) {
-        y = addWrappedText(text, margin + 4, y, contentWidth - 8, 10);
-        y += 3;
-      }
-
-      y += 6;
     }
 
-    // Part 3: AI response
+    // --- AI RESPONSE BLOCK ---
     if (aiContent) {
-      doc.setFontSize(11);
+      y = checkPageBreak(y, 20);
+
+      doc.setFontSize(10);
       doc.setFont("helvetica", "bold");
-      y = addWrappedText("What this tells us", margin, y, contentWidth, 11, "bold");
-      y += 3;
+      setColor(MID_TEXT);
+      doc.text("What this tells us", margin, y);
+      y += 7;
 
-      // Clean up markdown formatting
-      const cleanAI = aiContent
-        .replace(/^#+\s+.*$/gm, "") // remove headings
-        .replace(/\*\*/g, "")       // remove bold markers
-        .replace(/\*/g, "")         // remove italic markers
-        .trim();
+      const cleanAI = cleanMarkdown(aiContent);
+      setColor(DARK_TEXT);
+      y = addWrappedText(cleanAI, margin, y, contentWidth, 11);
+      y += 8;
+    }
 
-      y = addWrappedText(cleanAI, margin, y, contentWidth, 10);
+    // --- CLOSING REFLECTION ---
+    if (hasReflection) {
+      y = checkPageBreak(y, 15);
+      setColor(MID_TEXT);
+      y = addWrappedText(section.reflection, margin, y, contentWidth, 10.5, "italic");
+      setColor(DARK_TEXT);
       y += 6;
     }
 
-    // Part 4: Closing reflection in italics
-    if (hasReflection) {
-      y = addWrappedText(section.reflection, margin, y, contentWidth, 10, "italic");
-      y += 4;
-    }
-
-    footer(doc);
+    footer();
   });
 
-  // === FINAL PAGE ===
-  doc.addPage();
-  y = margin;
-
-  // Ways of Working
+  // =============================================
+  // WAYS OF WORKING — own page
+  // =============================================
   if (parsed.waysOfWorking) {
-    doc.setFontSize(16);
+    doc.addPage();
+    setFill(WHITE);
+    doc.rect(0, 0, pageWidth, pageHeight, "F");
+    y = margin;
+
+    doc.setFontSize(22);
     doc.setFont("helvetica", "bold");
+    setColor(NAVY);
     doc.text("Ways of Working", margin, y);
+    y += 10;
+
+    setDraw(NAVY);
+    doc.setLineWidth(0.6);
+    doc.line(margin, y, margin + 55, y);
     y += 12;
 
-    const cleanWoW = parsed.waysOfWorking
-      .replace(/^#+\s+.*$/gm, "")
-      .replace(/\*\*/g, "")
-      .replace(/\*/g, "")
-      .trim();
+    const cleanWoW = cleanMarkdown(parsed.waysOfWorking);
+    setColor(DARK_TEXT);
+    y = addWrappedText(cleanWoW, margin, y, contentWidth, 11.5, "normal", 1.7);
 
-    y = addWrappedText(cleanWoW, margin, y, contentWidth, 10);
-    y += 12;
+    footer();
   }
 
-  // Final statement
+  // =============================================
+  // FINAL PAGE — closing statement
+  // =============================================
+  doc.addPage();
+  setFill(PAGE_BG);
+  doc.rect(0, 0, pageWidth, pageHeight, "F");
+  y = margin + 30;
+
   if (state.finalStatement.trim()) {
-    if (y > 200) {
-      footer(doc);
-      doc.addPage();
-      y = margin;
+    doc.setFontSize(13);
+    doc.setFont("helvetica", "bold");
+    setColor(NAVY);
+    doc.text("What we most want you to know", pageWidth / 2, y, { align: "center" });
+    y += 14;
+
+    setDraw(WARM_BORDER);
+    doc.setLineWidth(0.4);
+    doc.line(margin + 40, y - 6, pageWidth - margin - 40, y - 6);
+    y += 4;
+
+    setColor(DARK_TEXT);
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+
+    // Centre the text block
+    const stmtLines: string[] = doc.splitTextToSize(state.finalStatement, contentWidth - 20);
+    const lineHeight = 12 * 0.353 * 1.7;
+    for (const line of stmtLines) {
+      y = checkPageBreak(y, lineHeight + 2);
+      doc.text(line, pageWidth / 2, y, { align: "center" });
+      y += lineHeight;
     }
 
-    doc.setFontSize(14);
-    doc.setFont("helvetica", "bold");
-    doc.text("What we most want you to know", margin, y);
-    y += 10;
-
-    y = addWrappedText(state.finalStatement, margin, y, contentWidth, 11);
-    y += 10;
+    y += 16;
+  } else {
+    y = pageHeight / 2 - 20;
   }
 
-  // Closing statement
+  // Closing paragraph
+  setColor(MID_TEXT);
   const closingText = `This profile was built by ${childName}'s parent. It represents our knowledge of our child. We welcome questions and conversation. We ask that this document is read in full before any conclusions are drawn.`;
-  y = addWrappedText(closingText, margin, y, contentWidth, 9, "italic");
+  const closingLines: string[] = doc.splitTextToSize(closingText, contentWidth - 30);
+  const closingLineH = 9.5 * 0.353 * 1.6;
+  doc.setFontSize(9.5);
+  doc.setFont("helvetica", "italic");
+  for (const line of closingLines) {
+    doc.text(line, pageWidth / 2, y, { align: "center" });
+    y += closingLineH;
+  }
 
-  footer(doc);
+  footer();
 
-  // Download
+  // === Download ===
   const safeName = childName.toLowerCase().replace(/[^a-z0-9]/g, "");
-  doc.save(`${safeName}profile${dateCompact}.pdf`);
+  doc.save(`${safeName}-profile-${dateCompact}.pdf`);
 }
