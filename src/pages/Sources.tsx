@@ -25,7 +25,7 @@ const sourceCategories: SourceCategory[] = [
     id: "primary-legislation",
     title: "Primary legislation",
     description:
-      "The law itself. These are the legal instruments that create duties and rights. Nothing on this site about what the law says or requires is based on commentary alone — it traces back to these documents.",
+      "The law itself. These are the legal instruments that create duties and rights. Nothing on this site about what the law says or requires is based on commentary alone. It traces back to these documents.",
     sources: [
       {
         name: "Children and Families Act 2014",
@@ -86,7 +86,7 @@ const sourceCategories: SourceCategory[] = [
           "Annual DfE statistical release. Primary source for EHCP numbers, LA-level data, trends over time.",
       },
       {
-        name: "DfE Schools Plan — February 2026",
+        name: "DfE Schools Plan - February 2026",
         url: "https://www.gov.uk/government/publications/10-year-plan-to-revitalise-schools-and-colleges",
         description:
           "The government's plan for mainstream schools reform, including the commitment to inclusion bases in every secondary school and the Ofsted inclusion judgement.",
@@ -162,7 +162,7 @@ const sourceCategories: SourceCategory[] = [
     description: "",
     sources: [
       {
-        name: "IPSEA — Independent Provider of Special Education Advice",
+        name: "IPSEA - Independent Provider of Special Education Advice",
         url: "https://www.ipsea.org.uk/",
         description:
           "Free legally-based advice charity. Primary source for practical guidance on EHCP processes, model letters, and tribunal preparation. Legally rigorous and regularly updated.",
@@ -213,7 +213,7 @@ const sourceCategories: SourceCategory[] = [
     description: "",
     sources: [
       {
-        name: "Institute for Fiscal Studies — SEND Research",
+        name: "Institute for Fiscal Studies - SEND Research",
         url: "https://ifs.org.uk/news/rapid-rises-send-and-childcare-spending-are-reshaping-education-spending-england",
         description:
           "Independent economic analysis of SEND funding, cost pressures, and reform options. Used for financial data and system-level analysis.",
@@ -249,7 +249,7 @@ export default function Sources() {
             It exists for one reason: <strong>you should be able to check anything we say</strong>.
           </p>
           <p>
-            Every page on this site uses a confidence label — Confirmed, Discussed, Unconfirmed, or Unknown. Those labels are only meaningful if you can see where the information comes from.
+            Every page on this site uses a confidence label: Confirmed, Discussed, Unconfirmed, or Unknown. Those labels are only meaningful if you can see where the information comes from.
           </p>
           <p>
             Sources are grouped by type. Where a source is directly available online, a link is provided.
@@ -301,7 +301,7 @@ export default function Sources() {
               Where information comes from a single source, or where a source has a stated position or interest, we note this in the relevant page.
             </p>
             <p>
-              Where information is unconfirmed — for example, leaked proposals or reports that have not been officially acknowledged — we <strong>label it clearly and do not present it as fact</strong>.
+              Where information is unconfirmed, for example leaked proposals or reports that have not been officially acknowledged, we <strong>label it clearly and do not present it as fact</strong>.
             </p>
             <p>
               If you believe something on this site is inaccurate or poorly sourced, <a href="/feedback" className="text-primary hover:underline">contact us</a>. We will check it and correct it if needed.

@@ -56,7 +56,7 @@ export default function LocalVariation() {
   return (
     <Layout>
       <SEOHead
-        title="Why Where You Live Matters: Local Authority Variation in SEND — SEND Navigator"
+        title="Why Where You Live Matters: Local Authority Variation in SEND - SEND Navigator"
         description="SEND provision varies dramatically by area. Inspection evidence, financial pressure, Safety Valve agreements, and what it means for your child's rights."
         path="/local-variation"
       />
@@ -166,7 +166,7 @@ export default function LocalVariation() {
             <p className="text-sm text-muted-foreground leading-relaxed">This is a <strong>significant structural shift</strong>. It removes some of the immediate financial threat to councils. It does not, on its own, fix the quality of provision or reduce waiting times.</p>
           </div>
 
-          <CC>Deficit figures — Institute for Fiscal Studies (December 2025); County Councils Network survey data; DfE high needs funding operational guidance 2025/26. Government announcement — HM Treasury Budget 2025 (November 2025); IFS analysis December 2025.</CC>
+          <CC>Deficit figures: Institute for Fiscal Studies (December 2025); County Councils Network survey data; DfE high needs funding operational guidance 2025/26. Government announcement: HM Treasury Budget 2025 (November 2025); IFS analysis December 2025.</CC>
         </div>
       </section>
 
@@ -312,16 +312,16 @@ export default function LocalVariation() {
       <section className="content-section py-6 pb-8">
         <div className="space-y-2">
           <Link to="/ehcps" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ The EHCP Guide — understanding every section of the plan</p>
+            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ The EHCP Guide: understanding every section of the plan</p>
           </Link>
           <Link to="/what-to-do-right-now" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ What to do right now — the full escalation guide</p>
+            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ What to do right now: the full escalation guide</p>
           </Link>
           <Link to="/sendiass" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
             <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Find your local SENDIASS</p>
           </Link>
           <Link to="/what-we-owe-our-children" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Reality Bites — what the system actually owes your child</p>
+            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Reality Bites: what the system actually owes your child</p>
           </Link>
         </div>
       </section>

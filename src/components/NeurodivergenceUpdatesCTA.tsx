@@ -17,7 +17,7 @@ export function NeurodivergenceUpdatesCTA() {
               Keep up to date with the world of neurodivergence
             </h3>
             <p className="text-xs text-muted-foreground mt-0.5">
-              Neurodiversity Global — neuroinclusion consulting, training, and strategy.
+              Neurodiversity Global: neuroinclusion consulting, training, and strategy.
             </p>
           </div>
         </div>

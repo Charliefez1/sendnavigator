@@ -46,7 +46,7 @@ export function AuthForm() {
       <p className="text-xs text-muted-foreground mb-4">
         {mode === "signin"
           ? "Access the full SEND Reform Navigator."
-          : "Free account — come back anytime."}
+          : "Free account. Come back anytime."}
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-3">

@@ -49,7 +49,7 @@ const reportSections = [
   {
     path: "/state-of-send-2026/what-the-leaks-do-not-mean",
     title: "What the leaks do not mean",
-    summary: "Common misinterpretations of leaked proposals addressed — what the reports actually say versus what people fear.",
+    summary: "Common misinterpretations of leaked proposals addressed. What the reports actually say versus what people fear.",
     color: "unconfirmed",
     number: 7,
   },
@@ -93,8 +93,8 @@ export default function StateOfSend2026() {
   return (
     <Layout>
       <SEOHead
-        title="The State of SEND 2026 — Report"
-        description="An 8-part report tracking SEND reform in England. From confirmed changes to unanswered questions — everything families need to know."
+        title="The State of SEND 2026 - Report"
+        description="An 8-part report tracking SEND reform in England. From confirmed changes to unanswered questions. Everything families need to know."
         path="/state-of-send-2026"
       />
 

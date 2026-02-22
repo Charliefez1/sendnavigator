@@ -40,7 +40,7 @@ const navGroups: NavGroup[] = [
       { path: "/alternative-provision", label: "Alternative Provision" },
       { path: "/post-16-and-transition", label: "Post-16 & Transition" },
       { path: "/what-to-do-right-now", label: "What to do right now" },
-      { path: "/sendiass", label: "Free help — SENDIASS" },
+      { path: "/sendiass", label: "Free help - SENDIASS" },
     ],
   },
   {

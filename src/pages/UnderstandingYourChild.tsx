@@ -7,7 +7,7 @@ export default function UnderstandingYourChild() {
   return (
     <Layout>
       <SEOHead
-        title="Understanding Your Child — SEND Navigator"
+        title="Understanding Your Child - SEND Navigator"
         description="You do not need a diagnosis to start understanding your child. Practical guides to autism and ADHD for parents navigating the SEND system."
         path="/understanding-your-child"
       />
@@ -20,7 +20,7 @@ export default function UnderstandingYourChild() {
           <strong>You do not need a diagnosis to start understanding your child.</strong>
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mt-3">
-          A diagnosis can open doors — to assessment, to support, to the right language in meetings. But many children <strong>wait years</strong> for one. And understanding what is happening for your child right now is both possible and useful, regardless of where you are in that process.
+          A diagnosis can open doors. To assessment, to support, to the right language in meetings. But many children <strong>wait years</strong> for one. And understanding what is happening for your child right now is both possible and useful, regardless of where you are in that process.
         </p>
       </header>
 
@@ -98,14 +98,14 @@ export default function UnderstandingYourChild() {
               The waiting lists for assessment in England are long. For many families, a formal diagnosis is <strong>years away</strong>.
             </p>
             <p>
-              You do not have to wait for a diagnosis before asking for support. Schools have a <strong>legal duty to make reasonable adjustments</strong> for children with SEND, with or without a formal diagnosis. What matters is evidence of need — and that is something you can start building now.
+              You do not have to wait for a diagnosis before asking for support. Schools have a <strong>legal duty to make reasonable adjustments</strong> for children with SEND, with or without a formal diagnosis. What matters is evidence of need, and that is something you can start building now.
             </p>
             <div className="flex flex-col gap-2 mt-4">
               <Link to="/what-to-do-right-now" className="inline-flex items-center gap-2 text-primary hover:underline font-medium text-sm">
                 → What to do right now if things are going wrong
               </Link>
               <Link to="/what-we-owe-our-children" className="inline-flex items-center gap-2 text-primary hover:underline font-medium text-sm">
-                → What we owe our children — including how to build an evidence jacket
+                → What we owe our children, including how to build an evidence jacket
               </Link>
             </div>
           </div>

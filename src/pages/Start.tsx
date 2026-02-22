@@ -61,7 +61,7 @@ const parentGuides: ContentLink[] = [
   { path: "/alternative-provision", title: "Alternative Provision", summary: "When mainstream doesn't work", icon: Building2 },
   { path: "/post-16-and-transition", title: "Post-16 & Transition", summary: "Moving into adulthood", icon: GraduationCap },
   { path: "/what-to-do-right-now", title: "What to do right now", summary: "Practical steps based on current law", icon: Scale },
-  { path: "/sendiass", title: "Free help — SENDIASS", summary: "Free independent advice near you", icon: HandHeart },
+  { path: "/sendiass", title: "Free help - SENDIASS", summary: "Free independent advice near you", icon: HandHeart },
 ];
 
 const systemPages: ContentLink[] = [
@@ -155,35 +155,35 @@ const Index = () => {
       {/* ALL CONTENT SECTIONS */}
       <div className="content-section py-4 space-y-8">
         <ContentSection
-          title="📊 The State of SEND 2026"
+          title="The State of SEND 2026"
           description="Our 8-part report tracking every aspect of SEND reform"
           links={reportSections}
           accent="bg-primary/10 text-primary"
         />
 
         <ContentSection
-          title="📖 Parent Guides"
+          title="Parent Guides"
           description="Practical guides for navigating the SEND system right now"
           links={parentGuides}
           accent="bg-status-confirmed/10 text-status-confirmed"
         />
 
         <ContentSection
-          title="🏛️ Understanding the System"
-          description="How the system works — and why it works differently depending on where you are"
+          title="Understanding the System"
+          description="How the system works - and why it works differently depending on where you are"
           links={systemPages}
           accent="bg-status-discussed/10 text-status-discussed"
         />
 
         <ContentSection
-          title="📢 Take Action & Community"
+          title="Take Action and Community"
           description="Make your voice heard, ask questions, and connect with other families"
           links={takeAction}
           accent="bg-status-unconfirmed/10 text-status-unconfirmed"
         />
 
         <ContentSection
-          title="ℹ️ About & Resources"
+          title="About and Resources"
           description="How we work, our sources, and how to give feedback"
           links={aboutLinks}
           accent="bg-muted text-muted-foreground"

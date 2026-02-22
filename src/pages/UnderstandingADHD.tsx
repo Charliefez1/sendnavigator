@@ -16,7 +16,7 @@ export default function UnderstandingADHD() {
   return (
     <Layout>
       <SEOHead
-        title="ADHD — Understanding Your Child"
+        title="ADHD - Understanding Your Child"
         description="What ADHD actually is, how the dopamine system works differently, what it looks like at school and home, and what reasonable adjustments make a practical difference."
         path="/understanding-your-child/adhd"
       />
@@ -34,20 +34,20 @@ export default function UnderstandingADHD() {
           ADHD
         </h1>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          ADHD is Attention Deficit Hyperactivity Disorder. The name is not particularly accurate. ADHD is not simply a deficit of attention. It is a <strong>difference in how the brain manages attention, motivation, impulse control, and emotional regulation</strong> — driven largely by how the dopamine system works.
+          ADHD is Attention Deficit Hyperactivity Disorder. The name is not particularly accurate. ADHD is not simply a deficit of attention. It is a <strong>difference in how the brain manages attention, motivation, impulse control, and emotional regulation</strong>, driven largely by how the dopamine system works.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mt-3">
           It is a lifelong neurological profile. It is not caused by bad parenting, too much screen time, or lack of effort. It was always there. For many children it is only identified when the demands of school start to exceed what the brain can manage without support.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mt-3">
-          ADHD comes in three presentations: <strong>predominantly inattentive</strong>, <strong>predominantly hyperactive-impulsive</strong>, and <strong>combined</strong>. The hyperactive version is the one most people picture. The inattentive version — often called ADD — is quieter, frequently missed, and disproportionately common in girls.
+          ADHD comes in three presentations: <strong>predominantly inattentive</strong>, <strong>predominantly hyperactive-impulsive</strong>, and <strong>combined</strong>. The hyperactive version is the one most people picture. The inattentive version, often called ADD, is quieter, frequently missed, and disproportionately common in girls.
         </p>
       </header>
 
       <WordFromRich>
         <p>I am autistic. I have ADHD. I am dyslexic. For a long time I thought those things were problems to manage. They are not. They are a different operating system. One that most schools and systems were not designed around.</p>
         <p>What I know from the inside is this. Your child is probably working very hard to hold it together in school. Masking takes real effort. And when they get home, all of that effort collapses. That is not them being difficult at home. That is the cost of the day.</p>
-        <p>Understanding what your child is experiencing means understanding the detail. Not just the label. When do they feel dysregulated? What are the flash points? Do they stim, and if so, is anyone stopping them when they should not be? Stimming — rocking, tapping, humming, flapping — is a regulation strategy, not a problem. If your child is stimming and being told to stop, that needs a conversation. The more you understand your child's specific experience, the more useful you are to everyone trying to help them.</p>
+        <p>Understanding what your child is experiencing means understanding the detail. Not just the label. When do they feel dysregulated? What are the flash points? Do they stim, and if so, is anyone stopping them when they should not be? Stimming (rocking, tapping, humming, flapping) is a regulation strategy, not a problem. If your child is stimming and being told to stop, that needs a conversation. The more you understand your child's specific experience, the more useful you are to everyone trying to help them.</p>
       </WordFromRich>
 
       {/* How the ADHD brain works */}
@@ -56,10 +56,10 @@ export default function UnderstandingADHD() {
           <SectionHeading>How the ADHD brain actually works</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p><strong>The key is dopamine.</strong></p>
-            <p>Dopamine is the brain's motivation and reward system. It drives the ability to start tasks, sustain attention, manage impulses, and regulate emotions. In ADHD, this system works differently. The brain does not produce or use dopamine in the same way — which means the <strong>automatic processes that most people take for granted require conscious effort</strong>, and often still do not work reliably.</p>
+            <p>Dopamine is the brain's motivation and reward system. It drives the ability to start tasks, sustain attention, manage impulses, and regulate emotions. In ADHD, this system works differently. The brain does not produce or use dopamine in the same way, which means the <strong>automatic processes that most people take for granted require conscious effort</strong>, and often still do not work reliably.</p>
             <p>The result is a brain that struggles to engage with tasks it finds unstimulating, cannot easily filter what is and is not worth paying attention to, shifts rapidly between states of <strong>intense focus and complete disengagement</strong>, and reacts more strongly to frustration, boredom, and perceived failure.</p>
             <p>This is not laziness. It is not a choice. It is a brain that is <strong>working harder than most</strong> to do things that most people do without thinking.</p>
-            <p>The same brain, given something genuinely interesting, can produce <strong>hyperfocus</strong> — an intense, sustained, highly productive engagement that looks nothing like the ADHD the school describes. Both are real. Both are the same brain. The variable is stimulation and meaning, not effort or willingness.</p>
+            <p>The same brain, given something genuinely interesting, can produce <strong>hyperfocus</strong>. An intense, sustained, highly productive engagement that looks nothing like the ADHD the school describes. Both are real. Both are the same brain. The variable is stimulation and meaning, not effort or willingness.</p>
           </div>
         </div>
       </section>
@@ -89,7 +89,7 @@ export default function UnderstandingADHD() {
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p>The ADHD child at home after a school day has usually spent hours <strong>suppressing impulses, forcing attention, managing social demands</strong>, and absorbing correction after correction. By the time they get home the regulatory system is depleted.</p>
             <p>This shows as inability to do homework, explosive reactions to minor requests, inability to transition off screens, difficulty eating, and often a prolonged period of chaotic behaviour before crash and exhaustion.</p>
-            <p><strong>Screen and gaming use</strong> is a specific issue worth naming directly. The ADHD brain responds strongly to the unpredictable reward loops in games and social media. These platforms are engineered around exactly the kind of stimulation that the ADHD dopamine system responds to. This makes disengagement genuinely hard — <strong>harder than for neurotypical children</strong> — and removal genuinely distressing, not because of defiance but because of how the nervous system experiences the withdrawal.</p>
+            <p><strong>Screen and gaming use</strong> is a specific issue worth naming directly. The ADHD brain responds strongly to the unpredictable reward loops in games and social media. These platforms are engineered around exactly the kind of stimulation that the ADHD dopamine system responds to. This makes disengagement genuinely hard, <strong>harder than for neurotypical children</strong>, and removal genuinely distressing, not because of defiance but because of how the nervous system experiences the withdrawal.</p>
             <p>This does not mean unlimited access is the right approach. It means that managing screen use with an ADHD child requires understanding what is actually happening, and responding with <strong>structure and consistency</strong> rather than sudden removal and consequences.</p>
           </div>
         </div>
@@ -134,7 +134,7 @@ export default function UnderstandingADHD() {
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <SectionHeading>On diagnosis and waiting lists</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-            <p>NHS waiting times for ADHD assessment in England are significant — often <strong>two to four years</strong> in many areas. Private assessment exists but is expensive and inaccessible to many families.</p>
+            <p>NHS waiting times for ADHD assessment in England are significant, often <strong>two to four years</strong> in many areas. Private assessment exists but is expensive and inaccessible to many families.</p>
             <p>The practical position is the same as with autism. <strong>You do not need a diagnosis</strong> to request support, ask for reasonable adjustments, or pursue an EHCP.</p>
             <p>What helps while you wait is <strong>consistent, dated documentation</strong>. Your observations at home. The school's observations in class. Incident logs. Teacher reports. Evidence that the difficulty is persistent, pervasive, and affecting the child's ability to access education.</p>
             <div className="flex flex-col gap-2 mt-4">
@@ -219,7 +219,7 @@ export default function UnderstandingADHD() {
         >
           <div>
             <p className="text-[10px] uppercase tracking-wider text-muted-foreground">Also in this section</p>
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm">Autism — Understanding Your Child</p>
+            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm">Autism - Understanding Your Child</p>
           </div>
           <ArrowLeft className="w-4 h-4 text-muted-foreground rotate-180 group-hover:text-primary transition-colors" />
         </Link>
