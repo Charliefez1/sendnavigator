@@ -100,7 +100,7 @@ export function Header() {
         <div className="flex items-center justify-between h-10">
           {/* Left: Logo */}
           <NavLink to="/" end className="flex-shrink-0">
-            <img src={beaconLogo} alt="Beacon SEND Navigator - Home" className="h-8" />
+            <img src={beaconLogo} alt="Beacon SEND Navigator - Home" className="h-[52px]" />
           </NavLink>
 
           {/* Center: Key direct links (desktop) */}
