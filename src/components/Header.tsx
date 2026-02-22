@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { NavLink, useLocation, Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import beaconLogo from "@/assets/beacon-logo.png";
 
 interface NavItem {
   path: string;
@@ -97,18 +98,9 @@ export function Header() {
     <header className="bg-navy text-navy-foreground sticky top-0 z-50">
       <div className="content-wide py-1">
         <div className="flex items-center justify-between h-10">
-          {/* Left: Home */}
-          <NavLink
-            to="/"
-            end
-            className={({ isActive }) =>
-              cn(
-                "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
-                isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
-              )
-            }
-          >
-            Home
+          {/* Left: Logo */}
+          <NavLink to="/" end className="flex-shrink-0">
+            <img src={beaconLogo} alt="Beacon SEND Navigator - Home" className="h-8" />
           </NavLink>
 
           {/* Center: Key direct links (desktop) */}
