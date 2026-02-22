@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { SECTION_TITLES } from "@/contexts/ChildProfileContext";
 import { ProfileSidebar } from "./ProfileSidebar";
 import { SectionTemplate } from "./SectionTemplate";
 import { FinalScreen } from "./FinalScreen";
 import { SaveProgressButton } from "./SaveProgressButton";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight, Menu, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Home, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ProfileBuilderProps {
@@ -45,6 +46,13 @@ export function ProfileBuilder({ initialSection = 0 }: ProfileBuilderProps) {
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
+        <Link
+          to="/"
+          className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors px-3 mb-4"
+        >
+          <Home className="w-3.5 h-3.5" />
+          Back to home
+        </Link>
         <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-3 px-3">
           Sections
         </p>
@@ -83,6 +91,13 @@ export function ProfileBuilder({ initialSection = 0 }: ProfileBuilderProps) {
 
       {/* Main content */}
       <main className="flex-1 p-4 sm:p-6 lg:p-8 max-w-3xl">
+        <Link
+          to="/"
+          className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors mb-4 lg:hidden"
+        >
+          <Home className="w-3.5 h-3.5" />
+          Back to home
+        </Link>
         <SectionTemplate sectionIndex={activeSection} />
 
         {/* Navigation buttons */}
