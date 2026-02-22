@@ -127,7 +127,7 @@ export const trustSignals = {
 
 export const aiTrustSignals = {
   labelling: "Answers are generated using Ask Rich.",
-  grounding: "Everything I tell you comes from the content we've researched and published on this site — nothing else.",
+  grounding: "Everything I tell you comes from the content we've researched and published on this site. Nothing else.",
   uncertaintyHandling: "If I don't know something or the picture is incomplete, I'll tell you that straight.",
   refusalExplanation: "I can't comment on individual cases, give legal advice, or predict what's going to happen. But I can help you understand what we know right now.",
   noTechnicalJargon: true,
