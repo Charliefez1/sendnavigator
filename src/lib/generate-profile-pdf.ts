@@ -452,6 +452,51 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
 
   footer();
 
+  // =============================================
+  // ABOUT NEURODIVERSITY GLOBAL — final page
+  // =============================================
+  doc.addPage();
+  setFill(WHITE);
+  doc.rect(0, 0, pageWidth, pageHeight, "F");
+  y = margin;
+
+  doc.setFontSize(18);
+  doc.setFont("helvetica", "bold");
+  setColor(NAVY);
+  doc.text("About Neurodiversity Global", margin, y);
+  y += 8;
+
+  setDraw(NAVY);
+  doc.setLineWidth(0.5);
+  doc.line(margin, y, margin + 50, y);
+  y += 12;
+
+  const ngParagraphs = [
+    "This profile was generated using a tool built by Neurodiversity Global.",
+    "Neurodiversity Global provides neurodiversity training, consultancy, and practical support to organisations, schools, education providers, public bodies, and families internationally.",
+    "The organisation was founded by Richard Ferriman and Charlie Ferriman, a father and son team who are both neurodivergent. Charlie is one of three neurodivergent children in the family, and between them they bring lived experience of autism, ADHD, and dyslexia alongside decades of senior leadership, systems design, and delivery experience across complex and regulated environments.",
+    "Neurodiversity Global operates from a clear position. Neurodivergent people are not broken. The systems around them often are.",
+    "The work focuses on understanding how environments, expectations, policies, leadership behaviours, and institutional processes unintentionally exclude neurodivergent children and adults, and how those systems can be redesigned to reduce harm and increase access, safety, and performance. This includes education systems that prioritise compliance over regulation, workplaces that reward narrow communication styles, and support pathways that intervene only once crisis has already occurred.",
+    "Across all settings, the approach is grounded in lived reality rather than abstract theory. Training and consultancy draw directly on real world experience of parenting neurodivergent children, navigating education and SEND processes, leading large scale organisational change, and supporting individuals who have spent years masking to survive systems that were never built for them.",
+    "Neurodiversity Global works with leaders, educators, parents, and practitioners to move beyond awareness and into practical, evidence informed change. The emphasis is on redesigning environments, improving decision making, reducing unnecessary cognitive and emotional load, and creating conditions where neurodivergent children and adults can be seen, supported, and succeed without having to hide who they are.",
+    "The work is intentionally systems focused. Change is not driven by asking neurodivergent people to adapt to environments that harm them, but by equipping organisations, schools, and families to understand difference, recognise impact, and take responsibility for building spaces that fit the full range of human neurodevelopment.",
+    "If this profile has been useful, we would welcome the opportunity to work with your school, organisation, or team.",
+  ];
+
+  setColor(DARK_TEXT);
+  for (const para of ngParagraphs) {
+    y = addWrappedText(para, margin, y, contentWidth, 10.5, "normal", 1.6);
+    y += 5;
+  }
+
+  y += 6;
+  doc.setFontSize(10.5);
+  doc.setFont("helvetica", "bold");
+  setColor(NAVY);
+  doc.text("Find out more at neurodiversityglobal.com", margin, y);
+
+  footer();
+
   // === Download ===
   const safeName = childName.toLowerCase().replace(/[^a-z0-9]/g, "");
   doc.save(`${safeName}-profile-${dateCompact}.pdf`);
