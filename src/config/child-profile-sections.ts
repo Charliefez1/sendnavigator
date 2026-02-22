@@ -260,4 +260,74 @@ export const sectionContent: Record<number, SectionContent> = {
       },
     ],
   },
+
+  // Section 6: Sensory Processing
+  5: {
+    framing:
+      "The sensory system processes everything the body experiences. Sound, light, touch, movement, temperature, and the signals from inside the body itself. For many neurodivergent children it is dysregulated in one direction or both. Over-sensitive means the input is too loud. Under-sensitive means the signal is too quiet. Many children are both, in different channels, on different days. Fidgeting is almost always sensory. It is the body seeking the input it needs to stay regulated, not a behaviour problem.",
+    questions: [
+      { id: "noise_sensitivity", label: "Is your child sensitive to noise? Which kinds, sudden sounds, background noise, specific voices, crowds?", type: "text" },
+      { id: "texture_distress", label: "Are there textures, clothing, food, or surfaces that cause genuine distress?", type: "text" },
+      { id: "pain_temperature", label: "Does your child seem under-sensitive to pain or temperature, not noticing injury or cold?", type: "single-select", options: ["Yes, clearly", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "fidgeting", label: "Does your child fidget? What does it look like and when does it happen most?", type: "text" },
+      { id: "movement_seeking", label: "Does your child seek movement, spinning, rocking, bouncing, climbing, or avoid it?", type: "single-select", options: ["Seeks movement actively", "Avoids movement", "Both at different times", "Neither particularly"] },
+      { id: "interoception", label: "Do they struggle to know when they are hungry, full, tired, or need the toilet until it becomes urgent?", type: "single-select", options: ["Yes, regularly", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "sensory_seeking", label: "Are there sensory inputs they actively seek, strong flavours, tight clothing, weighted blankets, loud music, intense physical activity?", type: "text" },
+    ],
+  },
+
+  // Section 7: Executive Function and the Knowing-Doing Gap
+  6: {
+    framing:
+      "Executive function is the set of mental skills that organise thought and action. Starting tasks. Switching between them. Holding information in mind while doing something else. Planning. Managing time. For many neurodivergent children these skills work differently. The most important thing to understand is this. Knowing what to do and being able to do it are completely separate things. A child can tell you exactly what they should be doing and still be completely unable to start. That is not defiance. That is executive function. It gets misread as laziness more than almost any other neurodivergent trait.",
+    questions: [
+      { id: "task_initiation", label: "Can your child start tasks independently or do they need a prompt, a person, or a specific condition to get going?", type: "text" },
+      { id: "knowing_doing_gap", label: "Is there a gap between what they say they will do and what they actually do, not because they are being dishonest but because the intention and the action are not connecting?", type: "single-select", options: ["Yes, frequently", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "multi_step_instructions", label: "How do they manage with multi-step instructions?", type: "single-select", options: ["Manages well", "Struggles with more than two steps", "Struggles with any sequence", "It depends on the task"] },
+      { id: "time_blindness", label: "Do they lose track of time, starting something and being genuinely surprised when they have run out of it?", type: "single-select", options: ["Yes, regularly", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "variable_ability", label: "Does their ability to do things vary significantly day to day, capable one day and seemingly unable the next?", type: "text" },
+      { id: "procrastination", label: "Do they leave things to the last minute or not start at all, even for things they want to do?", type: "text" },
+    ],
+  },
+
+  // Section 8: Sleep
+  7: {
+    framing:
+      "Poor sleep does not just make children tired. It mimics ADHD. It mimics anxiety. It mimics emotional dysregulation and behaviour difficulty. A child who is chronically sleep-deprived is being assessed and judged on a version of themselves that is not their baseline. For neurodivergent children especially, sleep is not a lifestyle factor. It is a clinical variable.",
+    questions: [
+      { id: "sleep_onset", label: "How long does it take your child to fall asleep after going to bed?", type: "single-select", options: ["Under 15 minutes", "15 to 30 minutes", "30 minutes to an hour", "Over an hour", "It varies significantly"] },
+      { id: "night_waking", label: "Do they wake in the night? How often and for how long?", type: "text" },
+      { id: "bedtime_anxiety", label: "Do they seem anxious about going to bed or being in their room at night?", type: "single-select", options: ["Yes, regularly", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "sleep_hours", label: "How many hours of sleep are they actually getting on an average school night?", type: "text" },
+      { id: "sleep_impact", label: "How do they seem on mornings after a good night compared to a bad one?", type: "text" },
+      { id: "busy_mind", label: "Do they have a busy or active mind at bedtime, finding it hard to switch off?", type: "single-select", options: ["Yes, regularly", "Sometimes", "Rarely", "Not that I have noticed"] },
+    ],
+  },
+
+  // Section 9: Dopamine Regulation
+  8: {
+    framing:
+      "The neurodivergent brain is often running low on dopamine, the chemical that makes effort feel worthwhile, that makes time feel manageable, that connects action to reward. When that system is not working typically, children seek stimulation wherever they can find it. Screens. Risk. Movement. Conflict. Not because they are badly behaved. Because their brain is trying to regulate itself with whatever tools are available.",
+    questions: [
+      { id: "novelty_seeking", label: "Does your child seek novelty constantly, struggling to settle into routine activities?", type: "single-select", options: ["Yes, frequently", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "screen_removal", label: "How do they respond when screens or devices are taken away?", type: "text" },
+      { id: "effortful_tasks", label: "Do they find it hard to start tasks that feel effortful or boring, even ones they are capable of?", type: "single-select", options: ["Yes, frequently", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "risk_taking", label: "Do they take physical risks that worry you?", type: "text" },
+      { id: "stimulation_need", label: "Do they seem to need external excitement to function, constant stimulation, movement, or noise?", type: "text" },
+    ],
+  },
+
+  // Section 10: Masking and the Cost of Compliance
+  9: {
+    framing:
+      "Masking is performing neurotypicality in a world that expects it. It is learned, often very young, because being visibly different has consequences. The child who is fine at school and falls apart at home is not being manipulative. They are showing you the cost of the performance. The compliance you see in school is effort. The collapse you see at home is the bill. Both are real. The performance does not mean the need is not there. It means your child has learned to hide it, and that hiding is exhausting them.",
+    questions: [
+      { id: "school_home_difference", label: "Does your child behave very differently at school compared to at home?", type: "single-select", options: ["Yes, significantly different", "Somewhat different", "About the same", "School is harder than home"] },
+      { id: "after_school_collapse", label: "Do they hold it together all day and fall apart when they are with you, crying, raging, or withdrawing?", type: "text" },
+      { id: "post_school_exhaustion", label: "Does the exhaustion after school go beyond physical tiredness?", type: "single-select", options: ["Yes, they need significant time to recover", "Sometimes", "Rarely", "They seem fine after school"] },
+      { id: "teacher_discrepancy", label: "Have teachers described your child as fine or no problem while your experience at home is significantly different?", type: "single-select", options: ["Yes, regularly", "Sometimes", "Rarely", "Teachers reflect what we see at home"] },
+      { id: "suppressed_distress", label: "Do they suppress signs of distress in public and express them intensely at home?", type: "text" },
+      { id: "compliance_avoidance", label: "Do they agree to things they do not want to do because saying no feels too risky?", type: "single-select", options: ["Yes, frequently", "Sometimes", "Rarely", "Not that I have noticed"] },
+    ],
+  },
 };
