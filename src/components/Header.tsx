@@ -138,6 +138,17 @@ export function Header() {
               EHCP Guide
             </NavLink>
             <NavLink
+              to="/my-child-profile"
+              className={({ isActive }) =>
+                cn(
+                  "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
+                  isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
+                )
+              }
+            >
+              My Child: A Profile
+            </NavLink>
+            <NavLink
               to="/what-to-do-right-now"
               className={({ isActive }) =>
                 cn(
