@@ -129,52 +129,39 @@ const Index = () => {
         path="/"
       />
 
-      {/* Quick links bar + sign out */}
+      {/* Quick links bar */}
       <section className="content-section pt-4 pb-1">
         <div className="flex items-center gap-2 overflow-x-auto">
-          <div className="flex items-center gap-1.5 flex-1 min-w-0">
-            <Link to="/state-of-send-2026">
-              <Button variant="outline" size="sm" className="gap-1.5 text-xs whitespace-nowrap">
-                <BookOpen className="w-3.5 h-3.5" />
-                SEND Reform Report
-              </Button>
-            </Link>
-            <Link to="/ehcps">
-              <Button variant="outline" size="sm" className="gap-1.5 text-xs whitespace-nowrap">
-                <Shield className="w-3.5 h-3.5" />
-                EHCP Guide
-              </Button>
-            </Link>
-            <Link to="/my-child-profile">
-              <Button variant="outline" size="sm" className="gap-1.5 text-xs whitespace-nowrap">
-                <ClipboardList className="w-3.5 h-3.5" />
-                My Child: A Profile
-              </Button>
-            </Link>
-            <Link to="/what-to-do-right-now">
-              <Button variant="outline" size="sm" className="gap-1.5 text-xs whitespace-nowrap">
-                <Scale className="w-3.5 h-3.5" />
-                What to do now
-              </Button>
-            </Link>
-            <Link to="/questions-and-answers">
-              <Button variant="outline" size="sm" className="gap-1.5 text-xs whitespace-nowrap">
-                <MessageCircleQuestion className="w-3.5 h-3.5" />
-                Ask Rich
-              </Button>
-            </Link>
-          </div>
-          {user && (
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => signOut()}
-              className="gap-1.5 text-xs text-muted-foreground flex-shrink-0"
-            >
-              <LogOut className="w-3.5 h-3.5" />
-              Sign out
+          <Link to="/state-of-send-2026">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-navy/85">
+              <BookOpen className="w-3.5 h-3.5" />
+              SEND Reform Report
             </Button>
-          )}
+          </Link>
+          <Link to="/ehcps">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-navy/85">
+              <Shield className="w-3.5 h-3.5" />
+              EHCP Guide
+            </Button>
+          </Link>
+          <Link to="/my-child-profile">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-navy/85">
+              <ClipboardList className="w-3.5 h-3.5" />
+              My Child: A Profile
+            </Button>
+          </Link>
+          <Link to="/what-to-do-right-now">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-navy/85">
+              <Scale className="w-3.5 h-3.5" />
+              What to do now
+            </Button>
+          </Link>
+          <Link to="/questions-and-answers">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-navy/85">
+              <MessageCircleQuestion className="w-3.5 h-3.5" />
+              Ask Rich
+            </Button>
+          </Link>
         </div>
       </section>
 
@@ -278,6 +265,23 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Sign out */}
+      {user && (
+        <section className="content-section py-4">
+          <div className="flex justify-center">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => signOut()}
+              className="gap-1.5 text-xs text-muted-foreground"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              Sign out
+            </Button>
+          </div>
+        </section>
+      )}
     </Layout>
   );
 };
