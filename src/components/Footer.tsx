@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Heart, BookOpen, FileText, MessageCircleQuestion, MessageSquare, HelpCircle, ExternalLink, MapPin } from "lucide-react";
+import { Heart, BookOpen, FileText, MessageCircleQuestion, MessageSquare, HelpCircle, ExternalLink, MapPin, Info } from "lucide-react";
 
 export function Footer() {
+  const [showAboutTool, setShowAboutTool] = useState(false);
   return (
     <footer className="bg-navy text-navy-foreground mt-auto">
       {/* Main footer content */}
@@ -94,10 +96,31 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => setShowAboutTool(!showAboutTool)}
+                  className="text-sm text-navy-muted hover:text-white transition-colors"
+                >
+                  About this tool
+                </button>
+              </li>
             </ul>
           </div>
         </div>
       </div>
+
+      {/* About this tool expandable */}
+      {showAboutTool && (
+        <div className="border-t border-white/10">
+          <div className="content-wide py-6 space-y-4 text-sm text-navy-muted leading-relaxed max-w-3xl">
+            <p>We are a father and son team working in the world of neurodiversity. Between us we have lived experience that no textbook can replicate. This tool, and this site, is our attempt to cut through the noise for families who are exhausted by a system that was not built for their children.</p>
+            <p>Anything you read here, anything the AI generates, any strategy or suggestion offered, may be useful. It may not. We will sometimes get things wrong. Nothing you receive from this tool is legally binding. It does not constitute a medical opinion, a clinical assessment, or a formally endorsed recommendation. It has not been signed off by a government body, a medical authority, or any regulatory institution. It is the honest, experience-led thinking of two people who know this world from the inside and want to make it easier for the families living it.</p>
+            <p>Use it as a starting point. Question it. Adapt it. Share what helps and leave what does not.</p>
+            <p className="font-medium text-white/70">This tool is a guide. It is not a diagnosis.</p>
+          </div>
+        </div>
+      )}
 
       {/* Disclaimer bar */}
       <div className="border-t border-white/10">
