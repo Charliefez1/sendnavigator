@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
@@ -6,8 +7,9 @@ import { NewsHeadlines } from "@/components/NewsHeadlines";
 import { useAuth } from "@/contexts/AuthContext";
 import { SendiassSignpost } from "@/components/SendiassSignpost";
 import { WordFromRich } from "@/components/WordFromRich";
-import { 
-  ArrowRight, 
+import { GuideMe } from "@/components/GuideMe";
+import {
+  ArrowRight,
   BookOpen,
   Heart,
   Shield,
@@ -29,6 +31,7 @@ import {
   HelpCircle,
   ClipboardList,
   Stethoscope,
+  ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -97,7 +100,7 @@ function ContentSection({ title, description, links, accent }: { title: string; 
           <Link
             key={link.path}
             to={link.path}
-            className={`flex items-start gap-3 p-3.5 bg-card border border-border rounded-lg hover:shadow-md transition-all group`}
+            className="flex items-start gap-3 p-3.5 bg-card border border-border rounded-lg hover:shadow-md transition-all group"
           >
             <div className={`w-8 h-8 rounded-md ${accent} flex items-center justify-center flex-shrink-0`}>
               <link.icon className="w-4 h-4" />
@@ -116,6 +119,7 @@ function ContentSection({ title, description, links, accent }: { title: string; 
 
 const Index = () => {
   const { user, signOut } = useAuth();
+  const [showAll, setShowAll] = useState(false);
 
   return (
     <Layout>
@@ -129,7 +133,7 @@ const Index = () => {
       <section className="content-section pt-6 pb-2">
         <div className="flex items-center justify-between">
           <h1 className="text-lg sm:text-xl font-display font-semibold text-foreground">
-            Explore the Navigator
+            SEND Reform Navigator
           </h1>
           {user && (
             <Button
@@ -143,53 +147,68 @@ const Index = () => {
             </Button>
           )}
         </div>
-        <p className="text-sm text-muted-foreground mt-1">
-          Everything on this site, organised by topic. Pick a section or browse.
-        </p>
       </section>
 
       {/* Breaking News */}
-      <section className="content-section py-4">
+      <section className="content-section py-3">
         <NewsHeadlines />
       </section>
 
-      {/* ALL CONTENT SECTIONS */}
-      <div className="content-section py-4 space-y-8">
-        <ContentSection
-          title="The State of SEND 2026"
-          description="Our 8-part report tracking every aspect of SEND reform"
-          links={reportSections}
-          accent="bg-primary/10 text-primary"
-        />
+      {/* GUIDE ME — the conversational search */}
+      <section className="content-section py-4">
+        <GuideMe />
+      </section>
 
-        <ContentSection
-          title="Parent Guides"
-          description="Practical guides for navigating the SEND system right now"
-          links={parentGuides}
-          accent="bg-status-confirmed/10 text-status-confirmed"
-        />
+      {/* Browse everything toggle */}
+      <section className="content-section py-2">
+        <button
+          onClick={() => setShowAll(!showAll)}
+          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mx-auto"
+        >
+          <span>{showAll ? "Hide full site map" : "Or browse everything"}</span>
+          <ChevronDown className={`w-4 h-4 transition-transform ${showAll ? "rotate-180" : ""}`} />
+        </button>
+      </section>
 
-        <ContentSection
-          title="Understanding the System"
-          description="How the system works - and why it works differently depending on where you are"
-          links={systemPages}
-          accent="bg-status-discussed/10 text-status-discussed"
-        />
+      {/* Full content sections — hidden by default */}
+      {showAll && (
+        <div className="content-section py-4 space-y-8 animate-in fade-in slide-in-from-top-2 duration-300">
+          <ContentSection
+            title="The State of SEND 2026"
+            description="Our 8-part report tracking every aspect of SEND reform"
+            links={reportSections}
+            accent="bg-primary/10 text-primary"
+          />
 
-        <ContentSection
-          title="Take Action and Community"
-          description="Make your voice heard, ask questions, and connect with other families"
-          links={takeAction}
-          accent="bg-status-unconfirmed/10 text-status-unconfirmed"
-        />
+          <ContentSection
+            title="Parent Guides"
+            description="Practical guides for navigating the SEND system right now"
+            links={parentGuides}
+            accent="bg-status-confirmed/10 text-status-confirmed"
+          />
 
-        <ContentSection
-          title="About and Resources"
-          description="How we work, our sources, and how to give feedback"
-          links={aboutLinks}
-          accent="bg-muted text-muted-foreground"
-        />
-      </div>
+          <ContentSection
+            title="Understanding the System"
+            description="How the system works - and why it works differently depending on where you are"
+            links={systemPages}
+            accent="bg-status-discussed/10 text-status-discussed"
+          />
+
+          <ContentSection
+            title="Take Action and Community"
+            description="Make your voice heard, ask questions, and connect with other families"
+            links={takeAction}
+            accent="bg-status-unconfirmed/10 text-status-unconfirmed"
+          />
+
+          <ContentSection
+            title="About and Resources"
+            description="How we work, our sources, and how to give feedback"
+            links={aboutLinks}
+            accent="bg-muted text-muted-foreground"
+          />
+        </div>
+      )}
 
       {/* Word from Rich */}
       <WordFromRich>
