@@ -15,7 +15,7 @@ interface NavGroup {
 
 const navGroups: NavGroup[] = [
   {
-    label: "Reform Report",
+    label: "SEND Reform Report",
     items: [
       { path: "/state-of-send-2026", label: "Report Overview" },
       { path: "/state-of-send-2026/where-we-are-now", label: "Where we are now" },
@@ -123,7 +123,7 @@ export function Header() {
                 )
               }
             >
-              Reform Report
+              SEND Reform Report
             </NavLink>
             <NavLink
               to="/ehcps"
