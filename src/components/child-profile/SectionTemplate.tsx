@@ -1,6 +1,7 @@
 import { useChildProfile, SECTION_TITLES } from "@/contexts/ChildProfileContext";
 import { Textarea } from "@/components/ui/textarea";
 import { sectionContent, SectionQuestion } from "@/config/child-profile-sections";
+import { ChildVoiceBlock } from "./ChildVoiceBlock";
 import { cn } from "@/lib/utils";
 import { AlertTriangle } from "lucide-react";
 
@@ -119,6 +120,9 @@ export function SectionTemplate({ sectionIndex }: SectionTemplateProps) {
           </p>
         </div>
       )}
+
+      {/* Child voice toggle */}
+      <ChildVoiceBlock sectionIndex={sectionIndex} />
 
       {/* Closing reflection */}
       <div className="pt-6 border-t border-border space-y-2">

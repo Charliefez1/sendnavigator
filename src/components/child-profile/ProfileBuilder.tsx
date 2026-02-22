@@ -3,12 +3,17 @@ import { SECTION_TITLES } from "@/contexts/ChildProfileContext";
 import { ProfileSidebar } from "./ProfileSidebar";
 import { SectionTemplate } from "./SectionTemplate";
 import { FinalScreen } from "./FinalScreen";
+import { SaveProgressButton } from "./SaveProgressButton";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export function ProfileBuilder() {
-  const [activeSection, setActiveSection] = useState(0);
+interface ProfileBuilderProps {
+  initialSection?: number;
+}
+
+export function ProfileBuilder({ initialSection = 0 }: ProfileBuilderProps) {
+  const [activeSection, setActiveSection] = useState(initialSection);
   const [showFinal, setShowFinal] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -46,7 +51,10 @@ export function ProfileBuilder() {
             setSidebarOpen(false);
           }}
         />
-        <div className="mt-6 px-3">
+        <div className="mt-4 px-3">
+          <SaveProgressButton activeSection={activeSection} />
+        </div>
+        <div className="mt-3 px-3">
           <Button
             variant="outline"
             size="sm"

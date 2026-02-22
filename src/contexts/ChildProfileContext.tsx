@@ -54,6 +54,7 @@ interface ChildProfileContextType {
   updateSectionReflection: (sectionIndex: number, value: string) => void;
   updateFinalStatement: (value: string) => void;
   getSectionStatus: (sectionIndex: number) => SectionStatus;
+  loadState: (data: ChildProfileState) => void;
   reset: () => void;
 }
 
@@ -123,11 +124,13 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
     return "complete";
   };
 
+  const loadState = (data: ChildProfileState) => setState(data);
+
   const reset = () => setState({ ...defaultState, setup: { ...defaultSetup } });
 
   return (
     <ChildProfileContext.Provider
-      value={{ state, updateSetup, updateSectionAnswer, updateSectionReflection, updateFinalStatement, getSectionStatus, reset }}
+      value={{ state, updateSetup, updateSectionAnswer, updateSectionReflection, updateFinalStatement, getSectionStatus, loadState, reset }}
     >
       {children}
     </ChildProfileContext.Provider>

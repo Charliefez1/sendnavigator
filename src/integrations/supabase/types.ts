@@ -146,6 +146,36 @@ export type Database = {
         }
         Relationships: []
       }
+      saved_profiles: {
+        Row: {
+          access_code: string
+          active_section: number
+          created_at: string
+          expires_at: string
+          id: string
+          profile_data: Json
+          stage: string
+        }
+        Insert: {
+          access_code: string
+          active_section?: number
+          created_at?: string
+          expires_at?: string
+          id?: string
+          profile_data: Json
+          stage?: string
+        }
+        Update: {
+          access_code?: string
+          active_section?: number
+          created_at?: string
+          expires_at?: string
+          id?: string
+          profile_data?: Json
+          stage?: string
+        }
+        Relationships: []
+      }
       user_feedback: {
         Row: {
           admin_response: string | null
@@ -208,7 +238,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      cleanup_expired_profiles: { Args: never; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
