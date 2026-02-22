@@ -129,12 +129,9 @@ const Index = () => {
         path="/"
       />
 
-      {/* Header */}
-      <section className="content-section pt-6 pb-2">
-        <div className="flex items-center justify-between">
-          <h1 className="text-lg sm:text-xl font-display font-semibold text-foreground">
-            SEND Reform Navigator
-          </h1>
+      {/* Header with sign out */}
+      <section className="content-section pt-6 pb-1">
+        <div className="flex items-center justify-end">
           {user && (
             <Button
               variant="ghost"
@@ -149,14 +146,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Breaking News */}
-      <section className="content-section py-3">
-        <NewsHeadlines />
-      </section>
-
-      {/* GUIDE ME — the conversational search */}
+      {/* GUIDE ME — hero, top of page */}
       <section className="content-section py-4">
         <GuideMe />
+      </section>
+
+      {/* Breaking News — below guide */}
+      <section className="content-section py-3">
+        <NewsHeadlines />
       </section>
 
       {/* Browse everything toggle */}
