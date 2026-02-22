@@ -56,6 +56,10 @@ export default {
           DEFAULT: "hsl(var(--highlight))",
           border: "hsl(var(--highlight-border))",
         },
+        hover: {
+          DEFAULT: "hsl(var(--hover))",
+          foreground: "hsl(var(--hover-foreground))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
