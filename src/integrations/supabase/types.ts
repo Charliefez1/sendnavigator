@@ -68,6 +68,33 @@ export type Database = {
         }
         Relationships: []
       }
+      knowledge_chunks: {
+        Row: {
+          chunk_index: number
+          content: string
+          created_at: string
+          document_name: string
+          id: string
+          search_vector: unknown
+        }
+        Insert: {
+          chunk_index: number
+          content: string
+          created_at?: string
+          document_name: string
+          id?: string
+          search_vector?: unknown
+        }
+        Update: {
+          chunk_index?: number
+          content?: string
+          created_at?: string
+          document_name?: string
+          id?: string
+          search_vector?: unknown
+        }
+        Relationships: []
+      }
       news_items: {
         Row: {
           created_at: string

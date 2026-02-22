@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -66,6 +67,70 @@ If a section has no answers skip it entirely. Do not comment on skipped sections
 
 After all sections produce a final block headed Ways of Working. Introduce it with: Based on everything in this profile, here is where we would start. Then list the five to seven most relevant strategies for this specific child in order of priority. Specific to this child only. Not a generic list.`;
 
+/**
+ * Search the knowledge base for relevant passages using full-text search.
+ * Returns the top N most relevant chunks.
+ */
+async function searchKnowledgeBase(
+  supabase: ReturnType<typeof createClient>,
+  queryText: string,
+  limit = 5
+): Promise<string[]> {
+  try {
+    // Extract key terms from the parent's answers for search
+    // Remove common words and build a tsquery
+    const stopWords = new Set([
+      "the", "a", "an", "is", "are", "was", "were", "be", "been", "being",
+      "have", "has", "had", "do", "does", "did", "will", "would", "could",
+      "should", "may", "might", "shall", "can", "need", "dare", "ought",
+      "used", "to", "of", "in", "for", "on", "with", "at", "by", "from",
+      "as", "into", "through", "during", "before", "after", "above", "below",
+      "between", "out", "off", "over", "under", "again", "further", "then",
+      "once", "here", "there", "when", "where", "why", "how", "all", "each",
+      "every", "both", "few", "more", "most", "other", "some", "such", "no",
+      "nor", "not", "only", "own", "same", "so", "than", "too", "very",
+      "just", "because", "but", "and", "or", "if", "while", "this", "that",
+      "these", "those", "i", "me", "my", "we", "our", "you", "your", "he",
+      "him", "his", "she", "her", "it", "its", "they", "them", "their",
+      "what", "which", "who", "whom", "up", "about", "yes", "no", "like",
+      "get", "gets", "got", "really", "also", "much", "many", "well",
+      "still", "already", "often", "always", "never", "sometimes",
+    ]);
+
+    const words = queryText
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, " ")
+      .split(/\s+/)
+      .filter((w) => w.length > 2 && !stopWords.has(w));
+
+    // Take the most distinctive words (longer words tend to be more specific)
+    const searchTerms = [...new Set(words)]
+      .sort((a, b) => b.length - a.length)
+      .slice(0, 15);
+
+    if (searchTerms.length === 0) return [];
+
+    // Build an OR-based tsquery for broad matching
+    const tsquery = searchTerms.join(" | ");
+
+    const { data, error } = await supabase
+      .from("knowledge_chunks")
+      .select("content")
+      .textSearch("search_vector", tsquery, { type: "plain", config: "english" })
+      .limit(limit);
+
+    if (error) {
+      console.error("Knowledge base search error:", error);
+      return [];
+    }
+
+    return (data || []).map((row: { content: string }) => row.content);
+  } catch (e) {
+    console.error("Knowledge base search failed:", e);
+    return [];
+  }
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -89,6 +154,32 @@ serve(async (req) => {
       );
     }
 
+    // Search knowledge base for relevant context
+    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+    const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    const relevantPassages = await searchKnowledgeBase(supabase, profileText);
+
+    // Build the messages array
+    const messages: Array<{ role: string; content: string }> = [];
+
+    let userContent = "";
+
+    // Insert knowledge base context if found
+    if (relevantPassages.length > 0) {
+      userContent += "--- Relevant knowledge base context ---\n\n";
+      userContent += "Use the following evidence and research to inform your response where relevant. Do not quote it directly. Draw on it to give more specific, grounded, evidence-informed insights and strategies.\n\n";
+      relevantPassages.forEach((passage, i) => {
+        userContent += `[${i + 1}] ${passage}\n\n`;
+      });
+      userContent += "--- End of knowledge base context ---\n\n";
+    }
+
+    userContent += profileText;
+
+    messages.push({ role: "user", content: userContent });
+
     const response = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
       headers: {
@@ -101,12 +192,7 @@ serve(async (req) => {
         max_tokens: 4000,
         temperature: 0.7,
         system: SYSTEM_PROMPT,
-        messages: [
-          {
-            role: "user",
-            content: profileText,
-          },
-        ],
+        messages,
       }),
     });
 
