@@ -133,31 +133,31 @@ const Index = () => {
       <section className="content-section pt-4 pb-1">
         <div className="flex items-center gap-2 overflow-x-auto">
           <Link to="/state-of-send-2026">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-navy/85">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-hover">
               <BookOpen className="w-3.5 h-3.5" />
               SEND Reform Report
             </Button>
           </Link>
           <Link to="/ehcps">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-navy/85">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-hover">
               <Shield className="w-3.5 h-3.5" />
               EHCP Guide
             </Button>
           </Link>
           <Link to="/my-child-profile">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-navy/85">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-hover">
               <ClipboardList className="w-3.5 h-3.5" />
               My Child: A Profile
             </Button>
           </Link>
           <Link to="/what-to-do-right-now">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-navy/85">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-hover">
               <Scale className="w-3.5 h-3.5" />
               What to do now
             </Button>
           </Link>
           <Link to="/questions-and-answers">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-navy/85">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-hover">
               <MessageCircleQuestion className="w-3.5 h-3.5" />
               Ask Rich
             </Button>

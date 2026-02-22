@@ -8,49 +8,53 @@
 
 @layer base {
   :root {
-    /* Core backgrounds - visible grey */
-    --background: 220 14% 90%;
-    --foreground: 220 30% 10%;
+    /* Core backgrounds - warm stone */
+    --background: 30 15% 90%;
+    --foreground: 25 20% 12%;
 
-    /* Card surfaces - visible grey, no white */
-    --card: 220 13% 87%;
-    --card-foreground: 220 30% 10%;
+    /* Card surfaces - warm cream */
+    --card: 32 18% 93%;
+    --card-foreground: 25 20% 12%;
 
     /* Popover */
-    --popover: 220 13% 87%;
-    --popover-foreground: 220 30% 10%;
+    --popover: 32 18% 93%;
+    --popover-foreground: 25 20% 12%;
 
     /* Primary - warm terracotta */
     --primary: 16 65% 52%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - soft grey */
-    --secondary: 220 14% 92%;
-    --secondary-foreground: 220 22% 18%;
+    /* Secondary - warm sand */
+    --secondary: 30 16% 88%;
+    --secondary-foreground: 25 22% 18%;
 
-    /* Muted */
-    --muted: 220 12% 93%;
-    --muted-foreground: 220 12% 35%;
+    /* Muted - soft warm */
+    --muted: 28 12% 89%;
+    --muted-foreground: 25 10% 38%;
 
-    /* Accent */
-    --accent: 155 30% 90%;
-    --accent-foreground: 155 40% 22%;
+    /* Accent - sage green */
+    --accent: 155 25% 88%;
+    --accent-foreground: 155 35% 22%;
 
     /* Destructive */
     --destructive: 0 55% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders */
-    --border: 220 14% 88%;
-    --input: 220 14% 88%;
+    /* Borders - warm */
+    --border: 28 14% 82%;
+    --input: 28 14% 82%;
     --ring: 16 55% 55%;
 
     --radius: 0.75rem;
 
     /* Navy for header/footer */
     --navy: 220 60% 18%;
-    --navy-foreground: 220 20% 95%;
+    --navy-foreground: 30 20% 95%;
     --navy-muted: 220 30% 65%;
+
+    /* Hover - warm teal for interactive elements */
+    --hover: 175 45% 38%;
+    --hover-foreground: 0 0% 100%;
 
     /* Highlight */
     --highlight: 42 80% 94%;
@@ -58,50 +62,50 @@
 
     /* Information status categories */
     --status-confirmed: 175 55% 34%;
-    --status-confirmed-bg: 175 40% 94%;
-    --status-confirmed-border: 175 35% 75%;
+    --status-confirmed-bg: 175 35% 91%;
+    --status-confirmed-border: 175 30% 72%;
 
     --status-discussed: 42 75% 46%;
-    --status-discussed-bg: 42 60% 93%;
-    --status-discussed-border: 42 50% 72%;
+    --status-discussed-bg: 42 55% 91%;
+    --status-discussed-border: 42 45% 70%;
 
     --status-unconfirmed: 25 80% 50%;
-    --status-unconfirmed-bg: 25 60% 95%;
-    --status-unconfirmed-border: 25 55% 75%;
+    --status-unconfirmed-bg: 25 55% 92%;
+    --status-unconfirmed-border: 25 50% 72%;
 
     --status-leaked: 0 72% 48%;
-    --status-leaked-bg: 0 60% 96%;
-    --status-leaked-border: 0 55% 68%;
+    --status-leaked-bg: 0 55% 94%;
+    --status-leaked-border: 0 50% 65%;
 
     /* Timeline */
     --timeline-completed: 175 55% 32%;
-    --timeline-completed-bg: 175 40% 94%;
+    --timeline-completed-bg: 175 35% 91%;
     --timeline-upcoming: 42 75% 44%;
-    --timeline-upcoming-bg: 42 60% 93%;
+    --timeline-upcoming-bg: 42 55% 91%;
     --timeline-uncertain: 25 80% 50%;
-    --timeline-uncertain-bg: 25 60% 95%;
+    --timeline-uncertain-bg: 25 55% 92%;
     --timeline-new: 175 55% 32%;
-    --timeline-new-bg: 175 40% 94%;
+    --timeline-new-bg: 175 35% 91%;
     --timeline-clarification: 200 60% 42%;
-    --timeline-clarification-bg: 200 45% 94%;
+    --timeline-clarification-bg: 200 40% 91%;
 
     /* Journey navigation */
     --journey-current: 16 65% 52%;
     --journey-complete: 175 50% 40%;
-    --journey-pending: 220 8% 68%;
+    --journey-pending: 25 8% 65%;
     --journey-confirmed: 200 65% 42%;
     --journey-discussed: 42 80% 46%;
     --journey-unconfirmed: 25 85% 52%;
     --journey-next: 335 60% 48%;
 
     /* Sidebar */
-    --sidebar-background: 220 14% 95%;
-    --sidebar-foreground: 220 20% 22%;
+    --sidebar-background: 30 15% 93%;
+    --sidebar-foreground: 25 20% 22%;
     --sidebar-primary: 16 65% 52%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 175 25% 92%;
-    --sidebar-accent-foreground: 175 40% 26%;
-    --sidebar-border: 220 14% 88%;
+    --sidebar-accent: 155 20% 89%;
+    --sidebar-accent-foreground: 155 35% 26%;
+    --sidebar-border: 28 14% 82%;
     --sidebar-ring: 16 55% 55%;
   }
 
