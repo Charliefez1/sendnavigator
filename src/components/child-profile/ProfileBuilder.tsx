@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SECTION_TITLES } from "@/contexts/ChildProfileContext";
 import { ProfileSidebar } from "./ProfileSidebar";
 import { SectionTemplate } from "./SectionTemplate";
@@ -16,6 +16,10 @@ export function ProfileBuilder({ initialSection = 0 }: ProfileBuilderProps) {
   const [activeSection, setActiveSection] = useState(initialSection);
   const [showFinal, setShowFinal] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [activeSection, showFinal]);
 
   if (showFinal) {
     return <FinalScreen />;
