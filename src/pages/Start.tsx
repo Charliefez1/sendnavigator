@@ -129,15 +129,47 @@ const Index = () => {
         path="/"
       />
 
-      {/* Header with sign out */}
-      <section className="content-section pt-6 pb-1">
-        <div className="flex items-center justify-end">
+      {/* Quick links bar + sign out */}
+      <section className="content-section pt-4 pb-1">
+        <div className="flex items-center gap-2 overflow-x-auto">
+          <div className="flex items-center gap-1.5 flex-1 min-w-0">
+            <Link to="/state-of-send-2026">
+              <Button variant="outline" size="sm" className="gap-1.5 text-xs whitespace-nowrap">
+                <BookOpen className="w-3.5 h-3.5" />
+                SEND Reform Report
+              </Button>
+            </Link>
+            <Link to="/ehcps">
+              <Button variant="outline" size="sm" className="gap-1.5 text-xs whitespace-nowrap">
+                <Shield className="w-3.5 h-3.5" />
+                EHCP Guide
+              </Button>
+            </Link>
+            <Link to="/my-child-profile">
+              <Button variant="outline" size="sm" className="gap-1.5 text-xs whitespace-nowrap">
+                <ClipboardList className="w-3.5 h-3.5" />
+                My Child: A Profile
+              </Button>
+            </Link>
+            <Link to="/what-to-do-right-now">
+              <Button variant="outline" size="sm" className="gap-1.5 text-xs whitespace-nowrap">
+                <Scale className="w-3.5 h-3.5" />
+                What to do now
+              </Button>
+            </Link>
+            <Link to="/questions-and-answers">
+              <Button variant="outline" size="sm" className="gap-1.5 text-xs whitespace-nowrap">
+                <MessageCircleQuestion className="w-3.5 h-3.5" />
+                Ask Rich
+              </Button>
+            </Link>
+          </div>
           {user && (
             <Button
               variant="ghost"
               size="sm"
               onClick={() => signOut()}
-              className="gap-1.5 text-xs text-muted-foreground"
+              className="gap-1.5 text-xs text-muted-foreground flex-shrink-0"
             >
               <LogOut className="w-3.5 h-3.5" />
               Sign out
