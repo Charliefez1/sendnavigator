@@ -330,4 +330,71 @@ export const sectionContent: Record<number, SectionContent> = {
       { id: "compliance_avoidance", label: "Do they agree to things they do not want to do because saying no feels too risky?", type: "single-select", options: ["Yes, frequently", "Sometimes", "Rarely", "Not that I have noticed"] },
     ],
   },
+
+  // Section 11: Communication and Social Understanding
+  10: {
+    framing:
+      "Communication is not just language. It includes reading a room, understanding what is meant rather than what is said, navigating the unspoken rules of social situations, and knowing when a joke has gone too far. Many neurodivergent children have strong language skills but find the social communication layer a separate challenge entirely. The child who speaks fluently but cannot read the social situation is frequently misread as rude or deliberately awkward. They are neither. They are navigating a set of unwritten rules nobody ever explained to them.",
+    questions: [
+      { id: "response_time", label: "Does your child take longer than expected to respond to questions or instructions?", type: "single-select", options: ["Yes, noticeably", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "literal_language", label: "Do they take language very literally, missing sarcasm, figures of speech, or implied meaning?", type: "text" },
+      { id: "expressing_feelings", label: "Can they tell you how they are feeling, or do feelings come out in ways other than words?", type: "text" },
+      { id: "reading_emotions", label: "Do they struggle to read other people's emotional states from their face, tone, or body language?", type: "single-select", options: ["Yes, clearly", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "social_cues", label: "Do they sometimes miss social cues, not realising a conversation has ended, not noticing someone is bored or uncomfortable?", type: "text" },
+      { id: "social_misunderstanding", label: "Have they been in social situations that went wrong and they genuinely did not understand why?", type: "text" },
+    ],
+  },
+
+  // Section 12: Behaviour
+  11: {
+    framing:
+      "Behaviour is always communication. Always. The question is never just what happened. It is what was happening before it, what the child was trying to achieve or avoid, and what the adult response communicated back. Understanding the pattern is more useful than managing the incident.",
+    questions: [
+      { id: "recent_incident", label: "Describe a recent difficult behaviour incident. What happened?", type: "text-large" },
+      { id: "before_incident", label: "What was happening in the hour before it?", type: "text" },
+      { id: "child_intent", label: "What do you think your child was trying to communicate or achieve?", type: "text" },
+      { id: "behaviour_patterns", label: "Does the same behaviour happen at the same times of day, in the same lessons, or with the same people?", type: "text" },
+      { id: "adult_response", label: "How do adults around your child typically respond when behaviour is difficult? Does it help?", type: "text" },
+      { id: "makes_sense_to_you", label: "Is there a behaviour that school finds difficult but that makes complete sense to you as a parent? Describe it.", type: "text" },
+    ],
+  },
+
+  // Section 13: Identity and Self Concept
+  12: {
+    framing:
+      "How a child understands themselves, whether they feel different, whether they know why, whether they carry shame about it, is one of the strongest predictors of long term wellbeing. A child who understands their own brain is in a fundamentally different position to one who has simply been told they are difficult.",
+    questions: [
+      { id: "awareness_of_difference", label: "Does your child seem aware that they experience things differently to other children?", type: "single-select", options: ["Yes, clearly aware", "Vaguely aware", "Does not seem aware", "Aware but does not have language for it"] },
+      { id: "shame_frustration", label: "Do they express shame, embarrassment, or frustration about who they are?", type: "text" },
+      { id: "strengths_belief", label: "Do they know what they are good at? Do they believe it?", type: "text" },
+      { id: "belonging", label: "Do they feel like they belong, in their class, their friendship group, their family?", type: "text" },
+      { id: "self_talk", label: "How do they talk about themselves? What words do they use?", type: "text" },
+    ],
+  },
+
+  // Section 14: Strength Profile
+  13: {
+    framing:
+      "Every assessment, every referral, every meeting tends to focus on what is not working. This section is different. A profile without strengths is an incomplete picture. A child whose strengths are named and known has something to build from. This section matters as much as any other in this document.",
+    questions: [
+      { id: "genuine_strengths", label: "What is your child genuinely good at? Not what they should be good at. What do they actually do well?", type: "text-large" },
+      { id: "deep_focus", label: "Where do they show deep focus or unusual ability?", type: "text" },
+      { id: "lights_them_up", label: "What lights them up? What do they return to again and again?", type: "text" },
+      { id: "others_notice", label: "What do other people, teachers, family, friends, say they notice about your child's abilities?", type: "text" },
+      { id: "unrecognised_strength", label: "What strength do you think goes most unrecognised in the school context?", type: "text" },
+    ],
+  },
+
+  // Section 15: Developmental History
+  14: {
+    framing:
+      "Context prevents misinterpretation. A child's early history, how they developed, what their first years looked like, what was straightforward and what was not, gives professionals the frame they need to understand what they are seeing now. Without it they are guessing. You do not need to have all the answers here. Write down what you know.",
+    questions: [
+      { id: "early_concerns", label: "Were there any concerns in the early years, speech, movement, feeding, sleep, or social development?", type: "text" },
+      { id: "language_development", label: "When did your child start talking? Was language development straightforward?", type: "text" },
+      { id: "early_play", label: "How did they play as a young child, independently, with others, in structured or imaginative ways?", type: "text" },
+      { id: "early_medical", label: "Were there any significant medical events in the early years?", type: "text" },
+      { id: "early_concerns_raised", label: "Were any early concerns raised by health visitors, nursery staff, or a GP?", type: "text" },
+    ],
+  },
 };
