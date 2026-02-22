@@ -397,4 +397,96 @@ export const sectionContent: Record<number, SectionContent> = {
       { id: "early_concerns_raised", label: "Were any early concerns raised by health visitors, nursery staff, or a GP?", type: "text" },
     ],
   },
+
+  // Section 16: Family System
+  15: {
+    framing:
+      "Children regulate through the adults around them. That is not a judgement of parents. It is neuroscience. A family under significant stress, dealing with its own neurodivergence, financial pressure, or relational difficulty, is doing something extraordinary just by holding together. Understanding the wider system a child is living in helps professionals see the full picture rather than a fragment of it.",
+    questions: [
+      { id: "stress_level", label: "What is the stress level in your household at the moment, honestly?", type: "single-select", options: ["Generally manageable", "Elevated but coping", "Significantly high", "Crisis point"] },
+      { id: "family_neurodivergence", label: "Is there neurodivergence in the family, diagnosed or undiagnosed, in parents, siblings, or wider family?", type: "text" },
+      { id: "child_awareness_pressures", label: "Is your child aware of pressures in the family? How do they respond to them?", type: "text" },
+      { id: "support_network", label: "What does your support network look like? Who helps?", type: "text" },
+      { id: "family_context", label: "Is there anything about the family context you would want a professional to understand before meeting your child?", type: "text" },
+    ],
+  },
+
+  // Section 17: Physical Health
+  16: {
+    framing:
+      "Several common and easily treatable physical conditions can produce symptoms that look like ADHD, anxiety, emotional dysregulation, or behaviour difficulty. Before drawing conclusions about a child's needs it is worth knowing whether the physical picture has been looked at carefully.",
+    questions: [
+      { id: "blood_tests", label: "Has your child had recent blood tests? Have iron, vitamin D, or thyroid levels been checked?", type: "single-select", options: ["Yes, recently checked", "Not recently", "Never checked", "Not sure"] },
+      { id: "chronic_conditions", label: "Do they have any chronic health conditions that affect their daily functioning?", type: "text" },
+      { id: "puberty_hormones", label: "Are they going through puberty? Have hormonal changes coincided with any change in behaviour or mood?", type: "text" },
+      { id: "ongoing_pain", label: "Do they have any ongoing pain, discomfort, or health issues that are not fully managed?", type: "text" },
+      { id: "vision_hearing", label: "When did they last have a vision and hearing check?", type: "single-select", options: ["Within the last year", "One to two years ago", "More than two years ago", "Never had one", "Not sure"] },
+    ],
+  },
+
+  // Section 18: School Fit vs Child Deficit
+  17: {
+    framing:
+      "Sometimes a child is referred for assessment because the school has not found a way to include them. That is a system problem, not a child problem. It does not mean the child does not have needs. But it changes the question from what is wrong with my child to what has not been tried yet. Both questions matter.",
+    questions: [
+      { id: "adjustments_tried", label: "Has the school tried specific adjustments for your child? What were they and did they make a difference?", type: "text" },
+      { id: "adjustments_followed_through", label: "Have adjustments been properly followed through, or suggested once and not seen again?", type: "single-select", options: ["Properly implemented and followed through", "Suggested but inconsistently applied", "Suggested once and not followed up", "No adjustments have been tried"] },
+      { id: "school_clarity", label: "Has the school been clear about what they can and cannot offer your child?", type: "single-select", options: ["Yes, clearly", "Vaguely", "No, not at all", "The conversation has not happened"] },
+      { id: "assessment_motivation", label: "Does it feel like the school wants an assessment to help your child or to access additional resource to manage them?", type: "single-select", options: ["To genuinely help my child", "Mainly to access resource", "Both", "Not sure"] },
+      { id: "child_voice", label: "Has your child been given the opportunity to say what would help them?", type: "single-select", options: ["Yes, and it was listened to", "Yes, but it did not change anything", "No"] },
+    ],
+  },
+
+  // Section 19: Time, Transitions, and Future Blindness
+  18: {
+    framing:
+      "Time blindness is not a metaphor. For many neurodivergent children time does not feel the way it does for others. There is now, and there is not now. The future is abstract, not because the child is immature, but because the brain does not automatically project forward in time the way others do. This makes transitions, deadlines, and preparation genuinely difficult in ways that look like laziness or not caring. They are neither.",
+    questions: [
+      { id: "time_management", label: "Does your child struggle to manage time, consistently late, always surprised when something ends?", type: "single-select", options: ["Yes, regularly", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "transition_difficulty", label: "Do transitions, ending one thing and starting another, cause significant difficulty?", type: "single-select", options: ["Yes, almost always", "Sometimes", "Rarely", "It depends on what they are transitioning from"] },
+      { id: "change_warning", label: "Do they need significant warning and preparation before a change happens, even a small one?", type: "single-select", options: ["Yes, always", "Usually", "Sometimes", "Rarely"] },
+      { id: "school_day_rhythm", label: "Does the school day rhythm, bells, lesson changes, lunch, assembly, seem to dysregulate them at predictable points?", type: "text" },
+      { id: "future_preparation", label: "Do they find it hard to prepare for something coming up, even something they are looking forward to?", type: "text" },
+    ],
+  },
+
+  // Section 20: Demand Avoidance, Autonomy, and Reactions to Authority
+  19: {
+    framing:
+      "Demand avoidance is not defiance. It is an anxiety response. For some neurodivergent children demands, including gentle ones and well intentioned ones, trigger an overwhelming sense of threat. The avoidance that follows is not a choice. It is the nervous system responding to perceived loss of control. Increasing pressure typically increases avoidance. Reducing demand and increasing autonomy typically reduces it.",
+    questions: [
+      { id: "demand_avoidance", label: "Does your child avoid or resist demands that other children their age manage without difficulty?", type: "single-select", options: ["Yes, frequently", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "resistance_to_wanted", label: "Does the resistance apply to things they want to do as well as things they do not, suggesting it is the demand itself rather than the task?", type: "single-select", options: ["Yes, frequently", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "choices_vs_instructions", label: "Do they respond better to requests framed as choices or invitations than to direct instructions?", type: "single-select", options: ["Yes, significantly better", "Slightly better", "About the same", "Not sure"] },
+      { id: "reaction_to_authority", label: "Do they react intensely to being told what to do, corrected, or redirected by adults?", type: "text" },
+      { id: "control_environment", label: "Is there a difference between how they respond to high control and low control environments?", type: "text" },
+    ],
+  },
+
+  // Section 21: Hyperfocus, Interest-Based Motivation, and Zoning Out
+  20: {
+    framing:
+      "The neurodivergent brain is often described as having an attention problem. That is only half the picture. The same brain that cannot sustain attention on low interest tasks can hyperfocus on high interest ones with extraordinary intensity, losing track of time, physical needs, and everything else around them. Zoning out is the other side. Not daydreaming in a casual sense. A genuine departure from the present where the child has left the room in every sense except physically.",
+    questions: [
+      { id: "hyperfocus_subject", label: "Is there a subject, topic, game, or activity your child can focus on for hours without any difficulty?", type: "text" },
+      { id: "hyperfocus_problems", label: "Does hyperfocus cause practical problems, losing track of time, missing meals, not hearing when spoken to?", type: "single-select", options: ["Yes, regularly", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "interest_driven_focus", label: "Does the level of focus available to them vary dramatically depending on interest level?", type: "single-select", options: ["Yes, dramatically", "Somewhat", "Not particularly"] },
+      { id: "zoning_out", label: "Do they zone out, switch off, go absent, in certain environments or at certain times?", type: "text" },
+      { id: "interrupted_hyperfocus", label: "How do they respond when interrupted during hyperfocus?", type: "single-select", options: ["Very distressed, significant reaction", "Frustrated but manageable", "Generally fine", "It depends"] },
+    ],
+  },
+
+  // Section 22: Emotional Intensity, Anger, and Rejection Sensitivity
+  21: {
+    framing:
+      "Many neurodivergent children experience emotions at a higher intensity than the people around them. Not because they are immature or dramatic. Because the emotional system is calibrated differently. Rejection sensitivity is one of the most significant and least recognised neurodivergent experiences. It is an intense emotional response to perceived criticism, failure, or rejection. The word perceived matters. The rejection does not have to be real. A teacher's neutral tone can land as disapproval. A friend not replying quickly can land as abandonment. From the outside the response looks disproportionate. From the inside it does not feel disproportionate at all.",
+    questions: [
+      { id: "emotional_intensity", label: "Does your child experience emotions intensely, feeling things more strongly or for longer than seems typical?", type: "single-select", options: ["Yes, clearly", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "anger_speed", label: "Does their anger arrive very quickly with little apparent warning?", type: "single-select", options: ["Yes, regularly", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "reaction_to_criticism", label: "Do they react intensely to criticism, correction, or perceived failure, even mild well intentioned feedback?", type: "text" },
+      { id: "perceived_rejection", label: "Do they interpret neutral or ambiguous situations as rejection or disapproval?", type: "text" },
+      { id: "emotional_carrying", label: "Do they carry emotional events for a long time, replaying them, staying hurt, bringing them back up days or weeks later?", type: "single-select", options: ["Yes, regularly", "Sometimes", "Rarely", "Not that I have noticed"] },
+      { id: "anger_preceded_by", label: "Is their anger almost always preceded by something that felt like rejection, shame, or loss of control?", type: "text" },
+    ],
+  },
 };
