@@ -56,10 +56,10 @@ export type QandAResponse =
 
 // Example questions to help users
 export const exampleQuestions = [
-  "Are EHCPs being removed?",
-  "What do the SEND reform leaks mean?",
-  "What is confirmed and what is not?",
-  "When will changes actually happen?",
+  "What are Individual Support Plans and will they replace EHCPs?",
+  "What does the white paper mean for my child today?",
+  "Is my child's EHCP safe?",
+  "What is the Experts at Hand programme?",
 ];
 
 // Check if a question requires refusal - now uses centralized guardrails
