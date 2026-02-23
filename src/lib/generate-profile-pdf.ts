@@ -94,8 +94,17 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
       dy += dlLineH;
     }
 
+    // NG logo in footer
+    if (ngLogoData) {
+      try {
+        const logoH = 6;
+        const logoW = 6;
+        doc.addImage(ngLogoData, "JPEG", pageWidth / 2 - logoW / 2, pageHeight - 9 - logoH, logoW, logoH);
+      } catch { /* ignore */ }
+    }
+
     doc.setFontSize(7);
-    doc.text("sendnavigator.neuro.support", pageWidth / 2, pageHeight - 8, { align: "center" });
+    doc.text("sendnavigator.neuro.support", pageWidth / 2, pageHeight - 7, { align: "center" });
     setColor(DARK_TEXT);
   };
 
