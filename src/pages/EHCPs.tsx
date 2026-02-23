@@ -17,6 +17,7 @@ import { StatusBadge } from "@/components/StatusBadge";
 import { StatCard, PercentageRing, HorizontalBarChart, RightsChecklist } from "@/components/templates/DataVisuals";
 import { EHCPProcessDiagram } from "@/components/templates/EHCPProcessDiagram";
 import { AskEHCP } from "@/components/AskEHCP";
+import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import {
   FileText, BarChart3, Users, ClipboardList, Scale, School,
   RefreshCw, AlertTriangle, Gavel, Search, PoundSterling, Clock, ShieldCheck, ChevronDown
@@ -47,7 +48,7 @@ export default function EHCPs() {
       <PageOrientation
         title="EHCPs: a complete guide for parents"
         description="Everything you need to know about Education, Health and Care Plans in England. What they are, who qualifies, the process step by step, your rights at every stage, and what to do when things go wrong."
-        lastUpdated="15th February 2026"
+        lastUpdated="23rd February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
@@ -61,10 +62,25 @@ export default function EHCPs() {
       <SixtySecondSummary
         prose={
           <p>
-            An Education, Health and Care Plan (EHCP) is a <strong>legally binding document</strong> for children and young people aged 0 to 25 with significant special educational needs. It coordinates support across education, health, and social care. Since 2014, the number of children with EHCPs has <strong>more than doubled to over 576,000</strong>. The process should take 20 weeks but only about half are issued on time. Parents have strong legal rights at every stage, including the right to appeal, and <strong>win 99% of tribunal cases that reach a hearing</strong>. Understanding the process is the single most powerful thing you can do for your child.
+            An Education, Health and Care Plan (EHCP) is a <strong>legally binding document</strong> for children and young people aged 0 to 25 with significant special educational needs. It coordinates support across education, health, and social care. Since 2014, the number of children with EHCPs has <strong>more than doubled to 638,700 as of January 2025</strong>. The process should take 20 weeks but only about half are issued on time. Parents have strong legal rights at every stage, including the right to appeal, and <strong>win approximately 95% of tribunal cases</strong>. Understanding the process is the single most powerful thing you can do for your child.
           </p>
         }
       />
+
+      <LatestUpdatePanel>
+        <p>
+          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — introduces Individual Support Plans (ISPs) as a new statutory plan for every child with identified SEND, including those without an EHCP today.
+        </p>
+        <p>
+          ISPs will be <strong>school-led, not council-led</strong>. They will have a legal underpinning but enforcement routes have not yet been published. Changes come into force from 2030.
+        </p>
+        <p>
+          EHCPs will continue to have a role in the new system but are expected to be <strong>reserved for children with the most complex needs</strong>. Children currently in Year 2 who hold EHCPs have been cited as an example cohort who may be reassessed at the end of primary school.
+        </p>
+        <p>
+          Education Secretary Bridget Phillipson has said: "We are not going to be taking away effective support from children." <strong>Legal experts note this is not the same as a legal guarantee.</strong>
+        </p>
+      </LatestUpdatePanel>
 
       <OnThisPage sections={sections} />
 
@@ -111,20 +127,20 @@ export default function EHCPs() {
       <ContentBox id="statistics" icon={BarChart3} title="EHCP statistics dashboard">
         <div className="space-y-6">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <StatCard value="576,000+" label="Children with EHCPs" sublabel="January 2024" icon={Users} accentColor="confirmed" />
+            <StatCard value="638,700" label="Children with EHCPs" sublabel="January 2025" icon={Users} accentColor="confirmed" />
             <StatCard value="138,242" label="Assessment requests" sublabel="In 2023 alone" icon={FileText} accentColor="discussed" />
-            <StatCard value="140%" label="Growth since 2015" sublabel="From 240,000 EHCPs" icon={BarChart3} accentColor="unconfirmed" />
+            <StatCard value="166%" label="Growth since 2015" sublabel="From 240,000 EHCPs" icon={BarChart3} accentColor="unconfirmed" />
           </div>
 
           <div className="flex flex-wrap justify-center gap-6 sm:gap-8 py-4">
             <PercentageRing percentage={50} label="Issued on time" sublabel="Within 20 weeks" color="unconfirmed" />
             <PercentageRing percentage={95} label="Assessments lead to plan" sublabel="Once LA agrees to assess" color="confirmed" />
-            <PercentageRing percentage={99} label="Parents win at tribunal" sublabel="Of decided cases" color="confirmed" />
+            <PercentageRing percentage={95} label="Parents win at tribunal" sublabel="Approx. of decided cases" color="confirmed" />
           </div>
 
           <div className="grid sm:grid-cols-2 gap-3">
             <StatCard value="24%" label="Requests refused" sublabel="~33,000 children turned away in 2023" icon={AlertTriangle} accentColor="unconfirmed" />
-            <StatCard value="25,000" label="Tribunal appeals" sublabel="Registered in 2024/25" icon={Gavel} accentColor="unconfirmed" />
+            <StatCard value="21,000" label="Tribunal appeals" sublabel="2023/24 — up 55%" icon={Gavel} accentColor="unconfirmed" />
             <StatCard value="£153m" label="LAs spent on appeals" sublabel="In 2023-24 alone" icon={PoundSterling} accentColor="unconfirmed" />
             <StatCard value="1.3%" label="LA win rate at tribunal" sublabel="Of cases that go to hearing" icon={Scale} accentColor="confirmed" />
           </div>
@@ -134,7 +150,7 @@ export default function EHCPs() {
             items={[
               { label: "EHCPs in 2015", value: 240, displayValue: "~240,000", color: "confirmed" },
               { label: "EHCPs in 2020", value: 390, displayValue: "~390,000", color: "discussed" },
-              { label: "EHCPs in 2024", value: 576, displayValue: "576,000+", color: "unconfirmed" },
+              { label: "EHCPs in 2025", value: 639, displayValue: "638,700", color: "unconfirmed" },
             ]}
           />
 
@@ -310,7 +326,7 @@ export default function EHCPs() {
             Before appealing, you must obtain a <strong>mediation certificate</strong> (by contacting a mediation adviser). Mediation itself is voluntary — you can proceed directly to appeal after getting the certificate.
           </p>
           <p>
-            The statistics are striking. In 2023/24, only <strong>1.3% of cases that went to a full hearing were decided in the LA's favour</strong>. Parents prevail in 99% of decided cases. By 2024/25, 25,000 appeals were registered — nearly double the number two years earlier and six times more than when EHCPs were introduced in 2014.
+            The statistics are striking. In 2023/24, there were <strong>21,000 appeals, up 55% on the previous year</strong>. Parents win approximately 95% of cases, and 5,569 cases were conceded before the hearing. The number of appeals has grown sixfold since EHCPs were introduced in 2014.
           </p>
           <p>
             LAs spent an estimated <strong>£153 million in 2023-24 on defending SEND appeals</strong>, and cumulatively over £580 million since 2014. Many LAs settle or concede before the hearing — about a third of appeals are resolved without a full hearing, usually because the LA agrees to what was sought.

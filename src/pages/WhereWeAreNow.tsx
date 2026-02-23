@@ -9,6 +9,7 @@ import {
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { StatCard, PercentageRing, HorizontalBarChart } from "@/components/templates/DataVisuals";
+import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import { Users, BarChart3, MapPin, TrendingUp, PoundSterling, Globe, AlertTriangle, Scale } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -29,7 +30,7 @@ export default function WhereWeAreNow() {
       <PageOrientation
         title="Current situation: where is SEND provision in the UK today"
         description="Understanding the current state of SEND support in England."
-        lastUpdated="15th February 2026"
+        lastUpdated="23rd February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
@@ -51,6 +52,21 @@ export default function WhereWeAreNow() {
           </div>
         }
       />
+
+      <LatestUpdatePanel>
+        <p>
+          The government published its Schools White Paper — <strong>Every Child Achieving and Thriving</strong> — on 23 February 2026. This is the biggest change to SEND in a generation.
+        </p>
+        <p>
+          A confirmed <strong>£4bn SEND package</strong> splits into four named funds: the Inclusive Mainstream Fund (£1.6bn direct to schools for early intervention), Experts at Hand (£1.8bn for local specialist pools available without an EHCP), Local Authority Transformation (£200m), and Best Start Family Hubs (£200m for SEND outreach in every family hub). This is on top of the previously announced £3.7bn for 60,000 new specialist places and £200m for universal teacher SEND training.
+        </p>
+        <p>
+          Two fifths of local authorities are at risk of issuing a Section 114 notice (effectively declaring bankruptcy) by March 2026 — <strong>SEND costs are a central factor</strong>.
+        </p>
+        <p>
+          Over 130 organisations including Mencap, the National Autistic Society, and the Council for Disabled Children have written to ministers with four red lines: no removal of enforceable EHCPs, no abolition of the tribunal, no narrowing of the legal definition of SEND, and no cliff-edge loss of support at 18.
+        </p>
+      </LatestUpdatePanel>
 
       <OnThisPage sections={sections} />
 
@@ -75,9 +91,9 @@ export default function WhereWeAreNow() {
 
           {/* Stat cards grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            <StatCard value="1.9m" label="Young people with SEND" sublabel="0–25 age group" icon={Users} />
-            <StatCard value="576,000" label="Children with an EHCP" sublabel="140% rise since 2015" icon={BarChart3} accentColor="confirmed" />
-            <StatCard value="1 in 5" label="KS4 pupils with SEND" sublabel="Nearly 20% and rising" icon={TrendingUp} accentColor="discussed" />
+            <StatCard value="1.7m+" label="Pupils with identified SEND" sublabel="2024/25 academic year" icon={Users} />
+            <StatCard value="638,700" label="Children with an EHCP" sublabel="January 2025" icon={BarChart3} accentColor="confirmed" />
+            <StatCard value="43.6%" label="EHCPs in mainstream" sublabel="278,200 children" icon={TrendingUp} accentColor="discussed" />
             <StatCard value="£13.1bn" label="Council SEND spending" sublabel="Up from £7.8bn in 2015" icon={PoundSterling} accentColor="discussed" />
             <StatCard value="95%" label="Councils in SEND deficit" sublabel="79% risked insolvency" icon={AlertTriangle} accentColor="unconfirmed" />
             <StatCard value="206%" label="Specialist school cost rise" sublabel="Now £1.7bn per year" icon={TrendingUp} accentColor="unconfirmed" />
@@ -86,7 +102,7 @@ export default function WhereWeAreNow() {
           {/* Percentage rings */}
           <div className="flex flex-wrap justify-center gap-8 py-4">
             <PercentageRing percentage={60} label="EHCPs issued on time" sublabel="Within 20-week limit" color="discussed" />
-            <PercentageRing percentage={90} label="Parents win at tribunal" sublabel="Of decided cases" color="confirmed" />
+            <PercentageRing percentage={95} label="Parents win at tribunal" sublabel="Of decided cases" color="confirmed" />
             <PercentageRing percentage={50} label="Parents find it stressful" sublabel="Securing SEND support" color="unconfirmed" />
           </div>
 
@@ -127,7 +143,7 @@ export default function WhereWeAreNow() {
             The EHCP route is slow. It is also paperwork heavy. Even though there is a 20 week legal deadline, <strong>only around half of new plans are completed on time</strong>. Many families wait far longer.
           </p>
           <p>
-            When families are refused, delayed, or offered too little, many escalate. The tribunal numbers and parent success rates show this is not rare. <strong>When parents win 95% of cases that reach judgement, it suggests that a lot of children were initially refused support they were entitled to.</strong>
+            When families are refused, delayed, or offered too little, many escalate. In 2023/24, there were <strong>21,000 appeals, up 55% on the previous year</strong>. Parents win approximately 95% of cases, and 5,569 cases were conceded before the hearing. <strong>When parents win at that rate, it suggests that a lot of children were initially refused support they were entitled to.</strong>
           </p>
           <p>This creates a loop:</p>
           <ul className="space-y-2">
@@ -158,7 +174,7 @@ export default function WhereWeAreNow() {
       <ContentBox id="funding" icon={PoundSterling} title="The financial pressure underneath everything">
         <div className="space-y-3">
           <p>
-            The financial picture is severe. Council spending on high needs has risen from £7.8 billion to £13.1 billion in under a decade. <strong>95% of councils are running SEND deficits</strong>, and by March 2026, 43% are forecast to have deficits so large they equal or exceed their available reserves.
+            The financial picture is severe. Council spending on high needs has risen from £7.8 billion to £13.1 billion in under a decade. <strong>95% of councils are running SEND deficits</strong>, and by March 2026, two fifths of local authorities are at risk of issuing a Section 114 notice.
           </p>
           <p>
             Without intervention, <strong>79% of councils risked insolvency by 2028</strong> due to SEND debts alone. That financial stress is not separate from the family experience. It shapes behaviour, delays, gatekeeping, and disputes.

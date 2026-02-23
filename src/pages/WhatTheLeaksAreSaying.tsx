@@ -9,6 +9,7 @@ import {
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { TierDiagram } from "@/components/templates/DataVisuals";
+import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import { Users, BarChart3, Wind, AlertTriangle, List, EyeOff, Megaphone, Filter, Shield } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -30,7 +31,7 @@ export default function WhatTheLeaksAreSaying() {
       <PageOrientation
         title="Unconfirmed reports: government kite flying and what may or may not happen"
         description="Unconfirmed proposals and reported briefings. These are not government policy."
-        lastUpdated="15th February 2026"
+        lastUpdated="23rd February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="unconfirmed" />
@@ -52,6 +53,18 @@ export default function WhatTheLeaksAreSaying() {
           </div>
         }
       />
+
+      <LatestUpdatePanel>
+        <p>
+          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — has now been published, meaning many previously leaked proposals can be compared against the confirmed policy.
+        </p>
+        <p>
+          The DfE has confirmed there are <strong>no plans to abolish the SEND tribunal</strong>. However, reports indicate tribunal access may be restricted to cases where the correct process was not followed, rather than challenges to the content of decisions. <strong>Mediation is expected to take a much greater role.</strong> This has not been confirmed in statute. Tribunal rights remain fully in place right now.
+        </p>
+        <p>
+          A petition calling for protection of disabled children's rights reached <strong>over 132,000 signatures</strong>. The National Autistic Society has said parents are "dismayed" by the lack of transparency.
+        </p>
+      </LatestUpdatePanel>
 
       <OnThisPage sections={sections} />
 

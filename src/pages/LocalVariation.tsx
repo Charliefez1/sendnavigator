@@ -3,6 +3,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Clock } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
+import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 
 const anchors = [
   { id: "inspection-evidence", label: "Inspection evidence" },
@@ -75,6 +76,21 @@ export default function LocalVariation() {
         </div>
       </header>
 
+      <LatestUpdatePanel>
+        <p>
+          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — directly addresses the variation problem.
+        </p>
+        <p>
+          The <strong>Experts at Hand programme (£1.8bn)</strong> gives mainstream schools access to educational psychologists, speech and language therapists, occupational therapists, and SEND specialist teachers — without a diagnosis or EHCP being required. An average secondary school is expected to receive <strong>over 160 days of specialist time per year</strong>.
+        </p>
+        <p>
+          The <strong>Local Authority Transformation fund (£200m)</strong> is intended to help all councils align with the reforms. Two fifths of local authorities are at risk of issuing a Section 114 notice by March 2026 — SEND costs are a central factor.
+        </p>
+        <p>
+          The inequality in access is confirmed: <strong>richer families are twice as likely to secure a specialist school placement (41%) compared to low-income families (25%)</strong>.
+        </p>
+      </LatestUpdatePanel>
+
       {/* Anchor nav */}
       <nav className="content-section py-4 border-b border-border" aria-label="Page sections">
         <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold mb-2">Jump to</p>
@@ -131,15 +147,15 @@ export default function LocalVariation() {
 
           <h3 className="text-sm font-semibold text-foreground mt-4 mb-2">Financial pressure</h3>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-            <p>Local authorities fund SEND provision through the <strong>high needs block</strong> of the Dedicated Schools Grant. Demand for EHC plans has more than doubled since 2015, from around 240,000 to <strong>over 575,000 by 2024</strong>.</p>
+            <p>Local authorities fund SEND provision through the <strong>high needs block</strong> of the Dedicated Schools Grant. Demand for EHC plans has more than doubled since 2015, from around 240,000 to <strong>638,700 by January 2025</strong>.</p>
             <p>Funding has not kept pace with demand. By 2024/25, the gap between what local authorities were spending on SEND and what they received was around <strong>£700 million nationally per year</strong>. Accumulated deficits reached at least <strong>£3.3 billion</strong> by 2024/25.</p>
           </div>
 
           {/* Deficit stat cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-4">
-            <div className="rounded-xl border border-border bg-muted/30 p-4 text-center">
-              <p className="text-xl font-display font-bold text-foreground">575k+</p>
-              <p className="text-xs text-muted-foreground mt-1">EHC plans by 2024</p>
+             <div className="rounded-xl border border-border bg-muted/30 p-4 text-center">
+               <p className="text-xl font-display font-bold text-foreground">638.7k</p>
+               <p className="text-xs text-muted-foreground mt-1">EHC plans by Jan 2025</p>
             </div>
             <div className="rounded-xl border border-border bg-muted/30 p-4 text-center">
               <p className="text-xl font-display font-bold text-foreground">£700m</p>
@@ -282,7 +298,7 @@ export default function LocalVariation() {
               ))}
             </div>
             <p className="mt-3">The government's decision to <strong>centralise high needs funding from 2028/29</strong> is a structural change that may reduce the extent to which financial variation drives variation in provision.</p>
-            <p>None of these changes are yet in force. The White Paper, expected in 2026, is expected to set out the legislative framework.</p>
+            <p>None of these changes are yet in force. The Schools White Paper — Every Child Achieving and Thriving — was <strong>published on 23 February 2026</strong> and sets out the legislative framework.</p>
             <Link to="/state-of-send-2026" className="inline-flex items-center gap-2 text-primary hover:underline font-medium text-sm mt-2">
               → Track reform progress <ArrowRight className="w-3 h-3" />
             </Link>

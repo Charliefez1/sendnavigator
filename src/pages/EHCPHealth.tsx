@@ -3,6 +3,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Clock } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
+import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 
 const anchors = [
   { id: "sections-c-g", label: "Sections C & G" },
@@ -77,6 +78,18 @@ export default function EHCPHealth() {
           But <strong>Sections C and G</strong> are where a significant amount of provision falls through the gaps, and where many families find that what the plan says and what actually happens are two different things.
         </p>
       </header>
+
+      <LatestUpdatePanel>
+        <p>
+          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — introduces the Experts at Hand programme (£1.8bn), giving mainstream schools direct access to SEND specialists including speech and language therapists and occupational therapists <strong>without requiring an EHCP</strong>.
+        </p>
+        <p>
+          This may change how health provision is accessed in practice, though <strong>existing Section G duties under the Children and Families Act 2014 remain unchanged</strong>. ICBs retain their legal duty to provide health care provision specified in EHCPs.
+        </p>
+        <p>
+          Individual Support Plans (ISPs) are being introduced from 2030. How health provision will be specified in ISPs — and whether it will carry the same legal enforceability as Section G — <strong>has not yet been published</strong>.
+        </p>
+      </LatestUpdatePanel>
 
       {/* Anchor navigation */}
       <nav className="content-section py-4 border-b border-border" aria-label="Page sections">

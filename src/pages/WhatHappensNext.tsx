@@ -8,6 +8,7 @@ import {
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
+import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import { Users, BarChart3, FileText, MessageSquare, Landmark, ArrowRightLeft, CheckCircle, Anchor, ArrowDown } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -28,7 +29,7 @@ export default function WhatHappensNext() {
       <PageOrientation
         title="What happens next and when: the path from now to change"
         description="Understanding the stages between discussion and implementation."
-        lastUpdated="15th February 2026"
+        lastUpdated="23rd February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="discussed" />
@@ -53,6 +54,21 @@ export default function WhatHappensNext() {
           </div>
         }
       />
+
+      <LatestUpdatePanel>
+        <p>
+          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — sets out a decade-long transition. No legislation has changed yet.
+        </p>
+        <p>
+          Individual Support Plans (ISPs) are being introduced as a new statutory plan for every child with identified SEND. <strong>Changes come into force from 2030.</strong> EHCPs will continue to have a role but are expected to be reserved for children with the most complex needs.
+        </p>
+        <p>
+          Education Secretary Bridget Phillipson has said: "We are not going to be taking away effective support from children." <strong>Legal experts note this is not the same as a legal guarantee.</strong>
+        </p>
+        <p>
+          Over 130 organisations including Mencap, the National Autistic Society, and the Council for Disabled Children have written to ministers with four red lines.
+        </p>
+      </LatestUpdatePanel>
 
       <OnThisPage sections={sections} />
 
@@ -80,11 +96,11 @@ export default function WhatHappensNext() {
           {/* Process stages visual */}
           <div className="space-y-0">
             {[
-              { step: "1", title: "White Paper published", timing: "Expected 2026", status: "Next step", color: "bg-[hsl(var(--timeline-upcoming))]", textColor: "text-[hsl(var(--timeline-upcoming))]", bgColor: "bg-[hsl(var(--timeline-upcoming-bg))]" },
+              { step: "1", title: "White Paper published", timing: "23 February 2026", status: "Done", color: "bg-[hsl(var(--status-confirmed))]", textColor: "text-[hsl(var(--status-confirmed))]", bgColor: "bg-[hsl(var(--status-confirmed))]/10" },
               { step: "2", title: "Formal consultation", timing: "2026", status: "Planned", color: "bg-[hsl(var(--timeline-upcoming))]", textColor: "text-[hsl(var(--timeline-upcoming))]", bgColor: "bg-[hsl(var(--timeline-upcoming-bg))]" },
               { step: "3", title: "Legislation introduced", timing: "TBC", status: "If needed", color: "bg-[hsl(var(--timeline-uncertain))]", textColor: "text-[hsl(var(--timeline-uncertain))]", bgColor: "bg-[hsl(var(--timeline-uncertain-bg))]" },
               { step: "4", title: "Parliamentary process", timing: "TBC", status: "Uncertain", color: "bg-[hsl(var(--timeline-uncertain))]", textColor: "text-[hsl(var(--timeline-uncertain))]", bgColor: "bg-[hsl(var(--timeline-uncertain-bg))]" },
-              { step: "5", title: "Transition and implementation", timing: "Possibly 2029–30", status: "Uncertain", color: "bg-[hsl(var(--timeline-uncertain))]", textColor: "text-[hsl(var(--timeline-uncertain))]", bgColor: "bg-[hsl(var(--timeline-uncertain-bg))]" },
+              { step: "5", title: "Transition and implementation", timing: "From 2030", status: "Proposed", color: "bg-[hsl(var(--timeline-uncertain))]", textColor: "text-[hsl(var(--timeline-uncertain))]", bgColor: "bg-[hsl(var(--timeline-uncertain-bg))]" },
             ].map((stage, i, arr) => (
               <div key={i}>
                 <div className={`flex items-center gap-3 sm:gap-4 rounded-lg border border-border p-3 sm:p-4 ${stage.bgColor}`}>

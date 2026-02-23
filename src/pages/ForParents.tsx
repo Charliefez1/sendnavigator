@@ -3,6 +3,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { CheckCircle2, ExternalLink, Phone, Heart } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
+import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -62,6 +63,21 @@ export default function ForParents() {
           </p>
         </div>
       </header>
+
+      <LatestUpdatePanel>
+        <p>
+          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — is the biggest change to SEND in a generation.
+        </p>
+        <p>
+          The confirmed £4bn SEND package includes the <strong>Inclusive Mainstream Fund (£1.6bn)</strong> direct to schools, and <strong>Experts at Hand (£1.8bn)</strong> for local specialist pools available without needing an EHCP. The £200m Best Start Family Hubs programme will put dedicated <strong>SEND outreach into every family hub</strong> in England.
+        </p>
+        <p>
+          Individual Support Plans (ISPs) are being introduced from 2030 for every child with identified SEND. EHCPs will continue but are expected to be reserved for the most complex needs. <strong>Your existing rights have not changed.</strong>
+        </p>
+        <p>
+          Over 130 organisations have written to ministers with four red lines. The National Autistic Society has said parents are <strong>"dismayed" by the lack of transparency</strong>.
+        </p>
+      </LatestUpdatePanel>
 
       <WordFromRich>
         <p>Nobody tells you this part. The forms at midnight. The meetings where you feel like you are fighting for something that should just be given. The school gate where you are watching other children while yours is at home again. The grief that is not for your child but for the version of this you thought it would be. And underneath all of it, still the love. Still showing up. Still pushing.</p>

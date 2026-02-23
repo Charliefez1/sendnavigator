@@ -9,6 +9,7 @@ import {
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { RightsChecklist } from "@/components/templates/DataVisuals";
+import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import { Users, BarChart3, Shield, HelpCircle, EyeOff, Heart, Filter, Zap, Lightbulb, Anchor } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -35,7 +36,7 @@ export default function WhatTheLeaksDoNotMean() {
       <PageOrientation
         title="What leaks do not mean, and why they happen at all"
         description="Understanding leaked proposals without being pulled into panic or rushed decisions."
-        lastUpdated="15th February 2026"
+        lastUpdated="23rd February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
@@ -61,6 +62,18 @@ export default function WhatTheLeaksDoNotMean() {
         }
       />
 
+      <LatestUpdatePanel>
+        <p>
+          The Schools White Paper — <strong>Every Child Achieving and Thriving</strong> — was published on 23 February 2026. Many previously leaked proposals can now be compared against confirmed policy.
+        </p>
+        <p>
+          The DfE has confirmed there are <strong>no plans to abolish the SEND tribunal</strong>. Tribunal rights remain fully in place right now. However, reports indicate access may be restricted in the future to process failures rather than content challenges.
+        </p>
+        <p>
+          Over 130 organisations have written to ministers with four red lines: no removal of enforceable EHCPs, no abolition of the tribunal, no narrowing of the legal definition of SEND, and <strong>no cliff-edge loss of support at 18</strong>.
+        </p>
+      </LatestUpdatePanel>
+
       <OnThisPage sections={sections} />
 
       <ContentBox id="impact" icon={Users} title="How will this impact children and parents">
@@ -85,11 +98,11 @@ export default function WhatTheLeaksDoNotMean() {
           <p>This section is about interpretation, not new policy data.</p>
           <p>From the evidence:</p>
           <ul className="space-y-2">
-            <li><strong>No leaked SEND reform proposal has been published as a White Paper.</strong></li>
-            <li><strong>No leaked proposal has been introduced to Parliament.</strong></li>
+            <li><strong>The Schools White Paper — Every Child Achieving and Thriving — was published on 23 February 2026.</strong></li>
+            <li><strong>No leaked proposal has been introduced to Parliament as legislation.</strong></li>
             <li><strong>No leaked idea has legal force.</strong></li>
             <li>Any change to EHCP rights, thresholds, or appeals would require <strong>primary legislation</strong>.</li>
-            <li>Existing statutory SEND rights <strong>remain in place as of mid-February 2026</strong>.</li>
+            <li>Existing statutory SEND rights <strong>remain in place as of 23 February 2026</strong>.</li>
           </ul>
         </div>
       </ContentBox>
