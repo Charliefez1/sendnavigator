@@ -111,6 +111,7 @@ export function Footer() {
                 { to: "/sendiass", label: "Free help - SENDIASS" },
                 { to: "/what-we-owe-our-children", label: "Reality Bites series" },
                 { to: "/feedback", label: "Give feedback" },
+                { to: "/privacy-policy", label: "Privacy Policy" },
                 { to: "/admin", label: "Admin" },
               ].map((link) => (
                 <li key={link.to}>

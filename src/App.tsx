@@ -39,6 +39,7 @@ const RichsTake = lazy(() => import("./pages/RichsTake"));
 const WhyIBuiltThis = lazy(() => import("./pages/WhyIBuiltThis"));
 const CommunityQuestions = lazy(() => import("./pages/CommunityQuestions"));
 const Feedback = lazy(() => import("./pages/Feedback"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Admin = lazy(() => import("./pages/Admin"));
 const QuickRead = lazy(() => import("./pages/QuickRead"));
 const EHCPs = lazy(() => import("./pages/EHCPs"));
@@ -95,6 +96,7 @@ const App = () => (
                       <Route path="/richs-take" element={<RichsTake />} />
                       <Route path="/neurodiversity-global" element={<NeurodiversityGlobal />} />
                       <Route path="/feedback" element={<Feedback />} />
+                      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                       <Route path="/sendiass" element={<Sendiass />} />
                       <Route path="/have-your-say" element={<HaveYourSay />} />
                       <Route path="/what-we-owe-our-children" element={<WhatWeOweOurChildren />} />

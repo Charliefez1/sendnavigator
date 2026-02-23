@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
@@ -8,8 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { MessageSquare, Send, CheckCircle, Calendar, Reply } from "lucide-react";
-import { format } from "date-fns";
+import { MessageSquare, Send, CheckCircle, Reply } from "lucide-react";
 
 interface FeedbackItem {
   id: string;
@@ -26,6 +25,8 @@ export default function Feedback() {
   const [feedbackType, setFeedbackType] = useState("comment");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const formLoadedAt = useRef(Date.now());
   const { toast } = useToast();
 
   const { data: feedbackItems, isLoading } = useQuery({
@@ -51,6 +52,15 @@ export default function Feedback() {
       return;
     }
 
+    // Anti-spam: honeypot check
+    if (honeypot) return;
+
+    // Anti-spam: timing check (must take at least 3 seconds)
+    if (Date.now() - formLoadedAt.current < 3000) {
+      toast({ title: "Please take a moment before submitting.", variant: "destructive" });
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const { error } = await supabase.from("user_feedback").insert({
@@ -62,6 +72,7 @@ export default function Feedback() {
       setSubmitted(true);
       setFeedback("");
       setName("");
+      formLoadedAt.current = Date.now();
       setTimeout(() => setSubmitted(false), 4000);
     } catch {
       toast({ title: "Failed to submit. Please try again.", variant: "destructive" });
@@ -76,7 +87,6 @@ export default function Feedback() {
     issue: "Issue",
   };
 
-  // Group items by type
   const comments = feedbackItems?.filter((f) => f.feedback_type === "comment") || [];
   const suggestions = feedbackItems?.filter((f) => f.feedback_type === "suggestion") || [];
   const issues = feedbackItems?.filter((f) => f.feedback_type === "issue") || [];
@@ -84,8 +94,8 @@ export default function Feedback() {
   const renderFeedbackItem = (item: FeedbackItem) => (
     <div key={item.id} className="bg-card border border-border rounded-xl p-4 space-y-2 shadow-lg">
       <div className="flex items-center gap-2">
-          {item.name && <span className="text-sm font-semibold text-foreground">{item.name}</span>}
-        </div>
+        {item.name && <span className="text-sm font-semibold text-foreground">{item.name}</span>}
+      </div>
       <p className="text-sm text-foreground leading-relaxed">{item.feedback}</p>
       {item.admin_response && (
         <div className="bg-primary/5 border border-primary/20 rounded-lg p-3 mt-2">
@@ -135,6 +145,17 @@ export default function Feedback() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 maxLength={100}
+              />
+              {/* Honeypot field — hidden from real users */}
+              <input
+                type="text"
+                name="website"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute opacity-0 h-0 w-0 pointer-events-none"
               />
               <div className="flex gap-2">
                 {(["comment", "suggestion", "issue"] as const).map((type) => (

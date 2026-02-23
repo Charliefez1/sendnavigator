@@ -224,7 +224,7 @@ serve(async (req) => {
       const errorText = await response.text();
       console.error("Anthropic API error:", response.status, errorText);
       return new Response(
-        JSON.stringify({ error: "AI service error", details: errorText }),
+        JSON.stringify({ error: "AI service temporarily unavailable" }),
         { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
@@ -239,7 +239,7 @@ serve(async (req) => {
   } catch (e) {
     console.error("generate-profile-report error:", e);
     return new Response(
-      JSON.stringify({ error: e instanceof Error ? e.message : "Unknown error" }),
+      JSON.stringify({ error: "An internal error occurred" }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }

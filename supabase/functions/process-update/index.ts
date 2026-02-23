@@ -272,7 +272,7 @@ Available topic categories for page mapping: ${Object.keys(PAGE_TOPIC_MAP).join(
   } catch (err) {
     console.error("process-update error:", err);
     return new Response(
-      JSON.stringify({ error: err.message }),
+      JSON.stringify({ error: "An internal error occurred" }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
