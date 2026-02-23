@@ -30,7 +30,7 @@ export default function WhatHasNotChanged() {
       <PageOrientation
         title="What has not changed: what remains the same in the SEND system as of 15 February 2026"
         description="Legal rights and protections that remain in place."
-        lastUpdated="15th February 2026"
+        lastUpdated="23rd February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
@@ -85,6 +85,7 @@ export default function WhatHasNotChanged() {
               "Local authorities remain legally responsible for EHCP provision",
               "SEND Code of Practice remains in force",
               "20-week statutory timescale unchanged",
+              "The Schools White Paper published 23 February 2026 explicitly confirms EHCPs will remain",
             ]}
           />
 
@@ -107,7 +108,7 @@ export default function WhatHasNotChanged() {
             The most important point for parents to understand is this. <strong>The law has not moved.</strong>
           </p>
           <p>
-            The Children and Families Act 2014 still governs SEND in England. <strong>Any major change to EHCP eligibility, appeal rights, or legal duties would require new primary legislation.</strong> That has not happened.
+            The Children and Families Act 2014 still governs SEND in England. <strong>Any major change to EHCP eligibility, appeal rights, or legal duties would require new primary legislation.</strong> That has not happened. The Schools White Paper published today confirms EHCPs are retained. Any changes remain subject to consultation and legislation.
           </p>
           <p>
             This means the legal tests for an EHCP are unchanged. If a child has or may have special educational needs, and may require special educational provision beyond what is ordinarily available, <strong>the local authority still has a duty to assess</strong>.

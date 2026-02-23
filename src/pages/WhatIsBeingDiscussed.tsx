@@ -30,7 +30,7 @@ export default function WhatIsBeingDiscussed() {
       <PageOrientation
         title="Under discussion: what is being debated publicly right now"
         description="Ideas, proposals, and areas of debate that may shape future policy but are not settled."
-        lastUpdated="15th February 2026"
+        lastUpdated="23rd February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="discussed" />
@@ -44,7 +44,7 @@ export default function WhatIsBeingDiscussed() {
               Alongside confirmed changes, there is active public discussion about deeper reform of SEND in England. These discussions are happening in Parliament, in select committees, across the sector, and in the media.
             </p>
             <p>
-              <strong>Nothing in this section is law. Nothing here has been enacted.</strong> These are ideas, proposals, and areas of debate that may shape future policy but are not settled.
+              The Schools White Paper, <em>Every Child Achieving and Thriving</em>, was published on 23 February 2026. A formal consultation is now open. <strong>Individual Support Plans are a formal consultation proposal, not a confirmed policy. Nothing in this section has legal force yet.</strong>
             </p>
             <p>
               The common thread is this. The government is trying to reduce delay, conflict, and unsustainable cost, while families and professionals are trying to protect children's rights and access to real support. <strong>The tension sits between system efficiency and individual safeguards.</strong>
@@ -83,7 +83,7 @@ export default function WhatIsBeingDiscussed() {
           </div>
 
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li>A SEND focused <strong>Schools White Paper is expected in 2026</strong>.</li>
+            <li>The <strong>Schools White Paper was published 23 February 2026</strong>. Formal consultation now open.</li>
             <li>A national SEND reform consultation ran from December 2025 to January 2026.</li>
             <li>Parliamentary committees are <strong>actively scrutinising reform proposals</strong>.</li>
             <li>The Education and Health and Social Care committees have launched a <strong>new joint inquiry into children and young people's mental health</strong>, with explicit interest in education system support including SEND.</li>
@@ -99,15 +99,19 @@ export default function WhatIsBeingDiscussed() {
             One of the most discussed ideas is whether <strong>SEND support should be more clearly tiered</strong>.
           </p>
 
+          <p>
+            The Schools White Paper proposes <strong>Individual Support Plans (ISPs)</strong> as a formal consultation proposal to replace SEN Support with statutory school-led plans from 2030. EHCPs are confirmed to remain alongside them.
+          </p>
+
           <TierDiagram
-            title="Proposed tiered model under discussion"
+            title="Proposed tiered model (subject to consultation)"
             tiers={[
-              { tier: "Tier 4", title: "EHCP", description: "Full legal plan for children with the most severe and complex needs. Enforceable provision.", color: "unconfirmed" },
-              { tier: "Tier 3", title: "Specialist", description: "Specialist involvement without a full EHCP. Key question: would this be legally enforceable?", color: "discussed" },
+              { tier: "Tier 4", title: "EHCP", description: "Full legal plan for children with the most severe and complex needs. Enforceable provision. Confirmed to remain.", color: "confirmed" },
+              { tier: "Tier 3", title: "ISP / Specialist", description: "Proposed statutory school-led plan (Individual Support Plan). Subject to consultation. Enforceability to be determined.", color: "discussed" },
               { tier: "Tier 2", title: "Targeted", description: "Small group interventions and additional support, coordinated by the school.", color: "discussed" },
               { tier: "Tier 1", title: "Universal", description: "Teacher-led accommodations available to all pupils as standard classroom practice.", color: "confirmed" },
             ]}
-            note="No tiered model has been confirmed. This reflects ideas under discussion, not policy."
+            note="ISPs are a formal consultation proposal from the Schools White Paper, not confirmed policy. The four-tier structure is subject to consultation."
           />
 
           <p>

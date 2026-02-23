@@ -30,12 +30,20 @@ export default function WhatWeDoNotKnow() {
       <PageOrientation
         title="What we do not know: questions parents are asking and why they matter"
         description="Key decisions about rights, thresholds, and protections that have not been made."
-        lastUpdated="15th February 2026"
+        lastUpdated="23rd February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="unconfirmed" />
         </div>
       </PageOrientation>
+
+      <section className="content-section py-6">
+        <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg p-5 text-sm">
+          <p className="text-foreground">
+            The Schools White Paper was published on 23 February 2026. Some questions are now partially answered. Others remain open. This page has been updated to reflect what the white paper confirms and what it does not.
+          </p>
+        </div>
+      </section>
 
       <SixtySecondSummary
         prose={
@@ -79,7 +87,7 @@ export default function WhatWeDoNotKnow() {
           <RightsChecklist
             title="Key unanswered questions"
             items={[
-              "No draft legislation has been published setting out changes to EHCP eligibility",
+              "The white paper proposes Individual Support Plans from 2030 as a new school-led statutory tier. EHCPs are confirmed to remain. No legislation has been introduced yet.",
               "No final national SEND standards have been published",
               "No confirmed funding model replacing EHCP-linked funding has been agreed",
               "No confirmed changes to tribunal appeal rights have been announced",
