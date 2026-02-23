@@ -87,7 +87,7 @@ const App = () => (
                       <Route path="/landing" element={<Landing />} />
                       <Route path="/about" element={<About />} />
                       <Route path="/sources" element={<Sources />} />
-                      <Route path="/statistics-and-data" element={<Sources />} />
+                      <Route path="/statistics-and-data" element={<StatisticsAndData />} />
                       <Route path="/how-to-use" element={<HowToUse />} />
                       <Route path="/why-i-built-this" element={<WhyIBuiltThis />} />
                       <Route path="/rich-ferriman" element={<RichFerriman />} />
