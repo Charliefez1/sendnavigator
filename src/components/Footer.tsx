@@ -8,6 +8,7 @@ import {
   Building2, MapPin, Globe, Heart, HandHeart, Users,
 } from "lucide-react";
 import beaconLogo from "@/assets/beacon-logo.png";
+import ngEducationLogo from "@/assets/neurodiversity-global-education-logo-full.png";
 
 export function Footer() {
   const [showAboutTool, setShowAboutTool] = useState(false);
@@ -145,6 +146,25 @@ export function Footer() {
           </div>
         </div>
       )}
+
+      {/* Neurodiversity Global branding */}
+      <div className="border-t border-white/10">
+        <div className="content-wide py-6 flex flex-col items-center gap-3 text-center">
+          <img src={ngEducationLogo} alt="Neurodiversity Global Education" className="h-14" />
+          <p className="text-sm text-navy-muted">
+            This is a resource from Neurodiversity Global.{" "}
+            <a
+              href="https://www.neurodiversityglobal.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-white underline underline-offset-2 transition-colors"
+            >
+              For more information click here
+            </a>
+            .
+          </p>
+        </div>
+      </div>
 
       {/* Disclaimer bar */}
       <div className="border-t border-white/10">
