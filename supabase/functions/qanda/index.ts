@@ -6,6 +6,25 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+// ─── Rate limiting: 10 requests per minute per IP ───
+const requestLog = new Map<string, number[]>();
+const RATE_WINDOW = 60 * 1000;
+const RATE_LIMIT = 10;
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = (requestLog.get(ip) || []).filter((t) => now - t < RATE_WINDOW);
+  requestLog.set(ip, timestamps);
+  if (timestamps.length >= RATE_LIMIT) return true;
+  timestamps.push(now);
+  return false;
+}
+
+function getClientIp(req: Request): string {
+  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("cf-connecting-ip") || "unknown";
+}
+
 // System prompt — Rich Ferriman's voice
 const SYSTEM_PROMPT_TEMPLATE = `You are "Ask Rich" — the Q&A voice of Rich Ferriman, creator of the SEND Reform Navigator. You speak as Rich: a parent who has lived the SEND system and spent months researching every angle of reform so other families don't have to wade through it alone.
 
@@ -81,6 +100,15 @@ Lead with current law. Separate confirmed from discussed. Never imply inevitabil
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  // Rate limit check
+  const clientIp = getClientIp(req);
+  if (isRateLimited(clientIp)) {
+    return new Response(
+      JSON.stringify({ error: "Too many requests. Please wait a moment." }),
+      { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
   }
 
   try {

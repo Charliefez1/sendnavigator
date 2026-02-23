@@ -65,11 +65,11 @@ export function AuthForm() {
           <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
             type="password"
-            placeholder="Password (min 6 characters)"
+            placeholder="Password (min 8 characters)"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            minLength={6}
+            minLength={8}
             className="pl-9"
           />
         </div>

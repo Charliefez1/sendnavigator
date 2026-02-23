@@ -6,10 +6,12 @@ const corsHeaders = {
 };
 
 function generateAccessCode(): string {
-  const digits = "0123456789";
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // No I/O/0/1 to avoid confusion
+  const values = new Uint8Array(8);
+  crypto.getRandomValues(values);
   let code = "";
-  for (let i = 0; i < 6; i++) {
-    code += digits[Math.floor(Math.random() * 10)];
+  for (let i = 0; i < 8; i++) {
+    code += chars[values[i] % chars.length];
   }
   return code;
 }
@@ -124,7 +126,8 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), {
+    console.error("save-profile error:", err);
+    return new Response(JSON.stringify({ error: "An internal error occurred" }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });

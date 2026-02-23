@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, KeyRound, Loader2, Save } from "lucide-react";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
+import { Checkbox } from "@/components/ui/checkbox";
 import { supabase } from "@/integrations/supabase/client";
+import { Link } from "react-router-dom";
 
 interface OpeningScreenProps {
   onStart: () => void;
@@ -18,9 +20,10 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
   const [accessCode, setAccessCode] = useState("");
+  const [consentGiven, setConsentGiven] = useState(false);
 
   const handleLoadProfile = async () => {
-    if (code.length !== 6) return;
+    if (code.length !== 8) return;
     setLoading(true);
     setError("");
     try {
@@ -98,6 +101,25 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
         </div>
       )}
 
+      {/* GDPR consent notice */}
+      <div className="mt-6 bg-muted/40 border border-border rounded-lg p-4 space-y-3">
+        <p className="text-xs font-semibold text-foreground">Data privacy notice</p>
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          The answers you provide will be stored securely and encrypted for up to 14 days, then automatically deleted. If you generate a report, your answers are sent to an AI service (Anthropic Claude) to create personalised insights. Your data is not used to train AI models and is not shared with third parties. You can read our full{" "}
+          <Link to="/privacy-policy" className="text-primary underline underline-offset-2">privacy policy</Link>.
+        </p>
+        <label className="flex items-start gap-2.5 cursor-pointer">
+          <Checkbox
+            checked={consentGiven}
+            onCheckedChange={(checked) => setConsentGiven(checked === true)}
+            className="mt-0.5"
+          />
+          <span className="text-xs text-foreground leading-relaxed">
+            I understand how my data will be used and consent to it being stored temporarily for this purpose.
+          </span>
+        </label>
+      </div>
+
       {/* Access code display after save */}
       {accessCode && (
         <div className="mt-6 bg-muted/40 border border-border rounded-lg p-5 space-y-3 max-w-sm">
@@ -114,11 +136,11 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
       {/* Buttons */}
       {!accessCode && (
         <div className="mt-10 flex flex-col sm:flex-row gap-3">
-          <Button onClick={onStart} size="lg" className="gap-2">
+          <Button onClick={onStart} size="lg" className="gap-2" disabled={!consentGiven}>
             Start the profile
             <ArrowRight className="w-4 h-4" />
           </Button>
-          <Button onClick={handleSaveAndGetCode} variant="outline" size="lg" className="gap-2" disabled={saving}>
+          <Button onClick={handleSaveAndGetCode} variant="outline" size="lg" className="gap-2" disabled={saving || !consentGiven}>
             {saving && <Loader2 className="w-4 h-4 animate-spin" />}
             <Save className="w-4 h-4" />
             Save my progress and get an access code
@@ -139,8 +161,8 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
           </button>
         ) : (
           <div className="bg-muted/40 border border-border rounded-lg p-5 space-y-4 max-w-sm">
-            <p className="text-sm font-medium text-foreground">Enter your 6-digit access code</p>
-            <InputOTP maxLength={6} value={code} onChange={setCode}>
+            <p className="text-sm font-medium text-foreground">Enter your 8-character access code</p>
+            <InputOTP maxLength={8} value={code} onChange={setCode}>
               <InputOTPGroup>
                 <InputOTPSlot index={0} />
                 <InputOTPSlot index={1} />
@@ -148,12 +170,14 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
                 <InputOTPSlot index={3} />
                 <InputOTPSlot index={4} />
                 <InputOTPSlot index={5} />
+                <InputOTPSlot index={6} />
+                <InputOTPSlot index={7} />
               </InputOTPGroup>
             </InputOTP>
             {error && <p className="text-xs text-destructive">{error}</p>}
             <Button
               onClick={handleLoadProfile}
-              disabled={code.length !== 6 || loading}
+              disabled={code.length !== 8 || loading}
               size="sm"
               className="gap-2"
             >

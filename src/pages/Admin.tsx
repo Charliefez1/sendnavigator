@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Lock, CheckCircle, XCircle, Trash2, MessageCircleQuestion, MessageSquare, Eye, BookOpen, Reply, Send, BarChart3, Newspaper, Upload, AlertTriangle, ClipboardCheck } from "lucide-react";
+import { Lock, CheckCircle, XCircle, Trash2, MessageCircleQuestion, MessageSquare, Eye, BookOpen, Reply, Send, BarChart3, Newspaper, Upload, AlertTriangle, ClipboardCheck, Mail } from "lucide-react";
 import { KnowledgeBaseManager } from "@/components/admin/KnowledgeBaseManager";
 import { NewsManager } from "@/components/admin/NewsManager";
 import { AnalyticsDashboard } from "@/components/admin/AnalyticsDashboard";
@@ -168,17 +168,56 @@ function FeedbackAdmin({ feedbackItems, pin, callAdmin, refreshData, handleActio
   );
 }
 
+function ContactsPanel({ contacts, onRefresh, pin, callAdmin }: {
+  contacts: any[];
+  onRefresh: () => Promise<void>;
+  pin: string;
+  callAdmin: (body: Record<string, unknown>) => Promise<any>;
+}) {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (contacts.length === 0) {
+      setLoading(true);
+      onRefresh().finally(() => setLoading(false));
+    }
+  }, []);
+
+  if (loading) return <p className="text-muted-foreground text-center py-8">Loading contacts...</p>;
+
+  return (
+    <div className="space-y-3">
+      {contacts.length === 0 ? (
+        <p className="text-muted-foreground text-center py-8">No contact submissions yet.</p>
+      ) : (
+        contacts.map((c: any) => (
+          <div key={c.id} className="bg-card border border-border rounded-xl p-4 space-y-2">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-sm font-semibold text-foreground">{c.name}</span>
+              <span className="text-xs text-muted-foreground">{c.email}</span>
+              {c.organisation && <span className="text-xs bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full">{c.organisation}</span>}
+              <span className="text-xs text-muted-foreground">{new Date(c.created_at).toLocaleDateString()}</span>
+            </div>
+            <p className="text-sm text-foreground">{c.message}</p>
+          </div>
+        ))
+      )}
+    </div>
+  );
+}
+
 export default function Admin() {
   const [pin, setPin] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [pinError, setPinError] = useState(false);
-  const [activeTab, setActiveTab] = useState<"questions" | "feedback" | "knowledge" | "news" | "analytics" | "updates" | "flags" | "reviews">("questions");
+  const [activeTab, setActiveTab] = useState<"questions" | "feedback" | "knowledge" | "news" | "analytics" | "updates" | "flags" | "reviews" | "contacts">("questions");
   const [questions, setQuestions] = useState<QuestionItem[]>([]);
   const [feedbackItems, setFeedbackItems] = useState<FeedbackItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [respondingTo, setRespondingTo] = useState<string | null>(null);
   const [responseText, setResponseText] = useState("");
   const [staleFlags, setStaleFlags] = useState<any[]>([]);
+  const [contactItems, setContactItems] = useState<any[]>([]);
   const [staleFlagCount, setStaleFlagCount] = useState(0);
   const [markingAllFlags, setMarkingAllFlags] = useState(false);
   const { toast } = useToast();
@@ -433,6 +472,17 @@ export default function Admin() {
             Page Reviews
           </button>
           <button
+            onClick={() => setActiveTab("contacts")}
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+              activeTab === "contacts"
+                ? "bg-primary text-primary-foreground"
+                : "bg-secondary text-secondary-foreground"
+            }`}
+          >
+            <Mail className="h-4 w-4" />
+            Contacts
+          </button>
+          <button
             onClick={() => setActiveTab("analytics")}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
               activeTab === "analytics"
@@ -446,7 +496,14 @@ export default function Admin() {
         </div>
 
         {/* Content */}
-        {activeTab === "updates" ? (
+        {activeTab === "contacts" ? (
+          <ContactsPanel contacts={contactItems} onRefresh={async () => {
+            try {
+              const result = await callAdmin({ action: "contact_list" });
+              setContactItems(result.data || []);
+            } catch {}
+          }} pin={pin} callAdmin={callAdmin} />
+        ) : activeTab === "updates" ? (
           <ContentUpdateManager pin={pin} />
         ) : activeTab === "flags" ? (
           <PageFlagsPanel pin={pin} />

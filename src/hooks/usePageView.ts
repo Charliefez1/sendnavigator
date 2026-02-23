@@ -30,6 +30,9 @@ export function usePageView() {
     // Skip admin pages from analytics
     if (location.pathname.startsWith("/admin")) return;
 
+    // Only track if user has accepted cookies
+    if (localStorage.getItem("cookieConsent") !== "accepted") return;
+
     const visitorId = getOrCreateId("srn_vid", localStorage);
     const sessionId = getOrCreateId("srn_sid", sessionStorage);
 
