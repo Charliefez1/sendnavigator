@@ -1,16 +1,18 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Lock, CheckCircle, XCircle, Trash2, MessageCircleQuestion, MessageSquare, Eye, BookOpen, Reply, Send, BarChart3, Newspaper, Upload, AlertTriangle } from "lucide-react";
+import { Lock, CheckCircle, XCircle, Trash2, MessageCircleQuestion, MessageSquare, Eye, BookOpen, Reply, Send, BarChart3, Newspaper, Upload, AlertTriangle, ClipboardCheck } from "lucide-react";
 import { KnowledgeBaseManager } from "@/components/admin/KnowledgeBaseManager";
 import { NewsManager } from "@/components/admin/NewsManager";
 import { AnalyticsDashboard } from "@/components/admin/AnalyticsDashboard";
 import { ContentUpdateManager } from "@/components/admin/ContentUpdateManager";
 import { PageFlagsPanel } from "@/components/admin/PageFlagsPanel";
+import { PageReviewChecklist } from "@/components/admin/PageReviewChecklist";
+import { StalePageAlert } from "@/components/admin/StalePageAlert";
 import { Helmet } from "react-helmet-async";
 
 interface QuestionItem {
@@ -170,12 +172,15 @@ export default function Admin() {
   const [pin, setPin] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [pinError, setPinError] = useState(false);
-  const [activeTab, setActiveTab] = useState<"questions" | "feedback" | "knowledge" | "news" | "analytics" | "updates" | "flags">("questions");
+  const [activeTab, setActiveTab] = useState<"questions" | "feedback" | "knowledge" | "news" | "analytics" | "updates" | "flags" | "reviews">("questions");
   const [questions, setQuestions] = useState<QuestionItem[]>([]);
   const [feedbackItems, setFeedbackItems] = useState<FeedbackItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [respondingTo, setRespondingTo] = useState<string | null>(null);
   const [responseText, setResponseText] = useState("");
+  const [staleFlags, setStaleFlags] = useState<any[]>([]);
+  const [staleFlagCount, setStaleFlagCount] = useState(0);
+  const [markingAllFlags, setMarkingAllFlags] = useState(false);
   const { toast } = useToast();
 
   const callAdmin = useCallback(
@@ -189,6 +194,18 @@ export default function Admin() {
     },
     [pin]
   );
+
+  const fetchStaleFlags = useCallback(async () => {
+    try {
+      const { data, error } = await supabase.functions.invoke("admin-moderate", {
+        body: { pin, action: "stale_flag_count" },
+      });
+      if (!error && data) {
+        setStaleFlags(data.data || []);
+        setStaleFlagCount(data.count || 0);
+      }
+    } catch {}
+  }, [pin]);
 
   const handleLogin = async () => {
     setLoading(true);
@@ -206,6 +223,29 @@ export default function Admin() {
     }
   };
 
+  // Fetch stale flags after login
+  useEffect(() => {
+    if (authenticated && pin) {
+      fetchStaleFlags();
+    }
+  }, [authenticated, pin, fetchStaleFlags]);
+
+  const handleMarkAllFlagsReviewed = async () => {
+    setMarkingAllFlags(true);
+    try {
+      const { error } = await supabase.functions.invoke("admin-moderate", {
+        body: { pin, action: "resolve_all_flags" },
+      });
+      if (error) throw error;
+      toast({ title: "All flags marked as reviewed" });
+      await fetchStaleFlags();
+    } catch {
+      toast({ title: "Failed to mark flags", variant: "destructive" });
+    } finally {
+      setMarkingAllFlags(false);
+    }
+  };
+
   const refreshData = async () => {
     try {
       const [q, f] = await Promise.all([
@@ -214,6 +254,7 @@ export default function Admin() {
       ]);
       setQuestions(q.data || []);
       setFeedbackItems(f.data || []);
+      await fetchStaleFlags();
     } catch {
       toast({ title: "Failed to refresh data", variant: "destructive" });
     }
@@ -297,6 +338,14 @@ export default function Admin() {
           </div>
         </div>
 
+        {/* Stale page alert banner */}
+        <StalePageAlert
+          flags={staleFlags}
+          onMarkAllReviewed={handleMarkAllFlagsReviewed}
+          onViewFlags={() => setActiveTab("flags")}
+          loading={markingAllFlags}
+        />
+
         {/* Tabs */}
         <div className="flex gap-2">
           <button
@@ -359,11 +408,29 @@ export default function Admin() {
             className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
               activeTab === "flags"
                 ? "bg-primary text-primary-foreground"
+                : staleFlagCount > 0
+                ? "bg-destructive/10 text-destructive border border-destructive/30"
                 : "bg-secondary text-secondary-foreground"
             }`}
           >
             <AlertTriangle className="h-4 w-4" />
             Page Flags
+            {staleFlagCount > 0 && (
+              <span className="bg-destructive text-destructive-foreground text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">
+                {staleFlagCount}
+              </span>
+            )}
+          </button>
+          <button
+            onClick={() => setActiveTab("reviews")}
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+              activeTab === "reviews"
+                ? "bg-primary text-primary-foreground"
+                : "bg-secondary text-secondary-foreground"
+            }`}
+          >
+            <ClipboardCheck className="h-4 w-4" />
+            Page Reviews
           </button>
           <button
             onClick={() => setActiveTab("analytics")}
@@ -383,6 +450,8 @@ export default function Admin() {
           <ContentUpdateManager pin={pin} />
         ) : activeTab === "flags" ? (
           <PageFlagsPanel pin={pin} />
+        ) : activeTab === "reviews" ? (
+          <PageReviewChecklist pin={pin} />
         ) : activeTab === "analytics" ? (
           <AnalyticsDashboard pin={pin} />
         ) : activeTab === "news" ? (
