@@ -54,13 +54,6 @@ function ContactCard({ person, showBioImage }: { person: ContactPerson; showBioI
           </a>
         </div>
       </div>
-      {person.bioImage && (
-        <img
-          src={person.bioImage}
-          alt={`${person.name} bio`}
-          className="w-full rounded-lg"
-        />
-      )}
     </div>
   );
 }
