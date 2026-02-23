@@ -112,7 +112,7 @@ export function FinalScreen() {
 
       const aiReport = data.report;
 
-      generateProfilePDF({ state, aiReport });
+      await generateProfilePDF({ state, aiReport });
 
       setStage("complete");
     } catch (e) {

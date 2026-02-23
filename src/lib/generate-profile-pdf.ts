@@ -2,6 +2,8 @@ import jsPDF from "jspdf";
 import { ChildProfileState, SECTION_TITLES } from "@/contexts/ChildProfileContext";
 import { sectionContent } from "@/config/child-profile-sections";
 import { childVoiceQuestions } from "@/config/child-voice-questions";
+import beaconLogoUrl from "@/assets/beacon-logo.png";
+import ngLogoUrl from "@/assets/neurodiversity-global-logo.jpeg";
 
 interface ReportData {
   state: ChildProfileState;
@@ -18,7 +20,40 @@ const WARM_BORDER = [220, 210, 195]; // parent words border
 const WHITE = [255, 255, 255];
 const PAGE_BG = [252, 251, 249];  // very subtle warm white
 
-export function generateProfilePDF({ state, aiReport }: ReportData) {
+/**
+ * Load an image URL and return a base64 data URL suitable for jsPDF.
+ */
+function loadImageAsBase64(url: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return reject(new Error("Canvas context failed"));
+      ctx.drawImage(img, 0, 0);
+      resolve(canvas.toDataURL("image/png"));
+    };
+    img.onerror = () => reject(new Error(`Failed to load image: ${url}`));
+    img.src = url;
+  });
+}
+
+export async function generateProfilePDF({ state, aiReport }: ReportData) {
+  // Pre-load logos
+  let beaconLogoData: string | null = null;
+  let ngLogoData: string | null = null;
+  try {
+    [beaconLogoData, ngLogoData] = await Promise.all([
+      loadImageAsBase64(beaconLogoUrl),
+      loadImageAsBase64(ngLogoUrl),
+    ]);
+  } catch (e) {
+    console.warn("Could not load logos for PDF:", e);
+  }
+
   const doc = new jsPDF({ unit: "mm", format: "a4" });
   const pageWidth = doc.internal.pageSize.getWidth();
   const pageHeight = doc.internal.pageSize.getHeight();
@@ -41,14 +76,13 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
 
   const DISCLAIMER_TEXT = "This report is a personal guide created to help you understand and articulate your child's needs. While every care has been taken in producing this document, Neurodiversity Global cannot be held responsible for decisions made on the basis of its content. This is not a legal document and does not constitute professional medical, educational, or legal advice. Always seek qualified professional support where needed.";
   const FOOTER_ZONE_HEIGHT = 22;
+  const maxContentY = pageHeight - FOOTER_ZONE_HEIGHT - 4;
 
   const footer = () => {
-    // Thin rule above disclaimer
     setDraw(WARM_BORDER);
     doc.setLineWidth(0.3);
     doc.line(margin, pageHeight - FOOTER_ZONE_HEIGHT, pageWidth - margin, pageHeight - FOOTER_ZONE_HEIGHT);
 
-    // Disclaimer text
     doc.setFontSize(6.5);
     doc.setFont("helvetica", "normal");
     setColor(LIGHT_TEXT);
@@ -60,17 +94,22 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
       dy += dlLineH;
     }
 
-    // Site URL at very bottom
     doc.setFontSize(7);
     doc.text("sendnavigator.neuro.support", pageWidth / 2, pageHeight - 8, { align: "center" });
     setColor(DARK_TEXT);
   };
 
+  const newPage = (): number => {
+    footer();
+    doc.addPage();
+    setFill(WHITE);
+    doc.rect(0, 0, pageWidth, pageHeight, "F");
+    return margin;
+  };
+
   const checkPageBreak = (y: number, needed: number): number => {
-    if (y + needed > pageHeight - FOOTER_ZONE_HEIGHT - 4) {
-      footer();
-      doc.addPage();
-      return margin;
+    if (y + needed > maxContentY) {
+      return newPage();
     }
     return y;
   };
@@ -93,6 +132,64 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
       doc.text(line, x, y);
       y += lineHeight;
     }
+    return y;
+  };
+
+  /**
+   * Render a block of text inside a warm background box.
+   * Handles page breaks by drawing box segments per page.
+   */
+  const addBoxedText = (
+    text: string,
+    y: number,
+  ): number => {
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "normal");
+    const lines: string[] = doc.splitTextToSize(text, contentWidth - 14);
+    const lineHeight = 11 * 0.353 * 1.6;
+    const boxPadTop = 5;
+    const boxPadBottom = 5;
+    const boxPadX = 7;
+
+    // We render in segments that fit on each page
+    let lineIdx = 0;
+    while (lineIdx < lines.length) {
+      // How many lines fit on this page?
+      const availH = maxContentY - y - boxPadTop - boxPadBottom;
+      const linesPerPage = Math.max(1, Math.floor(availH / lineHeight));
+      const segmentLines = lines.slice(lineIdx, lineIdx + linesPerPage);
+      const segmentH = segmentLines.length * lineHeight + boxPadTop + boxPadBottom;
+
+      // If we can't even fit one line, go to next page
+      if (y + segmentH > maxContentY && lineIdx < lines.length) {
+        y = checkPageBreak(y, segmentH);
+      }
+
+      // Draw background box for this segment
+      setFill(WARM_BG);
+      setDraw(WARM_BORDER);
+      doc.setLineWidth(0.3);
+      doc.roundedRect(margin, y - 3, contentWidth, segmentLines.length * lineHeight + boxPadTop + boxPadBottom, 2, 2, "FD");
+
+      // Render lines
+      setColor(DARK_TEXT);
+      doc.setFontSize(11);
+      doc.setFont("helvetica", "normal");
+      let ty = y + boxPadTop;
+      for (const line of segmentLines) {
+        doc.text(line, margin + boxPadX, ty);
+        ty += lineHeight;
+      }
+
+      lineIdx += segmentLines.length;
+      y = ty + boxPadBottom;
+
+      // If more lines remain, break to new page
+      if (lineIdx < lines.length) {
+        y = newPage();
+      }
+    }
+
     return y;
   };
 
@@ -154,16 +251,22 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
   // PAGE 1: COVER
   // =============================================
 
-  // Subtle warm page background
   setFill(PAGE_BG);
   doc.rect(0, 0, pageWidth, pageHeight, "F");
+
+  // Beacon logo at top centre
+  if (beaconLogoData) {
+    try {
+      doc.addImage(beaconLogoData, "PNG", pageWidth / 2 - 20, 20, 40, 20);
+    } catch { /* ignore logo errors */ }
+  }
 
   // Top decorative line
   setDraw(NAVY);
   doc.setLineWidth(0.8);
   doc.line(margin, 55, pageWidth - margin, 55);
 
-  // Child's name — large, centred
+  // Child's name
   doc.setFontSize(36);
   doc.setFont("helvetica", "bold");
   setColor(NAVY);
@@ -191,7 +294,7 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
   setDraw(WARM_BORDER);
   doc.line(margin + 30, 140, pageWidth - margin - 30, 140);
 
-  // Disclaimer block
+  // Cover disclaimer
   doc.setFontSize(9);
   setColor(LIGHT_TEXT);
   doc.text(
@@ -217,7 +320,6 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
   doc.text("Why we built this profile", margin, y);
   y += 14;
 
-  // Thin accent line under heading
   setDraw(NAVY);
   doc.setLineWidth(0.5);
   doc.line(margin, y - 6, margin + 50, y - 6);
@@ -266,7 +368,7 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
 
     if (!hasAnswers && !hasReflection && !hasChildVoice) return;
 
-    // New page for each section
+    // New page for each section — ensures no overlap between sections
     doc.addPage();
     setFill(WHITE);
     doc.rect(0, 0, pageWidth, pageHeight, "F");
@@ -311,25 +413,13 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
       doc.setFontSize(10);
       doc.setFont("helvetica", "bold");
       setColor(MID_TEXT);
+      y = checkPageBreak(y, 12);
       doc.text(`In ${childName}'s parent's words`, margin + 5, y + 1);
       y += 7;
 
-      // Measure content to draw background box
-      const textHeight = measureText(parentProse, contentWidth - 14, 11);
-      const boxHeight = textHeight + 10;
-
-      y = checkPageBreak(y, boxHeight + 4);
-
-      // Draw warm background box
-      setFill(WARM_BG);
-      setDraw(WARM_BORDER);
-      doc.setLineWidth(0.3);
-      doc.roundedRect(margin, y - 3, contentWidth, boxHeight, 2, 2, "FD");
-
-      // Render text inside box
-      setColor(DARK_TEXT);
-      y = addWrappedText(parentProse, margin + 7, y + 4, contentWidth - 14, 11);
-      y += 10;
+      // Use page-break-safe boxed text renderer
+      y = addBoxedText(parentProse, y);
+      y += 6;
     }
 
     // --- CHILD VOICE BLOCK ---
@@ -342,7 +432,7 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
       });
 
       if (childTexts.length > 0) {
-        y = checkPageBreak(y, 30);
+        y = checkPageBreak(y, 20);
 
         doc.setFontSize(10);
         doc.setFont("helvetica", "bold");
@@ -369,10 +459,16 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
       doc.text("What this tells us", margin, y);
       y += 7;
 
+      // Split AI content into paragraphs for better page break handling
       const cleanAI = cleanMarkdown(aiContent);
+      const paragraphs = cleanAI.split(/\n\n+/).filter(p => p.trim());
+      
       setColor(DARK_TEXT);
-      y = addWrappedText(cleanAI, margin, y, contentWidth, 11);
-      y += 8;
+      for (const para of paragraphs) {
+        y = addWrappedText(para, margin, y, contentWidth, 11);
+        y += 4;
+      }
+      y += 4;
     }
 
     // --- CLOSING REFLECTION ---
@@ -438,7 +534,6 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
 
-    // Centre the text block
     const stmtLines: string[] = doc.splitTextToSize(state.finalStatement, contentWidth - 20);
     const lineHeight = 12 * 0.353 * 1.7;
     for (const line of stmtLines) {
@@ -473,6 +568,14 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
   setFill(WHITE);
   doc.rect(0, 0, pageWidth, pageHeight, "F");
   y = margin;
+
+  // Neurodiversity Global logo
+  if (ngLogoData) {
+    try {
+      doc.addImage(ngLogoData, "JPEG", pageWidth / 2 - 15, y, 30, 30);
+      y += 36;
+    } catch { /* ignore logo errors */ }
+  }
 
   doc.setFontSize(18);
   doc.setFont("helvetica", "bold");
