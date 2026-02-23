@@ -39,21 +39,35 @@ export function generateProfilePDF({ state, aiReport }: ReportData) {
   const setFill = (rgb: number[]) => doc.setFillColor(rgb[0], rgb[1], rgb[2]);
   const setDraw = (rgb: number[]) => doc.setDrawColor(rgb[0], rgb[1], rgb[2]);
 
+  const DISCLAIMER_TEXT = "This report is a personal guide created to help you understand and articulate your child's needs. While every care has been taken in producing this document, Neurodiversity Global cannot be held responsible for decisions made on the basis of its content. This is not a legal document and does not constitute professional medical, educational, or legal advice. Always seek qualified professional support where needed.";
+  const FOOTER_ZONE_HEIGHT = 22;
+
   const footer = () => {
-    doc.setFontSize(7.5);
+    // Thin rule above disclaimer
+    setDraw(WARM_BORDER);
+    doc.setLineWidth(0.3);
+    doc.line(margin, pageHeight - FOOTER_ZONE_HEIGHT, pageWidth - margin, pageHeight - FOOTER_ZONE_HEIGHT);
+
+    // Disclaimer text
+    doc.setFontSize(6.5);
     doc.setFont("helvetica", "normal");
     setColor(LIGHT_TEXT);
-    doc.text(
-      "This is not a diagnostic document.  sendnavigator.neuro.support",
-      pageWidth / 2,
-      pageHeight - 10,
-      { align: "center" }
-    );
+    const disclaimerLines: string[] = doc.splitTextToSize(DISCLAIMER_TEXT, contentWidth);
+    const dlLineH = 6.5 * 0.353 * 1.4;
+    let dy = pageHeight - FOOTER_ZONE_HEIGHT + 3;
+    for (const line of disclaimerLines) {
+      doc.text(line, pageWidth / 2, dy, { align: "center" });
+      dy += dlLineH;
+    }
+
+    // Site URL at very bottom
+    doc.setFontSize(7);
+    doc.text("sendnavigator.neuro.support", pageWidth / 2, pageHeight - 8, { align: "center" });
     setColor(DARK_TEXT);
   };
 
   const checkPageBreak = (y: number, needed: number): number => {
-    if (y + needed > pageHeight - 18) {
+    if (y + needed > pageHeight - FOOTER_ZONE_HEIGHT - 4) {
       footer();
       doc.addPage();
       return margin;
