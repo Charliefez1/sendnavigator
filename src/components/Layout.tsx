@@ -1,10 +1,9 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Header } from "./Header";
 import { ReportLayout } from "./ReportLayout";
 import { JourneyFloatingBar } from "./JourneyFloatingBar";
 import { Footer } from "./Footer";
-
 import { PreFooter } from "./PreFooter";
 import { SkipLink } from "./SkipLink";
 import { AskQuestionCompact } from "./AskQuestionCompact";
@@ -13,6 +12,7 @@ import { ScanModeBanner } from "./ScanModeBanner";
 import { ExitIntentPopup } from "./ExitIntentPopup";
 import { CookieConsent } from "./CookieConsent";
 import { AskSendFloating } from "./AskSendFloating";
+import { AnnouncementBanner } from "./AnnouncementBanner";
 
 
 interface LayoutProps {
@@ -25,6 +25,7 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <AnnouncementBanner />
       <SkipLink />
       <Header />
       <ScanModeBanner />
