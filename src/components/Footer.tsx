@@ -1,13 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { BookOpen, FileText, MessageCircleQuestion, MessageSquare, HelpCircle, ExternalLink } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import {
+  BookOpen, FileText, MessageCircleQuestion, MessageSquare,
+  HelpCircle, ExternalLink, Shield, Brain, Scale, Megaphone,
+  ClipboardList, LogOut, Stethoscope, GraduationCap, AlertTriangle,
+  Building2, MapPin, Globe, Heart, HandHeart, Users,
+} from "lucide-react";
 import beaconLogo from "@/assets/beacon-logo.png";
 
 export function Footer() {
   const [showAboutTool, setShowAboutTool] = useState(false);
+  const { user, signOut } = useAuth();
+
   return (
     <footer className="bg-navy text-navy-foreground mt-auto">
-      {/* Main footer content */}
       <div className="content-wide py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Brand column */}
@@ -26,10 +33,14 @@ export function Footer() {
             <ul className="space-y-2.5">
               {[
                 { to: "/state-of-send-2026", label: "State of SEND 2026", icon: BookOpen },
-                { to: "/state-of-send-2026/what-is-changing", label: "What is changing", icon: FileText },
-                { to: "/state-of-send-2026/what-the-leaks-are-saying", label: "What the leaks say", icon: ExternalLink },
-                { to: "/state-of-send-2026/what-is-being-discussed", label: "What is discussed", icon: HelpCircle },
-                { to: "/state-of-send-2026/timeline", label: "Timeline", icon: FileText },
+                { to: "/ehcps", label: "EHCP Guide", icon: Shield },
+                { to: "/ehcp-health", label: "Health in EHCPs", icon: Stethoscope },
+                { to: "/what-to-do-right-now", label: "What to do now", icon: Scale },
+                { to: "/my-child-profile", label: "My Child: A Profile", icon: ClipboardList },
+                { to: "/exclusions", label: "Exclusions and rights", icon: AlertTriangle },
+                { to: "/alternative-provision", label: "Alternative Provision", icon: Building2 },
+                { to: "/post-16-and-transition", label: "Post-16 and Transition", icon: GraduationCap },
+                { to: "/have-your-say", label: "Have your say", icon: Megaphone },
               ].map((link) => (
                 <li key={link.to}>
                   <Link
@@ -41,6 +52,18 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              {user && (
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => signOut()}
+                    className="group flex items-center gap-2.5 text-sm text-navy-muted hover:text-white transition-colors"
+                  >
+                    <LogOut className="w-3.5 h-3.5 text-white/30 group-hover:text-white/70 transition-colors" />
+                    Sign out
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -51,8 +74,13 @@ export function Footer() {
               {[
                 { to: "/questions-and-answers", label: "Ask Rich", icon: MessageCircleQuestion },
                 { to: "/community-questions", label: "Lived Experience", icon: MessageSquare },
+                { to: "/understanding-your-child", label: "Understanding your child", icon: Brain },
+                { to: "/understanding-your-child/autism", label: "Understanding Autism", icon: Brain },
+                { to: "/understanding-your-child/adhd", label: "Understanding ADHD", icon: Brain },
+                { to: "/for-parents", label: "Support for parents", icon: Heart },
+                { to: "/local-variation", label: "Why where you live matters", icon: MapPin },
+                { to: "/devolved-nations", label: "Wales, Scotland and NI", icon: Globe },
                 { to: "/sources", label: "Sources", icon: FileText },
-                { to: "/how-to-use", label: "How to use this site", icon: HelpCircle },
                 { to: "/statistics-and-data", label: "Statistics and Data", icon: BookOpen },
               ].map((link) => (
                 <li key={link.to}>
@@ -74,6 +102,7 @@ export function Footer() {
             <ul className="space-y-2.5">
               {[
                 { to: "/about", label: "About this resource" },
+                { to: "/how-to-use", label: "How to use this site" },
                 { to: "/why-i-built-this", label: "Why I built this" },
                 { to: "/rich-ferriman", label: "Rich Ferriman" },
                 { to: "/neurodiversity-global", label: "Neurodiversity Global" },
