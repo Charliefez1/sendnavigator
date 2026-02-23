@@ -193,7 +193,7 @@ serve(async (req) => {
         throw new Error("Missing required fields");
       }
 
-      parsedAnswer.lastUpdated = "13th February 2026";
+      parsedAnswer.lastUpdated = "23rd February 2026";
 
       console.log(`Q&A response generated with confidence: ${parsedAnswer.confidence}`);
 
@@ -223,7 +223,7 @@ serve(async (req) => {
               { label: "Where we are now", path: "/where-we-are-now" },
               { label: "What is changing", path: "/what-is-changing" }
             ],
-            lastUpdated: "7th February 2026"
+            lastUpdated: "23rd February 2026"
           }
         }),
         { headers: { ...corsHeaders, "Content-Type": "application/json" } }
