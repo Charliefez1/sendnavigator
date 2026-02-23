@@ -21,6 +21,8 @@ const QUICK_OPTIONS = [
   "I've heard about SEND reform and I'm worried",
   "My child is struggling at school and I don't know where to start",
   "I want to understand what's changing with SEND",
+  "What does the Schools White Paper mean for my child?",
+  "Will Individual Support Plans replace EHCPs?",
 ];
 
 export function GuideMe() {
