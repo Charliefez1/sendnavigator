@@ -203,13 +203,6 @@ const Index = () => {
         <GuideMe />
       </section>
 
-      {/* Breaking News — TEAL accent (reform news) */}
-      <section className="content-section py-3">
-        <div className={`border-l-4 ${SECTION_COLORS.teal.border} rounded-r-xl`}>
-          <NewsHeadlines />
-        </div>
-      </section>
-
       {/* Browse everything toggle */}
       <section className="content-section py-2">
         <button
@@ -219,6 +212,13 @@ const Index = () => {
           <span>{showAll ? "Hide full site map" : "Or browse everything"}</span>
           <ChevronDown className={`w-4 h-4 transition-transform ${showAll ? "rotate-180" : ""}`} />
         </button>
+      </section>
+
+      {/* Breaking News — TEAL accent (reform news) */}
+      <section className="content-section py-3">
+        <div className={`border-l-4 ${SECTION_COLORS.teal.border} rounded-r-xl`}>
+          <NewsHeadlines />
+        </div>
       </section>
 
       {/* Full content sections — hidden by default */}
