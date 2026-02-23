@@ -128,15 +128,6 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
 
       {/* Return with access code */}
       <div className="mt-6 space-y-3">
-        {onLoadTestData && (
-          <button
-            type="button"
-            onClick={onLoadTestData}
-            className="text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground transition-colors block"
-          >
-            Fill with test data (dev only)
-          </button>
-        )}
         {!showCodeEntry ? (
           <button
             type="button"
