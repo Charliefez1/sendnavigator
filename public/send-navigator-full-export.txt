@@ -1,6 +1,6 @@
 # SEND Reform Navigator — Full Site Content Export
 
-**Exported: 19 February 2026**
+**Exported: 23 February 2026**
 **Site URL: https://sendnavigator.lovable.app**
 
 ---
@@ -93,7 +93,7 @@ Everything across this site, brought together in one page. Where things stand, w
 
 #### Where things stand right now
 
-The SEND system in England is under severe strain. **Around 576,000 children have an Education, Health and Care Plan**, a 140% increase since 2015. Nearly 1.9 million young people are identified with SEND overall.
+The SEND system in England is under severe strain. **Around 638,700 children have an Education, Health and Care Plan** (January 2025), a 160% increase since 2015. Nearly 1.9 million young people are identified with SEND overall.
 
 The law is clear. The problem is delivery. **Only around 60% of EHCPs are issued within the 20-week legal timescale.** Many families wait six to twelve months. Nearly 50% of parents describe securing support as stressful. 22% say their child's school is not delivering what is written in the plan.
 
@@ -172,7 +172,7 @@ Reform is coming because the current system is failing too many families. That d
 
 ### Current situation: where is SEND provision in the UK today
 
-**Status: Confirmed** | Last updated: 15th February 2026
+**Status: Confirmed** | Last updated: 23rd February 2026
 
 #### 60-Second Summary
 
@@ -195,7 +195,7 @@ None of this means good support is impossible. Many settings and professionals w
 #### Statistics and facts
 
 - **1.9m** young people with SEND (0–25 age group)
-- **576,000** children with an EHCP (140% rise since 2015)
+- **638,700** children with an EHCP (January 2025, 160% rise since 2015)
 - **1 in 5** KS4 pupils with SEND (nearly 20% and rising)
 - **£13.1bn** council SEND spending (up from £7.8bn in 2015)
 - **95%** of councils in SEND deficit (79% risked insolvency)
@@ -254,7 +254,7 @@ There are also perverse incentives baked in. Schools do not get extra funding pe
 
 ### Confirmed changes: what changes are coming to SEND provision in 2026 and have been confirmed
 
-**Status: Confirmed** | Last updated: 15th February 2026
+**Status: Confirmed** | Last updated: 23rd February 2026
 
 #### 60-Second Summary
 
@@ -325,9 +325,9 @@ In February 2026, the government confirmed it will **write off 90% of council SE
 
 ## What Has Not Changed
 
-### What has not changed: what remains the same in the SEND system as of 15 February 2026
+### What has not changed: what remains the same in the SEND system as of 23 February 2026
 
-**Status: Confirmed** | Last updated: 15th February 2026
+**Status: Confirmed** | Last updated: 23rd February 2026
 
 #### 60-Second Summary
 
@@ -337,7 +337,7 @@ Education, Health and Care Plans still exist. **The Children and Families Act 20
 
 **No child has lost their legal protections because of reform discussions.** No existing EHCP has been removed or downgraded because of proposed changes.
 
-#### Rights still in force as of 15 February 2026
+#### Rights still in force as of 23 February 2026
 
 - ✅ Children and Families Act 2014 remains the legal framework
 - ✅ EHCPs remain statutory and legally enforceable
@@ -370,7 +370,7 @@ The most important point for parents to understand is this. **The law has not mo
 
 ### What we know so far: the current state of SEND in England
 
-**Status: Confirmed** | Last updated: 15th February 2026
+**Status: Confirmed** | Last updated: 23rd February 2026
 
 #### 60-Second Summary
 
@@ -378,7 +378,7 @@ The evidence shows the SEND system is overwhelmed. Many more children need suppo
 
 #### Key Statistics
 
-- **576,000+** children with EHCPs (140% increase since 2015)
+- **638,700** children with EHCPs (January 2025, 160% increase since 2015)
 - **1.2m** pupils on SEN Support (without an EHCP)
 - **£9.4bn** high needs funding (2024/25)
 - **~50%** EHCPs issued on time (approx. within 20 weeks)
@@ -402,7 +402,7 @@ Council spending on high needs rose from **£7.8 billion in 2015 to £13.1 billi
 
 ### Under discussion: what is being debated publicly right now
 
-**Status: Discussed** | Last updated: 15th February 2026
+**Status: Discussed** | Last updated: 23rd February 2026
 
 #### 60-Second Summary
 
@@ -452,7 +452,7 @@ The discussion is about balance, not absolutes. **No policy currently forces chi
 
 ### What we do not know: questions parents are asking and why they matter
 
-**Status: Unconfirmed** | Last updated: 15th February 2026
+**Status: Unconfirmed** | Last updated: 23rd February 2026
 
 #### 60-Second Summary
 
@@ -491,7 +491,7 @@ Parents want to know: **Whether children with existing EHCPs are fully protected
 
 ### Unconfirmed reports: government kite flying and what may or may not happen
 
-**Status: Unconfirmed** | Last updated: 15th February 2026
+**Status: Unconfirmed** | Last updated: 23rd February 2026
 
 #### 60-Second Summary
 
@@ -541,7 +541,7 @@ Alongside formal consultation and public debate, there has been a steady flow of
 
 ### What leaks do not mean, and why they happen at all
 
-**Status: Confirmed** | Last updated: 15th February 2026
+**Status: Confirmed** | Last updated: 23rd February 2026
 
 #### 60-Second Summary
 
@@ -619,7 +619,7 @@ Practical implications of confirmed and proposed changes for different groups.
 
 ### What happens next and when: the path from now to change
 
-**Status: Discussed** | Last updated: 15th February 2026
+**Status: Discussed** | Last updated: 23rd February 2026
 
 #### 60-Second Summary
 
@@ -668,11 +668,11 @@ Even once legislation passes, **systems do not flip overnight**. Transition typi
 
 ### EHCPs: a complete guide for parents
 
-**Status: Confirmed** | Last updated: 15th February 2026
+**Status: Confirmed** | Last updated: 23rd February 2026
 
 #### 60-Second Summary
 
-An Education, Health and Care Plan (EHCP) is a **legally binding document** for children and young people aged 0 to 25 with significant special educational needs. It coordinates support across education, health, and social care. Since 2014, the number of children with EHCPs has **more than doubled to over 576,000**. The process should take 20 weeks but only about half are issued on time. Parents have strong legal rights at every stage, including the right to appeal, and **win 99% of tribunal cases that reach a hearing**.
+An Education, Health and Care Plan (EHCP) is a **legally binding document** for children and young people aged 0 to 25 with significant special educational needs. It coordinates support across education, health, and social care. Since 2014, the number of children with EHCPs has **risen to 638,700 (January 2025)**. The process should take 20 weeks but only about half are issued on time. Parents have strong legal rights at every stage, including the right to appeal, and **win 95% of tribunal cases that reach a hearing**.
 
 #### What is an EHCP
 
@@ -686,14 +686,14 @@ Need areas: Communication and interaction, Cognition and learning, Social emotio
 
 #### EHCP statistics
 
-- **576,000+** children with EHCPs (January 2024)
+- **638,700** children with EHCPs (January 2025)
 - **138,242** assessment requests (in 2023 alone)
 - **140%** growth since 2015
 - **50%** issued on time (within 20 weeks)
 - **95%** assessments lead to plan (once LA agrees to assess)
 - **99%** parents win at tribunal (of decided cases)
 - **24%** requests refused (~33,000 children turned away in 2023)
-- **25,000** tribunal appeals (registered in 2024/25)
+- **21,000** tribunal appeals (2023/24)
 - **£153m** LAs spent on appeals (in 2023-24 alone)
 - **1.3%** LA win rate at tribunal (of cases that go to hearing)
 
@@ -791,7 +791,7 @@ As co founder of **Neurodiversity Global**, I work to ensure neuroinclusion is s
 
 ## Knowledge Base
 
-### AI Source Data (Last updated: 20th February 2026)
+### AI Source Data (Last updated: 23rd February 2026)
 
 #### Current Legal Position [Confirmed]
 
@@ -801,13 +801,13 @@ As co founder of **Neurodiversity Global**, I work to ensure neuroinclusion is s
 - Tribunal rights remain unchanged
 
 Key statistics (2024 to 2025):
-- Around 482,000 pupils had an EHC plan
+- 638,700 children had an EHC plan (January 2025)
 - Around 1.28 million pupils received SEN support without an EHC plan
 - Only around half of EHC plans were issued within the 20 week legal timescale
 - The SEND system has been described as financially unsustainable
 - High needs funding reached around £9.4 billion in 2024/25
 
-As of 20 February 2026:
+As of 23 February 2026:
 - The legal test for EHC needs assessment remains unchanged
 - The right to request assessment remains intact
 - Tribunal appeal rights remain intact
@@ -821,7 +821,9 @@ As of 20 February 2026:
 - A national conversation on SEND reform ran from December 2025 to January 2026
 - Government announced £3 billion capital funding to expand specialist places
 - Government announced a £200 million SEND teacher training programme
-- The 10 year schools and colleges plan was published (10 February 2026)
+- The Schools White Paper 'Every Child Achieving and Thriving' was published (February 2026)
+- Individual Support Plans (ISPs) confirmed, to be phased in by 2030
+- £4bn confirmed SEND funding package
 - Councils and ICBs instructed to begin drafting local SEND reform plans
 - A universal, targeted and specialist model is being embedded
 - The maturity tool describes advanced systems as having fewer EHCPs overall
@@ -954,7 +956,7 @@ Parents and carers, Schools and teachers, Local authorities, Health and therapy 
 2. **Draft legislation content** — No draft has been published.
 3. **Implementation dates** — No dates confirmed.
 
-### Current Position (as of 20 February 2026)
+### Current Position (as of 23 February 2026)
 
 Three parallel tracks are now visible:
 1. Operational preparation at local level (councils drafting reform plans)
@@ -965,4 +967,4 @@ Three parallel tracks are now visible:
 
 ---
 
-*End of export. Generated from SEND Reform Navigator source code on 19 February 2026.*
+*End of export. Generated from SEND Reform Navigator source code on 23 February 2026.*
