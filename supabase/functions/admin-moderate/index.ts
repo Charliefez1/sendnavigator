@@ -314,6 +314,38 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Content updates management
+    if (action === "insert_content_update") {
+      const { data, error } = await supabase
+        .from("content_updates")
+        .insert({
+          source: "manual",
+          source_name: id.source_name,
+          raw_content: id.raw_content,
+          status: "pending",
+        })
+        .select()
+        .single();
+      if (error) throw error;
+      return new Response(JSON.stringify({ data }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Resolve page flag
+    if (action === "resolve_flag" && table === "page_update_flags") {
+      const { data, error } = await supabase
+        .from("page_update_flags")
+        .update({ status: id.status, resolved_at: new Date().toISOString() })
+        .eq("id", id.flagId)
+        .select()
+        .single();
+      if (error) throw error;
+      return new Response(JSON.stringify({ data }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     if (action === "stats") {
       const [questions, feedback] = await Promise.all([
         supabase.from("user_questions").select("status", { count: "exact" }),
