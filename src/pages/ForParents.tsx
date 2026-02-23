@@ -38,7 +38,7 @@ export default function ForParents() {
   return (
     <Layout>
       <SEOHead
-        title="You Are Carrying a Lot — SEND Navigator"
+        title="You Are Carrying a Lot | SEND Navigator"
         description="An honest acknowledgement of what parenting a neurodivergent child through a broken system actually costs. Practical support, carer rights, and where to find people who understand."
         path="/for-parents"
       />
@@ -106,7 +106,7 @@ export default function ForParents() {
               They are the parents who <strong>found other people who understood</strong>.
             </p>
             <p>
-              Parent carer forums, local SEND parent groups, online communities — these are not soft options. They are <strong>survival infrastructure</strong>. Other parents who have been through the tribunal process, who know which LA officer actually responds, who have already made the mistakes you are about to make.
+              Parent carer forums, local SEND parent groups, online communities. These are not soft options. They are <strong>survival infrastructure</strong>. Other parents who have been through the tribunal process, who know which LA officer actually responds, who have already made the mistakes you are about to make.
             </p>
             <p>This knowledge does not sit in official documents. It sits in those communities.</p>
           </div>
@@ -122,13 +122,13 @@ export default function ForParents() {
               Every local authority area in England has a <strong>Parent Carer Forum</strong>. These are independent groups, largely run by parent carers, that have a formal role in the local SEND system. They are consulted by the LA and by health services. They have access to information about <strong>local provision, planned changes, and how the system is operating in your area</strong>.
             </p>
             <p>They are also, in practice, communities of people who understand what you are going through.</p>
-            <p>Find your local forum via the NNPCF — the National Network of Parent Carer Forums.</p>
+            <p>Find your local forum via the NNPCF, the National Network of Parent Carer Forums.</p>
           </div>
           <div className="mt-4">
             <ResourceLink
-              label="NNPCF — find your local forum"
+              label="NNPCF: find your local forum"
               url="https://nnpcf.org.uk"
-              description="National Network of Parent Carer Forums — searchable directory of local parent carer forums across England."
+              description="National Network of Parent Carer Forums. Searchable directory of local parent carer forums across England."
             />
           </div>
         </div>
@@ -152,7 +152,7 @@ export default function ForParents() {
           </div>
           <div className="mt-4 space-y-2">
             <ResourceLink
-              label="Contact — for families with disabled children"
+              label="Contact: for families with disabled children"
               url="https://contact.org.uk"
               description="Helpline, practical guides, and parent-to-parent support for families with disabled children."
             />
@@ -170,7 +170,7 @@ export default function ForParents() {
         </div>
       </section>
 
-      {/* Carer's assessment — highlighted callout */}
+      {/* Carer's assessment */}
       <section className="content-section py-4">
         <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-6 shadow-lg">
           <SectionHeading>Your rights as a carer</SectionHeading>
@@ -190,7 +190,7 @@ export default function ForParents() {
           </div>
           <div className="mt-4">
             <ResourceLink
-              label="Carers UK — your right to a carer's assessment"
+              label="Carers UK: your right to a carer's assessment"
               url="https://www.carersuk.org"
               description="Detailed guidance on what a carer's assessment is, how to request one, and what it can lead to."
             />
@@ -301,7 +301,7 @@ export default function ForParents() {
           >
             <div className="flex-1">
               <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm">
-                → What the system owes your child — legal rights, plainly explained
+                → What the system owes your child. Legal rights, plainly explained.
               </p>
             </div>
           </Link>
@@ -311,7 +311,7 @@ export default function ForParents() {
           >
             <div className="flex-1">
               <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm">
-                → What to do right now if things are going wrong
+                → What to do right now. The full escalation guide.
               </p>
             </div>
           </Link>
@@ -321,7 +321,7 @@ export default function ForParents() {
           >
             <div className="flex-1">
               <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm">
-                → What we owe our children — a reality check for parents
+                → What we owe our children. A reality check for parents.
               </p>
             </div>
           </Link>

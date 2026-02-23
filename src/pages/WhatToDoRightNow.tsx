@@ -87,7 +87,7 @@ const situations = [
         </p>
         <p>You have <strong>two months</strong> from the date of the LA's decision to appeal.</p>
         <div className="space-y-2 pt-2">
-          <ResourceLink label="How to appeal to the SEND Tribunal — GOV.UK" url="https://www.gov.uk/appeal-ehc-plan-decision" />
+          <ResourceLink label="How to appeal to the SEND Tribunal (GOV.UK)" url="https://www.gov.uk/appeal-ehc-plan-decision" />
           <br />
           <ResourceLink label="IPSEA guidance on appealing a refusal to assess" url="https://www.ipsea.org.uk/appeal-refusal-to-assess" />
         </div>
@@ -101,7 +101,7 @@ const situations = [
       <div className="space-y-4 text-sm text-muted-foreground leading-relaxed">
         <p>The law sets clear timescales.</p>
         <p>
-          From the date the LA agrees to assess, the entire process — assessment, draft plan, final plan — must be completed within <strong>20 weeks</strong>.
+          From the date the LA agrees to assess, the entire process (assessment, draft plan, final plan) must be completed within <strong>20 weeks</strong>.
         </p>
         <p>If deadlines are being missed, write to the LA formally. IPSEA has a model letter for this too.</p>
         <p>If the complaint to the LA is not resolved, escalate to the LGSCO.</p>
@@ -123,9 +123,9 @@ const situations = [
           You must contact a mediation adviser first and obtain a certificate before lodging an appeal. Mediation itself is optional and free. It does not affect your right to appeal.
         </p>
         <div className="space-y-2 pt-2">
-          <ResourceLink label="GOV.UK — appeal an EHCP decision" url="https://www.gov.uk/appeal-ehc-plan-decision" />
+          <ResourceLink label="GOV.UK: appeal an EHCP decision" url="https://www.gov.uk/appeal-ehc-plan-decision" />
           <br />
-          <ResourceLink label="IPSEA — disagreeing with the contents of an EHCP" url="https://www.ipsea.org.uk/disagreeing-with-the-contents-of-an-ehcp" />
+          <ResourceLink label="IPSEA: disagreeing with the contents of an EHCP" url="https://www.ipsea.org.uk/disagreeing-with-the-contents-of-an-ehcp" />
         </div>
       </div>
     ),
@@ -141,7 +141,7 @@ const situations = [
           If you have concerns about your child's needs changing significantly, you can request an early review at any point. You do not have to wait for the annual cycle.
         </p>
         <div className="space-y-2 pt-2">
-          <ResourceLink label="IPSEA — annual reviews" url="https://www.ipsea.org.uk/annual-reviews" />
+          <ResourceLink label="IPSEA: annual reviews" url="https://www.ipsea.org.uk/annual-reviews" />
         </div>
       </div>
     ),
@@ -168,7 +168,7 @@ export default function WhatToDoRightNow() {
         <div className="rounded-xl border border-foreground/15 bg-foreground/5 p-5">
           <p className="text-sm font-semibold text-foreground mb-2">Before you make the call or write the letter.</p>
           <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-            Knowing your rights matters. So does <strong>knowing your child</strong>. The parents who get the best outcomes are prepared, specific, and evidence-led — not just legally informed.
+            Knowing your rights matters. So does <strong>knowing your child</strong>. The parents who get the best outcomes are prepared, specific, and evidence-led. Not just legally informed.
           </p>
           <Link to="/what-we-owe-our-children" className="inline-flex items-center gap-1.5 text-primary hover:underline font-medium text-sm">
             → What we owe our children
@@ -182,7 +182,7 @@ export default function WhatToDoRightNow() {
           <div className="flex items-center gap-3">
             <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0" />
             <div>
-              <p className="text-sm font-semibold text-foreground">CONFIRMED — current law, established process</p>
+              <p className="text-sm font-semibold text-foreground">CONFIRMED: current law, established process</p>
               <p className="text-xs text-muted-foreground mt-0.5">The law has not changed. Your rights are enforceable.</p>
             </div>
           </div>

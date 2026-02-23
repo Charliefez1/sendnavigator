@@ -17,7 +17,7 @@ const Landing = () => {
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'hsl(220, 14%, 93%)' }}>
       <SEOHead
-        title="Beacon SEND Navigator — Independent SEND reform guide for parents"
+        title="Beacon SEND Navigator | Independent SEND reform guide for parents"
         description="A calm, independent guide helping parents and professionals understand SEND reform in England. Clear facts, no spin."
         path="/landing"
       />
@@ -71,7 +71,7 @@ const Landing = () => {
                   <strong className="text-foreground">The law has not changed.</strong>
                 </p>
                 <p>
-                  What has changed is the <strong className="text-foreground">volume of discussion</strong> about SEND provision in 2026 and 2027 — debate across politics, education and local authorities, alongside early signals, <strong className="text-foreground">leaks and speculation</strong> about possible future reforms.
+                  What has changed is the <strong className="text-foreground">volume of discussion</strong> about SEND provision in 2026 and 2027. Debate across politics, education and local authorities, alongside early signals, <strong className="text-foreground">leaks and speculation</strong> about possible future reforms.
                 </p>
                 <p>
                   That uncertainty creates anxiety for parents. The <strong className="text-foreground">SEND Navigator is designed to help make sense of this</strong>.
@@ -117,7 +117,7 @@ const Landing = () => {
       {/* Footer */}
       <footer className="border-t border-border py-3">
         <div className="content-section text-center text-xs text-muted-foreground">
-          <p>© 2026 SEND Reform Navigator. Independent resource — not government affiliated.</p>
+          <p>© 2026 SEND Reform Navigator. Independent resource, not government affiliated.</p>
           <div className="flex items-center justify-center gap-4 mt-1.5">
             <Link to="/about" className="hover:text-primary transition-colors">About</Link>
             <Link to="/sources" className="hover:text-primary transition-colors">Sources</Link>

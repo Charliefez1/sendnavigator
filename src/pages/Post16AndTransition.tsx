@@ -33,7 +33,7 @@ const ageTimeline = [
   { age: "Year 11 (by 31 March)", event: "LA must issue amended plan naming post-16 setting", colour: "bg-status-confirmed" },
   { age: "Age 16", event: "Decision-making rights transfer to young person", colour: "bg-status-confirmed" },
   { age: "Age 18", event: "Parental responsibility ends; Care Act assessment should be in place", colour: "bg-status-confirmed" },
-  { age: "Age 19", event: "LA may consider ceasing EHCP — must assess outcomes, not just age", colour: "bg-destructive" },
+  { age: "Age 19", event: "LA may consider ceasing EHCP. Must assess outcomes, not just age.", colour: "bg-destructive" },
   { age: "Age 25", event: "EHCP ends at the conclusion of the academic year", colour: "bg-status-confirmed" },
 ];
 
@@ -62,7 +62,7 @@ export default function Post16AndTransition() {
     <Layout>
       <SEOHead
         title="Young People Aged 16 to 25 | SEND Reform Navigator"
-        description="EHCP rights beyond school age — what changes at 16, 18, and 19, transition planning, and what to do if the LA tries to end the plan."
+        description="EHCP rights beyond school age. What changes at 16, 18, and 19, transition planning, and what to do if the LA tries to end the plan."
       />
 
       <PageOrientation
@@ -140,7 +140,7 @@ export default function Post16AndTransition() {
                     At 16, <strong>decision-making rights shift from parent to young person</strong>.
                   </p>
                   <p>
-                    The young person — not the parent — becomes the primary decision-maker in EHCP processes. This includes the right to request assessments, comment on the plan, request a specific school or college is named, and appeal to the SEND Tribunal.
+                    The young person, not the parent, becomes the primary decision-maker in EHCP processes. This includes the right to request assessments, comment on the plan, request a specific school or college is named, and appeal to the SEND Tribunal.
                   </p>
                   <p>
                     A parent can still be involved and can act as a representative if the young person chooses. But the Tribunal will expect evidence the young person has been part of the decision-making.
@@ -313,7 +313,7 @@ export default function Post16AndTransition() {
             <p>
               If your young person is moving into employment or a supported internship, find out about Access to Work early. The application process takes time.
             </p>
-            <ResourceLink label="Access to Work — GOV.UK" url="https://www.gov.uk/access-to-work" />
+            <ResourceLink label="Access to Work (GOV.UK)" url="https://www.gov.uk/access-to-work" />
           </div>
         </div>
       </section>

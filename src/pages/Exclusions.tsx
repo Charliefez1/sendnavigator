@@ -52,7 +52,7 @@ export default function Exclusions() {
   return (
     <Layout>
       <SEOHead
-        title="Exclusions and Your Child's Rights — SEND Navigator"
+        title="Exclusions and Your Child's Rights | SEND Navigator"
         description="Your rights when your SEND child is excluded from school. Suspension, permanent exclusion, informal exclusion, and what to do right now."
         path="/exclusions"
       />
@@ -257,11 +257,11 @@ export default function Exclusions() {
           {/* Resource links */}
           <div className="mt-5 space-y-2">
             <a href="https://www.ipsea.org.uk/exclusions" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 p-3 rounded-xl border border-border bg-muted/30 hover:bg-muted/50 transition-colors group">
-              <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">→ IPSEA — free independent legally-based advice</span>
+              <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">→ IPSEA: free independent legally-based advice</span>
               <ExternalLink className="w-3 h-3 text-muted-foreground flex-shrink-0" />
             </a>
             <a href="https://sossen.org.uk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 p-3 rounded-xl border border-border bg-muted/30 hover:bg-muted/50 transition-colors group">
-              <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">→ SOS!SEN — free helpline, independent advice</span>
+              <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">→ SOS!SEN: free helpline, independent advice</span>
               <ExternalLink className="w-3 h-3 text-muted-foreground flex-shrink-0" />
             </a>
             <Link to="/sendiass" className="flex items-center gap-2 p-3 rounded-xl border border-border bg-muted/30 hover:bg-muted/50 transition-colors group">
@@ -305,13 +305,13 @@ export default function Exclusions() {
       <section className="content-section py-6 pb-8">
         <div className="space-y-2">
           <Link to="/what-to-do-right-now" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ What to do right now — the full escalation guide</p>
+            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ What to do right now: the full escalation guide</p>
           </Link>
           <Link to="/understanding-your-child/autism" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Understanding autism — behaviour patterns explained</p>
+            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Understanding autism: behaviour patterns explained</p>
           </Link>
           <Link to="/understanding-your-child/adhd" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Understanding ADHD — regulation and the output gap</p>
+            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Understanding ADHD: regulation and the output gap</p>
           </Link>
         </div>
       </section>

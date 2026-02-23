@@ -134,7 +134,7 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
           />
           <label htmlFor="breaking-news" className="flex items-center gap-2 text-sm font-semibold cursor-pointer">
             <AlertTriangle className="h-4 w-4 text-destructive" />
-            Breaking news — flag all pages for review
+            Breaking news: flag all pages for review
           </label>
         </div>
         <Button

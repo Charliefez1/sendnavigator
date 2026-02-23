@@ -12,7 +12,7 @@ export function ScanModeBanner() {
         <div className="flex items-center gap-2">
           <ScanLine className="w-4 h-4 text-primary" />
           <span className="text-xs font-medium text-foreground">
-            Scan mode — showing headings only. Tap any section to expand.
+            Scan mode: showing headings only. Tap any section to expand.
           </span>
         </div>
         <button

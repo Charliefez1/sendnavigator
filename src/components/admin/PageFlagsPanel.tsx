@@ -152,7 +152,7 @@ export function PageFlagsPanel({ pin }: { pin: string }) {
               <div key={f.id} className="flex items-center gap-2 text-muted-foreground pl-2">
                 <CheckCircle className="h-3.5 w-3.5" />
                 <span className="font-mono text-xs">{f.page_path}</span>
-                <span className="text-xs">— {f.flag_reason}</span>
+                <span className="text-xs">{f.flag_reason}</span>
               </div>
             ))}
           </div>
