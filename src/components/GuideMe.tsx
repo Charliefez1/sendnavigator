@@ -17,12 +17,10 @@ interface GuideResult {
 }
 
 const QUICK_OPTIONS = [
-  "I just found out my child might need an EHCP",
-  "I've heard about SEND reform and I'm worried",
-  "My child is struggling at school and I don't know where to start",
-  "I want to understand what's changing with SEND",
-  "What does the Schools White Paper mean for my child?",
-  "Will Individual Support Plans replace EHCPs?",
+  "What are Individual Support Plans and will they replace EHCPs?",
+  "What does the white paper mean for my child today?",
+  "Is my child's EHCP safe?",
+  "What is the Experts at Hand programme?",
 ];
 
 export function GuideMe() {
