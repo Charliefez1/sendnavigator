@@ -10,6 +10,7 @@ import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { TierDiagram } from "@/components/templates/DataVisuals";
 import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
+import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import { Users, BarChart3, Wind, AlertTriangle, List, EyeOff, Megaphone, Filter, Shield } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -65,6 +66,8 @@ export default function WhatTheLeaksAreSaying() {
           A petition calling for protection of disabled children's rights reached <strong>over 132,000 signatures</strong>. The National Autistic Society has said parents are "dismayed" by the lack of transparency.
         </p>
       </LatestUpdatePanel>
+
+      <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
 

@@ -5,6 +5,7 @@ import { SourceCard } from "@/components/SourceCard";
 import { AlertCircle, TrendingUp, Users, BarChart3, PoundSterling, Gavel } from "lucide-react";
 import { StatCard, PercentageRing, HorizontalBarChart } from "@/components/templates/DataVisuals";
 import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
+import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 
 interface StatItem {
   label: string;
@@ -107,6 +108,8 @@ export default function StatisticsAndData() {
           Two fifths of local authorities are at risk of issuing a Section 114 notice by March 2026. The Inclusive Mainstream Fund works out at roughly <strong>£26,000 per school per year</strong> if split evenly.
         </p>
       </LatestUpdatePanel>
+
+      <LatestUpdatesStream />
 
       {/* Introduction */}
       <section className="content-section py-8">

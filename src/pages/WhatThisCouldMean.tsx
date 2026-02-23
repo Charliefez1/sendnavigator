@@ -9,6 +9,7 @@ import {
 } from "@/components/templates";
 import { ComparisonColumns } from "@/components/templates/DataVisuals";
 import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
+import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 
 export default function WhatThisCouldMean() {
   const summaryPoints = [
@@ -57,6 +58,8 @@ export default function WhatThisCouldMean() {
           The inequality in tribunal access is confirmed: <strong>richer families are twice as likely to secure a specialist school placement (41%) compared to low-income families (25%)</strong>.
         </p>
       </LatestUpdatePanel>
+
+      <LatestUpdatesStream />
 
       <ReadingDepthControl
         keyPoints={

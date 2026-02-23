@@ -9,6 +9,7 @@ import {
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
+import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import { Users, BarChart3, FileText, MessageSquare, Landmark, ArrowRightLeft, CheckCircle, Anchor, ArrowDown } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -69,6 +70,8 @@ export default function WhatHappensNext() {
           Over 130 organisations including Mencap, the National Autistic Society, and the Council for Disabled Children have written to ministers with four red lines.
         </p>
       </LatestUpdatePanel>
+
+      <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
 

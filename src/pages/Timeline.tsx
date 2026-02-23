@@ -11,6 +11,7 @@ import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { VisualTimeline } from "@/components/templates/VisualTimeline";
 import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
+import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import { History, CalendarClock, Users, AlertTriangle, FileQuestion, ShieldCheck, GitBranch } from "lucide-react";
 
 const timelineMilestones = [
@@ -125,6 +126,8 @@ export default function Timeline() {
           Children currently in Year 2 who hold EHCPs have been cited as an example cohort who may be <strong>reassessed at the end of primary school</strong>.
         </p>
       </LatestUpdatePanel>
+
+      <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
 
