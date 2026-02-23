@@ -237,7 +237,7 @@ const Index = () => {
       </section>
 
       {/* Q&A */}
-      <section className="content-section py-8 rounded-xl" style={{ backgroundColor: 'hsl(var(--accent-deep-blue-bg))' }}>
+      <section className="content-section py-8 rounded-xl" style={{ backgroundColor: 'hsl(200 45% 10%)' }}>
         <QandAComponent />
       </section>
 

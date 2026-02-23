@@ -130,14 +130,14 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
   };
 
   return (
-    <section className="bg-secondary/30 border-2 border-foreground/30 rounded-lg p-6" style={{ boxShadow: '3px 4px 8px -2px hsl(30 70% 55% / 0.35)' }}>
+    <section className="rounded-lg p-6" style={{ backgroundColor: 'hsl(200 30% 14%)', border: '2px solid hsl(175 80% 50% / 0.4)', boxShadow: '0 0 20px -4px hsl(175 80% 50% / 0.15), 3px 4px 8px -2px hsl(200 50% 10% / 0.5)' }}>
       <div className="flex items-start gap-3 mb-5">
-        <MessageCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+        <MessageCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'hsl(175 80% 55%)' }} />
         <div>
-          <h2 className="text-lg font-medium text-foreground">
+          <h2 className="text-lg font-medium" style={{ color: 'hsl(0 0% 95%)' }}>
             Ask Rich
           </h2>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-sm mt-1" style={{ color: 'hsl(200 15% 65%)' }}>
             Ask me anything about SEND reform. My answers come from everything we've researched and published on this site, not from the wider internet. I do my best but I'm not perfect, so treat this as a guide.
           </p>
         </div>
@@ -169,7 +169,7 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
       )}
 
       {/* Ask Rich Trust Notice */}
-      <div className="mt-6 pt-4 border-t border-border">
+      <div className="mt-6 pt-4" style={{ borderTop: '1px solid hsl(200 20% 22%)' }}>
         <AITrustNotice />
         <p className="text-xs text-muted-foreground mt-3 flex items-center gap-2">
           <Bot className="w-3.5 h-3.5 flex-shrink-0" />
