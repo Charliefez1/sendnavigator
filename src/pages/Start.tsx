@@ -238,7 +238,7 @@ const Index = () => {
           />
           <ContentSection
             title="Understanding the System"
-            description="How the system works — and why it works differently depending on where you are"
+            description="How the system works, and why it works differently depending on where you are"
             links={systemPages}
             color="amber"
           />

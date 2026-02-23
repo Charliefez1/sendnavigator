@@ -49,7 +49,7 @@ export default function Sendiass() {
   return (
     <Layout>
       <SEOHead
-        title="Free Help in Your Area — SENDIASS | SEND Reform Navigator"
+        title="Free Help in Your Area - SENDIASS | SEND Reform Navigator"
         description="Every local authority in England funds a free SEND advice service called SENDIASS. Most parents have never heard of it."
       />
 
@@ -92,7 +92,7 @@ export default function Sendiass() {
               <li>their parents and carers</li>
             </ul>
             <p>
-              It covers education, health, and social care — across the <strong>0 to 25 age range</strong>.
+              It covers education, health, and social care, across the <strong>0 to 25 age range</strong>.
             </p>
             <p>
               It is funded by the local authority but is legally required to operate independently of it. Its job is to <strong>support you</strong>, not to represent the council.
@@ -110,7 +110,7 @@ export default function Sendiass() {
           </h2>
           <ul className="space-y-2 text-sm text-muted-foreground leading-relaxed">
             {[
-              "Understanding the EHCP process — assessments, drafts, annual reviews",
+              "Understanding the EHCP process - assessments, drafts, annual reviews",
               "Help preparing for meetings with the school or local authority",
               "Understanding your rights and what the law says",
               "Support preparing for or attending mediation",
@@ -215,7 +215,7 @@ export default function Sendiass() {
                 That means it should give you honest advice even when that advice involves challenging your local authority's decisions.
               </p>
               <p>
-                If you feel the advice you are getting is not impartial — if it feels like the service is steering you away from your rights rather than towards them — you can raise a complaint with the local authority or seek support from a national organisation instead.
+                If you feel the advice you are getting is not impartial, if it feels like the service is steering you away from your rights rather than towards them, you can raise a complaint with the local authority or seek support from a national organisation instead.
               </p>
             </div>
           </div>

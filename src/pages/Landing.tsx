@@ -44,7 +44,7 @@ const Landing = () => {
               <div className="bg-navy rounded-xl p-5 shadow-lg border border-navy/80">
                 <img
                   src={neurodiversityLanding}
-                  alt="Neurodiversity Global — The SEND Navigator is an independent Neurodiversityglobal.com free parents & carers resource"
+                  alt="Neurodiversity Global - The SEND Navigator is an independent Neurodiversityglobal.com free parents & carers resource"
                   className="w-full max-w-xs rounded-lg"
                 />
               </div>

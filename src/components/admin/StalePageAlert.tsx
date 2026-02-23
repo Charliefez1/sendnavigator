@@ -44,7 +44,7 @@ export function StalePageAlert({ flags, onMarkAllReviewed, onViewFlags, loading 
               <div>
                 <span className="font-mono font-semibold text-foreground">{path}</span>
                 <span className="text-muted-foreground ml-2">
-                  — {pageFlags.map((f) => f.flag_reason).join("; ")}
+                   — {pageFlags.map((f) => f.flag_reason).join("; ")}
                 </span>
               </div>
             </div>

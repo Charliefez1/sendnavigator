@@ -88,7 +88,7 @@ export default function WhatTheLeaksDoNotMean() {
           <p>This section is about interpretation, not new policy data.</p>
           <p>From the evidence:</p>
           <ul className="space-y-2">
-            <li><strong>The Schools White Paper — Every Child Achieving and Thriving — was published on 23 February 2026.</strong></li>
+            <li><strong>The Schools White Paper, Every Child Achieving and Thriving, was published on 23 February 2026.</strong></li>
             <li><strong>No leaked proposal has been introduced to Parliament as legislation.</strong></li>
             <li><strong>No leaked idea has legal force.</strong></li>
             <li>Any change to EHCP rights, thresholds, or appeals would require <strong>primary legislation</strong>.</li>

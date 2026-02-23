@@ -208,7 +208,7 @@ export default function LocalVariation() {
           <h3 className="text-sm font-semibold text-foreground mt-6 mb-2">Accountability gaps</h3>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p>When significant failings are found in area inspections, the specific accountabilities are not always clear. A school may be delivering well in an area where the system around it is failing.</p>
-            <p>Ofsted updated its Area SEND inspection framework in <strong>June 2025</strong> specifically to make accountability clearer — naming which partner needs to act when failings are identified.</p>
+            <p>Ofsted updated its Area SEND inspection framework in <strong>June 2025</strong> specifically to make accountability clearer, naming which partner needs to act when failings are identified.</p>
           </div>
           <CC>Ofsted Area SEND inspection framework and handbook, updated June 2025.</CC>
         </div>
