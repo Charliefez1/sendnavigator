@@ -67,6 +67,35 @@ export default function RichsTake() {
           <p><strong>That is not an oversight. That is a failure of imagination. And it will cost children.</strong></p>
         </EditorialBlock>
 
+        <EditorialBlock heading="Nobody is connecting the dots.">
+          <p>SEND costs are rising. Everyone agrees on that. What nobody in this white paper is willing to say is why.</p>
+          <p>More and more children need extra support at school. That is not because there is something wrong with our children. It is because the school system lacks the flexibility to accommodate the many different ways children learn and develop.</p>
+          <p>We have built a system that treats behaviour as something to punish rather than feedback on a situation that is not working. A system that prioritises test results over developmental needs. That favours control over autonomy. That leaves little time or space for meaningful relationships between adults and children.</p>
+          <p>It turns too many children into failures. It measures them against a narrow academic benchmark and finds them wanting. It punishes minor misdemeanours and teaches them that learning is mostly about doing what you are told. It prioritises attendance over meaningful engagement.</p>
+          <p>And then when children show us that this is not working, we say there is something wrong with them. We say they need to attend more, try harder, put more effort in. And when that does not work, the system concludes they must have SEND. Because why else would they need something different?</p>
+          <p>Of course SEND costs are rising. The school system is not fit for the children it serves.</p>
+          <p>We do not need a more efficient version of the same broken model. We need a system that starts from what children need to thrive. Not from driving up standards or hitting 100% attendance.</p>
+          <p>More play for the younger ones. More autonomy for the older ones. More diversity of opportunity. More focus on relationships. An emphasis on interest-led learning and finding purpose rather than on tests and exams.</p>
+          <p>It is not complicated. The more you squeeze children into a narrow standard, the more children cannot fit. That is not a SEND crisis. That is a design flaw.</p>
+        </EditorialBlock>
+
+        <EditorialBlock heading="Then we gave children dopamine on demand.">
+          <p>Before we even get to school, something else has shifted.</p>
+          <p>We handed children smartphones. Devices engineered by some of the most sophisticated behaviour design teams in the world, optimised to deliver instant reward, to hold attention, to make everything else feel slow and grey by comparison.</p>
+          <p>For a neurotypical child that is a significant challenge. For a child whose brain already processes dopamine differently, whose attention system already struggles with low-stimulus environments, whose emotional regulation is already stretched, it is a different level of problem entirely.</p>
+          <p>We then sit those children in classrooms designed in the nineteenth century, ask them to be still, be quiet, look at a board, and wait their turn. And we are surprised when it does not work.</p>
+          <p>The smartphone piece is not separate from the SEND conversation. It is part of it. And this white paper does not mention it once.</p>
+        </EditorialBlock>
+
+        <EditorialBlock heading="And then we blamed the parents.">
+          <p>Parents of neurodivergent children know this pattern intimately.</p>
+          <p>You raise a concern. You are told to wait. You push harder. You are told you are anxious. You push harder still. You are told your child just needs firmer boundaries, more routine, less screen time, a better diet.</p>
+          <p>You become the expert on your own child through sheer necessity, because nobody else is doing it. You learn the law. You learn the paperwork. You learn to advocate in rooms where the system has more power than you do.</p>
+          <p>And still, somewhere underneath all of it, the implication sits that if you were doing it right, your child would be fine.</p>
+          <p>That implication is wrong. It has always been wrong. The white paper does not address it directly, but the scale of what it is trying to fix is, in part, the consequence of years of parents being dismissed, delayed, and blamed while their children fell further behind.</p>
+          <p>The system did not fail because parents asked for too much. It failed because it gave too little, for too long, to too many children.</p>
+        </EditorialBlock>
+
         <EditorialBlock heading="The workforce problem is not solved.">
           <p>The government will train 200 new educational psychologists a year from 2026. That sounds significant until you understand the scale of the shortage. Speech and language therapy waiting lists in some areas run to two years. Occupational therapy access is a postcode lottery.</p>
           <p>Experts at Hand is a good idea. It will only work if the experts exist. Right now, in many areas, they do not.</p>
@@ -86,6 +115,7 @@ export default function RichsTake() {
           <p>Neurodivergent children are close to invisible in this document.</p>
           <p>The funding has a cliff edge in 2029.</p>
           <p>The workforce cannot be built fast enough without sustained investment and a serious recruitment strategy.</p>
+          <p>Nobody in the white paper is asking why SEND demand is rising. Until we answer that question honestly, we will keep treating symptoms and missing the cause.</p>
           <p><strong>This is a beginning. It is not a solution. And the gap between those two things is where too many children will still fall.</strong></p>
           <p>I will keep watching. I will keep updating this site. And I will keep saying what I see.</p>
           <p>That is what this site is for.</p>
