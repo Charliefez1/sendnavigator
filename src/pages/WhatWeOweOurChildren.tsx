@@ -32,7 +32,7 @@ function ResourceLink({ label, url, note }: { label: string; url: string; note?:
       className="flex items-center gap-2 text-primary hover:underline font-medium text-sm"
     >
       → {label}
-      {note && <span className="text-muted-foreground font-normal">— {note}</span>}
+      {note && <span className="text-muted-foreground font-normal"> - {note}</span>}
       <ExternalLink className="w-3 h-3 flex-shrink-0" />
     </a>
   );
@@ -51,7 +51,7 @@ export default function WhatWeOweOurChildren() {
       <div className="content-section pt-6 pb-2">
         <div className="inline-flex items-center gap-2 rounded-lg bg-foreground/5 border border-foreground/10 px-4 py-2">
           <span className="text-xs font-display font-bold uppercase tracking-widest text-foreground/70">Reality Bites</span>
-          <span className="text-xs text-muted-foreground">— honest perspectives for neurodivergent families</span>
+          <span className="text-xs text-muted-foreground"> - honest perspectives for neurodivergent families</span>
         </div>
       </div>
 
@@ -138,7 +138,7 @@ export default function WhatWeOweOurChildren() {
       {/* Stimming */}
       <section className="content-section py-4">
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
-          <SectionHeading>Stimming — what it is and why it matters</SectionHeading>
+          <SectionHeading>Stimming - what it is and why it matters</SectionHeading>
           <div className="space-y-4 text-sm text-muted-foreground leading-relaxed max-w-2xl">
             <p>Stimming is self-stimulatory behaviour. Repetitive movements, sounds, or actions that <strong>regulate the nervous system</strong>.</p>
             <p>Rocking. Flapping. Tapping. Humming. Pacing. Picking. Spinning.</p>
@@ -225,7 +225,7 @@ export default function WhatWeOweOurChildren() {
       {/* What we can do */}
       <section className="content-section py-4">
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
-          <SectionHeading>What we can do — regardless of the system</SectionHeading>
+          <SectionHeading>What we can do, regardless of the system</SectionHeading>
           <div className="space-y-4 text-sm text-muted-foreground leading-relaxed max-w-2xl">
             <p>The system will help, eventually. But we do not have to wait for it.</p>
             <p><strong>Understanding your child's sensory profile</strong> and sharing it clearly with school. Reducing friction at home around transitions, demands, and unexpected change — not because we are being permissive but because we understand the nervous system our child is living in.</p>
@@ -259,7 +259,7 @@ export default function WhatWeOweOurChildren() {
             to="/what-to-do-right-now"
             className="text-sm text-primary hover:underline font-medium"
           >
-            ← What to do right now — your legal rights
+            ← What to do right now - your legal rights
           </Link>
         </div>
       </section>

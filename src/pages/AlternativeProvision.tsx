@@ -60,7 +60,7 @@ export default function AlternativeProvision() {
   return (
     <Layout>
       <SEOHead
-        title="Alternative Provision: What It Is and What Your Rights Are — SEND Navigator"
+        title="Alternative Provision: What It Is and What Your Rights Are - SEND Navigator"
         description="What Alternative Provision means, who ends up there, your rights if your child is placed in AP, and what SEND reform proposes."
         path="/alternative-provision"
       />
@@ -70,7 +70,7 @@ export default function AlternativeProvision() {
           Alternative Provision: What It Is and What Your Rights Are
         </h1>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          Alternative Provision — AP — is the part of the education system that sits outside mainstream and special schools. It includes Pupil Referral Units, AP academies and free schools, hospital schools, and a large and <strong>largely unregulated sector</strong> of private and voluntary providers.
+          Alternative Provision, AP, is the part of the education system that sits outside mainstream and special schools. It includes Pupil Referral Units, AP academies and free schools, hospital schools, and a large and <strong>largely unregulated sector</strong> of private and voluntary providers.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mt-3">
           Around <strong>43,000 children</strong> are in some form of AP at any given time in England. The majority have SEND. Many have EHC plans. Most arrived there through a route that involved unmet need, exclusion, or both.

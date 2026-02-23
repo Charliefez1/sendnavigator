@@ -50,7 +50,7 @@ export default function DevolvedNations() {
   return (
     <Layout>
       <SEOHead
-        title="If You Are in Wales, Scotland, or Northern Ireland — SEND Navigator"
+        title="If You Are in Wales, Scotland, or Northern Ireland - SEND Navigator"
         description="SEND provision is devolved. Each nation has different legislation, terminology, and organisations. Find the right system and the right support for your nation."
         path="/devolved-nations"
       />
@@ -70,7 +70,7 @@ export default function DevolvedNations() {
           If You Are in Wales, Scotland, or Northern Ireland
         </h1>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          This page explains the key differences between nations and points you to the right organisations. It does not attempt to replicate the depth of the England content — it is an honest signpost.
+          This page explains the key differences between nations and points you to the right organisations. It does not attempt to replicate the depth of the England content. It is an honest signpost.
         </p>
         <div className="flex items-center gap-2 text-xs text-muted-foreground mt-4">
           <Clock className="w-3.5 h-3.5" />
@@ -157,10 +157,10 @@ export default function DevolvedNations() {
 
           <h3 className="text-sm font-semibold text-foreground mt-5 mb-2">Key organisations</h3>
           <div className="space-y-2">
-            <EL href="https://www.snapcymru.org">SNAP Cymru — independent advice and advocacy for families in Wales</EL>
-            <EL href="https://www.gov.wales/additional-learning-needs">Welsh Government ALN pages — statutory guidance and parent factsheets</EL>
+             <EL href="https://www.snapcymru.org">SNAP Cymru - independent advice and advocacy for families in Wales</EL>
+             <EL href="https://www.gov.wales/additional-learning-needs">Welsh Government ALN pages - statutory guidance and parent factsheets</EL>
             <EL href="https://educationtribunal.gov.wales">Education Tribunal for Wales</EL>
-            <EL href="https://childrenslegalcentre.wales">Children's Legal Centre Wales — legal support for children's rights</EL>
+            <EL href="https://childrenslegalcentre.wales">Children's Legal Centre Wales - legal support for children's rights</EL>
           </div>
 
           <CC>Additional Learning Needs and Education Tribunal (Wales) Act 2018; ALN Code for Wales 2021; Welsh Government implementation guidance.</CC>
@@ -181,7 +181,7 @@ export default function DevolvedNations() {
           <h3 className="text-sm font-semibold text-foreground mt-5 mb-2">Key terms</h3>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p>There is <strong>no direct Scottish equivalent of the EHC plan</strong> for most children. Most children with ASN receive support through less formal, non-statutory planning processes (IEPs or Child Plans) that <strong>are not legally binding</strong>.</p>
-            <p>The only statutory plan in Scotland is the <strong>Co-ordinated Support Plan (CSP)</strong> — a legally binding document available only to children with complex or multiple needs that require support from education and at least one other agency.</p>
+            <p>The only statutory plan in Scotland is the <strong>Co-ordinated Support Plan (CSP)</strong>, a legally binding document available only to children with complex or multiple needs that require support from education and at least one other agency.</p>
           </div>
 
           {/* CSP threshold callout */}
@@ -201,9 +201,9 @@ export default function DevolvedNations() {
 
           <h3 className="text-sm font-semibold text-foreground mt-5 mb-2">Key organisations</h3>
           <div className="space-y-2">
-            <EL href="https://enquire.org.uk">Enquire — Scottish advice service for additional support for learning</EL>
-            <EL href="https://www.ltasn.scot">Let's Talk ASN — advocacy and legal representation for the ASN Tribunal</EL>
-            <EL href="https://education.gov.scot/parentzone">Parentzone Scotland — information and guidance for parents</EL>
+             <EL href="https://enquire.org.uk">Enquire - Scottish advice service for additional support for learning</EL>
+             <EL href="https://www.ltasn.scot">Let's Talk ASN - advocacy and legal representation for the ASN Tribunal</EL>
+             <EL href="https://education.gov.scot/parentzone">Parentzone Scotland - information and guidance for parents</EL>
           </div>
 
           <CC>Education (Additional Support for Learning) (Scotland) Act 2004 as amended 2009; Scottish Government additional support for learning guidance 2017; Scottish Children's Services Coalition data.</CC>
@@ -246,10 +246,10 @@ export default function DevolvedNations() {
 
           <h3 className="text-sm font-semibold text-foreground mt-5 mb-2">Key organisations</h3>
           <div className="space-y-2">
-            <EL href="https://senac.co.uk">SENAC — free, independent advice and advocacy (advice line: 028 9079 5779)</EL>
-            <EL href="https://www.eani.org.uk/parents/special-educational-needs-sen">Education Authority NI — statutory assessment and SEN information</EL>
-            <EL href="https://contact.org.uk/northernireland">Contact — information and advice for families with disabled children</EL>
-            <EL href="https://www.niccy.org">NICCY — Northern Ireland Commissioner for Children and Young People</EL>
+             <EL href="https://senac.co.uk">SENAC - free, independent advice and advocacy (advice line: 028 9079 5779)</EL>
+             <EL href="https://www.eani.org.uk/parents/special-educational-needs-sen">Education Authority NI - statutory assessment and SEN information</EL>
+             <EL href="https://contact.org.uk/northernireland">Contact - information and advice for families with disabled children</EL>
+             <EL href="https://www.niccy.org">NICCY - Northern Ireland Commissioner for Children and Young People</EL>
           </div>
 
           <CC>Education (Northern Ireland) Order 1996; SENDO 2005; SEND Act (NI) 2016; Education Authority Northern Ireland; SENAC; NICCY Too Little Too Late review 2020. 2016 SEND Act: passed but not fully implemented as of early 2026.</CC>
@@ -291,7 +291,7 @@ export default function DevolvedNations() {
             <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ The EHCP Guide (England only)</p>
           </Link>
           <Link to="/questions-and-answers" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Ask SEND — search for answers (England-focused)</p>
+            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Ask SEND - search for answers (England-focused)</p>
           </Link>
         </div>
       </section>

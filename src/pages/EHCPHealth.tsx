@@ -62,7 +62,7 @@ export default function EHCPHealth() {
   return (
     <Layout>
       <SEOHead
-        title="The Health Side of Your Child's EHCP — SEND Navigator"
+        title="The Health Side of Your Child's EHCP - SEND Navigator"
         description="NHS duties in EHC plans. What Sections C and G mean, what happens when health provision isn't delivered, and how to challenge it."
         path="/ehcp-health"
       />
@@ -72,7 +72,7 @@ export default function EHCPHealth() {
           The Health Side of Your Child's EHCP
         </h1>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          Most parents focus on the education sections of an EHC plan. That is understandable. Sections F and I — what support the school provides and which school is named — are where the most visible battles happen.
+          Most parents focus on the education sections of an EHC plan. That is understandable. Sections F and I, what support the school provides and which school is named, are where the most visible battles happen.
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mt-3">
           But <strong>Sections C and G</strong> are where a significant amount of provision falls through the gaps, and where many families find that what the plan says and what actually happens are two different things.
@@ -104,7 +104,7 @@ export default function EHCPHealth() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
             <div className="rounded-xl border border-border bg-muted/30 p-5">
-              <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Section C — Health Needs</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Section C - Health Needs</p>
               <div className="space-y-2 text-sm text-muted-foreground leading-relaxed">
                 <p>Describes your child's <strong>health needs that relate to their SEND</strong>. Not a diagnosis list. A description of the health needs that have a direct bearing on their education, health, and wellbeing.</p>
                 <p>Should include things like the impact of a condition on your child's ability to <strong>process information, regulate themselves, manage sensory environments, or access learning</strong>. Should be specific and detailed.</p>
@@ -114,7 +114,7 @@ export default function EHCPHealth() {
             <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-5">
               <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Section G — Health Provision</p>
               <div className="space-y-2 text-sm text-muted-foreground leading-relaxed">
-                <p>Sets out the <strong>health care provision your child needs</strong> as a result of the needs described in Section C. Therapy input, specialist assessments, mental health support — where it is linked to SEND, it belongs in Section G.</p>
+                <p>Sets out the <strong>health care provision your child needs</strong> as a result of the needs described in Section C. Therapy input, specialist assessments, mental health support. Where it is linked to SEND, it belongs in Section G.</p>
                 <p>This is where it gets <strong>legally significant</strong>.</p>
               </div>
 
@@ -142,7 +142,7 @@ export default function EHCPHealth() {
           <SectionHeading id="why-it-matters">Why this matters in practice</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p><strong>Health provision is the most commonly undelivered part of an EHC plan.</strong></p>
-            <p>Therapy waiting lists can run to years. CAMHS thresholds have risen to the point where many children with SEND do not meet criteria for support, even where the clinical need is documented. Speech and language therapy, occupational therapy, physiotherapy — provision that is legally required is routinely not delivered.</p>
+            <p>Therapy waiting lists can run to years. CAMHS thresholds have risen to the point where many children with SEND do not meet criteria for support, even where the clinical need is documented. Speech and language therapy, occupational therapy, physiotherapy. Provision that is legally required is routinely not delivered.</p>
             <p>There are two patterns here.</p>
             <p>The first is provision that is <strong>written into Section G but never delivered</strong>, or delivered far below the level specified. This is a breach of the NHS's legal duty. It is enforceable.</p>
             <p>The second is provision that <strong>never makes it into Section G in the first place</strong>, often because the health contribution to the EHCP assessment was inadequate, or because the LA and the NHS each assumed the other would take responsibility.</p>
@@ -195,8 +195,8 @@ export default function EHCPHealth() {
           </div>
 
           <div className="mt-5 space-y-2">
-            <ExtLink href="https://www.ipsea.org.uk">→ IPSEA — free independent legally-based advice</ExtLink>
-            <ExtLink href="https://www.nhs.uk/using-the-nhs/about-the-nhs/how-to-complain-about-nhs-services/">→ NHS Complaints Procedure — how to complain about NHS services</ExtLink>
+             <ExtLink href="https://www.ipsea.org.uk">→ IPSEA - free independent legally-based advice</ExtLink>
+             <ExtLink href="https://www.nhs.uk/using-the-nhs/about-the-nhs/how-to-complain-about-nhs-services/">→ NHS Complaints Procedure - how to complain about NHS services</ExtLink>
           </div>
         </div>
       </section>
@@ -226,7 +226,7 @@ export default function EHCPHealth() {
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <SectionHeading id="camhs">CAMHS, thresholds, and the gap that harms most families</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-            <p>CAMHS — Child and Adolescent Mental Health Services — is where the gap between what the law provides and what families experience is <strong>at its widest</strong>.</p>
+            <p>CAMHS, Child and Adolescent Mental Health Services, is where the gap between what the law provides and what families experience is <strong>at its widest</strong>.</p>
             <p>Thresholds for CAMHS referral have risen significantly over the past decade. Many children with SEND whose mental health is affected by their neurodivergence, by unmet need, by the pressure of masking, or by school-related anxiety <strong>will not meet current CAMHS criteria</strong>.</p>
             <p>This is a systemic problem, not an individual one. It has been documented repeatedly by parliamentary committees, inspectorates, and health charities.</p>
             <p>If your child has been refused CAMHS referral or has been waiting for over a year, <strong>you are not alone and you are not wrong to be concerned</strong>. Some options:</p>
@@ -234,14 +234,14 @@ export default function EHCPHealth() {
               <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>Ask the GP for a <strong>written record</strong> of the referral decision and the threshold applied.</span></li>
               <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>Ask for a review of the referral decision if the child's presentation has changed or deteriorated.</span></li>
               <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>Consider whether mental health needs should be documented in <strong>Section C and G</strong> of an EHC plan, regardless of CAMHS involvement.</span></li>
-              <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>Look at what your local ICB funds as <strong>alternatives to direct CAMHS provision</strong> — some areas fund voluntary sector services, emotional wellbeing services, or school-based mental health support.</span></li>
-              <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>Contact <strong>Young Minds</strong> or the <strong>Anna Freud Centre</strong> for guidance on navigating CAMHS referrals.</span></li>
+               <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>Look at what your local ICB funds as <strong>alternatives to direct CAMHS provision</strong>. Some areas fund voluntary sector services, emotional wellbeing services, or school-based mental health support.</span></li>
+               <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>Contact <strong>Young Minds</strong> or the <strong>Anna Freud Centre</strong> for guidance on navigating CAMHS referrals.</span></li>
             </ul>
           </div>
 
           <div className="mt-5 space-y-2">
-            <ExtLink href="https://www.youngminds.org.uk">→ Young Minds — mental health support for young people and parents</ExtLink>
-            <ExtLink href="https://www.annafreud.org">→ Anna Freud Centre — resources for families</ExtLink>
+             <ExtLink href="https://www.youngminds.org.uk">→ Young Minds - mental health support for young people and parents</ExtLink>
+             <ExtLink href="https://www.annafreud.org">→ Anna Freud Centre - resources for families</ExtLink>
           </div>
 
           <ConfidenceUnknown>CAMHS thresholds are set locally and vary significantly by ICB. There is no national threshold standard.</ConfidenceUnknown>
@@ -320,16 +320,16 @@ export default function EHCPHealth() {
       <section className="content-section py-6 pb-8">
         <div className="space-y-2">
           <Link to="/ehcps" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ The EHCP Guide — understanding every section of the plan</p>
+            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ The EHCP Guide - understanding every section of the plan</p>
           </Link>
           <Link to="/what-to-do-right-now" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ What to do right now — the full escalation guide</p>
+            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ What to do right now - the full escalation guide</p>
           </Link>
           <Link to="/understanding-your-child/autism" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Understanding autism — sensory and therapy needs</p>
+            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Understanding autism - sensory and therapy needs</p>
           </Link>
           <Link to="/understanding-your-child/adhd" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Understanding ADHD — medication, support, and what the system owes</p>
+            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Understanding ADHD - medication, support, and what the system owes</p>
           </Link>
         </div>
       </section>
