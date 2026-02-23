@@ -8,31 +8,31 @@
 
 @layer base {
   :root {
-    /* Core backgrounds - warm stone */
-    --background: 30 15% 90%;
-    --foreground: 25 20% 12%;
+    /* Core backgrounds */
+    --background: 210 20% 98%;
+    --foreground: 220 15% 15%;
 
-    /* Card surfaces - warm cream */
-    --card: 32 18% 93%;
-    --card-foreground: 25 20% 12%;
+    /* Card surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 15%;
 
     /* Popover */
-    --popover: 32 18% 93%;
-    --popover-foreground: 25 20% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 15%;
 
     /* Primary - warm terracotta */
     --primary: 16 65% 52%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - warm sand */
-    --secondary: 30 16% 88%;
-    --secondary-foreground: 25 22% 18%;
+    /* Secondary */
+    --secondary: 220 15% 94%;
+    --secondary-foreground: 220 15% 15%;
 
-    /* Muted - soft warm */
-    --muted: 28 12% 89%;
-    --muted-foreground: 25 10% 38%;
+    /* Muted */
+    --muted: 220 15% 94%;
+    --muted-foreground: 220 10% 45%;
 
-    /* Accent - sage green */
+    /* Accent (UI) */
     --accent: 155 25% 88%;
     --accent-foreground: 155 35% 22%;
 
@@ -40,185 +40,207 @@
     --destructive: 0 55% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders - warm */
-    --border: 28 14% 82%;
-    --input: 28 14% 82%;
-    --ring: 16 55% 55%;
+    /* Borders */
+    --border: 220 15% 88%;
+    --input: 0 0% 100%;
+    --ring: 220 15% 70%;
 
     --radius: 0.75rem;
 
     /* Navy for header/footer */
-    --navy: 220 60% 18%;
-    --navy-foreground: 30 20% 95%;
-    --navy-muted: 220 30% 65%;
+    --navy: 222 35% 18%;
+    --navy-foreground: 0 0% 98%;
+    --navy-muted: 222 20% 60%;
 
-    /* Hover - warm teal for interactive elements */
-    --hover: 175 45% 38%;
+    /* Hover */
+    --hover: 175 65% 41%;
     --hover-foreground: 0 0% 100%;
 
     /* Highlight */
     --highlight: 42 80% 94%;
     --highlight-border: 42 50% 78%;
 
-    /* Information status categories */
-    --status-confirmed: 175 55% 34%;
+    /* Status colours */
+    --status-confirmed: 175 65% 41%;
     --status-confirmed-bg: 175 35% 91%;
     --status-confirmed-border: 175 30% 72%;
 
-    --status-discussed: 42 75% 46%;
+    --status-discussed: 42 87% 48%;
     --status-discussed-bg: 42 55% 91%;
     --status-discussed-border: 42 45% 70%;
 
-    --status-unconfirmed: 25 80% 50%;
+    --status-unconfirmed: 25 85% 52%;
     --status-unconfirmed-bg: 25 55% 92%;
     --status-unconfirmed-border: 25 50% 72%;
 
-    --status-leaked: 0 72% 48%;
+    --status-leaked: 0 75% 50%;
     --status-leaked-bg: 0 55% 94%;
     --status-leaked-border: 0 50% 65%;
 
+    /* Status badge text - dark navy on coloured bg */
+    --status-badge-text: 222 35% 8%;
+
     /* Timeline */
-    --timeline-completed: 175 55% 32%;
+    --timeline-completed: 175 65% 41%;
     --timeline-completed-bg: 175 35% 91%;
-    --timeline-upcoming: 42 75% 44%;
+    --timeline-upcoming: 42 87% 48%;
     --timeline-upcoming-bg: 42 55% 91%;
-    --timeline-uncertain: 25 80% 50%;
+    --timeline-uncertain: 25 85% 52%;
     --timeline-uncertain-bg: 25 55% 92%;
-    --timeline-new: 175 55% 32%;
+    --timeline-new: 175 65% 41%;
     --timeline-new-bg: 175 35% 91%;
-    --timeline-clarification: 200 60% 42%;
-    --timeline-clarification-bg: 200 40% 91%;
+    --timeline-clarification: 210 70% 48%;
+    --timeline-clarification-bg: 210 40% 91%;
 
     /* Journey navigation */
     --journey-current: 16 65% 52%;
-    --journey-complete: 175 50% 40%;
-    --journey-pending: 25 8% 65%;
-    --journey-confirmed: 200 65% 42%;
-    --journey-discussed: 42 80% 46%;
+    --journey-complete: 175 65% 41%;
+    --journey-pending: 220 10% 65%;
+    --journey-confirmed: 220 70% 45%;
+    --journey-discussed: 42 87% 48%;
     --journey-unconfirmed: 25 85% 52%;
-    --journey-next: 335 60% 48%;
+    --journey-next: 210 70% 48%;
 
-    /* Extra accent colours */
-    --accent-teal: 175 50% 36%;
+    /* Five accent colours */
+    --accent-teal: 175 65% 41%;
     --accent-teal-bg: 175 35% 91%;
-    --accent-deep-blue: 220 55% 42%;
+    --accent-deep-blue: 220 70% 45%;
     --accent-deep-blue-bg: 220 35% 92%;
-    --accent-amber: 42 80% 50%;
+    --accent-amber: 42 87% 48%;
     --accent-amber-bg: 42 55% 92%;
-    --accent-coral: 12 70% 55%;
-    --accent-coral-bg: 12 45% 93%;
-    --accent-violet: 270 45% 52%;
-    --accent-violet-bg: 270 30% 93%;
+    --accent-coral: 8 75% 55%;
+    --accent-coral-bg: 8 45% 93%;
+    --accent-violet: 262 60% 55%;
+    --accent-violet-bg: 262 30% 93%;
     --accent-sage: 155 30% 42%;
     --accent-sage-bg: 155 25% 90%;
     --accent-rose: 345 55% 52%;
     --accent-rose-bg: 345 35% 93%;
 
+    /* Breaking news banner */
+    --banner-breaking: 0 75% 38%;
+    --banner-breaking-foreground: 0 0% 100%;
+
     /* Sidebar */
-    --sidebar-background: 30 15% 93%;
-    --sidebar-foreground: 25 20% 22%;
+    --sidebar-background: 210 20% 96%;
+    --sidebar-foreground: 220 15% 22%;
     --sidebar-primary: 16 65% 52%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 155 20% 89%;
     --sidebar-accent-foreground: 155 35% 26%;
-    --sidebar-border: 28 14% 82%;
-    --sidebar-ring: 16 55% 55%;
+    --sidebar-border: 220 15% 88%;
+    --sidebar-ring: 220 15% 70%;
   }
 
   .dark {
-    --background: 220 18% 9%;
-    --foreground: 210 15% 93%;
+    /* Core backgrounds - very dark navy */
+    --background: 222 35% 8%;
+    --foreground: 30 8% 82%;
 
-    --card: 220 16% 12%;
-    --card-foreground: 210 15% 93%;
+    /* Card surfaces - noticeably lighter */
+    --card: 222 28% 14%;
+    --card-foreground: 30 8% 82%;
 
-    --popover: 220 16% 12%;
-    --popover-foreground: 210 15% 93%;
+    --popover: 222 28% 14%;
+    --popover-foreground: 30 8% 82%;
 
     --primary: 16 60% 58%;
-    --primary-foreground: 220 15% 10%;
+    --primary-foreground: 222 35% 8%;
 
-    --secondary: 220 12% 17%;
-    --secondary-foreground: 210 12% 88%;
+    --secondary: 222 25% 11%;
+    --secondary-foreground: 30 8% 82%;
 
-    --muted: 220 12% 17%;
-    --muted-foreground: 215 10% 58%;
+    --muted: 222 25% 11%;
+    --muted-foreground: 222 10% 55%;
 
-    --accent: 155 25% 20%;
-    --accent-foreground: 155 40% 78%;
+    --accent: 175 25% 20%;
+    --accent-foreground: 175 40% 78%;
 
-    --destructive: 0 50% 45%;
+    --destructive: 0 75% 62%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 12% 20%;
-    --input: 220 12% 20%;
-    --ring: 16 55% 55%;
+    --border: 222 20% 22%;
+    --input: 222 28% 14%;
+    --ring: 222 20% 35%;
 
-    --navy: 220 50% 12%;
-    --navy-foreground: 220 20% 92%;
-    --navy-muted: 220 20% 50%;
+    --navy: 222 35% 6%;
+    --navy-foreground: 30 8% 82%;
+    --navy-muted: 222 20% 50%;
 
-    --highlight: 220 12% 15%;
-    --highlight-border: 220 10% 28%;
+    --hover: 175 60% 52%;
+    --hover-foreground: 0 0% 100%;
 
-    --status-confirmed: 175 50% 55%;
+    --highlight: 222 25% 15%;
+    --highlight-border: 222 20% 28%;
+
+    /* Status colours - vivid for dark mode */
+    --status-confirmed: 175 60% 52%;
     --status-confirmed-bg: 175 30% 15%;
     --status-confirmed-border: 175 30% 32%;
 
-    --status-discussed: 42 70% 60%;
+    --status-discussed: 42 90% 58%;
     --status-discussed-bg: 42 35% 14%;
     --status-discussed-border: 42 35% 30%;
 
-    --status-unconfirmed: 25 80% 62%;
+    --status-unconfirmed: 25 85% 62%;
     --status-unconfirmed-bg: 25 40% 14%;
     --status-unconfirmed-border: 25 40% 30%;
 
-    --status-leaked: 0 70% 62%;
+    --status-leaked: 0 75% 62%;
     --status-leaked-bg: 0 40% 14%;
     --status-leaked-border: 0 45% 32%;
 
-    --timeline-completed: 175 50% 55%;
+    --status-badge-text: 222 35% 8%;
+
+    /* Timeline */
+    --timeline-completed: 175 60% 52%;
     --timeline-completed-bg: 175 30% 15%;
-    --timeline-upcoming: 42 70% 60%;
+    --timeline-upcoming: 42 90% 58%;
     --timeline-upcoming-bg: 42 35% 14%;
-    --timeline-uncertain: 25 80% 62%;
+    --timeline-uncertain: 25 85% 62%;
     --timeline-uncertain-bg: 25 40% 14%;
-    --timeline-new: 175 50% 55%;
+    --timeline-new: 175 60% 52%;
     --timeline-new-bg: 175 30% 15%;
-    --timeline-clarification: 200 60% 58%;
-    --timeline-clarification-bg: 200 35% 15%;
+    --timeline-clarification: 210 70% 62%;
+    --timeline-clarification-bg: 210 35% 15%;
 
+    /* Journey navigation */
     --journey-current: 16 60% 60%;
-    --journey-complete: 175 45% 55%;
-    --journey-pending: 220 8% 45%;
-    --journey-confirmed: 200 60% 58%;
-    --journey-discussed: 42 75% 58%;
-    --journey-unconfirmed: 25 80% 62%;
-    --journey-next: 335 55% 62%;
+    --journey-complete: 175 60% 52%;
+    --journey-pending: 222 10% 45%;
+    --journey-confirmed: 220 75% 65%;
+    --journey-discussed: 42 90% 58%;
+    --journey-unconfirmed: 25 85% 62%;
+    --journey-next: 210 70% 62%;
 
-    --accent-teal: 175 45% 55%;
+    /* Five accent colours - vivid, not muddy */
+    --accent-teal: 175 60% 52%;
     --accent-teal-bg: 175 30% 15%;
-    --accent-deep-blue: 220 50% 62%;
+    --accent-deep-blue: 220 75% 65%;
     --accent-deep-blue-bg: 220 30% 15%;
-    --accent-amber: 42 75% 60%;
+    --accent-amber: 42 90% 58%;
     --accent-amber-bg: 42 35% 14%;
-    --accent-coral: 12 65% 62%;
-    --accent-coral-bg: 12 40% 14%;
-    --accent-violet: 270 40% 65%;
-    --accent-violet-bg: 270 25% 15%;
+    --accent-coral: 8 80% 65%;
+    --accent-coral-bg: 8 40% 14%;
+    --accent-violet: 262 65% 68%;
+    --accent-violet-bg: 262 25% 15%;
     --accent-sage: 155 25% 55%;
     --accent-sage-bg: 155 20% 14%;
     --accent-rose: 345 50% 62%;
     --accent-rose-bg: 345 30% 14%;
 
-    --sidebar-background: 220 18% 8%;
-    --sidebar-foreground: 210 12% 88%;
+    --banner-breaking: 0 75% 38%;
+    --banner-breaking-foreground: 0 0% 100%;
+
+    /* Sidebar */
+    --sidebar-background: 222 35% 6%;
+    --sidebar-foreground: 30 8% 82%;
     --sidebar-primary: 16 60% 60%;
-    --sidebar-primary-foreground: 220 15% 10%;
+    --sidebar-primary-foreground: 222 35% 8%;
     --sidebar-accent: 175 20% 16%;
     --sidebar-accent-foreground: 175 40% 72%;
-    --sidebar-border: 220 12% 20%;
-    --sidebar-ring: 16 55% 55%;
+    --sidebar-border: 222 20% 22%;
+    --sidebar-ring: 222 20% 35%;
   }
 }
 
@@ -285,19 +307,19 @@
 
   .status-confirmed {
     background-color: hsl(var(--status-confirmed-bg));
-    color: hsl(var(--status-confirmed));
+    color: hsl(var(--status-badge-text));
     border: 1px solid hsl(var(--status-confirmed-border));
   }
 
   .status-discussed {
     background-color: hsl(var(--status-discussed-bg));
-    color: hsl(var(--status-discussed));
+    color: hsl(var(--status-badge-text));
     border: 1px solid hsl(var(--status-discussed-border));
   }
 
   .status-unconfirmed {
     background-color: hsl(var(--status-unconfirmed-bg));
-    color: hsl(var(--status-unconfirmed));
+    color: hsl(var(--status-badge-text));
     border: 1px solid hsl(var(--status-unconfirmed-border));
   }
 
