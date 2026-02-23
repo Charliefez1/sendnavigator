@@ -5,9 +5,7 @@ import { ReportLayout } from "./ReportLayout";
 import { JourneyFloatingBar } from "./JourneyFloatingBar";
 import { Footer } from "./Footer";
 
-import { MoreResources } from "./MoreResources";
-import { NeurodiversityGlobalCTA } from "./NeurodiversityGlobalCTA";
-import { NewsletterSignup } from "./NewsletterSignup";
+import { PreFooter } from "./PreFooter";
 import { SkipLink } from "./SkipLink";
 import { AskQuestionCompact } from "./AskQuestionCompact";
 import { ListenModePlayer } from "./ListenModePlayer";
@@ -19,10 +17,9 @@ import { AskSendFloating } from "./AskSendFloating";
 
 interface LayoutProps {
   children: ReactNode;
-  hideGlobalCTA?: boolean;
 }
 
-export function Layout({ children, hideGlobalCTA }: LayoutProps) {
+export function Layout({ children }: LayoutProps) {
   const location = useLocation();
   const isReportPage = location.pathname.startsWith("/state-of-send-2026/");
 
@@ -67,11 +64,7 @@ export function Layout({ children, hideGlobalCTA }: LayoutProps) {
         </>
       )}
 
-      <MoreResources />
-      <div className="content-section py-8">
-        <NewsletterSignup />
-      </div>
-      {!hideGlobalCTA && <NeurodiversityGlobalCTA />}
+      <PreFooter />
       <Footer />
       {!isReportPage && <JourneyFloatingBar />}
       <AskSendFloating />
