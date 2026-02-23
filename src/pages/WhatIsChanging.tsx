@@ -9,6 +9,7 @@ import {
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { StatCard } from "@/components/templates/DataVisuals";
+import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import { Users, BarChart3, ClipboardList, Monitor, GraduationCap, Building2, MapPin, PoundSterling, ShieldCheck } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -30,7 +31,7 @@ export default function WhatIsChanging() {
       <PageOrientation
         title="Confirmed changes: what changes are coming to SEND provision in 2026 and have been confirmed"
         description="Changes that have been publicly set out, funded, or formally announced."
-        lastUpdated="15th February 2026"
+        lastUpdated="23rd February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />
@@ -55,6 +56,21 @@ export default function WhatIsChanging() {
           </div>
         }
       />
+
+      <LatestUpdatePanel>
+        <p>
+          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — sets out a decade-long transition. No legislation has changed yet.
+        </p>
+        <p>
+          The confirmed <strong>£4bn SEND package</strong> splits into: Inclusive Mainstream Fund (£1.6bn direct to schools), Experts at Hand (£1.8bn for local specialist pools without needing an EHCP), Local Authority Transformation (£200m), and Best Start Family Hubs (£200m). Per school, the Inclusive Mainstream Fund works out at roughly £26,000 per year if split evenly — <strong>critics including the Education Policy Institute note this may not cover staffing gaps</strong>.
+        </p>
+        <p>
+          Every secondary school is expected to eventually have an <strong>inclusion base</strong>. Experts at Hand gives mainstream schools access to educational psychologists, speech and language therapists, occupational therapists, and SEND specialist teachers — <strong>without a diagnosis or EHCP being required</strong>. An average secondary school is expected to receive over 160 days of specialist time per year.
+        </p>
+        <p>
+          A petition calling for protection of disabled children's rights reached <strong>over 132,000 signatures</strong>, triggering a Westminster Hall debate. Over 130 organisations have written to ministers with four red lines.
+        </p>
+      </LatestUpdatePanel>
 
       <OnThisPage sections={sections} />
 

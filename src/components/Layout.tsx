@@ -36,7 +36,7 @@ export function Layout({ children }: LayoutProps) {
           <div className="content-section pt-3 pb-1">
             <p className="text-xs text-muted-foreground flex items-center gap-1.5">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-status-confirmed flex-shrink-0" />
-              <span><strong className="text-foreground">Last updated:</strong> 20th February 2026</span>
+              <span><strong className="text-foreground">Last updated:</strong> 23rd February 2026</span>
             </p>
           </div>
           <main id="main-content" className="flex-1 pb-8" role="main" tabIndex={-1}>
@@ -52,7 +52,7 @@ export function Layout({ children }: LayoutProps) {
           <div className="content-section pt-3 pb-1">
             <p className="text-xs text-muted-foreground flex items-center gap-1.5">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-status-confirmed flex-shrink-0" />
-              <span><strong className="text-foreground">Last updated:</strong> 20th February 2026</span>
+              <span><strong className="text-foreground">Last updated:</strong> 23rd February 2026</span>
             </p>
           </div>
           <main id="main-content" className="flex-1 pb-24" role="main" tabIndex={-1}>

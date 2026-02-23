@@ -10,6 +10,7 @@ import {
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { VisualTimeline } from "@/components/templates/VisualTimeline";
+import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import { History, CalendarClock, Users, AlertTriangle, FileQuestion, ShieldCheck, GitBranch } from "lucide-react";
 
 const timelineMilestones = [
@@ -38,6 +39,12 @@ const timelineMilestones = [
     type: "confirmed" as const,
   },
   {
+    date: "23 February 2026",
+    title: "Schools White Paper published",
+    description: "Every Child Achieving and Thriving published. Confirms £4bn SEND package, Individual Support Plans, Experts at Hand programme, and a decade-long transition.",
+    type: "confirmed" as const,
+  },
+  {
     date: "Autumn 2026",
     title: "Council local SEND reform plans due",
     description: "Local authorities must submit local SEND reform plans by autumn 2026 to qualify for the debt bailout package.",
@@ -45,7 +52,7 @@ const timelineMilestones = [
   },
   {
     date: "2026",
-    title: "Formal public consultation expected",
+    title: "Formal public consultation",
     description: "Government has stated a formal consultation on SEND reform proposals will take place in 2026. This will be the key opportunity for detailed input on proposed changes.",
     type: "upcoming" as const,
   },
@@ -62,9 +69,9 @@ const timelineMilestones = [
     type: "uncertain" as const,
   },
   {
-    date: "TBC",
-    title: "Schools White Paper with SEND proposals",
-    description: "A Schools White Paper is expected to include SEND reform proposals, but no publication date has been confirmed.",
+    date: "2030",
+    title: "Individual Support Plans come into force",
+    description: "ISPs are expected to become statutory from 2030, creating a new school-led plan for every child with identified SEND.",
     type: "uncertain" as const,
   },
   {
@@ -92,7 +99,7 @@ export default function Timeline() {
       <PageOrientation
         title="Timeline and next steps"
         description="Key decision points and milestones. We show only confirmed dates and likely windows, avoiding speculation."
-        lastUpdated="7th February 2026"
+        lastUpdated="23rd February 2026"
       >
         <div className="mt-3">
           <StatusBadge status="discussed" />
@@ -102,10 +109,22 @@ export default function Timeline() {
       <SixtySecondSummary
         prose={
           <p>
-            SEND reform is moving slowly because <strong>large system changes take time</strong>. Pilot programmes and training are already happening, but major decisions still sit ahead. A Schools White Paper and public consultation are expected next. If legal changes are proposed, they must go through Parliament before taking effect. Research from previous reforms shows <strong>implementation is usually phased over several years</strong>. For parents, this means current support and rights continue while reform is debated. There is time to understand proposals properly before anything changes.
+            SEND reform is moving slowly because <strong>large system changes take time</strong>. Pilot programmes and training are already happening, but major decisions still sit ahead. The Schools White Paper — Every Child Achieving and Thriving — was published on 23 February 2026 and a public consultation is expected next. If legal changes are proposed, they must go through Parliament before taking effect. Research from previous reforms shows <strong>implementation is usually phased over several years</strong>. For parents, this means current support and rights continue while reform is debated. There is time to understand proposals properly before anything changes.
           </p>
         }
       />
+
+      <LatestUpdatePanel>
+        <p>
+          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — sets out a decade-long transition. No legislation has changed yet.
+        </p>
+        <p>
+          Key confirmed dates: ISPs come into force from <strong>2030</strong>. Central government takes over SEND spending from <strong>2028–29</strong>. Council local reform plans due <strong>autumn 2026</strong>. Formal public consultation expected <strong>2026</strong>.
+        </p>
+        <p>
+          Children currently in Year 2 who hold EHCPs have been cited as an example cohort who may be <strong>reassessed at the end of primary school</strong>.
+        </p>
+      </LatestUpdatePanel>
 
       <OnThisPage sections={sections} />
 
@@ -119,6 +138,7 @@ export default function Timeline() {
             <li>The SEND and Alternative Provision Improvement Plan was published in <strong>March 2023</strong>.</li>
             <li>Pilot programmes began testing reform ideas.</li>
             <li>A national SEND conversation took place in <strong>late 2025 and early 2026</strong>.</li>
+            <li>The Schools White Paper — Every Child Achieving and Thriving — was <strong>published on 23 February 2026</strong>.</li>
           </ul>
         </div>
       </ContentBox>
@@ -126,10 +146,9 @@ export default function Timeline() {
       <ContentBox id="expected-next" icon={CalendarClock} title="What is expected next">
         <div className="space-y-3">
           <ul className="space-y-2">
-            <li>A <strong>Schools White Paper</strong> including SEND proposals.</li>
-            <li>A <strong>public consultation</strong>.</li>
+            <li>A <strong>public consultation</strong> on SEND reform proposals.</li>
             <li>Parliamentary scrutiny if legal change is proposed.</li>
-            <li>Phased implementation if reforms are approved.</li>
+            <li>Phased implementation if reforms are approved, <strong>from 2030</strong>.</li>
           </ul>
         </div>
       </ContentBox>

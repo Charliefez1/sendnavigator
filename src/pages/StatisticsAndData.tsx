@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SourceCard } from "@/components/SourceCard";
 import { AlertCircle, TrendingUp, Users, BarChart3, PoundSterling, Gavel } from "lucide-react";
 import { StatCard, PercentageRing, HorizontalBarChart } from "@/components/templates/DataVisuals";
+import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 
 interface StatItem {
   label: string;
@@ -89,8 +90,23 @@ export default function StatisticsAndData() {
       <PageOrientation
         title="Statistics and data"
         description="Key SEND statistics for England, using the most recent official data available. These figures show the current scale and pressures in the system."
-        lastUpdated="7th February 2026"
+        lastUpdated="23rd February 2026"
       />
+
+      <LatestUpdatePanel>
+        <p>
+          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — confirms the £4bn SEND package.
+        </p>
+        <p>
+          Updated EHCP figures: <strong>638,700 children with EHCPs in England</strong> (January 2025); 43.6% in mainstream schools; 30.4% in special schools; over 1.7 million pupils with identified SEND.
+        </p>
+        <p>
+          Updated tribunal figures: <strong>21,000 appeals in 2023/24</strong>, up 55% on the previous year. Parents win approximately 95% of cases. 5,569 cases were conceded before the hearing.
+        </p>
+        <p>
+          Two fifths of local authorities are at risk of issuing a Section 114 notice by March 2026. The Inclusive Mainstream Fund works out at roughly <strong>£26,000 per school per year</strong> if split evenly.
+        </p>
+      </LatestUpdatePanel>
 
       {/* Introduction */}
       <section className="content-section py-8">
@@ -114,7 +130,7 @@ export default function StatisticsAndData() {
 
       {/* Confirmed position */}
       <section className="content-section py-8 border-t border-border">
-        <h2 className="text-lg font-display font-semibold text-foreground mb-6">Confirmed position as of 15 February 2026</h2>
+        <h2 className="text-lg font-display font-semibold text-foreground mb-6">Confirmed position as of 23 February 2026</h2>
 
         <div className="space-y-8">
           {/* Legal framework */}
