@@ -65,7 +65,7 @@ export function VisualTimeline({ milestones }: VisualTimelineProps) {
         ))}
       </div>
 
-      {/* "Now" marker calculation — find the index where upcoming starts */}
+      {/* "Now" marker calculation - find the index where upcoming starts */}
       {(() => {
         const nowIndex = milestones.findIndex((m) => m.type !== "confirmed");
         return (

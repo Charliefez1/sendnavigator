@@ -66,7 +66,7 @@ export function NewsTicker() {
           </span>
         </div>
 
-        {/* Featured headline — cycles */}
+        {/* Featured headline - cycles */}
         <a
           href={current.url}
           target="_blank"
