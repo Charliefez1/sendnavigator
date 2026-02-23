@@ -72,7 +72,7 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
               { label: "Where we are now", path: "/where-we-are-now" },
               { label: "What is changing", path: "/what-is-changing" },
             ],
-            lastUpdated: "7th February 2026",
+            lastUpdated: "23rd February 2026",
           },
         });
         setIsLoading(false);
@@ -91,7 +91,7 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
             whatWeDoNotKnow: [],
             clarifications: { doesMean: [], doesNotMean: [] },
             readMore: [{ label: "Where we are now", path: "/where-we-are-now" }],
-            lastUpdated: "7th February 2026",
+            lastUpdated: "23rd February 2026",
           },
         });
         setIsLoading(false);
@@ -116,7 +116,7 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
             { label: "Where we are now", path: "/where-we-are-now" },
             { label: "About this resource", path: "/about" },
           ],
-          lastUpdated: "7th February 2026",
+          lastUpdated: "23rd February 2026",
         },
       });
     } finally {
