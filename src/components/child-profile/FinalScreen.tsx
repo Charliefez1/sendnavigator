@@ -87,11 +87,13 @@ export function FinalScreen() {
   const [consentDecided, setConsentDecided] = useState(false);
   const [consentGiven, setConsentGiven] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [emptySectionsWarning, setEmptySectionsWarning] = useState(false);
 
   const canGenerate = consentDecided;
 
   const handleGenerateReport = async () => {
     setError(null);
+    setEmptySectionsWarning(false);
     setStage("loading");
 
     try {
@@ -117,6 +119,11 @@ export function FinalScreen() {
       setStage("complete");
     } catch (e) {
       console.error("Report generation failed:", e);
+      if (e instanceof Error && e.message === "NO_SECTIONS_COMPLETED") {
+        setEmptySectionsWarning(true);
+        setStage("input");
+        return;
+      }
       setError(e instanceof Error ? e.message : "Something went wrong. Please try again.");
       setStage("input");
     }
@@ -210,6 +217,12 @@ export function FinalScreen() {
           className="resize-y"
         />
       </div>
+
+      {emptySectionsWarning && (
+        <div className="rounded-lg border border-amber-500/50 bg-amber-500/10 p-4">
+          <p className="text-sm text-foreground font-medium">You have not completed any sections yet. Complete at least one section before generating your report.</p>
+        </div>
+      )}
 
       {error && (
         <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-4">

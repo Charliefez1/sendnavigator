@@ -23,7 +23,7 @@ const PAGE_BG = [252, 251, 249];  // very subtle warm white
 /**
  * Load an image URL and return a base64 data URL suitable for jsPDF.
  */
-function loadImageAsBase64(url: string): Promise<string> {
+function loadImageAsBase64(url: string): Promise<{ data: string; width: number; height: number }> {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.crossOrigin = "anonymous";
@@ -34,7 +34,7 @@ function loadImageAsBase64(url: string): Promise<string> {
       const ctx = canvas.getContext("2d");
       if (!ctx) return reject(new Error("Canvas context failed"));
       ctx.drawImage(img, 0, 0);
-      resolve(canvas.toDataURL("image/png"));
+      resolve({ data: canvas.toDataURL("image/png"), width: img.naturalWidth, height: img.naturalHeight });
     };
     img.onerror = () => reject(new Error(`Failed to load image: ${url}`));
     img.src = url;
@@ -42,11 +42,27 @@ function loadImageAsBase64(url: string): Promise<string> {
 }
 
 export async function generateProfilePDF({ state, aiReport }: ReportData) {
+  // Check if any sections have content
+  const hasAnySectionContent = SECTION_TITLES.some((_, index) => {
+    const section = state.sections[index];
+    if (!section) return false;
+    const hasAnswers = Object.entries(section.answers).some(([key, v]) => {
+      if (key.startsWith("cv_")) return false;
+      return Array.isArray(v) ? v.length > 0 : v.trim().length > 0;
+    });
+    const hasReflection = section.reflection.trim().length > 0;
+    return hasAnswers || hasReflection;
+  });
+
+  if (!hasAnySectionContent) {
+    throw new Error("NO_SECTIONS_COMPLETED");
+  }
+
   // Pre-load logos
-  let beaconLogoData: string | null = null;
-  let ngLogoData: string | null = null;
+  let beaconLogo: { data: string; width: number; height: number } | null = null;
+  let ngLogo: { data: string; width: number; height: number } | null = null;
   try {
-    [beaconLogoData, ngLogoData] = await Promise.all([
+    [beaconLogo, ngLogo] = await Promise.all([
       loadImageAsBase64(beaconLogoUrl),
       loadImageAsBase64(ngLogoUrl),
     ]);
@@ -95,11 +111,12 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     }
 
     // NG logo in footer
-    if (ngLogoData) {
+    if (ngLogo) {
       try {
         const logoH = 6;
-        const logoW = 6;
-        doc.addImage(ngLogoData, "JPEG", pageWidth / 2 - logoW / 2, pageHeight - 9 - logoH, logoW, logoH);
+        const aspectRatio = ngLogo.width / ngLogo.height;
+        const logoW = logoH * aspectRatio;
+        doc.addImage(ngLogo.data, "JPEG", pageWidth / 2 - logoW / 2, pageHeight - 9 - logoH, logoW, logoH);
       } catch { /* ignore */ }
     }
 
@@ -274,10 +291,14 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
   setFill(PAGE_BG);
   doc.rect(0, 0, pageWidth, pageHeight, "F");
 
-  // Beacon logo at top centre
-  if (beaconLogoData) {
+  // NG logo at top centre (replacing beacon logo)
+  if (ngLogo) {
     try {
-      doc.addImage(beaconLogoData, "PNG", pageWidth / 2 - 20, 20, 40, 20);
+      const maxW = 180 * 0.264583; // 180px to mm
+      const aspectRatio = ngLogo.width / ngLogo.height;
+      const logoW = maxW;
+      const logoH = logoW / aspectRatio;
+      doc.addImage(ngLogo.data, "JPEG", pageWidth / 2 - logoW / 2, 20, logoW, logoH);
     } catch { /* ignore logo errors */ }
   }
 
@@ -649,10 +670,14 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
   y = margin;
 
   // Neurodiversity Global logo
-  if (ngLogoData) {
+  if (ngLogo) {
     try {
-      doc.addImage(ngLogoData, "JPEG", pageWidth / 2 - 15, y, 30, 30);
-      y += 36;
+      const maxW = 160 * 0.264583; // 160px to mm
+      const aspectRatio = ngLogo.width / ngLogo.height;
+      const logoW = maxW;
+      const logoH = logoW / aspectRatio;
+      doc.addImage(ngLogo.data, "JPEG", pageWidth / 2 - logoW / 2, y, logoW, logoH);
+      y += logoH + 6; // 16px (~6mm) clear space before heading
     } catch { /* ignore logo errors */ }
   }
 
@@ -672,7 +697,8 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     "Neurodiversity Global provides neurodiversity training, consultancy, and practical support to organisations, schools, education providers, public bodies, and families internationally.",
     "The organisation was founded by Richard Ferriman and Charlie Ferriman, a father and son team who are both neurodivergent. Charlie is one of three neurodivergent children in the family, and between them they bring lived experience of autism, ADHD, and dyslexia alongside decades of senior leadership, systems design, and delivery experience across complex and regulated environments.",
     "Neurodiversity Global operates from a clear position. Neurodivergent people are not broken. The systems around them often are.",
-    "The work focuses on understanding how environments, expectations, policies, leadership behaviours, and institutional processes unintentionally exclude neurodivergent children and adults, and how those systems can be redesigned to reduce harm and increase access, safety, and performance. This includes education systems that prioritise compliance over regulation, workplaces that reward narrow communication styles, and support pathways that intervene only once crisis has already occurred.",
+    "The work focuses on understanding how environments, expectations, policies, leadership behaviours, and institutional processes unintentionally exclude neurodivergent children and adults, and how those systems can be redesigned to reduce harm and increase access, safety, and performance.",
+    "This includes education systems that prioritise compliance over regulation, workplaces that reward narrow communication styles, and support pathways that intervene only once crisis has already occurred.",
     "Across all settings, the approach is grounded in lived reality rather than abstract theory. Training and consultancy draw directly on real world experience of parenting neurodivergent children, navigating education and SEND processes, leading large scale organisational change, and supporting individuals who have spent years masking to survive systems that were never built for them.",
     "Neurodiversity Global works with leaders, educators, parents, and practitioners to move beyond awareness and into practical, evidence informed change. The emphasis is on redesigning environments, improving decision making, reducing unnecessary cognitive and emotional load, and creating conditions where neurodivergent children and adults can be seen, supported, and succeed without having to hide who they are.",
     "The work is intentionally systems focused. Change is not driven by asking neurodivergent people to adapt to environments that harm them, but by equipping organisations, schools, and families to understand difference, recognise impact, and take responsibility for building spaces that fit the full range of human neurodevelopment.",
@@ -681,8 +707,11 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
 
   setColor(DARK_TEXT);
   for (const para of ngParagraphs) {
-    y = addWrappedText(para, margin, y, contentWidth, 10.5, "normal", 1.6);
-    y += 5;
+    // Check if this paragraph would cause an orphan on a new page
+    const paraHeight = measureText(para, contentWidth, 10, 1.5);
+    y = checkPageBreak(y, paraHeight + 4);
+    y = addWrappedText(para, margin, y, contentWidth, 10, "normal", 1.5);
+    y += 4;
   }
 
   y += 6;
