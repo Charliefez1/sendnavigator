@@ -1,36 +1,65 @@
 
 
-## Darken font colours across the entire site
+# Adding Colour and Visual Energy to Beacon SEND Navigator
 
-### The problem
-Text across the site appears too light. The root cause is in the CSS custom properties in `src/index.css`. Two key variables control nearly all text colour:
+## The Problem
+Right now, the entire site is a single tone of warm beige/cream with navy headers. Every card looks the same. Every section blends into the next. It is clean, but it feels flat and corporate. There is no visual rhythm or personality.
 
-- `--foreground: 220 25% 14%` -- main text (already fairly dark)
-- `--muted-foreground: 220 10% 46%` -- used heavily for body paragraphs, descriptions, timestamps, and secondary text (this is the main offender -- 46% lightness is quite washed out on a grey background)
+## The Approach
+We will add colour strategically - not randomly - so each section of the home page has its own visual identity. The site stays calm and accessible, but gains energy and variety. Nothing flashy. Just enough colour to make it feel alive.
 
-Several other foreground variables also need darkening:
-- `--secondary-foreground: 220 20% 25%`
-- `--accent-foreground: 155 35% 30%`
-- `--card-foreground` and `--popover-foreground` (currently same as foreground)
+## What Changes
 
-### The fix
-Change **only the CSS variables** in `src/index.css` -- no individual page edits needed. Every component already uses these variables via Tailwind classes (`text-foreground`, `text-muted-foreground`, etc.), so updating the variables propagates everywhere automatically.
+### 1. Coloured Section Backgrounds on the Home Page
+Instead of every section sitting on the same beige, alternate between subtle colour washes:
+- **GuideMe hero**: Already navy - good. Add a subtle gradient (navy to deep teal) for more depth.
+- **News Headlines**: Add a warm amber/gold left accent bar instead of the flat red-only banner.
+- **Word from Rich**: Give it a warm teal-tinted background with a coloured left border strip, making it feel like a personal note.
+- **SENDIASS signpost**: Shift from faint primary tint to a bolder sage green background that actually stands out.
+- **Q&A section**: Add a soft blue-tinted background panel so it reads as its own zone.
+- **"Made for families" card**: Give it a warm rose/coral accent to make it feel heartfelt.
 
-### Changes to `src/index.css`
+### 2. Colour-Coded Content Cards (Browse Everything)
+When users expand "Browse everything", each section already has an `accent` prop. We will make these bolder:
+- Coloured left border strips on each card group
+- Slightly tinted section backgrounds behind each group
+- Bolder icon backgrounds with more saturation
 
-**Light mode (`:root`):**
+### 3. Quick Links Bar - More Colourful Buttons
+Replace the uniform navy buttons at the top with individually coloured pill buttons:
+- SEND Reform Report: teal
+- EHCP Guide: deep blue
+- My Child Profile: amber
+- What to do now: coral
+- Ask Rich: purple/violet
 
-| Variable | Current | New | Reason |
-|---|---|---|---|
-| `--foreground` | `220 25% 14%` | `220 30% 10%` | Slightly deeper for main headings and body |
-| `--card-foreground` | `220 25% 14%` | `220 30% 10%` | Match foreground |
-| `--popover-foreground` | `220 25% 14%` | `220 30% 10%` | Match foreground |
-| `--muted-foreground` | `220 10% 46%` | `220 12% 35%` | The biggest change -- from 46% to 35% lightness makes secondary text noticeably darker and more readable |
-| `--secondary-foreground` | `220 20% 25%` | `220 22% 18%` | Darker secondary text |
-| `--accent-foreground` | `155 35% 30%` | `155 40% 22%` | Darker accent text |
+### 4. PreFooter Cards - Individual Colour Accents
+Each of the three PreFooter cards gets its own accent colour on the icon and top border:
+- Neurodiversity Global: teal
+- Stay Updated: amber/gold
+- Get in Touch: coral/rose
 
-**Dark mode (`.dark`)** -- left unchanged since dark mode already has light text on dark backgrounds. Changes are light-mode only.
+### 5. CSS Enhancements
+Add a few new utility classes:
+- Subtle gradient backgrounds for section panels
+- Coloured left-border accent class for cards
+- A couple of new colour tokens for the additional accents (warm violet, deeper teal, soft gold)
 
-### What this affects
-Every page, every card, every component -- all text gets darker without touching any individual files. This is a single-file, 6-line change.
+## Files to Change
+
+| File | Change |
+|------|--------|
+| `src/index.css` | Add new colour tokens and gradient utility classes |
+| `src/pages/Start.tsx` | Add coloured backgrounds to sections, update quick link button colours |
+| `src/components/GuideMe.tsx` | Add gradient to the navy hero |
+| `src/components/WordFromRich.tsx` | Coloured left border strip, teal-tinted background |
+| `src/components/SendiassSignpost.tsx` | Bolder sage green background |
+| `src/components/NewsHeadlines.tsx` | Add coloured accent strip |
+| `src/components/PreFooter.tsx` | Individual accent colours per card |
+
+## What Does Not Change
+- The navy header and footer stay as they are
+- Typography stays the same (Fraunces headings, Inter body)
+- The overall warm tone remains - we are adding colour, not replacing the palette
+- Dark mode tokens will be updated to match
 
