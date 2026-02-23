@@ -1,65 +1,151 @@
 
 
-# Adding Colour and Visual Energy to Beacon SEND Navigator
+# Dynamic Knowledge Base Update System
 
-## The Problem
-Right now, the entire site is a single tone of warm beige/cream with navy headers. Every card looks the same. Every section blends into the next. It is clean, but it feels flat and corporate. There is no visual rhythm or personality.
+## Current State
 
-## The Approach
-We will add colour strategically - not randomly - so each section of the home page has its own visual identity. The site stays calm and accessible, but gains energy and variety. Nothing flashy. Just enough colour to make it feel alive.
+The site's SEND information lives in three disconnected places:
 
-## What Changes
+1. **Hardcoded page content** -- 20+ page files (e.g. WhereWeAreNow.tsx, WhatIsChanging.tsx) with static text and "last updated" dates frozen at mid-February 2026
+2. **Database knowledge base** -- 65 entries in `knowledge_base` table, powering "Ask Rich" Q&A answers
+3. **Knowledge chunks** -- 27 RAG chunks across 8 documents, powering profile report generation
 
-### 1. Coloured Section Backgrounds on the Home Page
-Instead of every section sitting on the same beige, alternate between subtle colour washes:
-- **GuideMe hero**: Already navy - good. Add a subtle gradient (navy to deep teal) for more depth.
-- **News Headlines**: Add a warm amber/gold left accent bar instead of the flat red-only banner.
-- **Word from Rich**: Give it a warm teal-tinted background with a coloured left border strip, making it feel like a personal note.
-- **SENDIASS signpost**: Shift from faint primary tint to a bolder sage green background that actually stands out.
-- **Q&A section**: Add a soft blue-tinted background panel so it reads as its own zone.
-- **"Made for families" card**: Give it a warm rose/coral accent to make it feel heartfelt.
+When new information arrives (from you or from the news tracker API), none of these update automatically. You have to manually edit each page file, then separately update the knowledge base via admin.
 
-### 2. Colour-Coded Content Cards (Browse Everything)
-When users expand "Browse everything", each section already has an `accent` prop. We will make these bolder:
-- Coloured left border strips on each card group
-- Slightly tinted section backgrounds behind each group
-- Bolder icon backgrounds with more saturation
+## What This Plan Delivers
 
-### 3. Quick Links Bar - More Colourful Buttons
-Replace the uniform navy buttons at the top with individually coloured pill buttons:
-- SEND Reform Report: teal
-- EHCP Guide: deep blue
-- My Child Profile: amber
-- What to do now: coral
-- Ask Rich: purple/violet
+A system where you submit new information once, and it flows through the entire site -- updating the AI answers, the knowledge chunks, and flagging which pages need content refreshes.
 
-### 4. PreFooter Cards - Individual Colour Accents
-Each of the three PreFooter cards gets its own accent colour on the icon and top border:
-- Neurodiversity Global: teal
-- Stay Updated: amber/gold
-- Get in Touch: coral/rose
+---
 
-### 5. CSS Enhancements
-Add a few new utility classes:
-- Subtle gradient backgrounds for section panels
-- Coloured left-border accent class for cards
-- A couple of new colour tokens for the additional accents (warm violet, deeper teal, soft gold)
+## Architecture
 
-## Files to Change
+```text
++------------------+       +------------------+
+|  Admin Panel     |       |  News Tracker    |
+|  (you paste new  |       |  (Perplexity     |
+|   information)   |       |   cron job)      |
++--------+---------+       +--------+---------+
+         |                          |
+         v                          v
++------------------------------------------------+
+|        content_updates table (new)             |
+|  source, raw_content, status, processed_at     |
++------------------------+-----------------------+
+                         |
+                         v
++------------------------------------------------+
+|     process-update edge function (new)         |
+|  - AI summarises into KB-ready entries         |
+|  - Upserts knowledge_base rows                |
+|  - Regenerates knowledge_chunks               |
+|  - Flags affected pages in page_update_flags  |
++------------------------+-----------------------+
+                         |
+            +------------+------------+
+            |                         |
+            v                         v
+   knowledge_base             page_update_flags
+   (Ask Rich answers          (new table showing
+    auto-updated)              which pages are stale)
+```
 
+## Implementation Steps
+
+### 1. New Database Tables
+
+**content_updates** -- stores raw information submissions
+- id, source (manual / news_tracker / api), raw_content, status (pending / processed / failed), submitted_at, processed_at
+
+**page_update_flags** -- tracks which pages need content refreshes
+- id, page_path, flag_reason, status (stale / updated / dismissed), flagged_at, resolved_at
+
+### 2. New Edge Function: `process-update`
+
+Takes raw content from `content_updates`, uses AI (Gemini Flash) to:
+- Extract key facts and categorise by topic
+- Upsert matching `knowledge_base` entries (update existing topics or create new ones)
+- Rechunk updated content into `knowledge_chunks`
+- Analyse which site pages are affected and insert flags into `page_update_flags`
+- Mark the content_update as processed
+
+### 3. Admin Panel: Content Update Submission
+
+A new tab in the admin panel where you can:
+- Paste raw text (articles, government announcements, briefings)
+- Name the source
+- Submit for processing
+- See processing status and results
+- View which pages are flagged as needing updates
+
+### 4. News Tracker Integration
+
+Update the existing `news-tracker` edge function to automatically create `content_updates` entries when significant news is discovered, so the pipeline processes them without manual intervention.
+
+### 5. Page Staleness Indicators
+
+Add a small admin-only banner on pages flagged as stale, visible only when logged in with the admin PIN, showing what new information is available and needs to be incorporated.
+
+### 6. Knowledge Base Sync for Ask Rich
+
+The `qanda` edge function already reads from `knowledge_base` dynamically -- no changes needed there. Once `process-update` writes new entries, Ask Rich immediately has access to them.
+
+---
+
+## Technical Details
+
+### process-update Edge Function Logic
+
+```text
+1. Receive content_update ID
+2. Read raw_content from content_updates table
+3. Call Gemini Flash with prompt:
+   - "Extract SEND-relevant facts from this text"
+   - "Categorise each fact by topic"
+   - "Identify which existing KB topics need updating"
+   - "Identify which site pages are affected"
+4. For each extracted topic:
+   - Search knowledge_base for matching topic
+   - If match: update content, set updated_at
+   - If new: insert new entry
+5. Rechunk the updated entries into knowledge_chunks
+6. Insert page_update_flags for affected pages
+7. Mark content_update as processed
+```
+
+### Page Path Mapping (for flag generation)
+
+The AI will map topics to pages using a defined mapping:
+- Legal position / EHCPs / rights --> /where-we-are-now, /ehcps
+- Confirmed changes / 10 year plan --> /what-is-changing
+- Leaks / unconfirmed --> /what-the-leaks-are-saying
+- Timeline / dates --> /timeline, /what-happens-next
+- Statistics / data --> /statistics-and-data
+- Practical impact --> /what-this-could-mean, /for-parents
+
+### Admin UI Changes
+
+The existing Admin page gets a new "Content Updates" tab with:
+- A text area to paste raw content + source name field
+- A "Process" button that submits to the edge function
+- A list of recent updates with status badges
+- A "Page Flags" section showing which pages need attention
+
+### Files to Create
+| File | Purpose |
+|------|---------|
+| `supabase/functions/process-update/index.ts` | AI-powered content processing pipeline |
+| `src/components/admin/ContentUpdateManager.tsx` | Admin UI for submitting and viewing updates |
+| `src/components/admin/PageFlagsPanel.tsx` | Admin UI showing stale page flags |
+
+### Files to Modify
 | File | Change |
-|------|--------|
-| `src/index.css` | Add new colour tokens and gradient utility classes |
-| `src/pages/Start.tsx` | Add coloured backgrounds to sections, update quick link button colours |
-| `src/components/GuideMe.tsx` | Add gradient to the navy hero |
-| `src/components/WordFromRich.tsx` | Coloured left border strip, teal-tinted background |
-| `src/components/SendiassSignpost.tsx` | Bolder sage green background |
-| `src/components/NewsHeadlines.tsx` | Add coloured accent strip |
-| `src/components/PreFooter.tsx` | Individual accent colours per card |
+|------|---------|
+| `supabase/functions/news-tracker/index.ts` | Auto-create content_updates from discovered news |
+| `src/pages/Admin.tsx` | Add Content Updates and Page Flags tabs |
+| `supabase/config.toml` | Register process-update function |
 
-## What Does Not Change
-- The navy header and footer stay as they are
-- Typography stays the same (Fraunces headings, Inter body)
-- The overall warm tone remains - we are adding colour, not replacing the palette
-- Dark mode tokens will be updated to match
+### Database Migrations
+- Create `content_updates` table with RLS (insert via edge function only)
+- Create `page_update_flags` table with RLS (read for admin, write via edge function)
 
