@@ -87,13 +87,13 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
 
       {/* 1. Plain English answer */}
       <div className="p-4 sm:p-5 space-y-3">
-        <h3 className="font-medium text-base sm:text-lg text-foreground flex items-center gap-2">
+        <h3 className="font-medium text-sm sm:text-base text-foreground flex items-center gap-2">
           <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
           Answer
         </h3>
         <div className="prose-calm space-y-3">
           {answer.plainAnswer.map((para, i) => (
-            <p key={i} className="text-base leading-relaxed">{para}</p>
+            <p key={i} className="text-sm leading-relaxed">{para}</p>
           ))}
         </div>
       </div>
@@ -104,8 +104,8 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
           <div className="flex gap-3">
             <AlertTriangle className="w-5 h-5 text-status-unconfirmed flex-shrink-0 mt-0.5" aria-hidden="true" />
             <div>
-              <p className="font-medium text-base text-foreground">This relates to unconfirmed information</p>
-              <p className="text-muted-foreground mt-1 text-base leading-relaxed">
+              <p className="font-medium text-sm text-foreground">This relates to unconfirmed information</p>
+              <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
                 Leaks are not policy. Any changes would require consultation and legislation. 
                 Current legal protections remain in place.
               </p>
@@ -121,13 +121,13 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
 
       {/* 3. What we know */}
       <div className="p-4 sm:p-5 space-y-3">
-        <h3 className="font-medium text-base sm:text-lg text-foreground flex items-center gap-2">
+        <h3 className="font-medium text-sm sm:text-base text-foreground flex items-center gap-2">
           <CheckCircle className="w-5 h-5 text-status-confirmed flex-shrink-0" aria-hidden="true" />
           What we know
         </h3>
         <ul className="space-y-3">
           {answer.whatWeKnow.map((point, i) => (
-            <li key={i} className="flex gap-3 text-foreground text-base leading-relaxed">
+            <li key={i} className="flex gap-3 text-foreground text-sm leading-relaxed">
               <span className="text-status-confirmed flex-shrink-0 mt-1">•</span>
               {point}
             </li>
@@ -137,13 +137,13 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
 
       {/* 4. What we do not know yet */}
       <div className="p-4 sm:p-5 space-y-3">
-        <h3 className="font-medium text-base sm:text-lg text-foreground flex items-center gap-2">
+        <h3 className="font-medium text-sm sm:text-base text-foreground flex items-center gap-2">
           <HelpCircle className="w-5 h-5 text-muted-foreground flex-shrink-0" aria-hidden="true" />
           What we do not know yet
         </h3>
         <ul className="space-y-3">
           {answer.whatWeDoNotKnow.map((point, i) => (
-            <li key={i} className="flex gap-3 text-muted-foreground text-base leading-relaxed">
+            <li key={i} className="flex gap-3 text-muted-foreground text-sm leading-relaxed">
               <span className="flex-shrink-0 mt-1">?</span>
               {point}
             </li>
@@ -153,30 +153,29 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
 
       {/* 5. What this does and does not mean */}
       <div className="p-4 sm:p-5 space-y-4">
-        <h3 className="font-medium text-base sm:text-lg text-foreground">What this does and does not mean</h3>
+        <h3 className="font-medium text-sm sm:text-base text-foreground">What this does and does not mean</h3>
         
-        {/* Stack on mobile, side by side on larger screens */}
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-3 p-3 bg-status-confirmed-bg rounded-lg">
-            <p className="text-base font-medium text-status-confirmed flex items-center gap-2">
+            <p className="text-sm font-medium text-status-confirmed flex items-center gap-2">
               <Shield className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
               This means:
             </p>
             <ul className="space-y-2">
               {answer.clarifications.doesMean.map((point, i) => (
-                <li key={i} className="text-foreground text-base leading-relaxed">{point}</li>
+                <li key={i} className="text-foreground text-sm leading-relaxed">{point}</li>
               ))}
             </ul>
           </div>
           
           <div className="space-y-3 p-3 bg-muted/50 rounded-lg">
-            <p className="text-base font-medium text-muted-foreground flex items-center gap-2">
+            <p className="text-sm font-medium text-muted-foreground flex items-center gap-2">
               <AlertTriangle className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
               This does not mean:
             </p>
             <ul className="space-y-2">
               {answer.clarifications.doesNotMean.map((point, i) => (
-                <li key={i} className="text-muted-foreground text-base leading-relaxed">{point}</li>
+                <li key={i} className="text-muted-foreground text-sm leading-relaxed">{point}</li>
               ))}
             </ul>
           </div>
@@ -185,14 +184,13 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
 
       {/* 6. Where to read more */}
       <div className="p-4 sm:p-5 space-y-3">
-        <h3 className="font-medium text-base sm:text-lg text-foreground">Where to read more</h3>
-        {/* Stack on mobile for easier tapping */}
+        <h3 className="font-medium text-sm sm:text-base text-foreground">Where to read more</h3>
         <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2">
           {answer.readMore.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className="inline-flex items-center justify-between sm:justify-start gap-2 px-4 py-3 min-h-[48px] text-base bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 active:bg-secondary/70 transition-colors"
+              className="inline-flex items-center justify-between sm:justify-start gap-2 px-4 py-3 min-h-[48px] text-sm bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 active:bg-secondary/70 transition-colors"
             >
               {link.label}
               <ArrowRight className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
