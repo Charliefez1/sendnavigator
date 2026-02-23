@@ -3,8 +3,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, Loader2, CheckCircle, XCircle, Clock, RefreshCw } from "lucide-react";
+import { Upload, Loader2, CheckCircle, XCircle, Clock, RefreshCw, AlertTriangle } from "lucide-react";
 
 interface ContentUpdate {
   id: string;
@@ -21,6 +22,7 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
   const [updates, setUpdates] = useState<ContentUpdate[]>([]);
   const [sourceName, setSourceName] = useState("");
   const [rawContent, setRawContent] = useState("");
+  const [breakingNews, setBreakingNews] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [processingId, setProcessingId] = useState<string | null>(null);
   const { toast } = useToast();
@@ -54,8 +56,22 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
       if (data?.error) throw new Error(data.error);
 
       toast({ title: "Content submitted for processing" });
+
+      // If breaking news, flag all pages
+      if (breakingNews) {
+        await supabase.functions.invoke("admin-moderate", {
+          body: {
+            pin,
+            action: "flag_all_pages",
+            id: { reason: `Breaking news: ${sourceName.trim() || "Manual submission"}`, content_update_id: data?.data?.id },
+          },
+        });
+        toast({ title: "All pages flagged for review" });
+      }
+
       setSourceName("");
       setRawContent("");
+      setBreakingNews(false);
       await fetchUpdates();
     } catch (err: any) {
       toast({ title: "Failed to submit", description: err.message, variant: "destructive" });
@@ -110,6 +126,17 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
           onChange={(e) => setRawContent(e.target.value)}
           className="min-h-[200px]"
         />
+        <div className="flex items-center gap-3 p-3 bg-destructive/5 border border-destructive/20 rounded-lg">
+          <Checkbox
+            id="breaking-news"
+            checked={breakingNews}
+            onCheckedChange={(checked) => setBreakingNews(checked === true)}
+          />
+          <label htmlFor="breaking-news" className="flex items-center gap-2 text-sm font-semibold cursor-pointer">
+            <AlertTriangle className="h-4 w-4 text-destructive" />
+            Breaking news — flag all pages for review
+          </label>
+        </div>
         <Button
           onClick={handleSubmit}
           disabled={submitting || !rawContent.trim()}

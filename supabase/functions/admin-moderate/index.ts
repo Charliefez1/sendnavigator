@@ -346,6 +346,95 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Resolve ALL stale page flags at once
+    if (action === "resolve_all_flags") {
+      const { data, error } = await supabase
+        .from("page_update_flags")
+        .update({ status: "updated", resolved_at: new Date().toISOString() })
+        .eq("status", "stale")
+        .select();
+      if (error) throw error;
+      return new Response(JSON.stringify({ data, count: data?.length || 0 }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Get count of stale flags (lightweight for badge)
+    if (action === "stale_flag_count") {
+      const { data, error } = await supabase
+        .from("page_update_flags")
+        .select("id, page_path, flag_reason, status")
+        .eq("status", "stale");
+      if (error) throw error;
+      return new Response(JSON.stringify({ data, count: data?.length || 0 }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Page review checklist
+    if (action === "review_list" && table === "page_reviews") {
+      const { data, error } = await supabase
+        .from("page_reviews")
+        .select("*")
+        .order("page_path", { ascending: true });
+      if (error) throw error;
+      return new Response(JSON.stringify({ data }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (action === "mark_reviewed" && table === "page_reviews") {
+      const { data, error } = await supabase
+        .from("page_reviews")
+        .update({ last_reviewed_at: new Date().toISOString(), reviewed_by: "Admin" })
+        .eq("id", id)
+        .select()
+        .single();
+      if (error) throw error;
+      return new Response(JSON.stringify({ data }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (action === "mark_all_reviewed" && table === "page_reviews") {
+      const { data, error } = await supabase
+        .from("page_reviews")
+        .update({ last_reviewed_at: new Date().toISOString(), reviewed_by: "Admin" })
+        .not("id", "is", null)
+        .select();
+      if (error) throw error;
+      return new Response(JSON.stringify({ data, count: data?.length || 0 }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Flag ALL pages as stale (breaking news)
+    if (action === "flag_all_pages") {
+      // Get all page paths from page_reviews
+      const { data: allPages, error: pagesError } = await supabase
+        .from("page_reviews")
+        .select("page_path");
+      if (pagesError) throw pagesError;
+
+      const reason = id?.reason || "Breaking news — all pages flagged for review";
+      const contentUpdateId = id?.content_update_id || null;
+
+      let flagsCreated = 0;
+      for (const page of allPages || []) {
+        const { error } = await supabase.from("page_update_flags").insert({
+          page_path: page.page_path,
+          flag_reason: reason,
+          content_update_id: contentUpdateId,
+          status: "stale",
+        });
+        if (!error) flagsCreated++;
+      }
+
+      return new Response(JSON.stringify({ success: true, flags_created: flagsCreated }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     if (action === "stats") {
       const [questions, feedback] = await Promise.all([
         supabase.from("user_questions").select("status", { count: "exact" }),

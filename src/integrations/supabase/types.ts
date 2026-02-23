@@ -179,6 +179,33 @@ export type Database = {
         }
         Relationships: []
       }
+      page_reviews: {
+        Row: {
+          created_at: string
+          id: string
+          last_reviewed_at: string | null
+          page_name: string
+          page_path: string
+          reviewed_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          last_reviewed_at?: string | null
+          page_name: string
+          page_path: string
+          reviewed_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          last_reviewed_at?: string | null
+          page_name?: string
+          page_path?: string
+          reviewed_by?: string | null
+        }
+        Relationships: []
+      }
       page_update_flags: {
         Row: {
           content_update_id: string | null
