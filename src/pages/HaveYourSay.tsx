@@ -2,9 +2,10 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
-import { ExternalLink, Megaphone, PenLine, Users, Landmark, FileText, AlertCircle } from "lucide-react";
+import { ExternalLink, Megaphone, PenLine, Users, Landmark, FileText, AlertCircle, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { WordFromRich } from "@/components/WordFromRich";
+import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 
 function ResourceLink({ label, url }: { label: string; url: string }) {
   return (
@@ -25,40 +26,42 @@ export default function HaveYourSay() {
     <Layout>
       <SEOHead
         title="How To Have Your Say on SEND Reform | SEND Reform Navigator"
-        description="The formal consultation has not opened yet. This page explains what is coming and how to write a response that carries weight."
+        description="The Schools White Paper has been published. A formal 12-week consultation is expected. This page explains how to write a response that carries weight."
       />
 
       <PageOrientation
         title="How To Have Your Say on SEND Reform"
-        description="The government is reforming the SEND system. A formal consultation will open alongside the White Paper. This page explains how to make your voice count."
-        lastUpdated="19th February 2026"
+        description="The Schools White Paper — Every Child Achieving and Thriving — was published on 23 February 2026. A formal consultation is expected to follow. This page explains how to make your voice count."
+        lastUpdated="23rd February 2026"
       />
 
-      {/* ═══ PRE-CONSULTATION BANNER ═══ */}
+      {/* ═══ STATUS BANNER ═══ */}
       <section className="content-section py-4">
-        <div className="rounded-xl border border-accent bg-accent/10 p-5 max-w-3xl flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 text-accent-foreground flex-shrink-0 mt-0.5" />
+        <div className="rounded-xl border-2 border-amber-500/40 bg-amber-500/5 p-5 max-w-3xl flex items-start gap-3">
+          <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
           <div className="text-sm text-muted-foreground leading-relaxed">
-            <p className="font-semibold text-foreground">The formal consultation has not opened yet.</p>
-            <p className="mt-1">When it does, this page will be updated with the direct link, closing date, and a summary of what is being asked. Check back or sign up for updates.</p>
+            <p className="font-semibold text-foreground">The Schools White Paper was published today — 23 February 2026.</p>
+            <p className="mt-1">The government has stated a <strong>formal 12-week public consultation</strong> will follow. The consultation has not opened yet. When it does, this page will be updated with the direct link, closing date, and a summary of what is being asked.</p>
           </div>
         </div>
       </section>
+
+      <LatestUpdatesStream />
 
       {/* ═══ INTRO ═══ */}
       <section className="content-section py-6">
         <div className="max-w-3xl space-y-4 text-sm text-muted-foreground leading-relaxed">
           <p>
-            At some point in 2026, the government will publish the <strong>Schools White Paper</strong>. Alongside it, there will be a formal public consultation — a <strong>12-week window</strong> in which anyone can submit a response.
+            On 23 February 2026, the government published the <strong>Schools White Paper — Every Child Achieving and Thriving</strong>. This sets out the biggest change to SEND in a generation, including Individual Support Plans (ISPs), the Experts at Hand programme, and a decade-long transition.
           </p>
           <p>
-            That window has not opened yet.
+            The government has confirmed that a <strong>formal 12-week public consultation</strong> will follow. That consultation window has not opened yet, but it is expected in 2026.
           </p>
           <p>
-            This page explains what is coming, what a consultation response actually is, and <strong>how to write one that carries weight</strong>.
+            This page explains what a consultation response actually is, and <strong>how to write one that carries weight</strong> — so you are ready when it opens.
           </p>
           <StatusBadge status="confirmed" />
-          <p className="text-xs text-muted-foreground">The DfE has confirmed a formal consultation will launch alongside the White Paper.</p>
+          <p className="text-xs text-muted-foreground">The DfE has confirmed a formal consultation will launch following the White Paper.</p>
         </div>
       </section>
 
@@ -75,7 +78,10 @@ export default function HaveYourSay() {
               The DfE ran a <strong>national conversation on SEND reform</strong> between December 2025 and January 2026. That window has now closed.
             </p>
             <p>
-              A national conversation is not the same as a formal consultation. It was a broader engagement exercise — questionnaires, events, submissions. The government will use it to inform the White Paper. Responses are not published individually. There is no legal requirement for the government to respond to every point raised.
+              A national conversation is not the same as a formal consultation. It was a broader engagement exercise — questionnaires, events, submissions. The government used it to inform the White Paper.
+            </p>
+            <p>
+              The <strong>Schools White Paper</strong> was published on 23 February 2026. It confirms ISPs from 2030, a £4bn SEND package, the Experts at Hand programme, and a decade-long transition. <strong>No legislation has changed yet.</strong>
             </p>
             <p>
               The <strong>formal consultation</strong>, when it opens, will be different. It will contain specific proposals. It will ask for responses to specific questions. It will have a legal and political weight that the national conversation did not.
@@ -91,24 +97,25 @@ export default function HaveYourSay() {
         <div className="max-w-3xl space-y-4">
           <h2 className="text-base font-display font-bold text-foreground flex items-center gap-2">
             <Megaphone className="w-5 h-5 text-primary" />
-            What is coming
+            What is coming next
           </h2>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p>
-              When the White Paper is published, the government will open a formal consultation on its proposals. Based on the DfE's own statements, that consultation will run for <strong>12 weeks</strong>.
+              Now that the White Paper has been published, the government will open a formal consultation on its proposals. Based on the DfE's own statements, that consultation will run for <strong>12 weeks</strong>.
             </p>
             <p>
               During that window, you can submit a written response. Responses are read. They are counted. <strong>Well-evidenced responses from parents and families carry weight</strong> — particularly when they describe specific, concrete experience rather than general opinion.
             </p>
-            <p>The consultation will likely cover some or all of the following areas:</p>
+            <p>Based on the published White Paper, the consultation is likely to cover:</p>
             <ul className="space-y-2">
               {[
-                "Changes to how SEND support works in mainstream schools",
-                "Changes to EHCP eligibility or process (detail not yet confirmed)",
-                "The four-tier support model that has been discussed",
-                "National SEND standards",
-                "Changes to how the SEND Tribunal works",
-                "The role of local authorities versus central government in funding and delivery",
+                "Individual Support Plans (ISPs) — the new school-led statutory plans from 2030",
+                "Changes to EHCP eligibility and the role of EHCPs going forward",
+                "The Experts at Hand programme and how specialists are deployed to schools",
+                "National SEND standards and accountability",
+                "The future of the SEND Tribunal and access to appeals",
+                "The shift of SEND funding from local authorities to central government",
+                "Inclusion bases in every secondary school",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
@@ -117,8 +124,8 @@ export default function HaveYourSay() {
               ))}
             </ul>
           </div>
-          <StatusBadge status="discussed" />
-          <p className="text-xs text-muted-foreground">These areas reflect what has been reported publicly. The actual questions will not be known until the White Paper is published.</p>
+          <StatusBadge status="confirmed" />
+          <p className="text-xs text-muted-foreground">These areas reflect the published White Paper. The formal consultation questions will be confirmed when the consultation opens.</p>
         </div>
       </section>
 
@@ -136,7 +143,9 @@ export default function HaveYourSay() {
             <p>
               The 2022 SEND Green Paper consultation received <strong>over 22,000 responses</strong>. The response from families and disabled people's organisations shaped the subsequent Improvement Plan. It did not stop all harmful proposals — but it shifted some of them.
             </p>
-            <p><strong>Your response counts.</strong> Particularly if it is specific, evidenced, and direct.</p>
+            <p>
+              Over <strong>132,000 people</strong> have already signed the Save Our Children's Rights petition. Over 130 organisations have written to ministers with four red lines. <strong>The momentum is there. Your individual response adds to it.</strong>
+            </p>
           </div>
         </div>
       </section>
@@ -203,7 +212,7 @@ export default function HaveYourSay() {
                 Any UK resident can start or sign a petition on the UK Parliament website. Petitions that reach <strong>10,000 signatures</strong> get a written government response. Petitions that reach <strong>100,000 signatures</strong> are considered for debate in Parliament.
               </p>
               <p>
-                Petitions work best when they are specific. "Protect EHCP rights" is less effective than "Require the government to publish the legal framework for SEND support before any White Paper proposals take effect."
+                The Save Our Children's Rights petition has already exceeded <strong>132,000 signatures</strong> and triggered a Westminster Hall debate.
               </p>
               <ResourceLink label="petition.parliament.uk" url="https://petition.parliament.uk" />
             </div>
@@ -242,24 +251,24 @@ export default function HaveYourSay() {
         </div>
       </section>
 
-      {/* ═══ WILL BE UPDATED ═══ */}
+      {/* ═══ CONSULTATION STATUS ═══ */}
       <section className="content-section py-6">
         <div className="max-w-3xl rounded-xl border border-border bg-muted/30 p-5">
           <h2 className="text-sm font-display font-bold text-foreground mb-2 flex items-center gap-2">
             <FileText className="w-4 h-4 text-primary" />
-            This page will be updated
+            This page will be updated when the consultation opens
           </h2>
           <div className="space-y-2 text-sm text-muted-foreground leading-relaxed">
             <p>
-              When the White Paper and formal consultation are published, this page will be updated with the <strong>direct link to the consultation</strong>, the closing date, and a summary of what is being asked.
+              The White Paper has been published. When the <strong>formal 12-week consultation</strong> opens, this page will be updated with the direct link, closing date, and a summary of the specific questions being asked.
             </p>
             <p>
-              Check back. Or sign up for updates if the site has a mailing list.
+              Check back regularly or follow the Latest Updates stream at the top of this page.
             </p>
           </div>
           <div className="mt-3">
-            <StatusBadge status="unconfirmed" />
-            <p className="text-xs text-muted-foreground mt-1">The White Paper publication date has not been confirmed. The DfE has said it will publish in 2026.</p>
+            <StatusBadge status="discussed" />
+            <p className="text-xs text-muted-foreground mt-1">The consultation is expected in 2026 but no opening date has been confirmed yet.</p>
           </div>
         </div>
       </section>
@@ -270,11 +279,11 @@ export default function HaveYourSay() {
           <Link to="/what-is-changing" className="text-sm px-4 py-2.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors">
             What is changing →
           </Link>
-          <Link to="/what-the-leaks-are-saying" className="text-sm px-4 py-2.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors">
-            What the leaks say →
+          <Link to="/what-this-could-mean" className="text-sm px-4 py-2.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors">
+            What this could mean →
           </Link>
-          <Link to="/what-we-do-not-know" className="text-sm px-4 py-2.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors">
-            What we don't know →
+          <Link to="/what-happens-next" className="text-sm px-4 py-2.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors">
+            What happens next →
           </Link>
         </div>
       </section>
