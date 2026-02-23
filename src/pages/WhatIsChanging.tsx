@@ -22,6 +22,7 @@ const sections: PageSectionDef[] = [
   { id: "inclusion", icon: MapPin, title: "Local inclusion planning and accountability" },
   { id: "funding", icon: PoundSterling, title: "Funding direction and deficit absorption" },
   { id: "unchanged", icon: ShieldCheck, title: "What has not changed yet" },
+  { id: "white-paper", icon: ClipboardList, title: "Schools White Paper: 23 February 2026" },
 ];
 
 export default function WhatIsChanging() {
@@ -191,6 +192,28 @@ export default function WhatIsChanging() {
           </p>
           <p>
             The confirmed changes are about <strong>preparation, capacity, and consistency, not about removing protections</strong>.
+          </p>
+        </div>
+      </ContentBox>
+
+      <ContentBox id="white-paper" icon={ClipboardList} title="Schools White Paper: 23 February 2026">
+        <div className="space-y-3">
+          <p>
+            The white paper confirms three new elements as <strong>formal proposals subject to consultation</strong>.
+          </p>
+          <ul className="space-y-3">
+            <li>
+              <strong>Individual Support Plans (ISPs):</strong> a new statutory school-led plan proposed to replace SEN Support from 2030. EHCPs are confirmed to remain for children with the most complex needs.
+            </li>
+            <li>
+              <strong>Experts at Hand:</strong> a new programme deploying specialist professionals into schools and local areas to provide advice and assessment without families needing to navigate referral routes independently.
+            </li>
+            <li>
+              <strong>Inclusive Mainstream Fund:</strong> £1.6bn to build capacity in mainstream schools to support children who do not need an EHCP but need more than universal provision.
+            </li>
+          </ul>
+          <p>
+            <strong>These are consultation proposals. None have legal force yet. No legislation has been introduced.</strong>
           </p>
         </div>
       </ContentBox>

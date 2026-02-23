@@ -161,6 +161,22 @@ export default function WhatToDoRightNow() {
         description="This page is for parents whose child is not getting the support they need today. Not next year. Now."
       />
 
+      {/* Consultation note */}
+      <section className="content-section py-4">
+        <div className="rounded-xl border border-status-confirmed/30 bg-status-confirmed/5 p-5">
+          <h2 className="text-sm font-semibold text-foreground mb-2">The consultation is now open</h2>
+          <div className="text-sm text-muted-foreground leading-relaxed space-y-2">
+            <p>The Schools White Paper was published on 23 February 2026. A formal 12-week public consultation is now open.</p>
+            <p>
+              If you want to respond, go to the{" "}
+              <Link to="/have-your-say" className="text-primary hover:underline font-medium">Have Your Say</Link>{" "}
+              page for guidance on how to write a response that carries weight.
+            </p>
+            <p><strong>Your existing rights have not changed. Everything on this page still applies.</strong></p>
+          </div>
+        </div>
+      </section>
+
       <LatestUpdatesStream />
 
       {/* Reality Bites callout */}

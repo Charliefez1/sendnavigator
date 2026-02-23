@@ -71,7 +71,7 @@ const Landing = () => {
                   <strong className="text-foreground">The law has not changed.</strong>
                 </p>
                 <p>
-                  What has changed is the <strong className="text-foreground">volume of discussion</strong> about SEND provision in 2026 and 2027. Debate across politics, education and local authorities, alongside early signals, <strong className="text-foreground">leaks and speculation</strong> about possible future reforms.
+                  What has changed is the <strong className="text-foreground">volume of discussion</strong> about SEND provision in 2026 and 2027. Debate across politics, education and local authorities, alongside <strong className="text-foreground">confirmed proposals and an open consultation</strong> on the future of SEND support.
                 </p>
                 <p>
                   That uncertainty creates anxiety for parents. The <strong className="text-foreground">SEND Navigator is designed to help make sense of this</strong>.
