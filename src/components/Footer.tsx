@@ -150,7 +150,7 @@ export function Footer() {
       {/* Neurodiversity Global branding */}
       <div className="border-t border-white/10">
         <div className="content-wide py-6 flex flex-col items-center gap-3 text-center">
-          <img src={ngEducationLogo} alt="Neurodiversity Global Education" className="h-14" />
+          <img src={ngEducationLogo} alt="Neurodiversity Global Education" className="h-44" />
           <p className="text-sm text-navy-muted">
             This is a resource from Neurodiversity Global.{" "}
             <a
