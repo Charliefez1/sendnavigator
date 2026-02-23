@@ -109,7 +109,7 @@ export function Header() {
               to="/state-of-send-2026"
               className={({ isActive }) =>
                 cn(
-                  "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
+                  "px-3 py-1.5 text-sm font-medium rounded-lg transition-colors whitespace-nowrap",
                   isActive || location.pathname.startsWith("/state-of-send-2026")
                     ? "bg-white/20 text-white"
                     : "text-white/60 hover:text-white hover:bg-white/10"
@@ -122,7 +122,7 @@ export function Header() {
               to="/ehcps"
               className={({ isActive }) =>
                 cn(
-                  "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
+                  "px-3 py-1.5 text-sm font-medium rounded-lg transition-colors whitespace-nowrap",
                   isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
                 )
               }
@@ -133,7 +133,7 @@ export function Header() {
               to="/my-child-profile"
               className={({ isActive }) =>
                 cn(
-                  "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
+                  "px-3 py-1.5 text-sm font-medium rounded-lg transition-colors whitespace-nowrap",
                   isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
                 )
               }
@@ -144,7 +144,7 @@ export function Header() {
               to="/what-to-do-right-now"
               className={({ isActive }) =>
                 cn(
-                  "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
+                  "px-3 py-1.5 text-sm font-medium rounded-lg transition-colors whitespace-nowrap",
                   isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
                 )
               }
@@ -155,7 +155,7 @@ export function Header() {
               to="/questions-and-answers"
               className={({ isActive }) =>
                 cn(
-                  "px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
+                  "px-3 py-1.5 text-sm font-medium rounded-lg transition-colors whitespace-nowrap",
                   isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
                 )
               }
@@ -171,7 +171,7 @@ export function Header() {
               <button
                 onClick={() => setMegaMenuOpen(!megaMenuOpen)}
                 className={cn(
-                  "flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap",
+                  "flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium rounded-lg transition-colors whitespace-nowrap",
                   megaMenuOpen ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
                 )}
               >
