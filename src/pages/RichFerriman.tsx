@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { PageOrientation } from "@/components/templates";
 import { ContactDetails } from "@/components/ContactDetails";
@@ -66,6 +67,12 @@ export default function RichFerriman() {
             My work sits at the <strong>intersection of inclusion and business strategy</strong>. This is where culture meets accountability, and where leaders take ownership of empathy. I help organisations move beyond performative gestures and deliver <strong>real progress with integrity, urgency, and measurable outcomes</strong>.
           </p>
         </div>
+
+        <p className="mt-6">
+          <Link to="/richs-take" className="text-[hsl(var(--accent-violet))] font-medium hover:underline">
+            Read my take on the white paper
+          </Link>
+        </p>
       </section>
 
       <ContactDetails />

@@ -106,6 +106,7 @@ export function Footer() {
                 { to: "/how-to-use", label: "How to use this site" },
                 { to: "/why-i-built-this", label: "Why I built this" },
                 { to: "/rich-ferriman", label: "Rich Ferriman" },
+                { to: "/richs-take", label: "Rich's Take" },
                 { to: "/neurodiversity-global", label: "Neurodiversity Global" },
                 { to: "/sendiass", label: "Free help - SENDIASS" },
                 { to: "/what-we-owe-our-children", label: "Reality Bites series" },
