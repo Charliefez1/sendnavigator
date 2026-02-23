@@ -10,7 +10,6 @@ import {
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { VisualTimeline } from "@/components/templates/VisualTimeline";
-import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import { History, CalendarClock, Users, AlertTriangle, FileQuestion, ShieldCheck, GitBranch } from "lucide-react";
 
@@ -114,18 +113,6 @@ export default function Timeline() {
           </p>
         }
       />
-
-      <LatestUpdatePanel>
-        <p>
-          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — sets out a decade-long transition. No legislation has changed yet.
-        </p>
-        <p>
-          Key confirmed dates: ISPs come into force from <strong>2030</strong>. Central government takes over SEND spending from <strong>2028–29</strong>. Council local reform plans due <strong>autumn 2026</strong>. Formal public consultation expected <strong>2026</strong>.
-        </p>
-        <p>
-          Children currently in Year 2 who hold EHCPs have been cited as an example cohort who may be <strong>reassessed at the end of primary school</strong>.
-        </p>
-      </LatestUpdatePanel>
 
       <LatestUpdatesStream />
 

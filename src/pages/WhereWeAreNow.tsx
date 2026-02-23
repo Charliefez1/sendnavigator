@@ -9,7 +9,6 @@ import {
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { StatCard, PercentageRing, HorizontalBarChart } from "@/components/templates/DataVisuals";
-import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import { Users, BarChart3, MapPin, TrendingUp, PoundSterling, Globe, AlertTriangle, Scale } from "lucide-react";
 
@@ -53,21 +52,6 @@ export default function WhereWeAreNow() {
           </div>
         }
       />
-
-      <LatestUpdatePanel>
-        <p>
-          The government published its Schools White Paper — <strong>Every Child Achieving and Thriving</strong> — on 23 February 2026. This is the biggest change to SEND in a generation.
-        </p>
-        <p>
-          A confirmed <strong>£4bn SEND package</strong> splits into four named funds: the Inclusive Mainstream Fund (£1.6bn direct to schools for early intervention), Experts at Hand (£1.8bn for local specialist pools available without an EHCP), Local Authority Transformation (£200m), and Best Start Family Hubs (£200m for SEND outreach in every family hub). This is on top of the previously announced £3.7bn for 60,000 new specialist places and £200m for universal teacher SEND training.
-        </p>
-        <p>
-          Two fifths of local authorities are at risk of issuing a Section 114 notice (effectively declaring bankruptcy) by March 2026 — <strong>SEND costs are a central factor</strong>.
-        </p>
-        <p>
-          Over 130 organisations including Mencap, the National Autistic Society, and the Council for Disabled Children have written to ministers with four red lines: no removal of enforceable EHCPs, no abolition of the tribunal, no narrowing of the legal definition of SEND, and no cliff-edge loss of support at 18.
-        </p>
-      </LatestUpdatePanel>
 
       <LatestUpdatesStream />
 

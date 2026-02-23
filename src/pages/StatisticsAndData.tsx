@@ -4,7 +4,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SourceCard } from "@/components/SourceCard";
 import { AlertCircle, TrendingUp, Users, BarChart3, PoundSterling, Gavel } from "lucide-react";
 import { StatCard, PercentageRing, HorizontalBarChart } from "@/components/templates/DataVisuals";
-import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 
 interface StatItem {
@@ -93,21 +92,6 @@ export default function StatisticsAndData() {
         description="Key SEND statistics for England, using the most recent official data available. These figures show the current scale and pressures in the system."
         lastUpdated="23rd February 2026"
       />
-
-      <LatestUpdatePanel>
-        <p>
-          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — confirms the £4bn SEND package.
-        </p>
-        <p>
-          Updated EHCP figures: <strong>638,700 children with EHCPs in England</strong> (January 2025); 43.6% in mainstream schools; 30.4% in special schools; over 1.7 million pupils with identified SEND.
-        </p>
-        <p>
-          Updated tribunal figures: <strong>21,000 appeals in 2023/24</strong>, up 55% on the previous year. Parents win approximately 95% of cases. 5,569 cases were conceded before the hearing.
-        </p>
-        <p>
-          Two fifths of local authorities are at risk of issuing a Section 114 notice by March 2026. The Inclusive Mainstream Fund works out at roughly <strong>£26,000 per school per year</strong> if split evenly.
-        </p>
-      </LatestUpdatePanel>
 
       <LatestUpdatesStream />
 

@@ -8,7 +8,6 @@ import {
   WatchNextSection,
 } from "@/components/templates";
 import { ComparisonColumns } from "@/components/templates/DataVisuals";
-import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 
 export default function WhatThisCouldMean() {
@@ -43,21 +42,6 @@ export default function WhatThisCouldMean() {
       />
 
       <SixtySecondSummary points={summaryPoints} />
-
-      <LatestUpdatePanel>
-        <p>
-          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — sets out a decade-long transition with confirmed funding and structural changes.
-        </p>
-        <p>
-          Individual Support Plans (ISPs) are being introduced as a <strong>new statutory plan for every child with identified SEND</strong>, including those without an EHCP. ISPs will be school-led, not council-led. Changes come into force from 2030.
-        </p>
-        <p>
-          A fee cap on independent specialist school placements is expected, <strong>likely set at £60,000 per year</strong>. Every secondary school is expected to have an inclusion base. The Experts at Hand programme gives mainstream schools access to specialists without a diagnosis or EHCP.
-        </p>
-        <p>
-          The inequality in tribunal access is confirmed: <strong>richer families are twice as likely to secure a specialist school placement (41%) compared to low-income families (25%)</strong>.
-        </p>
-      </LatestUpdatePanel>
 
       <LatestUpdatesStream />
 

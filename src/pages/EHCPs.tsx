@@ -17,7 +17,6 @@ import { StatusBadge } from "@/components/StatusBadge";
 import { StatCard, PercentageRing, HorizontalBarChart, RightsChecklist } from "@/components/templates/DataVisuals";
 import { EHCPProcessDiagram } from "@/components/templates/EHCPProcessDiagram";
 import { AskEHCP } from "@/components/AskEHCP";
-import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import {
   FileText, BarChart3, Users, ClipboardList, Scale, School,
@@ -67,21 +66,6 @@ export default function EHCPs() {
           </p>
         }
       />
-
-      <LatestUpdatePanel>
-        <p>
-          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — introduces Individual Support Plans (ISPs) as a new statutory plan for every child with identified SEND, including those without an EHCP today.
-        </p>
-        <p>
-          ISPs will be <strong>school-led, not council-led</strong>. They will have a legal underpinning but enforcement routes have not yet been published. Changes come into force from 2030.
-        </p>
-        <p>
-          EHCPs will continue to have a role in the new system but are expected to be <strong>reserved for children with the most complex needs</strong>. Children currently in Year 2 who hold EHCPs have been cited as an example cohort who may be reassessed at the end of primary school.
-        </p>
-        <p>
-          Education Secretary Bridget Phillipson has said: "We are not going to be taking away effective support from children." <strong>Legal experts note this is not the same as a legal guarantee.</strong>
-        </p>
-      </LatestUpdatePanel>
 
       <LatestUpdatesStream />
 
