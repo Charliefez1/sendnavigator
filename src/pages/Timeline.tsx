@@ -65,7 +65,7 @@ const timelineMilestones = [
   {
     date: "2028–2029",
     title: "Central government takes over SEND spending",
-    description: "From 2028–29, central government is planned to cover SEND spending in full, relieving councils of these costs — a fundamental shift in responsibility.",
+    description: "From 2028-29, central government is planned to cover SEND spending in full, relieving councils of these costs. This would be a fundamental shift in responsibility.",
     type: "uncertain" as const,
   },
   {
@@ -109,7 +109,7 @@ export default function Timeline() {
       <SixtySecondSummary
         prose={
           <p>
-            SEND reform is moving slowly because <strong>large system changes take time</strong>. Pilot programmes and training are already happening, but major decisions still sit ahead. The Schools White Paper — Every Child Achieving and Thriving — was published on 23 February 2026 and a public consultation is expected next. If legal changes are proposed, they must go through Parliament before taking effect. Research from previous reforms shows <strong>implementation is usually phased over several years</strong>. For parents, this means current support and rights continue while reform is debated. There is time to understand proposals properly before anything changes.
+            SEND reform is moving slowly because <strong>large system changes take time</strong>. Pilot programmes and training are already happening, but major decisions still sit ahead. The Schools White Paper, Every Child Achieving and Thriving, was published on 23 February 2026 and a public consultation is expected next. If legal changes are proposed, they must go through Parliament before taking effect. Research from previous reforms shows <strong>implementation is usually phased over several years</strong>. For parents, this means current support and rights continue while reform is debated. There is time to understand proposals properly before anything changes.
           </p>
         }
       />
@@ -128,7 +128,7 @@ export default function Timeline() {
             <li>The SEND and Alternative Provision Improvement Plan was published in <strong>March 2023</strong>.</li>
             <li>Pilot programmes began testing reform ideas.</li>
             <li>A national SEND conversation took place in <strong>late 2025 and early 2026</strong>.</li>
-            <li>The Schools White Paper — Every Child Achieving and Thriving — was <strong>published on 23 February 2026</strong>.</li>
+            <li>The Schools White Paper, Every Child Achieving and Thriving, was <strong>published on 23 February 2026</strong>.</li>
           </ul>
         </div>
       </ContentBox>

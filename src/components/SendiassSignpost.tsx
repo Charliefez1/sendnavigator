@@ -17,7 +17,7 @@ export function SendiassSignpost() {
             Did you know you have a free local advice service?
           </h3>
           <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-            Every local authority in England funds a free, impartial service called <strong>SENDIASS</strong> — for parents and young people navigating SEND. Most families never hear about it.
+            Every local authority in England funds a free, impartial service called <strong>SENDIASS</strong>, for parents and young people navigating SEND. Most families never hear about it.
           </p>
           <div className="flex flex-wrap gap-3 mt-3">
             <a

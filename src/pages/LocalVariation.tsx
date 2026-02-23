@@ -191,7 +191,7 @@ export default function LocalVariation() {
             </div>
           </div>
 
-          <CC>Safety Valve agreements exist and their general terms — DfE Dedicated Schools Grant very high deficit intervention guidance.</CC>
+          <CC>Safety Valve agreements exist and their general terms. DfE Dedicated Schools Grant very high deficit intervention guidance.</CC>
           <CD>Concerns about downward pressure on provision; contested by DfE. Not independently confirmed.</CD>
         </div>
       </section>

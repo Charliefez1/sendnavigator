@@ -890,7 +890,7 @@ export const sourceRegistry: ContentSource[] = [
   {
     id: "awbp-open-letter",
     type: "sector_briefing",
-    name: "Are We Bad Parents? — An Open Letter",
+    name: "Are We Bad Parents? An Open Letter",
     url: "https://awbp.neuro.support/",
     description: "Rich Ferriman's open letter to neurodivergent families. Honest, direct, and grounded in lived experience.",
     category: "Parent-led and sector analysis",

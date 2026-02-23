@@ -138,7 +138,7 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
             Ask Rich
           </h2>
           <p className="text-sm text-muted-foreground mt-1">
-            Ask me anything about SEND reform. My answers come from everything we've researched and published on this site — not from the wider internet. I do my best but I'm not perfect, so treat this as a guide.
+            Ask me anything about SEND reform. My answers come from everything we've researched and published on this site, not from the wider internet. I do my best but I'm not perfect, so treat this as a guide.
           </p>
         </div>
       </div>

@@ -31,7 +31,7 @@ export default function HaveYourSay() {
 
       <PageOrientation
         title="How To Have Your Say on SEND Reform"
-        description="The Schools White Paper — Every Child Achieving and Thriving — was published on 23 February 2026. A formal consultation is expected to follow. This page explains how to make your voice count."
+        description="The Schools White Paper, Every Child Achieving and Thriving, was published on 23 February 2026. A formal consultation is expected to follow. This page explains how to make your voice count."
         lastUpdated="23rd February 2026"
       />
 
@@ -40,7 +40,7 @@ export default function HaveYourSay() {
         <div className="rounded-xl border-2 border-amber-500/40 bg-amber-500/5 p-5 max-w-3xl flex items-start gap-3">
           <CheckCircle2 className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
           <div className="text-sm text-muted-foreground leading-relaxed">
-            <p className="font-semibold text-foreground">The Schools White Paper was published today — 23 February 2026.</p>
+            <p className="font-semibold text-foreground">The Schools White Paper was published today, 23 February 2026.</p>
             <p className="mt-1">The government has stated a <strong>formal 12-week public consultation</strong> will follow. The consultation has not opened yet. When it does, this page will be updated with the direct link, closing date, and a summary of what is being asked.</p>
           </div>
         </div>
@@ -52,13 +52,13 @@ export default function HaveYourSay() {
       <section className="content-section py-6">
         <div className="max-w-3xl space-y-4 text-sm text-muted-foreground leading-relaxed">
           <p>
-            On 23 February 2026, the government published the <strong>Schools White Paper — Every Child Achieving and Thriving</strong>. This sets out the biggest change to SEND in a generation, including Individual Support Plans (ISPs), the Experts at Hand programme, and a decade-long transition.
+            On 23 February 2026, the government published the <strong>Schools White Paper, Every Child Achieving and Thriving</strong>. This sets out the biggest change to SEND in a generation, including Individual Support Plans (ISPs), the Experts at Hand programme, and a decade-long transition.
           </p>
           <p>
             The government has confirmed that a <strong>formal 12-week public consultation</strong> will follow. That consultation window has not opened yet, but it is expected in 2026.
           </p>
           <p>
-            This page explains what a consultation response actually is, and <strong>how to write one that carries weight</strong> — so you are ready when it opens.
+            This page explains what a consultation response actually is, and <strong>how to write one that carries weight</strong>. Be ready when it opens.
           </p>
           <StatusBadge status="confirmed" />
           <p className="text-xs text-muted-foreground">The DfE has confirmed a formal consultation will launch following the White Paper.</p>
@@ -78,7 +78,7 @@ export default function HaveYourSay() {
               The DfE ran a <strong>national conversation on SEND reform</strong> between December 2025 and January 2026. That window has now closed.
             </p>
             <p>
-              A national conversation is not the same as a formal consultation. It was a broader engagement exercise — questionnaires, events, submissions. The government used it to inform the White Paper.
+              A national conversation is not the same as a formal consultation. It was a broader engagement exercise: questionnaires, events, submissions. The government used it to inform the White Paper.
             </p>
             <p>
               The <strong>Schools White Paper</strong> was published on 23 February 2026. It confirms ISPs from 2030, a £4bn SEND package, the Experts at Hand programme, and a decade-long transition. <strong>No legislation has changed yet.</strong>
@@ -109,7 +109,7 @@ export default function HaveYourSay() {
             <p>Based on the published White Paper, the consultation is likely to cover:</p>
             <ul className="space-y-2">
               {[
-                "Individual Support Plans (ISPs) — the new school-led statutory plans from 2030",
+                "Individual Support Plans (ISPs): the new school-led statutory plans from 2030",
                 "Changes to EHCP eligibility and the role of EHCPs going forward",
                 "The Experts at Hand programme and how specialists are deployed to schools",
                 "National SEND standards and accountability",

@@ -14,7 +14,7 @@ export function LatestUpdatePanel({ children }: LatestUpdatePanelProps) {
             <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400" />
           </div>
           <div>
-            <h2 className="text-base font-display font-semibold text-foreground">Latest Update — 23 February 2026</h2>
+            <h2 className="text-base font-display font-semibold text-foreground">Latest Update: 23 February 2026</h2>
             <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold mt-0.5">Schools White Paper published today</p>
           </div>
         </div>

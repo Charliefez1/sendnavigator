@@ -29,7 +29,7 @@ export interface UpdateEntry {
 export const latestUpdates: UpdateEntry[] = [
   {
     date: "23 February 2026",
-    headline: "Schools White Paper published — Every Child Achieving and Thriving",
+    headline: "Schools White Paper published: Every Child Achieving and Thriving",
     body: "The government published its Schools White Paper today, confirming a £4bn SEND package, Individual Support Plans from 2030, the Experts at Hand programme, and a decade-long transition. No legislation has changed yet. EHCPs and tribunal rights remain fully in place.",
   },
   {
@@ -44,7 +44,7 @@ export const latestUpdates: UpdateEntry[] = [
   },
   {
     date: "23 February 2026",
-    headline: "Tribunal confirmed to remain — but access may change",
+    headline: "Tribunal confirmed to remain, but access may change",
     body: "The DfE has confirmed there are no plans to abolish the SEND tribunal. However, reports indicate access may be restricted to process failures rather than content challenges. Mediation is expected to take a greater role. Tribunal rights remain fully in place right now.",
   },
   {

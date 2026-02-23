@@ -90,7 +90,7 @@ export function VisualTimeline({ milestones }: VisualTimelineProps) {
                       </div>
                       <div className="ml-8 sm:ml-10">
                         <span className="text-sm font-semibold text-primary uppercase tracking-wide">
-                          We are here — February 2026
+                          We are here. February 2026
                         </span>
                       </div>
                     </div>
