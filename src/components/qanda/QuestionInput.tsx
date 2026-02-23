@@ -35,7 +35,7 @@ export function QuestionInput({ onSubmit, isLoading, initialValue }: QuestionInp
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
             placeholder="Ask a question about SEND reform..."
-            className="w-full pl-11 pr-4 py-3.5 min-h-[48px] bg-card border border-border rounded-lg text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
+            className="w-full pl-11 pr-4 py-3.5 min-h-[48px] bg-card border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent"
             disabled={isLoading}
             maxLength={500}
             aria-label="Ask a question about SEND reform"
@@ -44,7 +44,7 @@ export function QuestionInput({ onSubmit, isLoading, initialValue }: QuestionInp
         <Button 
           type="submit" 
           disabled={!question.trim() || isLoading}
-          className="px-6 min-h-[48px] text-base w-full sm:w-auto"
+          className="px-6 min-h-[48px] text-sm w-full sm:w-auto"
         >
           {isLoading ? "..." : "Ask"}
         </Button>
@@ -62,7 +62,7 @@ export function QuestionInput({ onSubmit, isLoading, initialValue }: QuestionInp
               key={example}
               onClick={() => handleExampleClick(example)}
               disabled={isLoading}
-              className="text-sm sm:text-base px-4 py-2.5 min-h-[44px] bg-secondary text-secondary-foreground rounded-lg sm:rounded-full hover:bg-secondary/80 active:bg-secondary/70 transition-colors disabled:opacity-50 text-left sm:text-center"
+              className="text-sm px-4 py-2.5 min-h-[44px] bg-secondary text-secondary-foreground rounded-lg sm:rounded-full hover:bg-secondary/80 active:bg-secondary/70 transition-colors disabled:opacity-50 text-left sm:text-center"
             >
               {example}
             </button>
