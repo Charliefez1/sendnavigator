@@ -37,6 +37,15 @@ export default function WhatTheLeaksAreSaying() {
           <StatusBadge status="unconfirmed" />
         </div>
       </PageOrientation>
+      {/* White Paper update note */}
+      <section className="content-section py-6">
+        <div className="rounded-xl border border-status-confirmed/30 bg-status-confirmed/5 p-5">
+          <p className="text-sm font-semibold text-foreground mb-2">Update: 23 February 2026</p>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            The Schools White Paper was published on 23 February 2026. Some proposals previously reported as leaks are now confirmed as formal consultation proposals. Individual Support Plans, the Experts at Hand programme, and a shift toward mainstream inclusion are now in the white paper. They are not yet law. The four-tier model in its leaked form has not been confirmed. EHCPs are explicitly retained.
+          </p>
+        </div>
+      </section>
 
       <SixtySecondSummary
         prose={
