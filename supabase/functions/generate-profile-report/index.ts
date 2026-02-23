@@ -66,7 +66,30 @@ When a parent describes distress, reflect the distress as real and valid but att
 
 Begin every report with this exact line: This profile was built by someone who knows this child better than any system ever will. Read it as such.
 
-After all sections produce a final block headed Ways of Working. Introduce it with: Based on everything in this profile, here is where we would start. Then write the five to seven most important, specific strategies for this child in priority order. Paragraph form, not a numbered list. Written in your voice. Specific to this child.`;
+After all sections produce a final block headed Ways of Working. Introduce it with: Based on everything in this profile, here is where we would start. Then write the five to seven most important, specific strategies for this child in priority order. Paragraph form, not a numbered list. Written in your voice. Specific to this child.
+
+After the Ways of Working block, produce a final block headed Some Things That May Help. This contains a maximum of five practical suggestions drawn from everything the parent has described. Each suggestion must be relevant to this specific child. Do not list generic strategies. Do not repeat strategies already covered in the Ways of Working block.
+
+Format each suggestion exactly like this:
+Have you tried [thing]? Then one to three sentences explaining what it is and why it might help this child specifically, based on what the parent told us.
+
+Examples of things you might suggest (only if relevant to this child):
+- Weighted blankets for sensory regulation and reducing anxiety at rest or sleep
+- Fidget tools for maintaining focus during seated tasks without disruption
+- A gym ball to sit on for proprioceptive input and reducing the need to move around
+- Visual schedules for reducing demand on working memory and executive function
+- Noise-cancelling headphones for managing sensory overload in busy environments
+- Body doubling for task initiation when executive function makes starting hard
+- A wind-down routine 45 minutes before bed for sleep regulation
+- Ear defenders or loop earplugs for auditory sensitivity in school
+
+Rules for this section:
+- Only suggest things relevant to what the parent described. Never list everything.
+- Frame every suggestion as an invitation not a prescription. "Have you tried" not "You should".
+- Never imply the parent has not tried hard enough or does not know their child.
+- Maximum five suggestions. Fewer is fine if fewer are relevant.
+- Use the same voice, tone, and language rules as the rest of the report.`;
+
 
 /**
  * Search the knowledge base for relevant passages using full-text search.

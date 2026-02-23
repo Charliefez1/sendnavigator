@@ -208,6 +208,14 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     let currentContent: string[] = [];
 
     for (const line of lines) {
+      // Check for "Some Things That May Help" section
+      if (/^#+\s*Some Things That May Help/i.test(line) || /^\*\*Some Things That May Help\*\*/i.test(line) || line.trim().toLowerCase() === "some things that may help") {
+        if (currentKey) sections[currentKey] = currentContent.join("\n").trim();
+        currentKey = "__suggestions__";
+        currentContent = [];
+        continue;
+      }
+
       if (/^#+\s*Ways of Working/i.test(line) || /^\*\*Ways of Working\*\*/i.test(line) || line.trim() === "Ways of Working") {
         if (currentKey) sections[currentKey] = currentContent.join("\n").trim();
         currentKey = "__ways_of_working__";
@@ -233,8 +241,11 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     const waysOfWorking = sections["__ways_of_working__"] || "";
     delete sections["__ways_of_working__"];
 
+    const suggestions = sections["__suggestions__"] || "";
+    delete sections["__suggestions__"];
+
     const openingLine = lines.find(l => l.includes("This profile was built by someone")) || "";
-    return { sections, waysOfWorking, openingLine };
+    return { sections, waysOfWorking, suggestions, openingLine };
   };
 
   const cleanMarkdown = (text: string): string =>
@@ -511,8 +522,67 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
   }
 
   // =============================================
-  // FINAL PAGE — closing statement
+  // SOME THINGS THAT MAY HELP — own page
   // =============================================
+  if (parsed.suggestions) {
+    doc.addPage();
+    setFill(WHITE);
+    doc.rect(0, 0, pageWidth, pageHeight, "F");
+    y = margin;
+
+    doc.setFontSize(22);
+    doc.setFont("helvetica", "bold");
+    setColor(NAVY);
+    doc.text("Some Things That May Help", margin, y);
+    y += 10;
+
+    setDraw(NAVY);
+    doc.setLineWidth(0.6);
+    doc.line(margin, y, margin + 55, y);
+    y += 12;
+
+    const cleanSuggestions = cleanMarkdown(parsed.suggestions);
+    const suggestionBlocks = cleanSuggestions.split(/(?=Have you tried)/i).filter(s => s.trim());
+
+    setColor(DARK_TEXT);
+    for (const block of suggestionBlocks) {
+      y = checkPageBreak(y, 25);
+
+      const questionMatch = block.match(/^(Have you tried [^?]+\?)\s*(.*)/is);
+      if (questionMatch) {
+        y = addWrappedText(questionMatch[1], margin, y, contentWidth, 11, "bold");
+        y += 1;
+        if (questionMatch[2].trim()) {
+          y = addWrappedText(questionMatch[2].trim(), margin, y, contentWidth, 11);
+        }
+      } else {
+        y = addWrappedText(block, margin, y, contentWidth, 11);
+      }
+      y += 6;
+    }
+
+    // --- ASK RICH SIGNPOST ---
+    y += 4;
+    y = checkPageBreak(y, 40);
+
+    const askRichText = "Have more questions? Ask Rich is available on the Beacon SEND Navigator and can answer questions about your child's needs, the system, your rights, and what to do next. Everything is confidential and there are no wrong questions. Visit sendnavigator.neuro.support and use the Ask Rich feature.";
+    const askRichHeight = measureText(askRichText, contentWidth - 14, 10.5) + 12;
+
+    setFill([245, 248, 252]);
+    setDraw([180, 195, 215]);
+    doc.setLineWidth(0.4);
+    doc.roundedRect(margin, y - 3, contentWidth, askRichHeight, 2, 2, "FD");
+
+    setColor(MID_TEXT);
+    y = addWrappedText(askRichText, margin + 7, y + 4, contentWidth - 14, 10.5);
+    y += 8;
+    setColor(DARK_TEXT);
+
+    footer();
+  }
+
+  // =============================================
+  // FINAL PAGE — closing statement
   doc.addPage();
   setFill(PAGE_BG);
   doc.rect(0, 0, pageWidth, pageHeight, "F");
