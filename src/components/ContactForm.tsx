@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -22,6 +22,8 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const honeypotRef = useRef<HTMLInputElement>(null);
+  const loadTimeRef = useRef(Date.now());
   const { toast } = useToast();
 
   const form = useForm<ContactFormValues>({
@@ -35,6 +37,11 @@ export function ContactForm() {
   });
 
   async function onSubmit(values: ContactFormValues) {
+    // Anti-spam: honeypot check
+    if (honeypotRef.current?.value) return;
+    // Anti-spam: must take at least 2 seconds to fill form
+    if (Date.now() - loadTimeRef.current < 2000) return;
+
     setSubmitting(true);
     try {
       const { error } = await supabase.from("contact_submissions").insert({
@@ -79,6 +86,10 @@ export function ContactForm() {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          {/* Honeypot — hidden from humans */}
+          <div className="absolute -left-[9999px]" aria-hidden="true">
+            <input ref={honeypotRef} type="text" name="website" tabIndex={-1} autoComplete="off" />
+          </div>
           <FormField
             control={form.control}
             name="name"
