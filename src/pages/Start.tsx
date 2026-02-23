@@ -133,31 +133,31 @@ const Index = () => {
       <section className="content-section pt-4 pb-1">
         <div className="flex items-center gap-2 overflow-x-auto">
           <Link to="/state-of-send-2026">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-hover">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-[hsl(var(--accent-teal))] text-white hover:opacity-90">
               <BookOpen className="w-3.5 h-3.5" />
               SEND Reform Report
             </Button>
           </Link>
           <Link to="/ehcps">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-hover">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-[hsl(var(--accent-deep-blue))] text-white hover:opacity-90">
               <Shield className="w-3.5 h-3.5" />
               EHCP Guide
             </Button>
           </Link>
           <Link to="/my-child-profile">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-hover">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-[hsl(var(--accent-amber))] text-white hover:opacity-90">
               <ClipboardList className="w-3.5 h-3.5" />
               My Child: A Profile
             </Button>
           </Link>
           <Link to="/what-to-do-right-now">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-hover">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-[hsl(var(--accent-coral))] text-white hover:opacity-90">
               <Scale className="w-3.5 h-3.5" />
               What to do now
             </Button>
           </Link>
           <Link to="/questions-and-answers">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-navy text-white hover:bg-hover">
+            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-[hsl(var(--accent-violet))] text-white hover:opacity-90">
               <MessageCircleQuestion className="w-3.5 h-3.5" />
               Ask Rich
             </Button>
@@ -237,14 +237,14 @@ const Index = () => {
       </section>
 
       {/* Q&A */}
-      <section className="content-section py-8 border-t border-border">
+      <section className="content-section py-8 rounded-xl" style={{ backgroundColor: 'hsl(var(--accent-deep-blue-bg))' }}>
         <QandAComponent />
       </section>
 
       {/* About this resource */}
-      <section className="content-section py-8 border-t border-border">
-        <div className="flex items-start gap-4 bg-card border border-border rounded-xl p-5 shadow-lg">
-          <Heart className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+      <section className="content-section py-8">
+        <div className="flex items-start gap-4 bg-[hsl(var(--accent-rose-bg))] border border-[hsl(var(--accent-rose)/0.2)] border-l-4 border-l-[hsl(var(--accent-rose))] rounded-xl p-5 shadow-lg">
+          <Heart className="w-6 h-6 text-[hsl(var(--accent-rose))] flex-shrink-0 mt-1" />
           <div>
             <h2 className="text-lg font-display font-semibold text-foreground mb-3">
               Made for families like yours
