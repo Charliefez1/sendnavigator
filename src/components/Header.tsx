@@ -96,7 +96,7 @@ export function Header() {
 
   return (
     <header className="bg-navy text-navy-foreground sticky top-0 z-50">
-      <div className="content-wide py-3">
+      <div className="content-wide pt-1 pb-3">
         <div className="flex items-center justify-between">
           {/* Left: Logo */}
           <NavLink to="/" end className="flex-shrink-0">
