@@ -129,9 +129,9 @@ export function ExperienceSelector() {
             <Heart className="w-3.5 h-3.5 text-red-500" aria-hidden="true" />
           </div>
           <div>
-            <span className="text-xs font-display font-bold text-white tracking-tight leading-tight group-hover:opacity-90 transition-opacity">
-              SEND Reform Navigator
-            </span>
+            
+
+
             
 
 
