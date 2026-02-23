@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Heart, BookOpen, FileText, MessageCircleQuestion, MessageSquare, HelpCircle, ExternalLink, MapPin, Info } from "lucide-react";
+import { BookOpen, FileText, MessageCircleQuestion, MessageSquare, HelpCircle, ExternalLink } from "lucide-react";
+import beaconLogo from "@/assets/beacon-logo.png";
 
 export function Footer() {
   const [showAboutTool, setShowAboutTool] = useState(false);
@@ -12,13 +13,7 @@ export function Footer() {
           {/* Brand column */}
           <div className="sm:col-span-2 lg:col-span-1 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-white/10 flex items-center justify-center">
-                <Heart className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <p className="font-display font-bold text-white text-lg">SEND Reform Navigator</p>
-                <p className="text-sm text-navy-muted">A friendly guide for families</p>
-              </div>
+              <img src={beaconLogo} alt="Beacon SEND Navigator" className="h-12" />
             </div>
             <p className="text-sm text-navy-muted leading-relaxed max-w-xs">
               Helping parents, carers, and professionals understand what is happening with SEND reform in England, clearly, calmly, and honestly.
@@ -138,7 +133,7 @@ export function Footer() {
             This is an independent public resource. It does not provide legal, medical, or professional advice. Information applies to England only.
           </p>
           <p className="text-xs text-white/30 whitespace-nowrap">
-            © {new Date().getFullYear()} SEND Reform Navigator
+            © {new Date().getFullYear()} Beacon SEND Navigator
           </p>
         </div>
       </div>

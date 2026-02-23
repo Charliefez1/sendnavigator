@@ -3,8 +3,9 @@ import { SEOHead } from "@/components/SEOHead";
 import { AuthForm } from "@/components/AuthForm";
 import { NewsTicker } from "@/components/NewsTicker";
 import { useAuth } from "@/contexts/AuthContext";
-import { Compass, Shield, BookOpen, Heart } from "lucide-react";
+import { Shield, BookOpen, Heart } from "lucide-react";
 import neurodiversityLanding from "@/assets/neurodiversity-global-landing.png";
+import beaconLogo from "@/assets/beacon-logo.png";
 
 const Landing = () => {
   const { user, loading } = useAuth();
@@ -16,7 +17,7 @@ const Landing = () => {
   return (
     <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'hsl(220, 14%, 93%)' }}>
       <SEOHead
-        title="SEND Reform Navigator — Independent SEND reform guide for parents"
+        title="Beacon SEND Navigator — Independent SEND reform guide for parents"
         description="A calm, independent guide helping parents and professionals understand SEND reform in England. Clear facts, no spin."
         path="/landing"
       />
@@ -24,10 +25,7 @@ const Landing = () => {
       {/* Navy header */}
       <header className="bg-navy text-navy-foreground py-3">
         <div className="content-wide flex items-center justify-center">
-          <div className="flex items-center gap-2.5">
-            <Compass className="w-5 h-5 text-white" />
-            <span className="text-sm font-semibold text-white tracking-tight">SEND Reform Navigator</span>
-          </div>
+          <img src={beaconLogo} alt="Beacon SEND Navigator" className="h-10" />
         </div>
       </header>
 
@@ -59,9 +57,9 @@ const Landing = () => {
           <div className="max-w-3xl mx-auto">
             <div className="bg-card border border-border rounded-xl p-5 sm:p-6 shadow-lg">
               <div className="flex items-center gap-2.5 mb-3">
-                <Compass className="w-6 h-6 text-primary flex-shrink-0" />
+                <img src={beaconLogo} alt="" className="h-8" />
                 <h1 className="text-lg sm:text-xl font-display font-semibold text-foreground">
-                  Welcome to SEND Reform Navigator
+                  Welcome to Beacon SEND Navigator
                 </h1>
               </div>
               <div className="space-y-2.5 text-muted-foreground text-sm leading-relaxed">
