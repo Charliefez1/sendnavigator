@@ -144,7 +144,7 @@ export const aiGroundingRules = {
       response: "This resource cannot provide legal advice. For advice about your specific situation, please consult a qualified professional.",
     },
     individualCases: {
-      description: "Comments on individual circumstances — pivot to general information",
+      description: "Comments on individual circumstances - pivot to general information",
       triggerTerms: [
         "my child", "my son", "my daughter", "our school", "my local authority",
         "my ehcp", "our case", "my situation", "in my area", "our family"

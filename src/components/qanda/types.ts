@@ -66,7 +66,7 @@ export const exampleQuestions = [
 export function checkForRefusal(question: string): QandARefusal | null {
   const { shouldRefuse, reason, category } = checkRefusalRequired(question);
   
-  // "individualCases" should NOT be blocked client-side — let the AI pivot gracefully
+  // "individualCases" should NOT be blocked client-side - let the AI pivot gracefully
   if (shouldRefuse && reason && category !== "individualCases") {
     // Map refusal category to appropriate redirect pages
     const redirectPages: Record<string, Array<{ label: string; path: string }>> = {

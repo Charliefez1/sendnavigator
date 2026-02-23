@@ -82,7 +82,7 @@ function ContactDialog({ open, onOpenChange, adCta }: { open: boolean; onOpenCha
   async function onSubmit(values: ContactValues) {
     // Honeypot check
     if (honeypotRef.current?.value) return;
-    // Time check — must take at least 2 seconds
+    // Time check - must take at least 2 seconds
     if (Date.now() - loadTimeRef.current < 2000) return;
 
     setSubmitting(true);

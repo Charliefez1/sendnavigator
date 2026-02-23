@@ -22,7 +22,7 @@ const groupMeta: Record<string, { label: string; colour: string; bgColour: strin
 };
 
 export function JourneyFloatingBar() {
-  // Sidebar handles navigation for report pages now — this component is disabled
+  // Sidebar handles navigation for report pages now - this component is disabled
   return null;
 }
 

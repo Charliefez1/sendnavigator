@@ -38,7 +38,7 @@ export default function RichsTake() {
       {/* Long-form letter */}
       <section className="content-section py-8 space-y-5">
 
-        {/* Opening — always visible, no collapse */}
+        {/* Opening - always visible, no collapse */}
         <LetterBlock>
           <p><strong>This is not a neutral page.</strong></p>
           <p>Everything else on this site tries to give you the facts without a view. This page is different. This is what I think. You can disagree. But you deserve to know where I stand.</p>

@@ -116,7 +116,7 @@ export default function AlternativeProvision() {
         </div>
       </section>
 
-      {/* Who is in AP — prominent stats */}
+      {/* Who is in AP - prominent stats */}
       <section className="content-section py-4">
         <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-6 shadow-lg">
           <SectionHeading id="who-is-in-ap">Who is in Alternative Provision</SectionHeading>
@@ -168,7 +168,7 @@ export default function AlternativeProvision() {
         </div>
       </section>
 
-      {/* Rights — EHCP and without */}
+      {/* Rights - EHCP and without */}
       <section className="content-section py-4">
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <SectionHeading id="rights-ehcp">Your rights if your child is placed in Alternative Provision</SectionHeading>
@@ -213,7 +213,7 @@ export default function AlternativeProvision() {
         </div>
       </section>
 
-      {/* Directed off-site — highlighted */}
+      {/* Directed off-site - highlighted */}
       <section className="content-section py-4">
         <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-6 shadow-lg">
           <SectionHeading id="off-site">Directed off-site provision by schools</SectionHeading>
@@ -321,7 +321,7 @@ export default function AlternativeProvision() {
             <Link to="/exclusions" className="flex items-center gap-2 p-3 rounded-xl border border-border bg-muted/30 hover:bg-muted/50 transition-colors group">
               <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">→ Exclusions and your child's rights</span>
             </Link>
-            <ExtLink href="https://www.ipsea.org.uk">→ IPSEA — free independent legally-based advice</ExtLink>
+            <ExtLink href="https://www.ipsea.org.uk">→ IPSEA - free independent legally-based advice</ExtLink>
             <Link to="/sendiass" className="flex items-center gap-2 p-3 rounded-xl border border-border bg-muted/30 hover:bg-muted/50 transition-colors group">
               <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">→ Find your local SENDIASS</span>
             </Link>
@@ -333,13 +333,13 @@ export default function AlternativeProvision() {
       <section className="content-section py-6 pb-8">
         <div className="space-y-2">
           <Link to="/ehcps" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ The EHCP Guide — understanding every section of the plan</p>
-          </Link>
-          <Link to="/post-16-and-transition" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Post-16 and Transition — what happens next</p>
-          </Link>
-          <Link to="/state-of-send-2026" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
-            <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ State of SEND 2026 — track reform progress</p>
+             <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ The EHCP Guide - understanding every section of the plan</p>
+           </Link>
+           <Link to="/post-16-and-transition" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
+             <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ Post-16 and Transition - what happens next</p>
+           </Link>
+           <Link to="/state-of-send-2026" className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group">
+             <p className="font-medium text-foreground group-hover:text-primary transition-colors text-sm flex-1">→ State of SEND 2026 - track reform progress</p>
           </Link>
         </div>
       </section>

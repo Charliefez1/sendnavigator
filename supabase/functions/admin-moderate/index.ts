@@ -459,7 +459,7 @@ Deno.serve(async (req) => {
         .select("page_path");
       if (pagesError) throw pagesError;
 
-      const reason = id?.reason || "Breaking news — all pages flagged for review";
+      const reason = id?.reason || "Breaking news - all pages flagged for review";
       const contentUpdateId = id?.content_update_id || null;
 
       let flagsCreated = 0;

@@ -87,7 +87,7 @@ const aboutLinks: ContentLink[] = [
   { path: "/feedback", title: "Feedback", summary: "Tell us what's working and what isn't", icon: MessageSquare },
 ];
 
-/* Section accent color config — maps to the 5 quick-link colors */
+/* Section accent color config - maps to the 5 quick-link colors */
 const SECTION_COLORS = {
   teal: {
     border: "border-l-[hsl(var(--accent-teal))]",
@@ -162,7 +162,7 @@ const Index = () => {
         path="/"
       />
 
-      {/* Quick links bar — the 5 definitive colours */}
+      {/* Quick links bar - the 5 definitive colours */}
       <section className="content-section pt-4 pb-1">
         <div className="flex items-center gap-2 overflow-x-auto">
           <Link to="/state-of-send-2026">
@@ -198,7 +198,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* GUIDE ME — hero, top of page */}
+      {/* GUIDE ME - hero, top of page */}
       <section className="content-section py-4">
         <GuideMe />
       </section>
@@ -214,14 +214,14 @@ const Index = () => {
         </button>
       </section>
 
-      {/* Breaking News — TEAL accent (reform news) */}
+      {/* Breaking News - TEAL accent (reform news) */}
       <section className="content-section py-3">
         <div className={`border-l-4 ${SECTION_COLORS.teal.border} rounded-r-xl`}>
           <NewsHeadlines />
         </div>
       </section>
 
-      {/* Full content sections — hidden by default */}
+      {/* Full content sections - hidden by default */}
       {showAll && (
         <div className="content-section py-4 space-y-8 animate-in fade-in slide-in-from-top-2 duration-300">
           <ContentSection
@@ -257,7 +257,7 @@ const Index = () => {
         </div>
       )}
 
-      {/* Word from Rich — VIOLET accent (Ask Rich family) */}
+      {/* Word from Rich - VIOLET accent (Ask Rich family) */}
       <WordFromRich>
         <p>Your child is not broken. I need you to hear that before anything else on this site. They may see the world differently, process it differently, move through it differently. That is not a fault. It is not something to fix. The system around them may be struggling. The waiting lists may be shameful. But your child? They are exactly who they are supposed to be. This site exists to help you get them what they need from a world that was not designed with them in mind.</p>
         <p className="mt-2">

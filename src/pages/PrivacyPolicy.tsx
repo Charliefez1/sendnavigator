@@ -66,7 +66,7 @@ export default function PrivacyPolicy() {
           <section className="space-y-3">
             <h2 className="text-lg font-semibold font-display">Data sharing</h2>
             <p className="text-sm leading-relaxed">
-              We do not sell your data. We do not share it with advertisers. Data is processed by our hosting and database provider (Lovable Cloud). AI-generated profile reports are processed by Anthropic (Claude) — only the text you enter is sent, and it is not used to train their models.
+              We do not sell your data. We do not share it with advertisers. Data is processed by our hosting and database provider (Lovable Cloud). AI-generated profile reports are processed by Anthropic (Claude). Only the text you enter is sent, and it is not used to train their models.
             </p>
           </section>
 

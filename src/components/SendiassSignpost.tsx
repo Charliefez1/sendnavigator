@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { MapPin, ExternalLink, ArrowRight } from "lucide-react";
 
 /**
- * Short signpost banner for SENDIASS — drop into any page.
+ * Short signpost banner for SENDIASS - drop into any page.
  * Uses DEEP BLUE accent (rights/guidance family).
  */
 export function SendiassSignpost() {

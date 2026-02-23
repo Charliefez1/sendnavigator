@@ -86,7 +86,7 @@ export function ContactForm() {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          {/* Honeypot — hidden from humans */}
+          {/* Honeypot - hidden from humans */}
           <div className="absolute -left-[9999px]" aria-hidden="true">
             <input ref={honeypotRef} type="text" name="website" tabIndex={-1} autoComplete="off" />
           </div>
