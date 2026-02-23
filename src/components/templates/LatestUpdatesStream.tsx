@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Clock, ChevronDown, ChevronUp, Pin } from "lucide-react";
 import { latestUpdates } from "@/config/latest-updates";
 import { supabase } from "@/integrations/supabase/client";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 const DEFAULT_VISIBLE = 3;
 
@@ -28,6 +29,7 @@ function formatDate(dateStr: string): string {
 
 export function LatestUpdatesStream() {
   const [expanded, setExpanded] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [dbItems, setDbItems] = useState<DbNewsItem[]>([]);
 
   useEffect(() => {
@@ -71,64 +73,73 @@ export function LatestUpdatesStream() {
 
   return (
     <section className="content-section py-4">
-      <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
-        <div className="flex items-center gap-3 mb-5">
-          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-            <Clock className="w-4 h-4 text-primary" />
-          </div>
-          <h2 className="text-base font-display font-semibold text-foreground">
-            Latest Updates
-          </h2>
-        </div>
-
-        <div className="space-y-4">
-          {visible.map((entry) => (
-            <div
-              key={entry.key}
-              className="border-l-2 border-primary/30 pl-4"
-            >
-              <div className="flex items-center gap-2 mb-1">
-                <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">
-                  {entry.date}
-                </p>
-                {entry.isPinned && (
-                  <span className="inline-flex items-center gap-0.5 text-[9px] uppercase tracking-wider font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded">
-                    <Pin className="w-2.5 h-2.5" /> Pinned
-                  </span>
-                )}
-                {entry.source && (
-                  <span className="text-[10px] font-medium text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
-                    {entry.source}
-                  </span>
-                )}
+      <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+        <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
+          <CollapsibleTrigger asChild>
+            <button className="flex items-center justify-between w-full gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-4 h-4 text-primary" />
+                </div>
+                <h2 className="text-base font-display font-semibold text-foreground">
+                  Latest Updates
+                </h2>
               </div>
-              <p className="text-sm font-semibold text-foreground leading-snug mb-1">
-                {entry.headline}
-              </p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {entry.body}
-              </p>
-            </div>
-          ))}
-        </div>
+              <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`} />
+            </button>
+          </CollapsibleTrigger>
 
-        {hasMore && (
-          <button
-            onClick={() => setExpanded(!expanded)}
-            className="mt-4 flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors"
-          >
-            {expanded ? (
-              <>
-                Show fewer updates <ChevronUp className="w-3.5 h-3.5" />
-              </>
-            ) : (
-              <>
-                Show {allEntries.length - DEFAULT_VISIBLE} more updates <ChevronDown className="w-3.5 h-3.5" />
-              </>
+          <CollapsibleContent>
+            <div className="space-y-4 mt-5">
+              {visible.map((entry) => (
+                <div
+                  key={entry.key}
+                  className="border-l-2 border-primary/30 pl-4"
+                >
+                  <div className="flex items-center gap-2 mb-1">
+                    <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">
+                      {entry.date}
+                    </p>
+                    {entry.isPinned && (
+                      <span className="inline-flex items-center gap-0.5 text-[9px] uppercase tracking-wider font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded">
+                        <Pin className="w-2.5 h-2.5" /> Pinned
+                      </span>
+                    )}
+                    {entry.source && (
+                      <span className="text-[10px] font-medium text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
+                        {entry.source}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm font-semibold text-foreground leading-snug mb-1">
+                    {entry.headline}
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {entry.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {hasMore && (
+              <button
+                onClick={() => setExpanded(!expanded)}
+                className="mt-4 flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors"
+              >
+                {expanded ? (
+                  <>
+                    Show fewer updates <ChevronUp className="w-3.5 h-3.5" />
+                  </>
+                ) : (
+                  <>
+                    Show {allEntries.length - DEFAULT_VISIBLE} more updates <ChevronDown className="w-3.5 h-3.5" />
+                  </>
+                )}
+              </button>
             )}
-          </button>
-        )}
-      </div>
+          </CollapsibleContent>
+        </div>
+      </Collapsible>
     </section>
   );
 }
