@@ -4,7 +4,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { QandAComponent } from "@/components/qanda";
 import { NewsHeadlines } from "@/components/NewsHeadlines";
-import { useAuth } from "@/contexts/AuthContext";
+
 import { SendiassSignpost } from "@/components/SendiassSignpost";
 import { WordFromRich } from "@/components/WordFromRich";
 import { GuideMe } from "@/components/GuideMe";
@@ -15,7 +15,7 @@ import {
   Shield,
   Scale,
   Megaphone,
-  LogOut,
+  
   FileText,
   Users,
   Brain,
@@ -118,7 +118,7 @@ function ContentSection({ title, description, links, accent }: { title: string; 
 }
 
 const Index = () => {
-  const { user, signOut } = useAuth();
+  
   const [showAll, setShowAll] = useState(false);
 
   return (
@@ -266,22 +266,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Sign out */}
-      {user && (
-        <section className="content-section py-4">
-          <div className="flex justify-center">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => signOut()}
-              className="gap-1.5 text-xs text-muted-foreground"
-            >
-              <LogOut className="w-3.5 h-3.5" />
-              Sign out
-            </Button>
-          </div>
-        </section>
-      )}
     </Layout>
   );
 };
