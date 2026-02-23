@@ -29,7 +29,6 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
     setCurrentQuestion(question);
     setResponse(null);
 
-    // Check for refusal conditions first (client-side for speed)
     const refusal = checkForRefusal(question);
     if (refusal) {
       setResponse(refusal);
@@ -38,22 +37,17 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
     }
 
     try {
-      // Call the edge function
       const { data, error } = await supabase.functions.invoke("qanda", {
         body: { question },
       });
 
       if (error) {
         console.error("Q&A error:", error);
-        
-        // Handle rate limiting
         if (error.message?.includes("429") || error.message?.includes("rate")) {
           toast.error("Service is busy. Please try again in a moment.");
         } else {
           toast.error("Unable to get an answer. Please try again.");
         }
-        
-        // Provide a fallback response
         setResponse({
           type: "answer",
           data: {
@@ -79,7 +73,6 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
         return;
       }
 
-      // Check if the response indicates an error
       if (data?.error) {
         toast.error(data.error);
         setResponse({
@@ -98,12 +91,10 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
         return;
       }
 
-      // Set the response from Ask SEND
       setResponse(data as QandAResponse);
     } catch (err) {
       console.error("Q&A request failed:", err);
       toast.error("Unable to connect to the Q&A service.");
-      
       setResponse({
         type: "answer",
         data: {
@@ -130,9 +121,9 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
   };
 
   return (
-    <section className="bg-secondary/30 border-2 border-primary/40 rounded-lg p-6 shadow-lg">
+    <section className="border-l-4 border-l-[hsl(var(--accent-violet))] bg-[hsl(var(--accent-violet-bg))] border border-[hsl(var(--accent-violet)/0.2)] rounded-xl p-6 shadow-lg">
       <div className="flex items-start gap-3 mb-5">
-        <MessageCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+        <MessageCircle className="w-5 h-5 text-[hsl(var(--accent-violet))] flex-shrink-0 mt-0.5" />
         <div>
           <h2 className="text-lg font-medium text-foreground">
             Ask Rich
@@ -169,7 +160,7 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
       )}
 
       {/* Ask Rich Trust Notice */}
-      <div className="mt-6 pt-4 border-t border-border">
+      <div className="mt-6 pt-4 border-t border-[hsl(var(--accent-violet)/0.2)]">
         <AITrustNotice />
         <p className="text-xs text-muted-foreground mt-3 flex items-center gap-2">
           <Bot className="w-3.5 h-3.5 flex-shrink-0" />

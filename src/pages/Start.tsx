@@ -15,7 +15,6 @@ import {
   Shield,
   Scale,
   Megaphone,
-  
   FileText,
   Users,
   Brain,
@@ -88,7 +87,42 @@ const aboutLinks: ContentLink[] = [
   { path: "/feedback", title: "Feedback", summary: "Tell us what's working and what isn't", icon: MessageSquare },
 ];
 
-function ContentSection({ title, description, links, accent }: { title: string; description: string; links: ContentLink[]; accent: string }) {
+/* Section accent color config — maps to the 5 quick-link colors */
+const SECTION_COLORS = {
+  teal: {
+    border: "border-l-[hsl(var(--accent-teal))]",
+    bg: "bg-[hsl(var(--accent-teal-bg))]",
+    icon: "bg-[hsl(var(--accent-teal)/0.12)] text-[hsl(var(--accent-teal))]",
+    iconSolid: "text-[hsl(var(--accent-teal))]",
+  },
+  deepBlue: {
+    border: "border-l-[hsl(var(--accent-deep-blue))]",
+    bg: "bg-[hsl(var(--accent-deep-blue-bg))]",
+    icon: "bg-[hsl(var(--accent-deep-blue)/0.12)] text-[hsl(var(--accent-deep-blue))]",
+    iconSolid: "text-[hsl(var(--accent-deep-blue))]",
+  },
+  amber: {
+    border: "border-l-[hsl(var(--accent-amber))]",
+    bg: "bg-[hsl(var(--accent-amber-bg))]",
+    icon: "bg-[hsl(var(--accent-amber)/0.12)] text-[hsl(var(--accent-amber))]",
+    iconSolid: "text-[hsl(var(--accent-amber))]",
+  },
+  coral: {
+    border: "border-l-[hsl(var(--accent-coral))]",
+    bg: "bg-[hsl(var(--accent-coral-bg))]",
+    icon: "bg-[hsl(var(--accent-coral)/0.12)] text-[hsl(var(--accent-coral))]",
+    iconSolid: "text-[hsl(var(--accent-coral))]",
+  },
+  violet: {
+    border: "border-l-[hsl(var(--accent-violet))]",
+    bg: "bg-[hsl(var(--accent-violet-bg))]",
+    icon: "bg-[hsl(var(--accent-violet)/0.12)] text-[hsl(var(--accent-violet))]",
+    iconSolid: "text-[hsl(var(--accent-violet))]",
+  },
+} as const;
+
+function ContentSection({ title, description, links, color }: { title: string; description: string; links: ContentLink[]; color: keyof typeof SECTION_COLORS }) {
+  const c = SECTION_COLORS[color];
   return (
     <section className="space-y-3">
       <div>
@@ -102,7 +136,7 @@ function ContentSection({ title, description, links, accent }: { title: string; 
             to={link.path}
             className="flex items-start gap-3 p-3.5 bg-card border border-border rounded-lg hover:shadow-md transition-all group"
           >
-            <div className={`w-8 h-8 rounded-md ${accent} flex items-center justify-center flex-shrink-0`}>
+            <div className={`w-8 h-8 rounded-md ${c.icon} flex items-center justify-center flex-shrink-0`}>
               <link.icon className="w-4 h-4" />
             </div>
             <div className="flex-1 min-w-0">
@@ -118,7 +152,6 @@ function ContentSection({ title, description, links, accent }: { title: string; 
 }
 
 const Index = () => {
-  
   const [showAll, setShowAll] = useState(false);
 
   return (
@@ -129,7 +162,7 @@ const Index = () => {
         path="/"
       />
 
-      {/* Quick links bar */}
+      {/* Quick links bar — the 5 definitive colours */}
       <section className="content-section pt-4 pb-1">
         <div className="flex items-center gap-2 overflow-x-auto">
           <Link to="/state-of-send-2026">
@@ -170,9 +203,11 @@ const Index = () => {
         <GuideMe />
       </section>
 
-      {/* Breaking News — below guide */}
+      {/* Breaking News — TEAL accent (reform news) */}
       <section className="content-section py-3">
-        <NewsHeadlines />
+        <div className={`border-l-4 ${SECTION_COLORS.teal.border} rounded-r-xl`}>
+          <NewsHeadlines />
+        </div>
       </section>
 
       {/* Browse everything toggle */}
@@ -193,75 +228,73 @@ const Index = () => {
             title="The State of SEND 2026"
             description="Our 8-part report tracking every aspect of SEND reform"
             links={reportSections}
-            accent="bg-primary/10 text-primary"
+            color="teal"
           />
-
           <ContentSection
             title="Parent Guides"
             description="Practical guides for navigating the SEND system right now"
             links={parentGuides}
-            accent="bg-status-confirmed/10 text-status-confirmed"
+            color="deepBlue"
           />
-
           <ContentSection
             title="Understanding the System"
-            description="How the system works - and why it works differently depending on where you are"
+            description="How the system works — and why it works differently depending on where you are"
             links={systemPages}
-            accent="bg-status-discussed/10 text-status-discussed"
+            color="amber"
           />
-
           <ContentSection
             title="Take Action and Community"
             description="Make your voice heard, ask questions, and connect with other families"
             links={takeAction}
-            accent="bg-status-unconfirmed/10 text-status-unconfirmed"
+            color="coral"
           />
-
           <ContentSection
             title="About and Resources"
             description="How we work, our sources, and how to give feedback"
             links={aboutLinks}
-            accent="bg-muted text-muted-foreground"
+            color="violet"
           />
         </div>
       )}
 
-      {/* Word from Rich */}
+      {/* Word from Rich — VIOLET accent (Ask Rich family) */}
       <WordFromRich>
         <p>Your child is not broken. I need you to hear that before anything else on this site. They may see the world differently, process it differently, move through it differently. That is not a fault. It is not something to fix. The system around them may be struggling. The waiting lists may be shameful. But your child? They are exactly who they are supposed to be. This site exists to help you get them what they need from a world that was not designed with them in mind.</p>
       </WordFromRich>
 
-      {/* SENDIASS signpost */}
+      {/* SENDIASS signpost — DEEP BLUE accent (rights/guidance) */}
       <section className="content-section py-4">
         <SendiassSignpost />
       </section>
 
-      {/* Q&A */}
+      {/* Q&A — VIOLET accent (Ask Rich) */}
       <section className="content-section py-8">
         <QandAComponent />
       </section>
 
-      {/* About this resource */}
+      {/* About this resource — CORAL accent (action/practical) */}
       <section className="content-section py-8">
-        <div className="flex items-start gap-4 bg-[hsl(var(--accent-rose-bg))] border border-[hsl(var(--accent-rose)/0.2)] border-l-4 border-l-[hsl(var(--accent-rose))] rounded-xl p-5 shadow-lg">
-          <Heart className="w-6 h-6 text-[hsl(var(--accent-rose))] flex-shrink-0 mt-1" />
-          <div>
-            <h2 className="text-lg font-display font-semibold text-foreground mb-3">
-              Made for families like yours
-            </h2>
-            <div className="space-y-2 text-muted-foreground text-sm leading-relaxed">
-              <p>
-                This is an independent resource, not government, not a campaign. We don't give advice
-                or tell you what to do. We just help you understand what's happening.
-              </p>
+        <div className={`border-l-4 ${SECTION_COLORS.coral.border} rounded-xl ${SECTION_COLORS.coral.bg} border border-[hsl(var(--accent-coral)/0.2)] p-5 shadow-lg`}>
+          <div className="flex items-start gap-4">
+            <Heart className={`w-6 h-6 ${SECTION_COLORS.coral.iconSolid} flex-shrink-0 mt-1`} />
+            <div>
+              <h2 className="text-lg font-display font-semibold text-foreground mb-3">
+                Made for families like yours
+              </h2>
+              <div className="space-y-2 text-muted-foreground text-sm leading-relaxed">
+                <p>
+                  This is an independent resource, not government, not a campaign. We don't give advice
+                  or tell you what to do. We just help you understand what's happening.
+                </p>
+              </div>
+              <Link 
+                to="/about"
+                className="inline-flex items-center gap-2 text-primary font-medium mt-4 hover:underline"
+              >
+                Learn more about this resource
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
-            <Link 
-              to="/about"
-              className="inline-flex items-center gap-2 text-primary font-medium mt-4 hover:underline"
-            >
-              Learn more about this resource
-              <ArrowRight className="w-4 h-4" />
-            </Link>
           </div>
         </div>
       </section>
