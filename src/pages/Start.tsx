@@ -260,6 +260,11 @@ const Index = () => {
       {/* Word from Rich — VIOLET accent (Ask Rich family) */}
       <WordFromRich>
         <p>Your child is not broken. I need you to hear that before anything else on this site. They may see the world differently, process it differently, move through it differently. That is not a fault. It is not something to fix. The system around them may be struggling. The waiting lists may be shameful. But your child? They are exactly who they are supposed to be. This site exists to help you get them what they need from a world that was not designed with them in mind.</p>
+        <p className="mt-2">
+          <Link to="/richs-take" className="text-[hsl(var(--accent-violet))] font-medium hover:underline">
+            Read my take on the white paper
+          </Link>
+        </p>
       </WordFromRich>
 
       {/* SENDIASS signpost — DEEP BLUE accent (rights/guidance) */}
