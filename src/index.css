@@ -347,7 +347,6 @@
     @apply mb-4;
     font-size: inherit;
     line-height: inherit;
-    max-width: 65ch;
   }
 
   .prose-calm h2 {
