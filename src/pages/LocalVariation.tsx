@@ -3,7 +3,6 @@ import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Clock } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
-import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 
 const anchors = [
@@ -76,21 +75,6 @@ export default function LocalVariation() {
           <span>Last reviewed: February 2026. Financial picture updated following November 2025 Budget.</span>
         </div>
       </header>
-
-      <LatestUpdatePanel>
-        <p>
-          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — directly addresses the variation problem.
-        </p>
-        <p>
-          The <strong>Experts at Hand programme (£1.8bn)</strong> gives mainstream schools access to educational psychologists, speech and language therapists, occupational therapists, and SEND specialist teachers — without a diagnosis or EHCP being required. An average secondary school is expected to receive <strong>over 160 days of specialist time per year</strong>.
-        </p>
-        <p>
-          The <strong>Local Authority Transformation fund (£200m)</strong> is intended to help all councils align with the reforms. Two fifths of local authorities are at risk of issuing a Section 114 notice by March 2026 — SEND costs are a central factor.
-        </p>
-        <p>
-          The inequality in access is confirmed: <strong>richer families are twice as likely to secure a specialist school placement (41%) compared to low-income families (25%)</strong>.
-        </p>
-      </LatestUpdatePanel>
 
       <LatestUpdatesStream />
 

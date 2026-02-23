@@ -9,7 +9,6 @@ import {
 import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { RightsChecklist } from "@/components/templates/DataVisuals";
-import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import { Users, BarChart3, Shield, HelpCircle, EyeOff, Heart, Filter, Zap, Lightbulb, Anchor } from "lucide-react";
 
@@ -62,18 +61,6 @@ export default function WhatTheLeaksDoNotMean() {
           </div>
         }
       />
-
-      <LatestUpdatePanel>
-        <p>
-          The Schools White Paper — <strong>Every Child Achieving and Thriving</strong> — was published on 23 February 2026. Many previously leaked proposals can now be compared against confirmed policy.
-        </p>
-        <p>
-          The DfE has confirmed there are <strong>no plans to abolish the SEND tribunal</strong>. Tribunal rights remain fully in place right now. However, reports indicate access may be restricted in the future to process failures rather than content challenges.
-        </p>
-        <p>
-          Over 130 organisations have written to ministers with four red lines: no removal of enforceable EHCPs, no abolition of the tribunal, no narrowing of the legal definition of SEND, and <strong>no cliff-edge loss of support at 18</strong>.
-        </p>
-      </LatestUpdatePanel>
 
       <LatestUpdatesStream />
 

@@ -5,7 +5,6 @@ import { ExternalLink, FileText, Phone, MapPin, Scale, AlertTriangle, Clock, Che
 import { Link } from "react-router-dom";
 import { SendiassSignpost } from "@/components/SendiassSignpost";
 import { WordFromRich } from "@/components/WordFromRich";
-import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import {
   Accordion,
@@ -161,18 +160,6 @@ export default function WhatToDoRightNow() {
         title="What to do right now"
         description="This page is for parents whose child is not getting the support they need today. Not next year. Now."
       />
-
-      <LatestUpdatePanel>
-        <p>
-          The Schools White Paper — <strong>Every Child Achieving and Thriving (published 23 February 2026)</strong> — does not change your rights today. The law has not changed.
-        </p>
-        <p>
-          The DfE has confirmed there are <strong>no plans to abolish the SEND tribunal</strong>. Tribunal rights remain fully in place right now. In 2023/24, there were 21,000 appeals, up 55% on the previous year. Parents win approximately 95% of cases, and <strong>5,569 cases were conceded before the hearing</strong>.
-        </p>
-        <p>
-          If you are currently navigating the EHCP process, <strong>nothing on this page has changed</strong>. Every right, every deadline, and every route described below remains in force.
-        </p>
-      </LatestUpdatePanel>
 
       <LatestUpdatesStream />
 
