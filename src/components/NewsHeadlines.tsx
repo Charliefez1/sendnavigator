@@ -53,7 +53,7 @@ export function NewsHeadlines() {
   if (items.length === 0) return null;
 
   return (
-    <div className="rounded-xl overflow-hidden border border-border shadow-lg">
+    <div className="rounded-xl overflow-hidden border border-border shadow-lg border-l-4 border-l-[hsl(var(--accent-amber))]">
       {/* Red breaking news banner */}
       <div className="bg-destructive px-4 py-1.5 flex items-center gap-2">
         <span className="inline-block w-2 h-2 rounded-full bg-white animate-pulse" />

@@ -98,6 +98,22 @@
     --journey-unconfirmed: 25 85% 52%;
     --journey-next: 335 60% 48%;
 
+    /* Extra accent colours */
+    --accent-teal: 175 50% 36%;
+    --accent-teal-bg: 175 35% 91%;
+    --accent-deep-blue: 220 55% 42%;
+    --accent-deep-blue-bg: 220 35% 92%;
+    --accent-amber: 42 80% 50%;
+    --accent-amber-bg: 42 55% 92%;
+    --accent-coral: 12 70% 55%;
+    --accent-coral-bg: 12 45% 93%;
+    --accent-violet: 270 45% 52%;
+    --accent-violet-bg: 270 30% 93%;
+    --accent-sage: 155 30% 42%;
+    --accent-sage-bg: 155 25% 90%;
+    --accent-rose: 345 55% 52%;
+    --accent-rose-bg: 345 35% 93%;
+
     /* Sidebar */
     --sidebar-background: 30 15% 93%;
     --sidebar-foreground: 25 20% 22%;
@@ -179,6 +195,21 @@
     --journey-discussed: 42 75% 58%;
     --journey-unconfirmed: 25 80% 62%;
     --journey-next: 335 55% 62%;
+
+    --accent-teal: 175 45% 55%;
+    --accent-teal-bg: 175 30% 15%;
+    --accent-deep-blue: 220 50% 62%;
+    --accent-deep-blue-bg: 220 30% 15%;
+    --accent-amber: 42 75% 60%;
+    --accent-amber-bg: 42 35% 14%;
+    --accent-coral: 12 65% 62%;
+    --accent-coral-bg: 12 40% 14%;
+    --accent-violet: 270 40% 65%;
+    --accent-violet-bg: 270 25% 15%;
+    --accent-sage: 155 25% 55%;
+    --accent-sage-bg: 155 20% 14%;
+    --accent-rose: 345 50% 62%;
+    --accent-rose-bg: 345 30% 14%;
 
     --sidebar-background: 220 18% 8%;
     --sidebar-foreground: 210 12% 88%;

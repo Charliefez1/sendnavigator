@@ -95,7 +95,7 @@ export function GuideMe() {
   // === LOADING VIEW ===
   if (loading) {
     return (
-      <div className="bg-navy text-white rounded-xl p-6 sm:p-8 shadow-lg">
+      <div className="bg-gradient-to-br from-[hsl(var(--navy))] to-[hsl(175,45%,22%)] text-white rounded-xl p-6 sm:p-8 shadow-lg">
         <div className="flex items-center justify-center gap-3 py-6">
           <Loader2 className="w-4 h-4 text-white/70 animate-spin" />
           <p className="text-sm text-white/70">Finding the right pages for you...</p>
@@ -106,7 +106,7 @@ export function GuideMe() {
 
   // === INPUT VIEW ===
   return (
-    <div className="bg-navy text-white rounded-xl p-6 sm:p-8 shadow-lg space-y-5">
+    <div className="bg-gradient-to-br from-[hsl(var(--navy))] to-[hsl(175,45%,22%)] text-white rounded-xl p-6 sm:p-8 shadow-lg space-y-5">
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
           <Compass className="w-5 h-5 text-white" />

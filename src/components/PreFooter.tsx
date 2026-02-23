@@ -174,10 +174,10 @@ export function PreFooter() {
             {/* Card 1: More from NG */}
             <button
               onClick={() => window.open("https://www.neurodiversityglobal.com", "_blank")}
-              className="group flex items-start gap-3 rounded-xl border border-border bg-background p-5 shadow-lg hover:border-primary/40 hover:shadow-xl transition-all text-left"
+              className="group flex items-start gap-3 rounded-xl border border-border border-t-2 border-t-[hsl(var(--accent-teal))] bg-background p-5 shadow-lg hover:shadow-xl transition-all text-left"
             >
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Globe className="w-4.5 h-4.5 text-primary" />
+              <div className="w-9 h-9 rounded-lg bg-[hsl(var(--accent-teal)/0.12)] flex items-center justify-center flex-shrink-0">
+                <Globe className="w-4.5 h-4.5 text-[hsl(var(--accent-teal))]" />
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
@@ -195,10 +195,10 @@ export function PreFooter() {
             {/* Card 2: Stay updated */}
             <button
               onClick={() => setNewsletterOpen(true)}
-              className="group flex items-start gap-3 rounded-xl border border-border bg-background p-5 shadow-lg hover:border-primary/40 hover:shadow-xl transition-all text-left"
+              className="group flex items-start gap-3 rounded-xl border border-border border-t-2 border-t-[hsl(var(--accent-amber))] bg-background p-5 shadow-lg hover:shadow-xl transition-all text-left"
             >
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Mail className="w-4.5 h-4.5 text-primary" />
+              <div className="w-9 h-9 rounded-lg bg-[hsl(var(--accent-amber)/0.12)] flex items-center justify-center flex-shrink-0">
+                <Mail className="w-4.5 h-4.5 text-[hsl(var(--accent-amber))]" />
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
@@ -216,10 +216,10 @@ export function PreFooter() {
             {/* Card 3: Get in touch */}
             <button
               onClick={() => setContactOpen(true)}
-              className="group flex items-start gap-3 rounded-xl border border-border bg-background p-5 shadow-lg hover:border-primary/40 hover:shadow-xl transition-all text-left"
+              className="group flex items-start gap-3 rounded-xl border border-border border-t-2 border-t-[hsl(var(--accent-coral))] bg-background p-5 shadow-lg hover:shadow-xl transition-all text-left"
             >
-              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Send className="w-4.5 h-4.5 text-primary" />
+              <div className="w-9 h-9 rounded-lg bg-[hsl(var(--accent-coral)/0.12)] flex items-center justify-center flex-shrink-0">
+                <Send className="w-4.5 h-4.5 text-[hsl(var(--accent-coral))]" />
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">

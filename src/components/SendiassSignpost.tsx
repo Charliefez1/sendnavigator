@@ -7,10 +7,10 @@ import { MapPin, ExternalLink, ArrowRight } from "lucide-react";
  */
 export function SendiassSignpost() {
   return (
-    <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
+    <div className="rounded-xl border border-[hsl(var(--accent-sage)/0.3)] bg-[hsl(var(--accent-sage-bg))] p-5">
       <div className="flex items-start gap-4">
-        <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
-          <MapPin className="w-5 h-5 text-primary" />
+        <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[hsl(var(--accent-sage)/0.15)] flex-shrink-0 mt-0.5">
+          <MapPin className="w-5 h-5 text-[hsl(var(--accent-sage))]" />
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-display font-bold text-foreground">

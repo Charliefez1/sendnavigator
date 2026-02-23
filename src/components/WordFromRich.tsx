@@ -7,7 +7,7 @@ interface WordFromRichProps {
 export function WordFromRich({ children }: WordFromRichProps) {
   return (
     <div className="content-section py-4">
-      <div className="rounded-xl bg-muted/40 border border-border/60 p-5 sm:p-6 space-y-3">
+      <div className="rounded-xl bg-[hsl(var(--accent-teal-bg))] border-l-4 border-l-[hsl(var(--accent-teal))] border border-[hsl(var(--accent-teal)/0.2)] p-5 sm:p-6 space-y-3">
         <p className="text-xs font-semibold text-foreground uppercase tracking-wider">A word from Rich</p>
         <div className="text-sm text-foreground/90 leading-relaxed space-y-3">
           {children}
