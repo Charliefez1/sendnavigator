@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { SendiassSignpost } from "@/components/SendiassSignpost";
 import { WordFromRich } from "@/components/WordFromRich";
 import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
+import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import {
   Accordion,
   AccordionContent,
@@ -172,6 +173,8 @@ export default function WhatToDoRightNow() {
           If you are currently navigating the EHCP process, <strong>nothing on this page has changed</strong>. Every right, every deadline, and every route described below remains in force.
         </p>
       </LatestUpdatePanel>
+
+      <LatestUpdatesStream />
 
       {/* Reality Bites callout */}
       <section className="content-section py-4">

@@ -18,6 +18,7 @@ import { StatCard, PercentageRing, HorizontalBarChart, RightsChecklist } from "@
 import { EHCPProcessDiagram } from "@/components/templates/EHCPProcessDiagram";
 import { AskEHCP } from "@/components/AskEHCP";
 import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
+import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import {
   FileText, BarChart3, Users, ClipboardList, Scale, School,
   RefreshCw, AlertTriangle, Gavel, Search, PoundSterling, Clock, ShieldCheck, ChevronDown
@@ -81,6 +82,8 @@ export default function EHCPs() {
           Education Secretary Bridget Phillipson has said: "We are not going to be taking away effective support from children." <strong>Legal experts note this is not the same as a legal guarantee.</strong>
         </p>
       </LatestUpdatePanel>
+
+      <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
 

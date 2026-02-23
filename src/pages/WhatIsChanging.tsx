@@ -10,6 +10,7 @@ import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { StatCard } from "@/components/templates/DataVisuals";
 import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
+import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import { Users, BarChart3, ClipboardList, Monitor, GraduationCap, Building2, MapPin, PoundSterling, ShieldCheck } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -71,6 +72,8 @@ export default function WhatIsChanging() {
           A petition calling for protection of disabled children's rights reached <strong>over 132,000 signatures</strong>, triggering a Westminster Hall debate. Over 130 organisations have written to ministers with four red lines.
         </p>
       </LatestUpdatePanel>
+
+      <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
 

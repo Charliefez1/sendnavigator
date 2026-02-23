@@ -10,6 +10,7 @@ import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { StatCard, PercentageRing, HorizontalBarChart } from "@/components/templates/DataVisuals";
 import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
+import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import { Users, BarChart3, MapPin, TrendingUp, PoundSterling, Globe, AlertTriangle, Scale } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -67,6 +68,8 @@ export default function WhereWeAreNow() {
           Over 130 organisations including Mencap, the National Autistic Society, and the Council for Disabled Children have written to ministers with four red lines: no removal of enforceable EHCPs, no abolition of the tribunal, no narrowing of the legal definition of SEND, and no cliff-edge loss of support at 18.
         </p>
       </LatestUpdatePanel>
+
+      <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
 

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Clock } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
 import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
+import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 
 const anchors = [
   { id: "inspection-evidence", label: "Inspection evidence" },
@@ -90,6 +91,8 @@ export default function LocalVariation() {
           The inequality in access is confirmed: <strong>richer families are twice as likely to secure a specialist school placement (41%) compared to low-income families (25%)</strong>.
         </p>
       </LatestUpdatePanel>
+
+      <LatestUpdatesStream />
 
       {/* Anchor nav */}
       <nav className="content-section py-4 border-b border-border" aria-label="Page sections">

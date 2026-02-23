@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { CheckCircle2, ExternalLink, Phone, Heart } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
 import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
+import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -78,6 +79,8 @@ export default function ForParents() {
           Over 130 organisations have written to ministers with four red lines. The National Autistic Society has said parents are <strong>"dismayed" by the lack of transparency</strong>.
         </p>
       </LatestUpdatePanel>
+
+      <LatestUpdatesStream />
 
       <WordFromRich>
         <p>Nobody tells you this part. The forms at midnight. The meetings where you feel like you are fighting for something that should just be given. The school gate where you are watching other children while yours is at home again. The grief that is not for your child but for the version of this you thought it would be. And underneath all of it, still the love. Still showing up. Still pushing.</p>

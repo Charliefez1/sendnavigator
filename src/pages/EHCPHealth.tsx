@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Clock } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
 import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
+import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 
 const anchors = [
   { id: "sections-c-g", label: "Sections C & G" },
@@ -90,6 +91,8 @@ export default function EHCPHealth() {
           Individual Support Plans (ISPs) are being introduced from 2030. How health provision will be specified in ISPs — and whether it will carry the same legal enforceability as Section G — <strong>has not yet been published</strong>.
         </p>
       </LatestUpdatePanel>
+
+      <LatestUpdatesStream />
 
       {/* Anchor navigation */}
       <nav className="content-section py-4 border-b border-border" aria-label="Page sections">

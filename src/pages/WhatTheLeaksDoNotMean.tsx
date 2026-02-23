@@ -10,6 +10,7 @@ import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { RightsChecklist } from "@/components/templates/DataVisuals";
 import { LatestUpdatePanel } from "@/components/templates/LatestUpdatePanel";
+import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import { Users, BarChart3, Shield, HelpCircle, EyeOff, Heart, Filter, Zap, Lightbulb, Anchor } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -73,6 +74,8 @@ export default function WhatTheLeaksDoNotMean() {
           Over 130 organisations have written to ministers with four red lines: no removal of enforceable EHCPs, no abolition of the tribunal, no narrowing of the legal definition of SEND, and <strong>no cliff-edge loss of support at 18</strong>.
         </p>
       </LatestUpdatePanel>
+
+      <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
 
