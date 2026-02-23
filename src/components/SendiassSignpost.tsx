@@ -21,7 +21,7 @@ export function SendiassSignpost() {
           </p>
           <div className="flex flex-wrap gap-3 mt-3">
             <a
-              href="https://councilfordisabledchildren.org.uk/iassnetwork/find-your-local-iass"
+              href="https://councilfordisabledchildren.org.uk/about-us-0/networks/information-advice-and-support-services-network/find-your-local-ias-service"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm font-medium text-[hsl(var(--accent-deep-blue))] hover:underline"
