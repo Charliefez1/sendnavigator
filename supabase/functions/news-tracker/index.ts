@@ -183,6 +183,22 @@ Deno.serve(async (req) => {
 
     console.log(`News tracker: found ${uniqueResults.length}, inserted ${inserted}, skipped ${skipped}`);
 
+    // Auto-create content_updates for significant news batches
+    if (inserted > 0) {
+      const newsSummary = uniqueResults
+        .slice(0, 10)
+        .map((r) => `• ${r.title}: ${r.summary}`)
+        .join("\n");
+
+      await supabase.from("content_updates").insert({
+        source: "news_tracker",
+        source_name: `News Tracker batch – ${new Date().toLocaleDateString("en-GB")}`,
+        raw_content: newsSummary,
+        status: "pending",
+      });
+      console.log("Content update created from news tracker batch");
+    }
+
     return new Response(
       JSON.stringify({
         success: true,

@@ -41,6 +41,42 @@ export type Database = {
         }
         Relationships: []
       }
+      content_updates: {
+        Row: {
+          created_at: string
+          id: string
+          processed_at: string | null
+          raw_content: string
+          result_summary: string | null
+          source: string
+          source_name: string | null
+          status: string
+          submitted_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          processed_at?: string | null
+          raw_content: string
+          result_summary?: string | null
+          source?: string
+          source_name?: string | null
+          status?: string
+          submitted_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          processed_at?: string | null
+          raw_content?: string
+          result_summary?: string | null
+          source?: string
+          source_name?: string | null
+          status?: string
+          submitted_at?: string
+        }
+        Relationships: []
+      }
       knowledge_base: {
         Row: {
           content: string
@@ -142,6 +178,47 @@ export type Database = {
           url?: string
         }
         Relationships: []
+      }
+      page_update_flags: {
+        Row: {
+          content_update_id: string | null
+          created_at: string
+          flag_reason: string
+          flagged_at: string
+          id: string
+          page_path: string
+          resolved_at: string | null
+          status: string
+        }
+        Insert: {
+          content_update_id?: string | null
+          created_at?: string
+          flag_reason: string
+          flagged_at?: string
+          id?: string
+          page_path: string
+          resolved_at?: string | null
+          status?: string
+        }
+        Update: {
+          content_update_id?: string | null
+          created_at?: string
+          flag_reason?: string
+          flagged_at?: string
+          id?: string
+          page_path?: string
+          resolved_at?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "page_update_flags_content_update_id_fkey"
+            columns: ["content_update_id"]
+            isOneToOne: false
+            referencedRelation: "content_updates"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       page_views: {
         Row: {

@@ -5,10 +5,12 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Lock, CheckCircle, XCircle, Trash2, MessageCircleQuestion, MessageSquare, Eye, BookOpen, Reply, Send, BarChart3, Newspaper } from "lucide-react";
+import { Lock, CheckCircle, XCircle, Trash2, MessageCircleQuestion, MessageSquare, Eye, BookOpen, Reply, Send, BarChart3, Newspaper, Upload, AlertTriangle } from "lucide-react";
 import { KnowledgeBaseManager } from "@/components/admin/KnowledgeBaseManager";
 import { NewsManager } from "@/components/admin/NewsManager";
 import { AnalyticsDashboard } from "@/components/admin/AnalyticsDashboard";
+import { ContentUpdateManager } from "@/components/admin/ContentUpdateManager";
+import { PageFlagsPanel } from "@/components/admin/PageFlagsPanel";
 import { Helmet } from "react-helmet-async";
 
 interface QuestionItem {
@@ -168,7 +170,7 @@ export default function Admin() {
   const [pin, setPin] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
   const [pinError, setPinError] = useState(false);
-  const [activeTab, setActiveTab] = useState<"questions" | "feedback" | "knowledge" | "news" | "analytics">("questions");
+  const [activeTab, setActiveTab] = useState<"questions" | "feedback" | "knowledge" | "news" | "analytics" | "updates" | "flags">("questions");
   const [questions, setQuestions] = useState<QuestionItem[]>([]);
   const [feedbackItems, setFeedbackItems] = useState<FeedbackItem[]>([]);
   const [loading, setLoading] = useState(false);
@@ -342,6 +344,28 @@ export default function Admin() {
             News Tracker
           </button>
           <button
+            onClick={() => setActiveTab("updates")}
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+              activeTab === "updates"
+                ? "bg-primary text-primary-foreground"
+                : "bg-secondary text-secondary-foreground"
+            }`}
+          >
+            <Upload className="h-4 w-4" />
+            Content Updates
+          </button>
+          <button
+            onClick={() => setActiveTab("flags")}
+            className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
+              activeTab === "flags"
+                ? "bg-primary text-primary-foreground"
+                : "bg-secondary text-secondary-foreground"
+            }`}
+          >
+            <AlertTriangle className="h-4 w-4" />
+            Page Flags
+          </button>
+          <button
             onClick={() => setActiveTab("analytics")}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
               activeTab === "analytics"
@@ -355,7 +379,11 @@ export default function Admin() {
         </div>
 
         {/* Content */}
-        {activeTab === "analytics" ? (
+        {activeTab === "updates" ? (
+          <ContentUpdateManager pin={pin} />
+        ) : activeTab === "flags" ? (
+          <PageFlagsPanel pin={pin} />
+        ) : activeTab === "analytics" ? (
           <AnalyticsDashboard pin={pin} />
         ) : activeTab === "news" ? (
           <NewsManager pin={pin} />
