@@ -144,12 +144,13 @@ export const aiGroundingRules = {
       response: "This resource cannot provide legal advice. For advice about your specific situation, please consult a qualified professional.",
     },
     individualCases: {
-      description: "Comments on individual circumstances",
+      description: "Comments on individual circumstances — pivot to general information",
       triggerTerms: [
         "my child", "my son", "my daughter", "our school", "my local authority",
         "my ehcp", "our case", "my situation", "in my area", "our family"
       ],
-      response: "This resource provides general information about SEND policy. It cannot comment on individual cases.",
+      response: "__PIVOT__",
+      pivotBehaviour: "Do not refuse. Instead, acknowledge that you cannot comment on their specific situation, then pivot to providing the relevant general information from the knowledge base. For example: 'I can't comment on your individual situation, but here's what we know about EHCPs in general...'",
     },
     speculation: {
       description: "Speculation beyond available information",
