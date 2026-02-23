@@ -1,16 +1,73 @@
-import { useState } from "react";
-import { Clock, ChevronDown, ChevronUp } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Clock, ChevronDown, ChevronUp, Pin } from "lucide-react";
 import { latestUpdates } from "@/config/latest-updates";
+import { supabase } from "@/integrations/supabase/client";
 
 const DEFAULT_VISIBLE = 3;
 
+interface DbNewsItem {
+  id: string;
+  title: string;
+  summary: string | null;
+  source_name: string;
+  discovered_at: string;
+  published_at: string | null;
+}
+
+function formatDate(dateStr: string): string {
+  try {
+    return new Date(dateStr).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  } catch {
+    return dateStr;
+  }
+}
+
 export function LatestUpdatesStream() {
   const [expanded, setExpanded] = useState(false);
+  const [dbItems, setDbItems] = useState<DbNewsItem[]>([]);
 
-  if (latestUpdates.length === 0) return null;
+  useEffect(() => {
+    const fetchNews = async () => {
+      const { data } = await (supabase as any)
+        .from("news_items")
+        .select("id, title, summary, source_name, discovered_at, published_at")
+        .eq("status", "published")
+        .order("discovered_at", { ascending: false })
+        .limit(20);
+      if (data) setDbItems(data);
+    };
+    fetchNews();
+  }, []);
 
-  const visible = expanded ? latestUpdates : latestUpdates.slice(0, DEFAULT_VISIBLE);
-  const hasMore = latestUpdates.length > DEFAULT_VISIBLE;
+  // Build combined list: pinned first, then DB items
+  const pinnedEntries = latestUpdates.map((entry, i) => ({
+    key: `pinned-${i}`,
+    isPinned: true,
+    date: entry.date,
+    headline: entry.headline,
+    body: entry.body,
+    source: null as string | null,
+  }));
+
+  const autoEntries = dbItems.map((item) => ({
+    key: `db-${item.id}`,
+    isPinned: false,
+    date: formatDate(item.published_at || item.discovered_at),
+    headline: item.title,
+    body: item.summary || "",
+    source: item.source_name,
+  }));
+
+  const allEntries = [...pinnedEntries, ...autoEntries];
+
+  if (allEntries.length === 0) return null;
+
+  const visible = expanded ? allEntries : allEntries.slice(0, DEFAULT_VISIBLE);
+  const hasMore = allEntries.length > DEFAULT_VISIBLE;
 
   return (
     <section className="content-section py-4">
@@ -25,14 +82,26 @@ export function LatestUpdatesStream() {
         </div>
 
         <div className="space-y-4">
-          {visible.map((entry, i) => (
+          {visible.map((entry) => (
             <div
-              key={`${entry.date}-${i}`}
+              key={entry.key}
               className="border-l-2 border-primary/30 pl-4"
             >
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold mb-1">
-                {entry.date}
-              </p>
+              <div className="flex items-center gap-2 mb-1">
+                <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">
+                  {entry.date}
+                </p>
+                {entry.isPinned && (
+                  <span className="inline-flex items-center gap-0.5 text-[9px] uppercase tracking-wider font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded">
+                    <Pin className="w-2.5 h-2.5" /> Pinned
+                  </span>
+                )}
+                {entry.source && (
+                  <span className="text-[10px] font-medium text-muted-foreground bg-muted px-1.5 py-0.5 rounded">
+                    {entry.source}
+                  </span>
+                )}
+              </div>
               <p className="text-sm font-semibold text-foreground leading-snug mb-1">
                 {entry.headline}
               </p>
@@ -54,7 +123,7 @@ export function LatestUpdatesStream() {
               </>
             ) : (
               <>
-                Show {latestUpdates.length - DEFAULT_VISIBLE} more updates <ChevronDown className="w-3.5 h-3.5" />
+                Show {allEntries.length - DEFAULT_VISIBLE} more updates <ChevronDown className="w-3.5 h-3.5" />
               </>
             )}
           </button>
