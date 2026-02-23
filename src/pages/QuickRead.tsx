@@ -30,7 +30,7 @@ export default function QuickRead() {
       <PageOrientation
         title="SEND today: a quick read for parents"
         description="Everything across this site, brought together in one page. Where things stand, what is confirmed, what is not, and what the next 6 to 12 months are likely to look like."
-        lastUpdated="15th February 2026"
+        lastUpdated="23rd February 2026"
       />
 
       <section className="content-section py-8" aria-labelledby="quickread-heading">
@@ -110,6 +110,7 @@ export default function QuickRead() {
           </p>
           <ul className="space-y-2">
             <li>A <strong>four-tier model of support</strong> has been discussed, with EHCPs reserved for the most severe and complex needs.</li>
+            <li><strong>Individual Support Plans:</strong> a formal consultation proposal to introduce statutory school-led plans from 2030. EHCPs confirmed to remain alongside them.</li>
             <li>There is debate about <strong>mandatory mediation before tribunal</strong> and shifting funding to school clusters rather than individual plans.</li>
             <li>The National Education Union has urged the government to maintain legal thresholds. The <strong>Save Our Children's Rights campaign gathered over 130,000 signatures</strong>.</li>
           </ul>
@@ -158,15 +159,20 @@ export default function QuickRead() {
           <p>
             <strong>The next six to twelve months look like this:</strong>
           </p>
+          <h3 className="text-sm font-semibold text-foreground mt-2">What has now happened</h3>
           <ul className="space-y-2">
-            <li><strong>Early 2026:</strong> a SEND-focused White Paper is expected, setting out formal proposals for the first time.</li>
+            <li><strong>23 February 2026:</strong> the Schools White Paper, <em>Every Child Achieving and Thriving</em>, was published. A formal 12-week public consultation is now open following the white paper publication.</li>
+          </ul>
+
+          <h3 className="text-sm font-semibold text-foreground mt-4">What comes next</h3>
+          <ul className="space-y-2">
             <li><strong>Autumn 2026:</strong> councils must submit local SEND reform plans to qualify for the deficit bailout.</li>
             <li><strong>By 2027:</strong> all local areas inspected under the new Ofsted and CQC SEND framework.</li>
             <li><strong>2028 to 2029:</strong> central government takes full responsibility for SEND spending growth.</li>
             <li><strong>2029 to 2030 (unconfirmed):</strong> leaked reports suggest full implementation of major reforms might not happen until then.</li>
           </ul>
           <p>
-            Any change to rights requires consultation, legislation, and parliamentary scrutiny. <strong>None of that has started yet.</strong>
+            Any change to rights requires consultation, legislation, and parliamentary scrutiny. <strong>The formal consultation process has now begun.</strong>
           </p>
           <p className="text-xs text-muted-foreground/80">
             <a href="/what-happens-next" className="underline hover:text-primary transition-colors">Read the full page →</a>
