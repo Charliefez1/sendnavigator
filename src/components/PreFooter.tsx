@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,56 +18,7 @@ import {
   Send,
   CheckCircle,
   Globe,
-  BookOpen,
 } from "lucide-react";
-
-/* ── Newsletter inline ─────────────────────────────── */
-
-const signupSchema = z.object({
-  name: z.string().trim().min(1, "Required").max(100),
-  email: z.string().trim().email("Invalid email").max(255),
-});
-type SignupValues = z.infer<typeof signupSchema>;
-
-function NewsletterInline() {
-  const [done, setDone] = useState(false);
-  const form = useForm<SignupValues>({
-    resolver: zodResolver(signupSchema),
-    defaultValues: { name: "", email: "" },
-  });
-
-  function onSubmit(values: SignupValues) {
-    const subject = encodeURIComponent("SEND Newsletter sign up");
-    const body = encodeURIComponent(
-      `Name: ${values.name}\nEmail: ${values.email}\n\nPlease add me to the SEND Newsletter mailing list.`
-    );
-    window.open(`mailto:rich@neurodiversityglobal.com?subject=${subject}&body=${body}`, "_blank");
-    setDone(true);
-  }
-
-  if (done) {
-    return (
-      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-        <CheckCircle className="w-4 h-4 text-primary" />
-        <span>Check your email client to send the signup message.</span>
-      </div>
-    );
-  }
-
-  return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-2">
-        <FormField control={form.control} name="name" render={({ field }) => (
-          <FormItem className="flex-1"><FormControl><Input placeholder="Your name" className="h-9 text-sm" {...field} /></FormControl><FormMessage /></FormItem>
-        )} />
-        <FormField control={form.control} name="email" render={({ field }) => (
-          <FormItem className="flex-1"><FormControl><Input type="email" placeholder="Your email" className="h-9 text-sm" {...field} /></FormControl><FormMessage /></FormItem>
-        )} />
-        <Button type="submit" size="sm" className="h-9 px-4 whitespace-nowrap">Sign up</Button>
-      </form>
-    </Form>
-  );
-}
 
 /* ── Contact dialog ────────────────────────────────── */
 
@@ -117,13 +67,13 @@ function ContactDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (v
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-base font-semibold">Get in touch</DialogTitle>
-          <DialogDescription className="text-sm text-muted-foreground">Send us a message and we'll get back to you.</DialogDescription>
+          <DialogDescription className="text-sm text-muted-foreground">Send us a message and we will get back to you.</DialogDescription>
         </DialogHeader>
         {submitted ? (
           <div className="text-center py-4">
             <CheckCircle className="w-8 h-8 text-primary mx-auto mb-3" />
             <p className="text-sm font-medium text-foreground">Thank you</p>
-            <p className="text-xs text-muted-foreground mt-1">We'll be in touch soon.</p>
+            <p className="text-xs text-muted-foreground mt-1">We will be in touch soon.</p>
           </div>
         ) : (
           <Form {...form}>
@@ -144,8 +94,63 @@ function ContactDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (v
                 <FormItem><FormControl><Textarea placeholder="How can we help?" rows={3} className="text-sm" {...field} /></FormControl><FormMessage /></FormItem>
               )} />
               <Button type="submit" disabled={submitting} size="sm" className="w-full">
-                {submitting ? "Sending…" : <><Send className="w-3.5 h-3.5 mr-1.5" />Send message</>}
+                {submitting ? "Sending..." : <><Send className="w-3.5 h-3.5 mr-1.5" />Send message</>}
               </Button>
+            </form>
+          </Form>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+/* ── Newsletter sign-up dialog ─────────────────────── */
+
+const signupSchema = z.object({
+  name: z.string().trim().min(1, "Required").max(100),
+  email: z.string().trim().email("Invalid email").max(255),
+});
+type SignupValues = z.infer<typeof signupSchema>;
+
+function NewsletterDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (v: boolean) => void }) {
+  const [done, setDone] = useState(false);
+  const form = useForm<SignupValues>({
+    resolver: zodResolver(signupSchema),
+    defaultValues: { name: "", email: "" },
+  });
+
+  function onSubmit(values: SignupValues) {
+    const subject = encodeURIComponent("SEND Newsletter sign up");
+    const body = encodeURIComponent(
+      `Name: ${values.name}\nEmail: ${values.email}\n\nPlease add me to the SEND Newsletter mailing list.`
+    );
+    window.open(`mailto:rich@neurodiversityglobal.com?subject=${subject}&body=${body}`, "_blank");
+    setDone(true);
+  }
+
+  return (
+    <Dialog open={open} onOpenChange={(v) => { onOpenChange(v); if (!v) { setDone(false); form.reset(); } }}>
+      <DialogContent className="sm:max-w-sm">
+        <DialogHeader>
+          <DialogTitle className="text-base font-semibold">Stay updated</DialogTitle>
+          <DialogDescription className="text-sm text-muted-foreground">Sign up and we will keep you informed.</DialogDescription>
+        </DialogHeader>
+        {done ? (
+          <div className="text-center py-4">
+            <CheckCircle className="w-8 h-8 text-primary mx-auto mb-3" />
+            <p className="text-sm font-medium text-foreground">Thank you for signing up</p>
+            <p className="text-xs text-muted-foreground mt-1">Your email client should have opened. Please send the message to complete your signup.</p>
+          </div>
+        ) : (
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+              <FormField control={form.control} name="name" render={({ field }) => (
+                <FormItem><FormControl><Input placeholder="Your name" className="h-9 text-sm" {...field} /></FormControl><FormMessage /></FormItem>
+              )} />
+              <FormField control={form.control} name="email" render={({ field }) => (
+                <FormItem><FormControl><Input type="email" placeholder="Your email" className="h-9 text-sm" {...field} /></FormControl><FormMessage /></FormItem>
+              )} />
+              <Button type="submit" size="sm" className="w-full">Sign up</Button>
             </form>
           </Form>
         )}
@@ -156,124 +161,100 @@ function ContactDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (v
 
 /* ── Main PreFooter ────────────────────────────────── */
 
-const externalResources = [
-  {
-    href: "https://smartphonefree.neurodiversityglobal.com/",
-    title: "The Day We Gave Children Dopamine on Demand",
-    tag: "Smartphone Free",
-  },
-  {
-    href: "https://awbp.neuro.support/",
-    title: "It's Time to Be Educated by a Clown",
-    tag: "Open Letter",
-  },
-];
-
 export function PreFooter() {
   const [contactOpen, setContactOpen] = useState(false);
+  const [newsletterOpen, setNewsletterOpen] = useState(false);
 
   return (
     <>
-      <section className="bg-navy/[0.03] border-t border-border">
-        <div className="content-wide py-10 sm:py-14">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
-            {/* Column 1: More from NG */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <Globe className="w-4 h-4 text-primary" />
-                <h3 className="font-display font-bold text-foreground text-sm">More from Neurodiversity Global</h3>
+      <section className="border-t border-border bg-card">
+        <div className="content-wide py-10">
+          {/* Three action cards in a row */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* Card 1: More from NG */}
+            <button
+              onClick={() => window.open("https://www.neurodiversityglobal.com", "_blank")}
+              className="group flex items-start gap-3 rounded-xl border border-border bg-background p-5 shadow-lg hover:border-primary/40 hover:shadow-xl transition-all text-left"
+            >
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Globe className="w-4.5 h-4.5 text-primary" />
               </div>
-              <ul className="space-y-2.5">
-                {externalResources.map((r) => (
-                  <li key={r.href}>
-                    <a
-                      href={r.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group flex items-start gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      <ExternalLink className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-muted-foreground/50 group-hover:text-primary transition-colors" />
-                      <span>
-                        <span className="text-xs font-medium text-primary">{r.tag}</span>
-                        <br />
-                        {r.title}
-                      </span>
-                    </a>
-                  </li>
-                ))}
-                <li>
-                  <a
-                    href="https://www.neurodiversityglobal.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
-                  >
-                    Visit neurodiversityglobal.com
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                </li>
-              </ul>
-            </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                  More from Neurodiversity Global
+                </h3>
+                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                  Neuroinclusion training, workshops, consultancy, and resources.
+                </p>
+                <span className="inline-flex items-center gap-1 text-xs font-medium text-primary mt-2">
+                  Visit website <ArrowRight className="w-3 h-3" />
+                </span>
+              </div>
+            </button>
 
-            {/* Column 2: Stay updated */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-primary" />
-                <h3 className="font-display font-bold text-foreground text-sm">Stay updated</h3>
+            {/* Card 2: Stay updated */}
+            <button
+              onClick={() => setNewsletterOpen(true)}
+              className="group flex items-start gap-3 rounded-xl border border-border bg-background p-5 shadow-lg hover:border-primary/40 hover:shadow-xl transition-all text-left"
+            >
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Mail className="w-4.5 h-4.5 text-primary" />
               </div>
-              <p className="text-sm text-muted-foreground">Sign up and we'll keep you informed on SEND reform and neurodivergence.</p>
-              <NewsletterInline />
-            </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                  Stay updated
+                </h3>
+                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                  Sign up and we will keep you informed on SEND reform and neurodivergence.
+                </p>
+                <span className="inline-flex items-center gap-1 text-xs font-medium text-primary mt-2">
+                  Sign up <ArrowRight className="w-3 h-3" />
+                </span>
+              </div>
+            </button>
 
-            {/* Column 3: Get in touch */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-primary" />
-                <h3 className="font-display font-bold text-foreground text-sm">Get in touch</h3>
+            {/* Card 3: Get in touch */}
+            <button
+              onClick={() => setContactOpen(true)}
+              className="group flex items-start gap-3 rounded-xl border border-border bg-background p-5 shadow-lg hover:border-primary/40 hover:shadow-xl transition-all text-left"
+            >
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <Send className="w-4.5 h-4.5 text-primary" />
               </div>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <div>
-                  <p className="font-medium text-foreground">Rich Ferriman</p>
-                  <div className="flex flex-wrap gap-x-3 gap-y-1 mt-1">
-                    <a href="mailto:rich@neurodiversityglobal.com" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
-                      <Mail className="w-3 h-3" /> Email
-                    </a>
-                    <a href="tel:+447508242212" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
-                      <Phone className="w-3 h-3" /> Call
-                    </a>
-                    <a href="https://www.linkedin.com/in/richferriman" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
-                      <Linkedin className="w-3 h-3" /> LinkedIn
-                    </a>
-                  </div>
-                </div>
-                <div>
-                  <p className="font-medium text-foreground">Charlie Ferriman</p>
-                  <div className="flex flex-wrap gap-x-3 gap-y-1 mt-1">
-                    <a href="mailto:charlie@neurodiversityglobal.com" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
-                      <Mail className="w-3 h-3" /> Email
-                    </a>
-                    <a href="tel:+447535696880" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
-                      <Phone className="w-3 h-3" /> Call
-                    </a>
-                    <a href="https://www.linkedin.com/in/charlieferriman" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
-                      <Linkedin className="w-3 h-3" /> LinkedIn
-                    </a>
-                  </div>
-                </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                  Get in touch
+                </h3>
+                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                  Reach Rich or Charlie Ferriman directly.
+                </p>
+                <span className="inline-flex items-center gap-1 text-xs font-medium text-primary mt-2">
+                  Send a message <ArrowRight className="w-3 h-3" />
+                </span>
               </div>
-              <button
-                onClick={() => setContactOpen(true)}
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
-              >
-                <Send className="w-3.5 h-3.5" />
-                Send us a message
-              </button>
-            </div>
+            </button>
+          </div>
+
+          {/* Compact contact details row */}
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 text-xs text-muted-foreground">
+            <a href="mailto:rich@neurodiversityglobal.com" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+              <Mail className="w-3 h-3" /> rich@neurodiversityglobal.com
+            </a>
+            <a href="tel:+447508242212" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+              <Phone className="w-3 h-3" /> +44 (0) 7508 242212
+            </a>
+            <a href="https://www.linkedin.com/in/richferriman" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+              <Linkedin className="w-3 h-3" /> Rich on LinkedIn
+            </a>
+            <a href="https://www.linkedin.com/in/charlieferriman" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+              <Linkedin className="w-3 h-3" /> Charlie on LinkedIn
+            </a>
           </div>
         </div>
       </section>
 
       <ContactDialog open={contactOpen} onOpenChange={setContactOpen} />
+      <NewsletterDialog open={newsletterOpen} onOpenChange={setNewsletterOpen} />
     </>
   );
 }
