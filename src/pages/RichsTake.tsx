@@ -2,6 +2,10 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { Clock, ExternalLink } from "lucide-react";
+import gritImage from "@/assets/resource-grit-wont-save.jpg";
+import diagnosisImage from "@/assets/resource-real-diagnosis.jpg";
+import awbpImage from "@/assets/resource-awbp.png";
+import smartphoneFreeImage from "@/assets/resource-smartphone-free.png";
 
 export default function RichsTake() {
   return (
@@ -151,21 +155,25 @@ export default function RichsTake() {
               href="https://www.linkedin.com/pulse/grit-wont-save-children-system-isnt-built-them-rich-ferriman-ye5oe/"
               title="Grit Won't Save Children the System Isn't Built for Them"
               source="LinkedIn"
+              image={gritImage}
             />
             <ArticleLink
               href="https://www.linkedin.com/pulse/real-diagnosis-outdated-systems-neurodivergent-world-rich-ferriman-4zs3e/"
               title="The Real Diagnosis: Outdated Systems in a Neurodivergent World"
               source="LinkedIn"
+              image={diagnosisImage}
             />
             <ArticleLink
               href="https://awbp.neuro.support/"
-              title="A World Built for People"
+              title="Are We Bad Parents?"
               source="neuro.support"
+              image={awbpImage}
             />
             <ArticleLink
               href="https://smartphonefree.neurodiversityglobal.com/"
-              title="Smartphone Free"
+              title="The Day We Gave Children Dopamine on Demand"
               source="Neurodiversity Global"
+              image={smartphoneFreeImage}
             />
           </div>
         </div>
@@ -184,21 +192,26 @@ function ArticleHeading({ children }: { children: React.ReactNode }) {
   );
 }
 
-function ArticleLink({ href, title, source }: { href: string; title: string; source: string }) {
+function ArticleLink({ href, title, source, image }: { href: string; title: string; source: string; image: string }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex items-start gap-3 p-4 rounded-xl border border-border bg-card hover:bg-muted/40 transition-colors group"
+      className="rounded-xl border border-border bg-card hover:bg-muted/40 transition-colors group overflow-hidden flex flex-col"
     >
-      <div className="flex-1 min-w-0">
-        <p className="text-sm font-medium text-foreground group-hover:text-[hsl(var(--accent-violet))] transition-colors leading-snug">
-          {title}
-        </p>
-        <p className="text-xs text-muted-foreground mt-1">{source}</p>
+      <div className="aspect-[3/2] overflow-hidden">
+        <img src={image} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
       </div>
-      <ExternalLink className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-0.5" aria-hidden="true" />
+      <div className="p-4 flex items-start gap-3">
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-medium text-foreground group-hover:text-[hsl(var(--accent-violet))] transition-colors leading-snug">
+            {title}
+          </p>
+          <p className="text-xs text-muted-foreground mt-1">{source}</p>
+        </div>
+        <ExternalLink className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-0.5" aria-hidden="true" />
+      </div>
     </a>
   );
 }
