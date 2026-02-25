@@ -38,8 +38,8 @@ export function StatusSection({ type, children }: StatusSectionProps) {
           boxShadow: `0 4px 16px -4px rgba(0,0,0,0.05)`,
         }}
       >
-        <div className="flex items-center gap-2.5 mb-4">
-          <div className="w-8 h-8 rounded-md flex items-center justify-center" style={{ backgroundColor: `${accentColor}15` }}>
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: `${accentColor}15` }}>
             <Icon className="w-4 h-4" style={{ color: accentColor }} />
           </div>
           <h2 className="text-base font-display font-semibold text-foreground">{title}</h2>

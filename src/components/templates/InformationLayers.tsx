@@ -23,7 +23,7 @@ function ScanCollapseWrapper({ title, children, statusBadge, icon }: { title: st
         disabled={!isScan}
       >
         {icon}
-        <h3 className="text-base font-display font-semibold text-foreground">{title}</h3>
+        <h3 className="text-sm font-display font-semibold text-foreground">{title}</h3>
         {statusBadge}
         {isScan && (expanded ? <ChevronDown className="w-4 h-4 text-muted-foreground ml-auto" /> : <ChevronRight className="w-4 h-4 text-muted-foreground ml-auto" />)}
       </button>
@@ -39,7 +39,7 @@ function ConfirmedLayer({ children, emptyMessage }: Omit<InformationLayerProps, 
     <ScanCollapseWrapper
       title="What is confirmed"
       statusBadge={<StatusBadge status="confirmed" />}
-      icon={<div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(175 65% 41% / 0.1)" }}><CheckCircle className="w-3.5 h-3.5" style={{ color: "hsl(175 65% 41%)" }} /></div>}
+      icon={<div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(175 65% 41% / 0.1)" }}><CheckCircle className="w-3.5 h-3.5" style={{ color: "hsl(175 65% 41%)" }} /></div>}
     >
       {isEmpty ? (
         <p className="text-muted-foreground italic text-sm">
@@ -59,7 +59,7 @@ function DiscussedLayer({ children, emptyMessage }: Omit<InformationLayerProps, 
     <ScanCollapseWrapper
       title="What is being discussed or reported"
       statusBadge={<StatusBadge status="discussed" />}
-      icon={<div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(42 87% 48% / 0.1)" }}><Newspaper className="w-3.5 h-3.5" style={{ color: "hsl(42 87% 48%)" }} /></div>}
+      icon={<div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(42 87% 48% / 0.1)" }}><Newspaper className="w-3.5 h-3.5" style={{ color: "hsl(42 87% 48%)" }} /></div>}
     >
       {isEmpty ? (
         <p className="text-muted-foreground italic text-sm">
@@ -79,7 +79,7 @@ function UnconfirmedLayer({ children, emptyMessage }: Omit<InformationLayerProps
     <ScanCollapseWrapper
       title="What is unconfirmed or leaked"
       statusBadge={<StatusBadge status="unconfirmed" />}
-      icon={<div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(25 85% 52% / 0.1)" }}><AlertTriangle className="w-3.5 h-3.5" style={{ color: "hsl(25 85% 52%)" }} /></div>}
+      icon={<div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(25 85% 52% / 0.1)" }}><AlertTriangle className="w-3.5 h-3.5" style={{ color: "hsl(25 85% 52%)" }} /></div>}
     >
       {!isEmpty && (
         <div className="rounded-lg border p-3 mb-4 flex gap-3 text-sm shadow-sm" style={{ backgroundColor: "hsl(25 55% 96%)", borderColor: "hsl(25 50% 85%)" }}>

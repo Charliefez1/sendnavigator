@@ -34,13 +34,13 @@ export function ContentBox({ id, icon: Icon, title, children }: ContentBoxProps)
         >
           <div className={cn(
             "flex items-center justify-center rounded-lg bg-primary/10 flex-shrink-0",
-            isScan && !expanded ? "w-7 h-7" : "w-10 h-10"
+            isScan && !expanded ? "w-6 h-6" : "w-8 h-8"
           )}>
-            <Icon className={cn(isScan && !expanded ? "w-3.5 h-3.5" : "w-5 h-5", "text-primary")} />
+            <Icon className={cn(isScan && !expanded ? "w-3 h-3" : "w-4 h-4", "text-primary")} />
           </div>
           <h2 className={cn(
             "font-display font-semibold text-foreground flex-1",
-            isScan && !expanded ? "text-sm" : "text-lg"
+            isScan && !expanded ? "text-sm" : "text-base"
           )}>{title}</h2>
           {isScan && (
             expanded
