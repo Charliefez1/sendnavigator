@@ -98,10 +98,10 @@ export default function StateOfSend2026() {
         path="/state-of-send-2026"
       />
 
-      <header className="content-section py-8 sm:py-10 border-b border-border">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-            <BookOpen className="w-5 h-5 text-primary" />
+      <header className="content-section py-6 sm:py-8 border-b border-border">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+            <BookOpen className="w-4 h-4 text-primary" />
           </div>
           <div className="inline-flex items-center gap-2 rounded-lg bg-foreground/5 border border-foreground/10 px-3 py-1">
             <span className="text-xs font-display font-bold uppercase tracking-widest text-foreground/70">8-Part Report</span>
@@ -113,14 +113,14 @@ export default function StateOfSend2026() {
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
           A structured, evidence-based report tracking SEND reform in England. Eight sections move from <strong>what is confirmed</strong> through <strong>what is being discussed</strong> to <strong>what remains unknown</strong>. Read in order, or jump to what matters most to you.
         </p>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mt-4">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground mt-3">
           <Clock className="w-4 h-4" aria-hidden="true" />
           <span>Last updated: 20th February 2026</span>
         </div>
       </header>
 
       {/* Confidence key */}
-      <section className="content-section py-4">
+      <section className="content-section py-3">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
           {[
             { label: "Confirmed", color: "confirmed", desc: "Official and verified" },
@@ -144,7 +144,7 @@ export default function StateOfSend2026() {
       </section>
 
       {/* Report sections */}
-      <section className="content-section py-4 pb-8">
+      <section className="content-section py-3 pb-8">
         <div className="space-y-3">
           {reportSections.map((section) => {
             const colors = colorMap[section.color];
