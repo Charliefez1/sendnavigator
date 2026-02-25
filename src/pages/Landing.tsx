@@ -6,7 +6,7 @@ import { NewsTicker } from "@/components/NewsTicker";
 import { AnimatedFeatureShowcase } from "@/components/landing/AnimatedFeatureShowcase";
 import { LandingAskRich } from "@/components/landing/LandingAskRich";
 import { useAuth } from "@/contexts/AuthContext";
-import { Shield, BookOpen, Heart } from "lucide-react";
+import { Shield, BookOpen, Heart, ArrowDown } from "lucide-react";
 import beaconLogo from "@/assets/beacon-logo.png";
 
 const Landing = () => {
@@ -31,93 +31,136 @@ const Landing = () => {
         path="/landing"
       />
 
-      {/* Navy header */}
-      <header className="bg-navy text-navy-foreground py-3">
-        <div className="content-wide flex items-center justify-center">
-          <img src={beaconLogo} alt="Beacon SEND Navigator" className="h-10" />
+      {/* ── HERO ── dark navy, immersive */}
+      <section className="relative bg-navy text-navy-foreground overflow-hidden">
+        {/* Subtle radial glow */}
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            background: "radial-gradient(ellipse 80% 50% at 50% 0%, hsl(175 60% 40% / 0.15), transparent)",
+          }}
+        />
+
+        {/* Header bar */}
+        <div className="relative content-wide flex items-center justify-between py-4">
+          <img src={beaconLogo} alt="Beacon SEND Navigator" className="h-9" />
+          <button
+            onClick={scrollToAuth}
+            className="text-sm text-navy-muted hover:text-white transition-colors"
+          >
+            Sign in
+          </button>
         </div>
-      </header>
 
-      {/* News ticker */}
-      <NewsTicker />
+        {/* News ticker */}
+        <NewsTicker />
 
-      {/* Main content */}
-      <main className="flex-1">
-        {/* Hero: centred, text-led */}
-        <section className="content-section py-10 sm:py-14">
-          <div className="max-w-xl mx-auto text-center mb-8">
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-display font-semibold text-foreground mb-3 leading-tight">
-              The independent guide to SEND reform in England
-            </h1>
-            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              Clear facts, practical tools, and honest answers for parents navigating the SEND system.
-            </p>
+        {/* Hero content */}
+        <div className="relative content-section py-16 sm:py-24 text-center">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold leading-tight mb-4 max-w-2xl mx-auto">
+            The independent guide to
+            <br />
+            <span style={{ color: "hsl(var(--accent-teal))" }}>SEND reform</span> in England
+          </h1>
+          <p className="text-base sm:text-lg text-navy-muted leading-relaxed max-w-lg mx-auto mb-8">
+            Clear facts, practical tools, and honest answers for parents navigating the SEND system.
+          </p>
+
+          {/* Trust pills */}
+          <div className="flex items-center justify-center gap-4 sm:gap-6 mb-10">
+            {[
+              { icon: Shield, label: "Independent", color: "--accent-teal" },
+              { icon: BookOpen, label: "Fact-based", color: "--accent-deep-blue" },
+              { icon: Heart, label: "For families", color: "--accent-coral" },
+            ].map(({ icon: I, label, color }) => (
+              <div key={label} className="flex items-center gap-1.5">
+                <I className="w-3.5 h-3.5" style={{ color: `hsl(var(${color}))` }} />
+                <span className="text-xs text-navy-muted">{label}</span>
+              </div>
+            ))}
           </div>
-          <div ref={authRef} className="flex justify-center">
-            <AuthForm />
+
+          <ArrowDown className="w-5 h-5 text-navy-muted mx-auto animate-bounce" />
+        </div>
+      </section>
+
+      {/* ── MAIN CONTENT ── */}
+      <main className="flex-1">
+
+        {/* ── AUTH + WHAT'S INSIDE ── side by side on desktop */}
+        <section className="content-wide py-12 sm:py-16">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+
+            {/* Left: Auth */}
+            <div ref={authRef} className="flex flex-col items-center lg:items-start">
+              <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-4">
+                Get started
+              </p>
+              <AuthForm />
+              <p className="text-xs text-muted-foreground mt-3 text-center lg:text-left max-w-sm">
+                Built by{" "}
+                <Link to="/rich-ferriman" className="text-primary hover:underline">Rich Ferriman</Link>.
+                Free, independent, and not government affiliated.
+              </p>
+            </div>
+
+            {/* Right: What's inside */}
+            <div>
+              <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-4">
+                What's inside
+              </p>
+              <AnimatedFeatureShowcase />
+            </div>
           </div>
         </section>
 
-        {/* Animated feature showcase */}
-        <AnimatedFeatureShowcase />
-
-        {/* Ask Rich preview with frost */}
-        <LandingAskRich onSignUpClick={scrollToAuth} />
-
-        {/* Trust / about card */}
-        <section className="content-section pb-10 sm:pb-14">
-          <div className="max-w-2xl mx-auto">
-            <div className="bg-card border border-border rounded-xl p-5 sm:p-6 shadow-lg">
-              <div className="flex items-center gap-2.5 mb-3">
-                <img src={beaconLogo} alt="" className="h-8" />
-                <h2 className="text-base sm:text-lg font-display font-semibold text-foreground">
-                  About the Navigator
-                </h2>
-              </div>
-              <div className="space-y-2.5 text-muted-foreground text-sm leading-relaxed">
-                <p>
-                  The SEND Navigator is a free, independent resource built by{" "}
-                  <Link to="/rich-ferriman" className="text-primary hover:underline">Rich Ferriman</Link>{" "}
-                  to help parents and professionals make sense of SEND reform.
-                </p>
-                <p>
-                  Nothing is presented without context. Nothing speculative is presented as fact. Every section is clearly labelled with its confidence level.
-                </p>
-                <p>
-                  For more context, see{" "}
-                  <Link to="/about" className="text-primary hover:underline">About</Link> and{" "}
-                  <Link to="/why-i-built-this" className="text-primary hover:underline">Why I Built This</Link>.
+        {/* ── ASK RICH PREVIEW ── */}
+        <section className="bg-navy/[0.03] dark:bg-card/30 border-y border-border">
+          <div className="content-section py-12 sm:py-16">
+            <div className="max-w-2xl mx-auto">
+              <div className="flex items-center gap-2 mb-1">
+                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "hsl(var(--accent-violet))" }} />
+                <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                  Try it now
                 </p>
               </div>
+              <h2 className="text-lg sm:text-xl font-display font-semibold text-foreground mb-2">
+                Ask Rich anything about SEND reform
+              </h2>
+              <p className="text-sm text-muted-foreground mb-6">
+                Get a real answer grounded in confirmed facts, not generic AI output.
+              </p>
+              <LandingAskRich onSignUpClick={scrollToAuth} />
+            </div>
+          </div>
+        </section>
 
-              {/* Trust signals */}
-              <div className="flex items-center gap-5 mt-4">
-                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                  <Shield className="w-3.5 h-3.5 text-status-confirmed flex-shrink-0" />
-                  <span>Independent</span>
-                </div>
-                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                  <BookOpen className="w-3.5 h-3.5 text-primary flex-shrink-0" />
-                  <span>Fact-based</span>
-                </div>
-                <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                  <Heart className="w-3.5 h-3.5 text-destructive flex-shrink-0" />
-                  <span>For families</span>
-                </div>
-              </div>
+        {/* ── ABOUT CARD ── minimal */}
+        <section className="content-section py-12 sm:py-16">
+          <div className="max-w-xl mx-auto text-center">
+            <img src={beaconLogo} alt="" className="h-10 mx-auto mb-4" />
+            <p className="text-sm text-muted-foreground leading-relaxed mb-2">
+              Nothing is presented without context. Nothing speculative is presented as fact. Every section is clearly labelled with its confidence level.
+            </p>
+            <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
+              <Link to="/about" className="text-primary hover:underline">About</Link>
+              <span className="text-border">|</span>
+              <Link to="/why-i-built-this" className="text-primary hover:underline">Why I Built This</Link>
+              <span className="text-border">|</span>
+              <Link to="/sources" className="text-primary hover:underline">Sources</Link>
             </div>
           </div>
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-border py-3">
-        <div className="content-section text-center text-xs text-muted-foreground">
-          <p>&copy; 2026 SEND Reform Navigator. Independent resource, not government affiliated.</p>
-          <div className="flex items-center justify-center gap-4 mt-1.5">
+      {/* ── FOOTER ── */}
+      <footer className="border-t border-border py-4">
+        <div className="content-section flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
+          <p>&copy; 2026 Beacon SEND Navigator</p>
+          <div className="flex items-center gap-4">
             <Link to="/about" className="hover:text-primary transition-colors">About</Link>
-            <Link to="/sources" className="hover:text-primary transition-colors">Sources</Link>
             <Link to="/how-to-use" className="hover:text-primary transition-colors">How to use</Link>
+            <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy</Link>
           </div>
         </div>
       </footer>
