@@ -144,7 +144,7 @@ export default function WhatWeOweOurChildren() {
             <p>Rocking. Flapping. Tapping. Humming. Pacing. Picking. Spinning.</p>
             <p>Stimming is not a problem to be stopped. It is a regulatory tool. When a child stims they are actively managing their internal state: processing sensory input, managing anxiety, maintaining enough focus to stay in the room.</p>
             <p>When stimming is suppressed, when a child is told to sit still, stop tapping, stop making that noise, the regulatory need does not disappear. <strong>It accumulates.</strong> It finds another outlet, usually a louder and less manageable one.</p>
-            <p>Ask the school what their approach is to stimming. If your child is being routinely stopped from regulating themselves, that is worth raising — not as a confrontation, but as a direct and reasonable question. <strong>"What are they allowed to do when they feel overwhelmed?"</strong> is a question every school should be able to answer.</p>
+            <p>Ask the school what their approach is to stimming. If your child is being routinely stopped from regulating themselves, that is worth raising. Not as a confrontation, but as a direct and reasonable question. <strong>"What are they allowed to do when they feel overwhelmed?"</strong> is a question every school should be able to answer.</p>
           </div>
         </div>
       </section>
@@ -155,14 +155,14 @@ export default function WhatWeOweOurChildren() {
           <SectionHeading>Screens, sleep, and dopamine</SectionHeading>
           <div className="space-y-4 text-sm text-muted-foreground leading-relaxed max-w-2xl">
             <p><strong>This part is harder to hear.</strong></p>
-            <p>Many of the behaviours that look like SEND in the classroom — poor concentration, impulsivity, difficulty regulating, emotional volatility — are significantly worsened by sleep deprivation and dopamine dysregulation driven by screens.</p>
+            <p>Many of the behaviours that look like SEND in the classroom, such as poor concentration, impulsivity, difficulty regulating and emotional volatility, are significantly worsened by sleep deprivation and dopamine dysregulation driven by screens.</p>
             <p>This is not about blame. It is about cause and effect.</p>
             <p>Neurodivergent children are particularly vulnerable to the dopamine reward loops built into gaming, social media, and smartphones. The ADHD brain is specifically built to seek novelty and immediate reward. The platforms our children use are <strong>engineered to deliver exactly that, endlessly, without pause</strong>.</p>
             <p>A child who has spent hours on a device before school arrives with their dopamine system already spiked and crashing, their sleep debt carried from the night before, their capacity for sustained attention depleted before the day starts.</p>
             <p><strong>We cannot put all of that on the school to manage.</strong></p>
-            <p>Sleep is not optional. It is nervous system care. Screens before bed disrupt melatonin and fragment rest. A child who consistently sleeps poorly will struggle to learn, regulate, and cope with the ordinary demands of a school day. That is not an opinion — it is well-documented neuroscience.</p>
+            <p>Sleep is not optional. It is nervous system care. Screens before bed disrupt melatonin and fragment rest. A child who consistently sleeps poorly will struggle to learn, regulate, and cope with the ordinary demands of a school day. That is not an opinion. It is well-documented neuroscience.</p>
             <p>This is one of the most difficult conversations to have with yourself as a parent. It is also one of the most important.</p>
-            <p>The question is not whether to remove screens. The question is whether your child can sleep without them nearby, can stop with support, can return to calm after use, and whether real life can still compete with what the screen offers. <strong>If the answer to those questions is no — something needs adjusting.</strong></p>
+            <p>The question is not whether to remove screens. The question is whether your child can sleep without them nearby, can stop with support, can return to calm after use, and whether real life can still compete with what the screen offers. <strong>If the answer to those questions is no, something needs adjusting.</strong></p>
             <p>Not punishing. Adjusting.</p>
             <div className="pt-2">
               <ResourceLink label="The Day We Gave Children Dopamine on Demand" url="https://smartphonefree.neurodiversityglobal.com/" note="written by Rich Ferriman" />
@@ -177,14 +177,14 @@ export default function WhatWeOweOurChildren() {
           <SectionHeading>Understanding your child's profile</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed max-w-2xl">
             <p>A diagnosis tells you something. It rarely tells you everything.</p>
-            <p>The profiles below are not boxes to squeeze your child into. They are tools — patterns that appear again and again in neurodivergent children, that can help you <strong>understand what your child is experiencing and describe it clearly</strong> to the people trying to support them.</p>
+            <p>The profiles below are not boxes to squeeze your child into. They are tools: patterns that appear again and again in neurodivergent children, that can help you <strong>understand what your child is experiencing and describe it clearly</strong> to the people trying to support them.</p>
             <p>Use what helps. Leave the rest.</p>
           </div>
         </div>
 
         <div className="space-y-4">
           <ProfileSection title="Rejection Sensitive Dysphoria (RSD)">
-            <p>RSD is not a formal diagnosis. It is a pattern — intense, often overwhelming emotional pain triggered by real or perceived rejection, criticism, or failure. It appears frequently in ADHD and autism, and it is widely recognised by clinicians and researchers even without a diagnostic category of its own.</p>
+            <p>RSD is not a formal diagnosis. It is a pattern: intense, often overwhelming emotional pain triggered by real or perceived rejection, criticism, or failure. It appears frequently in ADHD and autism, and it is widely recognised by clinicians and researchers even without a diagnostic category of its own.</p>
             <p>By the age of ten, a neurodivergent child has typically received around <strong>20,000 more negative comments</strong> than their neurotypical peers. Every correction. Every sigh. Every red pen. Every moment of being told to sit down, slow down, stop, try harder, pay attention, behave.</p>
             <p>Those comments land as meaning. To the child they translate as: you are wrong, you have failed, you are the problem.</p>
             <p>RSD grows in that soil. It is not fragility. It is a nervous system that has spent years braced for criticism, building a <strong>hair-trigger response to anything that feels like rejection</strong>.</p>
@@ -193,14 +193,14 @@ export default function WhatWeOweOurChildren() {
           </ProfileSection>
 
           <ProfileSection title="Pathological Demand Avoidance (PDA)">
-            <p>PDA describes a profile, most commonly within autism, where everyday demands — including ordinary, low-stakes requests — <strong>trigger extreme anxiety</strong> and a need to avoid or control them.</p>
+            <p>PDA describes a profile, most commonly within autism, where everyday demands, including ordinary, low-stakes requests, <strong>trigger extreme anxiety</strong> and a need to avoid or control them.</p>
             <p>The term is debated clinically. The lived experience is not.</p>
             <p>On the surface this looks like refusal, negotiation, distraction, deflection, sudden shutdown or meltdown. To people who do not understand it, it looks like deliberate manipulation or defiance.</p>
-            <p>What is actually happening is simpler. The child's nervous system reads demands as threat. Not minor inconvenience — <strong>threat</strong>. And their whole body responds accordingly before they have any ability to respond calmly.</p>
-            <p>Standard behaviour management strategies — consequences, reward charts, escalating pressure — usually make things significantly worse for a child with a PDA profile. The approaches that help are <strong>low demand, high autonomy, and predictability</strong>. Offering choice rather than instruction. Framing requests as options. Reducing the number of direct demands in a day.</p>
+            <p>What is actually happening is simpler. The child's nervous system reads demands as threat. Not minor inconvenience, but <strong>threat</strong>. And their whole body responds accordingly before they have any ability to respond calmly.</p>
+            <p>Standard behaviour management strategies, such as consequences, reward charts and escalating pressure, usually make things significantly worse for a child with a PDA profile. The approaches that help are <strong>low demand, high autonomy, and predictability</strong>. Offering choice rather than instruction. Framing requests as options. Reducing the number of direct demands in a day.</p>
             <p>If this sounds like your child, the PDA Society has detailed guidance. Sharing it with the school is a reasonable starting point.</p>
             <div className="pt-1">
-              <ResourceLink label="PDA Society — guidance for families and schools" url="https://www.pdasociety.org.uk" />
+              <ResourceLink label="PDA Society: guidance for families and schools" url="https://www.pdasociety.org.uk" />
             </div>
           </ProfileSection>
 

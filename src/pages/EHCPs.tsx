@@ -290,7 +290,7 @@ export default function EHCPs() {
             The EHCP system faces significant pressures. Understanding where things commonly go wrong helps you <strong>prepare and respond effectively</strong>.
           </p>
           <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-            <li><strong>Threshold disputes:</strong> LAs frequently refuse initial assessments. About 24% of requests are refused, yet 95% of those assessed get a plan — suggesting many refusals are inappropriate.</li>
+            <li><strong>Threshold disputes:</strong> LAs frequently refuse initial assessments. About 24% of requests are refused, yet 95% of those assessed get a plan, suggesting many refusals are inappropriate.</li>
             <li><strong>Delays at every stage:</strong> Only half of plans are issued within 20 weeks. Some children wait over a year. Statutory timeframes are routinely missed.</li>
             <li><strong>Vague provision:</strong> Many EHCPs lack specific, quantified provision. Phrases like "access to" or "as needed" make support unenforceable.</li>
             <li><strong>Missing health and social care:</strong> Sections C, D, G, H are often blank. The system remains education-dominated despite being designed as multi-agency.</li>
@@ -312,16 +312,16 @@ export default function EHCPs() {
             When disagreements cannot be resolved, families can appeal to the <strong>First-tier Tribunal (SEND Tribunal)</strong>. You can appeal if the LA refuses to assess, refuses to issue, if you dispute the contents (Sections B, F, or I), or if the LA decides to cease your child's plan.
           </p>
           <p>
-            Before appealing, you must obtain a <strong>mediation certificate</strong> (by contacting a mediation adviser). Mediation itself is voluntary — you can proceed directly to appeal after getting the certificate.
+            Before appealing, you must obtain a <strong>mediation certificate</strong> (by contacting a mediation adviser). Mediation itself is voluntary. You can proceed directly to appeal after getting the certificate.
           </p>
           <p>
             The statistics are striking. In 2023/24, there were <strong>21,000 appeals, up 55% on the previous year</strong>. Parents win approximately 95% of cases, and 5,569 cases were conceded before the hearing. The number of appeals has grown sixfold since EHCPs were introduced in 2014.
           </p>
           <p>
-            LAs spent an estimated <strong>£153 million in 2023-24 on defending SEND appeals</strong>, and cumulatively over £580 million since 2014. Many LAs settle or concede before the hearing — about a third of appeals are resolved without a full hearing, usually because the LA agrees to what was sought.
+            LAs spent an estimated <strong>£153 million in 2023-24 on defending SEND appeals</strong>, and cumulatively over £580 million since 2014. Many LAs settle or concede before the hearing. About a third of appeals are resolved without a full hearing, usually because the LA agrees to what was sought.
           </p>
           <p>
-            Since 2018, the tribunal can also make <strong>recommendations about health and social care</strong> aspects of EHCPs. These are not legally binding but are expected to be followed. The tribunal process, while stressful, is <strong>relatively parent-friendly</strong> — most parents self-represent and still prevail overwhelmingly.
+            Since 2018, the tribunal can also make <strong>recommendations about health and social care</strong> aspects of EHCPs. These are not legally binding but are expected to be followed. The tribunal process, while stressful, is <strong>relatively parent-friendly</strong>. Most parents self-represent and still prevail overwhelmingly.
           </p>
         </div>
       </ContentBox>
