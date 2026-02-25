@@ -161,7 +161,7 @@ const Landing = () => {
 
         {/* Neurodiversity Global branding at bottom of hero */}
         <div className="relative flex flex-col items-center gap-2 pb-10">
-          <img src={ndgLogo} alt="Neurodiversity Global" className="h-32 opacity-80" />
+          <img src={ndgLogo} alt="Neurodiversity Global" className="h-96 opacity-80" />
           <p className="text-xs tracking-wide" style={{ color: "hsl(222 20% 50%)" }}>
             A free resource site by Neurodiversity Global
           </p>
