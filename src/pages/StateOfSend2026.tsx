@@ -152,16 +152,16 @@ export default function StateOfSend2026() {
               <Link
                 key={section.path}
                 to={section.path}
-                className="flex items-start gap-4 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group"
+                className="flex items-center gap-3 p-4 bg-card border border-border rounded-xl shadow-sm hover:shadow-md transition-all group"
               >
-                <div className={`w-10 h-10 rounded-lg ${colors.bg} flex items-center justify-center flex-shrink-0 border ${colors.border}`}>
-                  <span className={`text-sm font-bold ${colors.text}`}>{section.number}</span>
+                <div className={`w-8 h-8 rounded-lg ${colors.bg} flex items-center justify-center flex-shrink-0 border ${colors.border}`}>
+                  <span className={`text-xs font-bold ${colors.text}`}>{section.number}</span>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h2 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors">{section.title}</h2>
-                  <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{section.summary}</p>
+                  <h2 className="text-sm font-display font-semibold text-foreground group-hover:text-primary transition-colors">{section.title}</h2>
+                  <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{section.summary}</p>
                 </div>
-                <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-1 group-hover:text-primary transition-colors" />
+                <ArrowRight className="w-4 h-4 text-muted-foreground flex-shrink-0 group-hover:text-primary transition-colors" />
               </Link>
             );
           })}
