@@ -19,7 +19,7 @@ export function ContentBox({ id, icon: Icon, title, children }: ContentBoxProps)
   return (
     <section id={id} className={cn("content-section scroll-mt-24", isScan ? "py-1" : "py-4")}>
       <div className={cn(
-        "rounded-xl border border-border bg-card shadow-lg",
+        "rounded-xl border border-border bg-card shadow-card",
         isScan && !expanded ? "p-3" : "p-6"
       )}>
         <button
