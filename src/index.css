@@ -504,6 +504,12 @@
     animation-play-state: paused;
   }
 
+  /* Feature showcase progress bar */
+  @keyframes progress-fill {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
