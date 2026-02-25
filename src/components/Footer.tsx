@@ -150,10 +150,10 @@ export function Footer() {
         </div>
       )}
 
-      {/* Neurodiversity Global branding */}
+      {/* Neurodiversity Global branding + disclaimers + copyright */}
       <div className="border-t border-white/10">
-        <div className="content-wide py-6 flex flex-col items-center gap-3 text-center">
-          <img src={ngEducationLogo} alt="Neurodiversity Global Education" className="h-44" />
+        <div className="content-wide py-8 flex flex-col items-center gap-4 text-center">
+          <img src={ngEducationLogo} alt="Neurodiversity Global Education" className="h-80" />
           <p className="text-sm text-navy-muted">
             This is a resource from Neurodiversity Global.{" "}
             <a
@@ -166,29 +166,22 @@ export function Footer() {
             </a>
             .
           </p>
-        </div>
-      </div>
-
-      {/* Disclaimer bar */}
-      <div className="border-t border-white/10">
-        <div className="content-wide py-4 text-center">
-          <p className="text-xs text-navy-muted leading-relaxed">
+          <p className="text-xs text-navy-muted leading-relaxed max-w-2xl">
             Neurodiversity Global Ltd is not responsible for any data published on this site. All data comes from relevant and trusted sources.
           </p>
+          <div className="border-t border-white/10 w-full pt-4 mt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p className="text-xs text-navy-muted leading-relaxed text-center sm:text-left">
+              This is an independent public resource. It does not provide legal, medical, or professional advice. Information applies to England only.
+            </p>
+            <p className="text-xs text-white/30 whitespace-nowrap">
+              © {new Date().getFullYear()} Beacon SEND Navigator
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="border-t border-white/10">
-        <div className="content-wide py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-navy-muted leading-relaxed text-center sm:text-left">
-            This is an independent public resource. It does not provide legal, medical, or professional advice. Information applies to England only.
-          </p>
-          <p className="text-xs text-white/30 whitespace-nowrap">
-            © {new Date().getFullYear()} Beacon SEND Navigator
-          </p>
-        </div>
-      </div>
+      {/* Bottom padding so ticker doesn't cover content */}
+      <div className="h-20" />
     </footer>
   );
 }
