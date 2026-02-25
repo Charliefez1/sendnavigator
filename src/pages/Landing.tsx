@@ -179,7 +179,7 @@ const Landing = () => {
         />
         <div
           ref={fade2.ref}
-          className={`content-section py-28 sm:py-36 ${fade2.className}`}
+          className={`content-section py-16 sm:py-20 ${fade2.className}`}
           style={fade2.style}
         >
           <div className="max-w-2xl mx-auto text-center relative">
@@ -223,7 +223,7 @@ const Landing = () => {
       >
         <div
           ref={fade3.ref}
-          className={`content-wide py-20 sm:py-28 ${fade3.className}`}
+          className={`content-wide py-16 sm:py-20 ${fade3.className}`}
           style={fade3.style}
         >
           <div className="flex items-center justify-center gap-2 mb-2">
@@ -265,7 +265,7 @@ const Landing = () => {
         />
         <div
           ref={fade4.ref}
-          className={`content-section relative py-24 sm:py-32 ${fade4.className}`}
+          className={`content-section relative py-16 sm:py-20 ${fade4.className}`}
           style={fade4.style}
         >
           <div className="max-w-2xl mx-auto">
@@ -292,7 +292,7 @@ const Landing = () => {
       >
         <div
           ref={fade5.ref}
-          className={`content-section py-20 sm:py-28 ${fade5.className}`}
+          className={`content-section py-16 sm:py-20 ${fade5.className}`}
           style={fade5.style}
         >
           <div ref={authRef} className="max-w-sm mx-auto text-center">
