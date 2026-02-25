@@ -5,7 +5,7 @@ import { AuthForm } from "@/components/AuthForm";
 import { AnimatedFeatureShowcase } from "@/components/landing/AnimatedFeatureShowcase";
 import { LandingAskRich } from "@/components/landing/LandingAskRich";
 import { useAuth } from "@/contexts/AuthContext";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import beaconLogo from "@/assets/beacon-logo.png";
 
@@ -19,13 +19,17 @@ function useFadeIn() {
     if (!el) return;
     const obs = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
 
-  return { ref, className: visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6", style: { transition: "opacity 0.7s ease-out, transform 0.7s ease-out" } };
+  return {
+    ref,
+    className: visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
+    style: { transition: "opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1)" },
+  };
 }
 
 const Landing = () => {
@@ -55,117 +59,216 @@ const Landing = () => {
         path="/landing"
       />
 
-      {/* ────────────────────────────────────────────────
-          SECTION 1 — HERO (full viewport, dark navy)
-      ──────────────────────────────────────────────── */}
-      <section className="relative min-h-screen flex flex-col bg-navy text-navy-foreground overflow-hidden">
-        {/* Animated gradient backdrop */}
+      {/* ─── SECTION 1: HERO ─── */}
+      <section className="relative min-h-screen flex flex-col overflow-hidden" style={{ backgroundColor: "hsl(222 35% 10%)" }}>
+        {/* Layered gradient backdrop - cranked up */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background:
-              "radial-gradient(ellipse 120% 60% at 50% 0%, hsl(175 60% 40% / 0.12), transparent 70%), radial-gradient(ellipse 80% 50% at 80% 100%, hsl(262 50% 50% / 0.08), transparent 60%)",
-            animation: "hero-drift 12s ease-in-out infinite alternate",
+            background: [
+              "radial-gradient(ellipse 90% 50% at 50% -10%, hsl(175 60% 40% / 0.25), transparent 65%)",
+              "radial-gradient(ellipse 70% 60% at 85% 90%, hsl(262 50% 50% / 0.15), transparent 55%)",
+              "radial-gradient(ellipse 50% 40% at 10% 70%, hsl(175 60% 40% / 0.08), transparent 50%)",
+            ].join(", "),
+          }}
+        />
+        {/* Grain texture overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.035]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+            backgroundSize: "200px 200px",
+          }}
+        />
+        {/* Animated glow pulse */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "radial-gradient(circle 600px at 50% 40%, hsl(175 60% 40% / 0.1), transparent 70%)",
+            animation: "hero-glow 8s ease-in-out infinite alternate",
           }}
         />
 
         {/* Header bar */}
-        <div className="relative content-wide flex items-center justify-between py-5">
+        <div className="relative content-wide flex items-center justify-between py-6">
           <img src={beaconLogo} alt="Beacon SEND Navigator" className="h-8" />
           <button
             onClick={scrollToAuth}
-            className="text-sm text-navy-muted hover:text-navy-foreground transition-colors"
+            className="text-sm tracking-wide min-h-[44px] px-4"
+            style={{ color: "hsl(222 20% 55%)" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "hsl(0 0% 95%)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "hsl(222 20% 55%)")}
           >
             Sign in
           </button>
         </div>
 
-        {/* Hero content — vertically centered */}
+        {/* Hero content */}
         <div className="relative flex-1 flex items-center justify-center px-4">
-          <div className="text-center max-w-2xl mx-auto">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold leading-[1.15] mb-6">
+          <div className="text-center max-w-3xl mx-auto">
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl font-display font-semibold mb-7"
+              style={{ color: "hsl(0 0% 96%)", lineHeight: "1.08" }}
+            >
               Your child's SEND rights.
               <br />
-              <span style={{ color: "hsl(var(--accent-teal))" }}>
+              <span
+                className="relative inline-block mt-2"
+                style={{
+                  color: "hsl(175 60% 52%)",
+                  textShadow: "0 0 40px hsl(175 60% 40% / 0.35)",
+                }}
+              >
                 Explained by someone who gets it.
               </span>
             </h1>
-            <p className="text-base sm:text-lg text-navy-muted leading-relaxed max-w-md mx-auto mb-10">
+            <p
+              className="text-base sm:text-lg tracking-wide max-w-md mx-auto mb-12"
+              style={{ color: "hsl(222 20% 55%)", fontFamily: "Inter, system-ui, sans-serif", lineHeight: "1.7" }}
+            >
               Independent. Fact-based. Built by a parent, for parents.
             </p>
             <Button
               onClick={scrollToAuth}
               size="lg"
-              className="rounded-full px-8 py-3 text-base gap-2"
+              className="rounded-full px-10 py-4 text-base gap-2 transition-all duration-300"
+              style={{
+                boxShadow: "0 0 30px hsl(175 60% 40% / 0.25), 0 4px 20px hsl(0 0% 0% / 0.3)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = "0 0 50px hsl(175 60% 40% / 0.4), 0 4px 30px hsl(0 0% 0% / 0.4)";
+                e.currentTarget.style.transform = "translateY(-1px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = "0 0 30px hsl(175 60% 40% / 0.25), 0 4px 20px hsl(0 0% 0% / 0.3)";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
             >
               Get started free
               <ArrowRight className="w-4 h-4" />
             </Button>
+
+            {/* Teal fading divider below CTA */}
+            <div
+              className="mt-14 mx-auto h-px w-48"
+              style={{
+                background: "linear-gradient(to right, transparent, hsl(175 60% 40% / 0.4), transparent)",
+              }}
+            />
           </div>
         </div>
 
-        {/* Bottom spacer */}
-        <div className="h-16" />
+        <div className="h-20" />
       </section>
 
-      {/* ────────────────────────────────────────────────
-          SECTION 2 — PROBLEM STATEMENT (emotional hook)
-      ──────────────────────────────────────────────── */}
-      <section className="bg-background">
+      {/* ─── SECTION 2: PROBLEM STATEMENT ─── */}
+      <section className="bg-background relative">
+        {/* Gradient threshold border */}
+        <div
+          className="absolute top-0 left-0 right-0 h-px"
+          style={{
+            background: "linear-gradient(to right, transparent, hsl(175 60% 40% / 0.25), transparent)",
+          }}
+        />
         <div
           ref={fade2.ref}
-          className={`content-section py-20 sm:py-28 ${fade2.className}`}
+          className={`content-section py-28 sm:py-36 ${fade2.className}`}
           style={fade2.style}
         >
-          <div className="max-w-xl mx-auto text-center space-y-6">
-            <p className="text-lg sm:text-xl md:text-2xl font-display font-medium text-foreground leading-relaxed">
+          <div className="max-w-2xl mx-auto text-center relative">
+            {/* Decorative quotation mark */}
+            <div
+              className="absolute -top-8 left-1/2 -translate-x-1/2 font-display select-none pointer-events-none"
+              style={{
+                fontSize: "10rem",
+                lineHeight: "1",
+                color: "hsl(175 60% 40% / 0.07)",
+              }}
+              aria-hidden="true"
+            >
+              &ldquo;
+            </div>
+
+            <p
+              className="text-2xl sm:text-3xl md:text-4xl font-display leading-snug text-foreground mb-8"
+              style={{ fontStyle: "italic" }}
+            >
               SEND reform is coming. The government won't tell you what it means. The media gets it wrong. And the jargon makes it impossible to know what's real.
             </p>
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              I spent months researching every angle so you don't have to.
+
+            <div className="flex items-center justify-center gap-3">
+              <div className="w-6 h-px" style={{ backgroundColor: "hsl(175 60% 40% / 0.5)" }} />
+              <p className="text-base sm:text-lg text-muted-foreground">
+                I spent months researching every angle so you don't have to.
+              </p>
+            </div>
+            <p className="text-sm text-muted-foreground mt-2 tracking-wide">
+              Rich Ferriman
             </p>
           </div>
         </div>
       </section>
 
-      {/* ────────────────────────────────────────────────
-          SECTION 3 — ANIMATED FEATURE SHOWCASE
-      ──────────────────────────────────────────────── */}
+      {/* ─── SECTION 3: FEATURE SHOWCASE ─── */}
       <section
-        className="border-y border-border"
-        style={{ backgroundColor: "hsl(var(--navy) / 0.03)" }}
+        className="relative"
+        style={{ backgroundColor: "hsl(222 35% 18% / 0.04)" }}
       >
         <div
           ref={fade3.ref}
-          className={`content-wide py-16 sm:py-24 ${fade3.className}`}
+          className={`content-wide py-20 sm:py-28 ${fade3.className}`}
           style={fade3.style}
         >
-          <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-2 text-center">
-            What's inside
-          </p>
-          <h2 className="text-xl sm:text-2xl font-display font-semibold text-foreground mb-10 text-center">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "hsl(175 60% 40%)" }} />
+            <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+              What's inside
+            </p>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-12 text-center">
             Everything you need in one place
           </h2>
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <AnimatedFeatureShowcase />
           </div>
         </div>
       </section>
 
-      {/* ────────────────────────────────────────────────
-          SECTION 4 — ASK RICH (dark, dramatic)
-      ──────────────────────────────────────────────── */}
-      <section className="bg-navy text-navy-foreground">
+      {/* ─── SECTION 4: ASK RICH ─── */}
+      <section
+        className="relative overflow-hidden"
+        style={{
+          backgroundColor: "hsl(222 35% 8%)",
+        }}
+      >
+        {/* Diagonal teal stripe */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "linear-gradient(135deg, transparent 30%, hsl(175 60% 40% / 0.06) 50%, transparent 70%)",
+          }}
+        />
+        {/* Grain overlay */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.03]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+            backgroundSize: "200px 200px",
+          }}
+        />
         <div
           ref={fade4.ref}
-          className={`content-section py-16 sm:py-24 ${fade4.className}`}
+          className={`content-section relative py-24 sm:py-32 ${fade4.className}`}
           style={fade4.style}
         >
           <div className="max-w-2xl mx-auto">
-            <h2 className="text-xl sm:text-2xl font-display font-semibold text-navy-foreground mb-2">
+            <h2
+              className="text-2xl sm:text-3xl font-display font-semibold mb-2"
+              style={{ color: "hsl(0 0% 96%)" }}
+            >
               Try it. Ask me anything.
             </h2>
-            <p className="text-sm text-navy-muted mb-8">
+            <p className="text-sm mb-10" style={{ color: "hsl(222 20% 55%)" }}>
               Get a real answer grounded in confirmed facts, not generic AI output.
             </p>
             <LandingAskRich onSignUpClick={scrollToAuth} />
@@ -173,35 +276,61 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* ────────────────────────────────────────────────
-          SECTION 5 — AUTH + CLOSE (conversion)
-      ──────────────────────────────────────────────── */}
-      <section className="bg-background">
+      {/* ─── SECTION 5: AUTH + CLOSE ─── */}
+      <section
+        className="relative"
+        style={{
+          background: "linear-gradient(180deg, hsl(30 15% 96%), hsl(20 12% 95%))",
+        }}
+      >
         <div
           ref={fade5.ref}
-          className={`content-section py-16 sm:py-24 ${fade5.className}`}
+          className={`content-section py-20 sm:py-28 ${fade5.className}`}
           style={fade5.style}
         >
           <div ref={authRef} className="max-w-sm mx-auto text-center">
-            <p className="text-sm text-muted-foreground mb-6">
-              Join thousands of parents staying informed
+            <p
+              className="text-4xl sm:text-5xl font-display font-semibold mb-3"
+              style={{ color: "hsl(175 60% 40%)" }}
+            >
+              2,400+
             </p>
-            <AuthForm />
-            <p className="text-xs text-muted-foreground mt-4">
-              Free. No spam. Built by{" "}
-              <Link to="/rich-ferriman" className="text-primary hover:underline">
-                Rich Ferriman
-              </Link>
-              .
+            <p className="text-lg font-display font-medium text-foreground mb-8">
+              parents staying informed
             </p>
+            <div className="shadow-xl rounded-xl">
+              <AuthForm />
+            </div>
+            <div className="flex items-center justify-center gap-5 mt-5 text-xs text-muted-foreground">
+              <span className="flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5" style={{ color: "hsl(175 60% 40%)" }} />
+                Free
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5" style={{ color: "hsl(175 60% 40%)" }} />
+                No spam
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Check className="w-3.5 h-3.5" style={{ color: "hsl(175 60% 40%)" }} />
+                Built by{" "}
+                <Link to="/rich-ferriman" className="text-primary hover:underline">
+                  Rich Ferriman
+                </Link>
+              </span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ────────────────────────────────────────────────
-          SECTION 6 — FOOTER (minimal)
-      ──────────────────────────────────────────────── */}
-      <footer className="border-t border-border py-4">
+      {/* ─── SECTION 6: FOOTER ─── */}
+      <footer className="relative py-5">
+        {/* Teal gradient top line */}
+        <div
+          className="absolute top-0 left-0 right-0 h-px"
+          style={{
+            background: "linear-gradient(to right, transparent, hsl(175 60% 40% / 0.2), transparent)",
+          }}
+        />
         <div className="content-section flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
           <p>&copy; 2026 Beacon SEND Navigator</p>
           <div className="flex items-center gap-4">
@@ -213,11 +342,11 @@ const Landing = () => {
         </div>
       </footer>
 
-      {/* Hero gradient animation */}
+      {/* Animations */}
       <style>{`
-        @keyframes hero-drift {
-          0% { opacity: 0.7; transform: scale(1); }
-          100% { opacity: 1; transform: scale(1.05); }
+        @keyframes hero-glow {
+          0% { opacity: 0.5; transform: scale(1); }
+          100% { opacity: 1; transform: scale(1.08); }
         }
       `}</style>
     </div>
