@@ -399,18 +399,18 @@ const Index = () => {
         {/* ─── SECTION 5: CREATORS text ─── */}
         <section className="relative">
           <div className="content-section py-6 sm:py-8 flex flex-col items-center text-center">
-            <p
-              className="text-xs font-medium uppercase tracking-widest mb-1"
-              style={{ color: "hsl(175 60% 50%)" }}
+            <h1
+              className="text-2xl sm:text-3xl font-display font-semibold"
+              style={{ color: "hsl(0 0% 96%)" }}
             >
               Built by parents
-            </p>
-            <p
-              className="text-sm max-w-md leading-relaxed"
+            </h1>
+            <h2
+              className="text-base sm:text-lg font-display font-normal mt-1 max-w-md leading-relaxed"
               style={{ color: "hsl(222 20% 55%)" }}
             >
               Still working at making this work.
-            </p>
+            </h2>
           </div>
         </section>
 
