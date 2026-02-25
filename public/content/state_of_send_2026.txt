@@ -1,0 +1,40 @@
+Title: The State of SEND 2026 - Report
+Route: /state-of-send-2026
+Description: An 8-part report tracking SEND reform in England. From confirmed changes to unanswered questions. Everything families need to know.
+Last updated: 20th February 2026
+Status: Confirmed
+Key topics: Reform report, White Paper, SEND system
+Key numbers: 8 sections
+Key sources: Schools White Paper 2026
+
+---
+
+The State of SEND 2026
+
+A structured, evidence-based report tracking SEND reform in England. Eight sections move from what is confirmed through what is being discussed to what remains unknown. Read in order, or jump to what matters most to you.
+
+Report sections:
+
+1. What we know so far [/state-of-send-2026/where-we-are-now]
+The current state of the SEND system, existing legal protections, and how the system is performing right now.
+
+2. What is changing [/state-of-send-2026/what-is-changing]
+Confirmed reforms, the 10 year schools plan, operational direction to councils, and the three tier model being embedded.
+
+3. What has not changed [/state-of-send-2026/what-has-not-changed]
+Your legal rights under the Children and Families Act 2014, EHCP protections, and tribunal appeal routes that remain in force.
+
+4. What is being discussed [/state-of-send-2026/what-is-being-discussed]
+Proposals under consideration including tiered support models, mainstream inclusion expansion, and funding mechanism changes.
+
+5. What we do not know yet [/state-of-send-2026/what-we-do-not-know]
+Unanswered questions about the White Paper content, assessment thresholds, appeal rights, and implementation timelines.
+
+6. What the leaks are saying [/state-of-send-2026/what-the-leaks-are-saying]
+BBC and media reports on potential EHCP redesign, the three tier ladder, and ministerial concern about political backlash.
+
+7. What the leaks do not mean [/state-of-send-2026/what-the-leaks-do-not-mean]
+Common misinterpretations of leaked proposals addressed. What the reports actually say versus what people fear.
+
+8. Timeline and next steps [/state-of-send-2026/timeline]
+Key dates, decision points and milestones from the national conversation to the expected White Paper and beyond.

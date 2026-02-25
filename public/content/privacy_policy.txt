@@ -1,0 +1,45 @@
+Title: Privacy Policy
+Route: /privacy-policy
+Description: How the SEND Reform Navigator collects, uses, and protects your data.
+Last updated: 23 February 2026
+Status: Confirmed
+Key topics: Privacy, Data protection, GDPR
+Key numbers: n/a
+Key sources: GDPR
+
+---
+
+Privacy Policy
+
+Who we are
+The SEND Reform Navigator is operated by Neurodiversity Global Ltd.
+
+What data we collect
+- Analytics (with consent): Anonymous page views.
+- Contact form: Name, email, message.
+- Feedback and questions: Name (optional) and text.
+- Child profile data: Stored temporarily (up to 14 days) then deleted. Encrypted.
+- Authentication: Email and hashed password.
+
+Lawful basis
+Legitimate interest and consent.
+
+How we use your data
+- To display feedback (moderated).
+- To respond to messages.
+- To improve the site.
+- To generate child profile documents (AI processed, not trained on).
+
+Data retention
+- Child profile data: Deleted after 14 days.
+- Analytics: Up to 12 months.
+- Contact/Feedback: Retained while site is active.
+
+Data sharing
+We do not sell data. We do not share with advertisers. AI processing via Anthropic (Claude) does not use data for training.
+
+Cookies
+Essential cookies and optional analytics cookies.
+
+Your rights
+Right to access, correct, delete, or object.

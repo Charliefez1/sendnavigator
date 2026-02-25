@@ -1,0 +1,32 @@
+Title: How to use this guide
+Route: /how-to-use
+Description: Everything you need to know to get the most from this resource.
+Last updated: 7th February 2026
+Status: Confirmed
+Key topics: Navigation, Colour coding
+Key numbers: n/a
+Key sources: n/a
+
+---
+
+How to use this guide
+
+Two navigation bars
+- Top bar: Site links (About, Sources, Q&A)
+- Journey tabs: Colour-coded tabs taking you through the reform story step by step.
+
+What the colours mean
+- Teal: Confirmed (Official facts)
+- Amber: Under discussion (Proposals)
+- Orange: Unconfirmed / Leaked (Rumours)
+- Rose: What's next (Timeline)
+
+Page structure
+1. 60-second summary
+2. Reading depth control
+3. Information layers
+
+Helpful features
+- Dark & light mode
+- Ask a question
+- Reassurance first (Leading with what hasn't changed)
