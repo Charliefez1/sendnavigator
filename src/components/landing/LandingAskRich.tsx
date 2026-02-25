@@ -7,6 +7,8 @@ const exampleQuestions = [
   "Has the law on EHCPs changed?",
   "What is the SEND reform about?",
   "What should I do right now?",
+  "Will my child lose their EHCP?",
+  "What are Individual Support Plans?",
 ];
 
 interface AnswerData {
