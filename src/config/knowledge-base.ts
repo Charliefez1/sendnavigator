@@ -8,7 +8,7 @@
  */
 
 export const KNOWLEDGE_BASE = {
-  lastUpdated: "20th February 2026",
+  lastUpdated: "25th February 2026",
   
   // ==========================================================================
   // CURRENT LEGAL POSITION
@@ -55,13 +55,28 @@ Confirmed government activity on SEND:
 - Government announced £3 billion capital funding to expand specialist places (Department for Education, 02 March 2023)
 - Government announced a £200 million SEND teacher training programme (Department for Education, 16 January 2026)
 - The 10 year schools and colleges plan was published, linking mainstream inclusion to forthcoming SEND reform (Department for Education, 10 February 2026)
+- The Schools White Paper "Every Child Achieving and Thriving" was published (Department for Education, 23 February 2026)
 
-10 year schools and colleges plan key signals:
-- Inclusive mainstream education positioned as the default model
-- Expansion of inclusion bases within schools
-- Emphasis on workforce development and teacher training
-- Reform framed as long term system redesign rather than rapid statutory change
-- Plan explicitly references forthcoming SEND reforms in a Schools White Paper but does not detail threshold, funding or appeal changes
+Schools White Paper key details (Education Hub blog, February 2026):
+- Creates a four-level support model: Universal offer, Targeted, Targeted Plus, and Specialist
+- Universal offer: high-quality adaptive teaching, calm environments, early help for all children
+- Targeted: structured support such as speech and language in small groups or sensory support, recorded in a digital Individual Support Plan (ISP)
+- Targeted Plus: more specialist support from educational psychologists, speech and language therapists via a new "Experts at Hand" programme, also recorded in an ISP
+- Specialist: comprehensive support through a Specialist Provision Package and EHCP in mainstream or specialist settings, with day-to-day support also recorded in an ISP
+- Individual Support Plans (ISPs) will be a legal duty on every school, nursery, and college
+- ISPs are digital records of needs, support, and delivery, accessible to teachers and parents
+- EHCPs are explicitly retained for children with complex needs
+- Every child with an EHCP will also have an ISP for day-to-day support
+- No child will lose support they currently receive
+- No changes to EHCP support will begin before September 2030
+- Assessment of whether needs can be better met via ISP will only apply to children aged seven or younger today
+- All other children keep existing EHCPs until at least age 16
+- Children in special schools are not affected by any reassessment
+- £200 million training programme so every teacher can support children with SEND
+- Inclusion bases expected in every secondary school, plus equivalent primary places
+- Over £3.7 billion creating 60,000 specialist places in nurseries, schools and colleges
+- Experts at Hand service: around £1.8 billion over three years for occupational therapy, educational psychology, speech and language therapy in mainstream settings
+- Total additional SEND funding: £7 billion more in 2028-29 than 2025-26
 
 Operational direction to local areas (reported by Schools Week, 05 February 2026):
 - Councils and Integrated Care Boards have been instructed to begin drafting local SEND reform plans now
@@ -95,13 +110,32 @@ Key facts:
 
 There is NO confirmed legislation to abolish EHCPs or remove the right to appeal.
 
-The three tier model and rights:
-- We already operate with informal tiers: no SEN, SEN Support, EHCP
-- What is new is the formalisation and expectation that universal support should resolve most needs, targeted support with external specialists should be used before statutory routes, and the specialist tier should be narrower
-- The risk identified by sector analysis is procedural gatekeeping
-- If access to assessment requires demonstrated failure at universal and targeted levels, timelines could extend without a formal refusal being issued
-- The key unresolved question: will the tier model sit alongside the current legal threshold, or will it effectively raise it?
-- Until the White Paper or draft legislation is published, that remains unknown
+Schools White Paper position on EHCPs (February 2026):
+- EHCPs are explicitly retained for children who need more support than is routinely available in mainstream schools
+- Digital EHCPs will be introduced
+- Every child with an EHCP will also have an Individual Support Plan for day-to-day support
+- No child is losing support they need
+- No changes to EHCP support will begin before September 2030
+- Assessment of whether needs can be better met via ISP only applies to children aged seven or younger at time of White Paper
+- All other children keep existing EHCPs until at least age 16
+- Children in special schools are not affected
+
+Individual Support Plans (ISPs):
+- ISPs are a new digital record of needs, support, and delivery
+- Every school, nursery and college will have a legal duty to create ISPs for every child with SEND
+- ISPs are school-led and reviewed regularly
+- ISPs are NOT statutory plans under the Children and Families Act 2014
+- ISPs cannot be appealed to the SEND Tribunal
+- ISPs describe day-to-day school support only
+
+The four-level model and rights:
+- Universal offer: adaptive teaching and early help for all
+- Targeted: structured support recorded in ISP
+- Targeted Plus: specialist support via Experts at Hand recorded in ISP
+- Specialist: EHCP and Specialist Provision Package
+- The risk identified by sector analysis is procedural gatekeeping at Targeted and Targeted Plus levels
+- The key unresolved question: will the Specialist Provision Package thresholds effectively raise the bar for EHCP access?
+- Until the consultation closes and legislation is drafted, that remains unknown
 
 Any proposals you may have heard about:
 - Remain proposals only
@@ -256,24 +290,33 @@ Completed:
 - 05 February 2026: Schools Week reported operational direction to local areas including maturity tool and three tier model
 - 10 February 2026: 10 year schools and colleges plan published (Department for Education)
 - 18 February 2026: BBC reported ministers considering radical SEND support redesign
+- 23 February 2026: Schools White Paper "Every Child Achieving and Thriving" published (Department for Education)
+- 23 February 2026: Education Hub blog published parent-facing summary of SEND changes
+
+Key White Paper timeline commitments:
+- No changes to EHCP support before September 2030
+- £7 billion more SEND funding in 2028-29 than 2025-26
+- Experts at Hand: £1.8 billion over three years starting from publication
+- 60,000 new specialist places funded by £3.7 billion capital investment
 
 Upcoming:
-- 2026: Schools White Paper expected to include SEND reform proposals
-- 2026: Government has stated a formal consultation will take place (Department for Education, December 2025)
+- 2026: Government consultation on SEND reform proposals (formal consultation expected)
+- 2026 onwards: ISP duty phased in across schools, nurseries, and colleges
+- September 2030 earliest: any changes to existing EHCP support
 
-Structural position as of 20 February 2026:
+Structural position as of 25 February 2026:
 Three parallel tracks are now visible:
 1. Operational preparation at local level (councils drafting reform plans)
-2. Messaging normalisation of a tiered inclusion model (10 year plan)
-3. Unpublished legislative detail still pending (White Paper)
+2. Legislative framework set out in the Schools White Paper
+3. Consultation on detailed proposals still to come
 
-The gap between operational direction and statutory clarity is the central tension in SEND reform.
+The gap between the White Paper's commitments and the detailed consultation responses is the central tension in SEND reform.
 
 What we do not know yet:
-- Exact White Paper publication date
-- Exact consultation launch date
+- Specialist Provision Package thresholds (not yet defined)
+- Exact consultation launch date and duration
 - Content of draft legislation
-- Implementation dates for any legal changes
+- Implementation dates beyond September 2030 commitment
 
 Important: Future dates are subject to parliamentary process. No changes apply until legislation is passed.
     `.trim(),
