@@ -290,7 +290,7 @@ const Index = () => {
                 />
                 <div className="text-center sm:text-left">
                   <h2
-                    className="text-2xl sm:text-3xl font-display font-semibold mb-2"
+                    className="text-2xl sm:text-3xl font-display font-normal mb-2"
                     style={{ color: "hsl(0 0% 96%)" }}
                   >
                     Got a question? Just ask.
