@@ -1,91 +1,81 @@
 
+# Landing Page: Full Redesign
 
-# Landing Page Redesign
+## Philosophy
+Stop treating this like an information page. This is a **conversion page**. One job: make a parent feel understood, show them something powerful exists, and get them to sign up. Everything else is noise.
 
-## Overview
-Redesign the `/landing` page to serve as a compelling, modern entry point that showcases what the SEND Navigator offers, includes a limited "Ask Rich" preview with a frosted paywall, and draws inspiration from SiteGround's animated feature showcase pattern.
+## New Page Structure
 
-## Changes
+### Section 1: Hero (full viewport height)
+- **Dark navy**, full-bleed, edge to edge
+- Beacon logo top-left, "Sign in" top-right — minimal header
+- Centre of screen: one powerful headline in large display type
+  - "Your child's SEND rights. Explained by someone who gets it."
+- Below that: a single line of subtext
+  - "Independent. Fact-based. Built by a parent, for parents."
+- A single CTA button: "Get started free" (scrolls to auth)
+- No cards, no boxes, no trust pills cluttering this space
+- Subtle animated gradient behind the text (slow-moving, not distracting)
 
-### 1. Remove the Neurodiversity Global image panel
-- Remove the right-hand image column from the hero section (the `neurodiversityLanding` import and its navy container)
-- The hero becomes a single-column, text-led layout
+### Section 2: The Problem Statement (emotional hook)
+- Light background, generous whitespace
+- Short, punchy copy in Rich's voice:
+  - "SEND reform is coming. The government won't tell you what it means. The media gets it wrong. And the jargon makes it impossible to know what's real."
+  - "I spent months researching every angle so you don't have to."
+- This section is text only. No icons, no cards. Just words that land.
 
-### 2. Update Beacon logo in both positions
-- Header logo and the "About" section logo both currently use `beacon-logo.png`
-- Update both `<img>` tags to use the current Beacon logo asset (confirm with you if a new file is needed, or if the existing `beacon-logo.png` has been updated)
+### Section 3: Animated Feature Showcase (what's inside)
+- Keep the existing `AnimatedFeatureShowcase` component but give it more room
+- Full-width section with a tinted background
+- Larger typography for the active feature description
+- The 5 features remain: SEND Reform Report, EHCP Guide, My Child Profile, What to do now, Ask Rich
 
-### 3. Add "Ask Rich" preview with frosted paywall
-- Create a new `LandingAskRich` component that embeds a simplified version of the `QuestionInput` component
-- When a user submits a question:
-  - The question is sent to the existing `qanda` edge function as normal
-  - The answer renders but with a CSS frost/blur overlay covering roughly 70% of the response (the first ~30% is visible)
-  - A call-to-action overlay appears on the frosted area: "Sign up or sign in to read the full answer"
-  - Clicking it scrolls to or focuses the AuthForm
-- This uses the existing `qanda` edge function with no backend changes
+### Section 4: Ask Rich Preview (the hook)
+- Keep the existing `LandingAskRich` component with the frosted paywall
+- But give it a dramatic presentation:
+  - Section headline: "Try it. Ask me anything."
+  - Dark background again to create rhythm (dark-light-dark)
+  - The input is large and prominent
+  - Example questions are clearly clickable
 
-### 4. Animated feature showcase (SiteGround-inspired)
-- Create an `AnimatedFeatureShowcase` component
-- Right side: a stack of 5 feature "cards" that animate in sequence (auto-cycling every 4 seconds, pausable on hover)
-- Each card has an icon + label, and when active it scales up / highlights
-- Left side: a headline and short description that updates to match the active feature
-- The 5 features:
-  1. **SEND Reform Report** - "Track every aspect of SEND reform across 8 detailed sections"
-  2. **EHCP Guide** - "Understand your rights, the process, and what to do when things go wrong"
-  3. **My Child: A Profile** - "Build a professional document about your child to share with schools"
-  4. **What to do now** - "Practical steps based on current law, not speculation"
-  5. **Ask Rich** - "Get plain-English answers to your SEND questions"
-- Uses the existing 5-colour accent system (teal, deep blue, amber, coral, violet)
-- Smooth CSS transitions with `transition-all duration-500`
+### Section 5: Auth + Close (conversion)
+- Clean, centered `AuthForm`
+- Above it: "Join thousands of parents staying informed" (or similar social proof line)
+- Below it: "Free. No spam. Built by Rich Ferriman." with link to About
 
-### 5. Rewrite landing page copy
-Current copy is heavily focused on "what has changed" and reassurance about EHCPs. The new copy should reflect what the tool actually is now:
+### Section 6: Minimal footer
+- Copyright, About, Privacy, Sources links
+- No cards, no extra content
 
-**Hero headline**: "The independent guide to SEND reform in England"
-**Sub-headline**: "Clear facts, practical tools, and honest answers for parents navigating the SEND system"
+## Technical Details
 
-**About section** (replaces current long text block):
-- Short, punchy description of what the Navigator is
-- What it includes (the 5 tools above)
-- Trust signals remain (Independent, Fact-based, For families)
-- Attribution to Rich Ferriman with link
+### Files modified
+- `src/pages/Landing.tsx` — full rewrite with the new 6-section structure
+- `src/components/landing/AnimatedFeatureShowcase.tsx` — minor spacing/typography tweaks for the larger context
+- `src/components/landing/LandingAskRich.tsx` — no structural changes, just container styling adjustments
 
-### 6. Updated page structure (top to bottom)
-1. Navy header with Beacon logo (updated)
-2. News ticker (unchanged)
-3. Hero section: headline + sub-headline + AuthForm (single column, centred)
-4. Animated feature showcase (the 5 tools)
-5. Ask Rich preview with frosted paywall
-6. Trust/about card (shortened copy, Beacon logo updated)
-7. Footer (unchanged)
+### No new components needed
+The existing `AnimatedFeatureShowcase` and `LandingAskRich` components work well — the issue is the page wrapping them, not the components themselves.
 
-## Technical details
+### Design approach
+- Full-bleed sections alternating dark/light/tinted/dark/light
+- Much larger headline typography (text-4xl to text-5xl on desktop)
+- Generous vertical padding (py-20 to py-32 on desktop)
+- Remove all unnecessary cards, boxes, and borders from the landing page
+- The landing page uses its own visual language — bolder and more spacious than the app interior
+- CSS animated gradient on the hero (keyframe animation, no library)
+- Scroll-based fade-in for sections below the fold using IntersectionObserver + CSS transitions
 
-### New components
-- `src/components/landing/LandingAskRich.tsx` - Wraps QuestionInput + frosted answer display
-- `src/components/landing/AnimatedFeatureShowcase.tsx` - Auto-cycling feature cards with synced descriptions
+### What gets removed
+- Trust pills from the hero (moved conceptually into the problem statement copy)
+- The bouncing arrow (replaced by natural scroll flow)
+- The about card section (absorbed into the auth/close section)
+- The side-by-side auth + showcase layout (each gets its own full-width section)
+- News ticker from the hero (it breaks the dramatic opening — can remain elsewhere in the app)
 
-### Modified files
-- `src/pages/Landing.tsx` - Full rewrite of the page layout and copy
-- No changes to `AuthForm.tsx`, `QandAComponent.tsx`, `QuestionInput.tsx`, or any edge functions
-
-### Frosted answer implementation
-```text
-Answer container:
-  - position: relative
-  - First 30%: visible normally
-  - Remaining 70%: CSS mask-image gradient from transparent to opaque white
-  - Overlaid with: backdrop-blur-md + semi-transparent bg + CTA button
-```
-
-### Animation implementation
-- `useState` for `activeIndex` (0-4)
-- `useEffect` with `setInterval(4000)` for auto-cycling
-- `onMouseEnter` pauses, `onMouseLeave` resumes
-- Each card transitions with scale, opacity, and border-color changes
-- Description area uses `AnimatePresence`-style fade (CSS transitions, no extra library)
-
-### No backend changes required
-- The `qanda` edge function already works for unauthenticated users (it's invoked via the Supabase client which includes the anon key)
-- The frosting is purely a frontend visual treatment
-
+### What stays
+- `AnimatedFeatureShowcase` component (with more breathing room)
+- `LandingAskRich` component with frosted paywall
+- `AuthForm` component
+- Beacon logo
+- Preview mode bypass (`?preview=true`)
