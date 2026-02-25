@@ -55,7 +55,7 @@ export function GuideMe() {
   // === RESULT VIEW ===
   if (result) {
     return (
-      <div className="bg-card border border-border rounded-xl p-5 sm:p-6 shadow-lg space-y-5">
+      <div className="bg-card border border-border rounded-xl p-4 sm:p-5 shadow-lg space-y-4">
         <div className="flex items-start gap-3">
           <Compass className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
           <p className="text-sm text-foreground leading-relaxed">{result.message}</p>
@@ -95,7 +95,7 @@ export function GuideMe() {
   // === LOADING VIEW ===
   if (loading) {
     return (
-      <div className="bg-card border border-border rounded-xl p-6 sm:p-8 shadow-lg">
+      <div className="bg-card border border-border rounded-xl p-4 sm:p-5 shadow-lg">
         <div className="flex items-center justify-center gap-3 py-6">
           <Loader2 className="w-4 h-4 text-primary animate-spin" />
           <p className="text-sm text-muted-foreground">Finding the right pages for you...</p>
@@ -106,10 +106,10 @@ export function GuideMe() {
 
   // === INPUT VIEW ===
   return (
-    <div className="bg-card border border-border rounded-xl p-6 sm:p-8 shadow-lg space-y-5">
+    <div className="bg-card border border-border rounded-xl p-4 sm:p-5 shadow-lg space-y-4">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-          <Compass className="w-5 h-5 text-primary" />
+        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+          <Compass className="w-4 h-4 text-primary" />
         </div>
         <div>
           <h1 className="text-lg sm:text-xl font-display font-semibold text-foreground">
