@@ -4,35 +4,35 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { QandAComponent } from "@/components/qanda";
 import { NewsHeadlines } from "@/components/NewsHeadlines";
-
-import { SendiassSignpost } from "@/components/SendiassSignpost";
-import { WordFromRich } from "@/components/WordFromRich";
 import { GuideMe } from "@/components/GuideMe";
 import {
   ArrowRight,
   BookOpen,
-  Heart,
   Shield,
   Scale,
-  Megaphone,
+  MessageCircleQuestion,
+  ClipboardList,
+  ChevronDown,
   FileText,
-  Users,
+  Heart,
+  Megaphone,
   Brain,
   GraduationCap,
   AlertTriangle,
   Building2,
   MapPin,
   Globe,
-  MessageCircleQuestion,
   MessageSquare,
-  Lightbulb,
-  HandHeart,
   HelpCircle,
-  ClipboardList,
+  HandHeart,
+  Users,
+  Lightbulb,
   Stethoscope,
-  ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import richPhoto from "@/assets/rich-ferriman-bio.png";
+
+/* ── Content link types ── */
 
 interface ContentLink {
   path: string;
@@ -47,10 +47,10 @@ const reportSections: ContentLink[] = [
   { path: "/state-of-send-2026/what-is-changing", title: "What is changing", summary: "Confirmed reforms", icon: FileText },
   { path: "/state-of-send-2026/what-has-not-changed", title: "What has not changed", summary: "Your existing rights", icon: Shield },
   { path: "/state-of-send-2026/what-is-being-discussed", title: "What is being discussed", summary: "Proposals and consultations", icon: Megaphone },
-  { path: "/state-of-send-2026/what-we-do-not-know", title: "What we don't know", summary: "Unanswered questions", icon: HelpCircle },
+  { path: "/state-of-send-2026/what-we-do-not-know", title: "What we do not know", summary: "Unanswered questions", icon: HelpCircle },
   { path: "/state-of-send-2026/what-the-leaks-are-saying", title: "What the leaks say", summary: "Leaked documents analysed", icon: AlertTriangle },
-  { path: "/state-of-send-2026/what-the-leaks-do-not-mean", title: "What the leaks don't mean", summary: "Avoiding misinterpretation", icon: Scale },
-  { path: "/state-of-send-2026/timeline", title: "Timeline & next steps", summary: "Key dates and milestones", icon: ClipboardList },
+  { path: "/state-of-send-2026/what-the-leaks-do-not-mean", title: "What the leaks do not mean", summary: "Avoiding misinterpretation", icon: Scale },
+  { path: "/state-of-send-2026/timeline", title: "Timeline and next steps", summary: "Key dates and milestones", icon: ClipboardList },
 ];
 
 const parentGuides: ContentLink[] = [
@@ -59,17 +59,17 @@ const parentGuides: ContentLink[] = [
   { path: "/understanding-your-child", title: "Understanding your child", summary: "Neurodivergence explained for families", icon: Brain },
   { path: "/understanding-your-child/autism", title: "Understanding Autism", summary: "What autism means in the SEND system", icon: Brain },
   { path: "/understanding-your-child/adhd", title: "Understanding ADHD", summary: "ADHD rights and school support", icon: Lightbulb },
-  { path: "/exclusions", title: "Exclusions & rights", summary: "School exclusions and SEND protections", icon: AlertTriangle },
-  { path: "/alternative-provision", title: "Alternative Provision", summary: "When mainstream doesn't work", icon: Building2 },
-  { path: "/post-16-and-transition", title: "Post-16 & Transition", summary: "Moving into adulthood", icon: GraduationCap },
+  { path: "/exclusions", title: "Exclusions and rights", summary: "School exclusions and SEND protections", icon: AlertTriangle },
+  { path: "/alternative-provision", title: "Alternative Provision", summary: "When mainstream does not work", icon: Building2 },
+  { path: "/post-16-and-transition", title: "Post-16 and Transition", summary: "Moving into adulthood", icon: GraduationCap },
   { path: "/what-to-do-right-now", title: "What to do right now", summary: "Practical steps based on current law", icon: Scale },
-  { path: "/sendiass", title: "Free help - SENDIASS", summary: "Free independent advice near you", icon: HandHeart },
+  { path: "/sendiass", title: "Free help: SENDIASS", summary: "Free independent advice near you", icon: HandHeart },
   { path: "/my-child-profile", title: "My Child: A Profile", summary: "Build a document about your child to share with professionals", icon: ClipboardList },
 ];
 
 const systemPages: ContentLink[] = [
   { path: "/local-variation", title: "Why where you live matters", summary: "Local authority variation in SEND", icon: MapPin },
-  { path: "/devolved-nations", title: "Wales, Scotland & NI", summary: "If you're not in England", icon: Globe },
+  { path: "/devolved-nations", title: "Wales, Scotland and NI", summary: "If you are not in England", icon: Globe },
 ];
 
 const takeAction: ContentLink[] = [
@@ -81,44 +81,19 @@ const takeAction: ContentLink[] = [
 ];
 
 const aboutLinks: ContentLink[] = [
-  { path: "/about", title: "About this resource", summary: "What this site is and isn't", icon: HelpCircle },
-  { path: "/sources", title: "Sources & evidence", summary: "Every claim traced to its source", icon: FileText },
+  { path: "/about", title: "About this resource", summary: "What this site is and is not", icon: HelpCircle },
+  { path: "/sources", title: "Sources and evidence", summary: "Every claim traced to its source", icon: FileText },
   { path: "/how-to-use", title: "How to use this site", summary: "Getting the most from the Navigator", icon: BookOpen },
-  { path: "/feedback", title: "Feedback", summary: "Tell us what's working and what isn't", icon: MessageSquare },
+  { path: "/feedback", title: "Feedback", summary: "Tell us what is working and what is not", icon: MessageSquare },
 ];
 
-/* Section accent color config - maps to the 5 quick-link colors */
+/* Section accent colours */
 const SECTION_COLORS = {
-  teal: {
-    border: "border-l-[hsl(var(--accent-teal))]",
-    bg: "bg-[hsl(var(--accent-teal-bg))]",
-    icon: "bg-[hsl(var(--accent-teal)/0.12)] text-[hsl(var(--accent-teal))]",
-    iconSolid: "text-[hsl(var(--accent-teal))]",
-  },
-  deepBlue: {
-    border: "border-l-[hsl(var(--accent-deep-blue))]",
-    bg: "bg-[hsl(var(--accent-deep-blue-bg))]",
-    icon: "bg-[hsl(var(--accent-deep-blue)/0.12)] text-[hsl(var(--accent-deep-blue))]",
-    iconSolid: "text-[hsl(var(--accent-deep-blue))]",
-  },
-  amber: {
-    border: "border-l-[hsl(var(--accent-amber))]",
-    bg: "bg-[hsl(var(--accent-amber-bg))]",
-    icon: "bg-[hsl(var(--accent-amber)/0.12)] text-[hsl(var(--accent-amber))]",
-    iconSolid: "text-[hsl(var(--accent-amber))]",
-  },
-  coral: {
-    border: "border-l-[hsl(var(--accent-coral))]",
-    bg: "bg-[hsl(var(--accent-coral-bg))]",
-    icon: "bg-[hsl(var(--accent-coral)/0.12)] text-[hsl(var(--accent-coral))]",
-    iconSolid: "text-[hsl(var(--accent-coral))]",
-  },
-  violet: {
-    border: "border-l-[hsl(var(--accent-violet))]",
-    bg: "bg-[hsl(var(--accent-violet-bg))]",
-    icon: "bg-[hsl(var(--accent-violet)/0.12)] text-[hsl(var(--accent-violet))]",
-    iconSolid: "text-[hsl(var(--accent-violet))]",
-  },
+  teal: { icon: "bg-[hsl(var(--accent-teal)/0.12)] text-[hsl(var(--accent-teal))]" },
+  deepBlue: { icon: "bg-[hsl(var(--accent-deep-blue)/0.12)] text-[hsl(var(--accent-deep-blue))]" },
+  amber: { icon: "bg-[hsl(var(--accent-amber)/0.12)] text-[hsl(var(--accent-amber))]" },
+  coral: { icon: "bg-[hsl(var(--accent-coral)/0.12)] text-[hsl(var(--accent-coral))]" },
+  violet: { icon: "bg-[hsl(var(--accent-violet)/0.12)] text-[hsl(var(--accent-violet))]" },
 } as const;
 
 function ContentSection({ title, description, links, color }: { title: string; description: string; links: ContentLink[]; color: keyof typeof SECTION_COLORS }) {
@@ -126,7 +101,7 @@ function ContentSection({ title, description, links, color }: { title: string; d
   return (
     <section className="space-y-3">
       <div>
-        <h2 className="text-base font-display font-semibold text-foreground">{title}</h2>
+        <h2 className="text-base font-semibold text-foreground">{title}</h2>
         <p className="text-xs text-muted-foreground mt-0.5">{description}</p>
       </div>
       <div className="grid gap-2 sm:grid-cols-2">
@@ -162,145 +137,125 @@ const Index = () => {
         path="/"
       />
 
-      {/* Quick links bar - the 5 definitive colours */}
-      <section className="content-section pt-4 pb-1">
-        <div className="flex items-center gap-2 overflow-x-auto">
+      {/* ═══════════════════════════════════════════
+          ACT 1: ORIENTATION
+          One sentence. Grounding. Nothing else.
+          ═══════════════════════════════════════════ */}
+      <section className="content-section pt-10 pb-6">
+        <p className="text-xl sm:text-2xl font-semibold text-foreground leading-snug max-w-xl">
+          Everything you need to understand SEND reform in England, in one place.
+        </p>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          ACT 2: CHOICE REDUCTION
+          One primary path. One secondary. All else deferred.
+          ═══════════════════════════════════════════ */}
+      <section className="content-section pb-6 space-y-4">
+        {/* Primary path: Guide Me */}
+        <GuideMe />
+
+        {/* Secondary path: direct links */}
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs text-muted-foreground mr-1">Or go straight to:</span>
           <Link to="/state-of-send-2026">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-[hsl(var(--accent-teal))] text-white hover:opacity-90">
+            <Button size="sm" variant="outline" className="gap-1.5 text-xs">
               <BookOpen className="w-3.5 h-3.5" />
               SEND Reform Report
             </Button>
           </Link>
           <Link to="/ehcps">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-[hsl(var(--accent-deep-blue))] text-white hover:opacity-90">
+            <Button size="sm" variant="outline" className="gap-1.5 text-xs">
               <Shield className="w-3.5 h-3.5" />
               EHCP Guide
             </Button>
           </Link>
-          <Link to="/my-child-profile">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-[hsl(var(--accent-amber))] text-white hover:opacity-90">
-              <ClipboardList className="w-3.5 h-3.5" />
-              My Child: A Profile
-            </Button>
-          </Link>
           <Link to="/what-to-do-right-now">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-[hsl(var(--accent-coral))] text-white hover:opacity-90">
+            <Button size="sm" variant="outline" className="gap-1.5 text-xs">
               <Scale className="w-3.5 h-3.5" />
               What to do now
             </Button>
           </Link>
-          <Link to="/questions-and-answers">
-            <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap bg-[hsl(var(--accent-violet))] text-white hover:opacity-90">
-              <MessageCircleQuestion className="w-3.5 h-3.5" />
-              Ask Rich
-            </Button>
-          </Link>
         </div>
-      </section>
 
-      {/* GUIDE ME - hero, top of page */}
-      <section className="content-section py-4">
-        <GuideMe />
-      </section>
-
-      {/* Browse everything toggle */}
-      <section className="content-section py-2">
+        {/* Browse everything toggle */}
         <button
           onClick={() => setShowAll(!showAll)}
-          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mx-auto"
+          className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
-          <span>{showAll ? "Hide full site map" : "Or browse everything"}</span>
+          <span>{showAll ? "Hide full site map" : "Browse everything"}</span>
           <ChevronDown className={`w-4 h-4 transition-transform ${showAll ? "rotate-180" : ""}`} />
         </button>
+
+        {/* Full content sections, hidden by default */}
+        {showAll && (
+          <div className="pt-4 space-y-8 animate-in fade-in slide-in-from-top-2 duration-300">
+            <ContentSection title="The State of SEND 2026" description="Our 8-part report tracking every aspect of SEND reform" links={reportSections} color="teal" />
+            <ContentSection title="Parent Guides" description="Practical guides for navigating the SEND system right now" links={parentGuides} color="deepBlue" />
+            <ContentSection title="Understanding the System" description="How the system works, and why it works differently depending on where you are" links={systemPages} color="amber" />
+            <ContentSection title="Take Action and Community" description="Make your voice heard, ask questions, and connect with other families" links={takeAction} color="coral" />
+            <ContentSection title="About and Resources" description="How we work, our sources, and how to give feedback" links={aboutLinks} color="violet" />
+          </div>
+        )}
       </section>
 
-      {/* Breaking News - TEAL accent (reform news) */}
-      <section className="content-section py-3">
-        <div className={`border-l-4 ${SECTION_COLORS.teal.border} rounded-r-xl`}>
-          <NewsHeadlines />
-        </div>
-      </section>
-
-      {/* Full content sections - hidden by default */}
-      {showAll && (
-        <div className="content-section py-4 space-y-8 animate-in fade-in slide-in-from-top-2 duration-300">
-          <ContentSection
-            title="The State of SEND 2026"
-            description="Our 8-part report tracking every aspect of SEND reform"
-            links={reportSections}
-            color="teal"
-          />
-          <ContentSection
-            title="Parent Guides"
-            description="Practical guides for navigating the SEND system right now"
-            links={parentGuides}
-            color="deepBlue"
-          />
-          <ContentSection
-            title="Understanding the System"
-            description="How the system works, and why it works differently depending on where you are"
-            links={systemPages}
-            color="amber"
-          />
-          <ContentSection
-            title="Take Action and Community"
-            description="Make your voice heard, ask questions, and connect with other families"
-            links={takeAction}
-            color="coral"
-          />
-          <ContentSection
-            title="About and Resources"
-            description="How we work, our sources, and how to give feedback"
-            links={aboutLinks}
-            color="violet"
-          />
-        </div>
-      )}
-
-      {/* Word from Rich - VIOLET accent (Ask Rich family) */}
-      <WordFromRich>
-        <p>Your child is not broken. I need you to hear that before anything else on this site. They may see the world differently, process it differently, move through it differently. That is not a fault. It is not something to fix. The system around them may be struggling. The waiting lists may be shameful. But your child? They are exactly who they are supposed to be. This site exists to help you get them what they need from a world that was not designed with them in mind.</p>
-        <p className="mt-2">
-          <Link to="/richs-take" className="text-[hsl(var(--accent-violet))] font-medium hover:underline">
-            Read my take on the white paper
-          </Link>
-        </p>
-      </WordFromRich>
-
-      {/* SENDIASS signpost — DEEP BLUE accent (rights/guidance) */}
-      <section className="content-section py-4">
-        <SendiassSignpost />
-      </section>
-
-      {/* Q&A — VIOLET accent (Ask Rich) */}
-      <section className="content-section py-8">
-        <QandAComponent />
-      </section>
-
-      {/* About this resource — CORAL accent (action/practical) */}
-      <section className="content-section py-8">
-        <div className={`border-l-4 ${SECTION_COLORS.coral.border} rounded-xl ${SECTION_COLORS.coral.bg} border border-[hsl(var(--accent-coral)/0.2)] p-5 shadow-lg`}>
-          <div className="flex items-start gap-4">
-            <Heart className={`w-6 h-6 ${SECTION_COLORS.coral.iconSolid} flex-shrink-0 mt-1`} />
-            <div>
-              <h2 className="text-lg font-display font-semibold text-foreground mb-3">
-                Made for families like yours
-              </h2>
-              <div className="space-y-2 text-muted-foreground text-sm leading-relaxed">
-                <p>
-                  This is an independent resource, not government, not a campaign. We don't give advice
-                  or tell you what to do. We just help you understand what's happening.
-                </p>
-              </div>
-              <Link 
-                to="/about"
-                className="inline-flex items-center gap-2 text-primary font-medium mt-4 hover:underline"
-              >
-                Learn more about this resource
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+      {/* ═══════════════════════════════════════════
+          ACT 3: DEPTH AND CREDIBILITY
+          Signal seriousness. Use contrast and spacing.
+          ═══════════════════════════════════════════ */}
+      <section className="bg-[hsl(var(--navy))] text-[hsl(var(--navy-foreground))]">
+        <div className="content-section py-12 sm:py-16">
+          <div className="max-w-2xl space-y-6">
+            <p className="text-lg sm:text-xl font-semibold leading-snug" style={{ color: "hsl(0 0% 96%)" }}>
+              Independent. Fact-based. Updated as things change.
+            </p>
+            <div className="space-y-4 text-sm leading-relaxed" style={{ color: "hsl(222 20% 72%)" }}>
+              <p>
+                This site tracks every confirmed detail of SEND reform, separates it from speculation, and explains what it means in plain language. It is not government. It is not a campaign. It does not give legal advice.
+              </p>
+              <p>
+                Every claim is sourced. Every page tells you what is confirmed, what is being discussed, and what we do not yet know.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs" style={{ color: "hsl(222 20% 58%)" }}>
+              <span>90+ knowledge base entries</span>
+              <span>8-part reform report</span>
+              <span>Updated 23 February 2026</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* News headlines */}
+      <section className="content-section py-6">
+        <NewsHeadlines />
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          ACT 4: HUMAN PRESENCE
+          Ask Rich as a person. Space and calm.
+          ═══════════════════════════════════════════ */}
+      <section className="content-section py-8 sm:py-12">
+        <div className="max-w-2xl space-y-6">
+          {/* Rich as a person, not a feature */}
+          <div className="flex items-start gap-4">
+            <img
+              src={richPhoto}
+              alt="Rich Ferriman"
+              className="w-14 h-14 rounded-full object-cover flex-shrink-0"
+            />
+            <div>
+              <p className="text-sm text-foreground leading-relaxed">
+                Your child is not broken. The system around them may be struggling, but your child is exactly who they are supposed to be. This site exists to help you get them what they need.
+              </p>
+              <p className="text-xs text-muted-foreground mt-2">
+                Rich Ferriman, parent and neuroinclusion consultant
+              </p>
+            </div>
+          </div>
+
+          {/* Ask Rich */}
+          <QandAComponent />
         </div>
       </section>
 
