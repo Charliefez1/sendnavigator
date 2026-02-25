@@ -273,7 +273,7 @@ const Landing = () => {
               className="text-2xl sm:text-3xl font-display font-semibold mb-2"
               style={{ color: "hsl(0 0% 96%)" }}
             >
-              Try it. Ask me anything.
+              Ask Rich anything.
             </h2>
             <p className="text-sm mb-10" style={{ color: "hsl(222 20% 55%)" }}>
               Get a real answer grounded in confirmed facts, not generic AI output.
