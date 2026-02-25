@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 import { StatusBadge } from "@/components/StatusBadge";
-import { AlertTriangle, ChevronDown, ChevronRight } from "lucide-react";
+import { AlertTriangle, ChevronDown, ChevronRight, CheckCircle, HelpCircle, Newspaper } from "lucide-react";
 import { useExperienceMode } from "@/contexts/ExperienceModeContext";
 
 interface InformationLayerProps {
@@ -9,20 +9,21 @@ interface InformationLayerProps {
   layerTitle: string;
 }
 
-function ScanCollapseWrapper({ title, children, statusBadge }: { title: string; children: ReactNode; statusBadge: ReactNode }) {
+function ScanCollapseWrapper({ title, children, statusBadge, icon }: { title: string; children: ReactNode; statusBadge: ReactNode; icon: ReactNode }) {
   const { mode } = useExperienceMode();
   const [expanded, setExpanded] = useState(false);
   const isScan = mode === "scan";
   const showBody = !isScan || expanded;
 
   return (
-    <div className="mb-8">
+    <div className="mb-6">
       <button
         onClick={() => isScan && setExpanded(!expanded)}
         className={`flex items-center gap-3 mb-4 w-full text-left ${isScan ? "cursor-pointer hover:opacity-80" : ""}`}
         disabled={!isScan}
       >
-        <h3 className="text-lg font-medium text-foreground">{title}</h3>
+        {icon}
+        <h3 className="text-base font-display font-semibold text-foreground">{title}</h3>
         {statusBadge}
         {isScan && (expanded ? <ChevronDown className="w-4 h-4 text-muted-foreground ml-auto" /> : <ChevronRight className="w-4 h-4 text-muted-foreground ml-auto" />)}
       </button>
@@ -33,11 +34,15 @@ function ScanCollapseWrapper({ title, children, statusBadge }: { title: string; 
 
 function ConfirmedLayer({ children, emptyMessage }: Omit<InformationLayerProps, 'layerTitle'>) {
   const isEmpty = !children;
-  
+
   return (
-    <ScanCollapseWrapper title="What is confirmed" statusBadge={<StatusBadge status="confirmed" />}>
+    <ScanCollapseWrapper
+      title="What is confirmed"
+      statusBadge={<StatusBadge status="confirmed" />}
+      icon={<div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(175 65% 41% / 0.1)" }}><CheckCircle className="w-3.5 h-3.5" style={{ color: "hsl(175 65% 41%)" }} /></div>}
+    >
       {isEmpty ? (
-        <p className="text-muted-foreground italic">
+        <p className="text-muted-foreground italic text-sm">
           {emptyMessage || "No confirmed information available for this topic yet."}
         </p>
       ) : (
@@ -49,11 +54,15 @@ function ConfirmedLayer({ children, emptyMessage }: Omit<InformationLayerProps, 
 
 function DiscussedLayer({ children, emptyMessage }: Omit<InformationLayerProps, 'layerTitle'>) {
   const isEmpty = !children;
-  
+
   return (
-    <ScanCollapseWrapper title="What is being discussed or reported" statusBadge={<StatusBadge status="discussed" />}>
+    <ScanCollapseWrapper
+      title="What is being discussed or reported"
+      statusBadge={<StatusBadge status="discussed" />}
+      icon={<div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(42 87% 48% / 0.1)" }}><Newspaper className="w-3.5 h-3.5" style={{ color: "hsl(42 87% 48%)" }} /></div>}
+    >
       {isEmpty ? (
-        <p className="text-muted-foreground italic">
+        <p className="text-muted-foreground italic text-sm">
           {emptyMessage || "No credible reporting on this topic at present."}
         </p>
       ) : (
@@ -65,20 +74,24 @@ function DiscussedLayer({ children, emptyMessage }: Omit<InformationLayerProps, 
 
 function UnconfirmedLayer({ children, emptyMessage }: Omit<InformationLayerProps, 'layerTitle'>) {
   const isEmpty = !children;
-  
+
   return (
-    <ScanCollapseWrapper title="What is unconfirmed or leaked" statusBadge={<StatusBadge status="unconfirmed" />}>
+    <ScanCollapseWrapper
+      title="What is unconfirmed or leaked"
+      statusBadge={<StatusBadge status="unconfirmed" />}
+      icon={<div className="w-7 h-7 rounded-md flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(25 85% 52% / 0.1)" }}><AlertTriangle className="w-3.5 h-3.5" style={{ color: "hsl(25 85% 52%)" }} /></div>}
+    >
       {!isEmpty && (
-        <div className="bg-status-unconfirmed-bg border border-[hsl(var(--status-unconfirmed-border))] rounded-md p-3 mb-4 flex gap-2 text-sm">
-          <AlertTriangle className="w-4 h-4 text-status-unconfirmed flex-shrink-0 mt-0.5" />
+        <div className="rounded-lg border p-3 mb-4 flex gap-3 text-sm shadow-sm" style={{ backgroundColor: "hsl(25 55% 96%)", borderColor: "hsl(25 50% 85%)" }}>
+          <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: "hsl(25 85% 52%)" }} />
           <span className="text-muted-foreground">
             This information is not confirmed policy. It may never happen.
           </span>
         </div>
       )}
-      
+
       {isEmpty ? (
-        <p className="text-muted-foreground italic">
+        <p className="text-muted-foreground italic text-sm">
           {emptyMessage || "No unconfirmed information relevant to this topic."}
         </p>
       ) : (
@@ -106,11 +119,13 @@ export function InformationLayers({
   unconfirmedEmpty,
 }: InformationLayersProps) {
   return (
-    <section className="content-section py-8 border-t border-border">
-      <h2 className="text-lg font-semibold text-foreground mb-6">Information by certainty</h2>
-      <ConfirmedLayer emptyMessage={confirmedEmpty}>{confirmed}</ConfirmedLayer>
-      <DiscussedLayer emptyMessage={discussedEmpty}>{discussed}</DiscussedLayer>
-      <UnconfirmedLayer emptyMessage={unconfirmedEmpty}>{unconfirmed}</UnconfirmedLayer>
+    <section className="content-section py-8">
+      <div className="rounded-xl border border-border bg-card p-5 sm:p-6 shadow-card">
+        <h2 className="text-base font-display font-semibold text-foreground mb-6">Information by certainty</h2>
+        <ConfirmedLayer emptyMessage={confirmedEmpty}>{confirmed}</ConfirmedLayer>
+        <DiscussedLayer emptyMessage={discussedEmpty}>{discussed}</DiscussedLayer>
+        <UnconfirmedLayer emptyMessage={unconfirmedEmpty}>{unconfirmed}</UnconfirmedLayer>
+      </div>
     </section>
   );
 }

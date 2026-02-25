@@ -45,7 +45,6 @@ export function LatestUpdatesStream() {
     fetchNews();
   }, []);
 
-  // Build combined list: pinned first, then DB items
   const pinnedEntries = latestUpdates.map((entry, i) => ({
     key: `pinned-${i}`,
     isPinned: true,
@@ -74,11 +73,11 @@ export function LatestUpdatesStream() {
   return (
     <section className="content-section py-4">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-        <div className="rounded-xl border border-border bg-card px-4 py-3 shadow-sm">
+        <div className="rounded-xl border border-border bg-card px-5 py-4 shadow-card hover:shadow-card-hover transition-shadow duration-200">
           <CollapsibleTrigger asChild>
             <button className="flex items-center justify-between w-full gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <Clock className="w-4 h-4 text-primary" />
                 </div>
                 <h2 className="text-base font-display font-semibold text-foreground">
