@@ -57,7 +57,7 @@ export function Layout({ children }: LayoutProps) {
               <span><strong className="text-foreground">Last updated:</strong> 23rd February 2026</span>
             </p>
           </div>
-          <main id="main-content" className="flex-1 pb-32" role="main" tabIndex={-1}>
+          <main id="main-content" className={`flex-1 ${isStartPage ? 'pb-0' : 'pb-32'}`} role="main" tabIndex={-1}>
             {children}
             {!isStartPage && (
               <div className="content-section py-6 space-y-4">
