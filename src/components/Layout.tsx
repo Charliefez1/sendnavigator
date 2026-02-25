@@ -23,6 +23,7 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   const location = useLocation();
   const isReportPage = location.pathname.startsWith("/state-of-send-2026/");
+  const isStartPage = location.pathname === "/" || location.pathname === "/start";
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -58,15 +59,17 @@ export function Layout({ children }: LayoutProps) {
           </div>
           <main id="main-content" className="flex-1 pb-32" role="main" tabIndex={-1}>
             {children}
-            <div className="content-section py-6 space-y-4">
-              <AskQuestionCompact />
-            </div>
+            {!isStartPage && (
+              <div className="content-section py-6 space-y-4">
+                <AskQuestionCompact />
+              </div>
+            )}
             
           </main>
         </>
       )}
 
-      <PreFooter />
+      {!isStartPage && <PreFooter />}
       <Footer />
       {!isReportPage && <JourneyFloatingBar />}
       <AskSendFloating />

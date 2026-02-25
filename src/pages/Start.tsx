@@ -5,6 +5,8 @@ import { SEOHead } from "@/components/SEOHead";
 import { HomeAskRich } from "@/components/landing/HomeAskRich";
 import { AnimatedFeatureShowcase } from "@/components/landing/AnimatedFeatureShowcase";
 import { GuideMe } from "@/components/GuideMe";
+import { AskQuestionCompact } from "@/components/AskQuestionCompact";
+import { PreFooter } from "@/components/PreFooter";
 import {
   ArrowRight,
   BookOpen,
@@ -255,16 +257,22 @@ const Index = () => {
             className="w-full h-full object-cover object-top"
             style={{ opacity: 0.15 }}
           />
-          {/* Dark overlay for readability */}
           <div
             className="absolute inset-0"
             style={{
-              background: [
-                "linear-gradient(to bottom, hsl(222 35% 8% / 0.92), hsl(222 35% 8% / 0.85) 30%, hsl(222 35% 8% / 0.80) 60%, hsl(222 35% 8% / 0.75) 80%, hsl(222 35% 8% / 0.95) 100%)",
-              ].join(", "),
+              background: "linear-gradient(to bottom, hsl(222 35% 8% / 0.92), hsl(222 35% 8% / 0.85) 20%, hsl(222 35% 8% / 0.78) 50%, hsl(222 35% 8% / 0.75) 70%, hsl(222 35% 8% / 0.88) 90%, hsl(222 35% 8% / 0.95) 100%)",
             }}
           />
         </div>
+
+        {/* ─── Share a comment (moved above Ask Rich) ─── */}
+        <section className="relative">
+          <div className="content-section pt-10 pb-4">
+            <div className="max-w-2xl mx-auto">
+              <AskQuestionCompact />
+            </div>
+          </div>
+        </section>
 
         {/* ─── SECTION 3: ASK RICH ─── */}
         <section className="relative">
@@ -409,6 +417,11 @@ const Index = () => {
             />
           </div>
         </section>
+
+        {/* ─── PreFooter inside backdrop ─── */}
+        <div className="relative">
+          <PreFooter />
+        </div>
       </div>
 
       {/* Bottom padding for persistent ticker */}
