@@ -1,0 +1,144 @@
+Title: EHCPs: a complete guide for parents
+Route: /ehcps
+Description: Everything you need to know about Education, Health and Care Plans in England. What they are, who qualifies, the process step by step, your rights at every stage, and what to do when things go wrong.
+Last updated: 23rd February 2026
+Status: Confirmed
+Key topics: EHCP process, Legal rights, Tribunal, Annual reviews
+Key numbers: 638,700 EHCPs, 20 weeks timeline, 95% tribunal win rate
+Key sources: Children and Families Act 2014, SEND Code of Practice, DfE statistics
+
+---
+
+EHCPs: a complete guide for parents
+
+An Education, Health and Care Plan (EHCP) is a legally binding document for children and young people aged 0 to 25 with significant special educational needs. It coordinates support across education, health, and social care. Since 2014, the number of children with EHCPs has more than doubled to 638,700 as of January 2025. The process should take 20 weeks but only about half are issued on time. Parents have strong legal rights at every stage, including the right to appeal, and win approximately 95% of tribunal cases. Understanding the process is the single most powerful thing you can do for your child.
+
+What is an EHCP
+
+An Education, Health and Care Plan (EHCP) is a statutory document introduced by the Children and Families Act 2014, replacing the older Statement of SEN system. It is the only legal mechanism in England that guarantees coordinated, funded support across education, health, and social care for a child or young person with significant special educational needs.
+
+Unlike the previous system, EHCPs cover a broader age range from birth to 25, including further education, and require multiple agencies to work together by law. The goal was a more family-centred, outcomes-focused approach. The education provisions in an EHCP are legally enforceable. The local authority must deliver them.
+
+The EHCP replaced not just Statements of SEN but also Learning Difficulty Assessments (LDAs) for post-16 students, creating a single, continuous plan that follows the child from early years through to adulthood.
+
+Who qualifies for an EHCP
+
+A child or young person may qualify for an EHCP if they have special educational needs that cannot be met through the support ordinarily available at their school. The legal test is deliberately broad.
+
+The local authority must assess if the child has or may have SEN and it may be necessary for special educational provision to be made through an EHCP. Tribunal case law confirms this is a "provisional and predictive" test. Certainty is not required upfront.
+
+In practice, children who qualify typically have needs across one or more of these areas:
+- Communication and interaction (e.g. autism, speech difficulties)
+- Cognition and learning (e.g. dyslexia, severe learning difficulties)
+- Social, emotional and mental health (e.g. anxiety, ADHD)
+- Sensory and physical (e.g. hearing, visual, physical disabilities)
+
+Schools receive a notional SEN budget of around £6,000 per pupil for SEN Support. An EHCP is typically considered when needs exceed what this budget and ordinary school resources can provide. However, there is no legal requirement to exhaust school support first. If needs are severe, assessment should not be delayed.
+
+EHCP statistics dashboard
+
+- 638,700 Children with EHCPs (January 2025)
+- 138,242 Assessment requests (In 2023 alone)
+- 166% Growth since 2015
+- 50% Issued on time (Within 20 weeks)
+- 95% Assessments lead to plan (Once LA agrees to assess)
+- 95% Parents win at tribunal (Approx. of decided cases)
+- 24% Requests refused (~33,000 children turned away in 2023)
+- 21,000 Tribunal appeals (2023/24, up 55%)
+- £153m LAs spent on appeals (In 2023-24 alone)
+- 1.3% LA win rate at tribunal (Of cases that go to hearing)
+
+The EHCP process: step by step
+
+The EHCP process runs from initial identification of needs through to the final plan and annual reviews. The entire process from request to final plan should take no more than 20 weeks, though in practice over half of families wait longer.
+
+1. Request for Assessment (Week 0)
+2. LA Decision to Assess (Week 6)
+3. Assessment & Evidence Gathering (Weeks 6–16)
+4. Draft Plan Issued (Week 16)
+5. Consultation & Finalisation (Weeks 16–20)
+6. Final Plan Issued (Week 20)
+
+What an EHCP contains
+
+An EHCP is a comprehensive document with prescribed sections labelled A through K. Each section serves a specific legal purpose:
+
+Section A: Views and aspirations
+The child's and family's views, interests, and hopes for the future. Not legally enforceable but sets context.
+
+Section B: Special educational needs
+All identified SEN across cognition, communication, social-emotional, and sensory-physical domains. Every need here must have matching provision in Section F.
+
+Section C: Health needs
+Health care needs related to SEN or disability that impact education.
+
+Section D: Social care needs
+Social care needs related to SEN. Often left blank, which is a common criticism.
+
+Section E: Outcomes
+Goals for the next 2-3 years including preparing for adulthood from Year 9.
+
+Section F: Special educational provision
+The most important section. All support the child must receive, detailed, specific, and quantified. Legally binding on the LA.
+
+Section G: Health provision
+NHS services: speech therapy, OT, CAMHS, physiotherapy. The NHS should deliver these.
+
+Section H1/H2: Social care provision
+Services under the Chronically Sick & Disabled Persons Act 1970 (H1) and other social care (H2). H1 is legally enforceable.
+
+Section I: School placement
+Names the school. Once named, the school must admit the child.
+
+Section J: Personal budget
+Optional funding for families to arrange some services themselves. Only about 3% of plans include one.
+
+Section K: Appendices
+All assessment reports and evidence.
+
+Your rights at every stage
+
+Rights you have right now:
+- You can request an EHC needs assessment at any time, in writing, without the school's permission
+- The LA must respond to your request within 6 weeks
+- You have the right to submit any evidence including private reports
+- You have at least 15 days to comment on a draft EHCP
+- You can request a specific school to be named in Section I
+- You can appeal any refusal to assess, refusal to issue, plan contents, or ceasing of the plan
+- The LA must deliver every provision specified in Section F — it is legally binding
+- You can request an emergency review if circumstances change significantly
+- Your child must be admitted to any school named in the final EHCP
+- You can request a personal budget to arrange some services yourself
+
+School placement and Section I
+
+Parents have a right to request a particular school to be named in Section I of the EHCP. This includes mainstream schools, specialist schools (legally called special schools), academies, and certain approved independent specialist schools.
+
+The LA must consult the school and must name it unless one of the legal exceptions applies: the placement would be unsuitable for the child, incompatible with efficient education of other children, or incompatible with efficient use of resources. "The school is full" is not by itself a lawful reason to refuse.
+
+Once a school is named in the final EHCP, that school is under a legal duty to admit the child.
+
+Annual reviews
+
+EHCPs must be reviewed at least every 12 months (every 3 to 6 months for under-5s). The review involves gathering progress updates, a meeting hosted by the school, and recommendations on whether to keep, amend, or cease the plan.
+
+After the meeting, the LA must decide within 4 weeks whether to keep the plan as is, amend it, or cease it. If amending, the final amended plan must be issued within 12 weeks of the review meeting.
+
+Common challenges and what to watch for
+
+- Threshold disputes: LAs frequently refuse initial assessments.
+- Delays at every stage: Only half of plans are issued within 20 weeks.
+- Vague provision: Phrases like "access to" or "as needed" make support unenforceable.
+- Missing health and social care: Sections C, D, G, H are often blank.
+- Private reports excluded: Some LAs refuse to consider independent evidence (unlawful).
+- Poor communication: Unanswered messages are common.
+- Resource-driven decisions: Rationing support based on budget rather than need.
+- Children out of school: Thousands are "awaiting provision".
+
+Tribunals and appeals
+
+When disagreements cannot be resolved, families can appeal to the First-tier Tribunal (SEND Tribunal). You can appeal if the LA refuses to assess, refuses to issue, if you dispute the contents (Sections B, F, or I), or if the LA decides to cease your child's plan.
+
+Before appealing, you must obtain a mediation certificate. Mediation itself is voluntary.
+
+Statistics show 21,000 appeals in 2023/24, up 55%. Parents win approximately 95% of cases.

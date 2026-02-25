@@ -1,0 +1,18 @@
+Title: My Child: A Profile
+Route: /my-child-profile
+Description: Build a document about your child to share with professionals.
+Last updated: 23rd February 2026
+Status: Confirmed
+Key topics: Child profile, Evidence, Advocacy
+Key numbers: n/a
+Key sources: n/a
+
+---
+
+My Child: A Profile
+
+Build a document about your child to share with professionals.
+
+This tool helps you create a structured, professional-looking profile of your child to share with schools, SENCOs, and health professionals. It focuses on your child's strengths, needs, and what actually helps them, moving the conversation away from just "behaviour" or "deficits".
+
+(This is an interactive tool. The content generated depends on user input.)

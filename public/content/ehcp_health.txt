@@ -1,0 +1,86 @@
+Title: The Health Side of Your Child's EHCP
+Route: /ehcp-health
+Description: NHS duties in EHC plans. What Sections C and G mean, what happens when health provision isn't delivered, and how to challenge it.
+Last updated: 23rd February 2026
+Status: Confirmed
+Key topics: NHS duties, Section G, CAMHS, Therapies
+Key numbers: n/a
+Key sources: Children and Families Act 2014, NHS guidelines
+
+---
+
+The Health Side of Your Child's EHCP
+
+Most parents focus on the education sections of an EHC plan. That is understandable. Sections F and I, what support the school provides and which school is named, are where the most visible battles happen.
+
+But Sections C and G are where a significant amount of provision falls through the gaps, and where many families find that what the plan says and what actually happens are two different things.
+
+What Sections C and G actually are
+
+Section C - Health Needs
+Describes your child's health needs that relate to their SEND. Not a diagnosis list. A description of the health needs that have a direct bearing on their education, health, and wellbeing. Should include things like the impact of a condition on your child's ability to process information, regulate themselves, manage sensory environments, or access learning.
+
+Section G - Health Provision
+Sets out the health care provision your child needs as a result of the needs described in Section C. Therapy input, specialist assessments, mental health support. Where it is linked to SEND, it belongs in Section G.
+
+Key legal duty: If provision is written into Section G, the NHS is legally required to provide it. That is not a target. It is not guidance. It is a statutory duty.
+
+Why this matters in practice
+
+Health provision is the most commonly undelivered part of an EHC plan. Therapy waiting lists can run to years. CAMHS thresholds have risen. Speech and language therapy, occupational therapy, physiotherapy. Provision that is legally required is routinely not delivered.
+
+There are two patterns here.
+1. Provision that is written into Section G but never delivered. This is a breach of the NHS's legal duty. It is enforceable.
+2. Provision that never makes it into Section G in the first place.
+
+The NHS's legal duties in the EHCP process
+
+When a local authority carries out an EHCP needs assessment, NHS bodies (local ICB and commissioned services) have a legal duty to respond.
+
+Specifically:
+- The NHS must provide advice to the LA within six weeks of a request.
+- Once a plan is finalised, the relevant health commissioning body has a legal duty to provide what is specified in Section G.
+- Health professionals involved with the child may be asked to contribute advice. If asked, they have a legal responsibility to respond.
+
+What to do if health provision is not being delivered
+
+If provision is specified in Section G and is not being provided, in this order:
+
+1. Put it in writing to the ICB. Contact your local ICB's SEND team or complaints department. Use the language of statutory duty.
+2. Contact the LA as well. The LA owns the EHC plan. Put them on notice.
+3. Request an urgent annual review. Document the failure formally.
+4. Raise a formal complaint with the ICB. Escalate to the Ombudsman if needed.
+5. Seek legal advice. IPSEA can advise on whether the failure is actionable.
+
+Getting Section G right in the first place
+
+The most effective intervention is at the assessment stage. When the LA requests health advice, you can also request that specific health professionals are asked to contribute.
+
+When you receive the draft plan:
+- Does Section C accurately describe your child's health needs as they affect their daily life and learning?
+- Does Section G specify provision with enough detail to be enforceable? (Named number of sessions, named professional).
+- Is there health provision my child needs that has not been included?
+
+CAMHS, thresholds, and the gap that harms most families
+
+CAMHS (Child and Adolescent Mental Health Services) is where the gap between what the law provides and what families experience is at its widest. Thresholds for CAMHS referral have risen significantly. Many children with SEND do not meet current criteria.
+
+Options if refused:
+- Ask the GP for a written record of the referral decision.
+- Ask for a review if presentation changes.
+- Consider whether mental health needs should be documented in Section C and G regardless of CAMHS involvement.
+- Look at what your local ICB funds as alternatives.
+
+NHS restructure and what it means for SEND families
+
+The NHS is in the middle of significant structural change (as of Feb 2026). NHS England is being dissolved. ICBs are cutting costs.
+
+None of this directly removes the legal duties that ICBs currently hold in relation to SEND and EHC plans. Those duties are set in the Children and Families Act 2014.
+
+Extended appeals: taking health provision to tribunal
+
+If you appeal to the SEND Tribunal over your child's EHC plan, you can — and in many cases should — include an extended appeal covering Sections C and G. This allows the Tribunal to consider health and social care provision, not just educational provision.
+
+Finding your ICB and its SEND team
+
+There are currently 36 ICBs in England. Your ICB is the body responsible for NHS commissioning in your area. Most have a dedicated SEND team or lead.

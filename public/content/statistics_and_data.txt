@@ -1,0 +1,34 @@
+Title: Statistics and data
+Route: /statistics-and-data
+Description: Key SEND statistics for England, using the most recent official data available.
+Last updated: 23rd February 2026
+Status: Confirmed
+Key topics: Statistics, Data, Funding, Tribunals
+Key numbers: 638,700 EHCPs, 25,000 appeals, £9.4bn funding
+Key sources: DfE Statistics, Ministry of Justice
+
+---
+
+Statistics and data
+
+Key SEND statistics for England as of 07 February 2026.
+
+Summary facts
+- SEND demand continues to rise (1.7m+ pupils).
+- EHCPs increased by over 10% in one year.
+- Fewer than half of new EHCPs completed within 20 weeks.
+- Tribunal activity remains high (25,000 appeals).
+- SEND spending increased, but funding gaps remain.
+
+Confirmed position
+- 638,700 Active EHC plans (Jan 2025)
+- 10.8% Annual increase
+- 46% Issued within 20 weeks (2024)
+- 25,000 Appeals registered (2024/25)
+
+Funding
+- High needs funding: £9.4bn (2024/25) vs £5.3bn (2014/15)
+- Local authorities spent £950m additional on top of allocation.
+
+Projected figures
+- Annual DSG deficit projected to exceed £6bn in 2028/29.

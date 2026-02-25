@@ -1,0 +1,94 @@
+Title: Current situation: where is SEND provision today
+Route: /where-we-are-now
+Description: Understanding the current state of SEND support in England.
+Last updated: 23rd February 2026
+Status: Confirmed
+Key topics: SEND system, EHCP demand, funding, postcode lottery
+Key numbers: 1.7m+ pupils with SEND, 638,700 EHCPs, £13.1bn spending, 95% councils in deficit
+Key sources: DfE statistics, NAO report, IFS analysis
+
+---
+
+Current situation: where is SEND provision in the UK today
+
+In the UK, SEND support is not one single system. Each nation runs its own framework. This page focuses on England because the legal duties, the plan process, and the rights attached to an Education, Health and Care Plan are specific to England.
+
+In England, SEND support mainly sits in two routes. SEN Support is the help a nursery, school or college provides without a legal plan. Education, Health and Care Plans are legal plans that set out a child or young person's needs, outcomes and the provision that must be put in place.
+
+The core problem is not that the law is unclear. The law exists. The problem is that the system is overloaded, inconsistent by area, and too often slow and adversarial. Families end up having to push hard for what should be straightforward early help.
+
+How will this impact children and parents
+
+If you are a parent or carer, the lived reality can feel like this.
+
+You may be told support is available, but it is not consistent or timely. You may be asked to wait, repeat your story, or prove the impact again and again. You may feel you have to become the project manager, advocate, and legal researcher, while also parenting.
+
+For children, delays matter. Support that arrives late can mean missed learning, rising anxiety, school refusal, exclusions, or behaviour that gets labelled as the problem instead of the signal. For families, the pressure is cumulative. It affects work, finances, mental health, and trust in services.
+
+None of this means good support is impossible. Many settings and professionals work extremely hard. The issue is the system design, the capacity, and the variation.
+
+Statistics and facts
+
+These figures relate to England.
+
+- 1.7m+ pupils with identified SEND (2024/25 academic year)
+- 638,700 children with an EHCP (January 2025)
+- 43.6% of EHCPs in mainstream (278,200 children)
+- £13.1bn council SEND spending (Up from £7.8bn in 2015)
+- 95% of councils in SEND deficit (79% risked insolvency)
+- 206% specialist school cost rise (Now £1.7bn per year)
+
+- 60% of EHCPs issued on time (within 20-week limit)
+- 95% of parents win at tribunal (of decided cases)
+- 50% of parents find securing SEND support stressful
+
+High-needs spending growth:
+- 2015–16: £7.8bn
+- 2020–21: £9.5bn
+- 2024–25: £13.1bn
+
+- Independent specialist school costs have risen 206% since 2015 to £1.7 billion a year.
+- The National Audit Office calls the system "not delivering value for money".
+- The IFS warns SEND cost pressures are "crowding out" mainstream education funds.
+
+The structure of support in England
+
+In England, SEND support has two main layers.
+
+SEN Support is the day to day support a setting provides without an EHCP. It might include adjustments in the classroom, targeted interventions, small group work, or additional adult support. In theory, this is where most needs should be met early.
+
+Education, Health and Care Plans are different. They are legal documents. They set out needs, provision, and outcomes, and they name a placement. The local authority is responsible for making sure the provision in the plan is delivered. This legal enforceability is why EHCPs matter so much to families.
+
+Why the system feels like a fight
+
+There is a consistent pattern.
+
+The EHCP route is slow. It is also paperwork heavy. Even though there is a 20 week legal deadline, only around half of new plans are completed on time. Many families wait far longer.
+
+When families are refused, delayed, or offered too little, many escalate. In 2023/24, there were 21,000 appeals, up 55% on the previous year. Parents win approximately 95% of cases, and 5,569 cases were conceded before the hearing. When parents win at that rate, it suggests that a lot of children were initially refused support they were entitled to.
+
+This creates a loop:
+- Families push harder because they feel they have to.
+- Local authorities feel overwhelmed and financially trapped.
+- Schools feel caught in the middle, trying to cope while waiting for decisions and funding.
+- Trust falls, conflict rises, and children wait.
+
+The inconsistency problem
+
+Postcode variation is one of the biggest recurring problems. Thresholds and practice can differ across areas, which means what works in one place can fail completely in another. That uncertainty drives anxiety and escalation, because families cannot rely on a clear baseline offer.
+
+Why EHCP demand keeps rising
+
+There is an over-reliance on EHCPs for support that should sit earlier. When SEN Support is not strong enough, an EHCP starts to feel like the only reliable mechanism to secure provision and accountability. That drives demand upwards, which then increases system load and cost, which then drives more rationing behaviour.
+
+The financial pressure underneath everything
+
+The financial picture is severe. Council spending on high needs has risen from £7.8 billion to £13.1 billion in under a decade. 95% of councils are running SEND deficits, and by March 2026, two fifths of local authorities are at risk of issuing a Section 114 notice.
+
+Without intervention, 79% of councils risked insolvency by 2028 due to SEND debts alone. That financial stress is not separate from the family experience. It shapes behaviour, delays, gatekeeping, and disputes.
+
+There are also perverse incentives baked in. Schools do not get extra funding per child unless there is an EHCP, so there is a financial disincentive to take high needs pupils without one. Councils are financially liable for EHCPs but not for early intervention, so money gets spent reactively on crisis placements and legal battles rather than early support.
+
+A note on the rest of the UK
+
+Scotland, Wales and Northern Ireland have different systems and legal routes. This section covers England only.

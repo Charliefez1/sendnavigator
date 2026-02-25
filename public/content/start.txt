@@ -1,0 +1,56 @@
+Title: SEND Reform Navigator
+Route: /start
+Description: A calm, independent guide helping parents and professionals understand SEND reform in England. Clear facts, no spin.
+Last updated: 23rd February 2026
+Status: Confirmed
+Key topics: Navigation, Overview
+Key numbers: n/a
+Key sources: n/a
+
+---
+
+SEND Reform Navigator
+
+A calm, independent guide helping parents and professionals understand SEND reform in England. Clear facts, no spin.
+
+Sections:
+
+The State of SEND 2026
+Our 8-part report tracking every aspect of SEND reform.
+- Where we are now
+- What is changing
+- What has not changed
+- What is being discussed
+- What we do not know
+- What the leaks are saying
+- What the leaks do not mean
+- Timeline
+
+Parent Guides
+Practical guides for navigating the SEND system right now.
+- The EHCP Guide
+- Health in EHCPs
+- Understanding your child (Autism, ADHD)
+- Exclusions & rights
+- Alternative Provision
+- Post-16 & Transition
+- What to do right now
+- Free help - SENDIASS
+- My Child: A Profile
+
+Understanding the System
+- Why where you live matters
+- Devolved Nations
+
+Take Action and Community
+- Have your say on reform
+- Ask Rich
+- Lived experience
+- You are carrying a lot
+- Reality Bites
+
+About and Resources
+- About this resource
+- Sources & evidence
+- How to use this site
+- Feedback

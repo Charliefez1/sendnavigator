@@ -1,0 +1,25 @@
+Title: Sources and Evidence Base
+Route: /sources
+Description: Every source this site draws on, grouped by type. You should be able to check anything we say.
+Last updated: 25th February 2026
+Status: Confirmed
+Key topics: Sources, Evidence
+Key numbers: n/a
+Key sources: n/a
+
+---
+
+Sources and Evidence Base
+
+This page lists the sources this site draws on. It exists so you can check anything we say. Every page uses a confidence label (Confirmed, Discussed, Unconfirmed) based on these sources.
+
+Source Categories:
+- Government & Legislation (Children and Families Act 2014, SEND Code of Practice, DfE guidance)
+- Official Statistics (DfE datasets, National Audit Office)
+- Legal & Rights (IPSEA, Equality Act 2010)
+- Clinical & Health (NHS England, NICE guidelines)
+- Sector Reports (Local Government Association, National Network of Parent Carer Forums)
+- Media & Leaks (Guardian, Schools Week - clearly labelled as such)
+
+How we use sources
+Every claim presented as fact traces back to a source. Unconfirmed information is labelled.

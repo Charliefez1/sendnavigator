@@ -1,0 +1,64 @@
+Title: If You Are in Wales, Scotland, or Northern Ireland
+Route: /devolved-nations
+Description: SEND provision is devolved. Each nation has different legislation, terminology, and organisations. Find the right system and the right support for your nation.
+Last updated: 23rd February 2026
+Status: Confirmed
+Key topics: Devolved nations, Wales, Scotland, Northern Ireland
+Key numbers: n/a
+Key sources: Welsh Government, Scottish Government, NICCY
+
+---
+
+If You Are in Wales, Scotland, or Northern Ireland
+
+This site focuses on the English SEND system. Education and SEND provision are devolved. If you are in Wales, Scotland, or Northern Ireland, most of the legal detail on this site does not apply to your situation.
+
+Quick reference
+
+England:
+- Term: SEND
+- Plan: EHC plan
+- Law: Children and Families Act 2014
+- Advice: IPSEA / SENDIASS
+
+Wales:
+- Term: ALN (Additional Learning Needs)
+- Plan: IDP (Individual Development Plan)
+- Law: ALN and Education Tribunal (Wales) Act 2018
+- Advice: SNAP Cymru
+
+Scotland:
+- Term: ASN (Additional Support Needs)
+- Plan: CSP (Co-ordinated Support Plan - high threshold)
+- Law: Education (ASL) (Scotland) Act 2004
+- Advice: Enquire
+
+Northern Ireland:
+- Term: SEN
+- Plan: Statement of SEN
+- Law: Education (NI) Order 1996
+- Advice: SENAC
+
+Wales
+
+Wales replaced the English SEND system with the Additional Learning Needs (ALN) system. Implementation began in 2021 and phased in by 2025.
+Key difference: Any child with ALN requiring additional provision is entitled to a statutory IDP, regardless of severity. Wider entitlement than England. Covers 0-25.
+
+Scotland
+
+Scotland uses Additional Support for Learning (ASL). Explicitly inclusion-first.
+Key difference: No direct equivalent of the EHCP for most children. Most receive support through non-statutory plans. The statutory CSP is available only for complex needs requiring multi-agency support and has a very high threshold (only ~0.12% of pupils have one).
+
+Northern Ireland
+
+Retains the older SEN framework (Statements).
+Key difference: No EHC plan. Statements do not include health/care components. Education Authority (EA) is the single responsible body.
+
+Moving between nations
+
+Rights do not automatically transfer.
+- England to Wales: EHCP does not automatically become an IDP but LA must decide.
+- England to Scotland: School must take existing plan into account but no automatic transfer to CSP.
+- England to NI: Statement process is different.
+
+Always contact the new local authority/board before moving if possible.
