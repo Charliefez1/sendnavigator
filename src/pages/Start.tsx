@@ -223,15 +223,10 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Bottom gradient transition */}
-        <div
-          className="h-px"
-          style={{ background: "linear-gradient(to right, transparent, hsl(175 60% 40% / 0.25), transparent)" }}
-        />
       </section>
 
       {/* ─── SECTION 2: FEATURE NAVIGATION (6 boxes from landing) ─── */}
-      <section className="bg-background">
+      <section style={{ backgroundColor: "hsl(222 35% 10%)" }}>
         <div className="content-wide py-10 sm:py-14">
           <div className="flex items-center justify-center gap-2 mb-2">
             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "hsl(175 65% 41%)" }} />
@@ -239,7 +234,7 @@ const Index = () => {
               What's inside
             </p>
           </div>
-          <h2 className="text-xl sm:text-2xl font-display font-semibold text-foreground mb-8 text-center">
+          <h2 className="text-xl sm:text-2xl font-display font-semibold mb-8 text-center" style={{ color: "hsl(0 0% 92%)" }}>
             Everything you need in one place
           </h2>
           <div className="max-w-4xl mx-auto">
