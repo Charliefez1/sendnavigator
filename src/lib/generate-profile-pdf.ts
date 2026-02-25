@@ -110,16 +110,6 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
       dy += dlLineH;
     }
 
-    // NG logo in footer
-    if (ngLogo) {
-      try {
-        const logoH = 6;
-        const aspectRatio = ngLogo.width / ngLogo.height;
-        const logoW = logoH * aspectRatio;
-        doc.addImage(ngLogo.data, "JPEG", pageWidth / 2 - logoW / 2, pageHeight - 9 - logoH, logoW, logoH);
-      } catch { /* ignore */ }
-    }
-
     doc.setFontSize(7);
     doc.text("sendnavigator.neuro.support", pageWidth / 2, pageHeight - 7, { align: "center" });
     setColor(DARK_TEXT);
