@@ -238,13 +238,13 @@ const Index = () => {
       <section className="bg-[hsl(var(--accent-violet-bg))]">
         <div className="content-section py-12 sm:py-16 space-y-10">
           {/* Rich as a person */}
-          <div className="flex flex-col sm:flex-row items-start gap-6 max-w-3xl">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-6 max-w-3xl">
             <img
               src={richFamilyPhoto}
               alt="Rich Ferriman with his children"
-              className="w-full sm:w-48 h-auto rounded-xl object-cover flex-shrink-0"
+              className="w-32 h-32 sm:w-40 sm:h-40 rounded-xl object-cover flex-shrink-0"
             />
-            <div className="space-y-3">
+            <div className="space-y-2">
               <h2 className="text-xl font-semibold text-foreground">
                 Ask Rich
               </h2>
