@@ -1,81 +1,109 @@
 
-# Landing Page: Full Redesign
 
-## Philosophy
-Stop treating this like an information page. This is a **conversion page**. One job: make a parent feel understood, show them something powerful exists, and get them to sign up. Everything else is noise.
+# Landing Page: Genuine Visual Overhaul
 
-## New Page Structure
+## The honest diagnosis
 
-### Section 1: Hero (full viewport height)
-- **Dark navy**, full-bleed, edge to edge
-- Beacon logo top-left, "Sign in" top-right — minimal header
-- Centre of screen: one powerful headline in large display type
-  - "Your child's SEND rights. Explained by someone who gets it."
-- Below that: a single line of subtext
-  - "Independent. Fact-based. Built by a parent, for parents."
-- A single CTA button: "Get started free" (scrolls to auth)
-- No cards, no boxes, no trust pills cluttering this space
-- Subtle animated gradient behind the text (slow-moving, not distracting)
+Looking at the current page screenshot, here is what actually exists:
+- Hero: flat dark navy rectangle with centered text and an invisible gradient. No visual drama.
+- Problem statement: small text floating in empty white space. No weight.
+- Feature showcase: the AnimatedFeatureShowcase component works well but is contained in a timid tinted box with thin borders.
+- Ask Rich: functional but indistinguishable from the hero visually.
+- Auth: a card floating alone on white.
 
-### Section 2: The Problem Statement (emotional hook)
-- Light background, generous whitespace
-- Short, punchy copy in Rich's voice:
-  - "SEND reform is coming. The government won't tell you what it means. The media gets it wrong. And the jargon makes it impossible to know what's real."
-  - "I spent months researching every angle so you don't have to."
-- This section is text only. No icons, no cards. Just words that land.
+The structure matches the plan. The visual execution does not. Here is what changes.
 
-### Section 3: Animated Feature Showcase (what's inside)
-- Keep the existing `AnimatedFeatureShowcase` component but give it more room
-- Full-width section with a tinted background
-- Larger typography for the active feature description
-- The 5 features remain: SEND Reform Report, EHCP Guide, My Child Profile, What to do now, Ask Rich
+---
 
-### Section 4: Ask Rich Preview (the hook)
-- Keep the existing `LandingAskRich` component with the frosted paywall
-- But give it a dramatic presentation:
-  - Section headline: "Try it. Ask me anything."
-  - Dark background again to create rhythm (dark-light-dark)
-  - The input is large and prominent
-  - Example questions are clearly clickable
+## What actually changes this time
 
-### Section 5: Auth + Close (conversion)
-- Clean, centered `AuthForm`
-- Above it: "Join thousands of parents staying informed" (or similar social proof line)
-- Below it: "Free. No spam. Built by Rich Ferriman." with link to About
+### 1. Hero: Make it cinematic, not just dark
 
-### Section 6: Minimal footer
-- Copyright, About, Privacy, Sources links
-- No cards, no extra content
+**Current**: `bg-navy` with a nearly invisible radial gradient at 12% opacity. Text is `text-3xl` on mobile which is body-copy sized for a hero.
 
-## Technical Details
+**New**:
+- Gradient cranked to visible levels: a large teal glow top-center at 25% opacity, a violet glow bottom-right at 15% opacity, layered over a mesh-like pattern
+- Add a subtle grain texture overlay via CSS (a repeating tiny noise SVG as background-image) for depth
+- Headline bumped to `text-4xl sm:text-5xl md:text-6xl` with tighter `leading-[1.08]`
+- The teal accent line becomes a full glowing underline effect on "someone who gets it" using a CSS box-shadow glow
+- Subtext gets letter-spacing `tracking-wide` and is set in Inter (sans) not Fraunces, creating typographic contrast
+- CTA button gets a subtle glow shadow: `shadow-[0_0_30px_hsl(175_60%_40%/0.3)]` and hover grows it
+- Add a thin horizontal teal line below the CTA that fades out left and right (CSS gradient border), acting as a visual anchor
 
-### Files modified
-- `src/pages/Landing.tsx` — full rewrite with the new 6-section structure
-- `src/components/landing/AnimatedFeatureShowcase.tsx` — minor spacing/typography tweaks for the larger context
-- `src/components/landing/LandingAskRich.tsx` — no structural changes, just container styling adjustments
+### 2. Problem statement: Make it land like a punch
 
-### No new components needed
-The existing `AnimatedFeatureShowcase` and `LandingAskRich` components work well — the issue is the page wrapping them, not the components themselves.
+**Current**: `text-lg sm:text-xl md:text-2xl` in standard foreground color.
 
-### Design approach
-- Full-bleed sections alternating dark/light/tinted/dark/light
-- Much larger headline typography (text-4xl to text-5xl on desktop)
-- Generous vertical padding (py-20 to py-32 on desktop)
-- Remove all unnecessary cards, boxes, and borders from the landing page
-- The landing page uses its own visual language — bolder and more spacious than the app interior
-- CSS animated gradient on the hero (keyframe animation, no library)
-- Scroll-based fade-in for sections below the fold using IntersectionObserver + CSS transitions
+**New**:
+- Bump to `text-2xl sm:text-3xl md:text-4xl` with Fraunces italic for the emotional line
+- Add a large faded quotation mark as a decorative element (CSS `::before` pseudo-element, 120px tall, teal at 8% opacity)
+- The second line ("I spent months...") becomes a separate block with Rich's name and a small teal accent dash before it, like a signature
+- Section padding increased to `py-28 sm:py-36` for real breathing room
+- Add a subtle top border that is a gradient from transparent to teal to transparent, creating a visual "threshold" between hero and content
 
-### What gets removed
-- Trust pills from the hero (moved conceptually into the problem statement copy)
-- The bouncing arrow (replaced by natural scroll flow)
-- The about card section (absorbed into the auth/close section)
-- The side-by-side auth + showcase layout (each gets its own full-width section)
-- News ticker from the hero (it breaks the dramatic opening — can remain elsewhere in the app)
+### 3. Feature showcase: Give it presence
 
-### What stays
-- `AnimatedFeatureShowcase` component (with more breathing room)
-- `LandingAskRich` component with frosted paywall
-- `AuthForm` component
-- Beacon logo
-- Preview mode bypass (`?preview=true`)
+**Current**: Wrapped in `border-y border-border` with `backgroundColor: hsl(var(--navy) / 0.03)` which is basically invisible.
+
+**New**:
+- Background becomes a proper tinted surface: `bg-navy/[0.04]` in light mode but with a visible difference
+- Remove the `border-y` (borders are the enemy of premium feel)
+- The section title "What's inside" gets a teal dot before it instead of being uppercase tracking-widest
+- The AnimatedFeatureShowcase component itself is fine, but the wrapping `max-w-3xl` becomes `max-w-4xl` for more presence
+- Add a subtle fade-in-up animation with stagger for the feature list items
+
+### 4. Ask Rich: Create drama
+
+**Current**: Same navy background as hero, making the page feel like one long dark section.
+
+**New**:
+- Background gets a distinctly different treatment: a darker shade with a visible diagonal gradient stripe of teal at very low opacity, creating visual separation from the hero
+- The headline "Try it. Ask me anything." becomes `text-2xl sm:text-3xl` in Fraunces, not just `text-xl`
+- The input field gets a glowing border effect on focus: `ring-2 ring-[hsl(175_60%_40%/0.4)]`
+- The example question pills get a subtle teal left border and slightly more padding
+- More vertical padding: `py-24 sm:py-32`
+
+### 5. Auth section: Make it feel like the destination
+
+**Current**: A card in white space.
+
+**New**:
+- Background shifts to a very subtle warm gradient (warm grey to slightly peachy, barely perceptible)
+- The social proof line "Join thousands of parents staying informed" becomes `text-lg font-display` with real weight
+- Add a number counter: "2,400+ parents" in large teal text above the auth form (static number, aspirational)
+- The AuthForm card gets a stronger shadow: `shadow-xl` and slightly larger padding
+- The "Free. No spam." line gets small checkmark icons before each word
+
+### 6. Footer: Already fine, minor polish
+- Add a thin teal gradient line above it (matching the hero-to-content divider)
+
+---
+
+## Files modified
+
+### `src/pages/Landing.tsx` - Major visual overhaul
+- Hero gradient intensified with multiple layers and grain texture
+- Typography scaled up dramatically across all sections
+- Decorative elements added (gradient dividers, glow effects, quotation marks)
+- Spacing increased throughout
+- Auth section redesigned with counter and warm background
+- New CSS keyframes for the grain animation and glow effects added to the `<style>` block
+
+### `src/components/landing/AnimatedFeatureShowcase.tsx` - Minor
+- No structural changes
+- Wrapping container widened from `max-w-3xl` to `max-w-4xl` (done in Landing.tsx)
+
+### `src/components/landing/LandingAskRich.tsx` - Minor
+- Input field focus styles enhanced with teal glow ring
+- Example question pills get teal left border accent
+
+### No new files or dependencies needed
+
+---
+
+## Technical approach
+
+All changes are pure CSS/Tailwind and inline styles. No new libraries. The grain texture uses a base64-encoded tiny SVG as a CSS `background-image`. Glow effects use `box-shadow` with HSL color values already in the design system. Decorative pseudo-elements are created via Tailwind's `before:` and `after:` utilities or inline `<div>` elements.
+
+The goal: when someone scrolls this page, each section should feel like a new "room" they've entered, not just more text below more text.
+
