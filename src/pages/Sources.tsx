@@ -86,7 +86,7 @@ export default function Sources() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" aria-hidden="true" />
             <Input
               type="text"
-              placeholder="Search sources, e.g. 'EHCP', 'tribunal', 'Schools White Paper', 'EEF'"
+              placeholder="Search sources — e.g. 'EHCP', 'tribunal', 'Schools White Paper', 'EEF'…"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-9 text-sm"
@@ -152,7 +152,7 @@ export default function Sources() {
       {isSearching && filteredGroups.length === 0 && (
         <section className="content-section py-8">
           <p className="text-sm text-muted-foreground">
-            No sources found for "<strong>{searchQuery}</strong>". Try a different term, for example "tribunal", "EHCP", or "White Paper".
+            No sources found for "<strong>{searchQuery}</strong>". Try a different term — for example "tribunal", "EHCP", or "White Paper".
           </p>
         </section>
       )}

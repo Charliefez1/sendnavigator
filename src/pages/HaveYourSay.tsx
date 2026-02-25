@@ -104,7 +104,7 @@ export default function HaveYourSay() {
               Now that the White Paper has been published, the government will open a formal consultation on its proposals. Based on the DfE's own statements, that consultation will run for <strong>12 weeks</strong>.
             </p>
             <p>
-              During that window, you can submit a written response. Responses are read. They are counted. <strong>Well-evidenced responses from parents and families carry weight</strong>, particularly when they describe specific, concrete experience rather than general opinion.
+              During that window, you can submit a written response. Responses are read. They are counted. <strong>Well-evidenced responses from parents and families carry weight</strong> — particularly when they describe specific, concrete experience rather than general opinion.
             </p>
             <p>Based on the published White Paper, the consultation is likely to cover:</p>
             <ul className="space-y-2">
@@ -141,7 +141,7 @@ export default function HaveYourSay() {
               A consultation that receives tens of thousands of responses from parents describing specific failures gets noticed differently from one that receives a few hundred responses from professional bodies.
             </p>
             <p>
-              The 2022 SEND Green Paper consultation received <strong>over 22,000 responses</strong>. The response from families and disabled people's organisations shaped the subsequent Improvement Plan. It did not stop all harmful proposals, but it shifted some of them.
+              The 2022 SEND Green Paper consultation received <strong>over 22,000 responses</strong>. The response from families and disabled people's organisations shaped the subsequent Improvement Plan. It did not stop all harmful proposals — but it shifted some of them.
             </p>
             <p>
               Over <strong>132,000 people</strong> have already signed the Save Our Children's Rights petition. Over 130 organisations have written to ministers with four red lines. <strong>The momentum is there. Your individual response adds to it.</strong>
@@ -172,7 +172,7 @@ export default function HaveYourSay() {
               },
               {
                 title: "Use evidence where you have it",
-                body: "Dates, letters, decisions. If you have documentary evidence of a failure, such as a missed deadline, a provision not delivered, or a refusal without grounds, reference it. You do not need to attach the documents. You need to describe them clearly.",
+                body: "Dates, letters, decisions. If you have documentary evidence of a failure — a missed deadline, a provision not delivered, a refusal without grounds — reference it. You do not need to attach the documents. You need to describe them clearly.",
               },
               {
                 title: "Keep it readable",
@@ -223,10 +223,10 @@ export default function HaveYourSay() {
             <h3 className="text-sm font-display font-bold text-foreground">Contact your MP</h3>
             <div className="text-sm text-muted-foreground leading-relaxed space-y-3">
               <p>
-                Your MP can raise SEND issues in Parliament: in debates, in written questions, and in letters to ministers. MPs are most useful when they have <strong>concrete, local evidence</strong>.
+                Your MP can raise SEND issues in Parliament — in debates, in written questions, and in letters to ministers. MPs are most useful when they have <strong>concrete, local evidence</strong>.
               </p>
               <p>
-                When you write, include the specific issue you are raising, what you have already tried, and <strong>what you want the MP to do</strong>. A clear ask, such as "will you raise this with the Minister?", is more likely to get a useful response than a general expression of concern.
+                When you write, include the specific issue you are raising, what you have already tried, and <strong>what you want the MP to do</strong>. A clear ask — "will you raise this with the Minister?" — is more likely to get a useful response than a general expression of concern.
               </p>
               <ResourceLink label="writetothem.com" url="https://www.writetothem.com" />
             </div>

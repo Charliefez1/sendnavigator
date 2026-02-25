@@ -101,7 +101,7 @@ export default function EHCPHealth() {
               </div>
             </div>
             <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-5">
-              <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Section G: Health Provision</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Section G — Health Provision</p>
               <div className="space-y-2 text-sm text-muted-foreground leading-relaxed">
                 <p>Sets out the <strong>health care provision your child needs</strong> as a result of the needs described in Section C. Therapy input, specialist assessments, mental health support. Where it is linked to SEND, it belongs in Section G.</p>
                 <p>This is where it gets <strong>legally significant</strong>.</p>
@@ -145,7 +145,7 @@ export default function EHCPHealth() {
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <SectionHeading id="nhs-duties">The NHS's legal duties in the EHCP process</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-            <p>When a local authority carries out an EHCP needs assessment, NHS bodies (in practice, the local ICB and its commissioned services) have a legal duty to respond.</p>
+            <p>When a local authority carries out an EHCP needs assessment, NHS bodies — in practice, the local ICB and its commissioned services — have a legal duty to respond.</p>
             <p className="font-medium text-foreground">Specifically:</p>
             <ul className="space-y-2 ml-1">
               <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>The NHS must provide advice to the LA <strong>within six weeks</strong> of a request as part of an EHCP needs assessment. This is a legal requirement.</span></li>
@@ -255,7 +255,7 @@ export default function EHCPHealth() {
             <ul className="space-y-2 ml-1">
               <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>ICBs are under <strong>significant financial pressure</strong>. Decisions about commissioning and service provision are being made in a context of cost reduction.</span></li>
               <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>Staffing reductions within ICBs may affect the <strong>dedicated SEND functions</strong> some ICBs currently have.</span></li>
-              <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>The shift to neighbourhood-based services may eventually change <strong>how health provision for children with SEND is commissioned</strong> and delivered, but this is not confirmed.</span></li>
+              <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>The shift to neighbourhood-based services may eventually change <strong>how health provision for children with SEND is commissioned</strong> and delivered — but this is not confirmed.</span></li>
               <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>The boundary between what ICBs retain and what is transferred elsewhere is <strong>still being worked out</strong>.</span></li>
             </ul>
             <p>If you are currently in the middle of an EHCP assessment or annual review, <strong>the restructure does not change your rights</strong>. The statutory duties remain. What may be less certain is who within the NHS is responsible for fulfilling them in your area over the coming year.</p>
@@ -283,7 +283,7 @@ export default function EHCPHealth() {
         <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-6 shadow-lg">
           <SectionHeading id="extended-appeals">Extended appeals: taking health provision to tribunal</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-            <p>If you appeal to the SEND Tribunal over your child's EHC plan, you can, and in many cases should, <strong>include an extended appeal covering Sections C and G</strong>.</p>
+            <p>If you appeal to the SEND Tribunal over your child's EHC plan, you can — and in many cases should — <strong>include an extended appeal covering Sections C and G</strong>.</p>
             <p>An extended appeal allows the Tribunal to consider health and social care provision, not just educational provision. This is <strong>relatively underused by families</strong> but can be the most effective route where health provision has not been delivered or where Section G is inadequate.</p>
             <p>If you are considering an appeal and health provision is an issue, <strong>raise this with IPSEA or your legal representative at the earliest stage</strong>.</p>
           </div>
@@ -300,7 +300,7 @@ export default function EHCPHealth() {
             <p>Most ICBs have a dedicated SEND team or SEND lead. If yours does not list one publicly, contact the ICB's main enquiries line and ask who holds responsibility for <strong>SEND commissioning and EHC plan health provision</strong>.</p>
           </div>
           <div className="mt-4">
-            <ExtLink href="https://www.nhs.uk/nhs-services/find-your-local-integrated-care-board/">Find your local ICB on the NHS website</ExtLink>
+            <ExtLink href="https://www.nhs.uk/nhs-services/find-your-local-integrated-care-board/">→ Find your local ICB — NHS website</ExtLink>
           </div>
         </div>
       </section>
