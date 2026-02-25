@@ -422,8 +422,8 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Bottom padding for persistent ticker */}
-      <div className="h-16" />
+      {/* Bottom padding for persistent ticker - matches footer bg */}
+      <div className="h-16 bg-navy" />
     </Layout>
   );
 };
