@@ -8,6 +8,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import beaconLogo from "@/assets/beacon-logo.png";
+import ndgLogo from "@/assets/neurodiversity-global-education-logo-full.png";
 
 /* ── Fade-in on scroll ── */
 function useFadeIn() {
@@ -158,7 +159,13 @@ const Landing = () => {
           </div>
         </div>
 
-        <div className="h-20" />
+        {/* Neurodiversity Global branding at bottom of hero */}
+        <div className="relative flex flex-col items-center gap-2 pb-10">
+          <img src={ndgLogo} alt="Neurodiversity Global" className="h-10 opacity-80" />
+          <p className="text-xs tracking-wide" style={{ color: "hsl(222 20% 50%)" }}>
+            A free resource site by Neurodiversity Global
+          </p>
+        </div>
       </section>
 
       {/* ─── SECTION 2: PROBLEM STATEMENT ─── */}
