@@ -50,6 +50,10 @@ export function AnnouncementBanner() {
             <Shield className="w-3.5 h-3.5" />
             EHCP Guide
           </Link>
+          <span className="ml-auto text-xs opacity-70 hidden sm:inline-flex items-center gap-1.5">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-white/60 flex-shrink-0" />
+            Last updated: 23rd February 2026
+          </span>
         </div>
       </div>
 

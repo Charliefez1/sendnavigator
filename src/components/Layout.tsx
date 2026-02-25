@@ -27,20 +27,14 @@ export function Layout({ children }: LayoutProps) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <AnnouncementBanner />
       <SkipLink />
       <Header />
+      <AnnouncementBanner />
       <ScanModeBanner />
 
       {isReportPage ? (
         // Report pages get sidebar layout
         <ReportLayout>
-          <div className="content-section pt-3 pb-1">
-            <p className="text-xs text-muted-foreground flex items-center gap-1.5">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-status-confirmed flex-shrink-0" />
-              <span><strong className="text-foreground">Last updated:</strong> 23rd February 2026</span>
-            </p>
-          </div>
           <main id="main-content" className="flex-1 pb-8" role="main" tabIndex={-1}>
             {children}
             <div className="content-section py-6 space-y-4">
@@ -51,12 +45,6 @@ export function Layout({ children }: LayoutProps) {
       ) : (
         // Non-report pages get standard layout
         <>
-          <div className="content-section pt-3 pb-1">
-            <p className="text-xs text-muted-foreground flex items-center gap-1.5">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-status-confirmed flex-shrink-0" />
-              <span><strong className="text-foreground">Last updated:</strong> 23rd February 2026</span>
-            </p>
-          </div>
           <main id="main-content" className={`flex-1 ${isStartPage ? 'pb-0' : 'pb-32'}`} role="main" tabIndex={-1}>
             {children}
             {!isStartPage && (
