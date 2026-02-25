@@ -67,10 +67,11 @@ export function AnimatedFeatureShowcase() {
         return (
           <div
             key={feature.label}
-            className="rounded-xl border p-5 shadow-card transition-shadow duration-200 hover:shadow-card-hover"
+            className="rounded-xl border p-5 transition-shadow duration-200 hover:shadow-2xl"
             style={{
               borderColor: `hsl(var(${feature.accentVar}) / 0.25)`,
               backgroundColor: `hsl(var(${feature.accentBgVar}))`,
+              boxShadow: `0 8px 32px -8px hsl(var(${feature.accentVar}) / 0.25), 0 4px 16px -4px rgba(0,0,0,0.3)`,
             }}
           >
             <div className="flex items-center gap-3 mb-3">
