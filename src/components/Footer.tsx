@@ -113,6 +113,7 @@ export function Footer() {
                 { to: "/feedback", label: "Give feedback" },
                 { to: "/privacy-policy", label: "Privacy Policy" },
                 { to: "/admin", label: "Admin" },
+                { to: "/landing", label: "Landing page" },
               ].map((link) => (
                 <li key={link.to}>
                   <Link
