@@ -265,10 +265,10 @@ const Landing = () => {
         />
         <div
           ref={fade4.ref}
-          className={`content-section relative py-16 sm:py-20 ${fade4.className}`}
+          className={`content-section relative py-12 sm:py-15 ${fade4.className}`}
           style={fade4.style}
         >
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-2xl mx-auto rounded-2xl border p-6 sm:p-8" style={{ borderColor: "hsl(222 20% 22%)", backgroundColor: "hsl(222 30% 12% / 0.5)" }}>
             <h2
               className="text-2xl sm:text-3xl font-display font-semibold mb-2"
               style={{ color: "hsl(0 0% 96%)" }}
