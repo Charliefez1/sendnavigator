@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useSearchParams } from "react-router-dom";
 import { SEOHead } from "@/components/SEOHead";
 import { AuthForm } from "@/components/AuthForm";
 import { NewsTicker } from "@/components/NewsTicker";
@@ -11,9 +11,11 @@ import beaconLogo from "@/assets/beacon-logo.png";
 
 const Landing = () => {
   const { user, loading } = useAuth();
+  const [searchParams] = useSearchParams();
   const authRef = useRef<HTMLDivElement>(null);
+  const isPreview = searchParams.get("preview") === "true";
 
-  if (!loading && user) {
+  if (!loading && user && !isPreview) {
     return <Navigate to="/" replace />;
   }
 
