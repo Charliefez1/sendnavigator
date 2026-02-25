@@ -74,7 +74,7 @@ export function LatestUpdatesStream() {
   return (
     <section className="content-section py-4">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-        <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
+        <div className="rounded-xl border border-border bg-card px-4 py-3 shadow-sm">
           <CollapsibleTrigger asChild>
             <button className="flex items-center justify-between w-full gap-3">
               <div className="flex items-center gap-3">
