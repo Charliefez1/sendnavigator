@@ -15,11 +15,11 @@ export function WordFromRich({ children }: WordFromRichProps) {
           boxShadow: "0 8px 32px -8px hsl(262 50% 50% / 0.08), 0 4px 16px -4px rgba(0,0,0,0.06)",
         }}
       >
-        <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 rounded-md flex items-center justify-center" style={{ backgroundColor: "hsl(262 50% 50% / 0.1)" }}>
-            <MessageCircleQuestion className="w-3.5 h-3.5" style={{ color: "hsl(262 60% 55%)" }} />
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(262 50% 50% / 0.1)" }}>
+            <MessageCircleQuestion className="w-4 h-4" style={{ color: "hsl(262 60% 55%)" }} />
           </div>
-          <p className="text-xs font-semibold text-foreground uppercase tracking-wider">A word from Rich</p>
+          <p className="text-xs font-display font-semibold text-foreground uppercase tracking-wider">A word from Rich</p>
         </div>
         <div className="text-sm text-foreground/90 leading-relaxed space-y-3">
           {children}

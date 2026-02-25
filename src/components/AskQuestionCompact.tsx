@@ -59,11 +59,11 @@ export function AskQuestionCompact() {
         boxShadow: "0 8px 32px -8px hsl(8 75% 55% / 0.08), 0 4px 16px -4px rgba(0,0,0,0.06)",
       }}
     >
-      <div className="flex items-center gap-2.5">
-        <div className="w-8 h-8 rounded-md flex items-center justify-center" style={{ backgroundColor: "hsl(8 75% 55% / 0.1)" }}>
+      <div className="flex items-center gap-3">
+        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(8 75% 55% / 0.1)" }}>
           <MessageCircleQuestion className="h-4 w-4" style={{ color: "hsl(8 75% 55%)" }} />
         </div>
-        <span className="font-semibold text-sm text-foreground">Share a comment or lived experience</span>
+        <span className="font-display font-semibold text-base text-foreground">Share a comment or lived experience</span>
       </div>
       <Textarea
         value={question}

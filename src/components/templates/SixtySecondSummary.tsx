@@ -20,8 +20,8 @@ export function SixtySecondSummary({ points, prose }: SixtySecondSummaryProps) {
           boxShadow: "0 8px 32px -8px hsl(175 65% 41% / 0.08), 0 4px 16px -4px rgba(0,0,0,0.06)",
         }}
       >
-        <div className="flex items-center gap-2.5 mb-4">
-          <div className="w-8 h-8 rounded-md flex items-center justify-center" style={{ backgroundColor: "hsl(175 65% 41% / 0.1)" }}>
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(175 65% 41% / 0.1)" }}>
             <Zap className="w-4 h-4" style={{ color: "hsl(175 65% 41%)" }} />
           </div>
           <h2 id="summary-heading" className="text-base font-display font-semibold text-foreground">

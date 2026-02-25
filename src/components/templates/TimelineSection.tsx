@@ -18,9 +18,11 @@ interface CurrentPositionSectionProps {
 export function CurrentPositionSection({ data }: CurrentPositionSectionProps) {
   return (
     <section className="content-section py-8 border-b border-border">
-      <div className="flex items-center gap-2 mb-4">
-        <Calendar className="w-5 h-5 text-primary" aria-hidden="true" />
-        <h2 className="text-lg font-semibold text-foreground">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+          <Calendar className="w-4 h-4 text-primary" aria-hidden="true" />
+        </div>
+        <h2 className="text-base font-display font-semibold text-foreground">
           Current position
         </h2>
       </div>
@@ -83,13 +85,15 @@ export function CompletedMilestonesSection({ milestones }: CompletedMilestonesSe
 
   return (
     <section className="content-section py-8 border-b border-border">
-      <div className="flex items-center gap-2 mb-4">
-        <CheckCircle 
-          className="w-5 h-5" 
-          style={{ color: "hsl(var(--timeline-completed))" }}
-          aria-hidden="true" 
-        />
-        <h2 className="text-lg font-semibold text-foreground">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(var(--timeline-completed-bg))" }}>
+          <CheckCircle 
+            className="w-4 h-4" 
+            style={{ color: "hsl(var(--timeline-completed))" }}
+            aria-hidden="true" 
+          />
+        </div>
+        <h2 className="text-base font-display font-semibold text-foreground">
           Completed milestones
         </h2>
       </div>
@@ -152,13 +156,15 @@ export function UpcomingDecisionPointsSection({ decisionPoints }: UpcomingDecisi
 
   return (
     <section className="content-section py-8 border-b border-border">
-      <div className="flex items-center gap-2 mb-4">
-        <Clock 
-          className="w-5 h-5" 
-          style={{ color: "hsl(var(--timeline-upcoming))" }}
-          aria-hidden="true" 
-        />
-        <h2 className="text-lg font-semibold text-foreground">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(var(--timeline-upcoming-bg))" }}>
+          <Clock 
+            className="w-4 h-4" 
+            style={{ color: "hsl(var(--timeline-upcoming))" }}
+            aria-hidden="true" 
+          />
+        </div>
+        <h2 className="text-base font-display font-semibold text-foreground">
           Upcoming decision points
         </h2>
       </div>
@@ -248,9 +254,11 @@ export function LongerTermPossibilitiesSection({ possibilities }: LongerTermPoss
 
   return (
     <section className="content-section py-8 border-b border-border">
-      <div className="flex items-center gap-2 mb-4">
-        <HelpCircle className="w-5 h-5 text-muted-foreground" aria-hidden="true" />
-        <h2 className="text-lg font-semibold text-foreground">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
+          <HelpCircle className="w-4 h-4 text-muted-foreground" aria-hidden="true" />
+        </div>
+        <h2 className="text-base font-display font-semibold text-foreground">
           Longer term possibilities
         </h2>
       </div>
@@ -314,7 +322,7 @@ interface WhatChangedSectionProps {
 export function WhatChangedSection({ changes, lastUpdated, nothingChanged }: WhatChangedSectionProps) {
   return (
     <section className="content-section py-8 border-b border-border bg-muted/20">
-      <h2 className="text-lg font-semibold text-foreground mb-3">
+      <h2 className="text-base font-display font-semibold text-foreground mb-3">
         What has changed since the last update
       </h2>
       <p className="text-sm text-muted-foreground mb-4">

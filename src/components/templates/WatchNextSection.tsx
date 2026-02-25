@@ -23,9 +23,11 @@ export function WatchNextSection({ items }: WatchNextSectionProps) {
 
   return (
     <section className="content-section py-8 border-t border-border">
-      <div className="flex items-center gap-2 mb-4">
-        <Eye className="w-5 h-5 text-primary" />
-        <h2 className="text-lg font-semibold text-foreground">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+          <Eye className="w-4 h-4 text-primary" />
+        </div>
+        <h2 className="text-base font-display font-semibold text-foreground">
           What to watch next
         </h2>
       </div>
