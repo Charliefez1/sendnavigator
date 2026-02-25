@@ -282,66 +282,64 @@ const Index = () => {
       {/* ─── SECTION 4: Consolidated info (Word from Rich + SENDIASS + About) ─── */}
       <section className="bg-background">
         <div className="content-section py-10 sm:py-14">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {/* Compact strip: Word from Rich */}
-            <div className="rounded-xl border border-border bg-card p-4 sm:p-5">
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">A word from Rich</p>
-              <p className="text-sm text-foreground leading-relaxed">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+            {/* Card 1: Word from Rich */}
+            <div className="rounded-xl border border-border bg-card p-6 flex flex-col">
+              <p className="text-[11px] font-semibold text-primary uppercase tracking-widest mb-3">A word from Rich</p>
+              <p className="text-sm text-foreground leading-relaxed flex-1">
                 Your child is not broken. They may see the world differently, process it differently, move through it differently. That is not a fault. This site exists to help you get them what they need from a world that was not designed with them in mind.
               </p>
-              <Link to="/richs-take" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary mt-3 hover:underline">
-                Read my take on the white paper <ArrowRight className="w-3 h-3" />
-              </Link>
-            </div>
-
-            {/* Compact strip: SENDIASS */}
-            <div className="rounded-xl border border-border bg-card p-4 sm:p-5 flex items-start gap-3">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(220 70% 45% / 0.12)" }}>
-                <MapPin className="w-4 h-4" style={{ color: "hsl(220 70% 45%)" }} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-display font-bold text-foreground">Did you know you have a free local advice service?</h3>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                  Every local authority in England funds a free, impartial service called <strong>SENDIASS</strong> for parents navigating SEND.
-                </p>
-                <div className="flex flex-wrap gap-3 mt-2">
-                  <a
-                    href="https://councilfordisabledchildren.org.uk/about-us-0/networks/information-advice-and-support-services-network/find-your-local-ias-service"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-medium hover:underline"
-                    style={{ color: "hsl(220 70% 45%)" }}
-                  >
-                    Find your local SENDIASS <ExternalLink className="w-3 h-3" />
-                  </a>
-                  <Link to="/sendiass" className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">
-                    Learn more <ArrowRight className="w-3 h-3" />
-                  </Link>
-                </div>
+              <div className="mt-4 pt-3 border-t border-border">
+                <Link to="/richs-take" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline">
+                  Read my take on the white paper <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             </div>
 
-            {/* Compact strip: About + Feedback */}
-            <div className="rounded-xl border border-border bg-card p-4 sm:p-5 flex items-start gap-3">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(8 75% 55% / 0.12)" }}>
-                <Heart className="w-4 h-4" style={{ color: "hsl(8 75% 55%)" }} />
+            {/* Card 2: SENDIASS */}
+            <div className="rounded-xl border border-border bg-card p-6 flex flex-col">
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: "hsl(220 70% 45% / 0.1)" }}>
+                <MapPin className="w-4.5 h-4.5" style={{ color: "hsl(220 70% 45%)" }} />
               </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-display font-bold text-foreground">Made for families like yours</h3>
-                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                  This is an independent resource, not government, not a campaign. We just help you understand what's happening.
-                </p>
-                <div className="flex flex-wrap gap-3 mt-2">
-                  <Link to="/about" className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline">
-                    About this resource <ArrowRight className="w-3 h-3" />
-                  </Link>
-                  <Link to="/feedback" className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">
-                    Give feedback <ArrowRight className="w-3 h-3" />
-                  </Link>
-                  <Link to="/community-questions" className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors">
-                    Lived experience <ArrowRight className="w-3 h-3" />
-                  </Link>
-                </div>
+              <h3 className="text-sm font-display font-bold text-foreground mb-2">Did you know you have a free local advice service?</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed flex-1">
+                Every local authority in England funds a free, impartial service called <strong className="text-foreground">SENDIASS</strong> for parents navigating SEND.
+              </p>
+              <div className="mt-4 pt-3 border-t border-border space-y-2">
+                <a
+                  href="https://councilfordisabledchildren.org.uk/about-us-0/networks/information-advice-and-support-services-network/find-your-local-ias-service"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-sm font-medium hover:underline"
+                  style={{ color: "hsl(220 70% 45%)" }}
+                >
+                  Find your local SENDIASS <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+                <Link to="/sendiass" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                  Learn more <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 3: Made for families */}
+            <div className="rounded-xl border border-border bg-card p-6 flex flex-col">
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: "hsl(8 75% 55% / 0.1)" }}>
+                <Heart className="w-4.5 h-4.5" style={{ color: "hsl(8 75% 55%)" }} />
+              </div>
+              <h3 className="text-sm font-display font-bold text-foreground mb-2">Made for families like yours</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed flex-1">
+                This is an independent resource, not government, not a campaign. We just help you understand what's happening.
+              </p>
+              <div className="mt-4 pt-3 border-t border-border space-y-2">
+                <Link to="/about" className="flex items-center gap-1.5 text-sm font-medium text-primary hover:underline">
+                  About this resource <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <Link to="/feedback" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                  Give feedback <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <Link to="/community-questions" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+                  Lived experience <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
               </div>
             </div>
           </div>
