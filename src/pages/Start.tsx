@@ -257,7 +257,7 @@ const Index = () => {
               <img
                 src={askRichCharacter}
                 alt="Ask Rich"
-                className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl object-cover flex-shrink-0"
+                className="w-24 sm:w-28 rounded-2xl flex-shrink-0"
                 style={{ border: "2px solid hsl(262 50% 50% / 0.3)" }}
               />
               <div className="text-center sm:text-left">
