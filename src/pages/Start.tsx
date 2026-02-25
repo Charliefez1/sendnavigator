@@ -166,14 +166,7 @@ const Index = () => {
       />
 
       {/* ─── SECTION 1: NAVY HERO — Tell us why you're here ─── */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: "hsl(222 35% 10%)" }}>
-        {/* Subtle glow */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: "radial-gradient(ellipse 80% 50% at 50% 0%, hsl(175 60% 40% / 0.12), transparent 60%)",
-          }}
-        />
+      <section className="relative overflow-hidden bg-background">
         <div className="content-section relative py-10 sm:py-14">
           {/* Quick links bar - the 5 colour buttons */}
           <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
@@ -216,9 +209,9 @@ const Index = () => {
 
           {/* Last updated */}
           <div className="flex items-center justify-center gap-2 mt-6">
-            <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "hsl(175 60% 50%)" }} />
-            <p className="text-xs" style={{ color: "hsl(222 20% 55%)" }}>
-              <strong style={{ color: "hsl(0 0% 80%)" }}>Last updated:</strong> 23rd February 2026
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary" />
+            <p className="text-xs text-muted-foreground">
+              <strong className="text-foreground">Last updated:</strong> 23rd February 2026
             </p>
           </div>
         </div>
@@ -226,7 +219,7 @@ const Index = () => {
       </section>
 
       {/* ─── SECTION 2: FEATURE NAVIGATION (6 boxes from landing) ─── */}
-      <section style={{ backgroundColor: "hsl(222 35% 10%)" }}>
+      <section className="bg-background">
         <div className="content-wide py-10 sm:py-14">
           <div className="flex items-center justify-center gap-2 mb-2">
             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "hsl(175 65% 41%)" }} />
@@ -234,7 +227,7 @@ const Index = () => {
               What's inside
             </p>
           </div>
-          <h2 className="text-xl sm:text-2xl font-display font-semibold mb-8 text-center" style={{ color: "hsl(0 0% 92%)" }}>
+          <h2 className="text-xl sm:text-2xl font-display font-semibold text-foreground mb-8 text-center">
             Everything you need in one place
           </h2>
           <div className="max-w-4xl mx-auto">
