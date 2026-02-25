@@ -279,9 +279,9 @@ const Index = () => {
 
       {/* About this resource — CORAL accent (action/practical) */}
       <section className="content-section py-8">
-        <div className={`border-l-4 ${SECTION_COLORS.coral.border} rounded-xl ${SECTION_COLORS.coral.bg} border border-[hsl(var(--accent-coral)/0.2)] p-5 shadow-lg`}>
-          <div className="flex items-start gap-4">
-            <Heart className={`w-6 h-6 ${SECTION_COLORS.coral.iconSolid} flex-shrink-0 mt-1`} />
+        <div className={`border-l-4 ${SECTION_COLORS.coral.border} rounded-xl ${SECTION_COLORS.coral.bg} border border-[hsl(var(--accent-coral)/0.2)] p-4 shadow-lg`}>
+          <div className="flex items-center gap-3">
+            <Heart className={`w-5 h-5 ${SECTION_COLORS.coral.iconSolid} flex-shrink-0`} />
             <div>
               <h2 className="text-lg font-display font-semibold text-foreground mb-3">
                 Made for families like yours
