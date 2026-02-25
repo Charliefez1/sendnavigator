@@ -1,118 +1,91 @@
 
 
-# Static Plain Text Content Mirror
+# Landing Page Redesign
 
 ## Overview
-Create a `public/content/` directory containing plain text extracts of every parent-facing page on the site, plus a master index. This allows external AI tools (ChatGPT, Claude) to read all site content without JavaScript rendering.
+Redesign the `/landing` page to serve as a compelling, modern entry point that showcases what the SEND Navigator offers, includes a limited "Ask Rich" preview with a frosted paywall, and draws inspiration from SiteGround's animated feature showcase pattern.
 
-## Scope
-- Content extraction only -- no changes to routing, UI, styling, or functionality
-- `public/send-navigator-full-export.txt` remains unchanged
-- Extract only parent-facing copy as displayed in the UI
-- Preserve UK spelling, punctuation, headings, lists, and numbered steps exactly
+## Changes
 
-## Files to create
+### 1. Remove the Neurodiversity Global image panel
+- Remove the right-hand image column from the hero section (the `neurodiversityLanding` import and its navy container)
+- The hero becomes a single-column, text-led layout
 
-### 1. Master index: `public/content/index.txt`
+### 2. Update Beacon logo in both positions
+- Header logo and the "About" section logo both currently use `beacon-logo.png`
+- Update both `<img>` tags to use the current Beacon logo asset (confirm with you if a new file is needed, or if the existing `beacon-logo.png` has been updated)
 
-Pipe-separated, one page per line, header row first:
+### 3. Add "Ask Rich" preview with frosted paywall
+- Create a new `LandingAskRich` component that embeds a simplified version of the `QuestionInput` component
+- When a user submits a question:
+  - The question is sent to the existing `qanda` edge function as normal
+  - The answer renders but with a CSS frost/blur overlay covering roughly 70% of the response (the first ~30% is visible)
+  - A call-to-action overlay appears on the frosted area: "Sign up or sign in to read the full answer"
+  - Clicking it scrolls to or focuses the AuthForm
+- This uses the existing `qanda` edge function with no backend changes
 
+### 4. Animated feature showcase (SiteGround-inspired)
+- Create an `AnimatedFeatureShowcase` component
+- Right side: a stack of 5 feature "cards" that animate in sequence (auto-cycling every 4 seconds, pausable on hover)
+- Each card has an icon + label, and when active it scales up / highlights
+- Left side: a headline and short description that updates to match the active feature
+- The 5 features:
+  1. **SEND Reform Report** - "Track every aspect of SEND reform across 8 detailed sections"
+  2. **EHCP Guide** - "Understand your rights, the process, and what to do when things go wrong"
+  3. **My Child: A Profile** - "Build a professional document about your child to share with schools"
+  4. **What to do now** - "Practical steps based on current law, not speculation"
+  5. **Ask Rich** - "Get plain-English answers to your SEND questions"
+- Uses the existing 5-colour accent system (teal, deep blue, amber, coral, violet)
+- Smooth CSS transitions with `transition-all duration-500`
+
+### 5. Rewrite landing page copy
+Current copy is heavily focused on "what has changed" and reassurance about EHCPs. The new copy should reflect what the tool actually is now:
+
+**Hero headline**: "The independent guide to SEND reform in England"
+**Sub-headline**: "Clear facts, practical tools, and honest answers for parents navigating the SEND system"
+
+**About section** (replaces current long text block):
+- Short, punchy description of what the Navigator is
+- What it includes (the 5 tools above)
+- Trust signals remain (Independent, Fact-based, For families)
+- Attribution to Rich Ferriman with link
+
+### 6. Updated page structure (top to bottom)
+1. Navy header with Beacon logo (updated)
+2. News ticker (unchanged)
+3. Hero section: headline + sub-headline + AuthForm (single column, centred)
+4. Animated feature showcase (the 5 tools)
+5. Ask Rich preview with frosted paywall
+6. Trust/about card (shortened copy, Beacon logo updated)
+7. Footer (unchanged)
+
+## Technical details
+
+### New components
+- `src/components/landing/LandingAskRich.tsx` - Wraps QuestionInput + frosted answer display
+- `src/components/landing/AnimatedFeatureShowcase.tsx` - Auto-cycling feature cards with synced descriptions
+
+### Modified files
+- `src/pages/Landing.tsx` - Full rewrite of the page layout and copy
+- No changes to `AuthForm.tsx`, `QandAComponent.tsx`, `QuestionInput.tsx`, or any edge functions
+
+### Frosted answer implementation
 ```text
-route | title | description | last_updated | status | content_file
+Answer container:
+  - position: relative
+  - First 30%: visible normally
+  - Remaining 70%: CSS mask-image gradient from transparent to opaque white
+  - Overlaid with: backdrop-blur-md + semi-transparent bg + CTA button
 ```
 
-Underscore file names (not hyphens).
+### Animation implementation
+- `useState` for `activeIndex` (0-4)
+- `useEffect` with `setInterval(4000)` for auto-cycling
+- `onMouseEnter` pauses, `onMouseLeave` resumes
+- Each card transitions with scale, opacity, and border-color changes
+- Description area uses `AnimatePresence`-style fade (CSS transitions, no extra library)
 
-### 2. Individual content files (35 files)
-
-Each file follows this exact structure:
-
-```text
-Title: [page title]
-Route: [route path]
-Description: [page description]
-Last updated: [date]
-Status: [confirmed / discussed / unconfirmed / n/a]
-Key topics: [comma-separated]
-Key numbers: [comma-separated stat values]
-Key sources: [sources cited on page]
-
----
-
-[Body content with headings, subheadings, lists, numbered steps preserved]
-[Internal links shown as: text [/route]]
-```
-
-### Page list (35 content files)
-
-**State of SEND 2026 report (9 files):**
-1. `public/content/state_of_send_2026.txt` -- Report hub (/state-of-send-2026)
-2. `public/content/where_we_are_now.txt` -- 8 sections, stats, data visuals (/state-of-send-2026/where-we-are-now)
-3. `public/content/what_is_changing.txt` -- 10 sections including white paper (/state-of-send-2026/what-is-changing)
-4. `public/content/what_has_not_changed.txt` -- 9 sections, rights checklist (/state-of-send-2026/what-has-not-changed)
-5. `public/content/what_is_being_discussed.txt` -- 9 sections, tier diagram (/state-of-send-2026/what-is-being-discussed)
-6. `public/content/what_we_do_not_know.txt` -- 9 sections (/state-of-send-2026/what-we-do-not-know)
-7. `public/content/what_the_leaks_are_saying.txt` -- 9 sections (/state-of-send-2026/what-the-leaks-are-saying)
-8. `public/content/what_the_leaks_do_not_mean.txt` -- (/state-of-send-2026/what-the-leaks-do-not-mean)
-9. `public/content/timeline.txt` -- Visual timeline milestones (/state-of-send-2026/timeline)
-
-**Parent guides (11 files):**
-10. `public/content/ehcps.txt` -- Full EHCP guide, all sections A-K, process, stats (/ehcps)
-11. `public/content/ehcp_health.txt` -- Health in EHCPs (/ehcp-health)
-12. `public/content/understanding_your_child.txt` -- (/understanding-your-child)
-13. `public/content/understanding_autism.txt` -- (/understanding-your-child/autism)
-14. `public/content/understanding_adhd.txt` -- (/understanding-your-child/adhd)
-15. `public/content/exclusions.txt` -- Full exclusions and rights guide (/exclusions)
-16. `public/content/alternative_provision.txt` -- (/alternative-provision)
-17. `public/content/post_16_and_transition.txt` -- (/post-16-and-transition)
-18. `public/content/what_to_do_right_now.txt` -- 5 situations, help resources (/what-to-do-right-now)
-19. `public/content/sendiass.txt` -- (/sendiass)
-20. `public/content/quick_read.txt` -- Quick summary of all 8 report sections (/quick-read)
-
-**System pages (2 files):**
-21. `public/content/local_variation.txt` -- (/local-variation)
-22. `public/content/devolved_nations.txt` -- (/devolved-nations)
-
-**Action and community (5 files):**
-23. `public/content/have_your_say.txt` -- (/have-your-say)
-24. `public/content/for_parents.txt` -- Support and wellbeing (/for-parents)
-25. `public/content/what_we_owe_our_children.txt` -- (/what-we-owe-our-children)
-26. `public/content/community_questions.txt` -- (/community-questions)
-27. `public/content/questions_and_answers.txt` -- Ask Rich intro (/questions-and-answers)
-
-**About and meta (6 files):**
-28. `public/content/about.txt` -- Governance, independence (/about)
-29. `public/content/sources.txt` -- (/sources)
-30. `public/content/how_to_use.txt` -- (/how-to-use)
-31. `public/content/why_i_built_this.txt` -- (/why-i-built-this)
-32. `public/content/rich_ferriman.txt` -- (/rich-ferriman)
-33. `public/content/neurodiversity_global.txt` -- (/neurodiversity-global)
-
-**Other (2 files):**
-34. `public/content/start.txt` -- Home page with all navigation sections (/start)
-35. `public/content/privacy_policy.txt` -- (/privacy-policy)
-
-### 3. Sitemap update: `public/sitemap.xml`
-
-- Add missing `/state-of-send-2026/` routes (hub + 8 sections)
-- Add missing pages: `/ehcps`, `/exclusions`, `/for-parents`, `/what-to-do-right-now`, `/post-16-and-transition`, `/ehcp-health`, `/alternative-provision`, `/understanding-your-child`, `/local-variation`, `/devolved-nations`, `/have-your-say`, `/what-we-owe-our-children`, `/quick-read`, `/my-child-profile`, `/privacy-policy`
-- Remove old redirected routes (`/where-we-are-now`, `/what-is-changing`, etc.)
-- Content mirror routes (`/content/*.txt`) included at lower priority (0.2) if added
-
-## Extraction rules (confirmed)
-- Extract only parent-facing copy as displayed in UI
-- Do not summarise or rewrite content
-- Do not introduce new wording
-- Do not attempt to reconcile statistics
-- Preserve UK spelling and punctuation
-- Include internal link text with destination routes in brackets
-- Exclude navigation chrome, developer labels, and non-meaningful UI text
-
-## Technical notes
-- All files in `public/` so Vite serves them as static assets, bypassing the SPA router
-- `.txt` extension ensures tools get plain text
-- This is a large batch of file creation (37 new files + 1 update) -- will be done in parallel batches
-- Each page's JSX must be read and its text content extracted faithfully
-- Word From Rich blocks, confidence labels, and stat cards are all included as text content
-- Collapsible/accordion content (e.g. EHCP sections A-K, situations in What To Do) is extracted in full (expanded state)
+### No backend changes required
+- The `qanda` edge function already works for unauthenticated users (it's invoked via the Supabase client which includes the anon key)
+- The frosting is purely a frontend visual treatment
 
