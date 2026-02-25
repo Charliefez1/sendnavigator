@@ -419,7 +419,7 @@ const Index = () => {
         </section>
 
         {/* ─── PreFooter inside backdrop ─── */}
-        <div className="relative">
+        <div className="relative [&_section]:bg-transparent [&_section]:border-t-0 [&_.content-wide]:py-10">
           <PreFooter />
         </div>
       </div>
