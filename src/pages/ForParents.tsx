@@ -2,7 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
-import { PageSearch } from "@/components/PageSearch";
+
 import { Link } from "react-router-dom";
 import { CheckCircle2, ExternalLink, Phone, Heart, Users, Scale, Shield, AlertTriangle, HelpCircle } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
@@ -79,7 +79,7 @@ export default function ForParents() {
       <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
-      <PageSearch />
+      
 
       <WordFromRich>
         <p>Nobody tells you this part. The forms at midnight. The meetings where you feel like you are fighting for something that should just be given. The school gate where you are watching other children while yours is at home again. The grief that is not for your child but for the version of this you thought it would be. And underneath all of it, still the love. Still showing up. Still pushing.</p>

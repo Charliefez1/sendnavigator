@@ -7,7 +7,7 @@ import {
   ContentBox,
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
-import { PageSearch } from "@/components/PageSearch";
+
 import { StatusBadge } from "@/components/StatusBadge";
 import { TierDiagram, StatCard } from "@/components/templates/DataVisuals";
 import { Users, BarChart3, Layers, TrendingDown, PoundSterling, Gavel, School, Clock, MessageCircle } from "lucide-react";
@@ -55,7 +55,7 @@ export default function WhatIsBeingDiscussed() {
       />
 
       <OnThisPage sections={sections} />
-      <PageSearch />
+      
 
       <ContentBox id="impact" icon={Users} title="How will this impact children and parents">
         <div className="space-y-3">

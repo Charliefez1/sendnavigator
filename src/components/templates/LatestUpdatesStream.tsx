@@ -71,7 +71,7 @@ export function LatestUpdatesStream() {
   const hasMore = allEntries.length > DEFAULT_VISIBLE;
 
   return (
-    <section className="content-section py-4">
+    <section className="content-section py-2">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <div className="rounded-xl border border-border bg-card px-5 py-4 shadow-card hover:shadow-card-hover transition-shadow duration-200">
           <CollapsibleTrigger asChild>

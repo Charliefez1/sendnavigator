@@ -2,7 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
-import { PageSearch } from "@/components/PageSearch";
+
 import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Users, Shield, Scale, BarChart3, FileText, BookOpen } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
@@ -81,7 +81,7 @@ export default function AlternativeProvision() {
       </header>
 
       <OnThisPage sections={sections} />
-      <PageSearch />
+      
 
       <WordFromRich>
         <p>Alternative Provision is where the system sends children it has not found a way to include. Some of it is excellent. Some of it is a holding space that changes very little. If your child is moving towards AP, or is already in it, the questions to ask are the same as for any setting: what does my child need, is this place able to meet it, and what is the plan from here? AP is not the end of the road. But it needs scrutiny, and you are entitled to apply it.</p>

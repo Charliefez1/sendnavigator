@@ -8,7 +8,7 @@ import {
   ContentBox,
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
-import { PageSearch } from "@/components/PageSearch";
+
 import { StatusBadge } from "@/components/StatusBadge";
 import { VisualTimeline } from "@/components/templates/VisualTimeline";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
@@ -118,7 +118,7 @@ export default function Timeline() {
       <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
-      <PageSearch />
+      
 
       <ContentBox id="visual-timeline" icon={GitBranch} title="Visual timeline">
         <VisualTimeline milestones={timelineMilestones} />

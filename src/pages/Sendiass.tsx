@@ -2,7 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
-import { PageSearch } from "@/components/PageSearch";
+
 import { StatusBadge } from "@/components/StatusBadge";
 import { ExternalLink, MapPin, Phone, Scale, Users, ShieldCheck, HelpCircle } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -84,7 +84,7 @@ export default function Sendiass() {
       </section>
 
       <OnThisPage sections={pageSections} />
-      <PageSearch />
+      
 
 
       <WordFromRich>

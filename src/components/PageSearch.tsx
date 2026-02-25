@@ -93,7 +93,6 @@ export function PageSearch({ label = "Search this page" }: PageSearchProps) {
     (index: number) => {
       const marks = marksRef.current;
       if (marks.length === 0) return;
-      // Reset all
       marks.forEach((m) => {
         m.className = "bg-primary/30 text-foreground rounded-sm px-0.5";
       });
@@ -118,60 +117,53 @@ export function PageSearch({ label = "Search this page" }: PageSearchProps) {
   }, [clearHighlights]);
 
   return (
-    <div data-page-search-bar className="content-section py-3">
-      <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
-        <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2 block">
-          {label}
-        </label>
-        <div className="flex items-center gap-2">
-          <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <input
-              ref={inputRef}
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Type to search..."
-              className="w-full pl-9 pr-3 py-2 text-sm bg-muted/30 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/40 text-foreground placeholder:text-muted-foreground"
-            />
-          </div>
-          {query && (
-            <>
-              <span className="text-xs text-muted-foreground whitespace-nowrap">
-                {matchCount > 0 ? `${currentMatch}/${matchCount}` : "0 results"}
-              </span>
-              {matchCount > 1 && (
-                <div className="flex gap-0.5">
-                  <button
-                    onClick={() => goToMatch(currentMatch - 1)}
-                    className="p-1 rounded hover:bg-muted/50 text-muted-foreground"
-                    aria-label="Previous match"
-                  >
-                    <ChevronUp className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => goToMatch(currentMatch + 1)}
-                    className="p-1 rounded hover:bg-muted/50 text-muted-foreground"
-                    aria-label="Next match"
-                  >
-                    <ChevronDown className="w-4 h-4" />
-                  </button>
-                </div>
-              )}
-              <button
-                onClick={() => {
-                  setQuery("");
-                  clearHighlights();
-                }}
-                className="p-1 rounded hover:bg-muted/50 text-muted-foreground"
-                aria-label="Clear search"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </>
-          )}
-        </div>
+    <div data-page-search-bar className="flex items-center gap-2">
+      <div className="relative flex-1">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+        <input
+          ref={inputRef}
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder={label}
+          className="w-full pl-9 pr-3 py-2 text-sm bg-muted/30 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/40 text-foreground placeholder:text-muted-foreground"
+        />
       </div>
+      {query && (
+        <>
+          <span className="text-xs text-muted-foreground whitespace-nowrap">
+            {matchCount > 0 ? `${currentMatch}/${matchCount}` : "0 results"}
+          </span>
+          {matchCount > 1 && (
+            <div className="flex gap-0.5">
+              <button
+                onClick={() => goToMatch(currentMatch - 1)}
+                className="p-1 rounded hover:bg-muted/50 text-muted-foreground"
+                aria-label="Previous match"
+              >
+                <ChevronUp className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => goToMatch(currentMatch + 1)}
+                className="p-1 rounded hover:bg-muted/50 text-muted-foreground"
+                aria-label="Next match"
+              >
+                <ChevronDown className="w-4 h-4" />
+              </button>
+            </div>
+          )}
+          <button
+            onClick={() => {
+              setQuery("");
+              clearHighlights();
+            }}
+            className="p-1 rounded hover:bg-muted/50 text-muted-foreground"
+            aria-label="Clear search"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        </>
+      )}
     </div>
   );
 }

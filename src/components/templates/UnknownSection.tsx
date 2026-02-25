@@ -8,7 +8,7 @@ export function UnknownSection({ questions }: UnknownSectionProps) {
   if (questions.length === 0) return null;
 
   return (
-    <section className="content-section py-8 border-t border-border">
+    <section className="content-section py-3 border-t border-border">
       <div className="flex items-center gap-3 mb-4">
         <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
           <HelpCircle className="w-4 h-4 text-muted-foreground" />

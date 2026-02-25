@@ -2,7 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
-import { PageSearch } from "@/components/PageSearch";
+
 import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Clock, Search, Scale, Users, MapPin, FileText, Shield } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
@@ -81,7 +81,7 @@ export default function LocalVariation() {
       <LatestUpdatesStream />
 
       <OnThisPage sections={pageSections} />
-      <PageSearch />
+      
 
       <WordFromRich>
         <p>One of the harder things to accept is that your child's experience of this system depends significantly on where you live. Not on their needs. Not on their rights. On geography. The law is the same everywhere. The practice is not. Knowing your local context changes how you prepare and what you ask for. This page helps you understand your local picture. Knowledge is not everything. But it is a start.</p>

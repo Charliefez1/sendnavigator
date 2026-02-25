@@ -7,7 +7,7 @@ interface WordFromRichProps {
 
 export function WordFromRich({ children }: WordFromRichProps) {
   return (
-    <div className="content-section py-4">
+    <div className="content-section py-2">
       <div
         className="rounded-xl border-l-4 border border-border p-5 sm:p-6 space-y-3"
         style={{

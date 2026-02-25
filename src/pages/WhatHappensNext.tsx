@@ -7,7 +7,7 @@ import {
   ContentBox,
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
-import { PageSearch } from "@/components/PageSearch";
+
 import { StatusBadge } from "@/components/StatusBadge";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import { Users, BarChart3, FileText, MessageSquare, Landmark, ArrowRightLeft, CheckCircle, Anchor, ArrowDown } from "lucide-react";
@@ -59,7 +59,7 @@ export default function WhatHappensNext() {
       <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
-      <PageSearch />
+      
 
       <ContentBox id="impact" icon={Users} title="How will this impact children and parents">
         <div className="space-y-3">

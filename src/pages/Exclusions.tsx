@@ -2,7 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
-import { PageSearch } from "@/components/PageSearch";
+
 import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, BarChart3, Scale, Shield, FileText, Phone, ListChecks } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
@@ -73,7 +73,7 @@ export default function Exclusions() {
       </header>
 
       <OnThisPage sections={sections} />
-      <PageSearch />
+      
 
       {/* The numbers */}
       <section className="content-section py-6">

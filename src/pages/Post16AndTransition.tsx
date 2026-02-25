@@ -2,7 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
-import { PageSearch } from "@/components/PageSearch";
+
 import { StatusBadge } from "@/components/StatusBadge";
 import { ExternalLink, GraduationCap, Scale, Users, Briefcase, CalendarDays, AlertTriangle, ShieldCheck } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
@@ -93,7 +93,7 @@ export default function Post16AndTransition() {
       </section>
 
       <OnThisPage sections={pageSections} />
-      <PageSearch />
+      
 
       <WordFromRich>
         <p>The transition to adulthood is where the system most often loses the thread. I have seen young people reach 18 or 25 and fall off a cliff that was entirely predictable and entirely avoidable. Not because of anyone's bad intentions. Because planning started too late, conversations did not happen early enough, and nobody joined the dots between education and what comes after.</p>

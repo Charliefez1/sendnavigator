@@ -1,7 +1,7 @@
 import { Layout } from "@/components/Layout";
 import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
-import { PageSearch } from "@/components/PageSearch";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { SourceCard } from "@/components/SourceCard";
 import { AlertCircle, TrendingUp, Users, BarChart3, PoundSterling, Gavel, FileText } from "lucide-react";
