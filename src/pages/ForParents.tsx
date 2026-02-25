@@ -1,10 +1,22 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
+import { OnThisPage } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
+import { PageSearch } from "@/components/PageSearch";
 import { Link } from "react-router-dom";
-import { CheckCircle2, ExternalLink, Phone, Heart } from "lucide-react";
+import { CheckCircle2, ExternalLink, Phone, Heart, Users, Scale, Shield, AlertTriangle, HelpCircle } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 
+const sections: PageSectionDef[] = [
+  { id: "cost", icon: Heart, title: "What this experience costs" },
+  { id: "alone", icon: Users, title: "You cannot sustain this alone" },
+  { id: "forums", icon: Users, title: "Parent Carer Forums" },
+  { id: "orgs", icon: Shield, title: "National organisations" },
+  { id: "carer-rights", icon: Scale, title: "Your rights as a carer" },
+  { id: "more-support", icon: HelpCircle, title: "When you need more" },
+  { id: "darkest", icon: Phone, title: "For the darkest moments" },
+];
 function SectionHeading({ children }: { children: React.ReactNode }) {
   return (
     <h2 className="text-lg font-display font-semibold text-foreground mt-10 mb-4 first:mt-0">
@@ -66,13 +78,16 @@ export default function ForParents() {
 
       <LatestUpdatesStream />
 
+      <OnThisPage sections={sections} />
+      <PageSearch />
+
       <WordFromRich>
         <p>Nobody tells you this part. The forms at midnight. The meetings where you feel like you are fighting for something that should just be given. The school gate where you are watching other children while yours is at home again. The grief that is not for your child but for the version of this you thought it would be. And underneath all of it, still the love. Still showing up. Still pushing.</p>
         <p>I have been in that place. I know what it takes. You are not failing. And in most cases, neither are the people trying to help you. The system around all of you is under enormous strain. That distinction matters more than you might realise right now.</p>
       </WordFromRich>
 
       {/* What this experience actually costs */}
-      <section className="content-section py-6">
+      <section id="cost" className="content-section py-6 scroll-mt-20">
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <SectionHeading>What this experience actually costs</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
@@ -95,7 +110,7 @@ export default function ForParents() {
       </section>
 
       {/* You cannot sustain this alone */}
-      <section className="content-section py-4">
+      <section id="alone" className="content-section py-4 scroll-mt-20">
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <SectionHeading>You cannot sustain this alone</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
@@ -114,7 +129,7 @@ export default function ForParents() {
       </section>
 
       {/* Parent Carer Forums */}
-      <section className="content-section py-4">
+      <section id="forums" className="content-section py-4 scroll-mt-20">
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <SectionHeading>Parent Carer Forums</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
@@ -135,7 +150,7 @@ export default function ForParents() {
       </section>
 
       {/* National organisations */}
-      <section className="content-section py-4">
+      <section id="orgs" className="content-section py-4 scroll-mt-20">
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <SectionHeading>National organisations that support parents</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
@@ -171,7 +186,7 @@ export default function ForParents() {
       </section>
 
       {/* Carer's assessment */}
-      <section className="content-section py-4">
+      <section id="carer-rights" className="content-section py-4 scroll-mt-20">
         <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-6 shadow-lg">
           <SectionHeading>Your rights as a carer</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
@@ -210,7 +225,7 @@ export default function ForParents() {
       </section>
 
       {/* When you need more */}
-      <section className="content-section py-4">
+      <section id="more-support" className="content-section py-4 scroll-mt-20">
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <SectionHeading>When you need more than a forum or a helpline</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
@@ -232,7 +247,7 @@ export default function ForParents() {
       </section>
 
       {/* Samaritans */}
-      <section className="content-section py-4">
+      <section id="darkest" className="content-section py-4 scroll-mt-20">
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <SectionHeading>For the moments that feel darkest</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">

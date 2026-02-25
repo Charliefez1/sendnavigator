@@ -1,7 +1,9 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { PageOrientation } from "@/components/templates";
-import { ExternalLink, FileText, Phone, MapPin, Scale, AlertTriangle, Clock, CheckCircle, ChevronDown } from "lucide-react";
+import { PageOrientation, OnThisPage } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
+import { PageSearch } from "@/components/PageSearch";
+import { ExternalLink, FileText, Phone, MapPin, Scale, AlertTriangle, Clock, CheckCircle, ChevronDown, Shield, HelpCircle, ListChecks } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SendiassSignpost } from "@/components/SendiassSignpost";
 import { WordFromRich } from "@/components/WordFromRich";
@@ -148,6 +150,15 @@ const situations = [
   },
 ];
 
+const sections: PageSectionDef[] = [
+  { id: "who-responsible", icon: Scale, title: "Who is responsible" },
+  { id: "situations", icon: HelpCircle, title: "What is going wrong?" },
+  { id: "paper-trail", icon: FileText, title: "Keep a paper trail" },
+  { id: "get-help", icon: Phone, title: "Where to get help" },
+  { id: "sendiass", icon: MapPin, title: "SENDIASS" },
+  { id: "reform-note", icon: AlertTriangle, title: "A note on reform" },
+];
+
 export default function WhatToDoRightNow() {
   return (
     <Layout>
@@ -179,6 +190,9 @@ export default function WhatToDoRightNow() {
 
       <LatestUpdatesStream />
 
+      <OnThisPage sections={sections} />
+      <PageSearch />
+
       {/* Reality Bites callout */}
       <section className="content-section py-4">
         <div className="rounded-xl border border-foreground/15 bg-foreground/5 p-5">
@@ -206,7 +220,7 @@ export default function WhatToDoRightNow() {
       </section>
 
       {/* Who is responsible */}
-      <section className="content-section py-4">
+      <section id="who-responsible" className="content-section py-4 scroll-mt-20">
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <div className="flex items-start gap-4 mb-4">
             <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
@@ -229,7 +243,7 @@ export default function WhatToDoRightNow() {
       </WordFromRich>
 
       {/* Situations accordion */}
-      <section className="content-section py-4">
+      <section id="situations" className="content-section py-4 scroll-mt-20">
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <h2 className="text-lg font-display font-semibold text-foreground mb-4">What is going wrong?</h2>
           <Accordion type="single" collapsible className="space-y-2">
@@ -248,7 +262,7 @@ export default function WhatToDoRightNow() {
       </section>
 
       {/* Paper trail */}
-      <section className="content-section py-4">
+      <section id="paper-trail" className="content-section py-4 scroll-mt-20">
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <div className="flex items-start gap-4 mb-4">
             <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 flex-shrink-0 mt-0.5">
@@ -270,7 +284,7 @@ export default function WhatToDoRightNow() {
       </section>
 
       {/* Where to get help */}
-      <section className="content-section py-4">
+      <section id="get-help" className="content-section py-4 scroll-mt-20">
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <h2 className="text-lg font-display font-semibold text-foreground mb-4">Where to get help right now</h2>
           <p className="text-sm text-muted-foreground mb-4">These organisations provide free advice and support.</p>
@@ -298,12 +312,12 @@ export default function WhatToDoRightNow() {
       </section>
 
       {/* SENDIASS signpost */}
-      <section className="content-section py-4">
+      <section id="sendiass" className="content-section py-4 scroll-mt-20">
         <SendiassSignpost />
       </section>
 
       {/* Reform note */}
-      <section className="content-section py-4">
+      <section id="reform-note" className="content-section py-4 scroll-mt-20">
         <div className="rounded-xl border border-amber-500/30 bg-amber-500/5 p-5">
           <div className="flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />

@@ -1,15 +1,17 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
+import { OnThisPage } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
+import { PageSearch } from "@/components/PageSearch";
 import { Link } from "react-router-dom";
-import { CheckCircle2, ExternalLink, AlertTriangle, ArrowRight, Clock, Info } from "lucide-react";
+import { CheckCircle2, ExternalLink, AlertTriangle, ArrowRight, Clock, Info, FileText, MapPin, Scale } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
-
-const anchors = [
-  { id: "reference-table", label: "Quick reference" },
-  { id: "wales", label: "Wales" },
-  { id: "scotland", label: "Scotland" },
-  { id: "northern-ireland", label: "Northern Ireland" },
-  { id: "moving-between", label: "Moving between nations" },
+const pageSections: PageSectionDef[] = [
+  { id: "reference-table", icon: FileText, title: "Quick reference" },
+  { id: "wales", icon: MapPin, title: "Wales" },
+  { id: "scotland", icon: MapPin, title: "Scotland" },
+  { id: "northern-ireland", icon: MapPin, title: "Northern Ireland" },
+  { id: "moving-between", icon: Scale, title: "Moving between nations" },
 ];
 
 function SH({ id, children }: { id: string; children: React.ReactNode }) {
@@ -82,15 +84,8 @@ export default function DevolvedNations() {
         <p>If you are in Wales, Scotland, or Northern Ireland, I want to be straight with you. Most of this site was built around the English system. I am sorry this page cannot do more. What I can do is point you to the people who understand your system deeply, in your nation, with your legislation. The organisations listed here are the real thing. They know your rights. Use them.</p>
       </WordFromRich>
 
-      {/* Anchor nav */}
-      <nav className="content-section py-4 border-b border-border" aria-label="Page sections">
-        <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold mb-2">Jump to</p>
-        <div className="flex flex-wrap gap-1.5">
-          {anchors.map((a) => (
-            <a key={a.id} href={`#${a.id}`} className="px-2.5 py-1.5 text-xs font-medium rounded-lg border border-border bg-card text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors">{a.label}</a>
-          ))}
-        </div>
-      </nav>
+      <OnThisPage sections={pageSections} />
+      <PageSearch />
 
       {/* Quick reference table — placed high per build notes */}
       <section className="content-section py-6">

@@ -7,6 +7,7 @@ import {
   ContentBox,
 } from "@/components/templates";
 import { WordFromRich } from "@/components/WordFromRich";
+import { PageSearch } from "@/components/PageSearch";
 import {
   Collapsible,
   CollapsibleContent,
@@ -70,6 +71,7 @@ export default function EHCPs() {
       <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
+      <PageSearch />
 
       {/* ── What is an EHCP ── */}
       <ContentBox id="what-is-ehcp" icon={FileText} title="What is an EHCP">

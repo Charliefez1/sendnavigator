@@ -1,18 +1,21 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
+import { OnThisPage } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
+import { PageSearch } from "@/components/PageSearch";
 import { Link } from "react-router-dom";
-import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight } from "lucide-react";
+import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Users, Shield, Scale, BarChart3, FileText, BookOpen } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
 
-const anchors = [
-  { id: "what-ap-is", label: "What AP is" },
-  { id: "who-is-in-ap", label: "Who is in AP" },
-  { id: "outcomes", label: "The outcomes picture" },
-  { id: "rights-ehcp", label: "Rights with an EHCP" },
-  { id: "quality", label: "Quality & registration" },
-  { id: "off-site", label: "Directed off-site provision" },
-  { id: "reform", label: "What reform proposes" },
-  { id: "concerned", label: "If you are concerned" },
+const sections: PageSectionDef[] = [
+  { id: "what-ap-is", icon: BookOpen, title: "What AP is" },
+  { id: "who-is-in-ap", icon: Users, title: "Who is in AP" },
+  { id: "outcomes", icon: BarChart3, title: "The outcomes picture" },
+  { id: "rights-ehcp", icon: Scale, title: "Rights with an EHCP" },
+  { id: "quality", icon: Shield, title: "Quality & registration" },
+  { id: "off-site", icon: FileText, title: "Directed off-site provision" },
+  { id: "reform", icon: HelpCircle, title: "What reform proposes" },
+  { id: "concerned", icon: AlertTriangle, title: "If you are concerned" },
 ];
 
 function SectionHeading({ id, children }: { id: string; children: React.ReactNode }) {
@@ -77,17 +80,8 @@ export default function AlternativeProvision() {
         </p>
       </header>
 
-      {/* Anchor nav */}
-      <nav className="content-section py-4 border-b border-border" aria-label="Page sections">
-        <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold mb-2">Jump to</p>
-        <div className="flex flex-wrap gap-1.5">
-          {anchors.map((a) => (
-            <a key={a.id} href={`#${a.id}`} className="px-2.5 py-1.5 text-xs font-medium rounded-lg border border-border bg-card text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors">
-              {a.label}
-            </a>
-          ))}
-        </div>
-      </nav>
+      <OnThisPage sections={sections} />
+      <PageSearch />
 
       <WordFromRich>
         <p>Alternative Provision is where the system sends children it has not found a way to include. Some of it is excellent. Some of it is a holding space that changes very little. If your child is moving towards AP, or is already in it, the questions to ask are the same as for any setting: what does my child need, is this place able to meet it, and what is the plan from here? AP is not the end of the road. But it needs scrutiny, and you are entitled to apply it.</p>

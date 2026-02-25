@@ -7,6 +7,7 @@ import {
   ContentBox,
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
+import { PageSearch } from "@/components/PageSearch";
 import { StatusBadge } from "@/components/StatusBadge";
 import { StatCard, PercentageRing, HorizontalBarChart } from "@/components/templates/DataVisuals";
 import { Users, BarChart3, TrendingUp, AlertTriangle, PoundSterling, Scale, Heart } from "lucide-react";
@@ -48,6 +49,7 @@ export default function WhatWeKnowSoFar() {
       />
 
       <OnThisPage sections={sections} />
+      <PageSearch />
 
       <ContentBox id="impact" icon={Users} title="How will this impact children and parents">
         <div className="space-y-3">
