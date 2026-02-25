@@ -30,7 +30,7 @@ import {
   Stethoscope,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import richPhoto from "@/assets/rich-ferriman-bio.png";
+import richFamilyPhoto from "@/assets/rich-ferriman-family.jpeg";
 
 /* ── Content link types ── */
 
@@ -235,26 +235,29 @@ const Index = () => {
           ACT 4: HUMAN PRESENCE
           Ask Rich as a person. Space and calm.
           ═══════════════════════════════════════════ */}
-      <section className="content-section py-8 sm:py-12">
-        <div className="max-w-2xl space-y-6">
-          {/* Rich as a person, not a feature */}
-          <div className="flex items-start gap-4">
+      <section className="bg-[hsl(var(--accent-violet-bg))]">
+        <div className="content-section py-12 sm:py-16 space-y-10">
+          {/* Rich as a person */}
+          <div className="flex flex-col sm:flex-row items-start gap-6 max-w-3xl">
             <img
-              src={richPhoto}
-              alt="Rich Ferriman"
-              className="w-14 h-14 rounded-full object-cover flex-shrink-0"
+              src={richFamilyPhoto}
+              alt="Rich Ferriman with his children"
+              className="w-full sm:w-48 h-auto rounded-xl object-cover flex-shrink-0"
             />
-            <div>
-              <p className="text-sm text-foreground leading-relaxed">
+            <div className="space-y-3">
+              <h2 className="text-xl font-semibold text-foreground">
+                Ask Rich
+              </h2>
+              <p className="text-sm text-foreground/90 leading-relaxed">
                 Your child is not broken. The system around them may be struggling, but your child is exactly who they are supposed to be. This site exists to help you get them what they need.
               </p>
-              <p className="text-xs text-muted-foreground mt-2">
+              <p className="text-xs text-muted-foreground">
                 Rich Ferriman, parent and neuroinclusion consultant
               </p>
             </div>
           </div>
 
-          {/* Ask Rich */}
+          {/* Ask Rich, full width */}
           <QandAComponent />
         </div>
       </section>
