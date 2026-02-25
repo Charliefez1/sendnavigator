@@ -1,4 +1,3 @@
-import { useState, useEffect, useRef } from "react";
 import {
   FileText, Shield, User, CheckSquare, MessageCircle,
 } from "lucide-react";
@@ -9,7 +8,7 @@ const features = [
     label: "SEND Reform Report",
     headline: "Track every aspect of SEND reform",
     description:
-      "Eight detailed sections covering what's confirmed, what's being discussed, and what hasn't changed. All clearly labelled so you always know where you stand.",
+      "Eight detailed sections covering what's confirmed, what's being discussed, and what hasn't changed.",
     accentVar: "--accent-teal",
     accentBgVar: "--accent-teal-bg",
   },
@@ -27,7 +26,7 @@ const features = [
     label: "My Child: A Profile",
     headline: "Build a profile to share with schools",
     description:
-      "Create a professional, structured document about your child that you can share with schools, professionals, and anyone involved in their support.",
+      "Create a professional, structured document about your child that you can share with schools and professionals.",
     accentVar: "--accent-amber",
     accentBgVar: "--accent-amber-bg",
   },
@@ -36,7 +35,7 @@ const features = [
     label: "What to do now",
     headline: "Practical steps based on current law",
     description:
-      "No speculation, no panic. Clear, practical actions you can take right now based on what the law actually says today.",
+      "Clear, practical actions you can take right now based on what the law actually says today.",
     accentVar: "--accent-coral",
     accentBgVar: "--accent-coral-bg",
   },
@@ -45,126 +44,52 @@ const features = [
     label: "Ask Rich",
     headline: "Get plain-English answers",
     description:
-      "Ask any question about SEND reform and get a grounded, honest answer drawn from confirmed sources. No jargon, no spin.",
+      "Ask any question about SEND reform and get a grounded, honest answer drawn from confirmed sources.",
     accentVar: "--accent-violet",
     accentBgVar: "--accent-violet-bg",
   },
 ];
 
 export function AnimatedFeatureShowcase() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const startCycling = () => {
-    stopCycling();
-    intervalRef.current = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % features.length);
-    }, 4000);
-  };
-
-  const stopCycling = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  };
-
-  useEffect(() => {
-    startCycling();
-    return stopCycling;
-  }, []);
-
-  const handleSelect = (index: number) => {
-    stopCycling();
-    setActiveIndex(index);
-    startCycling();
-  };
-
-  const active = features[activeIndex];
-  const Icon = active.icon;
-
   return (
-    <div
-      onMouseEnter={stopCycling}
-      onMouseLeave={startCycling}
-    >
-      <div className="grid md:grid-cols-5 gap-6 items-start">
-        {/* Left: description (3 cols) */}
-        <div className="md:col-span-3 flex flex-col justify-center py-2">
+    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {features.map((feature) => {
+        const Icon = feature.icon;
+        return (
           <div
-            className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-colors duration-500"
-            style={{ backgroundColor: `hsl(var(${active.accentBgVar}))` }}
+            key={feature.label}
+            className="rounded-xl border p-5 transition-shadow duration-300 hover:shadow-lg"
+            style={{
+              borderColor: `hsl(var(${feature.accentVar}) / 0.25)`,
+              backgroundColor: `hsl(var(${feature.accentBgVar}))`,
+            }}
           >
-            <Icon
-              className="w-6 h-6 transition-colors duration-500"
-              style={{ color: `hsl(var(${active.accentVar}))` }}
-            />
-          </div>
-          <h3
-            className="text-lg sm:text-xl font-display font-semibold mb-3 transition-colors duration-500"
-            style={{ color: `hsl(var(${active.accentVar}))` }}
-          >
-            {active.headline}
-          </h3>
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-md">
-            {active.description}
-          </p>
-        </div>
-
-        {/* Right: feature list (2 cols) */}
-        <div className="md:col-span-2 flex flex-col gap-1.5">
-          {features.map((feature, index) => {
-            const isActive = index === activeIndex;
-            return (
-              <button
-                key={feature.label}
-                onClick={() => handleSelect(index)}
-                className="relative flex items-center gap-3 px-4 py-3.5 rounded-xl text-left transition-all duration-300 min-h-[52px] overflow-hidden"
-                style={{
-                  backgroundColor: isActive
-                    ? `hsl(var(${feature.accentBgVar}))`
-                    : "transparent",
-                  borderLeft: isActive
-                    ? `3px solid hsl(var(${feature.accentVar}))`
-                    : "3px solid transparent",
-                }}
+            <div className="flex items-center gap-3 mb-3">
+              <div
+                className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                style={{ backgroundColor: `hsl(var(${feature.accentVar}) / 0.12)` }}
               >
-                <feature.icon
-                  className="w-4.5 h-4.5 flex-shrink-0 transition-colors duration-300"
-                  style={{
-                    color: isActive
-                      ? `hsl(var(${feature.accentVar}))`
-                      : "hsl(var(--muted-foreground))",
-                  }}
+                <Icon
+                  className="w-4.5 h-4.5"
+                  style={{ color: `hsl(var(${feature.accentVar}))` }}
                 />
-                <span
-                  className="text-sm font-medium transition-colors duration-300"
-                  style={{
-                    color: isActive
-                      ? `hsl(var(${feature.accentVar}))`
-                      : "hsl(var(--foreground))",
-                  }}
-                >
-                  {feature.label}
-                </span>
-
-                {/* Timer bar at bottom */}
-                {isActive && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5">
-                    <div
-                      className="h-full rounded-full"
-                      style={{
-                        backgroundColor: `hsl(var(${feature.accentVar}))`,
-                        animation: "progress-fill 4s linear forwards",
-                      }}
-                    />
-                  </div>
-                )}
-              </button>
-            );
-          })}
-        </div>
-      </div>
+              </div>
+              <h3
+                className="text-sm font-semibold leading-tight"
+                style={{ color: `hsl(var(${feature.accentVar}))` }}
+              >
+                {feature.label}
+              </h3>
+            </div>
+            <p className="text-sm font-semibold text-foreground leading-snug mb-1.5">
+              {feature.headline}
+            </p>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              {feature.description}
+            </p>
+          </div>
+        );
+      })}
     </div>
   );
 }
