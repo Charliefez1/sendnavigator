@@ -1,10 +1,20 @@
 import { Layout } from "@/components/Layout";
-import { PageOrientation } from "@/components/templates";
+import { PageOrientation, OnThisPage } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
+import { PageSearch } from "@/components/PageSearch";
 import { Card, CardContent } from "@/components/ui/card";
 import { SourceCard } from "@/components/SourceCard";
-import { AlertCircle, TrendingUp, Users, BarChart3, PoundSterling, Gavel } from "lucide-react";
+import { AlertCircle, TrendingUp, Users, BarChart3, PoundSterling, Gavel, FileText } from "lucide-react";
 import { StatCard, PercentageRing, HorizontalBarChart } from "@/components/templates/DataVisuals";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
+
+const sections: PageSectionDef[] = [
+  { id: "summary-facts", icon: FileText, title: "Summary facts" },
+  { id: "confirmed-position", icon: BarChart3, title: "Confirmed position" },
+  { id: "projected", icon: TrendingUp, title: "Projected figures" },
+  { id: "clarifications", icon: AlertCircle, title: "Important clarifications" },
+  { id: "source-links", icon: FileText, title: "Source links" },
+];
 
 interface StatItem {
   label: string;
@@ -116,7 +126,7 @@ export default function StatisticsAndData() {
       </section>
 
       {/* Confirmed position */}
-      <section className="content-section py-8 border-t border-border">
+      <section id="confirmed-position" className="content-section py-8 border-t border-border scroll-mt-20">
         <h2 className="text-lg font-display font-semibold text-foreground mb-6">Confirmed position as of 23 February 2026</h2>
 
         <div className="space-y-8">
@@ -215,7 +225,7 @@ export default function StatisticsAndData() {
       </section>
 
       {/* Projected figures */}
-      <section className="content-section py-8 border-t border-border">
+      <section id="projected" className="content-section py-8 border-t border-border scroll-mt-20">
         <div className="flex items-start gap-3 mb-4">
           <TrendingUp className="w-5 h-5 text-muted-foreground mt-0.5" />
           <div>
@@ -245,7 +255,7 @@ export default function StatisticsAndData() {
       </section>
 
       {/* Important clarifications */}
-      <section className="content-section py-8 border-t border-border">
+      <section id="clarifications" className="content-section py-8 border-t border-border scroll-mt-20">
         <div className="flex items-start gap-3 mb-4">
           <AlertCircle className="w-5 h-5 text-muted-foreground mt-0.5" />
           <h2 className="text-lg font-display font-semibold text-foreground">Important clarifications for readers</h2>
@@ -273,7 +283,7 @@ export default function StatisticsAndData() {
       </section>
 
       {/* Source links */}
-      <section className="content-section py-8 border-t border-border">
+      <section id="source-links" className="content-section py-8 border-t border-border scroll-mt-20">
         <h2 className="text-lg font-display font-semibold text-foreground mb-6">Source links</h2>
 
         <div className="space-y-8">

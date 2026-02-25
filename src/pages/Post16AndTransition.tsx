@@ -1,9 +1,21 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { PageOrientation } from "@/components/templates";
+import { PageOrientation, OnThisPage } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
+import { PageSearch } from "@/components/PageSearch";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ExternalLink, GraduationCap, Scale, Users, Briefcase, CalendarDays, AlertTriangle, ShieldCheck } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
+
+const pageSections: PageSectionDef[] = [
+  { id: "law", icon: Scale, title: "What the law says" },
+  { id: "transitions", icon: GraduationCap, title: "Key transition points" },
+  { id: "end-ehcp", icon: AlertTriangle, title: "If the LA tries to end the EHCP" },
+  { id: "no-ehcp", icon: Users, title: "Without an EHCP" },
+  { id: "care-act", icon: ShieldCheck, title: "Care Act & adult social care" },
+  { id: "access-work", icon: Briefcase, title: "Access to Work" },
+  { id: "age-timeline", icon: CalendarDays, title: "Age timeline" },
+];
 import {
   Accordion,
   AccordionContent,
@@ -80,6 +92,9 @@ export default function Post16AndTransition() {
         </div>
       </section>
 
+      <OnThisPage sections={pageSections} />
+      <PageSearch />
+
       <WordFromRich>
         <p>The transition to adulthood is where the system most often loses the thread. I have seen young people reach 18 or 25 and fall off a cliff that was entirely predictable and entirely avoidable. Not because of anyone's bad intentions. Because planning started too late, conversations did not happen early enough, and nobody joined the dots between education and what comes after.</p>
         <p>Start earlier than feels necessary. The year 9 review is the legal starting point for transition planning. Use it. Push for it to be real, not a box-ticking exercise. Your young person deserves a plan for their life, not just their next school year.</p>
@@ -98,7 +113,7 @@ export default function Post16AndTransition() {
       </section>
 
       {/* ═══ WHAT THE LAW SAYS ═══ */}
-      <section className="content-section py-6">
+      <section id="law" className="content-section py-6 scroll-mt-20">
         <div className="max-w-3xl space-y-4">
           <h2 className="text-base font-display font-bold text-foreground flex items-center gap-2">
             <Scale className="w-5 h-5 text-primary" />
@@ -122,7 +137,7 @@ export default function Post16AndTransition() {
       </section>
 
       {/* ═══ KEY TRANSITION POINTS (ACCORDION) ═══ */}
-      <section className="content-section py-6">
+      <section id="transitions" className="content-section py-6 scroll-mt-20">
         <div className="max-w-3xl">
           <h2 className="text-base font-display font-bold text-foreground mb-4 flex items-center gap-2">
             <GraduationCap className="w-5 h-5 text-primary" />
@@ -221,7 +236,7 @@ export default function Post16AndTransition() {
       </section>
 
       {/* ═══ IF THE LA TRIES TO END THE EHCP ═══ */}
-      <section className="content-section py-6">
+      <section id="end-ehcp" className="content-section py-6 scroll-mt-20">
         <div className="max-w-3xl space-y-4">
           <h2 className="text-base font-display font-bold text-foreground flex items-center gap-2">
             <AlertTriangle className="w-5 h-5 text-destructive" />
@@ -254,7 +269,7 @@ export default function Post16AndTransition() {
       </section>
 
       {/* ═══ YOUNG PEOPLE WITHOUT EHCP ═══ */}
-      <section className="content-section py-6">
+      <section id="no-ehcp" className="content-section py-6 scroll-mt-20">
         <div className="max-w-3xl space-y-4">
           <h2 className="text-base font-display font-bold text-foreground flex items-center gap-2">
             <Users className="w-5 h-5 text-primary" />
@@ -275,7 +290,7 @@ export default function Post16AndTransition() {
       </section>
 
       {/* ═══ CARE ACT ═══ */}
-      <section className="content-section py-6">
+      <section id="care-act" className="content-section py-6 scroll-mt-20">
         <div className="max-w-3xl space-y-4">
           <h2 className="text-base font-display font-bold text-foreground flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-primary" />
@@ -297,7 +312,7 @@ export default function Post16AndTransition() {
       </section>
 
       {/* ═══ ACCESS TO WORK ═══ */}
-      <section className="content-section py-6">
+      <section id="access-work" className="content-section py-6 scroll-mt-20">
         <div className="max-w-3xl space-y-4">
           <h2 className="text-base font-display font-bold text-foreground flex items-center gap-2">
             <Briefcase className="w-5 h-5 text-primary" />
@@ -319,7 +334,7 @@ export default function Post16AndTransition() {
       </section>
 
       {/* ═══ AGE TIMELINE ═══ */}
-      <section className="content-section py-6">
+      <section id="age-timeline" className="content-section py-6 scroll-mt-20">
         <div className="max-w-3xl">
           <h2 className="text-base font-display font-bold text-foreground mb-5 flex items-center gap-2">
             <CalendarDays className="w-5 h-5 text-primary" />

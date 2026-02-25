@@ -1,10 +1,19 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { PageOrientation } from "@/components/templates";
+import { PageOrientation, OnThisPage } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
+import { PageSearch } from "@/components/PageSearch";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ExternalLink, MapPin, Phone, Scale, Users, ShieldCheck, HelpCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { WordFromRich } from "@/components/WordFromRich";
+
+const pageSections: PageSectionDef[] = [
+  { id: "what-sendiass-does", icon: HelpCircle, title: "What SENDIASS does" },
+  { id: "find-yours", icon: MapPin, title: "Find your local SENDIASS" },
+  { id: "what-to-expect", icon: ShieldCheck, title: "What to expect" },
+  { id: "beyond-sendiass", icon: Scale, title: "Beyond SENDIASS" },
+];
 
 function ResourceLink({ label, url }: { label: string; url: string }) {
   return (
@@ -73,6 +82,10 @@ export default function Sendiass() {
           </p>
         </div>
       </section>
+
+      <OnThisPage sections={pageSections} />
+      <PageSearch />
+
 
       <WordFromRich>
         <p>Most parents I speak to have never heard of SENDIASS. That is not their fault. It is a failure of how the system communicates. Free, independent, legally grounded advice, available to every family in England, and most people navigating the hardest experiences of their parenting lives have no idea it exists. Find yours. Use it. That is what it is there for.</p>

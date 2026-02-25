@@ -7,6 +7,7 @@ import {
   ContentBox,
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
+import { PageSearch } from "@/components/PageSearch";
 import { StatusBadge } from "@/components/StatusBadge";
 import { RightsChecklist } from "@/components/templates/DataVisuals";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
@@ -65,6 +66,7 @@ export default function WhatTheLeaksDoNotMean() {
       <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
+      <PageSearch />
 
       <ContentBox id="impact" icon={Users} title="How will this impact children and parents">
         <div className="space-y-3">

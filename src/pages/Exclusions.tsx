@@ -1,19 +1,22 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
+import { OnThisPage } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
+import { PageSearch } from "@/components/PageSearch";
 import { Link } from "react-router-dom";
-import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight } from "lucide-react";
+import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, BarChart3, Scale, Shield, FileText, Phone, ListChecks } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
 
-const anchors = [
-  { id: "numbers", label: "The numbers" },
-  { id: "what-exclusion-is", label: "What an exclusion is" },
-  { id: "what-the-law-says", label: "What the law says" },
-  { id: "suspended", label: "If your child is suspended" },
-  { id: "permanently-excluded", label: "If permanently excluded" },
-  { id: "informal", label: "Informal exclusions" },
-  { id: "what-to-do", label: "What to do right now" },
-  { id: "reform", label: "Reform debate" },
-  { id: "language", label: "A note on language" },
+const sections: PageSectionDef[] = [
+  { id: "numbers", icon: BarChart3, title: "The numbers" },
+  { id: "what-exclusion-is", icon: HelpCircle, title: "What an exclusion is" },
+  { id: "what-the-law-says", icon: Scale, title: "What the law says" },
+  { id: "suspended", icon: AlertTriangle, title: "If your child is suspended" },
+  { id: "permanently-excluded", icon: Shield, title: "If permanently excluded" },
+  { id: "informal", icon: FileText, title: "Informal exclusions" },
+  { id: "what-to-do", icon: ListChecks, title: "What to do right now" },
+  { id: "reform", icon: HelpCircle, title: "Reform debate" },
+  { id: "language", icon: CheckCircle2, title: "A note on language" },
 ];
 
 function SectionHeading({ id, children }: { id: string; children: React.ReactNode }) {
@@ -69,21 +72,8 @@ export default function Exclusions() {
         </p>
       </header>
 
-      {/* Anchor navigation */}
-      <nav className="content-section py-4 border-b border-border" aria-label="Page sections">
-        <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold mb-2">Jump to</p>
-        <div className="flex flex-wrap gap-1.5">
-          {anchors.map((a) => (
-            <a
-              key={a.id}
-              href={`#${a.id}`}
-              className="px-2.5 py-1.5 text-xs font-medium rounded-lg border border-border bg-card text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
-            >
-              {a.label}
-            </a>
-          ))}
-        </div>
-      </nav>
+      <OnThisPage sections={sections} />
+      <PageSearch />
 
       {/* The numbers */}
       <section className="content-section py-6">

@@ -1,19 +1,21 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
+import { OnThisPage } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
+import { PageSearch } from "@/components/PageSearch";
 import { Link } from "react-router-dom";
-import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Clock } from "lucide-react";
+import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Clock, Search, Scale, Users, MapPin, FileText, Shield } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
-
-const anchors = [
-  { id: "inspection-evidence", label: "Inspection evidence" },
-  { id: "what-drives-it", label: "What drives variation" },
-  { id: "safety-valve", label: "Safety Valve agreements" },
-  { id: "workforce", label: "Workforce & geography" },
-  { id: "what-it-means", label: "What it means for you" },
-  { id: "legal-rights", label: "Your legal rights" },
-  { id: "reform", label: "What reform intends" },
-  { id: "moving", label: "Considering moving" },
+const pageSections: PageSectionDef[] = [
+  { id: "inspection-evidence", icon: Search, title: "Inspection evidence" },
+  { id: "what-drives-it", icon: HelpCircle, title: "What drives variation" },
+  { id: "safety-valve", icon: Scale, title: "Safety Valve agreements" },
+  { id: "workforce", icon: Users, title: "Workforce & geography" },
+  { id: "what-it-means", icon: FileText, title: "What it means for you" },
+  { id: "legal-rights", icon: Shield, title: "Your legal rights" },
+  { id: "reform", icon: HelpCircle, title: "What reform intends" },
+  { id: "moving", icon: MapPin, title: "Considering moving" },
 ];
 
 function SH({ id, children }: { id: string; children: React.ReactNode }) {
@@ -78,15 +80,8 @@ export default function LocalVariation() {
 
       <LatestUpdatesStream />
 
-      {/* Anchor nav */}
-      <nav className="content-section py-4 border-b border-border" aria-label="Page sections">
-        <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold mb-2">Jump to</p>
-        <div className="flex flex-wrap gap-1.5">
-          {anchors.map((a) => (
-            <a key={a.id} href={`#${a.id}`} className="px-2.5 py-1.5 text-xs font-medium rounded-lg border border-border bg-card text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors">{a.label}</a>
-          ))}
-        </div>
-      </nav>
+      <OnThisPage sections={pageSections} />
+      <PageSearch />
 
       <WordFromRich>
         <p>One of the harder things to accept is that your child's experience of this system depends significantly on where you live. Not on their needs. Not on their rights. On geography. The law is the same everywhere. The practice is not. Knowing your local context changes how you prepare and what you ask for. This page helps you understand your local picture. Knowledge is not everything. But it is a start.</p>

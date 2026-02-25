@@ -1,20 +1,22 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
+import { OnThisPage } from "@/components/templates";
+import type { PageSectionDef } from "@/components/templates";
+import { PageSearch } from "@/components/PageSearch";
 import { Link } from "react-router-dom";
-import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Clock } from "lucide-react";
+import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Clock, Scale, Heart, FileText, MapPin, Stethoscope } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
-
-const anchors = [
-  { id: "sections-c-g", label: "Sections C & G" },
-  { id: "why-it-matters", label: "Why this matters" },
-  { id: "nhs-duties", label: "NHS legal duties" },
-  { id: "not-delivered", label: "What to do if not delivered" },
-  { id: "getting-g-right", label: "Getting Section G right" },
-  { id: "camhs", label: "CAMHS and thresholds" },
-  { id: "nhs-restructure", label: "NHS restructure" },
-  { id: "extended-appeals", label: "Extended appeals" },
-  { id: "find-icb", label: "Find your ICB" },
+const sections: PageSectionDef[] = [
+  { id: "sections-c-g", icon: FileText, title: "Sections C & G" },
+  { id: "why-it-matters", icon: Heart, title: "Why this matters" },
+  { id: "nhs-duties", icon: Scale, title: "NHS legal duties" },
+  { id: "not-delivered", icon: AlertTriangle, title: "What to do if not delivered" },
+  { id: "getting-g-right", icon: CheckCircle2, title: "Getting Section G right" },
+  { id: "camhs", icon: Stethoscope, title: "CAMHS and thresholds" },
+  { id: "nhs-restructure", icon: HelpCircle, title: "NHS restructure" },
+  { id: "extended-appeals", icon: Scale, title: "Extended appeals" },
+  { id: "find-icb", icon: MapPin, title: "Find your ICB" },
 ];
 
 function SectionHeading({ id, children }: { id: string; children: React.ReactNode }) {
@@ -81,21 +83,8 @@ export default function EHCPHealth() {
 
       <LatestUpdatesStream />
 
-      {/* Anchor navigation */}
-      <nav className="content-section py-4 border-b border-border" aria-label="Page sections">
-        <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold mb-2">Jump to</p>
-        <div className="flex flex-wrap gap-1.5">
-          {anchors.map((a) => (
-            <a
-              key={a.id}
-              href={`#${a.id}`}
-              className="px-2.5 py-1.5 text-xs font-medium rounded-lg border border-border bg-card text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
-            >
-              {a.label}
-            </a>
-          ))}
-        </div>
-      </nav>
+      <OnThisPage sections={sections} />
+      <PageSearch />
 
       {/* Sections C and G — two-panel layout */}
       <section className="content-section py-6">
