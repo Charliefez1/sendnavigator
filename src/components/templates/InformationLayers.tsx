@@ -121,7 +121,12 @@ export function InformationLayers({
   return (
     <section className="content-section py-3">
       <div className="rounded-xl border border-border bg-card p-5 sm:p-6 shadow-card">
-        <h2 className="text-base font-display font-semibold text-foreground mb-6">Information by certainty</h2>
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+            <CheckCircle className="w-4 h-4 text-primary" />
+          </div>
+          <h2 className="text-base font-display font-semibold text-foreground">Information by certainty</h2>
+        </div>
         <ConfirmedLayer emptyMessage={confirmedEmpty}>{confirmed}</ConfirmedLayer>
         <DiscussedLayer emptyMessage={discussedEmpty}>{discussed}</DiscussedLayer>
         <UnconfirmedLayer emptyMessage={unconfirmedEmpty}>{unconfirmed}</UnconfirmedLayer>
