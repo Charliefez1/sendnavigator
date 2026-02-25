@@ -1,24 +1,31 @@
+import { useRef } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { SEOHead } from "@/components/SEOHead";
 import { AuthForm } from "@/components/AuthForm";
 import { NewsTicker } from "@/components/NewsTicker";
+import { AnimatedFeatureShowcase } from "@/components/landing/AnimatedFeatureShowcase";
+import { LandingAskRich } from "@/components/landing/LandingAskRich";
 import { useAuth } from "@/contexts/AuthContext";
 import { Shield, BookOpen, Heart } from "lucide-react";
-import neurodiversityLanding from "@/assets/neurodiversity-global-landing.png";
 import beaconLogo from "@/assets/beacon-logo.png";
 
 const Landing = () => {
   const { user, loading } = useAuth();
+  const authRef = useRef<HTMLDivElement>(null);
 
   if (!loading && user) {
     return <Navigate to="/" replace />;
   }
 
+  const scrollToAuth = () => {
+    authRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: 'hsl(220, 14%, 93%)' }}>
+    <div className="min-h-screen flex flex-col bg-background">
       <SEOHead
         title="Beacon SEND Navigator | Independent SEND reform guide for parents"
-        description="A calm, independent guide helping parents and professionals understand SEND reform in England. Clear facts, no spin."
+        description="Clear facts, practical tools, and honest answers for parents navigating the SEND system in England."
         path="/landing"
       />
 
@@ -34,64 +41,51 @@ const Landing = () => {
 
       {/* Main content */}
       <main className="flex-1">
-        {/* Hero: Auth + Image */}
-        <section className="content-section py-8 sm:py-10">
-          <div className="grid md:grid-cols-2 gap-6 items-center max-w-3xl mx-auto">
-            <div className="flex justify-center">
-              <AuthForm />
-            </div>
-            <div className="flex justify-center">
-              <div className="bg-navy rounded-xl p-5 shadow-lg border border-navy/80">
-                <img
-                  src={neurodiversityLanding}
-                  alt="Neurodiversity Global - The SEND Navigator is an independent Neurodiversityglobal.com free parents & carers resource"
-                  className="w-full max-w-xs rounded-lg"
-                />
-              </div>
-            </div>
+        {/* Hero: centred, text-led */}
+        <section className="content-section py-10 sm:py-14">
+          <div className="max-w-xl mx-auto text-center mb-8">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-display font-semibold text-foreground mb-3 leading-tight">
+              The independent guide to SEND reform in England
+            </h1>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+              Clear facts, practical tools, and honest answers for parents navigating the SEND system.
+            </p>
+          </div>
+          <div ref={authRef} className="flex justify-center">
+            <AuthForm />
           </div>
         </section>
 
-        {/* About section */}
-        <section className="content-section pb-8 sm:pb-12">
-          <div className="max-w-3xl mx-auto">
+        {/* Animated feature showcase */}
+        <AnimatedFeatureShowcase />
+
+        {/* Ask Rich preview with frost */}
+        <LandingAskRich onSignUpClick={scrollToAuth} />
+
+        {/* Trust / about card */}
+        <section className="content-section pb-10 sm:pb-14">
+          <div className="max-w-2xl mx-auto">
             <div className="bg-card border border-border rounded-xl p-5 sm:p-6 shadow-lg">
               <div className="flex items-center gap-2.5 mb-3">
                 <img src={beaconLogo} alt="" className="h-8" />
-                <h1 className="text-lg sm:text-xl font-display font-semibold text-foreground">
-                  Welcome to Beacon SEND Navigator
-                </h1>
+                <h2 className="text-base sm:text-lg font-display font-semibold text-foreground">
+                  About the Navigator
+                </h2>
               </div>
               <div className="space-y-2.5 text-muted-foreground text-sm leading-relaxed">
                 <p>
-                  Despite what you may have heard, <strong className="text-foreground">your child's legal protections are still in place</strong>.
+                  The SEND Navigator is a free, independent resource built by{" "}
+                  <Link to="/rich-ferriman" className="text-primary hover:underline">Rich Ferriman</Link>{" "}
+                  to help parents and professionals make sense of SEND reform.
                 </p>
                 <p>
-                  <strong className="text-foreground">EHCPs remain legally binding.</strong>{" "}
-                  <strong className="text-foreground">The law has not changed.</strong>
+                  Nothing is presented without context. Nothing speculative is presented as fact. Every section is clearly labelled with its confidence level.
                 </p>
                 <p>
-                  What has changed is the <strong className="text-foreground">volume of discussion</strong> about SEND provision in 2026 and 2027. Debate across politics, education and local authorities, alongside <strong className="text-foreground">confirmed proposals and an open consultation</strong> on the future of SEND support.
-                </p>
-                <p>
-                  That uncertainty creates anxiety for parents. The <strong className="text-foreground">SEND Navigator is designed to help make sense of this</strong>.
-                </p>
-                <p className="font-medium text-foreground">It includes:</p>
-                <ul className="space-y-0.5 list-disc list-inside text-sm">
-                  <li><strong className="text-foreground">Confirmed information</strong> based on current law and statutory guidance</li>
-                  <li><strong className="text-foreground">Clearly labelled sections</strong> on speculation and leaks, where relevant</li>
-                  <li><strong className="text-foreground">Clear separation</strong> between what is confirmed, what is being discussed, and what has not changed</li>
-                </ul>
-                <p>
-                  <strong className="text-foreground">Nothing is presented without context.</strong>{" "}
-                  <strong className="text-foreground">Nothing speculative is presented as fact.</strong>
-                </p>
-                <p>
-                  For more context, see the{" "}
-                  <Link to="/about" className="text-primary hover:underline">About</Link> section and{" "}
+                  For more context, see{" "}
+                  <Link to="/about" className="text-primary hover:underline">About</Link> and{" "}
                   <Link to="/why-i-built-this" className="text-primary hover:underline">Why I Built This</Link>.
                 </p>
-                <p className="font-medium text-foreground">Rich Ferriman</p>
               </div>
 
               {/* Trust signals */}
@@ -117,7 +111,7 @@ const Landing = () => {
       {/* Footer */}
       <footer className="border-t border-border py-3">
         <div className="content-section text-center text-xs text-muted-foreground">
-          <p>© 2026 SEND Reform Navigator. Independent resource, not government affiliated.</p>
+          <p>&copy; 2026 SEND Reform Navigator. Independent resource, not government affiliated.</p>
           <div className="flex items-center justify-center gap-4 mt-1.5">
             <Link to="/about" className="hover:text-primary transition-colors">About</Link>
             <Link to="/sources" className="hover:text-primary transition-colors">Sources</Link>
