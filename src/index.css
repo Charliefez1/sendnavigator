@@ -358,6 +358,7 @@
     }
   }
 
+
   .content-wide {
     @apply w-full mx-auto px-4;
     max-width: 72rem;
@@ -525,3 +526,4 @@
     }
   }
 }
+
