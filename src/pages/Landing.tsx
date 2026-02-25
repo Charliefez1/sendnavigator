@@ -193,13 +193,13 @@ const Landing = () => {
               className="text-2xl sm:text-3xl md:text-4xl font-display leading-snug text-foreground mb-8"
               style={{ fontStyle: "italic" }}
             >
-              SEND reform is coming. The government won't tell you what it means. The media gets it wrong. And the jargon makes it impossible to know what's real.
+              SEND reform is here. The White Paper is published. The consultation is open. And most parents still don't know what it means for their child.
             </p>
 
             <div className="flex items-center justify-center gap-3">
               <div className="w-6 h-px" style={{ backgroundColor: "hsl(175 60% 40% / 0.5)" }} />
               <p className="text-base sm:text-lg text-muted-foreground">
-                I spent months researching every angle so you don't have to.
+                This site breaks down every detail so you can act with clarity, not fear.
               </p>
             </div>
             <p className="text-sm text-muted-foreground mt-2 tracking-wide">
