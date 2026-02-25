@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { QandAComponent } from "@/components/qanda";
+import { HomeAskRich } from "@/components/landing/HomeAskRich";
 import { AnimatedFeatureShowcase } from "@/components/landing/AnimatedFeatureShowcase";
 import { GuideMe } from "@/components/GuideMe";
 import {
@@ -274,7 +274,7 @@ const Index = () => {
             </div>
 
             {/* Q&A component */}
-            <QandAComponent />
+            <HomeAskRich />
           </div>
         </div>
       </section>
