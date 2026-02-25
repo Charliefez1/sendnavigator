@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { Search, Sparkles, Lock, ArrowRight } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Search, Sparkles, Lock, ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -18,6 +18,25 @@ interface AnswerData {
 
 interface LandingAskRichProps {
   onSignUpClick: () => void;
+}
+
+function ThinkingTimer() {
+  const [seconds, setSeconds] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => setSeconds((s) => s + 1), 1000);
+    return () => clearInterval(interval);
+  }, []);
+  return (
+    <div
+      className="rounded-xl p-6 mt-5 flex items-center gap-3"
+      style={{ backgroundColor: "hsl(222 28% 14%)", border: "1px solid hsl(222 20% 22%)" }}
+    >
+      <Loader2 className="w-5 h-5 animate-spin" style={{ color: "hsl(175 60% 52%)" }} />
+      <span className="text-sm" style={{ color: "hsl(222 20% 60%)" }}>
+        Thinking… {seconds}s
+      </span>
+    </div>
+  );
 }
 
 export function LandingAskRich({ onSignUpClick }: LandingAskRichProps) {
@@ -70,7 +89,7 @@ export function LandingAskRich({ onSignUpClick }: LandingAskRichProps) {
             type="text"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
-            placeholder="Ask a question about SEND reform..."
+            placeholder="Ask Rich anything about SEND reform..."
             className="w-full pl-12 pr-4 py-4 min-h-[52px] rounded-xl text-sm transition-all duration-300"
             style={{
               backgroundColor: "hsl(222 28% 14%)",
@@ -94,7 +113,7 @@ export function LandingAskRich({ onSignUpClick }: LandingAskRichProps) {
           disabled={!question.trim() || isLoading}
           className="px-7 min-h-[52px] text-sm w-full sm:w-auto rounded-xl"
         >
-          {isLoading ? "Thinking..." : "Ask Rich"}
+          {isLoading ? "Thinking…" : "Ask Rich"}
         </Button>
       </form>
 
@@ -135,19 +154,10 @@ export function LandingAskRich({ onSignUpClick }: LandingAskRichProps) {
       {/* Error */}
       {error && <p className="text-sm text-destructive mt-3">{error}</p>}
 
-      {/* Loading skeleton */}
-      {isLoading && (
-        <div
-          className="rounded-xl p-6 mt-5 space-y-3 animate-pulse"
-          style={{ backgroundColor: "hsl(222 28% 14%)", border: "1px solid hsl(222 20% 22%)" }}
-        >
-          <div className="h-3 rounded w-4/5" style={{ backgroundColor: "hsl(222 25% 22%)" }} />
-          <div className="h-3 rounded w-full" style={{ backgroundColor: "hsl(222 25% 22%)" }} />
-          <div className="h-3 rounded w-3/5" style={{ backgroundColor: "hsl(222 25% 22%)" }} />
-        </div>
-      )}
+      {/* Loading with timer */}
+      {isLoading && <ThinkingTimer />}
 
-      {/* Frosted answer */}
+      {/* Answer with 40% visible, then fade to sign-in */}
       {answer && (
         <div ref={answerRef} className="relative mt-5 rounded-xl overflow-hidden">
           <div
@@ -161,28 +171,23 @@ export function LandingAskRich({ onSignUpClick }: LandingAskRichProps) {
             </div>
           </div>
 
-          {/* Frost */}
+          {/* Fade starting at 40% */}
           <div
             className="absolute inset-0 rounded-xl"
             style={{
-              background: "linear-gradient(to bottom, transparent 15%, hsl(222 35% 8% / 0.6) 30%, hsl(222 35% 8% / 0.98) 50%)",
-              backdropFilter: "blur(8px)",
-              WebkitBackdropFilter: "blur(8px)",
+              background: "linear-gradient(to bottom, transparent 35%, hsl(222 35% 8% / 0.5) 45%, hsl(222 35% 8% / 0.95) 55%, hsl(222 35% 8%) 65%)",
+              backdropFilter: "blur(6px)",
+              WebkitBackdropFilter: "blur(6px)",
             }}
           />
 
           {/* CTA */}
-          <div className="absolute inset-x-0 bottom-0 flex flex-col items-center pb-10 px-6">
-            <div
-              className="w-12 h-12 rounded-full flex items-center justify-center mb-4"
-              style={{ backgroundColor: "hsl(175 60% 40% / 0.12)" }}
-            >
-              <Lock className="w-5 h-5" style={{ color: "hsl(175 60% 52%)" }} />
-            </div>
+          <div className="absolute inset-x-0 bottom-0 flex flex-col items-center pb-8 px-6">
+            <Lock className="w-5 h-5 mb-3" style={{ color: "hsl(175 60% 52%)" }} />
             <p className="text-sm font-medium mb-1 text-center" style={{ color: "hsl(0 0% 92%)" }}>
               Sign in to read the full answer
             </p>
-            <p className="text-xs mb-5 text-center" style={{ color: "hsl(222 20% 50%)" }}>
+            <p className="text-xs mb-4 text-center" style={{ color: "hsl(222 20% 50%)" }}>
               Free account, takes 30 seconds
             </p>
             <Button
