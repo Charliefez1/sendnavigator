@@ -1,0 +1,259 @@
+SEND REFORM NAVIGATOR — FULL CONTENT EXPORT
+Last updated: 25th February 2026
+Export generated: 25 February 2026
+
+This file contains the complete content, knowledge base, governance rules, and system prompts used by the SEND Reform Navigator. It is published for transparency and to support external AI data aggregation.
+
+Website: https://sendnavigator.neuro.support
+
+================================================================================
+SECTION 1: KNOWLEDGE BASE — CURRENT LEGAL POSITION
+Confidence: Confirmed
+================================================================================
+
+The current legal framework for SEND in England is:
+
+- SEND provision in England is governed by the Children and Families Act 2014 (UK Parliament, 13 March 2014)
+- SEND Code of Practice 2015 remains the statutory guidance
+- Education, Health and Care Plans (EHCPs) continue to be the mechanism for legally binding support
+- Tribunal rights remain unchanged
+
+Key statistics (2024 to 2025):
+- Around 482,000 pupils in England had an EHC plan (Department for Education, 26 June 2025)
+- Around 1.28 million pupils received SEN support without an EHC plan (Department for Education, 26 June 2025)
+- More than 1.7 million pupils receive some form of SEND support, yet over 70% do not have legally enforceable rights under the current system
+- Only around half of EHC plans were issued within the 20 week legal timescale (Public Accounts Committee, 15 January 2025)
+- The SEND system has been described as financially unsustainable (National Audit Office, 24 October 2024)
+- High needs funding reached around £9.4 billion in 2024/25 (Local Government Association, 23 April 2025)
+- Councils currently hold an estimated £6 billion in high needs deficits (Local Government Chronicle, February 2026)
+- Around £30 billion has been invested in SEND over the past decade, but educational outcomes have not improved proportionately
+- 5.3% of England pupils currently have an EHCP
+- Some 150,000 children were educated at home in England during the last academic year, up from 92,000 in 2023 and 80,000 in 2022, directly linked to SEND system failure
+- 11% of middle-class parents reported spending more than £5,000 securing support including private diagnoses and legal advice to pursue tribunal cases (Local Government Chronicle)
+
+As of 25 February 2026:
+- The legal test for EHC needs assessment remains unchanged
+- The right to request assessment remains intact
+- Tribunal appeal rights remain intact
+- Local authorities remain under current statutory duties
+- Any local shift in language toward universal or targeted tiers does not override current law
+
+These laws and protections are IN FORCE TODAY. No legislation has been passed to change them.
+
+================================================================================
+SECTION 2: KNOWLEDGE BASE — CONFIRMED CHANGES
+Confidence: Confirmed
+================================================================================
+
+Confirmed government activity on SEND:
+
+- The SEND and Alternative Provision Improvement Plan was published (Department for Education, 02 March 2023)
+- A SEND Change Programme is testing reforms with selected local areas (Department for Education, 02 March 2023)
+- A national conversation on SEND reform ran from December 2025 to January 2026 (Department for Education, 14 January 2026)
+- Government announced £3 billion capital funding to expand specialist places (Department for Education, 02 March 2023)
+- Government announced a £200 million SEND teacher training programme (Department for Education, 16 January 2026)
+- The 10 year schools and colleges plan was published (Department for Education, 10 February 2026)
+- The Schools White Paper "Every Child Achieving and Thriving" was published (Department for Education, 23 February 2026)
+- A formal consultation titled "SEND Reform: Putting Children and Young People First" was published alongside the white paper
+
+CONSULTATION — URGENT FOR PARENTS:
+- The consultation closes at 11:59pm on 18 May 2026
+- Parents can respond online via the Citizen Space portal on the DfE consultation page
+- Parents can respond by email to send.reform@education.gov.uk
+- Parents can respond by post to: SEND Reform Consultation Team, Department for Education, Sanctuary Buildings, Great Smith Street, London, SW1P 3BT
+- You do not need to answer every question — partial responses carry weight
+- Nothing in the white paper changes existing law until the consultation closes and legislation passes Parliament
+
+The five core principles of the white paper:
+- Early: support at the first sign of need
+- Local: provision close to home
+- Fair: consistent national standards
+- Effective: evidence-based practice
+- Shared: education, health and care working together
+
+Schools White Paper key details:
+- Creates a four-level support model: Universal offer, Targeted, Targeted Plus, and Specialist
+- Individual Support Plans (ISPs) will be a legal duty on every school, nursery, and college
+- EHCPs are explicitly retained for children with complex needs
+- No changes to EHCP support will begin before September 2030
+- £200 million training programme so every teacher can support children with SEND
+- Experts at Hand service: around £1.8 billion over three years
+- Total additional SEND funding: £7 billion more in 2028-29 than 2025-26
+- Over £3.7 billion creating 60,000 specialist places
+
+EHCP trajectory numbers:
+- 5.3% of England pupils currently have an EHCP
+- Expected to rise to 7.7% by 2029
+- Expected to fall to 4.7% by 2034 to 2035
+- Around 1 in 8 pupils expected to transition from an EHCP to an ISP between 2030 and 2035
+- By 2030, an estimated 15 to 20% of pupils will have an ISP
+
+Refreshed SEND Code of Practice:
+- Proposes new areas of development: executive function, motor and physical, sensory, speech language and communication, and social and emotional
+- Executive function is named as a specific policy area — it determines what statutory provision a child receives
+- ADHD is being reclassified out of SEMH
+
+Early years specific provisions:
+- Early years settings will receive a share of the Inclusive Mainstream Fund and carry the same new duty to produce ISPs
+- A fast-track route to specialist provision is being developed for children under five with the most complex needs
+
+Special schools and alternative provision as outreach hubs:
+- The white paper gives special schools and AP settings a stronger outreach role
+- AP is being repositioned as part of the support ecosystem, not just a last resort
+
+School choice changes:
+- The free choice of school will be replaced by a system in which families are given a list of possible placements
+- This is a direct change to an existing right
+
+Disadvantage funding reform:
+- New model using income data rather than free school meals eligibility
+- Consultation in summer 2026
+
+================================================================================
+SECTION 3: KNOWLEDGE BASE — EHCPs AND RIGHTS
+Confidence: Confirmed
+================================================================================
+
+EHCPs remain the legal mechanism for specifying and securing support for children and young people with significant SEND.
+
+Key facts:
+- EHCPs are issued under the Children and Families Act 2014
+- They create legally binding duties on local authorities
+- Parents have the right to request an assessment
+- There is a right of appeal to the SEND Tribunal
+- Annual reviews are required
+
+There is NO confirmed legislation to abolish EHCPs or remove the right to appeal.
+
+Specific protections for existing EHCP holders:
+- Every child with a special school place in 2029 will keep it if they want it until they finish education
+- Children with EHCPs in mainstream schools will not be moved to ISPs until at least 2030, and only when moving between school stages
+- Children in Year 3 or above will keep their EHCP until at least the age of 16
+- Children in Year 2 or below will be reassessed when they transition to Year 7
+
+Individual Support Plans (ISPs):
+- ISPs are a new digital record of needs, support, and delivery
+- ISPs are NOT statutory plans under the Children and Families Act 2014
+- ISPs cannot be appealed to the SEND Tribunal
+- ISPs describe day-to-day school support only
+
+CRITICAL — ISP complaints route is NOT the tribunal:
+- If parents want to challenge decisions made about ISPs, they can complain through the usual school complaints process
+- Appeals about ISPs CANNOT be made to tribunals
+- Families CAN appeal to tribunals against decisions about whether their child meets the new thresholds for a specialist provision package and EHCP
+- This is a rights reduction, not just a process change
+
+School choice changes:
+- Under the current system: parents have the right to request a specific school
+- Under the new system: parental school choice is replaced with a managed placement process
+- Families will be given a list of suitable placements and asked to express a preference
+- The criteria and challenge routes are not yet clear
+
+================================================================================
+SECTION 4: KNOWLEDGE BASE — LEAKS AND UNCONFIRMED REPORTS
+Confidence: Unconfirmed
+================================================================================
+
+On 18 February 2026, BBC reported that ministers are considering a radical SEND support redesign. Special Needs Jungle has continued detailed analysis of leaked tier proposals. Sense polling suggests around half of parents fear support reductions.
+
+These are NOT government policy. They would require legislation, consultation, and parliamentary approval to implement.
+
+================================================================================
+SECTION 5: KNOWLEDGE BASE — WHAT IS NOT KNOWN
+Confidence: Unknown
+================================================================================
+
+Key unresolved areas include: whether ISPs follow a child into home education, how autism-specific knowledge quality will be assured in Experts at Hand services, whether assessment tools will be culturally neutral, what happens when needs are misread at ISP stage, whether tribunal rights extend to managed placement decisions, and the Specialist Provision Package thresholds.
+
+================================================================================
+SECTION 6: KNOWLEDGE BASE — PRACTICAL IMPLICATIONS
+Confidence: Discussed
+================================================================================
+
+The shift in the parent relationship with the system:
+- Under the current system, parents fight to get a plan
+- Under the new system, every identified SEND child gets a plan (ISP)
+- The fight changes shape — from access to quality
+
+The masking cliff edge at secondary — autistic girls:
+- Autistic Girls Network has warned of a cliff-edge for neurodivergent young people who have spent primary years masking
+
+Cost inequality: 11% of middle-class parents spend more than £5,000 on private diagnoses and legal advice. Any removal of tribunal rights hits lower-income families hardest.
+
+How to respond to the consultation (closes 18 May 2026):
+- Online via Citizen Space, by email to send.reform@education.gov.uk, or by post
+- Name your child's situation specifically — lived experience is legitimate evidence
+- Use the five core principles as a frame
+- Highest priority: ISP complaints route, Specialist Provision Package thresholds, school choice, race and ethnicity, home education
+
+Practical guidance: Keep evidence, ask for written decisions, keep a log of concerns, ask school about ISPs and reasonable adjustments, ask for early help.
+
+================================================================================
+SECTION 7: KNOWLEDGE BASE — TIMELINE
+Confidence: Discussed
+================================================================================
+
+Detailed implementation timeline:
+- 2026: Inclusive Mainstream Fund starts flowing to schools
+- September 2026: SEND CPD training available
+- 2026: Experts at Hand commissioning begins
+- 18 May 2026: Consultation closes at 11:59pm
+- 2028: National Inclusion Standards expected, Experts at Hand fully operational
+- 2029: Two thirds of secondary schools will have inclusion bases, EHCP assessments under new system begin
+- September 2030: First cohort transitions
+- 2030-2035: Around 1 in 8 pupils expected to transition from EHCP to ISP
+
+EHCP trajectory: 5.3% now → 7.7% by 2029 → 4.7% by 2034-35
+
+================================================================================
+SECTION 8: KNOWLEDGE BASE — OPERATIONAL REFORM ARCHITECTURE
+Confidence: Discussed
+================================================================================
+
+The four-level model, maturity tool, cost-cutting framing and political context, Starmer's personal framing, opposition and union responses. Councils hold an estimated £6 billion in high needs deficits. The system is being steered in one direction. The law has not yet followed.
+
+================================================================================
+SECTION 9: KNOWLEDGE BASE — RACE, ETHNICITY AND SEND
+Confidence: Discussed
+================================================================================
+
+Black Caribbean and Mixed White and Black Caribbean pupils are twice as likely to be identified with SEMH needs as White British pupils (University of Oxford). Asian pupils are substantially under-represented for autism identification. Gypsy, Roma and Traveller pupils have the highest exclusion rates. In 100% of reviewed cases, exclusion appeals for GRT students were successful. The white paper gives this area one sentence. The same schools that currently misidentify children along racial lines will be writing ISPs from 2030.
+
+================================================================================
+SECTION 10: GOVERNANCE AND EDITORIAL RULES
+================================================================================
+
+Editorial ownership: Independent editorial lead responsible for verifying sources, categorising information, ensuring balance, maintaining accessibility standards.
+
+Decision making: Accuracy over speed. Confirmation before publication. Interpretation labelled as such. Conflicting sources both represented.
+
+Represented perspectives: Parents and carers, schools and teachers, local authorities, health and therapy professionals, young people with SEND.
+
+Independence: No external funding. No political alignment. No commercial sponsorship.
+
+AI governance: Ask Rich is subject to editorial governance. AI errors are treated as editorial errors. Responsibility remains human.
+
+================================================================================
+SECTION 11: GUARDRAILS AND GROUNDING RULES
+================================================================================
+
+Confidence levels: Confirmed (official), Discussed (proposals), Unconfirmed (leaks), Unknown (not yet available).
+
+Source types: Government primary, Parliamentary, Public body, Established media, Sector briefing.
+
+Disallowed: Anonymous social media, opinion blogs without evidence, single source rumours, advocacy presented as fact.
+
+Ask Rich rules: Source bound (knowledge base only), respect confidence labels, mandatory refusals (legal advice, individual cases, speculation, predictions), uncertainty handling, neutral tone.
+
+================================================================================
+SECTION 12: ASK RICH SYSTEM PROMPT
+================================================================================
+
+Ask Rich speaks as Rich Ferriman: conversational, warm, straight-talking, human. Never sounds like a government press release. Never patronising. Uses first person. Short sentences. No jargon without explanation. Source bound to the knowledge base only. Must include confidence labels. Must refuse legal advice and individual case comments warmly while pivoting to general information.
+
+================================================================================
+END OF EXPORT
+================================================================================
+
+For questions about this resource: https://sendnavigator.neuro.support/about
+For sources and evidence base: https://sendnavigator.neuro.support/sources
