@@ -269,7 +269,7 @@ const Index = () => {
           <div
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(to bottom, hsl(222 35% 8% / 0.92), hsl(222 35% 8% / 0.85) 20%, hsl(222 35% 8% / 0.78) 50%, hsl(222 35% 8% / 0.75) 70%, hsl(222 35% 8% / 0.82) 90%, hsl(222 35% 8% / 0.90) 100%)",
+              background: "linear-gradient(to bottom, hsl(222 35% 8% / 0.92), hsl(222 35% 8% / 0.85) 20%, hsl(222 35% 8% / 0.78) 50%, hsl(222 35% 8% / 0.75) 70%, hsl(222 35% 6% / 0.85) 90%, hsl(222 35% 6%) 100%)",
             }}
           />
         </div>
@@ -398,12 +398,12 @@ const Index = () => {
 
         {/* ─── SECTION 5: CREATORS text ─── */}
         <section className="relative">
-          <div className="content-section py-16 sm:py-20 flex flex-col items-center text-center">
+          <div className="content-section py-6 sm:py-8 flex flex-col items-center text-center">
             <p
-              className="text-lg sm:text-xl font-display font-medium mb-2"
-              style={{ color: "hsl(0 0% 90%)" }}
+              className="text-xs font-medium uppercase tracking-widest mb-1"
+              style={{ color: "hsl(175 60% 50%)" }}
             >
-              Built by parents.
+              Built by parents
             </p>
             <p
               className="text-sm max-w-md leading-relaxed"
@@ -411,10 +411,6 @@ const Index = () => {
             >
               Still working at making this work.
             </p>
-            <div
-              className="mt-6 h-px w-32"
-              style={{ background: "linear-gradient(to right, transparent, hsl(175 60% 40% / 0.4), transparent)" }}
-            />
           </div>
         </section>
 
