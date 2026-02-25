@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 import { StatusBadge } from "@/components/StatusBadge";
-import { 
-  QandAAnswer, 
-  QandARefusal, 
-  QandAResponse, 
-  confidenceLabels 
+import {
+  QandAAnswer,
+  QandARefusal,
+  QandAResponse,
+  confidenceLabels
 } from "./types";
-import { 
-  CheckCircle, 
-  HelpCircle, 
-  AlertTriangle, 
+import {
+  CheckCircle,
+  HelpCircle,
+  AlertTriangle,
   Clock,
   ArrowRight,
   ShieldAlert,
@@ -39,15 +39,17 @@ function ConfidenceBadge({ confidence }: { confidence: QandAAnswer["confidence"]
 
 function RefusalDisplay({ refusal, question }: { refusal: QandARefusal; question: string }) {
   return (
-    <div className="bg-card border border-border rounded-lg p-5 space-y-4 shadow-lg">
+    <div className="bg-card border border-border rounded-xl p-5 space-y-4 shadow-lg">
       <div className="flex gap-3">
-        <ShieldAlert className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
+        <div className="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(262 50% 50% / 0.1)" }}>
+          <ShieldAlert className="w-4 h-4" style={{ color: "hsl(262 60% 55%)" }} />
+        </div>
         <div className="space-y-3">
           <p className="font-medium text-foreground">
             We cannot answer this question directly
           </p>
-          <p className="text-muted-foreground">{refusal.reason}</p>
-          <p className="text-muted-foreground">{refusal.suggestion}</p>
+          <p className="text-muted-foreground text-sm">{refusal.reason}</p>
+          <p className="text-muted-foreground text-sm">{refusal.suggestion}</p>
         </div>
       </div>
 
@@ -78,17 +80,19 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
   const isLeaksRelated = answer.confidence === "unconfirmed";
 
   return (
-    <div className="bg-card border border-border rounded-lg divide-y divide-border shadow-lg">
+    <div className="bg-card border border-border rounded-xl divide-y divide-border shadow-lg overflow-hidden">
       {/* Question echo */}
-      <div className="p-4 sm:p-5 bg-muted/30">
-        <p className="text-sm text-muted-foreground">Your question:</p>
-        <p className="font-medium text-foreground">{question}</p>
+      <div className="p-4 sm:p-5" style={{ backgroundColor: "hsl(262 30% 97% / 0.5)" }}>
+        <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Your question</p>
+        <p className="font-medium text-foreground text-sm">{question}</p>
       </div>
 
       {/* 1. Plain English answer */}
       <div className="p-4 sm:p-5 space-y-3">
         <h3 className="font-medium text-sm sm:text-base text-foreground flex items-center gap-2">
-          <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
+          <div className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(175 65% 41% / 0.1)" }}>
+            <CheckCircle className="w-3.5 h-3.5" style={{ color: "hsl(175 65% 41%)" }} />
+          </div>
           Answer
         </h3>
         <div className="prose-calm space-y-3">
@@ -100,13 +104,13 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
 
       {/* Leaks warning if applicable */}
       {isLeaksRelated && (
-        <div className="p-4 sm:p-5 bg-status-unconfirmed-bg">
+        <div className="p-4 sm:p-5" style={{ backgroundColor: "hsl(25 55% 92%)" }}>
           <div className="flex gap-3">
-            <AlertTriangle className="w-5 h-5 text-status-unconfirmed flex-shrink-0 mt-0.5" aria-hidden="true" />
+            <AlertTriangle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "hsl(25 85% 52%)" }} />
             <div>
               <p className="font-medium text-sm text-foreground">This relates to unconfirmed information</p>
               <p className="text-muted-foreground mt-1 text-sm leading-relaxed">
-                Leaks are not policy. Any changes would require consultation and legislation. 
+                Leaks are not policy. Any changes would require consultation and legislation.
                 Current legal protections remain in place.
               </p>
             </div>
@@ -122,13 +126,15 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
       {/* 3. What we know */}
       <div className="p-4 sm:p-5 space-y-3">
         <h3 className="font-medium text-sm sm:text-base text-foreground flex items-center gap-2">
-          <CheckCircle className="w-5 h-5 text-status-confirmed flex-shrink-0" aria-hidden="true" />
+          <div className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(175 65% 41% / 0.1)" }}>
+            <CheckCircle className="w-3.5 h-3.5" style={{ color: "hsl(175 65% 41%)" }} />
+          </div>
           What we know
         </h3>
         <ul className="space-y-3">
           {answer.whatWeKnow.map((point, i) => (
             <li key={i} className="flex gap-3 text-foreground text-sm leading-relaxed">
-              <span className="text-status-confirmed flex-shrink-0 mt-1">•</span>
+              <span className="flex-shrink-0 mt-1" style={{ color: "hsl(175 65% 41%)" }}>&#x2022;</span>
               {point}
             </li>
           ))}
@@ -138,7 +144,9 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
       {/* 4. What we do not know yet */}
       <div className="p-4 sm:p-5 space-y-3">
         <h3 className="font-medium text-sm sm:text-base text-foreground flex items-center gap-2">
-          <HelpCircle className="w-5 h-5 text-muted-foreground flex-shrink-0" aria-hidden="true" />
+          <div className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0 bg-muted">
+            <HelpCircle className="w-3.5 h-3.5 text-muted-foreground" />
+          </div>
           What we do not know yet
         </h3>
         <ul className="space-y-3">
@@ -154,11 +162,11 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
       {/* 5. What this does and does not mean */}
       <div className="p-4 sm:p-5 space-y-4">
         <h3 className="font-medium text-sm sm:text-base text-foreground">What this does and does not mean</h3>
-        
+
         <div className="grid gap-4 sm:grid-cols-2">
-          <div className="space-y-3 p-3 bg-status-confirmed-bg rounded-lg">
-            <p className="text-sm font-medium text-status-confirmed flex items-center gap-2">
-              <Shield className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+          <div className="space-y-3 p-4 rounded-lg border shadow-sm" style={{ backgroundColor: "hsl(175 35% 96%)", borderColor: "hsl(175 30% 88%)" }}>
+            <p className="text-sm font-medium flex items-center gap-2" style={{ color: "hsl(175 65% 35%)" }}>
+              <Shield className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
               This means:
             </p>
             <ul className="space-y-2">
@@ -167,10 +175,10 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
               ))}
             </ul>
           </div>
-          
-          <div className="space-y-3 p-3 bg-muted/50 rounded-lg">
+
+          <div className="space-y-3 p-4 rounded-lg border border-border bg-muted/30 shadow-sm">
             <p className="text-sm font-medium text-muted-foreground flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+              <AlertTriangle className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
               This does not mean:
             </p>
             <ul className="space-y-2">
@@ -190,7 +198,7 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
             <Link
               key={link.path}
               to={link.path}
-              className="inline-flex items-center justify-between sm:justify-start gap-2 px-4 py-3 min-h-[48px] text-sm bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 active:bg-secondary/70 transition-colors"
+              className="inline-flex items-center justify-between sm:justify-start gap-2 px-4 py-3 min-h-[48px] text-sm bg-card border border-border text-foreground rounded-lg hover:bg-muted active:bg-muted/70 transition-all shadow-sm hover:shadow-md"
             >
               {link.label}
               <ArrowRight className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
@@ -200,7 +208,7 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
       </div>
 
       {/* 7. Last updated */}
-      <div className="p-4 sm:p-5 bg-muted/30">
+      <div className="p-4 sm:p-5" style={{ backgroundColor: "hsl(262 30% 97% / 0.5)" }}>
         <p className="text-xs text-muted-foreground flex items-center gap-1.5">
           <Clock className="w-3.5 h-3.5" />
           Answer based on information last updated: {answer.lastUpdated}

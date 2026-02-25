@@ -121,11 +121,18 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
   };
 
   return (
-    <section className="rounded-xl border p-5 sm:p-6" style={{ borderColor: "hsl(262 50% 50% / 0.2)", backgroundColor: "hsl(262 30% 93% / 0.5)" }}>
+    <div
+      className="rounded-xl border p-5 sm:p-6 shadow-lg"
+      style={{
+        borderColor: "hsl(262 50% 50% / 0.15)",
+        backgroundColor: "hsl(262 30% 97% / 0.6)",
+        boxShadow: "0 8px 32px -8px hsl(262 50% 50% / 0.1), 0 4px 16px -4px rgba(0,0,0,0.06)",
+      }}
+    >
       <QuestionInput onSubmit={handleSubmit} isLoading={isLoading} initialValue={initialQuestion} />
 
       {isLoading && (
-        <div className="mt-6 p-8 bg-card border border-border rounded-lg text-center">
+        <div className="mt-6 p-8 bg-card border border-border rounded-lg text-center shadow-card">
           <div className="animate-pulse space-y-3">
             <div className="h-4 bg-muted rounded w-3/4 mx-auto" />
             <div className="h-4 bg-muted rounded w-1/2 mx-auto" />
@@ -148,7 +155,7 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
       )}
 
       {/* Trust notice */}
-      <div className="mt-5 pt-4 border-t" style={{ borderColor: "hsl(262 50% 50% / 0.15)" }}>
+      <div className="mt-5 pt-4 border-t" style={{ borderColor: "hsl(262 50% 50% / 0.1)" }}>
         <AITrustNotice />
         <p className="text-xs text-muted-foreground mt-3 flex items-center gap-2">
           <Bot className="w-3.5 h-3.5 flex-shrink-0" />
@@ -158,6 +165,6 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
           </span>
         </p>
       </div>
-    </section>
+    </div>
   );
 }
