@@ -246,33 +246,33 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ─── Share a comment (light background) ─── */}
+      <section className="bg-background">
+        <div className="content-section py-8">
+          <div className="max-w-2xl mx-auto">
+            <AskQuestionCompact />
+          </div>
+        </div>
+      </section>
+
       {/* ─── SECTIONS 3-5: Shared background image wrapper ─── */}
       <div className="relative overflow-hidden">
-        {/* Full-width background image spanning all 3 sections */}
+        {/* Full-width background image spanning all sections */}
         <div className="absolute inset-0">
           <img
             src={creatorsDuo}
             alt=""
             aria-hidden="true"
-            className="w-full h-full object-cover object-top"
+            className="w-full h-full object-cover object-bottom"
             style={{ opacity: 0.15 }}
           />
           <div
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(to bottom, hsl(222 35% 8% / 0.92), hsl(222 35% 8% / 0.85) 20%, hsl(222 35% 8% / 0.78) 50%, hsl(222 35% 8% / 0.75) 70%, hsl(222 35% 8% / 0.88) 90%, hsl(222 35% 8% / 0.95) 100%)",
+              background: "linear-gradient(to bottom, hsl(222 35% 8% / 0.92), hsl(222 35% 8% / 0.85) 20%, hsl(222 35% 8% / 0.78) 50%, hsl(222 35% 8% / 0.75) 70%, hsl(222 35% 8% / 0.82) 90%, hsl(222 35% 8% / 0.90) 100%)",
             }}
           />
         </div>
-
-        {/* ─── Share a comment (moved above Ask Rich) ─── */}
-        <section className="relative">
-          <div className="content-section pt-10 pb-4">
-            <div className="max-w-2xl mx-auto">
-              <AskQuestionCompact />
-            </div>
-          </div>
-        </section>
 
         {/* ─── SECTION 3: ASK RICH ─── */}
         <section className="relative">
