@@ -45,6 +45,12 @@ const Landing = () => {
   const fade5 = useFadeIn();
 
   if (!loading && user && !isPreview) {
+    // If they asked a question before signing up, take them straight to the full answer
+    const savedQuestion = localStorage.getItem("landing_question");
+    if (savedQuestion) {
+      localStorage.removeItem("landing_question");
+      return <Navigate to={`/questions-and-answers?q=${encodeURIComponent(savedQuestion)}`} replace />;
+    }
     return <Navigate to="/" replace />;
   }
 
