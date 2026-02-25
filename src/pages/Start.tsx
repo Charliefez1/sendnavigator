@@ -244,173 +244,172 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ─── SECTION 3: ASK RICH (reimagined) ─── */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: "hsl(222 35% 8%)" }}>
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "linear-gradient(135deg, transparent 30%, hsl(262 50% 50% / 0.05) 50%, transparent 70%)" }}
-        />
-        <div className="content-section relative py-10 sm:py-14">
-          <div className="max-w-2xl mx-auto">
-            {/* Character + intro */}
-            <div className="flex flex-col sm:flex-row items-center gap-5 mb-6">
-              <img
-                src={askRichCharacter}
-                alt="Ask Rich"
-                className="w-24 sm:w-28 rounded-2xl flex-shrink-0"
-                style={{ border: "2px solid hsl(262 50% 50% / 0.3)" }}
-              />
-              <div className="text-center sm:text-left">
-                <h2
-                  className="text-2xl sm:text-3xl font-display font-semibold mb-2"
-                  style={{ color: "hsl(0 0% 96%)" }}
-                >
-                  Got a question? Just ask.
-                </h2>
-                <p className="text-sm leading-relaxed" style={{ color: "hsl(222 20% 55%)" }}>
-                  I'm Rich, a SEND parent. Ask me anything about the reforms, EHCPs, or what to do right now. I'll give you a straight answer based on what we actually know.
-                </p>
-              </div>
-            </div>
-
-            {/* Q&A component */}
-            <HomeAskRich />
-          </div>
-        </div>
-      </section>
-
-      {/* ─── SECTION 4: Consolidated info (Word from Rich + SENDIASS + About) ─── */}
-      <section className="bg-background">
-        <div className="content-section py-10 sm:py-14">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
-            {/* Card 1: Word from Rich */}
-            <div className="rounded-xl border border-border bg-card p-6 flex flex-col">
-              <p className="text-[11px] font-semibold text-primary uppercase tracking-widest mb-3">A word from Rich</p>
-              <p className="text-sm text-foreground leading-relaxed flex-1">
-                Your child is not broken. They may see the world differently, process it differently, move through it differently. That is not a fault. This site exists to help you get them what they need from a world that was not designed with them in mind.
-              </p>
-              <div className="mt-4 pt-3 border-t border-border">
-                <Link to="/richs-take" className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline">
-                  Read my take on the white paper <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 2: SENDIASS */}
-            <div className="rounded-xl border border-border bg-card p-6 flex flex-col">
-              <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: "hsl(220 70% 45% / 0.1)" }}>
-                <MapPin className="w-4.5 h-4.5" style={{ color: "hsl(220 70% 45%)" }} />
-              </div>
-              <h3 className="text-sm font-display font-bold text-foreground mb-2">Did you know you have a free local advice service?</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed flex-1">
-                Every local authority in England funds a free, impartial service called <strong className="text-foreground">SENDIASS</strong> for parents navigating SEND.
-              </p>
-              <div className="mt-4 pt-3 border-t border-border space-y-2">
-                <a
-                  href="https://councilfordisabledchildren.org.uk/about-us-0/networks/information-advice-and-support-services-network/find-your-local-ias-service"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-sm font-medium hover:underline"
-                  style={{ color: "hsl(220 70% 45%)" }}
-                >
-                  Find your local SENDIASS <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-                <Link to="/sendiass" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                  Learn more <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Card 3: Made for families */}
-            <div className="rounded-xl border border-border bg-card p-6 flex flex-col">
-              <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: "hsl(8 75% 55% / 0.1)" }}>
-                <Heart className="w-4.5 h-4.5" style={{ color: "hsl(8 75% 55%)" }} />
-              </div>
-              <h3 className="text-sm font-display font-bold text-foreground mb-2">Made for families like yours</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed flex-1">
-                This is an independent resource, not government, not a campaign. We just help you understand what's happening.
-              </p>
-              <div className="mt-4 pt-3 border-t border-border space-y-2">
-                <Link to="/about" className="flex items-center gap-1.5 text-sm font-medium text-primary hover:underline">
-                  About this resource <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-                <Link to="/feedback" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                  Give feedback <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-                <Link to="/community-questions" className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                  Lived experience <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Browse everything toggle */}
-      <section className="bg-background border-t border-border">
-        <div className="content-section py-4">
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mx-auto"
-          >
-            <span>{showAll ? "Hide full site map" : "Browse everything"}</span>
-            <ChevronDown className={`w-4 h-4 transition-transform ${showAll ? "rotate-180" : ""}`} />
-          </button>
-        </div>
-
-        {showAll && (
-          <div className="content-section pb-8 space-y-8 animate-in fade-in slide-in-from-top-2 duration-300">
-            <ContentSection title="The State of SEND 2026" description="Our 8-part report tracking every aspect of SEND reform" links={reportSections} color="teal" />
-            <ContentSection title="Parent Guides" description="Practical guides for navigating the SEND system right now" links={parentGuides} color="deepBlue" />
-            <ContentSection title="Understanding the System" description="How the system works, and why it works differently depending on where you are" links={systemPages} color="amber" />
-            <ContentSection title="Take Action and Community" description="Make your voice heard, ask questions, and connect with other families" links={takeAction} color="coral" />
-            <ContentSection title="About and Resources" description="How we work, our sources, and how to give feedback" links={aboutLinks} color="violet" />
-          </div>
-        )}
-      </section>
-
-      {/* ─── SECTION 5: CREATORS — full-width image with navy fade ─── */}
-      <section className="relative overflow-hidden" style={{ minHeight: "340px" }}>
-        {/* Full-width background image */}
+      {/* ─── SECTIONS 3-5: Shared background image wrapper ─── */}
+      <div className="relative overflow-hidden">
+        {/* Full-width background image spanning all 3 sections */}
         <div className="absolute inset-0">
           <img
             src={creatorsDuo}
-            alt="Rich and Charlie Ferriman, creators of Beacon SEND Navigator"
+            alt=""
+            aria-hidden="true"
             className="w-full h-full object-cover object-top"
-            style={{ opacity: 0.35 }}
+            style={{ opacity: 0.15 }}
           />
-          {/* Navy gradient overlay */}
+          {/* Dark overlay for readability */}
           <div
             className="absolute inset-0"
             style={{
               background: [
-                "linear-gradient(to bottom, hsl(222 35% 10% / 0.7), hsl(222 35% 10% / 0.85) 60%, hsl(222 35% 10%) 100%)",
-                "linear-gradient(to top, hsl(222 35% 10%), transparent 40%)",
+                "linear-gradient(to bottom, hsl(222 35% 8% / 0.92), hsl(222 35% 8% / 0.85) 30%, hsl(222 35% 8% / 0.80) 60%, hsl(222 35% 8% / 0.75) 80%, hsl(222 35% 8% / 0.95) 100%)",
               ].join(", "),
             }}
           />
         </div>
 
-        {/* Content */}
-        <div className="relative content-section py-16 sm:py-20 flex flex-col items-center text-center">
-          <p
-            className="text-lg sm:text-xl font-display font-medium mb-2"
-            style={{ color: "hsl(0 0% 90%)" }}
-          >
-            Built by parents.
-          </p>
-          <p
-            className="text-sm max-w-md leading-relaxed"
-            style={{ color: "hsl(222 20% 55%)" }}
-          >
-            Still working at making this work.
-          </p>
-          <div
-            className="mt-6 h-px w-32"
-            style={{ background: "linear-gradient(to right, transparent, hsl(175 60% 40% / 0.4), transparent)" }}
-          />
-        </div>
-      </section>
+        {/* ─── SECTION 3: ASK RICH ─── */}
+        <section className="relative">
+          <div className="content-section py-10 sm:py-14">
+            <div className="max-w-2xl mx-auto">
+              {/* Character + intro */}
+              <div className="flex flex-col sm:flex-row items-center gap-5 mb-6">
+                <img
+                  src={askRichCharacter}
+                  alt="Ask Rich"
+                  className="w-24 sm:w-28 rounded-2xl flex-shrink-0"
+                  style={{ border: "2px solid hsl(262 50% 50% / 0.3)" }}
+                />
+                <div className="text-center sm:text-left">
+                  <h2
+                    className="text-2xl sm:text-3xl font-display font-semibold mb-2"
+                    style={{ color: "hsl(0 0% 96%)" }}
+                  >
+                    Got a question? Just ask.
+                  </h2>
+                  <p className="text-sm leading-relaxed" style={{ color: "hsl(222 20% 55%)" }}>
+                    I'm Rich, a SEND parent. Ask me anything about the reforms, EHCPs, or what to do right now. I'll give you a straight answer based on what we actually know.
+                  </p>
+                </div>
+              </div>
+
+              {/* Q&A component */}
+              <HomeAskRich />
+            </div>
+          </div>
+        </section>
+
+        {/* ─── SECTION 4: Info cards ─── */}
+        <section className="relative">
+          <div className="content-section py-10 sm:py-14">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+              {/* Card 1: Word from Rich */}
+              <div className="rounded-xl border border-[hsl(222_20%_20%)] p-6 flex flex-col" style={{ backgroundColor: "hsl(222 35% 12% / 0.85)", backdropFilter: "blur(8px)" }}>
+                <p className="text-[11px] font-semibold uppercase tracking-widest mb-3" style={{ color: "hsl(175 60% 50%)" }}>A word from Rich</p>
+                <p className="text-sm leading-relaxed flex-1" style={{ color: "hsl(222 20% 75%)" }}>
+                  Your child is not broken. They may see the world differently, process it differently, move through it differently. That is not a fault. This site exists to help you get them what they need from a world that was not designed with them in mind.
+                </p>
+                <div className="mt-4 pt-3" style={{ borderTop: "1px solid hsl(222 20% 20%)" }}>
+                  <Link to="/richs-take" className="inline-flex items-center gap-1.5 text-sm font-medium hover:underline" style={{ color: "hsl(175 60% 55%)" }}>
+                    Read my take on the white paper <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Card 2: SENDIASS */}
+              <div className="rounded-xl border border-[hsl(222_20%_20%)] p-6 flex flex-col" style={{ backgroundColor: "hsl(222 35% 12% / 0.85)", backdropFilter: "blur(8px)" }}>
+                <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: "hsl(220 70% 45% / 0.15)" }}>
+                  <MapPin className="w-4.5 h-4.5" style={{ color: "hsl(220 70% 55%)" }} />
+                </div>
+                <h3 className="text-sm font-display font-bold mb-2" style={{ color: "hsl(0 0% 92%)" }}>Did you know you have a free local advice service?</h3>
+                <p className="text-xs leading-relaxed flex-1" style={{ color: "hsl(222 20% 60%)" }}>
+                  Every local authority in England funds a free, impartial service called <strong style={{ color: "hsl(0 0% 85%)" }}>SENDIASS</strong> for parents navigating SEND.
+                </p>
+                <div className="mt-4 pt-3 space-y-2" style={{ borderTop: "1px solid hsl(222 20% 20%)" }}>
+                  <a
+                    href="https://councilfordisabledchildren.org.uk/about-us-0/networks/information-advice-and-support-services-network/find-your-local-ias-service"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-sm font-medium hover:underline"
+                    style={{ color: "hsl(220 70% 60%)" }}
+                  >
+                    Find your local SENDIASS <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                  <Link to="/sendiass" className="flex items-center gap-1.5 text-sm font-medium transition-colors hover:brightness-125" style={{ color: "hsl(222 20% 50%)" }}>
+                    Learn more <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Card 3: Made for families */}
+              <div className="rounded-xl border border-[hsl(222_20%_20%)] p-6 flex flex-col" style={{ backgroundColor: "hsl(222 35% 12% / 0.85)", backdropFilter: "blur(8px)" }}>
+                <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: "hsl(8 75% 55% / 0.12)" }}>
+                  <Heart className="w-4.5 h-4.5" style={{ color: "hsl(8 75% 60%)" }} />
+                </div>
+                <h3 className="text-sm font-display font-bold mb-2" style={{ color: "hsl(0 0% 92%)" }}>Made for families like yours</h3>
+                <p className="text-xs leading-relaxed flex-1" style={{ color: "hsl(222 20% 60%)" }}>
+                  This is an independent resource, not government, not a campaign. We just help you understand what's happening.
+                </p>
+                <div className="mt-4 pt-3 space-y-2" style={{ borderTop: "1px solid hsl(222 20% 20%)" }}>
+                  <Link to="/about" className="flex items-center gap-1.5 text-sm font-medium hover:underline" style={{ color: "hsl(175 60% 55%)" }}>
+                    About this resource <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                  <Link to="/feedback" className="flex items-center gap-1.5 text-sm font-medium transition-colors hover:brightness-125" style={{ color: "hsl(222 20% 50%)" }}>
+                    Give feedback <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                  <Link to="/community-questions" className="flex items-center gap-1.5 text-sm font-medium transition-colors hover:brightness-125" style={{ color: "hsl(222 20% 50%)" }}>
+                    Lived experience <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Browse everything toggle */}
+        <section className="relative">
+          <div className="content-section py-4" style={{ borderTop: "1px solid hsl(222 20% 18%)" }}>
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="flex items-center gap-2 text-sm transition-colors mx-auto"
+              style={{ color: "hsl(222 20% 55%)" }}
+            >
+              <span>{showAll ? "Hide full site map" : "Browse everything"}</span>
+              <ChevronDown className={`w-4 h-4 transition-transform ${showAll ? "rotate-180" : ""}`} />
+            </button>
+          </div>
+
+          {showAll && (
+            <div className="content-section pb-8 space-y-8 animate-in fade-in slide-in-from-top-2 duration-300">
+              <ContentSection title="The State of SEND 2026" description="Our 8-part report tracking every aspect of SEND reform" links={reportSections} color="teal" />
+              <ContentSection title="Parent Guides" description="Practical guides for navigating the SEND system right now" links={parentGuides} color="deepBlue" />
+              <ContentSection title="Understanding the System" description="How the system works, and why it works differently depending on where you are" links={systemPages} color="amber" />
+              <ContentSection title="Take Action and Community" description="Make your voice heard, ask questions, and connect with other families" links={takeAction} color="coral" />
+              <ContentSection title="About and Resources" description="How we work, our sources, and how to give feedback" links={aboutLinks} color="violet" />
+            </div>
+          )}
+        </section>
+
+        {/* ─── SECTION 5: CREATORS text ─── */}
+        <section className="relative">
+          <div className="content-section py-16 sm:py-20 flex flex-col items-center text-center">
+            <p
+              className="text-lg sm:text-xl font-display font-medium mb-2"
+              style={{ color: "hsl(0 0% 90%)" }}
+            >
+              Built by parents.
+            </p>
+            <p
+              className="text-sm max-w-md leading-relaxed"
+              style={{ color: "hsl(222 20% 55%)" }}
+            >
+              Still working at making this work.
+            </p>
+            <div
+              className="mt-6 h-px w-32"
+              style={{ background: "linear-gradient(to right, transparent, hsl(175 60% 40% / 0.4), transparent)" }}
+            />
+          </div>
+        </section>
+      </div>
 
       {/* Bottom padding for persistent ticker */}
       <div className="h-8" />
