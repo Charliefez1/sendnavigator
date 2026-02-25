@@ -35,6 +35,8 @@ import {
 import { Button } from "@/components/ui/button";
 import askRichCharacter from "@/assets/ask-rich-character.png";
 import creatorsDuo from "@/assets/creators-duo.png";
+import beaconLogo from "@/assets/beacon-logo.png";
+import ngEducationLogo from "@/assets/neurodiversity-global-education-logo-full.png";
 
 interface ContentLink {
   path: string;
@@ -396,9 +398,9 @@ const Index = () => {
           )}
         </section>
 
-        {/* ─── SECTION 5: CREATORS text ─── */}
+        {/* ─── SECTION 5: CREATORS text + logos ─── */}
         <section className="relative">
-          <div className="content-section py-6 sm:py-8 flex flex-col items-center text-center">
+          <div className="content-section py-6 sm:py-8 flex flex-col items-center text-center gap-4">
             <h1
               className="text-2xl sm:text-3xl font-display font-semibold"
               style={{ color: "hsl(0 0% 96%)" }}
@@ -406,11 +408,15 @@ const Index = () => {
               Built by parents
             </h1>
             <h2
-              className="text-base sm:text-lg font-display font-normal mt-1 max-w-md leading-relaxed"
+              className="text-base sm:text-lg font-display font-normal max-w-md leading-relaxed"
               style={{ color: "hsl(222 20% 55%)" }}
             >
               Still working at making this work.
             </h2>
+            <div className="flex flex-col items-center gap-3 mt-2">
+              <img src={beaconLogo} alt="Beacon SEND Navigator" className="h-10 opacity-70" />
+              <img src={ngEducationLogo} alt="Neurodiversity Global Education" className="h-20 opacity-70" />
+            </div>
           </div>
         </section>
 
@@ -421,7 +427,7 @@ const Index = () => {
       </div>
 
       {/* Bottom padding for persistent ticker */}
-      <div className="h-8" />
+      <div className="h-16" />
     </Layout>
   );
 };
