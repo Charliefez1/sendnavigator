@@ -321,12 +321,9 @@ const Landing = () => {
                 <Check className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "hsl(175 60% 40%)" }} />
                 No ads
               </span>
-              <span className="flex items-center gap-1.5 whitespace-nowrap">
+              <span className="flex items-center gap-1.5">
                 <Check className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "hsl(175 60% 40%)" }} />
-                Built by{" "}
-                <Link to="/rich-ferriman" className="text-primary hover:underline">
-                  Rich Ferriman
-                </Link>
+                Built by SEND Parents
               </span>
             </div>
           </div>
