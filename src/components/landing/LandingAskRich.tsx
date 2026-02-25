@@ -191,7 +191,13 @@ export function LandingAskRich({ onSignUpClick }: LandingAskRichProps) {
               Free account, takes 30 seconds
             </p>
             <Button
-              onClick={onSignUpClick}
+              onClick={() => {
+                // Save the question so after sign-up they get the full answer
+                if (question.trim()) {
+                  localStorage.setItem("landing_question", question.trim());
+                }
+                onSignUpClick();
+              }}
               className="gap-2 rounded-full px-7"
               style={{
                 boxShadow: "0 0 25px hsl(175 60% 40% / 0.2)",
