@@ -1,5 +1,5 @@
 import {
-  FileText, Shield, User, CheckSquare, MessageCircle,
+  FileText, Shield, User, CheckSquare, MessageCircle, BookOpen,
 } from "lucide-react";
 
 const features = [
@@ -47,6 +47,15 @@ const features = [
       "Ask any question about SEND reform and get a grounded, honest answer drawn from confirmed sources.",
     accentVar: "--accent-violet",
     accentBgVar: "--accent-violet-bg",
+  },
+  {
+    icon: BookOpen,
+    label: "Sources & Evidence",
+    headline: "Every claim traced to its source",
+    description:
+      "Legislation, government research, DfE data, and expert reviews, all in one place so you can verify everything yourself.",
+    accentVar: "--accent-teal",
+    accentBgVar: "--accent-teal-bg",
   },
 ];
 
