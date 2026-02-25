@@ -1,20 +1,60 @@
+import { useState, useMemo } from "react";
 import { Layout } from "@/components/Layout";
 import { PageOrientation } from "@/components/templates";
 import { SourceCard } from "@/components/SourceCard";
 import { StatusBadge } from "@/components/StatusBadge";
 import { WordFromRich } from "@/components/WordFromRich";
 import { getSourcesByCategory } from "@/config/sources";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ChevronDown, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 // Auto-generate from the source registry
 const groupedSources = getSourcesByCategory();
 
 export default function Sources() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [openSections, setOpenSections] = useState<Set<string>>(new Set());
+
+  const toggleSection = (category: string) => {
+    setOpenSections((prev) => {
+      const next = new Set(prev);
+      if (next.has(category)) next.delete(category);
+      else next.add(category);
+      return next;
+    });
+  };
+
+  // Filter sources based on search query
+  const filteredGroups = useMemo(() => {
+    if (!searchQuery.trim()) return groupedSources;
+
+    const q = searchQuery.toLowerCase();
+    return groupedSources
+      .map((group) => ({
+        ...group,
+        sources: group.sources.filter(
+          (s) =>
+            s.name.toLowerCase().includes(q) ||
+            s.description.toLowerCase().includes(q) ||
+            s.category.toLowerCase().includes(q) ||
+            (s.url && s.url.toLowerCase().includes(q))
+        ),
+      }))
+      .filter((group) => group.sources.length > 0);
+  }, [searchQuery]);
+
+  // When searching, auto-open all matching sections
+  const isSearching = searchQuery.trim().length > 0;
+
+  const totalResults = filteredGroups.reduce((sum, g) => sum + g.sources.length, 0);
+
   return (
     <Layout>
       <PageOrientation
         title="Sources and Evidence Base"
         description="Every source this site draws on, grouped by type. You should be able to check anything we say."
-        lastUpdated="23rd February 2026"
+        lastUpdated="25th February 2026"
       />
 
       {/* ═══ INTRODUCTION ═══ */}
@@ -39,31 +79,83 @@ export default function Sources() {
         <p>Everything on this site should be checkable. That matters to me. I have been in meetings where someone quoted something confidently and it was wrong, and the person across the table did not have the information to push back. This page is here so you do. If you ever read something on this site and want to know where it comes from, start here.</p>
       </WordFromRich>
 
-      {/* ═══ SOURCE CATEGORIES — auto-generated from registry ═══ */}
-      {groupedSources.map((group) => (
-        <section
-          key={group.category}
-          id={group.category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
-          className="content-section py-6 scroll-mt-24"
-        >
-          <h2 className="text-lg font-display font-bold text-foreground mb-2">
-            {group.category}
-          </h2>
-          <p className="text-xs text-muted-foreground mb-4">
-            {group.sources.length} source{group.sources.length !== 1 ? "s" : ""}
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {group.sources.map((source) => (
-              <SourceCard
-                key={source.id}
-                name={source.name}
-                url={source.url}
-                description={source.description}
-              />
-            ))}
+      {/* ═══ SEARCH ═══ */}
+      <section className="content-section py-4">
+        <div className="max-w-xl">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" aria-hidden="true" />
+            <Input
+              type="text"
+              placeholder="Search sources — e.g. 'EHCP', 'tribunal', 'Schools White Paper', 'EEF'…"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-9 text-sm"
+              aria-label="Search sources"
+            />
           </div>
+          {isSearching && (
+            <p className="text-xs text-muted-foreground mt-2">
+              {totalResults} source{totalResults !== 1 ? "s" : ""} found across {filteredGroups.length} categor{filteredGroups.length !== 1 ? "ies" : "y"}
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* ═══ SOURCE CATEGORIES — auto-generated from registry ═══ */}
+      {filteredGroups.map((group) => {
+        const sectionId = group.category.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+        const isOpen = isSearching || openSections.has(group.category);
+
+        return (
+          <section
+            key={group.category}
+            id={sectionId}
+            className="content-section py-2 scroll-mt-24"
+          >
+            <Collapsible open={isOpen} onOpenChange={() => !isSearching && toggleSection(group.category)}>
+              <CollapsibleTrigger
+                className="flex items-center justify-between w-full py-3 text-left group"
+                disabled={isSearching}
+              >
+                <div className="flex items-center gap-3">
+                  <h2 className="text-lg font-display font-bold text-foreground">
+                    {group.category}
+                  </h2>
+                  <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
+                    {group.sources.length}
+                  </span>
+                </div>
+                <ChevronDown
+                  className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${
+                    isOpen ? "rotate-180" : ""
+                  } ${isSearching ? "opacity-30" : "group-hover:text-foreground"}`}
+                  aria-hidden="true"
+                />
+              </CollapsibleTrigger>
+              <CollapsibleContent>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 pb-4 pt-1">
+                  {group.sources.map((source) => (
+                    <SourceCard
+                      key={source.id}
+                      name={source.name}
+                      url={source.url}
+                      description={source.description}
+                    />
+                  ))}
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
+          </section>
+        );
+      })}
+
+      {isSearching && filteredGroups.length === 0 && (
+        <section className="content-section py-8">
+          <p className="text-sm text-muted-foreground">
+            No sources found for "<strong>{searchQuery}</strong>". Try a different term — for example "tribunal", "EHCP", or "White Paper".
+          </p>
         </section>
-      ))}
+      )}
 
       {/* ═══ HOW WE USE SOURCES ═══ */}
       <section className="content-section py-8 scroll-mt-24" id="how-we-use-sources">
