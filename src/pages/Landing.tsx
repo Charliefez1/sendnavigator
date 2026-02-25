@@ -62,8 +62,18 @@ const Landing = () => {
     <div className="min-h-screen flex flex-col bg-background">
       <SEOHead
         title="Beacon SEND Navigator | Independent SEND reform guide for parents"
-        description="Clear facts, practical tools, and honest answers for parents navigating the SEND system in England."
+        description="Free independent guide helping parents understand SEND reform in England. EHCPs, the Schools White Paper, Individual Support Plans — explained clearly by a SEND parent."
         path="/landing"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "EducationalOrganization",
+          "name": "Beacon SEND Navigator",
+          "description": "Independent SEND reform guide for parents in England",
+          "url": "https://sendnavigator.lovable.app",
+          "founder": { "@type": "Person", "name": "Rich Ferriman" },
+          "areaServed": { "@type": "Country", "name": "United Kingdom" },
+          "audience": { "@type": "EducationalAudience", "educationalRole": "parent" },
+        }}
       />
 
       {/* ─── SECTION 1: HERO ─── */}
