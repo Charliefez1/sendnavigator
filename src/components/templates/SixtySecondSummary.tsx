@@ -12,7 +12,7 @@ export function SixtySecondSummary({ points, prose }: SixtySecondSummaryProps) {
   const displayPoints = points?.slice(0, 6);
 
   return (
-    <section className="content-section py-8" aria-labelledby="summary-heading">
+    <section className="content-section py-3" aria-labelledby="summary-heading">
       <div
         className="rounded-xl border bg-card p-5 sm:p-6"
         style={{

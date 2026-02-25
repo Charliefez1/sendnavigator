@@ -7,7 +7,7 @@ interface ProtectionsSectionProps {
 
 export function ProtectionsSection({ children }: ProtectionsSectionProps) {
   return (
-    <section className="content-section py-8">
+    <section className="content-section py-3">
       <div
         className="rounded-xl border bg-card p-5 sm:p-6"
         style={{

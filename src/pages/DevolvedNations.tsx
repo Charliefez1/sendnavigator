@@ -2,7 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
-import { PageSearch } from "@/components/PageSearch";
+
 import { Link } from "react-router-dom";
 import { CheckCircle2, ExternalLink, AlertTriangle, ArrowRight, Clock, Info, FileText, MapPin, Scale } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
@@ -85,7 +85,7 @@ export default function DevolvedNations() {
       </WordFromRich>
 
       <OnThisPage sections={pageSections} />
-      <PageSearch />
+      
 
       {/* Quick reference table — placed high per build notes */}
       <section className="content-section py-6">

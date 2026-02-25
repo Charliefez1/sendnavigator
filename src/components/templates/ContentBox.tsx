@@ -17,7 +17,7 @@ export function ContentBox({ id, icon: Icon, title, children }: ContentBoxProps)
   const showBody = !isScan || expanded;
 
   return (
-    <section id={id} className={cn("content-section scroll-mt-24", isScan ? "py-1" : "py-4")}>
+    <section id={id} className={cn("content-section scroll-mt-24", isScan ? "py-1" : "py-2")}>
       <div className={cn(
         "rounded-xl border border-border bg-card transition-shadow duration-200",
         isScan && !expanded ? "p-3 shadow-sm" : "p-6 shadow-card hover:shadow-card-hover"
@@ -26,7 +26,7 @@ export function ContentBox({ id, icon: Icon, title, children }: ContentBoxProps)
           onClick={() => isScan && setExpanded(!expanded)}
           className={cn(
             "flex items-center gap-3 w-full text-left",
-            !isScan && "mb-4",
+            !isScan && "mb-3",
             isScan && "cursor-pointer hover:opacity-80 transition-opacity"
           )}
           aria-expanded={showBody}
@@ -49,7 +49,7 @@ export function ContentBox({ id, icon: Icon, title, children }: ContentBoxProps)
           )}
         </button>
         {showBody && (
-          <div className="prose-calm text-sm text-muted-foreground leading-relaxed mt-4">
+          <div className="prose-calm text-sm text-muted-foreground leading-relaxed mt-3">
             {children}
           </div>
         )}

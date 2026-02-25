@@ -22,7 +22,7 @@ export function WatchNextSection({ items }: WatchNextSectionProps) {
   if (items.length === 0) return null;
 
   return (
-    <section className="content-section py-8 border-t border-border">
+    <section className="content-section py-3 border-t border-border">
       <div className="flex items-center gap-3 mb-4">
         <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
           <Eye className="w-4 h-4 text-primary" />

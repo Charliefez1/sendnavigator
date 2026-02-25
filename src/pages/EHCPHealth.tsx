@@ -2,7 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
-import { PageSearch } from "@/components/PageSearch";
+
 import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Clock, Scale, Heart, FileText, MapPin, Stethoscope } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
@@ -84,7 +84,7 @@ export default function EHCPHealth() {
       <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
-      <PageSearch />
+      
 
       {/* Sections C and G — two-panel layout */}
       <section className="content-section py-6">

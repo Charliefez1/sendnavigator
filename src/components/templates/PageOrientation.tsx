@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { Clock } from "lucide-react";
+import { PageSearch } from "@/components/PageSearch";
 
 interface PageOrientationProps {
   title: string;
@@ -7,6 +8,7 @@ interface PageOrientationProps {
   lastUpdated?: string;
   children?: ReactNode;
   accentColor?: string;
+  showSearch?: boolean;
 }
 
 export function PageOrientation({ 
@@ -15,6 +17,7 @@ export function PageOrientation({
   lastUpdated = "20th February 2026",
   children,
   accentColor,
+  showSearch = true,
 }: PageOrientationProps) {
   return (
     <header className="relative overflow-hidden bg-background">
@@ -25,8 +28,8 @@ export function PageOrientation({
           background: `radial-gradient(ellipse 70% 60% at 50% 100%, ${accentColor ? `${accentColor}08` : "hsl(175 60% 40% / 0.04)"}, transparent 70%)`,
         }}
       />
-      <div className="content-section relative py-8 sm:py-10">
-        <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">
+      <div className="content-section relative py-6 sm:py-8">
+        <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-2">
           {title}
         </h1>
         {description && (
@@ -35,10 +38,15 @@ export function PageOrientation({
           </p>
         )}
         {children}
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mt-4">
+        <div className="flex items-center gap-2 text-sm text-muted-foreground mt-3">
           <Clock className="w-4 h-4" aria-hidden="true" />
           <span>Last updated: {lastUpdated}</span>
         </div>
+        {showSearch && (
+          <div className="mt-4">
+            <PageSearch />
+          </div>
+        )}
       </div>
       {/* Fade line */}
       <div

@@ -29,7 +29,7 @@ export function StatusSection({ type, children }: StatusSectionProps) {
   const { icon: Icon, title, accentColor, bgColor, borderColor } = config[type];
 
   return (
-    <section className="content-section py-8">
+    <section className="content-section py-3">
       <div
         className="rounded-xl border p-5 sm:p-6"
         style={{

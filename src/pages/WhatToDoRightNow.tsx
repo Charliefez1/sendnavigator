@@ -2,7 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
-import { PageSearch } from "@/components/PageSearch";
+
 import { ExternalLink, FileText, Phone, MapPin, Scale, AlertTriangle, Clock, CheckCircle, ChevronDown, Shield, HelpCircle, ListChecks } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SendiassSignpost } from "@/components/SendiassSignpost";
@@ -191,7 +191,7 @@ export default function WhatToDoRightNow() {
       <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
-      <PageSearch />
+      
 
       {/* Reality Bites callout */}
       <section className="content-section py-4">

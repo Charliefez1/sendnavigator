@@ -119,7 +119,7 @@ export function InformationLayers({
   unconfirmedEmpty,
 }: InformationLayersProps) {
   return (
-    <section className="content-section py-8">
+    <section className="content-section py-3">
       <div className="rounded-xl border border-border bg-card p-5 sm:p-6 shadow-card">
         <h2 className="text-base font-display font-semibold text-foreground mb-6">Information by certainty</h2>
         <ConfirmedLayer emptyMessage={confirmedEmpty}>{confirmed}</ConfirmedLayer>

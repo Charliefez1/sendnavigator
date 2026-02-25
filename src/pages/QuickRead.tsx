@@ -6,7 +6,7 @@ import {
   ContentBox,
 } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
-import { PageSearch } from "@/components/PageSearch";
+
 import { BookOpen, Shield, TrendingUp, AlertTriangle, HelpCircle, Newspaper, Filter, ArrowRight, Heart } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -51,7 +51,7 @@ export default function QuickRead() {
       </section>
 
       <OnThisPage sections={sections} />
-      <PageSearch />
+      
 
       <ContentBox id="now" icon={Shield} title="Where things stand right now">
         <div className="space-y-3">
