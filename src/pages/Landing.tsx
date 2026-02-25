@@ -91,11 +91,11 @@ const Landing = () => {
         />
 
         {/* Header bar */}
-        <div className="relative content-wide flex items-center justify-between py-6">
-          <img src={beaconLogo} alt="Beacon SEND Navigator" className="h-8" />
+        <div className="relative content-wide flex flex-col items-center py-6">
+          <img src={beaconLogo} alt="Beacon SEND Navigator" className="h-24" />
           <button
             onClick={scrollToAuth}
-            className="text-sm tracking-wide min-h-[44px] px-4"
+            className="absolute right-4 top-6 text-sm tracking-wide min-h-[44px] px-4"
             style={{ color: "hsl(222 20% 55%)" }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "hsl(0 0% 95%)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "hsl(222 20% 55%)")}
