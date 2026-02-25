@@ -42,8 +42,8 @@ export default function WhatWeOweOurChildren() {
   return (
     <Layout>
       <SEOHead
-        title="What We Owe Our Children — Reality Bites"
-        description="An honest look at what parents can do for their neurodivergent children — regardless of what the system does next. Direct, practical, uncomfortable."
+        title="What We Owe Our Children: Reality Bites"
+        description="An honest look at what parents can do for their neurodivergent children, regardless of what the system does next. Direct, practical, uncomfortable."
         path="/what-we-owe-our-children"
       />
 
@@ -61,7 +61,7 @@ export default function WhatWeOweOurChildren() {
           What We Owe Our Children
         </h1>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          This is the first in a series called <strong>Reality Bites</strong>. These pieces do not tell you what the system owes you. They tell you what we owe our children — regardless of what the system does next.
+          This is the first in a series called <strong>Reality Bites</strong>. These pieces do not tell you what the system owes you. They tell you what we owe our children, regardless of what the system does next.
         </p>
       </header>
 
@@ -88,7 +88,7 @@ export default function WhatWeOweOurChildren() {
             <p>They are working inside a system with shrinking budgets, growing caseloads, and not enough of anything. That does not excuse failure when it happens. When the system fails your child, you have every right to challenge it and this site will help you do that.</p>
             <p>But walking in assuming everyone is your adversary makes things harder. For your child, and for you.</p>
             <p><strong>This should never be a battle.</strong></p>
-            <p>Your child is on a long list. Every parent on that list is calling, emailing, sometimes standing outside offices until someone sees them. I know — I was one of them.</p>
+            <p>Your child is on a long list. Every parent on that list is calling, emailing, sometimes standing outside offices until someone sees them. I know. I was one of them.</p>
             <p>The difference between being heard and being managed is usually <strong>preparation</strong>. Not volume. Not aggression. Preparation.</p>
             <p>Be assertive when you need to be. Push back when the system fails. But build relationships where you can. The parent who is known, trusted, and clear gets further than the parent who is feared or avoided.</p>
           </div>
@@ -101,7 +101,7 @@ export default function WhatWeOweOurChildren() {
           <SectionHeading>Prepare before you ask</SectionHeading>
           <div className="space-y-4 text-sm text-muted-foreground leading-relaxed max-w-2xl">
             <p>Before you contact the school. Before you write to the LA. Before any meeting.</p>
-            <p>Know what you believe your child needs. Not just that something is wrong — but <strong>what specifically is happening, when, and what you think is driving it</strong>.</p>
+            <p>Know what you believe your child needs. Not just that something is wrong, but <strong>what specifically is happening, when, and what you think is driving it</strong>.</p>
             <p>This means doing your research. Understanding your child's profile. Their strengths, their flash points, the settings and situations that push them past what they can manage. And writing it down.</p>
           </div>
         </div>
@@ -116,7 +116,7 @@ export default function WhatWeOweOurChildren() {
             <p>Date. Situation. What happened. What came before it. How your child described it. How they recovered.</p>
             <p>Words work. So do photos where relevant, video where your child is comfortable with it, drawings from younger children, your child's own account in their own words.</p>
             <p>Over time a pattern becomes visible. A pattern is evidence. <strong>Evidence is what moves things forward</strong> in reviews, assessments, and meetings.</p>
-            <p>When you can say "here are twelve documented incidents over six weeks, all during unstructured transition times, all involving the same trigger" — that changes the conversation.</p>
+            <p>When you can say "here are twelve documented incidents over six weeks, all during unstructured transition times, all involving the same trigger": that changes the conversation.</p>
           </div>
         </div>
       </section>
@@ -127,9 +127,9 @@ export default function WhatWeOweOurChildren() {
           <SectionHeading>Understand what is happening at home</SectionHeading>
           <div className="space-y-4 text-sm text-muted-foreground leading-relaxed max-w-2xl">
             <p>Your child is almost certainly <strong>masking</strong> at school.</p>
-            <p>Masking is the effort of suppressing natural neurological responses — the stims, the shutdowns, the distress signals — in order to appear to cope in an environment that does not accommodate how their nervous system works. It is exhausting work. And it tends to collapse the moment they reach somewhere they feel safe.</p>
+            <p>Masking is the effort of suppressing natural neurological responses: the stims, the shutdowns, the distress signals. All in order to appear to cope in an environment that does not accommodate how their nervous system works. It is exhausting work. And it tends to collapse the moment they reach somewhere they feel safe.</p>
             <p>Which is home.</p>
-            <p>The explosion at the school gate, the meltdown after what looked like a normal day, the refusal to do anything by early evening — this is usually the <strong>accumulated cost of hours spent masking</strong>. It is not bad behaviour. It is a child running on empty, finally in a place where they do not have to pretend.</p>
+            <p>The explosion at the school gate, the meltdown after what looked like a normal day, the refusal to do anything by early evening. This is usually the <strong>accumulated cost of hours spent masking</strong>. It is not bad behaviour. It is a child running on empty, finally in a place where they do not have to pretend.</p>
             <p>Understanding this changes how you respond to it at home. It also changes how you describe your child's needs to the school.</p>
           </div>
         </div>
@@ -142,8 +142,8 @@ export default function WhatWeOweOurChildren() {
           <div className="space-y-4 text-sm text-muted-foreground leading-relaxed max-w-2xl">
             <p>Stimming is self-stimulatory behaviour. Repetitive movements, sounds, or actions that <strong>regulate the nervous system</strong>.</p>
             <p>Rocking. Flapping. Tapping. Humming. Pacing. Picking. Spinning.</p>
-            <p>Stimming is not a problem to be stopped. It is a regulatory tool. When a child stims they are actively managing their internal state — processing sensory input, managing anxiety, maintaining enough focus to stay in the room.</p>
-            <p>When stimming is suppressed — when a child is told to sit still, stop tapping, stop making that noise — the regulatory need does not disappear. <strong>It accumulates.</strong> It finds another outlet, usually a louder and less manageable one.</p>
+            <p>Stimming is not a problem to be stopped. It is a regulatory tool. When a child stims they are actively managing their internal state: processing sensory input, managing anxiety, maintaining enough focus to stay in the room.</p>
+            <p>When stimming is suppressed, when a child is told to sit still, stop tapping, stop making that noise, the regulatory need does not disappear. <strong>It accumulates.</strong> It finds another outlet, usually a louder and less manageable one.</p>
             <p>Ask the school what their approach is to stimming. If your child is being routinely stopped from regulating themselves, that is worth raising — not as a confrontation, but as a direct and reasonable question. <strong>"What are they allowed to do when they feel overwhelmed?"</strong> is a question every school should be able to answer.</p>
           </div>
         </div>
@@ -228,12 +228,12 @@ export default function WhatWeOweOurChildren() {
           <SectionHeading>What we can do, regardless of the system</SectionHeading>
           <div className="space-y-4 text-sm text-muted-foreground leading-relaxed max-w-2xl">
             <p>The system will help, eventually. But we do not have to wait for it.</p>
-            <p><strong>Understanding your child's sensory profile</strong> and sharing it clearly with school. Reducing friction at home around transitions, demands, and unexpected change — not because we are being permissive but because we understand the nervous system our child is living in.</p>
+            <p><strong>Understanding your child's sensory profile</strong> and sharing it clearly with school. Reducing friction at home around transitions, demands, and unexpected change. Not because we are being permissive but because we understand the nervous system our child is living in.</p>
             <p><strong>Giving children language for their own experience.</strong> A child who can say "I feel overwhelmed when the room is too loud and I need to move" is better equipped than one who can only express it by shutting down or lashing out.</p>
             <p>Protecting sleep. Adjusting screen use. Building routines that provide predictability without rigidity.</p>
             <p><strong>These are not small things. They are the foundation everything else sits on.</strong></p>
             <div className="pt-2">
-              <ResourceLink label="Are We Bad Parents? — An Open Letter" url="https://awbp.neuro.support/" note="written by Rich Ferriman" />
+              <ResourceLink label="Are We Bad Parents? An Open Letter" url="https://awbp.neuro.support/" note="written by Rich Ferriman" />
             </div>
           </div>
         </div>
