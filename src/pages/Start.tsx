@@ -413,10 +413,6 @@ const Index = () => {
             >
               Still working at making this work.
             </h2>
-            <div className="flex flex-col items-center gap-3 mt-2">
-              <img src={beaconLogo} alt="Beacon SEND Navigator" className="h-10 opacity-70" />
-              <img src={ngEducationLogo} alt="Neurodiversity Global Education" className="h-20 opacity-70" />
-            </div>
           </div>
         </section>
 
