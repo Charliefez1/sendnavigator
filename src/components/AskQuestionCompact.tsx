@@ -43,8 +43,8 @@ export function AskQuestionCompact() {
 
   if (submitted) {
     return (
-      <div className="border border-border rounded-2xl p-4 bg-accent/30 text-center">
-        <CheckCircle className="h-6 w-6 text-status-confirmed mx-auto mb-2" />
+      <div className="rounded-xl border border-border p-5 bg-card text-center shadow-card">
+        <CheckCircle className="h-6 w-6 mx-auto mb-2" style={{ color: "hsl(175 65% 41%)" }} />
         <p className="text-sm font-semibold text-foreground">Thank you.</p>
         <p className="text-xs text-muted-foreground">Your comment has been submitted for review.</p>
       </div>
@@ -52,16 +52,24 @@ export function AskQuestionCompact() {
   }
 
   return (
-    <div className="border-2 border-solid border-primary/30 rounded-2xl p-4 bg-card space-y-3 shadow-lg">
-      <div className="flex items-center gap-2 text-primary">
-        <MessageCircleQuestion className="h-5 w-5" />
-        <span className="font-semibold text-sm">Share a comment or lived experience</span>
+    <div
+      className="rounded-xl border p-5 bg-card space-y-3"
+      style={{
+        borderColor: "hsl(8 75% 55% / 0.2)",
+        boxShadow: "0 8px 32px -8px hsl(8 75% 55% / 0.08), 0 4px 16px -4px rgba(0,0,0,0.06)",
+      }}
+    >
+      <div className="flex items-center gap-2.5">
+        <div className="w-8 h-8 rounded-md flex items-center justify-center" style={{ backgroundColor: "hsl(8 75% 55% / 0.1)" }}>
+          <MessageCircleQuestion className="h-4 w-4" style={{ color: "hsl(8 75% 55%)" }} />
+        </div>
+        <span className="font-semibold text-sm text-foreground">Share a comment or lived experience</span>
       </div>
       <Textarea
         value={question}
         onChange={(e) => setQuestion(e.target.value)}
         placeholder="Share your experience, observation, or comment..."
-        className="min-h-[80px] text-sm resize-none"
+        className="min-h-[80px] text-sm resize-none shadow-sm"
         maxLength={1000}
       />
       <div className="flex items-center justify-between">
@@ -70,7 +78,7 @@ export function AskQuestionCompact() {
           onClick={handleSubmit}
           disabled={isSubmitting || question.trim().length < 10}
           size="sm"
-          className="rounded-full gap-1.5"
+          className="rounded-full gap-1.5 shadow-md hover:shadow-lg transition-shadow"
         >
           <Send className="h-3.5 w-3.5" />
           {isSubmitting ? "Submitting..." : "Submit"}
