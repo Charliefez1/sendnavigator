@@ -282,7 +282,7 @@ const Index = () => {
       {/* ─── SECTION 4: Consolidated info (Word from Rich + SENDIASS + About) ─── */}
       <section className="bg-background">
         <div className="content-section py-10 sm:py-14">
-          <div className="max-w-2xl mx-auto space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {/* Compact strip: Word from Rich */}
             <div className="rounded-xl border border-border bg-card p-4 sm:p-5">
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">A word from Rich</p>
