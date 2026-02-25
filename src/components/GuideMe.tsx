@@ -21,6 +21,10 @@ const QUICK_OPTIONS = [
   "What does the white paper mean for my child today?",
   "Is my child's EHCP safe?",
   "What is the Experts at Hand programme?",
+  "Have I missed something important?",
+  "What is the long term outlook as my daughter is 3?",
+  "The school says they cannot meet my child's need. What does that mean?",
+  "My child is melting down every day after school. Why?",
 ];
 
 export function GuideMe() {
