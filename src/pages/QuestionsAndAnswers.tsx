@@ -27,7 +27,7 @@ export default function QuestionsAndAnswers() {
             <img
               src={askRichCharacter}
               alt="Ask Rich"
-              className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover flex-shrink-0 shadow-lg"
+              className="w-24 sm:w-28 rounded-2xl flex-shrink-0 shadow-lg"
               style={{ border: "2px solid hsl(262 50% 50% / 0.2)" }}
             />
             <div className="text-center sm:text-left">
