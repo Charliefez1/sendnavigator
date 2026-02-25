@@ -22,10 +22,10 @@ const linkedSites = [
 ];
 
 const furtherReading = [
-  { label: "Where we are now", path: "/where-we-are-now" },
-  { label: "What is changing", path: "/what-is-changing" },
-  { label: "Timeline and next steps", path: "/timeline" },
-  { label: "What the leaks are saying", path: "/what-the-leaks-are-saying" },
+  { label: "Rich's Take", path: "/richs-take" },
+  { label: "My Child Profile", path: "/my-child-profile" },
+  { label: "SEND Report 2026", path: "/state-of-send-2026" },
+  { label: "The EHCP Guide", path: "/ehcps" },
 ];
 
 export function ExitIntentPopup() {
