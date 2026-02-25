@@ -133,7 +133,7 @@ function ContentSection({ title, description, links, color }: { title: string; d
           <Link
             key={link.path}
             to={link.path}
-            className="flex items-start gap-3 p-3.5 bg-card border border-border rounded-lg hover:shadow-md transition-all group"
+            className="flex items-start gap-3 p-3.5 bg-card border border-border rounded-lg shadow-card hover:shadow-card-hover transition-all group"
           >
             <div className={`w-8 h-8 rounded-md ${c.icon} flex items-center justify-center flex-shrink-0`}>
               <link.icon className="w-4 h-4" />
@@ -302,7 +302,7 @@ const Index = () => {
           <div className="content-section py-10 sm:py-14">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
               {/* Card 1: Word from Rich */}
-              <div className="rounded-xl border border-[hsl(222_20%_20%)] p-6 flex flex-col" style={{ backgroundColor: "hsl(222 35% 12% / 0.85)", backdropFilter: "blur(8px)" }}>
+              <div className="rounded-xl border border-[hsl(222_20%_20%)] p-6 flex flex-col shadow-elevated transition-shadow duration-200" style={{ backgroundColor: "hsl(222 35% 12% / 0.85)", backdropFilter: "blur(8px)" }}>
                 <p className="text-[11px] font-semibold uppercase tracking-widest mb-3" style={{ color: "hsl(175 60% 50%)" }}>A word from Rich</p>
                 <p className="text-sm leading-relaxed flex-1" style={{ color: "hsl(222 20% 75%)" }}>
                   Your child is not broken. They may see the world differently, process it differently, move through it differently. That is not a fault. This site exists to help you get them what they need from a world that was not designed with them in mind.
@@ -315,7 +315,7 @@ const Index = () => {
               </div>
 
               {/* Card 2: SENDIASS */}
-              <div className="rounded-xl border border-[hsl(222_20%_20%)] p-6 flex flex-col" style={{ backgroundColor: "hsl(222 35% 12% / 0.85)", backdropFilter: "blur(8px)" }}>
+              <div className="rounded-xl border border-[hsl(222_20%_20%)] p-6 flex flex-col shadow-elevated transition-shadow duration-200" style={{ backgroundColor: "hsl(222 35% 12% / 0.85)", backdropFilter: "blur(8px)" }}>
                 <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: "hsl(220 70% 45% / 0.15)" }}>
                   <MapPin className="w-4.5 h-4.5" style={{ color: "hsl(220 70% 55%)" }} />
                 </div>
@@ -340,7 +340,7 @@ const Index = () => {
               </div>
 
               {/* Card 3: Made for families */}
-              <div className="rounded-xl border border-[hsl(222_20%_20%)] p-6 flex flex-col" style={{ backgroundColor: "hsl(222 35% 12% / 0.85)", backdropFilter: "blur(8px)" }}>
+              <div className="rounded-xl border border-[hsl(222_20%_20%)] p-6 flex flex-col shadow-elevated transition-shadow duration-200" style={{ backgroundColor: "hsl(222 35% 12% / 0.85)", backdropFilter: "blur(8px)" }}>
                 <div className="w-9 h-9 rounded-lg flex items-center justify-center mb-3" style={{ backgroundColor: "hsl(8 75% 55% / 0.12)" }}>
                   <Heart className="w-4.5 h-4.5" style={{ color: "hsl(8 75% 60%)" }} />
                 </div>
