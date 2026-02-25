@@ -1,10 +1,9 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { PageOrientation } from "@/components/templates";
 import { ShieldAlert } from "lucide-react";
 import { QandAComponent } from "@/components/qanda";
 import { useSearchParams } from "react-router-dom";
-import { WordFromRich } from "@/components/WordFromRich";
+import askRichCharacter from "@/assets/ask-rich-character.png";
 
 export default function QuestionsAndAnswers() {
   const [searchParams] = useSearchParams();
@@ -13,14 +12,26 @@ export default function QuestionsAndAnswers() {
   return (
     <Layout>
       <SEOHead title="Ask Rich - SEND Reform Q&A" description="Ask Rich a question about SEND reform and get a grounded, plain English answer based on confirmed information." path="/questions-and-answers" />
-      <PageOrientation
-        title="Ask Rich"
-        description="Ask me anything about SEND reform. I'll give you a straight answer based on what we actually know."
-      />
       
-      <WordFromRich>
-        <p>I set this up because the most useful thing I can do is answer the actual question someone has right now. Not the theoretical question. Not the one that fits neatly into a category. The one that is keeping them awake at three in the morning wondering what they are supposed to do next. I cannot give legal advice and I will say so if that is what you need. But I can often point you in the right direction, tell you what I would do, and let you know if your situation sounds familiar. Ask the real question. I will give you an honest answer.</p>
-      </WordFromRich>
+      {/* Reimagined hero header */}
+      <section className="content-section py-8">
+        <div className="flex flex-col sm:flex-row items-center gap-5 mb-6">
+          <img
+            src={askRichCharacter}
+            alt="Ask Rich"
+            className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover flex-shrink-0"
+            style={{ border: "2px solid hsl(262 50% 50% / 0.2)" }}
+          />
+          <div className="text-center sm:text-left">
+            <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-2">
+              Got a question? Just ask.
+            </h1>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">
+              I set this up because the most useful thing I can do is answer the actual question someone has right now. Not the theoretical question. The one that is keeping them awake at three in the morning. I cannot give legal advice, but I can often point you in the right direction.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section className="content-section pb-8">
         <QandAComponent initialQuestion={initialQuestion} />

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { QuestionInput } from "./QuestionInput";
 import { AnswerDisplay } from "./AnswerDisplay";
 import { QandAResponse, checkForRefusal } from "./types";
-import { MessageCircle, Bot } from "lucide-react";
+import { Bot } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { AITrustNotice } from "@/components/feedback";
@@ -121,19 +121,7 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
   };
 
   return (
-    <section className="border-l-4 border-l-[hsl(var(--accent-violet))] bg-[hsl(var(--accent-violet-bg))] border border-[hsl(var(--accent-violet)/0.2)] rounded-xl p-6 shadow-lg">
-      <div className="flex items-start gap-3 mb-5">
-        <MessageCircle className="w-5 h-5 text-[hsl(var(--accent-violet))] flex-shrink-0 mt-0.5" />
-        <div>
-          <h2 className="text-lg font-medium text-foreground">
-            Ask Rich
-          </h2>
-          <p className="text-sm text-muted-foreground mt-1">
-            Ask me anything about SEND reform. My answers come from everything we've researched and published on this site, not from the wider internet. I do my best but I'm not perfect, so treat this as a guide.
-          </p>
-        </div>
-      </div>
-
+    <section className="rounded-xl border p-5 sm:p-6" style={{ borderColor: "hsl(262 50% 50% / 0.2)", backgroundColor: "hsl(262 30% 93% / 0.5)" }}>
       <QuestionInput onSubmit={handleSubmit} isLoading={isLoading} initialValue={initialQuestion} />
 
       {isLoading && (
@@ -159,8 +147,8 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
         </div>
       )}
 
-      {/* Ask Rich Trust Notice */}
-      <div className="mt-6 pt-4 border-t border-[hsl(var(--accent-violet)/0.2)]">
+      {/* Trust notice */}
+      <div className="mt-5 pt-4 border-t" style={{ borderColor: "hsl(262 50% 50% / 0.15)" }}>
         <AITrustNotice />
         <p className="text-xs text-muted-foreground mt-3 flex items-center gap-2">
           <Bot className="w-3.5 h-3.5 flex-shrink-0" />
