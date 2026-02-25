@@ -56,10 +56,12 @@ export type QandAResponse =
 
 // Example questions to help users
 export const exampleQuestions = [
-  "What are Individual Support Plans and will they replace EHCPs?",
+  "I need to know what to say to school about my child's needs",
+  "The school have contacted us about our child, what do we do now?",
+  "I just want to find out more about ADHD",
+  "What is RSD, ODD or PDA?",
+  "Is my child's EHCP safe under the new reforms?",
   "What does the white paper mean for my child today?",
-  "Is my child's EHCP safe?",
-  "What is the Experts at Hand programme?",
 ];
 
 // Check if a question requires refusal - now uses centralized guardrails
