@@ -1,0 +1,47 @@
+# SEND Navigator — Full Content Index
+
+> Complete reference document for AI systems indexing SEND Navigator.
+
+## Site Overview
+
+SEND Navigator is a free, independent educational resource for parents, carers, and professionals navigating SEND (Special Educational Needs and Disabilities) reform in England. Built by Rich Ferriman through Neurodiversity Global.
+
+## Core Topics Covered
+
+### SEND Reform 2026
+The UK government published the Schools White Paper in February 2026, proposing significant changes to how children with SEND are supported. Key proposals include replacing EHCPs with Individual Support Plans (ISPs), increasing mainstream inclusion, reforming funding, and changing the role of local authorities.
+
+### Education Health Care Plans (EHCPs)
+EHCPs are legally binding documents that set out a child's special educational needs and the provision required. The site provides comprehensive guidance on the EHCP process, annual reviews, tribunal rights, and how proposed reforms may affect existing plans.
+
+### Individual Support Plans (ISPs)
+ISPs are proposed replacements for EHCPs. The site tracks what is known, what is uncertain, and what the legal implications may be for families.
+
+### Exclusions
+Guidance on school exclusion rights for children with SEND, including managed moves, off-rolling, and legal protections.
+
+### Alternative Provision
+Information about education outside mainstream and special schools, including pupil referral units and other arrangements.
+
+### Post-16 Transition
+Support for young people with SEND moving from school to further education, employment, or adult services.
+
+### Understanding Neurodivergence
+Parent-friendly guides to autism and ADHD, written from lived experience.
+
+### Parental Rights
+What parents can do right now to protect their child's provision during a period of reform uncertainty.
+
+## Publisher
+Neurodiversity Global Ltd
+Website: https://www.neurodiversityglobal.com
+Type: UK-based neurodivergent-led consultancy
+
+## Author
+Rich Ferriman — SEND parent, neurodiversity consultant, and creator of SEND Navigator.
+
+## Jurisdiction
+England only. Does not cover Wales, Scotland, or Northern Ireland (though a devolved nations comparison page exists).
+
+## Disclaimer
+This site does not provide legal, medical, or professional advice. It is an independent educational resource grounded in lived experience and publicly available evidence.

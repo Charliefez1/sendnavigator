@@ -1,0 +1,41 @@
+# SEND Navigator
+
+> Free, independent guide helping parents and carers understand SEND reform in England 2026.
+
+## About
+
+SEND Navigator (formerly Beacon SEND Navigator) is built by Neurodiversity Global — a UK-based, neurodivergent-led consultancy. Created by Rich Ferriman, a SEND parent and neurodiversity consultant.
+
+This site covers:
+- The 2026 Schools White Paper and its impact on SEND
+- Education Health Care Plans (EHCPs) — your rights, the process, and what's changing
+- Individual Support Plans (ISPs) — what we know so far
+- Exclusions and alternative provision
+- Post-16 transitions
+- Understanding autism and ADHD
+- What parents should do right now
+- Free SENDIASS advice signposting
+- Statistics, data, and evidence sources
+
+## Key Pages
+
+- [Home](https://sendnavigator.lovable.app/): Main entry point
+- [State of SEND 2026](https://sendnavigator.lovable.app/state-of-send-2026): Full report on SEND reform
+- [EHCP Guide](https://sendnavigator.lovable.app/ehcps): Comprehensive guide to Education Health Care Plans
+- [What To Do Right Now](https://sendnavigator.lovable.app/what-to-do-right-now): Practical steps for parents
+- [Ask Rich](https://sendnavigator.lovable.app/questions-and-answers): AI-powered Q&A grounded in SEND knowledge
+- [Understanding Autism](https://sendnavigator.lovable.app/understanding-your-child/autism): Parent-friendly autism guide
+- [Understanding ADHD](https://sendnavigator.lovable.app/understanding-your-child/adhd): Parent-friendly ADHD guide
+- [Exclusions](https://sendnavigator.lovable.app/exclusions): Rights around school exclusions
+- [Post-16 Transition](https://sendnavigator.lovable.app/post-16-and-transition): Moving beyond school age
+- [SENDIASS](https://sendnavigator.lovable.app/sendiass): Free impartial advice for families
+- [Sources](https://sendnavigator.lovable.app/sources): Evidence base and references
+- [Statistics](https://sendnavigator.lovable.app/statistics-and-data): SEND data and analysis
+
+## Important Context
+
+- This site applies to England only (not Wales, Scotland, or Northern Ireland)
+- Information is updated regularly as reforms develop
+- This is not legal or medical advice
+- Content is grounded in lived experience and official sources
+- Last major update: 23rd February 2026 (Schools White Paper response)
