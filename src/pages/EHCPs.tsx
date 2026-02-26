@@ -81,7 +81,7 @@ export default function EHCPs() {
       
 
       {/* ── What is an EHCP ── */}
-      <ContentBox id="what-is-ehcp" icon={FileText} title="What is an EHCP">
+      <ContentBox id="what-is-ehcp" icon={FileText} title="What is an EHCP" tooltip="Education, Health and Care Plan — the legal document that guarantees your child's support">
         <div className="space-y-3">
           <p>
             An Education, Health and Care Plan (EHCP) is a statutory document introduced by the <strong>Children and Families Act 2014</strong>, replacing the older Statement of SEN system. It is the only legal mechanism in England that guarantees coordinated, funded support across education, health, and social care for a child or young person with significant special educational needs.
@@ -96,7 +96,7 @@ export default function EHCPs() {
       </ContentBox>
 
       {/* ── Who qualifies ── */}
-      <ContentBox id="who-qualifies" icon={Users} title="Who qualifies for an EHCP">
+      <ContentBox id="who-qualifies" icon={Users} title="Who qualifies for an EHCP" tooltip="Find out if your child may be eligible for an EHCP based on their needs">
         <div className="space-y-3">
           <p>
             A child or young person may qualify for an EHCP if they have <strong>special educational needs that cannot be met through the support ordinarily available at their school</strong>. The legal test is deliberately broad.
@@ -120,7 +120,7 @@ export default function EHCPs() {
       </ContentBox>
 
       {/* ── Statistics dashboard ── */}
-      <ContentBox id="statistics" icon={BarChart3} title="EHCP statistics dashboard">
+      <ContentBox id="statistics" icon={BarChart3} title="EHCP statistics dashboard" tooltip="Key numbers: how many EHCPs exist, timeliness, tribunal outcomes">
         <div className="space-y-6">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             <StatCard value="638,700" label="Children with EHCPs" sublabel="January 2025" icon={Users} accentColor="confirmed" />
@@ -161,7 +161,7 @@ export default function EHCPs() {
       </ContentBox>
 
       {/* ── The EHCP process ── */}
-      <ContentBox id="process" icon={ClipboardList} title="The EHCP process: step by step">
+      <ContentBox id="process" icon={ClipboardList} title="The EHCP process: step by step" tooltip="The full journey from request to final plan, with timescales">
         <div className="space-y-4">
           <p>
             The EHCP process runs from initial identification of needs through to the final plan and annual reviews. The entire process from request to final plan <strong>should take no more than 20 weeks</strong>, though in practice over half of families wait longer.
@@ -179,7 +179,7 @@ export default function EHCPs() {
       </ContentBox>
 
       {/* ── What an EHCP contains ── */}
-      <ContentBox id="sections" icon={FileText} title="What an EHCP contains">
+      <ContentBox id="sections" icon={FileText} title="What an EHCP contains" tooltip="Sections A through K explained — what each part of the plan does">
         <div className="space-y-3">
           <p>
             An EHCP is a comprehensive document with <strong>prescribed sections labelled A through K</strong>. Each section serves a specific legal purpose:
@@ -199,20 +199,23 @@ export default function EHCPs() {
               { section: "K", title: "Appendices", desc: "All assessment reports and evidence.", explainer: "Section K contains all the professional reports, assessments, and evidence that informed the EHCP. This includes educational psychology reports, speech and language assessments, medical reports, and any private assessments you have submitted. Check that all reports you provided are included. If a report recommends specific provision that does not appear in Section F, raise this. The local authority should explain why a professional recommendation has not been followed." },
             ].map((s) => (
               <Collapsible key={s.section}>
-                <div className="rounded-lg bg-muted/30 border border-border/50 overflow-hidden">
-                  <CollapsibleTrigger className="flex items-center gap-3 p-3 w-full text-left hover:bg-muted/50 transition-colors group">
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                      <span className="text-xs font-bold text-primary">{s.section}</span>
+                <div className="rounded-lg border overflow-hidden" style={{ borderColor: "hsla(220, 70%, 45%, 0.15)", backgroundColor: "hsla(220, 70%, 45%, 0.03)" }}>
+                  <CollapsibleTrigger className="flex items-center gap-3 px-3 py-2.5 w-full text-left hover:bg-muted/50 transition-colors group">
+                    <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: "hsla(220, 70%, 45%, 0.1)" }}>
+                      <span className="text-xs font-bold" style={{ color: "hsl(220 70% 45%)" }}>{s.section}</span>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-foreground">{s.title}</p>
-                      <p className="text-sm text-muted-foreground">{s.desc}</p>
+                      <p className="text-sm font-medium text-foreground leading-snug">{s.title}</p>
+                      <p className="text-xs text-muted-foreground leading-snug mt-0.5">{s.desc}</p>
                     </div>
-                    <ChevronDown className="w-4 h-4 text-muted-foreground shrink-0 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                    <div className="flex flex-col items-center shrink-0 gap-0.5">
+                      <ChevronDown className="w-4 h-4 text-muted-foreground transition-transform duration-200 group-data-[state=open]:rotate-180" />
+                      <span className="text-[10px] text-muted-foreground/50 group-data-[state=open]:hidden">more</span>
+                    </div>
                   </CollapsibleTrigger>
                   <CollapsibleContent>
-                    <div className="px-3 pb-3 pt-0">
-                      <div className="border-t border-border/50 pt-3 ml-11">
+                    <div className="px-3 pb-2.5 pt-0">
+                      <div className="border-t pt-2.5 ml-10" style={{ borderColor: "hsla(220, 70%, 45%, 0.1)" }}>
                         <p className="text-sm text-muted-foreground leading-relaxed">{s.explainer}</p>
                       </div>
                     </div>
@@ -234,7 +237,7 @@ export default function EHCPs() {
       </WordFromRich>
 
       {/* ── Your rights ── */}
-      <ContentBox id="rights" icon={Scale} title="Your rights at every stage">
+      <ContentBox id="rights" icon={Scale} title="Your rights at every stage" tooltip="Your legal rights during assessment, drafting, placement, and review">
         <div className="space-y-4">
           <RightsChecklist
             title="Rights you have right now"
@@ -258,7 +261,7 @@ export default function EHCPs() {
       </ContentBox>
 
       {/* ── School placement ── */}
-      <ContentBox id="placement" icon={School} title="School placement and Section I">
+      <ContentBox id="placement" icon={School} title="School placement and Section I" tooltip="How school naming works, your right to request, and common disputes">
         <div className="space-y-3">
           <p>
             Parents have a <strong>right to request a particular school</strong> to be named in Section I of the EHCP. This includes mainstream schools, specialist schools (legally called special schools), academies, and certain approved independent specialist schools.
@@ -273,7 +276,7 @@ export default function EHCPs() {
       </ContentBox>
 
       {/* ── Annual reviews ── */}
-      <ContentBox id="annual-review" icon={RefreshCw} title="Annual reviews">
+      <ContentBox id="annual-review" icon={RefreshCw} title="Annual reviews" tooltip="What happens at a review, key deadlines, and when to request one early">
         <div className="space-y-3">
           <p>
             EHCPs must be reviewed <strong>at least every 12 months</strong> (every 3 to 6 months for under-5s). The review involves gathering progress updates, a meeting hosted by the school (usually chaired by the SENCO), and recommendations on whether to keep, amend, or cease the plan.
@@ -291,7 +294,7 @@ export default function EHCPs() {
       </ContentBox>
 
       {/* ── Common challenges ── */}
-      <ContentBox id="challenges" icon={AlertTriangle} title="Common challenges and what to watch for">
+      <ContentBox id="challenges" icon={AlertTriangle} title="Common challenges and what to watch for" tooltip="The most frequent problems families face and how to spot them early">
         <div className="space-y-3">
           <p>
             The EHCP system faces significant pressures. Understanding where things commonly go wrong helps you <strong>prepare and respond effectively</strong>.
@@ -313,7 +316,7 @@ export default function EHCPs() {
       </ContentBox>
 
       {/* ── Tribunals ── */}
-      <ContentBox id="tribunals" icon={Gavel} title="Tribunals and appeals">
+      <ContentBox id="tribunals" icon={Gavel} title="Tribunals and appeals" tooltip="How to appeal, what to expect, and why parents overwhelmingly win">
         <div className="space-y-3">
           <p>
             When disagreements cannot be resolved, families can appeal to the <strong>First-tier Tribunal (SEND Tribunal)</strong>. You can appeal if the LA refuses to assess, refuses to issue, if you dispute the contents (Sections B, F, or I), or if the LA decides to cease your child's plan.
@@ -334,7 +337,7 @@ export default function EHCPs() {
       </ContentBox>
 
       {/* ── Ask about EHCPs ── */}
-      <ContentBox id="ask-ehcp" icon={Search} title="Ask a question about EHCPs">
+      <ContentBox id="ask-ehcp" icon={Search} title="Ask a question about EHCPs" tooltip="Get a plain English answer to your EHCP question">
         <div className="space-y-3">
           <p>
             Have a specific question about EHCPs? Ask below and get a <strong>plain English answer</strong> based on law, guidance, and what we know works.
