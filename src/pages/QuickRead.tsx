@@ -27,6 +27,10 @@ export default function QuickRead() {
         title="SEND today: quick read summary for parents"
         description="A short summary of where SEND provision stands in England, what is changing, and what to expect over the next 6 to 12 months."
         path="/quick-read"
+        article
+        datePublished="2025-09-01"
+        dateModified="2026-02-23"
+        keywords="SEND summary 2026, SEND reform quick guide, what is happening with SEND, EHCP changes summary, Schools White Paper summary, SEND parents guide, SEN reform England, ISP replacement EHCP"
       />
       <PageOrientation
         title="SEND today: a quick read for parents"
