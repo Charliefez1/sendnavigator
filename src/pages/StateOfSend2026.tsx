@@ -119,7 +119,7 @@ export default function StateOfSend2026() {
         </p>
         <div className="flex items-center gap-2 text-sm text-muted-foreground mt-3">
           <Clock className="w-4 h-4" aria-hidden="true" />
-          <span>Last updated: 20th February 2026</span>
+          <span>Last updated: 26th February 2026</span>
         </div>
       </header>
 

@@ -9,42 +9,43 @@ import {
 import type { PageSectionDef } from "@/components/templates";
 
 import { StatusBadge } from "@/components/StatusBadge";
-import { TierDiagram } from "@/components/templates/DataVisuals";
+import { TierDiagram, RightsChecklist } from "@/components/templates/DataVisuals";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
-import { Users, BarChart3, Wind, AlertTriangle, List, EyeOff, Megaphone, Filter, Shield } from "lucide-react";
+import { Users, BarChart3, Wind, AlertTriangle, List, EyeOff, Megaphone, Filter, Shield, CheckCircle2 } from "lucide-react";
 
 const sections: PageSectionDef[] = [
   { id: "impact", icon: Users, title: "How will this impact children and parents" },
+  { id: "resolved", icon: CheckCircle2, title: "Leaks that are now resolved" },
   { id: "statistics", icon: BarChart3, title: "Statistics and facts" },
   { id: "kite-flying", icon: Wind, title: "What kite flying is" },
   { id: "sensitive", icon: AlertTriangle, title: "Why SEND is particularly sensitive" },
-  { id: "themes", icon: List, title: "Common themes in unconfirmed reports" },
+  { id: "themes", icon: List, title: "Remaining unconfirmed themes" },
   { id: "missing", icon: EyeOff, title: "What unconfirmed reports do not tell you" },
   { id: "reactions", icon: Megaphone, title: "Why strong reactions still matter" },
-  { id: "filter", icon: Filter, title: "How to read unconfirmed reports safely as a parent" },
+  { id: "filter", icon: Filter, title: "How to read unconfirmed reports safely" },
   { id: "grounding", icon: Shield, title: "A grounding reminder" },
 ];
 
 export default function WhatTheLeaksAreSaying() {
   return (
     <Layout>
-      <SEOHead title="Unconfirmed reports about SEND reform" description="Government kite flying and what may or may not happen to SEND provision in England." path="/what-the-leaks-are-saying" />
+      <SEOHead title="Unconfirmed reports about SEND reform" description="Which leaked SEND reform proposals are now confirmed, and what remains unverified." path="/what-the-leaks-are-saying" />
       <PageOrientation
-        title="Unconfirmed reports: government kite flying and what may or may not happen"
-        description="Unconfirmed proposals and reported briefings. These are not government policy."
-        lastUpdated="23rd February 2026"
+        title="Unconfirmed reports: what has been confirmed and what remains unverified"
+        description="Tracking which leaked proposals are now in the White Paper and which remain unverified."
+        lastUpdated="26th February 2026"
         accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">
           <StatusBadge status="unconfirmed" />
         </div>
       </PageOrientation>
-      {/* White Paper update note */}
+
       <section className="content-section py-6">
         <div className="rounded-xl border border-status-confirmed/30 bg-status-confirmed/5 p-5">
-          <p className="text-sm font-semibold text-foreground mb-2">Update: 23 February 2026</p>
+          <p className="text-sm font-semibold text-foreground mb-2">Update: 26 February 2026</p>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            The Schools White Paper was published on 23 February 2026. Some proposals previously reported as leaks are now confirmed as formal consultation proposals. Individual Support Plans, the Experts at Hand programme, and a shift toward mainstream inclusion are now in the white paper. They are not yet law. The four-tier model in its leaked form has not been confirmed. EHCPs are explicitly retained.
+            The Schools White Paper was published on 23 February 2026. Many proposals previously reported as leaks are now confirmed as formal consultation proposals. This page has been updated to distinguish between resolved leaks (now in the White Paper) and themes that remain unconfirmed or where detail is still missing.
           </p>
         </div>
       </section>
@@ -53,13 +54,10 @@ export default function WhatTheLeaksAreSaying() {
         prose={
           <div className="space-y-3">
             <p>
-              Alongside formal consultation and public debate, there has been a steady flow of unconfirmed reports about SEND reform. These often come from anonymous briefings, sector gossip, selective leaks, or early media coverage.
+              Before the White Paper, there was a steady flow of unconfirmed reports about SEND reform. <strong>Several of those leaked proposals are now confirmed as formal consultation proposals.</strong> Others remain unverified or only partially addressed.
             </p>
             <p>
-              This is sometimes called kite flying. <strong>Ideas are floated to see how people react.</strong> Strong reactions shape what moves forward and what gets dropped.
-            </p>
-            <p>
-              <strong>These reports are not policy.</strong> They are signals about the direction of thinking, not decisions. Treating them as facts creates unnecessary fear and confusion for families.
+              This page tracks which leaks have been resolved and which remain open. Understanding the difference helps parents focus their energy and their consultation responses on what genuinely matters.
             </p>
           </div>
         }
@@ -68,30 +66,50 @@ export default function WhatTheLeaksAreSaying() {
       <LatestUpdatesStream />
 
       <OnThisPage sections={sections} />
-      
 
       <ContentBox id="impact" icon={Users} title="How will this impact children and parents">
         <div className="space-y-3">
           <p>
-            <strong>The main impact is psychological, not practical.</strong>
+            Now that the White Paper is published, <strong>the main impact shifts from anxiety about leaks to engagement with the consultation</strong>. Parents can now see what is actually proposed rather than relying on anonymous briefings.
           </p>
           <p>
-            Parents read headlines and worry that support is about to disappear. Some feel pressured to <strong>rush into applications or legal action out of fear of losing future access</strong>.
+            The consultation closes at 11:59pm on 18 May 2026. <strong>Focus your energy on responding to the proposals, not on rumours about what might come next.</strong>
           </p>
-          <p>
-            For children, the risk is indirect. Anxiety in adults affects decision making, relationships with schools, and emotional safety at home. <strong>Understanding what is unconfirmed helps parents stay grounded</strong> and focused on what actually protects their child right now.
+        </div>
+      </ContentBox>
+
+      <ContentBox id="resolved" icon={CheckCircle2} title="Leaks that are now resolved">
+        <div className="space-y-6">
+          <p>These previously leaked ideas are now confirmed as formal consultation proposals in the White Paper:</p>
+
+          <RightsChecklist
+            title="Leaks now confirmed in the White Paper"
+            items={[
+              "Individual Support Plans: confirmed as a proposed statutory school-led duty from September 2030",
+              "Tiered support model: confirmed as a four-level framework (Universal, Targeted, Targeted Plus, Specialist)",
+              "Mainstream inclusion push: confirmed via Inclusive Mainstream Fund (£1.6bn) and inclusion bases in every secondary school",
+              "Experts at Hand programme: confirmed at £1.8bn over three years",
+              "EHCPs retained: explicitly confirmed for children with the most complex needs",
+              "EHCP trajectory targets: 5.3% falling to 4.7% by 2034-35, confirmed in the White Paper",
+              "School choice changes: confirmed as a managed list system replacing free choice",
+              "Executive function as a named policy area: confirmed in the refreshed SEND Code of Practice",
+              "ADHD reclassification out of SEMH: confirmed",
+            ]}
+          />
+
+          <p className="text-sm text-muted-foreground">
+            <strong>These are consultation proposals, not enacted law.</strong> The consultation closes 18 May 2026.
           </p>
         </div>
       </ContentBox>
 
       <ContentBox id="statistics" icon={BarChart3} title="Statistics and facts">
         <div className="space-y-3">
-          <p>These points describe the nature of the reporting, not enacted change.</p>
           <ul className="space-y-2">
             <li><strong>No unconfirmed report has been adopted into law.</strong></li>
-            <li><strong>No leaked proposal has been formally published as government policy.</strong></li>
+            <li>Several leaked proposals are now formal consultation proposals in the White Paper.</li>
             <li>All major changes to SEND would require <strong>primary legislation, which has not been introduced</strong>.</li>
-            <li>Media reports are attributed to anonymous sources, not formal announcements.</li>
+            <li>The formal consultation provides a structured route for parent input.</li>
           </ul>
         </div>
       </ContentBox>
@@ -99,13 +117,10 @@ export default function WhatTheLeaksAreSaying() {
       <ContentBox id="kite-flying" icon={Wind} title="What kite flying is">
         <div className="space-y-3">
           <p>
-            Kite flying is a common policy practice. <strong>Ideas are discussed privately, then selectively shared to test reaction.</strong>
+            Kite flying is a common policy practice. <strong>Ideas are discussed privately, then selectively shared to test reaction.</strong> In the case of SEND reform, much of the kite flying has now been superseded by the formal consultation.
           </p>
           <p>
-            If the response is hostile, the idea may be dropped or reshaped. If the response is muted or supportive, it may progress to consultation.
-          </p>
-          <p>
-            This does not mean families are being tricked. It means the system is trying to avoid making changes that cause harm or backlash.
+            This does not mean there will be no further leaks. As legislation is drafted, new ideas may be floated. But families now have the White Paper as a reference point.
           </p>
         </div>
       </ContentBox>
@@ -113,57 +128,35 @@ export default function WhatTheLeaksAreSaying() {
       <ContentBox id="sensitive" icon={AlertTriangle} title="Why SEND is particularly sensitive">
         <div className="space-y-3">
           <p>
-            SEND affects children, families, and legal rights. <strong>Any suggestion of reduced support understandably triggers strong reactions.</strong>
-          </p>
-          <p>
-            Because the system is already under strain, rumours land harder. Families are already exhausted. <strong>Trust is already fragile.</strong>
-          </p>
-          <p>
-            This makes SEND especially vulnerable to anxiety driven narratives.
+            SEND affects children, families, and legal rights. <strong>Any suggestion of reduced support understandably triggers strong reactions.</strong> Because the system is already under strain, rumours land harder. Trust is already fragile.
           </p>
         </div>
       </ContentBox>
 
-      <ContentBox id="themes" icon={List} title="Common themes in unconfirmed reports">
-        <div className="space-y-6">
-          <p>The unconfirmed reports tend to cluster around a few ideas:</p>
-
-          {/* Tier diagram */}
-          <TierDiagram
-            title="Proposed four-tier system (unconfirmed)"
-            tiers={[
-              { tier: "Tier 4", title: "EHCP", description: "Reserved for the most severe and complex needs only. Full legal plan with enforceable provision.", color: "unconfirmed" },
-              { tier: "Tier 3", title: "Specialist", description: "Specialist involvement and targeted support without a full EHCP. Possibly via school clusters.", color: "discussed" },
-              { tier: "Tier 2", title: "Targeted", description: "Small group interventions, additional support coordinated by the school. Possible 'digital passport'.", color: "discussed" },
-              { tier: "Tier 1", title: "Universal", description: "Teacher-led accommodations and adjustments available to all pupils as standard practice.", color: "confirmed" },
-            ]}
-            note="This tier model is based on media reports (iNews, Financial Times, January 2026). It is NOT confirmed government policy."
-          />
-
+      <ContentBox id="themes" icon={List} title="Remaining unconfirmed themes">
+        <div className="space-y-3">
+          <p>These areas remain unresolved or only partially addressed in the White Paper:</p>
           <ul className="space-y-2">
-            <li><strong>Higher thresholds for EHCPs.</strong> The Guardian (February 2026) reported that reforms "will raise the bar" for EHCPs, with plans for only the most severe cases to qualify.</li>
-            <li><strong>Implementation possibly delayed to 2029 to 2030.</strong> Both iNews and the Financial Times reportedly suggested full implementation might not happen until the 2029 to 2030 academic year.</li>
-            <li><strong>Schools taking on more responsibility</strong> for SEND decision making, with funding shifted to school clusters rather than tied to individual plans.</li>
-            <li><strong>Mandatory mediation</strong> before tribunal appeal in all cases.</li>
+            <li><strong>ISP complaints route:</strong> no independent complaints or appeal mechanism confirmed for ISP failures.</li>
+            <li><strong>Mandatory mediation:</strong> proposed but detail on implementation is missing.</li>
+            <li><strong>Practical thresholds:</strong> whether EHCPs will narrow in practice even if the legal test is unchanged.</li>
+            <li><strong>Health workforce capacity:</strong> whether Experts at Hand funding is sufficient for the scale of need.</li>
+            <li><strong>Race and ethnicity disparities:</strong> no detail on how identification gaps will be addressed.</li>
           </ul>
-          <p>
-            What matters is this. <strong>None of these ideas are confirmed in their leaked form.</strong> They are areas of exploration, not settled decisions.
-          </p>
         </div>
       </ContentBox>
 
       <ContentBox id="missing" icon={EyeOff} title="What unconfirmed reports do not tell you">
         <div className="space-y-3">
-          <p>They do not tell you:</p>
+          <p>Even with the White Paper published, future reports may still omit:</p>
           <ul className="space-y-2">
             <li>What safeguards would be in place.</li>
             <li>How existing children would be protected.</li>
             <li>What funding would accompany changes.</li>
-            <li>How accountability would work.</li>
-            <li>Whether ideas would survive consultation.</li>
+            <li>Whether ideas would survive parliamentary scrutiny.</li>
           </ul>
           <p>
-            <strong>Leaked summaries rarely include detail, nuance, or impact assessment.</strong> That is why they are dangerous if treated as certainty.
+            <strong>The White Paper is now the reference point.</strong> Anything reported beyond it should be treated with the same caution as before.
           </p>
         </div>
       </ContentBox>
@@ -171,22 +164,19 @@ export default function WhatTheLeaksAreSaying() {
       <ContentBox id="reactions" icon={Megaphone} title="Why strong reactions still matter">
         <div className="space-y-3">
           <p>
-            <strong>Public reaction matters.</strong> Parent groups, professionals, and charities have influenced SEND policy before.
+            <strong>Public reaction matters.</strong> The Save Our Children's Rights campaign gathered <strong>over 130,000 petition signatures</strong>. The National Education Union formally urged the government to maintain legal thresholds for EHCPs. Labour MPs warned internally they would not back cost-saving measures that weaken rights.
           </p>
           <p>
-            The Save Our Children's Rights campaign launched in January 2026, gathered <strong>over 130,000 petition signatures</strong>, and was backed by actress Sally Phillips and cross-party MPs. The National Education Union formally urged the government to maintain legal thresholds for EHCPs. Special Needs Jungle published detailed analysis warning against restricting appeals and individual entitlements.
-          </p>
-          <p>
-            That visibility of concern has already <strong>slowed reform timelines and increased emphasis on co-production</strong>. Labour MPs warned internally they would not back cost-saving measures that weaken rights. That shows the system is responsive, even if imperfectly.
+            That visibility of concern has already <strong>influenced the White Paper's emphasis on retaining EHCPs and phasing changes slowly</strong>. The consultation is the next opportunity to shape the detail.
           </p>
         </div>
       </ContentBox>
 
-      <ContentBox id="filter" icon={Filter} title="How to read unconfirmed reports safely as a parent">
+      <ContentBox id="filter" icon={Filter} title="How to read unconfirmed reports safely">
         <div className="space-y-3">
           <p><strong>Ask three questions:</strong></p>
           <ul className="space-y-2">
-            <li>Is this a law, a consultation, or a comment.</li>
+            <li>Is this in the White Paper, or is it speculation.</li>
             <li>Has anything actually changed today because of this.</li>
             <li>What protections still exist right now.</li>
           </ul>
@@ -202,7 +192,7 @@ export default function WhatTheLeaksAreSaying() {
             <strong>Your child's rights today are real. They are enforceable. They do not disappear because of a headline.</strong>
           </p>
           <p>
-            Unconfirmed reports are part of a noisy policy environment, not a countdown clock.
+            The White Paper is a consultation document, not enacted law. The consultation closes 18 May 2026. Make your voice heard.
           </p>
         </div>
       </ContentBox>
