@@ -7,7 +7,7 @@ import {
   ClipboardList, LogOut, Stethoscope, GraduationCap, AlertTriangle,
   Building2, MapPin, Globe, Heart, HandHeart, Users,
 } from "lucide-react";
-import beaconLogo from "@/assets/neurodiversity-global-logo-trimmed.png";
+import beaconLogo from "@/assets/neurodiversity-global-education-logo-full.png";
 import ngEducationLogo from "@/assets/neurodiversity-global-education-logo-full.png";
 
 export function Footer() {
