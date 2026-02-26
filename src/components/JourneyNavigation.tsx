@@ -81,44 +81,7 @@ export function JourneyNavigation() {
       role="navigation"
     >
       <div className="content-wide">
-        {/* Desktop: horizontal scrollable tabs */}
-        <div className="hidden md:flex items-center justify-between py-1.5 gap-0.5" role="tablist" aria-label="Journey steps">
-          {journeySteps.map((step, index) => (
-            <div key={step.path} className="flex items-center">
-              <NavLink
-                to={step.path}
-                role="tab"
-                aria-selected={step.path === location.pathname}
-                aria-label={`${step.label} - ${step.description}`}
-                title={step.description}
-                className={({ isActive }) =>
-                  cn(
-                    "group flex items-center gap-1 px-1.5 lg:px-2.5 py-1.5 rounded-lg text-[11px] lg:text-xs font-semibold transition-all duration-200 whitespace-nowrap",
-                    isActive
-                      ? `${step.colorClass}-active shadow-sm`
-                      : `${step.colorClass} hover:opacity-90 hover:shadow-sm`
-                  )
-                }
-              >
-                <span className={cn(
-                  "flex items-center justify-center w-5 h-5 rounded-md text-[10px] font-bold shrink-0",
-                  step.path === location.pathname
-                    ? "bg-white/25"
-                    : "bg-black/8 dark:bg-white/10"
-                )}>
-                  {index + 1}
-                </span>
-                <span className="truncate max-w-[4rem] lg:max-w-none">{step.shortLabel}</span>
-              </NavLink>
-              {index < journeySteps.length - 1 && (
-                <ChevronRight
-                  className="w-2.5 h-2.5 text-border/50 mx-px shrink-0 hidden lg:block"
-                  aria-hidden="true"
-                />
-              )}
-            </div>
-          ))}
-        </div>
+        {/* Desktop: sidebar handles navigation, no tab bar needed */}
 
         {/* Mobile: collapsible */}
         <div className="md:hidden">
