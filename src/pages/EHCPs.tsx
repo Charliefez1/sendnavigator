@@ -54,6 +54,7 @@ export default function EHCPs() {
         title="EHCPs: a complete guide for parents"
         description="Everything you need to know about Education, Health and Care Plans in England. What they are, who qualifies, the process step by step, your rights at every stage, and what to do when things go wrong."
         lastUpdated="23rd February 2026"
+        accentColor="hsl(220 70% 45%)"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />

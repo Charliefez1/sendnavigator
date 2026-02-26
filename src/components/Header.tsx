@@ -97,7 +97,7 @@ export function Header() {
   return (
     <header className="bg-navy text-navy-foreground sticky top-0 z-50">
       <div className="content-wide pt-1 pb-3">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-2">
           {/* Left: Logo */}
           <NavLink to="/" end className="flex-shrink-0">
             <img src={beaconLogo} alt="Beacon SEND Navigator - Home" className="h-[52px]" />

@@ -174,6 +174,7 @@ export default function WhatToDoRightNow() {
       <PageOrientation
         title="What to do right now"
         description="This page is for parents whose child is not getting the support they need today. Not next year. Now."
+        accentColor="hsl(8 75% 55%)"
       />
 
       {/* Consultation note */}
