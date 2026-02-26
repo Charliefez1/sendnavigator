@@ -96,6 +96,10 @@ export default function StateOfSend2026() {
         title="The State of SEND 2026 - Report"
         description="An 8-part report tracking SEND reform in England. From confirmed changes to unanswered questions. Everything families need to know."
         path="/state-of-send-2026"
+        article
+        datePublished="2025-09-01"
+        dateModified="2026-02-23"
+        keywords="SEND reform 2026, state of SEND, Schools White Paper 2026, Individual Support Plans, ISP SEND, SEND England, EHCP changes, SEND funding reform, mainstream inclusion, SEND review, special educational needs reform"
       />
 
       <header className="content-section py-6 sm:py-8 border-b border-border">

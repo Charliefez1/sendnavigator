@@ -45,6 +45,10 @@ export default function EHCPs() {
         title="EHCPs explained: a complete guide for parents in England"
         description="Everything you need to know about Education, Health and Care Plans. What they are, who qualifies, the process, your rights, and how to navigate the system."
         path="/ehcps"
+        article
+        datePublished="2025-09-01"
+        dateModified="2026-02-23"
+        keywords="EHCP guide, Education Health Care Plan, EHCP process, EHCP rights, EHCP annual review, EHCP tribunal, SEN support, EHCP sections, EHCP assessment, EHCP appeal, SEND code of practice, Children and Families Act 2014"
       />
       <PageOrientation
         title="EHCPs: a complete guide for parents"

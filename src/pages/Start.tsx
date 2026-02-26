@@ -160,9 +160,11 @@ const Index = () => {
   return (
     <Layout>
       <SEOHead
-        title="SEND Reform Navigator"
-        description="A calm, independent guide helping parents and professionals understand SEND reform in England. Clear facts, no spin."
+        title="SEND Navigator — Free SEND Reform Guide for Parents 2026"
+        description="A calm, independent guide helping parents and professionals understand SEND reform in England. EHCPs, the Schools White Paper, and your rights — explained clearly."
         path="/"
+        dateModified="2026-02-23"
+        keywords="SEND Navigator, SEND reform guide, EHCP guide parents, Schools White Paper 2026, SEND parents England, special educational needs help, neurodiversity, SEND rights, Individual Support Plans, SENDIASS"
       />
 
       {/* ─── SECTION 1: NAVY HERO — Tell us why you're here ─── */}

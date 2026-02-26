@@ -163,9 +163,13 @@ export default function WhatToDoRightNow() {
   return (
     <Layout>
       <SEOHead
-        title="What To Do Right Now"
+        title="What To Do Right Now — SEND Action Guide"
         description="Practical steps if your child is not getting the SEND support they need today. Based on current law and established process."
         path="/what-to-do-right-now"
+        article
+        datePublished="2025-09-01"
+        dateModified="2026-02-23"
+        keywords="SEND help now, EHCP not being followed, school not meeting needs, SEND tribunal, IPSEA model letters, local authority SEND complaint, LGSCO SEND, SEND assessment refused, EHCP annual review, Children and Families Act 2014"
       />
       <PageOrientation
         title="What to do right now"
