@@ -97,14 +97,14 @@ export function Header() {
   return (
     <header className="bg-navy text-navy-foreground sticky top-0 z-50">
       <div className="content-wide pt-1 pb-3">
-        <div className="flex items-center justify-between gap-2">
+        <div className="hidden lg:grid lg:grid-cols-[auto_1fr_auto] items-center gap-2">
           {/* Left: Logo */}
           <NavLink to="/" end className="flex-shrink-0">
             <img src={beaconLogo} alt="Beacon SEND Navigator - Home" className="h-[52px]" />
           </NavLink>
 
-          {/* Center: Key direct links (desktop) */}
-          <nav className="hidden lg:flex items-center gap-1" aria-label="Site pages">
+          {/* Center: Key direct links (desktop) — justified to centre of the row */}
+          <nav className="flex items-center justify-center gap-1" aria-label="Site pages">
             <NavLink
               to="/state-of-send-2026"
               className={({ isActive }) =>
@@ -169,10 +169,9 @@ export function Header() {
             </NavLink>
           </nav>
 
-          {/* Right: Explore All (desktop) + hamburger (mobile) */}
-          <div className="flex items-center gap-1">
-            {/* Desktop mega-menu trigger */}
-            <div data-mega-menu className="relative hidden md:block">
+          {/* Right: Explore All (desktop) */}
+          <div className="flex items-center justify-end">
+            <div data-mega-menu className="relative">
               <button
                 onClick={() => setMegaMenuOpen(!megaMenuOpen)}
                 className={cn(
@@ -224,22 +223,27 @@ export function Header() {
                 </div>
               )}
             </div>
-
-            {/* Mobile hamburger */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors"
-              aria-expanded={mobileMenuOpen}
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
           </div>
+        </div>
+
+        {/* Mobile header row */}
+        <div className="flex lg:hidden items-center justify-between gap-2">
+          <NavLink to="/" end className="flex-shrink-0">
+            <img src={beaconLogo} alt="Beacon SEND Navigator - Home" className="h-[52px]" />
+          </NavLink>
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors"
+            aria-expanded={mobileMenuOpen}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
         </div>
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <nav className="md:hidden mt-2 pt-3 border-t border-white/10 animate-fade-in pb-4 max-h-[70vh] overflow-y-auto" aria-label="Site pages">
+          <nav className="lg:hidden mt-2 pt-3 border-t border-white/10 animate-fade-in pb-4 max-h-[70vh] overflow-y-auto" aria-label="Site pages">
             {navGroups.map((group) => (
               <div key={group.label} className="mt-3 first:mt-0">
                 <p className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white/40">{group.label}</p>
