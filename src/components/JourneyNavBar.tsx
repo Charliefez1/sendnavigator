@@ -41,10 +41,9 @@ export function JourneyNavBar() {
   const prevStep = currentIndex > 0 ? journeySteps[currentIndex - 1] : null;
   const nextStep = currentIndex < journeySteps.length - 1 ? journeySteps[currentIndex + 1] : null;
 
-  // Don't render on non-report pages - sidebar handles navigation now
+  // Navigation is handled by JourneyNavigation component
   if (currentIndex === -1) return null;
-
-  return null; // Sidebar handles navigation now
+  return null;
 }
 
 export { journeySteps, dotColors };

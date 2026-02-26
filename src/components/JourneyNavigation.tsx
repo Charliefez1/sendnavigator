@@ -3,65 +3,58 @@ import { useState } from "react";
 import { ChevronRight, ChevronDown, ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-/**
- * Journey steps with cool-to-warm colour coding:
- * - Confirmed/current = cool teal/blue
- * - Under discussion = warm amber
- * - Unconfirmed/leaked = hot orange-red
- * - Timeline/next = warm terracotta
- */
 const journeySteps = [
   {
-    path: "/where-we-are-now",
+    path: "/state-of-send-2026/where-we-are-now",
     label: "Current situation",
     shortLabel: "Now",
     description: "What we know today",
     colorClass: "journey-step-confirmed",
   },
   {
-    path: "/what-is-changing",
+    path: "/state-of-send-2026/what-is-changing",
     label: "Confirmed changes",
     shortLabel: "Changes",
     description: "What is actually happening",
     colorClass: "journey-step-confirmed",
   },
   {
-    path: "/what-has-not-changed",
+    path: "/state-of-send-2026/what-has-not-changed",
     label: "What has not changed",
     shortLabel: "Unchanged",
     description: "Still in place",
     colorClass: "journey-step-confirmed",
   },
   {
-    path: "/what-is-being-discussed",
+    path: "/state-of-send-2026/what-is-being-discussed",
     label: "Under discussion",
     shortLabel: "Discussed",
     description: "What is being considered",
     colorClass: "journey-step-discussed",
   },
   {
-    path: "/what-we-do-not-know",
+    path: "/state-of-send-2026/what-we-do-not-know",
     label: "What we do not know",
     shortLabel: "Unknown",
     description: "Gaps in information",
     colorClass: "journey-step-discussed",
   },
   {
-    path: "/what-the-leaks-are-saying",
+    path: "/state-of-send-2026/what-the-leaks-are-saying",
     label: "Unconfirmed reports",
     shortLabel: "Leaks",
     description: "Rumours and briefings",
     colorClass: "journey-step-unconfirmed",
   },
   {
-    path: "/what-the-leaks-do-not-mean",
+    path: "/state-of-send-2026/what-the-leaks-do-not-mean",
     label: "What leaks do not mean",
     shortLabel: "Context",
     description: "Avoid misreading",
     colorClass: "journey-step-unconfirmed",
   },
   {
-    path: "/timeline",
+    path: "/state-of-send-2026/timeline",
     label: "What is next",
     shortLabel: "Timeline",
     description: "Timeline and decisions",
@@ -77,6 +70,9 @@ export function JourneyNavigation() {
     (step) => step.path === location.pathname
   );
   const currentStep = journeySteps[currentStepIndex];
+
+  // Only show on report pages
+  if (currentStepIndex === -1) return null;
 
   return (
     <nav

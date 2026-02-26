@@ -2,6 +2,7 @@ import { ReactNode, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Header } from "./Header";
 import { ReportLayout } from "./ReportLayout";
+import { JourneyNavigation } from "./JourneyNavigation";
 import { JourneyFloatingBar } from "./JourneyFloatingBar";
 import { Footer } from "./Footer";
 import { PreFooter } from "./PreFooter";
@@ -30,6 +31,7 @@ export function Layout({ children }: LayoutProps) {
       <SkipLink />
       <Header />
       <AnnouncementBanner />
+      <JourneyNavigation />
       <ScanModeBanner />
 
       {isReportPage ? (
