@@ -2,7 +2,7 @@ import jsPDF from "jspdf";
 import { ChildProfileState, SECTION_TITLES } from "@/contexts/ChildProfileContext";
 import { sectionContent } from "@/config/child-profile-sections";
 import { childVoiceQuestions } from "@/config/child-voice-questions";
-import beaconLogoUrl from "@/assets/beacon-logo.png";
+import beaconLogoUrl from "@/assets/neurodiversity-global-logo-trimmed.png";
 import ngLogoUrl from "@/assets/neurodiversity-global-logo.jpeg";
 
 interface ReportData {

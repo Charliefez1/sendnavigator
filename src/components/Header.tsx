@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { NavLink, useLocation, Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import beaconLogo from "@/assets/beacon-logo.png";
+import beaconLogo from "@/assets/neurodiversity-global-logo-trimmed.png";
 
 interface NavItem {
   path: string;
