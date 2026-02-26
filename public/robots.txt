@@ -1,3 +1,4 @@
+# Search Engine Crawlers
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
@@ -6,6 +7,19 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 2
 
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Social Media Crawlers
 User-agent: Twitterbot
 Allow: /
 
@@ -15,14 +29,56 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 
-User-agent: Slurp
+User-agent: Pinterestbot
 Allow: /
 
-User-agent: DuckDuckBot
+User-agent: WhatsApp
 Allow: /
 
+# AI Search & Answer Engine Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-ai
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Default
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /reset-password
 
 Sitemap: https://sendnavigator.lovable.app/sitemap.xml
