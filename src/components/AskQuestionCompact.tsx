@@ -5,8 +5,15 @@ import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useLocation } from "react-router-dom";
+import { usePageAccent } from "@/contexts/PageAccentContext";
 
-export function AskQuestionCompact() {
+interface AskQuestionCompactProps {
+  accentColor?: string;
+}
+
+export function AskQuestionCompact({ accentColor: accentColorProp }: AskQuestionCompactProps) {
+  const pageAccent = usePageAccent();
+  const accentColor = accentColorProp || pageAccent || "hsl(8 75% 55%)";
   const [question, setQuestion] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -44,24 +51,25 @@ export function AskQuestionCompact() {
   if (submitted) {
     return (
       <div className="rounded-xl border border-border p-5 bg-card text-center shadow-card">
-        <CheckCircle className="h-6 w-6 mx-auto mb-2" style={{ color: "hsl(175 65% 41%)" }} />
+        <CheckCircle className="h-6 w-6 mx-auto mb-2" style={{ color: accentColor }} />
         <p className="text-sm font-semibold text-foreground">Thank you.</p>
         <p className="text-xs text-muted-foreground">Your comment has been submitted for review.</p>
       </div>
     );
   }
 
+  const c = accentColor; // e.g. "hsl(8 75% 55%)"
   return (
     <div
       className="rounded-xl border p-5 bg-card space-y-3"
       style={{
-        borderColor: "hsl(8 75% 55% / 0.2)",
-        boxShadow: "0 8px 32px -8px hsl(8 75% 55% / 0.08), 0 4px 16px -4px rgba(0,0,0,0.06)",
+        borderColor: c.replace("hsl(", "hsl(").replace(")", " / 0.2)"),
+        boxShadow: `0 8px 32px -8px ${c.replace(")", " / 0.08)")}, 0 4px 16px -4px rgba(0,0,0,0.06)`,
       }}
     >
       <div className="flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(8 75% 55% / 0.1)" }}>
-          <MessageCircleQuestion className="h-4 w-4" style={{ color: "hsl(8 75% 55%)" }} />
+        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: c.replace(")", " / 0.1)") }}>
+          <MessageCircleQuestion className="h-4 w-4" style={{ color: c }} />
         </div>
         <span className="font-display font-semibold text-base text-foreground">Share a comment or lived experience</span>
       </div>

@@ -34,6 +34,7 @@ export default function WhatWeKnowSoFar() {
         title="What we know so far: the current state of SEND in England"
         description="The current state of the SEND system based on confirmed facts and data."
         lastUpdated="15th February 2026"
+        accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />

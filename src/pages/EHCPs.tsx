@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import {
   PageOrientation,
   SixtySecondSummary,
@@ -40,6 +41,7 @@ const sections: PageSectionDef[] = [
 
 export default function EHCPs() {
   return (
+    <PageAccentProvider color="hsl(220 70% 45%)">
     <Layout>
       <SEOHead
         title="EHCPs explained: a complete guide for parents in England"
@@ -343,5 +345,6 @@ export default function EHCPs() {
 
       <div className="content-section pb-16" />
     </Layout>
+    </PageAccentProvider>
   );
 }
