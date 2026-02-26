@@ -35,7 +35,7 @@ import {
 import { Button } from "@/components/ui/button";
 import askRichCharacter from "@/assets/ask-rich-character.png";
 import creatorsDuo from "@/assets/creators-duo.png";
-import beaconLogo from "@/assets/beacon-logo.png";
+import beaconLogo from "@/assets/neurodiversity-global-logo-trimmed.png";
 import ngEducationLogo from "@/assets/neurodiversity-global-education-logo-full.png";
 
 interface ContentLink {

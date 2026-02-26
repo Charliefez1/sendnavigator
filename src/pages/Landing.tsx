@@ -7,7 +7,7 @@ import { LandingAskRich } from "@/components/landing/LandingAskRich";
 import { useAuth } from "@/contexts/AuthContext";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import beaconLogo from "@/assets/beacon-logo.png";
+import beaconLogo from "@/assets/neurodiversity-global-logo-trimmed.png";
 import ndgLogo from "@/assets/neurodiversity-global-education-logo-full.png";
 
 /* ── Fade-in on scroll ── */
