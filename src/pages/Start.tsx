@@ -249,19 +249,19 @@ const Index = () => {
 
       {/* ─── SECTIONS 3-5: Shared background image wrapper ─── */}
       <div className="relative overflow-hidden">
-        {/* Full-width background image spanning all sections */}
+      {/* Full-width background image spanning all sections */}
         <div className="absolute inset-0">
           <img
             src={creatorsDuo}
             alt=""
             aria-hidden="true"
-            className="w-full h-full object-cover object-bottom"
-            style={{ opacity: 0.15 }}
+            className="w-full h-auto min-h-full object-contain object-bottom"
+            style={{ opacity: 0.18 }}
           />
           <div
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(to bottom, hsl(222 35% 8% / 0.92), hsl(222 35% 8% / 0.85) 20%, hsl(222 35% 8% / 0.78) 50%, hsl(222 35% 8% / 0.75) 70%, hsl(222 35% 6% / 0.85) 90%, hsl(222 35% 6%) 100%)",
+              background: "linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(222 35% 8% / 0.7) 15%, hsl(222 35% 8% / 0.6) 40%, hsl(222 35% 8% / 0.75) 70%, hsl(222 35% 6% / 0.9) 90%, hsl(222 35% 6%) 100%)",
             }}
           />
         </div>
