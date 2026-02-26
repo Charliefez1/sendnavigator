@@ -58,6 +58,7 @@ const AlternativeProvision = lazy(() => import("./pages/AlternativeProvision"));
 const LocalVariation = lazy(() => import("./pages/LocalVariation"));
 const DevolvedNations = lazy(() => import("./pages/DevolvedNations"));
 const MyChildProfile = lazy(() => import("./pages/MyChildProfile"));
+const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -110,6 +111,7 @@ const App = () => (
                       <Route path="/local-variation" element={<LocalVariation />} />
                       <Route path="/devolved-nations" element={<DevolvedNations />} />
                       <Route path="/my-child-profile" element={<MyChildProfile />} />
+                      <Route path="/reset-password" element={<ResetPassword />} />
 
                       {/* Protected routes */}
                       <Route path="/" element={<ProtectedRoute><Start /></ProtectedRoute>} />

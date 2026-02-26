@@ -6,18 +6,26 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail, Lock, ArrowRight } from "lucide-react";
 
 export function AuthForm() {
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
+  const [mode, setMode] = useState<"signin" | "signup" | "reset">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const { signIn, signUp } = useAuth();
+  const { signIn, signUp, resetPassword } = useAuth();
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
 
-    if (mode === "signup") {
+    if (mode === "reset") {
+      const { error } = await resetPassword(email);
+      if (error) {
+        toast({ title: "Reset failed", description: error.message, variant: "destructive" });
+      } else {
+        toast({ title: "Check your email", description: "We've sent you a password reset link." });
+        setMode("signin");
+      }
+    } else if (mode === "signup") {
       const { error } = await signUp(email, password);
       if (error) {
         toast({ title: "Sign up failed", description: error.message, variant: "destructive" });
@@ -41,12 +49,14 @@ export function AuthForm() {
   return (
     <div className="bg-card border border-border rounded-xl p-5 sm:p-6 shadow-lg w-full max-w-sm">
       <h2 className="text-base font-semibold text-foreground mb-1">
-        {mode === "signin" ? "Sign in to continue" : "Create your account"}
+        {mode === "signin" ? "Sign in to continue" : mode === "signup" ? "Create your account" : "Reset your password"}
       </h2>
       <p className="text-xs text-muted-foreground mb-4">
         {mode === "signin"
           ? "Access the full SEND Reform Navigator."
-          : "Free account. Come back anytime."}
+          : mode === "signup"
+          ? "Free account. Come back anytime."
+          : "We'll send you a reset link by email."}
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-3">
@@ -61,49 +71,65 @@ export function AuthForm() {
             className="pl-9"
           />
         </div>
-        <div className="relative">
-          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input
-            type="password"
-            placeholder="Password (min 8 characters)"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            minLength={8}
-            className="pl-9"
-          />
-        </div>
+        {mode !== "reset" && (
+          <div className="relative">
+            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <Input
+              type="password"
+              placeholder="Password (min 8 characters)"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              minLength={8}
+              className="pl-9"
+            />
+          </div>
+        )}
         <Button type="submit" disabled={submitting} className="w-full gap-2">
-          {submitting ? "Please wait..." : mode === "signin" ? "Sign in" : "Create account"}
+          {submitting
+            ? "Please wait..."
+            : mode === "signin"
+            ? "Sign in"
+            : mode === "signup"
+            ? "Create account"
+            : "Send reset link"}
           <ArrowRight className="w-4 h-4" />
         </Button>
       </form>
 
-      <p className="text-xs text-muted-foreground mt-4 text-center">
-        {mode === "signin" ? (
+      <div className="text-xs text-muted-foreground mt-4 text-center space-y-1">
+        {mode === "signin" && (
           <>
-            No account?{" "}
-            <button
-              type="button"
-              onClick={() => setMode("signup")}
-              className="text-primary font-medium hover:underline"
-            >
-              Sign up free
-            </button>
-          </>
-        ) : (
-          <>
-            Already have an account?{" "}
-            <button
-              type="button"
-              onClick={() => setMode("signin")}
-              className="text-primary font-medium hover:underline"
-            >
-              Sign in
-            </button>
+            <p>
+              <button type="button" onClick={() => setMode("reset")} className="text-primary font-medium hover:underline">
+                Forgot password?
+              </button>
+            </p>
+            <p>
+              No account?{" "}
+              <button type="button" onClick={() => setMode("signup")} className="text-primary font-medium hover:underline">
+                Sign up free
+              </button>
+            </p>
           </>
         )}
-      </p>
+        {mode === "signup" && (
+          <p>
+            Already have an account?{" "}
+            <button type="button" onClick={() => setMode("signin")} className="text-primary font-medium hover:underline">
+              Sign in
+            </button>
+          </p>
+        )}
+        {mode === "reset" && (
+          <p>
+            Back to{" "}
+            <button type="button" onClick={() => setMode("signin")} className="text-primary font-medium hover:underline">
+              Sign in
+            </button>
+          </p>
+        )}
+      </div>
     </div>
   );
 }
