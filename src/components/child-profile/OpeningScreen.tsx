@@ -61,7 +61,11 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
   };
 
   return (
-    <div className="max-w-2xl mx-auto py-12 px-4">
+    <div className="relative max-w-2xl mx-auto py-12 px-4">
+      <div
+        className="absolute inset-0 pointer-events-none -z-10"
+        style={{ background: "radial-gradient(ellipse 70% 40% at 50% 0%, hsl(42 87% 48% / 0.06), transparent 70%)" }}
+      />
       <h1 className="text-2xl font-display font-semibold text-foreground mb-8">
         My Child: A Profile
       </h1>

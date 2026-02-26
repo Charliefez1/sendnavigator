@@ -102,10 +102,10 @@ export default function StateOfSend2026() {
         keywords="SEND reform 2026, state of SEND, Schools White Paper 2026, Individual Support Plans, ISP SEND, SEND England, EHCP changes, SEND funding reform, mainstream inclusion, SEND review, special educational needs reform"
       />
 
-      <header className="content-section py-6 sm:py-8 border-b border-border">
+      <header className="content-section py-6 sm:py-8 border-b border-border" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 100%, hsl(175 65% 41% / 0.06), transparent 70%)" }}>
         <div className="flex items-center gap-3 mb-3">
-          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-            <BookOpen className="w-4 h-4 text-primary" />
+          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(175 65% 41% / 0.12)" }}>
+            <BookOpen className="w-4 h-4" style={{ color: "hsl(175 65% 41%)" }} />
           </div>
           <div className="inline-flex items-center gap-2 rounded-lg bg-foreground/5 border border-foreground/10 px-3 py-1">
             <span className="text-xs font-display font-bold uppercase tracking-widest text-foreground/70">8-Part Report</span>

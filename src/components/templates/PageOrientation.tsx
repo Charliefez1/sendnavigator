@@ -21,6 +21,10 @@ export function PageOrientation({
 }: PageOrientationProps) {
   return (
     <header className="relative overflow-hidden bg-background">
+      {/* Accent top bar */}
+      {accentColor && (
+        <div className="h-1" style={{ backgroundColor: accentColor }} />
+      )}
       {/* Subtle radial glow at bottom */}
       <div
         className="absolute inset-0 pointer-events-none"

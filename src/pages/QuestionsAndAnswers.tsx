@@ -19,7 +19,7 @@ export default function QuestionsAndAnswers() {
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse 70% 60% at 50% 100%, hsl(262 50% 50% / 0.06), transparent 70%)",
+            background: "radial-gradient(ellipse 70% 60% at 50% 100%, hsl(262 60% 55% / 0.08), transparent 70%)",
           }}
         />
         <div className="content-section relative py-10 sm:py-14">
