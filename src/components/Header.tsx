@@ -111,10 +111,11 @@ export function Header() {
                 cn(
                   "px-3 py-1.5 text-sm font-medium rounded-lg transition-colors whitespace-nowrap",
                   isActive || location.pathname.startsWith("/state-of-send-2026")
-                    ? "bg-white/20 text-white"
-                    : "text-white/60 hover:text-white hover:bg-white/10"
+                    ? "text-white"
+                    : "hover:text-white hover:bg-white/10"
                 )
               }
+              style={({ isActive }) => ({ color: isActive || location.pathname.startsWith("/state-of-send-2026") ? undefined : "hsl(175 65% 55%)" })}
             >
               SEND Reform Report
             </NavLink>
@@ -123,9 +124,10 @@ export function Header() {
               className={({ isActive }) =>
                 cn(
                   "px-3 py-1.5 text-sm font-medium rounded-lg transition-colors whitespace-nowrap",
-                  isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
+                  isActive ? "text-white" : "hover:text-white hover:bg-white/10"
                 )
               }
+              style={({ isActive }) => ({ color: isActive ? undefined : "hsl(220 70% 60%)" })}
             >
               EHCP Guide
             </NavLink>
@@ -134,9 +136,10 @@ export function Header() {
               className={({ isActive }) =>
                 cn(
                   "px-3 py-1.5 text-sm font-medium rounded-lg transition-colors whitespace-nowrap",
-                  isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
+                  isActive ? "text-white" : "hover:text-white hover:bg-white/10"
                 )
               }
+              style={({ isActive }) => ({ color: isActive ? undefined : "hsl(42 87% 58%)" })}
             >
               My Child: A Profile
             </NavLink>
@@ -145,9 +148,10 @@ export function Header() {
               className={({ isActive }) =>
                 cn(
                   "px-3 py-1.5 text-sm font-medium rounded-lg transition-colors whitespace-nowrap",
-                  isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
+                  isActive ? "text-white" : "hover:text-white hover:bg-white/10"
                 )
               }
+              style={({ isActive }) => ({ color: isActive ? undefined : "hsl(8 75% 62%)" })}
             >
               What to do now
             </NavLink>
@@ -156,9 +160,10 @@ export function Header() {
               className={({ isActive }) =>
                 cn(
                   "px-3 py-1.5 text-sm font-medium rounded-lg transition-colors whitespace-nowrap",
-                  isActive ? "bg-white/20 text-white" : "text-white/60 hover:text-white hover:bg-white/10"
+                  isActive ? "text-white" : "hover:text-white hover:bg-white/10"
                 )
               }
+              style={({ isActive }) => ({ color: isActive ? undefined : "hsl(262 60% 65%)" })}
             >
               Ask Rich
             </NavLink>
