@@ -43,7 +43,7 @@ export function PersistentNewsTicker() {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40" style={{ backgroundColor: "hsl(222 35% 10%)" }}>
-      <div className="flex items-stretch h-8">
+      <div className="flex items-stretch h-16">
         {/* LIVE badge */}
         <div className="flex-shrink-0 flex items-center gap-1.5 px-3" style={{ backgroundColor: "hsl(0 75% 38%)" }}>
           <Radio className="w-2.5 h-2.5 text-white animate-pulse" />
@@ -69,7 +69,7 @@ export function PersistentNewsTicker() {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[11px] hover:opacity-80 transition-opacity"
+                className="inline-flex items-center gap-2 text-sm hover:opacity-80 transition-opacity"
                 style={{ color: "hsl(0 0% 70%)" }}
               >
                 <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "hsl(175 60% 50%)" }} />
