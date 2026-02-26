@@ -32,6 +32,7 @@ export default function WhatHasNotChanged() {
         title="What has not changed: what remains the same in the SEND system as of 15 February 2026"
         description="Legal rights and protections that remain in place."
         lastUpdated="23rd February 2026"
+        accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />

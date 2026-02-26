@@ -101,6 +101,7 @@ export default function Timeline() {
         title="Timeline and next steps"
         description="Key decision points and milestones. We show only confirmed dates and likely windows, avoiding speculation."
         lastUpdated="23rd February 2026"
+        accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">
           <StatusBadge status="discussed" />

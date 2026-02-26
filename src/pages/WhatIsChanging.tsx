@@ -34,6 +34,7 @@ export default function WhatIsChanging() {
         title="Confirmed changes: what changes are coming to SEND provision in 2026 and have been confirmed"
         description="Changes that have been publicly set out, funded, or formally announced."
         lastUpdated="23rd February 2026"
+        accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />

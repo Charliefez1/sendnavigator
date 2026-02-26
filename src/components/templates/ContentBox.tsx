@@ -1,6 +1,7 @@
 import { ReactNode, useState } from "react";
 import { LucideIcon, ChevronDown, ChevronRight } from "lucide-react";
 import { useExperienceMode } from "@/contexts/ExperienceModeContext";
+import { usePageAccent } from "@/contexts/PageAccentContext";
 import { cn } from "@/lib/utils";
 
 interface ContentBoxProps {
@@ -8,9 +9,12 @@ interface ContentBoxProps {
   icon: LucideIcon;
   title: string;
   children: ReactNode;
+  accentColor?: string;
 }
 
-export function ContentBox({ id, icon: Icon, title, children }: ContentBoxProps) {
+export function ContentBox({ id, icon: Icon, title, children, accentColor: accentColorProp }: ContentBoxProps) {
+  const pageAccent = usePageAccent();
+  const accentColor = accentColorProp || pageAccent;
   const { mode } = useExperienceMode();
   const isScan = mode === "scan";
   const [expanded, setExpanded] = useState(false);
@@ -32,11 +36,18 @@ export function ContentBox({ id, icon: Icon, title, children }: ContentBoxProps)
           aria-expanded={showBody}
           disabled={!isScan}
         >
-          <div className={cn(
-            "flex items-center justify-center rounded-lg bg-primary/10 flex-shrink-0",
-            isScan && !expanded ? "w-6 h-6" : "w-8 h-8"
-          )}>
-            <Icon className={cn(isScan && !expanded ? "w-3 h-3" : "w-4 h-4", "text-primary")} />
+          <div
+            className={cn(
+              "flex items-center justify-center rounded-lg flex-shrink-0",
+              isScan && !expanded ? "w-6 h-6" : "w-8 h-8",
+              !accentColor && "bg-primary/10"
+            )}
+            style={accentColor ? { backgroundColor: `${accentColor}1a` } : undefined}
+          >
+            <Icon
+              className={cn(isScan && !expanded ? "w-3 h-3" : "w-4 h-4", !accentColor && "text-primary")}
+              style={accentColor ? { color: accentColor } : undefined}
+            />
           </div>
           <h2 className={cn(
             "font-display font-semibold text-foreground flex-1",

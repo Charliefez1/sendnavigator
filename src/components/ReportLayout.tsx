@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight, BookOpen, Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -42,6 +43,7 @@ export function ReportLayout({ children }: ReportLayoutProps) {
   const nextStep = currentIndex < reportSteps.length - 1 ? reportSteps[currentIndex + 1] : null;
 
   return (
+    <PageAccentProvider color="hsl(175 65% 41%)">
     <div className="flex min-h-0 flex-1">
       {/* Desktop sidebar */}
       <aside className="hidden lg:flex flex-col w-72 xl:w-80 border-r border-border bg-card flex-shrink-0 sticky top-[42px] h-[calc(100vh-42px)] overflow-y-auto">
@@ -195,6 +197,7 @@ export function ReportLayout({ children }: ReportLayoutProps) {
         )}
       </div>
     </div>
+    </PageAccentProvider>
   );
 }
 

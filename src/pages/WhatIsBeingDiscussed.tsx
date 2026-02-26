@@ -32,6 +32,7 @@ export default function WhatIsBeingDiscussed() {
         title="Under discussion: what is being debated publicly right now"
         description="Ideas, proposals, and areas of debate that may shape future policy but are not settled."
         lastUpdated="23rd February 2026"
+        accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">
           <StatusBadge status="discussed" />

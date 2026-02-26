@@ -32,6 +32,7 @@ export default function WhatWeDoNotKnow() {
         title="What we do not know: questions parents are asking and why they matter"
         description="Key decisions about rights, thresholds, and protections that have not been made."
         lastUpdated="23rd February 2026"
+        accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">
           <StatusBadge status="unconfirmed" />

@@ -33,6 +33,7 @@ export default function WhatTheLeaksAreSaying() {
         title="Unconfirmed reports: government kite flying and what may or may not happen"
         description="Unconfirmed proposals and reported briefings. These are not government policy."
         lastUpdated="23rd February 2026"
+        accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">
           <StatusBadge status="unconfirmed" />

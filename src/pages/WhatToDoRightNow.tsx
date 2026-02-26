@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
@@ -161,6 +162,7 @@ const sections: PageSectionDef[] = [
 
 export default function WhatToDoRightNow() {
   return (
+    <PageAccentProvider color="hsl(8 75% 55%)">
     <Layout>
       <SEOHead
         title="What To Do Right Now — SEND Action Guide"
@@ -337,5 +339,6 @@ export default function WhatToDoRightNow() {
 
       <div className="content-section pb-16" />
     </Layout>
+    </PageAccentProvider>
   );
 }

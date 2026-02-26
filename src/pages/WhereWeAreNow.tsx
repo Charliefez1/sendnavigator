@@ -32,6 +32,7 @@ export default function WhereWeAreNow() {
         title="Current situation: where is SEND provision in the UK today"
         description="Understanding the current state of SEND support in England."
         lastUpdated="23rd February 2026"
+        accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">
           <StatusBadge status="confirmed" />

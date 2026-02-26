@@ -39,6 +39,7 @@ export default function WhatThisCouldMean() {
       <PageOrientation
         title="What this could mean"
         description="Practical implications of confirmed and proposed changes for different groups."
+        accentColor="hsl(175 65% 41%)"
       />
 
       <SixtySecondSummary points={summaryPoints} />
