@@ -239,29 +239,37 @@ const Index = () => {
       </section>
 
       {/* ─── Share a comment (light background) ─── */}
-      <section className="bg-background">
+      <section className="bg-background relative">
         <div className="content-section py-8">
           <div className="max-w-2xl mx-auto">
             <AskQuestionCompact />
           </div>
         </div>
+        {/* Smooth fade into dark section below */}
+        <div
+          className="h-32 sm:h-40"
+          style={{
+            background: "linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(222 35% 8%) 100%)",
+          }}
+        />
       </section>
 
-      {/* ─── SECTIONS 3-5: Shared background image wrapper ─── */}
-      <div className="relative overflow-hidden">
-      {/* Full-width background image spanning all sections */}
+      {/* ─── SECTIONS 3-5: Shared dark backdrop ─── */}
+      <div className="relative overflow-hidden" style={{ backgroundColor: "hsl(222 35% 8%)" }}>
+        {/* Background image — cover, centered on subjects */}
         <div className="absolute inset-0">
           <img
             src={creatorsDuo}
             alt=""
             aria-hidden="true"
-            className="w-full h-auto min-h-full object-contain object-bottom"
-            style={{ opacity: 0.18 }}
+            className="w-full h-full object-cover object-[center_20%]"
+            style={{ opacity: 0.12 }}
           />
+          {/* Inner vignette to push image down and darken edges */}
           <div
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(222 35% 8% / 0.7) 15%, hsl(222 35% 8% / 0.6) 40%, hsl(222 35% 8% / 0.75) 70%, hsl(222 35% 6% / 0.9) 90%, hsl(222 35% 6%) 100%)",
+              background: "radial-gradient(ellipse 80% 60% at 50% 35%, transparent 0%, hsl(222 35% 8%) 75%)",
             }}
           />
         </div>
