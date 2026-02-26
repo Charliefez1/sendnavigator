@@ -251,15 +251,16 @@ export default function WhatToDoRightNow() {
 
       {/* Situations accordion */}
       <section id="situations" className="content-section py-4 scroll-mt-20">
-        <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
-          <h2 className="text-lg font-display font-semibold text-foreground mb-4">What is going wrong?</h2>
-          <Accordion type="single" collapsible className="space-y-2">
+        <div className="rounded-xl border bg-card p-5 shadow-lg" style={{ borderColor: "hsla(8, 75%, 55%, 0.15)" }}>
+          <h2 className="text-lg font-display font-semibold text-foreground mb-3">What is going wrong?</h2>
+          <p className="text-xs text-muted-foreground/60 mb-3">Select a situation to see guidance and next steps.</p>
+          <Accordion type="single" collapsible className="space-y-1.5">
             {situations.map((s) => (
-              <AccordionItem key={s.id} value={s.id} className="border border-border rounded-xl px-4 data-[state=open]:bg-muted/30">
-                <AccordionTrigger className="text-sm font-semibold text-foreground hover:no-underline py-4">
+              <AccordionItem key={s.id} value={s.id} className="border rounded-xl px-3 data-[state=open]:bg-muted/30" style={{ borderColor: "hsla(8, 75%, 55%, 0.12)" }}>
+                <AccordionTrigger className="text-sm font-semibold text-foreground hover:no-underline py-3">
                   {s.title}
                 </AccordionTrigger>
-                <AccordionContent className="pb-4">
+                <AccordionContent className="pb-3">
                   {s.content}
                 </AccordionContent>
               </AccordionItem>

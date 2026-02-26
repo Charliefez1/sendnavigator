@@ -1,5 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import {
   PageOrientation,
   OnThisPage,
@@ -22,6 +23,7 @@ const sections: PageSectionDef[] = [
 
 export default function QuickRead() {
   return (
+    <PageAccentProvider color="hsl(175 65% 41%)">
     <Layout>
       <SEOHead
         title="SEND today: quick read summary for parents"
@@ -208,5 +210,6 @@ export default function QuickRead() {
 
       <div className="content-section pb-16" />
     </Layout>
+    </PageAccentProvider>
   );
 }
