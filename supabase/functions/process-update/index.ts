@@ -1,10 +1,64 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
-};
+// ─── CORS: allow production + Lovable preview domains ───
+const PRIMARY_ORIGIN = "https://sendnavigator.lovable.app";
+const ALLOWED_EXACT_ORIGINS = new Set([PRIMARY_ORIGIN]);
+
+function isAllowedOrigin(origin: string): boolean {
+  try {
+    const url = new URL(origin);
+    if (url.protocol !== "https:") return false;
+    if (ALLOWED_EXACT_ORIGINS.has(origin)) return true;
+    return url.hostname.endsWith(".lovable.app") || url.hostname.endsWith(".lovableproject.com");
+  } catch {
+    return false;
+  }
+}
+
+function getCorsHeaders(req: Request) {
+  const origin = req.headers.get("origin") || "";
+  const allowOrigin = isAllowedOrigin(origin) ? origin : PRIMARY_ORIGIN;
+  return {
+    "Access-Control-Allow-Origin": allowOrigin,
+    "Access-Control-Allow-Headers":
+      "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Vary": "Origin",
+  };
+}
+
+// ─── Rate limiting ───
+const failedAttempts = new Map<string, { count: number; firstAt: number }>();
+const RATE_LIMIT_WINDOW = 10 * 60 * 1000;
+const MAX_FAILURES = 5;
+
+function getClientIp(req: Request): string {
+  return req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("cf-connecting-ip") || "unknown";
+}
+
+function isRateLimited(ip: string): boolean {
+  const record = failedAttempts.get(ip);
+  if (!record) return false;
+  if (Date.now() - record.firstAt > RATE_LIMIT_WINDOW) {
+    failedAttempts.delete(ip);
+    return false;
+  }
+  return record.count >= MAX_FAILURES;
+}
+
+function recordFailure(ip: string) {
+  const record = failedAttempts.get(ip);
+  if (!record || Date.now() - record.firstAt > RATE_LIMIT_WINDOW) {
+    failedAttempts.set(ip, { count: 1, firstAt: Date.now() });
+  } else {
+    record.count++;
+  }
+}
+
+function clearFailures(ip: string) {
+  failedAttempts.delete(ip);
+}
 
 // Page path mapping for flag generation
 const PAGE_TOPIC_MAP: Record<string, string[]> = {
@@ -28,21 +82,35 @@ const PAGE_TOPIC_MAP: Record<string, string[]> = {
 };
 
 Deno.serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req);
+
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  const clientIp = getClientIp(req);
+
+  if (isRateLimited(clientIp)) {
+    return new Response(JSON.stringify({ error: "Too many failed attempts. Try again later." }), {
+      status: 429,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   }
 
   try {
     const { content_update_id, pin } = await req.json();
 
-    // Verify admin PIN
-    const adminPin = Deno.env.get("ADMIN_PIN") || "1234";
-    if (pin !== adminPin) {
-      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+    // Verify admin PIN — no fallback
+    const adminPin = Deno.env.get("ADMIN_PIN");
+    if (!adminPin || pin !== adminPin) {
+      recordFailure(clientIp);
+      return new Response(JSON.stringify({ error: "Invalid PIN" }), {
         status: 401,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
+
+    clearFailures(clientIp);
 
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
