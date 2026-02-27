@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { ArrowRight, CheckCircle2, HelpCircle, BookOpen, AlertTriangle, Clock } from "lucide-react";
+import { ArrowRight, CheckCircle2, HelpCircle, BookOpen, AlertTriangle, Clock, FileText, Download } from "lucide-react";
+import docThumbGovInfo from "@/assets/doc-thumb-gov-info.jpg";
+import docThumbParentLeaflet from "@/assets/doc-thumb-parent-leaflet.jpg";
+import docThumbImpactAssessment from "@/assets/doc-thumb-impact-assessment.jpg";
+import docThumbResearch from "@/assets/doc-thumb-research.jpg";
+import docThumbWhitePaper from "@/assets/doc-thumb-white-paper.jpg";
 
 const reportSections = [
   {
@@ -59,6 +64,61 @@ const reportSections = [
     summary: "Key dates, decision points and milestones from the national conversation to the expected White Paper and beyond.",
     color: "next",
     number: 8,
+  },
+];
+
+const officialDocuments = [
+  {
+    category: "White Paper Overview",
+    thumb: docThumbWhitePaper,
+    docs: [
+      { name: "SEND Reform White Paper – Accessible Overview", url: "/documents/white-paper-overview-accessible.pdf", desc: "Full accessible overview including glossary, ISPs, EHCPs, and layers of support" },
+    ],
+  },
+  {
+    category: "Information Sheets for Parents",
+    thumb: docThumbParentLeaflet,
+    docs: [
+      { name: "Parents of Children with EHCPs", url: "/documents/info-sheet-parents-ehcps.pdf", desc: "EHCPs retained, Specialist Provision Packages, ISPs, transition 2029–2030" },
+      { name: "Parents of SEND CYP in Mainstream", url: "/documents/info-sheet-parents-mainstream.pdf", desc: "Inclusive mainstream offer, ISPs, how support changes" },
+      { name: "Parents of Children in Special Schools", url: "/documents/info-sheet-parents-special-schools.pdf", desc: "What reforms mean for specialist settings" },
+    ],
+  },
+  {
+    category: "Parent Leaflets",
+    thumb: docThumbParentLeaflet,
+    docs: [
+      { name: "What Every Parent Can Expect", url: "/documents/parent-leaflet-what-every-parent-can-expect.pdf", desc: "Curriculum reforms, enrichment, mental health teams, calm safe schools" },
+      { name: "Your Child's Journey Through Education", url: "/documents/parent-leaflet-childs-journey-through-education.pdf", desc: "Reforms at every stage: early years, primary, secondary, post-16" },
+      { name: "What Parents of CYP with SEND Need to Know", url: "/documents/parent-leaflet-what-parents-need-to-know.pdf", desc: "Five reform principles, ISPs, retained EHCPs, 12-week consultation" },
+    ],
+  },
+  {
+    category: "Information Sheets for Settings",
+    thumb: docThumbGovInfo,
+    docs: [
+      { name: "Mainstream Settings Staff", url: "/documents/info-sheet-mainstream-settings.pdf", desc: "Inclusive mainstream offer, National Inclusion Standards, ISPs" },
+      { name: "Mainstream Schools (Updated)", url: "/documents/info-sheet-mainstream-settings-updated.pdf", desc: "Three layers of support, Inclusive Mainstream Fund (£1.6bn), Experts at Hand" },
+      { name: "Specialist Setting Staff", url: "/documents/info-sheet-specialist-setting-staff.pdf", desc: "How reforms affect special schools, AP, and specialist placements" },
+      { name: "Early Years Settings", url: "/documents/info-sheet-early-years-settings.pdf", desc: "Fast-track EHCPs for under-5s, £47m early years inclusion funding" },
+      { name: "Post-16 SEND", url: "/documents/info-sheet-post-16.pdf", desc: "Transition planning, supported internships, post-school support" },
+    ],
+  },
+  {
+    category: "Impact Assessments",
+    thumb: docThumbImpactAssessment,
+    docs: [
+      { name: "Child's Rights Impact Assessment", url: "/documents/send-reform-childs-rights-impact-assessment.pdf", desc: "Alignment with UN Convention on the Rights of the Child" },
+      { name: "Equalities Impact Assessment", url: "/documents/send-reform-equalities-impact-assessment.pdf", desc: "Effects across disability, race, sex, and socioeconomic disadvantage" },
+    ],
+  },
+  {
+    category: "Research & Analysis",
+    thumb: docThumbResearch,
+    docs: [
+      { name: "EEF – SEN in Mainstream Schools Guidance", url: "/documents/eef-sen-mainstream-guidance-2025.pdf", desc: "Evidence-based guidance for supporting SEN pupils in mainstream settings" },
+      { name: "Equality and Rights UK – Consultation Analysis", url: "/documents/eruk-send-reforms-consultation.pdf", desc: "Independent analysis of reform proposals and equalities legislation alignment" },
+    ],
   },
 ];
 
@@ -169,6 +229,50 @@ export default function StateOfSend2026() {
               </Link>
             );
           })}
+        </div>
+      </section>
+
+      {/* Official documents */}
+      <section className="content-section py-4 pb-8">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+            <FileText className="w-4 h-4 text-primary" />
+          </div>
+          <div>
+            <h2 className="text-lg font-display font-semibold text-foreground">Official Documents</h2>
+            <p className="text-xs text-muted-foreground">16 government information sheets, parent leaflets, and assessments</p>
+          </div>
+        </div>
+
+        <div className="space-y-5">
+          {officialDocuments.map((group) => (
+            <div key={group.category}>
+              <div className="flex items-center gap-3 mb-2">
+                <img src={group.thumb} alt="" className="w-8 h-8 rounded-lg object-cover" />
+                <h3 className="text-sm font-semibold text-foreground">{group.category}</h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {group.docs.map((doc) => (
+                  <a
+                    key={doc.url}
+                    href={doc.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-start gap-3 p-3 rounded-xl border border-border bg-card hover:border-primary/30 hover:shadow-md transition-all"
+                  >
+                    <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
+                      <Download className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-foreground group-hover:text-primary transition-colors leading-snug">{doc.name}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed line-clamp-2">{doc.desc}</p>
+                      <span className="text-[10px] text-muted-foreground/70 mt-1 inline-block">PDF · GOV.UK</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </Layout>
