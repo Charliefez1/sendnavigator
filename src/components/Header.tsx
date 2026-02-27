@@ -106,7 +106,8 @@ export function Header() {
           {/* Center: Key direct links (desktop) — justified to centre of the row */}
           <nav className="flex items-center justify-center gap-1" aria-label="Site pages">
             <NavLink
-              to="/start"
+              to="/"
+              end
               className={({ isActive }) =>
                 cn(
                   "px-3 py-1.5 text-sm font-medium rounded-lg transition-colors whitespace-nowrap",

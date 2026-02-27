@@ -23,6 +23,12 @@ function timeAgo(dateStr: string): string {
   return `${days}d ago`;
 }
 
+function decodeEntities(str: string): string {
+  const el = document.createElement("textarea");
+  el.innerHTML = str;
+  return el.value;
+}
+
 export function PersistentNewsTicker() {
   const [items, setItems] = useState<NewsItem[]>([]);
 
@@ -73,7 +79,7 @@ export function PersistentNewsTicker() {
                 style={{ color: "hsl(0 0% 70%)" }}
               >
                 <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ backgroundColor: "hsl(175 60% 50%)" }} />
-                <span className="font-medium" style={{ color: "hsl(0 0% 90%)" }}>{item.title}</span>
+                <span className="font-medium" style={{ color: "hsl(0 0% 90%)" }}>{decodeEntities(item.title)}</span>
                 <span style={{ color: "hsl(222 20% 50%)" }}>{item.source_name} · {timeAgo(item.published_at || item.discovered_at)}</span>
               </a>
             ))}

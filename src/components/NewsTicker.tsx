@@ -23,6 +23,12 @@ function timeAgo(dateStr: string): string {
   return `${days}d ago`;
 }
 
+function decodeEntities(str: string): string {
+  const el = document.createElement("textarea");
+  el.innerHTML = str;
+  return el.value;
+}
+
 export function NewsTicker() {
   const [items, setItems] = useState<NewsItem[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -75,7 +81,7 @@ export function NewsTicker() {
         >
           <div className="min-w-0">
             <p className="text-sm font-semibold truncate group-hover:text-primary transition-colors">
-              {current.title}
+              {decodeEntities(current.title)}
             </p>
             <p className="text-xs text-white/50">
               {current.source_name} · {timeAgo(current.published_at || current.discovered_at)}
@@ -98,7 +104,7 @@ export function NewsTicker() {
                 className="inline-flex items-center gap-1.5 text-xs text-white/70 hover:text-white transition-colors"
               >
                 <span className="w-1 h-1 rounded-full bg-destructive flex-shrink-0" />
-                <span>{item.title}</span>
+                <span>{decodeEntities(item.title)}</span>
                 <span className="text-white/30 text-[11px]">{item.source_name}</span>
               </a>
             ))}
