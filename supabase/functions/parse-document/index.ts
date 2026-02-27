@@ -92,7 +92,7 @@ Deno.serve(async (req) => {
 
       // Call Gemini to extract text
       const response = await fetch(
-        "https://api.lovable.dev/v1/chat/completions",
+        "https://ai.gateway.lovable.dev/v1/chat/completions",
         {
           method: "POST",
           headers: {
