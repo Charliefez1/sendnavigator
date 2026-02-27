@@ -18,16 +18,6 @@ interface ContentUpdate {
   result_summary: string | null;
 }
 
-const ACCEPTED_TYPES = [
-  "text/plain", "text/markdown", "text/csv", "text/html",
-  "application/json", "application/xml",
-  "application/pdf",
-  "application/msword",
-  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-  "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-];
-
 const ACCEPT_STRING = ".txt,.md,.csv,.json,.xml,.html,.pdf,.doc,.docx,.pptx,.xlsx";
 
 export function ContentUpdateManager({ pin }: { pin: string }) {
@@ -37,8 +27,9 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
   const [breakingNews, setBreakingNews] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [processingId, setProcessingId] = useState<string | null>(null);
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [fileProcessing, setFileProcessing] = useState(false);
+  const [fileProgress, setFileProgress] = useState("");
   const [dragOver, setDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
@@ -56,85 +47,95 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
     fetchUpdates();
   }, [fetchUpdates]);
 
-  const handleFileSelect = (file: File) => {
-    if (file.size > 10 * 1024 * 1024) {
-      toast({ title: "File too large", description: "Max 10MB", variant: "destructive" });
-      return;
+  const addFiles = (newFiles: FileList | File[]) => {
+    const files = Array.from(newFiles);
+    const valid: File[] = [];
+    for (const f of files) {
+      if (f.size > 10 * 1024 * 1024) {
+        toast({ title: `${f.name} is too large`, description: "Max 10MB per file", variant: "destructive" });
+        continue;
+      }
+      valid.push(f);
     }
-    setUploadedFile(file);
-    if (!sourceName.trim()) {
-      setSourceName(file.name);
+    if (valid.length) {
+      setUploadedFiles(prev => [...prev, ...valid]);
+      if (!sourceName.trim() && valid.length === 1) {
+        setSourceName(valid[0].name);
+      } else if (!sourceName.trim() && valid.length > 1) {
+        setSourceName(`${valid.length} documents`);
+      }
     }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) handleFileSelect(file);
+    if (e.target.files?.length) addFiles(e.target.files);
   };
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setDragOver(false);
-    const file = e.dataTransfer.files?.[0];
-    if (file) handleFileSelect(file);
+    if (e.dataTransfer.files?.length) addFiles(e.dataTransfer.files);
   };
 
-  const processFile = async (): Promise<string> => {
-    if (!uploadedFile) return "";
-    
-    const ext = uploadedFile.name.split(".").pop()?.toLowerCase() || "";
+  const removeFile = (index: number) => {
+    setUploadedFiles(prev => prev.filter((_, i) => i !== index));
+  };
+
+  const processOneFile = async (file: File): Promise<string> => {
+    const ext = file.name.split(".").pop()?.toLowerCase() || "";
     const isText = ["txt", "md", "csv", "json", "xml", "html"].includes(ext);
 
     if (isText) {
-      return await uploadedFile.text();
+      return await file.text();
     }
 
-    // For binary files: upload to storage, then parse via edge function
-    setFileProcessing(true);
+    // Binary: upload to storage then parse via edge function
+    const { data: urlData, error: urlError } = await supabase.functions.invoke("admin-moderate", {
+      body: { pin, action: "upload_signed_url", id: { file_name: file.name } },
+    });
+    if (urlError || !urlData?.data) throw new Error(urlData?.error || "Failed to get upload URL");
 
-    try {
-      // Get signed upload URL
-      const { data: urlData, error: urlError } = await supabase.functions.invoke("admin-moderate", {
-        body: { pin, action: "upload_signed_url", id: { file_name: uploadedFile.name } },
-      });
-      if (urlError || !urlData?.data) throw new Error(urlData?.error || "Failed to get upload URL");
+    const { path } = urlData.data;
 
-      const { signedUrl, path } = urlData.data;
+    const { error: uploadError } = await supabase.storage
+      .from("admin-uploads")
+      .uploadToSignedUrl(path, urlData.data.token, file);
+    if (uploadError) throw uploadError;
 
-      // Upload file using signed URL
-      const { error: uploadError } = await supabase.storage
-        .from("admin-uploads")
-        .uploadToSignedUrl(path, urlData.data.token, uploadedFile);
-      if (uploadError) throw uploadError;
+    const { data: parseData, error: parseError } = await supabase.functions.invoke("parse-document", {
+      body: { pin, file_path: path, file_name: file.name },
+    });
+    if (parseError) throw parseError;
+    if (parseData?.error) throw new Error(parseData.error);
 
-      // Parse document via edge function
-      const { data: parseData, error: parseError } = await supabase.functions.invoke("parse-document", {
-        body: { pin, file_path: path, file_name: uploadedFile.name },
-      });
-      if (parseError) throw parseError;
-      if (parseData?.error) throw new Error(parseData.error);
-
-      return parseData.text || "";
-    } finally {
-      setFileProcessing(false);
-    }
+    return parseData.text || "";
   };
 
   const handleSubmit = async () => {
-    if (!rawContent.trim() && !uploadedFile) return;
+    if (!rawContent.trim() && uploadedFiles.length === 0) return;
     setSubmitting(true);
+    setFileProcessing(uploadedFiles.length > 0);
     try {
       let contentToSubmit = rawContent.trim();
 
-      // If there's an uploaded file, process it
-      if (uploadedFile) {
-        const fileText = await processFile();
-        if (fileText) {
-          contentToSubmit = contentToSubmit
-            ? `${contentToSubmit}\n\n--- Extracted from: ${uploadedFile.name} ---\n\n${fileText}`
-            : fileText;
+      // Process all uploaded files sequentially
+      for (let i = 0; i < uploadedFiles.length; i++) {
+        const file = uploadedFiles[i];
+        setFileProgress(`Extracting text from ${file.name} (${i + 1}/${uploadedFiles.length})...`);
+        try {
+          const fileText = await processOneFile(file);
+          if (fileText) {
+            contentToSubmit = contentToSubmit
+              ? `${contentToSubmit}\n\n--- Extracted from: ${file.name} ---\n\n${fileText}`
+              : `--- Extracted from: ${file.name} ---\n\n${fileText}`;
+          }
+        } catch (err: any) {
+          toast({ title: `Failed to process ${file.name}`, description: err.message, variant: "destructive" });
         }
       }
+
+      setFileProcessing(false);
+      setFileProgress("");
 
       if (!contentToSubmit) {
         toast({ title: "No content to submit", variant: "destructive" });
@@ -168,13 +169,15 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
       setSourceName("");
       setRawContent("");
       setBreakingNews(false);
-      setUploadedFile(null);
+      setUploadedFiles([]);
       if (fileInputRef.current) fileInputRef.current.value = "";
       await fetchUpdates();
     } catch (err: any) {
       toast({ title: "Failed to submit", description: err.message, variant: "destructive" });
     } finally {
       setSubmitting(false);
+      setFileProcessing(false);
+      setFileProgress("");
     }
   };
 
@@ -211,7 +214,7 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
       <div className="bg-card border border-border rounded-xl p-5 space-y-4">
         <h3 className="font-display text-lg font-bold">Submit New Information</h3>
         <p className="text-sm text-muted-foreground">
-          Paste raw text or upload a document (PDF, Word, text files). The AI will extract facts, update the knowledge base, and flag affected pages.
+          Paste raw text or upload documents (PDF, Word, text files). You can upload multiple files at once. The AI will extract facts, update the knowledge base, and flag affected pages.
         </p>
         <Input
           placeholder="Source name (e.g. 'GOV.UK announcement 23 Feb 2026')"
@@ -227,7 +230,7 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
           className={`border-2 border-dashed rounded-xl p-6 text-center transition-colors cursor-pointer ${
             dragOver
               ? "border-primary bg-primary/5"
-              : uploadedFile
+              : uploadedFiles.length > 0
               ? "border-status-confirmed/40 bg-status-confirmed-bg"
               : "border-border hover:border-primary/40"
           }`}
@@ -237,28 +240,33 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
             ref={fileInputRef}
             type="file"
             accept={ACCEPT_STRING}
+            multiple
             onChange={handleFileChange}
             className="hidden"
           />
-          {uploadedFile ? (
-            <div className="flex items-center justify-center gap-3">
-              <File className="h-5 w-5 text-status-confirmed" />
-              <span className="text-sm font-medium">{uploadedFile.name}</span>
-              <span className="text-xs text-muted-foreground">
-                ({(uploadedFile.size / 1024).toFixed(0)} KB)
-              </span>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="h-6 w-6 p-0"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setUploadedFile(null);
-                  if (fileInputRef.current) fileInputRef.current.value = "";
-                }}
-              >
-                <X className="h-3.5 w-3.5" />
-              </Button>
+          {uploadedFiles.length > 0 ? (
+            <div className="space-y-2">
+              {uploadedFiles.map((file, i) => (
+                <div key={`${file.name}-${i}`} className="flex items-center justify-center gap-3">
+                  <File className="h-4 w-4 text-status-confirmed flex-shrink-0" />
+                  <span className="text-sm font-medium truncate max-w-[200px]">{file.name}</span>
+                  <span className="text-xs text-muted-foreground">
+                    ({(file.size / 1024).toFixed(0)} KB)
+                  </span>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-6 w-6 p-0 flex-shrink-0"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removeFile(i);
+                    }}
+                  >
+                    <X className="h-3.5 w-3.5" />
+                  </Button>
+                </div>
+              ))}
+              <p className="text-xs text-muted-foreground mt-2">Click or drag to add more files</p>
             </div>
           ) : (
             <div className="space-y-2">
@@ -267,25 +275,29 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
                 <span className="font-semibold text-foreground">Click to upload</span> or drag and drop
               </p>
               <p className="text-xs text-muted-foreground">
-                PDF, Word, PowerPoint, Excel, or plain text (max 10MB)
+                PDF, Word, PowerPoint, Excel, or plain text (max 10MB each, multiple files supported)
               </p>
             </div>
           )}
         </div>
 
-        <div className="flex items-center gap-2 text-xs text-muted-foreground">
-          <span className="font-medium">OR</span>
-          <div className="flex-1 h-px bg-border" />
-          <span>paste text below</span>
-          <div className="flex-1 h-px bg-border" />
-        </div>
+        {uploadedFiles.length > 0 && rawContent.trim() === "" ? null : (
+          <>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <span className="font-medium">OR</span>
+              <div className="flex-1 h-px bg-border" />
+              <span>paste text below</span>
+              <div className="flex-1 h-px bg-border" />
+            </div>
+            <Textarea
+              placeholder="Paste the raw content here..."
+              value={rawContent}
+              onChange={(e) => setRawContent(e.target.value)}
+              className="min-h-[200px]"
+            />
+          </>
+        )}
 
-        <Textarea
-          placeholder="Paste the raw content here..."
-          value={rawContent}
-          onChange={(e) => setRawContent(e.target.value)}
-          className="min-h-[200px]"
-        />
         <div className="flex items-center gap-3 p-3 bg-destructive/5 border border-destructive/20 rounded-lg">
           <Checkbox
             id="breaking-news"
@@ -299,7 +311,7 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
         </div>
         <Button
           onClick={handleSubmit}
-          disabled={submitting || fileProcessing || (!rawContent.trim() && !uploadedFile)}
+          disabled={submitting || fileProcessing || (!rawContent.trim() && uploadedFiles.length === 0)}
           className="rounded-full gap-2"
         >
           {submitting || fileProcessing ? (
@@ -307,7 +319,7 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
           ) : (
             <Upload className="h-4 w-4" />
           )}
-          {fileProcessing ? "Extracting text from document..." : "Submit for Processing"}
+          {fileProcessing ? fileProgress : `Submit${uploadedFiles.length > 1 ? ` (${uploadedFiles.length} files)` : ""} for Processing`}
         </Button>
       </div>
 
