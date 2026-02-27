@@ -13,57 +13,57 @@ import docThumbWhitePaper from "@/assets/doc-thumb-white-paper.jpg";
 const reportSections = [
   {
     path: "/state-of-send-2026/where-we-are-now",
-    title: "What we know so far",
-    summary: "The current state of the SEND system, existing legal protections, and how the system is performing right now.",
+    title: "What we know right now",
+    summary: "The current state of the SEND system, existing legal protections, and how the system is performing right now. The factual baseline.",
     color: "confirmed",
     number: 1,
   },
   {
     path: "/state-of-send-2026/what-is-changing",
-    title: "What is changing",
-    summary: "Confirmed reforms, the 10 year schools plan, operational direction to councils, and the three tier model being embedded.",
+    title: "What is now in motion",
+    summary: "Confirmed reforms already underway, direction of travel set by the Schools White Paper, and operational instructions already issued.",
     color: "confirmed",
     number: 2,
   },
   {
     path: "/state-of-send-2026/what-has-not-changed",
-    title: "What has not changed",
-    summary: "Your legal rights under the Children and Families Act 2014, EHCP protections, and tribunal appeal routes that remain in force.",
+    title: "What remains protected",
+    summary: "Legal rights still in force, EHCP protections, tribunal and appeal routes, and what cannot change without legislation.",
     color: "confirmed",
     number: 3,
   },
   {
     path: "/state-of-send-2026/what-is-being-discussed",
-    title: "What is being discussed",
-    summary: "Proposals under consideration including tiered support models, mainstream inclusion expansion, and funding mechanism changes.",
+    title: "What is actively being shaped",
+    summary: "Areas where policy design is still open, consultation themes, trade-offs being debated, and where influence still matters.",
     color: "discussed",
     number: 4,
   },
   {
     path: "/state-of-send-2026/what-we-do-not-know",
-    title: "What we do not know yet",
-    summary: "Unanswered questions about the White Paper content, assessment thresholds, appeal rights, and implementation timelines.",
+    title: "What is genuinely unknown",
+    summary: "Unanswered questions with no published answers yet: thresholds, enforcement mechanisms, and transition detail.",
     color: "discussed",
     number: 5,
   },
   {
     path: "/state-of-send-2026/what-the-leaks-are-saying",
-    title: "What the leaks are saying",
-    summary: "BBC and media reports on potential EHCP redesign, the three tier ladder, and ministerial concern about political backlash.",
+    title: "What has been reported",
+    summary: "What major media outlets have reported, what those reports are actually based on, and how reporting has evolved over time.",
     color: "unconfirmed",
     number: 6,
   },
   {
     path: "/state-of-send-2026/what-the-leaks-do-not-mean",
-    title: "What the leaks do not mean",
-    summary: "Common misinterpretations of leaked proposals addressed. What the reports actually say versus what people fear.",
+    title: "What is often misunderstood",
+    summary: "Common misinterpretations addressed. Where fear runs ahead of evidence. What reports do not imply legally or operationally.",
     color: "unconfirmed",
     number: 7,
   },
   {
     path: "/state-of-send-2026/timeline",
-    title: "Timeline and next steps",
-    summary: "Key dates, decision points and milestones from the national conversation to the expected White Paper and beyond.",
+    title: "What happens next",
+    summary: "Key milestones, consultation windows, decision points, and what to watch for. Grounded and date-stamped.",
     color: "next",
     number: 8,
   },
@@ -464,11 +464,11 @@ export default function StateOfSend2026() {
           The State of SEND 2026
         </h1>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          A structured, evidence-based report tracking SEND reform in England. Eight sections move from <strong>what is confirmed</strong> through <strong>what is being discussed</strong> to <strong>what remains unknown</strong>. Read in order, or jump to what matters most to you.
+          A structured, evidence-based report tracking SEND reform in England. Eight sections move from <strong>what is confirmed</strong> through <strong>what is actively being shaped</strong> to <strong>what is genuinely unknown</strong>. Read in order, or jump to what matters most to you.
         </p>
         <div className="flex items-center gap-2 text-sm text-muted-foreground mt-3">
           <Clock className="w-4 h-4" aria-hidden="true" />
-          <span>Last updated: 26th February 2026</span>
+          <span>Last updated: 27th February 2026</span>
         </div>
       </header>
 

@@ -1,7 +1,7 @@
 Title: The State of SEND 2026 - Report
 Route: /state-of-send-2026
 Description: An 8-part report tracking SEND reform in England. From confirmed changes to unanswered questions. Everything families need to know.
-Last updated: 20th February 2026
+Last updated: 27th February 2026
 Status: Confirmed
 Key topics: Reform report, White Paper, SEND system
 Key numbers: 8 sections
@@ -11,30 +11,30 @@ Key sources: Schools White Paper 2026
 
 The State of SEND 2026
 
-A structured, evidence-based report tracking SEND reform in England. Eight sections move from what is confirmed through what is being discussed to what remains unknown. Read in order, or jump to what matters most to you.
+A structured, evidence-based report tracking SEND reform in England. Eight sections move from what is confirmed through what is actively being shaped to what is genuinely unknown. Read in order, or jump to what matters most to you.
 
 Report sections:
 
-1. What we know so far [/state-of-send-2026/where-we-are-now]
-The current state of the SEND system, existing legal protections, and how the system is performing right now.
+1. What we know right now [/state-of-send-2026/where-we-are-now]
+The current state of the SEND system, existing legal protections, and how the system is performing right now. The factual baseline.
 
-2. What is changing [/state-of-send-2026/what-is-changing]
-Confirmed reforms, the 10 year schools plan, operational direction to councils, and the three tier model being embedded.
+2. What is now in motion [/state-of-send-2026/what-is-changing]
+Confirmed reforms already underway, direction of travel set by the Schools White Paper, and operational instructions already issued.
 
-3. What has not changed [/state-of-send-2026/what-has-not-changed]
-Your legal rights under the Children and Families Act 2014, EHCP protections, and tribunal appeal routes that remain in force.
+3. What remains protected [/state-of-send-2026/what-has-not-changed]
+Legal rights still in force, EHCP protections, tribunal and appeal routes, and what cannot change without legislation.
 
-4. What is being discussed [/state-of-send-2026/what-is-being-discussed]
-Proposals under consideration including tiered support models, mainstream inclusion expansion, and funding mechanism changes.
+4. What is actively being shaped [/state-of-send-2026/what-is-being-discussed]
+Areas where policy design is still open, consultation themes, trade-offs being debated, and where influence still matters.
 
-5. What we do not know yet [/state-of-send-2026/what-we-do-not-know]
-Unanswered questions about the White Paper content, assessment thresholds, appeal rights, and implementation timelines.
+5. What is genuinely unknown [/state-of-send-2026/what-we-do-not-know]
+Unanswered questions with no published answers yet: thresholds, enforcement mechanisms, and transition detail.
 
-6. What the leaks are saying [/state-of-send-2026/what-the-leaks-are-saying]
-BBC and media reports on potential EHCP redesign, the three tier ladder, and ministerial concern about political backlash.
+6. What has been reported [/state-of-send-2026/what-the-leaks-are-saying]
+What major media outlets have reported, what those reports are actually based on, and how reporting has evolved over time.
 
-7. What the leaks do not mean [/state-of-send-2026/what-the-leaks-do-not-mean]
-Common misinterpretations of leaked proposals addressed. What the reports actually say versus what people fear.
+7. What is often misunderstood [/state-of-send-2026/what-the-leaks-do-not-mean]
+Common misinterpretations addressed. Where fear runs ahead of evidence. What reports do not imply legally or operationally.
 
-8. Timeline and next steps [/state-of-send-2026/timeline]
-Key dates, decision points and milestones from the national conversation to the expected White Paper and beyond.
+8. What happens next [/state-of-send-2026/timeline]
+Key milestones, consultation windows, decision points, and what to watch for. Grounded and date-stamped.

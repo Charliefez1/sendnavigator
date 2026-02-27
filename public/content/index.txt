@@ -1,13 +1,13 @@
 route|title|description|last_updated|status|content_file
-/state-of-send-2026|The State of SEND 2026 - Report|An 8-part report tracking SEND reform in England.|2026-02-20|confirmed|state_of_send_2026.txt
-/state-of-send-2026/where-we-are-now|Current situation|Where is SEND provision in the UK today.|2026-02-23|confirmed|where_we_are_now.txt
-/state-of-send-2026/what-is-changing|What is changing|Confirmed reforms and changes coming to SEND provision.|2026-02-23|confirmed|what_is_changing.txt
-/state-of-send-2026/what-has-not-changed|What has not changed|Legal rights and protections that remain in place.|2026-02-23|confirmed|what_has_not_changed.txt
-/state-of-send-2026/what-is-being-discussed|What is being discussed|Ideas, proposals, and areas of debate.|2026-02-23|discussed|what_is_being_discussed.txt
-/state-of-send-2026/what-we-do-not-know|What we do not know|Key decisions about rights and thresholds not yet made.|2026-02-23|unconfirmed|what_we_do_not_know.txt
-/state-of-send-2026/what-the-leaks-are-saying|What the leaks are saying|Unconfirmed proposals and reported briefings.|2026-02-23|unconfirmed|what_the_leaks_are_saying.txt
-/state-of-send-2026/what-the-leaks-do-not-mean|What the leaks do not mean|Understanding leaked proposals without panic.|2026-02-23|confirmed|what_the_leaks_do_not_mean.txt
-/state-of-send-2026/timeline|Timeline and next steps|Key decision points and milestones.|2026-02-23|discussed|timeline.txt
+/state-of-send-2026|The State of SEND 2026 - Report|An 8-part report tracking SEND reform in England.|2026-02-27|confirmed|state_of_send_2026.txt
+/state-of-send-2026/where-we-are-now|What we know right now|The factual baseline of SEND provision in England today.|2026-02-27|confirmed|where_we_are_now.txt
+/state-of-send-2026/what-is-changing|What is now in motion|Confirmed reforms already underway following the Schools White Paper.|2026-02-27|confirmed|what_is_changing.txt
+/state-of-send-2026/what-has-not-changed|What remains protected|Legal rights and protections that remain in force.|2026-02-27|confirmed|what_has_not_changed.txt
+/state-of-send-2026/what-is-being-discussed|What is actively being shaped|Live policy design, consultation themes, and where influence matters.|2026-02-27|discussed|what_is_being_discussed.txt
+/state-of-send-2026/what-we-do-not-know|What is genuinely unknown|Unanswered questions with no published answers yet.|2026-02-27|unconfirmed|what_we_do_not_know.txt
+/state-of-send-2026/what-the-leaks-are-saying|What has been reported|What media outlets have reported and what those reports are based on.|2026-02-27|unconfirmed|what_the_leaks_are_saying.txt
+/state-of-send-2026/what-the-leaks-do-not-mean|What is often misunderstood|Common misinterpretations addressed.|2026-02-27|confirmed|what_the_leaks_do_not_mean.txt
+/state-of-send-2026/timeline|What happens next|Key milestones, consultation windows, and decision points.|2026-02-27|discussed|timeline.txt
 /ehcps|The EHCP Guide|A complete guide for parents in England.|2026-02-23|confirmed|ehcps.txt
 /ehcp-health|Health in EHCPs|NHS duties in EHC plans.|2026-02-23|confirmed|ehcp_health.txt
 /understanding-your-child|Understanding Your Child|Practical guides to autism and ADHD.|2026-02-23|confirmed|understanding_your_child.txt

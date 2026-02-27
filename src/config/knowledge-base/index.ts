@@ -33,9 +33,9 @@ export const KNOWLEDGE_BASE = {
 
   // Internal navigation
   internalPages: [
-    { path: "/where-we-are-now", label: "Where we are now", description: "Current SEND system and law" },
-    { path: "/what-is-changing", label: "What is changing", description: "Confirmed reforms and plans" },
-    { path: "/what-the-leaks-are-saying", label: "What the leaks are saying", description: "Unconfirmed reports" },
+    { path: "/where-we-are-now", label: "What we know right now", description: "Current SEND system and law" },
+    { path: "/what-is-changing", label: "What is now in motion", description: "Confirmed reforms and plans" },
+    { path: "/what-the-leaks-are-saying", label: "What has been reported", description: "Media reports and their basis" },
     { path: "/what-this-could-mean", label: "What this could mean", description: "Practical implications" },
     { path: "/timeline", label: "Timeline and next steps", description: "Key dates and milestones" },
     { path: "/questions-and-answers", label: "Questions and answers", description: "Common questions" },

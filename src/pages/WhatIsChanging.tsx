@@ -34,10 +34,10 @@ const sections: PageSectionDef[] = [
 export default function WhatIsChanging() {
   return (
     <Layout>
-      <SEOHead title="Confirmed changes to SEND provision in 2026" description="What changes to SEND in England have been confirmed in the Schools White Paper, including ISPs, Experts at Hand, and the four-level support model." path="/what-is-changing" />
+      <SEOHead title="What is now in motion: confirmed SEND reforms 2026" description="Confirmed reforms already underway in SEND, including ISPs, Experts at Hand, and the four-level support model." path="/what-is-changing" />
       <PageOrientation
-        title="Confirmed changes: what is changing in SEND provision following the Schools White Paper"
-        description="Changes publicly set out, funded, or formally announced in the Schools White Paper of 23 February 2026."
+        title="What is now in motion: confirmed reforms following the Schools White Paper"
+        description="Reforms already underway, funded, or formally announced. This section describes momentum, not speculation."
         lastUpdated="26th February 2026"
         accentColor="hsl(175 65% 41%)"
       >
