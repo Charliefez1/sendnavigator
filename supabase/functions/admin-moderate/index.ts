@@ -1,18 +1,37 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-// ─── CORS: restrict to production domain ───
-const ALLOWED_ORIGINS = [
-  "https://sendnavigator.lovable.app",
-  "https://id-preview--d1ead2e0-00aa-4f4e-8ab5-05dd5a79d10b.lovable.app",
-];
+// ─── CORS: allow production + Lovable preview domains ───
+const PRIMARY_ORIGIN = "https://sendnavigator.lovable.app";
+const ALLOWED_EXACT_ORIGINS = new Set([
+  PRIMARY_ORIGIN,
+]);
+
+function isAllowedOrigin(origin: string): boolean {
+  try {
+    const url = new URL(origin);
+    if (url.protocol !== "https:") return false;
+
+    if (ALLOWED_EXACT_ORIGINS.has(origin)) return true;
+
+    return (
+      url.hostname.endsWith(".lovable.app") ||
+      url.hostname.endsWith(".lovableproject.com")
+    );
+  } catch {
+    return false;
+  }
+}
 
 function getCorsHeaders(req: Request) {
   const origin = req.headers.get("origin") || "";
-  const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+  const allowOrigin = isAllowedOrigin(origin) ? origin : PRIMARY_ORIGIN;
+
   return {
-    "Access-Control-Allow-Origin": allowed,
+    "Access-Control-Allow-Origin": allowOrigin,
     "Access-Control-Allow-Headers":
       "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Vary": "Origin",
   };
 }
 
