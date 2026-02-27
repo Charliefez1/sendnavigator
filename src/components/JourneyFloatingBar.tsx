@@ -4,14 +4,14 @@ import { ChevronLeft, ChevronRight, Map, X, CheckCircle2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const journeySteps = [
-  { path: "/state-of-send-2026/where-we-are-now", label: "Current situation", description: "What the system looks like today", group: "confirmed" },
-  { path: "/state-of-send-2026/what-is-changing", label: "Confirmed changes", description: "Changes that have been announced", group: "confirmed" },
-  { path: "/state-of-send-2026/what-has-not-changed", label: "What has not changed", description: "Parts of the system that remain the same", group: "confirmed" },
-  { path: "/state-of-send-2026/what-is-being-discussed", label: "Under discussion", description: "Proposals still being debated", group: "discussed" },
-  { path: "/state-of-send-2026/what-we-do-not-know", label: "What we do not know", description: "Questions without clear answers yet", group: "discussed" },
-  { path: "/state-of-send-2026/what-the-leaks-are-saying", label: "Unconfirmed reports", description: "Leaked information not yet verified", group: "unconfirmed" },
-  { path: "/state-of-send-2026/what-the-leaks-do-not-mean", label: "What leaks do not mean", description: "Context and common misunderstandings", group: "unconfirmed" },
-  { path: "/state-of-send-2026/timeline", label: "What is next", description: "Key dates and upcoming milestones", group: "next" },
+  { path: "/state-of-send-2026/where-we-are-now", label: "What we know right now", description: "The factual baseline", group: "confirmed" },
+  { path: "/state-of-send-2026/what-is-changing", label: "What is now in motion", description: "Confirmed reforms underway", group: "confirmed" },
+  { path: "/state-of-send-2026/what-has-not-changed", label: "What remains protected", description: "Rights still in force", group: "confirmed" },
+  { path: "/state-of-send-2026/what-is-being-discussed", label: "What is actively being shaped", description: "Live consultation and debate", group: "discussed" },
+  { path: "/state-of-send-2026/what-we-do-not-know", label: "What is genuinely unknown", description: "No published answers yet", group: "discussed" },
+  { path: "/state-of-send-2026/what-the-leaks-are-saying", label: "What has been reported", description: "Media coverage and basis", group: "unconfirmed" },
+  { path: "/state-of-send-2026/what-the-leaks-do-not-mean", label: "What is often misunderstood", description: "Where fear runs ahead of evidence", group: "unconfirmed" },
+  { path: "/state-of-send-2026/timeline", label: "What happens next", description: "Key dates and milestones", group: "next" },
 ];
 
 const groupMeta: Record<string, { label: string; colour: string; bgColour: string; dotColour: string }> = {

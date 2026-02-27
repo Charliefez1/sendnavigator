@@ -17,14 +17,14 @@ Sections:
 
 The State of SEND 2026
 Our 8-part report tracking every aspect of SEND reform.
-- Where we are now
-- What is changing
-- What has not changed
-- What is being discussed
-- What we do not know
-- What the leaks are saying
-- What the leaks do not mean
-- Timeline
+- What we know right now
+- What is now in motion
+- What remains protected
+- What is actively being shaped
+- What is genuinely unknown
+- What has been reported
+- What is often misunderstood
+- What happens next
 
 Parent Guides
 Practical guides for navigating the SEND system right now.

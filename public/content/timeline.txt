@@ -1,7 +1,7 @@
-Title: Timeline and next steps
+Title: What happens next
 Route: /timeline
-Description: Key decision points and milestones. We show only confirmed dates and likely windows, avoiding speculation.
-Last updated: 23rd February 2026
+Description: Key milestones, consultation windows, and decision points. Grounded and date-stamped.
+Last updated: 27th February 2026
 Status: Discussed
 Key topics: Milestones, White Paper, Consultation, Implementation
 Key numbers: n/a
@@ -9,7 +9,7 @@ Key sources: DfE announcements, Schools White Paper
 
 ---
 
-Timeline and next steps
+What happens next
 
 SEND reform is moving slowly because large system changes take time. Pilot programmes and training are already happening, but major decisions still sit ahead. The Schools White Paper, Every Child Achieving and Thriving, was published on 23 February 2026 and a public consultation is expected next. If legal changes are proposed, they must go through Parliament before taking effect. Research from previous reforms shows implementation is usually phased over several years. For parents, this means current support and rights continue while reform is debated. There is time to understand proposals properly before anything changes.
 

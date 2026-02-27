@@ -37,7 +37,7 @@ export const KNOWLEDGE_BASE = {
     { path: "/what-is-changing", label: "What is now in motion", description: "Confirmed reforms and plans" },
     { path: "/what-the-leaks-are-saying", label: "What has been reported", description: "Media reports and their basis" },
     { path: "/what-this-could-mean", label: "What this could mean", description: "Practical implications" },
-    { path: "/timeline", label: "Timeline and next steps", description: "Key dates and milestones" },
+    { path: "/timeline", label: "What happens next", description: "Key dates and milestones" },
     { path: "/questions-and-answers", label: "Questions and answers", description: "Common questions" },
     { path: "/sources", label: "Sources", description: "How we verify information" },
     { path: "/about", label: "About this resource", description: "Independence and scope" },

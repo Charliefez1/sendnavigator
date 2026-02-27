@@ -47,14 +47,14 @@ interface ContentLink {
 
 const reportSections: ContentLink[] = [
   { path: "/state-of-send-2026", title: "Report Overview", summary: "The full 8-part report hub", icon: BookOpen },
-  { path: "/state-of-send-2026/where-we-are-now", title: "Where we are now", summary: "The current state of SEND", icon: MapPin },
-  { path: "/state-of-send-2026/what-is-changing", title: "What is changing", summary: "Confirmed reforms", icon: FileText },
-  { path: "/state-of-send-2026/what-has-not-changed", title: "What has not changed", summary: "Your existing rights", icon: Shield },
-  { path: "/state-of-send-2026/what-is-being-discussed", title: "What is being discussed", summary: "Proposals and consultations", icon: Megaphone },
-  { path: "/state-of-send-2026/what-we-do-not-know", title: "What we don't know", summary: "Unanswered questions", icon: HelpCircle },
-  { path: "/state-of-send-2026/what-the-leaks-are-saying", title: "What the leaks say", summary: "Leaked documents analysed", icon: AlertTriangle },
-  { path: "/state-of-send-2026/what-the-leaks-do-not-mean", title: "What the leaks don't mean", summary: "Avoiding misinterpretation", icon: Scale },
-  { path: "/state-of-send-2026/timeline", title: "Timeline & next steps", summary: "Key dates and milestones", icon: ClipboardList },
+  { path: "/state-of-send-2026/where-we-are-now", title: "What we know right now", summary: "The factual baseline", icon: MapPin },
+  { path: "/state-of-send-2026/what-is-changing", title: "What is now in motion", summary: "Confirmed reforms", icon: FileText },
+  { path: "/state-of-send-2026/what-has-not-changed", title: "What remains protected", summary: "Your existing rights", icon: Shield },
+  { path: "/state-of-send-2026/what-is-being-discussed", title: "What is actively being shaped", summary: "Consultation and debate", icon: Megaphone },
+  { path: "/state-of-send-2026/what-we-do-not-know", title: "What is genuinely unknown", summary: "Unanswered questions", icon: HelpCircle },
+  { path: "/state-of-send-2026/what-the-leaks-are-saying", title: "What has been reported", summary: "Media coverage analysed", icon: AlertTriangle },
+  { path: "/state-of-send-2026/what-the-leaks-do-not-mean", title: "What is often misunderstood", summary: "Avoiding misinterpretation", icon: Scale },
+  { path: "/state-of-send-2026/timeline", title: "What happens next", summary: "Key dates and milestones", icon: ClipboardList },
 ];
 
 const parentGuides: ContentLink[] = [

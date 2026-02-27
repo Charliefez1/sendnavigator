@@ -8,7 +8,7 @@ export const unknownAreas = {
   content: `
 Areas where information is not yet available:
 
-Where we are now:
+What we know right now:
 - How quickly performance on EHC plan timescales will improve
 - Whether current spending levels will stabilise demand
 - How outcomes beyond attainment will change

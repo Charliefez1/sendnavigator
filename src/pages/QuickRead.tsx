@@ -11,12 +11,12 @@ import type { PageSectionDef } from "@/components/templates";
 import { BookOpen, Shield, TrendingUp, AlertTriangle, HelpCircle, Newspaper, Filter, ArrowRight, Heart } from "lucide-react";
 
 const sections: PageSectionDef[] = [
-  { id: "now", icon: Shield, title: "Where things stand right now" },
-  { id: "changing", icon: TrendingUp, title: "What is actually changing" },
-  { id: "unchanged", icon: Shield, title: "What has not changed" },
-  { id: "discussed", icon: HelpCircle, title: "What is being discussed" },
-  { id: "unknown", icon: AlertTriangle, title: "What we do not know yet" },
-  { id: "leaks", icon: Newspaper, title: "What the leaks are and are not" },
+  { id: "now", icon: Shield, title: "What we know right now" },
+  { id: "changing", icon: TrendingUp, title: "What is now in motion" },
+  { id: "unchanged", icon: Shield, title: "What remains protected" },
+  { id: "discussed", icon: HelpCircle, title: "What is actively being shaped" },
+  { id: "unknown", icon: AlertTriangle, title: "What is genuinely unknown" },
+  { id: "leaks", icon: Newspaper, title: "What has been reported" },
   { id: "next", icon: ArrowRight, title: "What happens next" },
   { id: "parents", icon: Heart, title: "What this means for you right now" },
 ];
@@ -97,7 +97,7 @@ export default function QuickRead() {
         </div>
       </ContentBox>
 
-      <ContentBox id="unchanged" icon={Shield} title="What has not changed">
+      <ContentBox id="unchanged" icon={Shield} title="What remains protected">
         <div className="space-y-3">
           <p>
             <strong>The Children and Families Act 2014 is still the law.</strong> EHCPs are still legally enforceable. The 20-week timescale still applies. Parents still have the right to request assessment, choose a school, and appeal decisions.
@@ -111,7 +111,7 @@ export default function QuickRead() {
         </div>
       </ContentBox>
 
-      <ContentBox id="discussed" icon={HelpCircle} title="What is being discussed">
+      <ContentBox id="discussed" icon={HelpCircle} title="What is actively being shaped">
         <div className="space-y-3">
           <p>
             Alongside confirmed changes, there is active public debate about deeper reform. <strong>Nothing in this area is law. Nothing has been enacted.</strong>
@@ -131,7 +131,7 @@ export default function QuickRead() {
         </div>
       </ContentBox>
 
-      <ContentBox id="unknown" icon={AlertTriangle} title="What we do not know yet">
+      <ContentBox id="unknown" icon={AlertTriangle} title="What is genuinely unknown">
         <div className="space-y-3">
           <p>
             Key questions remain unanswered. <strong>No draft legislation has been published</strong> setting out changes to EHCP eligibility. No final national standards have been published. No confirmed funding model replacing EHCP-linked funding has been agreed.
@@ -145,7 +145,7 @@ export default function QuickRead() {
         </div>
       </ContentBox>
 
-      <ContentBox id="leaks" icon={Newspaper} title="What the leaks are and are not">
+      <ContentBox id="leaks" icon={Newspaper} title="What has been reported">
         <div className="space-y-3">
           <p>
             There has been a steady flow of unconfirmed reports from outlets including The Guardian, iNews, and the Financial Times. They describe proposals like a four-tier system, digital passports for SEND, and possible implementation delays to 2029.
