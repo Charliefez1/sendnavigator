@@ -100,7 +100,7 @@ export function Header() {
         <div className="hidden lg:grid lg:grid-cols-[auto_1fr_auto] items-center gap-2">
           {/* Left: Logo */}
           <NavLink to="/" end className="flex-shrink-0">
-            <img src={beaconLogo} alt="Beacon SEND Navigator - Home" className="h-[52px]" />
+            <img src={beaconLogo} alt="Neurodiversity Global SEND Navigator - Home" className="h-[52px]" />
           </NavLink>
 
           {/* Center: Key direct links (desktop) — justified to centre of the row */}
@@ -229,7 +229,7 @@ export function Header() {
         {/* Mobile header row */}
         <div className="flex lg:hidden items-center justify-between gap-2">
           <NavLink to="/" end className="flex-shrink-0">
-            <img src={beaconLogo} alt="Beacon SEND Navigator - Home" className="h-[52px]" />
+            <img src={beaconLogo} alt="Neurodiversity Global SEND Navigator - Home" className="h-[52px]" />
           </NavLink>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

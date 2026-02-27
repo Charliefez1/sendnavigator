@@ -62,13 +62,13 @@ const Landing = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SEOHead
-        title="Beacon SEND Navigator | Independent SEND reform guide for parents"
+        title="Neurodiversity Global SEND Navigator | Independent SEND reform guide for parents"
         description="Free independent guide helping parents understand SEND reform in England. EHCPs, the Schools White Paper, Individual Support Plans — explained clearly by a SEND parent."
         path="/landing"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "EducationalOrganization",
-          "name": "Beacon SEND Navigator",
+          "name": "Neurodiversity Global SEND Navigator",
           "description": "Independent SEND reform guide for parents in England",
           "url": "https://sendnavigator.lovable.app",
           "founder": { "@type": "Person", "name": "Rich Ferriman" },
@@ -378,7 +378,7 @@ const Landing = () => {
           }}
         />
         <div className="content-section flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
-          <p>&copy; 2026 Beacon SEND Navigator</p>
+          <p>&copy; 2026 Neurodiversity Global SEND Navigator</p>
           <div className="flex items-center gap-4">
             <Link to="/about" className="hover:text-primary transition-colors">About</Link>
             <Link to="/how-to-use" className="hover:text-primary transition-colors">How to use</Link>

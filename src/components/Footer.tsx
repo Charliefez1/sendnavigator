@@ -21,7 +21,7 @@ export function Footer() {
           {/* Brand column */}
           <div className="sm:col-span-2 lg:col-span-1 space-y-4">
             <div className="flex items-center gap-3">
-              <img src={beaconLogo} alt="Beacon SEND Navigator" className="h-12" />
+              <img src={beaconLogo} alt="Neurodiversity Global SEND Navigator" className="h-12" />
             </div>
             <p className="text-sm text-navy-muted leading-relaxed max-w-xs">
               Helping parents, carers, and professionals understand what is happening with SEND reform in England, clearly, calmly, and honestly.
@@ -174,7 +174,7 @@ export function Footer() {
               This is an independent public resource. It does not provide legal, medical, or professional advice. Information applies to England only.
             </p>
             <p className="text-xs text-white/30 whitespace-nowrap">
-              © {new Date().getFullYear()} Beacon SEND Navigator
+              © {new Date().getFullYear()} Neurodiversity Global SEND Navigator
             </p>
           </div>
         </div>
