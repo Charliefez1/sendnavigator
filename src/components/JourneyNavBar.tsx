@@ -3,14 +3,14 @@ import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const journeySteps = [
-  { path: "/state-of-send-2026/where-we-are-now", label: "What we know so far", shortLabel: "Known", color: "confirmed" },
-  { path: "/state-of-send-2026/what-is-changing", label: "What is changing", shortLabel: "Changing", color: "confirmed" },
-  { path: "/state-of-send-2026/what-has-not-changed", label: "What has not changed", shortLabel: "Unchanged", color: "confirmed" },
-  { path: "/state-of-send-2026/what-is-being-discussed", label: "What is being discussed", shortLabel: "Discussed", color: "discussed" },
-  { path: "/state-of-send-2026/what-we-do-not-know", label: "What we do not know yet", shortLabel: "Unknown", color: "discussed" },
-  { path: "/state-of-send-2026/what-the-leaks-are-saying", label: "What the leaks are saying", shortLabel: "Leaks", color: "unconfirmed" },
-  { path: "/state-of-send-2026/what-the-leaks-do-not-mean", label: "What the leaks do not mean", shortLabel: "Context", color: "unconfirmed" },
-  { path: "/state-of-send-2026/timeline", label: "Timeline and next steps", shortLabel: "Timeline", color: "next" },
+  { path: "/state-of-send-2026/where-we-are-now", label: "What we know right now", shortLabel: "Right now", color: "confirmed" },
+  { path: "/state-of-send-2026/what-is-changing", label: "What is now in motion", shortLabel: "In motion", color: "confirmed" },
+  { path: "/state-of-send-2026/what-has-not-changed", label: "What remains protected", shortLabel: "Protected", color: "confirmed" },
+  { path: "/state-of-send-2026/what-is-being-discussed", label: "What is actively being shaped", shortLabel: "Being shaped", color: "discussed" },
+  { path: "/state-of-send-2026/what-we-do-not-know", label: "What is genuinely unknown", shortLabel: "Unknown", color: "discussed" },
+  { path: "/state-of-send-2026/what-the-leaks-are-saying", label: "What has been reported", shortLabel: "Reported", color: "unconfirmed" },
+  { path: "/state-of-send-2026/what-the-leaks-do-not-mean", label: "What is often misunderstood", shortLabel: "Misunderstood", color: "unconfirmed" },
+  { path: "/state-of-send-2026/timeline", label: "What happens next", shortLabel: "Next", color: "next" },
 ];
 
 const dotColors: Record<string, string> = {

@@ -125,10 +125,10 @@ const sections: PageSectionDef[] = [
 export default function Timeline() {
   return (
     <Layout>
-      <SEOHead title="Timeline" description="Key dates and milestones in SEND reform, from the White Paper to the 2035 transition." path="/timeline" />
+      <SEOHead title="What happens next: SEND reform timeline" description="Key milestones, consultation windows, and decision points in SEND reform. Grounded and date-stamped." path="/timeline" />
       <PageOrientation
-        title="Timeline and next steps"
-        description="Key decision points and milestones, including the consultation deadline of 18 May 2026 and the phased transition to 2035."
+        title="What happens next: milestones, decisions, and what to watch for"
+        description="Key milestones, consultation windows, and decision points. Grounded and date-stamped."
         lastUpdated="26th February 2026"
         accentColor="hsl(175 65% 41%)"
       >

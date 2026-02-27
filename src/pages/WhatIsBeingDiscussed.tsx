@@ -29,10 +29,10 @@ const sections: PageSectionDef[] = [
 export default function WhatIsBeingDiscussed() {
   return (
     <Layout>
-      <SEOHead title="Under discussion: SEND reform debates in 2026" description="What is being debated in the SEND reform consultation, including ISPs, school choice, and the four-level model." path="/what-is-being-discussed" />
+      <SEOHead title="What is actively being shaped: SEND reform consultation 2026" description="Areas where SEND policy design is still open, consultation themes, and where influence and challenge still matter." path="/what-is-being-discussed" />
       <PageOrientation
-        title="Under discussion: what is being debated in the formal consultation"
-        description="Ideas, proposals, and areas of debate from the Schools White Paper consultation, open until 18 May 2026."
+        title="What is actively being shaped: live policy design and consultation"
+        description="Areas where policy design is still open. Consultation themes, trade-offs being debated, and where influence still matters."
         lastUpdated="26th February 2026"
         accentColor="hsl(175 65% 41%)"
       >

@@ -27,10 +27,10 @@ const sections: PageSectionDef[] = [
 export default function WhereWeAreNow() {
   return (
     <Layout>
-      <SEOHead title="Current situation: where is SEND provision today" description="The current state of SEND provision in England, confirmed facts, funding data, and system pressures." path="/where-we-are-now" />
+      <SEOHead title="What we know right now about SEND in England" description="The current state of SEND provision in England, confirmed facts, funding data, and system pressures." path="/where-we-are-now" />
       <PageOrientation
-        title="Current situation: where is SEND provision in the UK today"
-        description="Understanding the current state of SEND support in England."
+        title="What we know right now: the current state of SEND in England"
+        description="The factual baseline. Current state of SEND support, existing legal protections, and how the system is performing today."
         lastUpdated="23rd February 2026"
         accentColor="hsl(175 65% 41%)"
       >

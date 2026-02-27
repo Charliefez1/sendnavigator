@@ -29,10 +29,10 @@ const sections: PageSectionDef[] = [
 export default function WhatWeDoNotKnow() {
   return (
     <Layout>
-      <SEOHead title="What we do not know about SEND reform" description="Questions the White Paper answers and questions that remain genuinely unknown about SEND reform." path="/what-we-do-not-know" />
+      <SEOHead title="What is genuinely unknown about SEND reform" description="Unanswered questions with no published answers yet about SEND reform thresholds, enforcement, and transition." path="/what-we-do-not-know" />
       <PageOrientation
-        title="What we do not know: questions answered and questions remaining"
-        description="The White Paper answers some questions. Others remain genuinely unknown. Both matter."
+        title="What is genuinely unknown: questions that still have no published answers"
+        description="What has not been decided or written yet. Thresholds, enforcement mechanisms, and transition detail."
         lastUpdated="26th February 2026"
         accentColor="hsl(175 65% 41%)"
       >

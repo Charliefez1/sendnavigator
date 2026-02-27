@@ -29,10 +29,10 @@ const sections: PageSectionDef[] = [
 export default function WhatTheLeaksAreSaying() {
   return (
     <Layout>
-      <SEOHead title="Unconfirmed reports about SEND reform" description="Which leaked SEND reform proposals are now confirmed, and what remains unverified." path="/what-the-leaks-are-saying" />
+      <SEOHead title="What has been reported about SEND reform" description="What major media outlets have reported about SEND reform, what those reports are based on, and how reporting has evolved." path="/what-the-leaks-are-saying" />
       <PageOrientation
-        title="Unconfirmed reports: what has been confirmed and what remains unverified"
-        description="Tracking which leaked proposals are now in the White Paper and which remain unverified."
+        title="What has been reported: media coverage and its basis"
+        description="What major outlets have reported, what those reports are actually based on, and how reporting has evolved over time."
         lastUpdated="26th February 2026"
         accentColor="hsl(175 65% 41%)"
       >

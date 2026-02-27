@@ -30,14 +30,14 @@ export default function WhatTheLeaksDoNotMean() {
   return (
     <Layout>
       <SEOHead
-        title="What leaks do not mean"
-        description="Understanding what leaked SEND reform proposals do and do not mean for parents and children."
+        title="What is often misunderstood about SEND reform"
+        description="Common misinterpretations of SEND reform proposals. Where fear runs ahead of evidence."
         path="/what-the-leaks-do-not-mean"
       />
       <PageOrientation
-        title="What leaks do not mean, and why they happen at all"
-        description="Understanding leaked proposals without being pulled into panic or rushed decisions."
-        lastUpdated="23rd February 2026"
+        title="What is often misunderstood: where fear runs ahead of evidence"
+        description="Common misinterpretations addressed. What reports do not imply legally or operationally."
+        lastUpdated="27th February 2026"
         accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">

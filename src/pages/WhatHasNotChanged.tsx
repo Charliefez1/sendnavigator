@@ -27,10 +27,10 @@ const sections: PageSectionDef[] = [
 export default function WhatHasNotChanged() {
   return (
     <Layout>
-      <SEOHead title="What has not changed in the SEND system" description="Legal rights and protections that remain in place as of 26 February 2026, including after the Schools White Paper." path="/what-has-not-changed" />
+      <SEOHead title="What remains protected in the SEND system" description="Legal rights and protections that remain in force, including EHCP protections and tribunal appeal routes." path="/what-has-not-changed" />
       <PageOrientation
-        title="What has not changed: your legal rights remain in force"
-        description="Legal rights and protections that remain in place, including after the Schools White Paper."
+        title="What remains protected: your legal rights are still in force"
+        description="Legal rights that cannot change without legislation. EHCP protections, tribunal routes, and what anchors reassurance."
         lastUpdated="26th February 2026"
         accentColor="hsl(175 65% 41%)"
       >
