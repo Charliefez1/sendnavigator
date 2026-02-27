@@ -167,23 +167,33 @@ export function PreFooter() {
 
   return (
     <>
-      <section className="border-t border-border bg-card prefooter-section">
-        <div className="content-wide py-10">
+      <section className="bg-[hsl(222_47%_11%)] text-[hsl(0_0%_92%)] prefooter-section">
+        <div className="content-wide py-14 sm:py-20">
+          {/* Heading */}
+          <div className="text-center mb-10">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[hsl(0_0%_96%)]">
+              Built by parents
+            </h2>
+            <p className="mt-2 text-[hsl(222_20%_60%)] text-sm sm:text-base">
+              Still working at making this work.
+            </p>
+          </div>
+
           {/* Three action cards in a row */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
             {/* Card 1: More from NG */}
             <button
               onClick={() => window.open("https://www.neurodiversityglobal.com", "_blank")}
-              className="group flex items-start gap-3 rounded-xl border border-border prefooter-card p-5 shadow-lg hover:shadow-xl transition-all text-left"
+              className="group flex items-start gap-3 rounded-xl border border-[hsl(222_20%_20%)] bg-[hsl(222_35%_12%/0.85)] backdrop-blur-sm p-5 shadow-lg hover:shadow-xl hover:border-[hsl(222_20%_30%)] transition-all text-left"
             >
               <div className="w-9 h-9 rounded-lg bg-[hsl(var(--accent-teal)/0.12)] flex items-center justify-center flex-shrink-0">
                 <Globe className="w-4.5 h-4.5 text-[hsl(var(--accent-teal))]" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-semibold prefooter-heading group-hover:text-primary transition-colors">
+                <h3 className="text-sm font-semibold text-[hsl(0_0%_92%)] group-hover:text-primary transition-colors">
                   More from Neurodiversity Global
                 </h3>
-                <p className="text-xs prefooter-text mt-1 leading-relaxed">
+                <p className="text-xs text-[hsl(222_20%_60%)] mt-1 leading-relaxed">
                   Neuroinclusion training, workshops, consultancy, and resources.
                 </p>
                 <span className="inline-flex items-center gap-1 text-xs font-medium text-primary mt-2">
@@ -195,16 +205,16 @@ export function PreFooter() {
             {/* Card 2: Stay updated */}
             <button
               onClick={() => setNewsletterOpen(true)}
-              className="group flex items-start gap-3 rounded-xl border border-border prefooter-card p-5 shadow-lg hover:shadow-xl transition-all text-left"
+              className="group flex items-start gap-3 rounded-xl border border-[hsl(222_20%_20%)] bg-[hsl(222_35%_12%/0.85)] backdrop-blur-sm p-5 shadow-lg hover:shadow-xl hover:border-[hsl(222_20%_30%)] transition-all text-left"
             >
               <div className="w-9 h-9 rounded-lg bg-[hsl(var(--accent-amber)/0.12)] flex items-center justify-center flex-shrink-0">
                 <Mail className="w-4.5 h-4.5 text-[hsl(var(--accent-amber))]" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-semibold prefooter-heading group-hover:text-primary transition-colors">
+                <h3 className="text-sm font-semibold text-[hsl(0_0%_92%)] group-hover:text-primary transition-colors">
                   Stay updated
                 </h3>
-                <p className="text-xs prefooter-text mt-1 leading-relaxed">
+                <p className="text-xs text-[hsl(222_20%_60%)] mt-1 leading-relaxed">
                   Sign up and we will keep you informed on SEND reform and neurodivergence.
                 </p>
                 <span className="inline-flex items-center gap-1 text-xs font-medium text-primary mt-2">
@@ -216,16 +226,16 @@ export function PreFooter() {
             {/* Card 3: Get in touch */}
             <button
               onClick={() => setContactOpen(true)}
-              className="group flex items-start gap-3 rounded-xl border border-border prefooter-card p-5 shadow-lg hover:shadow-xl transition-all text-left"
+              className="group flex items-start gap-3 rounded-xl border border-[hsl(222_20%_20%)] bg-[hsl(222_35%_12%/0.85)] backdrop-blur-sm p-5 shadow-lg hover:shadow-xl hover:border-[hsl(222_20%_30%)] transition-all text-left"
             >
               <div className="w-9 h-9 rounded-lg bg-[hsl(var(--accent-coral)/0.12)] flex items-center justify-center flex-shrink-0">
                 <Send className="w-4.5 h-4.5 text-[hsl(var(--accent-coral))]" />
               </div>
               <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-semibold prefooter-heading group-hover:text-primary transition-colors">
+                <h3 className="text-sm font-semibold text-[hsl(0_0%_92%)] group-hover:text-primary transition-colors">
                   Get in touch
                 </h3>
-                <p className="text-xs prefooter-text mt-1 leading-relaxed">
+                <p className="text-xs text-[hsl(222_20%_60%)] mt-1 leading-relaxed">
                   Reach Rich or Charlie Ferriman directly.
                 </p>
                 <span className="inline-flex items-center gap-1 text-xs font-medium text-primary mt-2">
@@ -236,17 +246,17 @@ export function PreFooter() {
           </div>
 
           {/* Compact contact details row */}
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-6 text-xs prefooter-contact">
-            <a href="mailto:rich@neurodiversityglobal.com" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 mt-8 text-xs text-[hsl(222_20%_50%)]">
+            <a href="mailto:rich@neurodiversityglobal.com" className="inline-flex items-center gap-1.5 hover:text-[hsl(0_0%_85%)] transition-colors">
               <Mail className="w-3 h-3" /> rich@neurodiversityglobal.com
             </a>
-            <a href="tel:+447508242212" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+            <a href="tel:+447508242212" className="inline-flex items-center gap-1.5 hover:text-[hsl(0_0%_85%)] transition-colors">
               <Phone className="w-3 h-3" /> +44 (0) 7508 242212
             </a>
-            <a href="https://www.linkedin.com/in/richferriman" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+            <a href="https://www.linkedin.com/in/richferriman" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-[hsl(0_0%_85%)] transition-colors">
               <Linkedin className="w-3 h-3" /> Rich on LinkedIn
             </a>
-            <a href="https://www.linkedin.com/in/charlieferriman" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors">
+            <a href="https://www.linkedin.com/in/charlieferriman" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 hover:text-[hsl(0_0%_85%)] transition-colors">
               <Linkedin className="w-3 h-3" /> Charlie on LinkedIn
             </a>
           </div>
