@@ -89,6 +89,7 @@ export function FinalScreen() {
   const [consentGiven, setConsentGiven] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [emptySectionsWarning, setEmptySectionsWarning] = useState(false);
+  const [postChoice, setPostChoice] = useState<"shared" | "declined" | null>(null);
 
   const canGenerate = consentDecided;
 
@@ -148,40 +149,47 @@ export function FinalScreen() {
           </p>
         </div>
 
-        <div className="space-y-5 pt-4 border-t border-border">
-          <div className="flex items-start gap-3">
-            <Checkbox
-              id="consent-anon"
-              checked={consentGiven}
-              onCheckedChange={(checked) => setConsentGiven(!!checked)}
-              className="mt-0.5"
-            />
-            <label htmlFor="consent-anon" className="text-sm text-foreground leading-relaxed cursor-pointer">
-              I am happy to share an anonymised summary to help build a public picture of what neurodivergent children are experiencing in schools. No names. No school. Nothing that identifies your child.
-            </label>
-          </div>
+        {!postChoice && (
+          <div className="space-y-5 pt-4 border-t border-border">
+            <p className="text-sm text-foreground leading-relaxed">
+              Would you be willing to share an anonymised summary of this profile to help build a public picture of what neurodivergent children are experiencing in schools? No names. No school. Nothing that identifies your child.
+            </p>
 
-          <div className="flex gap-3">
-            <Button
-              onClick={() => {
-                // Future: submit anonymised data
-              }}
-              size="sm"
-              disabled={!consentGiven}
-            >
-              Share anonymised summary
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                // Do nothing, just acknowledge
-              }}
-            >
-              No thanks
-            </Button>
+            <div className="flex gap-3">
+              <Button
+                onClick={() => setPostChoice("shared")}
+                size="sm"
+              >
+                Share anonymised summary
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setPostChoice("declined")}
+              >
+                No thanks
+              </Button>
+            </div>
           </div>
-        </div>
+        )}
+
+        {postChoice === "shared" && (
+          <div className="rounded-lg border border-primary/30 bg-primary/5 p-4 space-y-2">
+            <p className="text-sm font-medium text-foreground">Thank you.</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Your anonymised summary will be used solely to help build a broader picture of the experiences of neurodivergent children in schools across the UK. No names, no school, and nothing that could identify your child will ever be included. The data is encrypted, never shared with third parties, and is not used to train AI models.
+            </p>
+          </div>
+        )}
+
+        {postChoice === "declined" && (
+          <div className="rounded-lg border border-border bg-muted/50 p-4 space-y-2">
+            <p className="text-sm font-medium text-foreground">No problem at all.</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              We will make sure all data from this session is deleted. Nothing is stored, nothing is shared. Your report is the only copy.
+            </p>
+          </div>
+        )}
       </div>
     );
   }
