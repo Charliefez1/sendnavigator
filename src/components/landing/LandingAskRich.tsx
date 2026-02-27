@@ -9,6 +9,9 @@ const exampleQuestions = [
   "What should I do right now?",
   "Will my child lose their EHCP?",
   "What are Individual Support Plans?",
+  "What does the White Paper mean for my child?",
+  "How do I respond to the consultation?",
+  "What is the four-level support model?",
 ];
 
 interface AnswerData {
@@ -131,7 +134,7 @@ export function LandingAskRich({ onSignUpClick }: LandingAskRichProps) {
               className="text-xs px-4 py-2.5 min-h-[40px] rounded-full transition-all duration-200"
               style={{
                 backgroundColor: "hsl(222 28% 14% / 0.8)",
-                color: "hsl(222 20% 60%)",
+                color: "hsl(222 15% 72%)",
                 border: "1px solid hsl(222 20% 22%)",
                 borderLeft: "3px solid hsl(175 60% 40% / 0.4)",
               }}
@@ -142,7 +145,7 @@ export function LandingAskRich({ onSignUpClick }: LandingAskRichProps) {
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = "hsl(222 20% 22%)";
                 e.currentTarget.style.borderLeft = "3px solid hsl(175 60% 40% / 0.4)";
-                e.currentTarget.style.color = "hsl(222 20% 60%)";
+                e.currentTarget.style.color = "hsl(222 15% 72%)";
               }}
             >
               {ex}
