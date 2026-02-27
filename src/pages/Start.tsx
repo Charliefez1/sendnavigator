@@ -398,7 +398,7 @@ const Index = () => {
         </section>
 
         {/* ─── PreFooter inside backdrop ─── */}
-        <div className="relative [&_section]:bg-transparent [&_section]:border-t-0 [&_.content-wide]:py-10">
+        <div className="relative dark-prefooter [&_section]:bg-transparent [&_section]:border-t-0 [&_.content-wide]:py-10 [&_.prefooter-card]:bg-[hsl(222_35%_12%/0.85)] [&_.prefooter-card]:backdrop-blur-sm [&_.prefooter-card]:border-[hsl(222_20%_20%)] [&_.prefooter-heading]:text-[hsl(0_0%_92%)] [&_.prefooter-text]:text-[hsl(222_20%_60%)] [&_.prefooter-contact]:text-[hsl(222_20%_50%)]">
           <PreFooter />
         </div>
       </div>
