@@ -372,28 +372,9 @@ const Index = () => {
           )}
         </section>
 
-        {/* ─── SECTION 5: CREATORS text + logos ─── */}
-        <section className="relative">
-          <div className="content-section py-6 sm:py-8 flex flex-col items-center text-center gap-4">
-            <h1
-              className="text-2xl sm:text-3xl font-display font-semibold"
-              style={{ color: "hsl(0 0% 96%)" }}
-            >
-              Built by parents
-            </h1>
-            <h2
-              className="text-base sm:text-lg font-display font-normal max-w-md leading-relaxed"
-              style={{ color: "hsl(222 20% 55%)" }}
-            >
-              Still working at making this work.
-            </h2>
-          </div>
-        </section>
-
       </div>
 
-      {/* Bottom padding for persistent ticker - matches footer bg */}
-      <div className="h-16 bg-navy" />
+
     </Layout>
   );
 };
