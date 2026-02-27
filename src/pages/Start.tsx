@@ -34,7 +34,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import askRichCharacter from "@/assets/ask-rich-character.png";
-import creatorsDuo from "@/assets/creators-duo.png";
+
 import beaconLogo from "@/assets/neurodiversity-global-logo-trimmed.png";
 import ngEducationLogo from "@/assets/neurodiversity-global-education-logo-full.png";
 
@@ -247,32 +247,15 @@ const Index = () => {
         </div>
         {/* Smooth fade into dark section below */}
         <div
-          className="h-32 sm:h-40"
+          className="h-24 sm:h-32"
           style={{
-            background: "linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(222 35% 8%) 100%)",
+            background: "linear-gradient(to bottom, hsl(var(--background)), hsl(222 35% 8%))",
           }}
         />
       </section>
 
       {/* ─── SECTIONS 3-5: Shared dark backdrop ─── */}
       <div className="relative overflow-hidden" style={{ backgroundColor: "hsl(222 35% 8%)" }}>
-        {/* Background image — cover, centered on subjects */}
-        <div className="absolute inset-0">
-          <img
-            src={creatorsDuo}
-            alt=""
-            aria-hidden="true"
-            className="w-full h-full object-cover object-[center_20%]"
-            style={{ opacity: 0.12 }}
-          />
-          {/* Inner vignette to push image down and darken edges */}
-          <div
-            className="absolute inset-0"
-            style={{
-              background: "radial-gradient(ellipse 80% 60% at 50% 35%, transparent 0%, hsl(222 35% 8%) 75%)",
-            }}
-          />
-        </div>
 
         {/* ─── SECTION 3: ASK RICH ─── */}
         <section className="relative">
