@@ -109,7 +109,7 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
       <div className="mt-6 bg-muted/40 border border-border rounded-lg p-4 space-y-3">
         <p className="text-xs font-semibold text-foreground">Data privacy notice</p>
         <p className="text-xs text-muted-foreground leading-relaxed">
-          The answers you provide will be stored securely and encrypted for up to 14 days, then automatically deleted. If you generate a report, your answers are sent to an AI service (Anthropic Claude) to create personalised insights. Your data is not used to train AI models and is not shared with third parties. You can read our full{" "}
+          The answers you provide will be stored securely and encrypted for up to 14 days, then automatically deleted. If you generate a report, your answers are processed by an AI service (Anthropic Claude) to create personalised insights. All answers use the SEND Navigator knowledge base that has been built by the team behind the tool. Your data is not used to train AI models and is not shared with third parties. You can read our full{" "}
           <Link to="/privacy-policy" className="text-primary underline underline-offset-2">privacy policy</Link>.
         </p>
         <label className="flex items-start gap-2.5 cursor-pointer">

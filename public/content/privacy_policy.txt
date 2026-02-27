@@ -28,7 +28,7 @@ How we use your data
 - To display feedback (moderated).
 - To respond to messages.
 - To improve the site.
-- To generate child profile documents (AI processed, not trained on).
+- To generate child profile documents (AI processed using the SEND Navigator knowledge base, not trained on).
 
 Data retention
 - Child profile data: Deleted after 14 days.
@@ -36,7 +36,7 @@ Data retention
 - Contact/Feedback: Retained while site is active.
 
 Data sharing
-We do not sell data. We do not share with advertisers. AI processing via Anthropic (Claude) does not use data for training.
+We do not sell data. We do not share with advertisers. AI processing via Anthropic (Claude) uses the SEND Navigator knowledge base and does not use data for training.
 
 Cookies
 Essential cookies and optional analytics cookies.

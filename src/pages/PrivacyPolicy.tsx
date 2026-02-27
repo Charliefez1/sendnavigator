@@ -30,7 +30,7 @@ export default function PrivacyPolicy() {
               <li><strong>Analytics (with consent):</strong> Anonymous page views, device type, referrer, and session identifiers. No names, emails, or IP addresses are stored in analytics. Tracking only fires if you accept cookies.</li>
               <li><strong>Contact form:</strong> Name, email, organisation (optional), and message when you choose to contact us.</li>
               <li><strong>Feedback and questions:</strong> Name (optional) and the text you submit. These are moderated before publishing.</li>
-              <li><strong>Child profile data:</strong> If you use the "My Child: A Profile" tool, the answers you provide are stored temporarily (up to 14 days) behind an access code, then automatically deleted. This data is encrypted in transit and at rest.</li>
+              <li><strong>Child profile data:</strong> If you use the "My Child: A Profile" tool, the answers you provide are stored temporarily (up to 14 days) behind an access code, then automatically deleted. This data is encrypted in transit and at rest. If you generate a report, your answers are processed by an AI service (Anthropic Claude) to create personalised insights. All answers use the SEND Navigator knowledge base that has been built by the team behind the tool.</li>
               <li><strong>Authentication:</strong> Email and hashed password if you create an account.</li>
             </ul>
           </section>
@@ -48,7 +48,7 @@ export default function PrivacyPolicy() {
               <li>To display your feedback or questions (after moderation) on the site</li>
               <li>To respond to contact form messages</li>
               <li>To understand how people use the site so we can improve it</li>
-              <li>To generate your child's profile document (processed by AI, not stored beyond the 14-day window)</li>
+              <li>To generate your child's profile document (processed by AI using the SEND Navigator knowledge base, not stored beyond the 14-day window)</li>
             </ul>
           </section>
 
@@ -66,7 +66,7 @@ export default function PrivacyPolicy() {
           <section className="space-y-3">
             <h2 className="text-lg font-semibold font-display">Data sharing</h2>
             <p className="text-sm leading-relaxed">
-              We do not sell your data. We do not share it with advertisers. Data is processed by our hosting and database provider (Lovable Cloud). AI-generated profile reports are processed by Anthropic (Claude). Only the text you enter is sent, and it is not used to train their models.
+              We do not sell your data. We do not share it with advertisers. Data is processed by our hosting and database provider (Lovable Cloud). AI-generated profile reports are processed by Anthropic (Claude) using the SEND Navigator knowledge base built by the team behind the tool. Only the text you enter is sent, and it is not used to train their models.
             </p>
           </section>
 
