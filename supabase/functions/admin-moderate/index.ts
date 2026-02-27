@@ -52,7 +52,7 @@ const ALLOWED_ACTIONS = new Set([
   "kb_list", "kb_create", "kb_update", "kb_delete",
   "news_list", "news_update_status",
   "insert_content_update",
-  "resolve_flag", "resolve_all_flags", "stale_flag_count", "flag_all_pages",
+  "resolve_flag", "resolve_flags_by_page", "resolve_all_flags", "stale_flag_count", "flag_all_pages",
   "review_list", "mark_reviewed", "mark_all_reviewed",
   "analytics_summary", "stats",
   "contact_list",
@@ -450,10 +450,24 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Resolve all stale flags for a specific page
+    if (action === "resolve_flags_by_page") {
+      const { data, error } = await supabase
+        .from("page_update_flags")
+        .update({ status: id.status || "updated", resolved_at: new Date().toISOString() })
+        .eq("status", "stale")
+        .eq("page_path", id.page_path)
+        .select();
+      if (error) throw error;
+      return new Response(JSON.stringify({ data, count: data?.length || 0 }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
     if (action === "resolve_all_flags") {
       const { data, error } = await supabase
         .from("page_update_flags")
-        .update({ status: "updated", resolved_at: new Date().toISOString() })
+        .update({ status: id?.status || "updated", resolved_at: new Date().toISOString() })
         .eq("status", "stale")
         .select();
       if (error) throw error;
