@@ -107,8 +107,7 @@ const Landing = () => {
         />
 
         {/* Header bar */}
-        <div className="relative content-wide flex flex-col items-center py-6">
-          <img src={beaconLogo} alt="Beacon SEND Navigator" className="h-24" />
+        <div className="relative content-wide flex items-center justify-end py-6">
           <button
             onClick={scrollToAuth}
             className="absolute right-4 top-6 text-sm tracking-wide min-h-[44px] px-4"
@@ -177,7 +176,7 @@ const Landing = () => {
 
         {/* Neurodiversity Global branding at bottom of hero */}
         <div className="relative flex flex-col items-center gap-1 pb-4">
-          <img src={ndgLogo} alt="Neurodiversity Global" className="h-96 opacity-80" />
+          <img src={ndgLogo} alt="Neurodiversity Global" className="h-32 opacity-80" />
           <p className="text-xs tracking-wide" style={{ color: "hsl(222 20% 50%)" }}>
             A free resource site by Neurodiversity Global
           </p>
