@@ -105,8 +105,19 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
         </div>
       )}
 
+      {/* Beta disclaimer */}
+      <div className="mt-6 bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 space-y-2">
+        <div className="flex items-center gap-2">
+          <FlaskConical className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0" />
+          <p className="text-xs font-semibold text-foreground">Beta phase</p>
+        </div>
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          This tool is currently in beta, which means we are actively developing and improving it on a daily basis. New content, questions, and insights are being added all the time. By choosing to use this tool, you accept that the information and guidance it provides is a starting point, not a finished product. Everything here is a guide only and should not be treated as medical advice, a formal diagnosis, or a legal document. We recommend you always seek professional guidance where needed.
+        </p>
+      </div>
+
       {/* GDPR consent notice */}
-      <div className="mt-6 bg-muted/40 border border-border rounded-lg p-4 space-y-3">
+      <div className="mt-4 bg-muted/40 border border-border rounded-lg p-4 space-y-3">
         <p className="text-xs font-semibold text-foreground">Data privacy notice</p>
         <p className="text-xs text-muted-foreground leading-relaxed">
           The answers you provide will be stored securely and encrypted for up to 14 days, then automatically deleted. If you generate a report, your answers are processed by an AI service (Anthropic Claude) to create personalised insights. All answers use the SEND Navigator knowledge base that has been built by the team behind the tool. Your data is not used to train AI models and is not shared with third parties. You can read our full{" "}
@@ -119,7 +130,7 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
             className="mt-0.5"
           />
           <span className="text-xs text-foreground leading-relaxed">
-            I understand how my data will be used and consent to it being stored temporarily for this purpose.
+            I understand this tool is in beta, that the information provided is a guide only, and I consent to my data being stored temporarily as described above.
           </span>
         </label>
       </div>
