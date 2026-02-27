@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, KeyRound, Loader2, Save } from "lucide-react";
+import { ArrowRight, KeyRound, Loader2, Save, FlaskConical } from "lucide-react";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { Checkbox } from "@/components/ui/checkbox";
 import { supabase } from "@/integrations/supabase/client";
@@ -191,6 +191,22 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
           </div>
         )}
       </div>
+
+      {/* Dev/test button */}
+      {onLoadTestData && (
+        <div className="mt-10 pt-6 border-t border-border">
+          <Button
+            onClick={onLoadTestData}
+            variant="outline"
+            size="sm"
+            className="gap-2 text-muted-foreground"
+          >
+            <FlaskConical className="w-3.5 h-3.5" />
+            Load test data (all sections filled)
+          </Button>
+          <p className="text-xs text-muted-foreground mt-1.5">For testing only. Populates every field with sample data.</p>
+        </div>
+      )}
     </div>
   );
 }
