@@ -14,9 +14,11 @@ export function LandingContactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState("");
+  const [loadedAt] = useState(() => Date.now());
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,6 +27,13 @@ export function LandingContactForm() {
     const result = contactSchema.safeParse({ name, email, message });
     if (!result.success) {
       setError(result.error.errors[0].message);
+      return;
+    }
+
+    // Spam protection: honeypot and timing
+    if (honeypot) return;
+    if (Date.now() - loadedAt < 3000) {
+      setError("Please wait a moment before submitting.");
       return;
     }
 
@@ -115,12 +124,18 @@ export function LandingContactForm() {
         {sending ? "Sending…" : "Send message"}
         <Send className="w-4 h-4" />
       </Button>
-      <p className="text-xs text-muted-foreground">
-        Or email directly:{" "}
-        <a href="mailto:rich@neurodiversityglobal.com" className="text-primary hover:underline">
-          rich@neurodiversityglobal.com
-        </a>
-      </p>
+      {/* Honeypot */}
+      <div className="absolute opacity-0 pointer-events-none h-0 overflow-hidden" aria-hidden="true">
+        <label htmlFor="contact-website">Website</label>
+        <input
+          id="contact-website"
+          type="text"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
     </form>
   );
 }
