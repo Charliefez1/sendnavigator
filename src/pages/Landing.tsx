@@ -4,6 +4,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { AuthForm } from "@/components/AuthForm";
 import { AnimatedFeatureShowcase } from "@/components/landing/AnimatedFeatureShowcase";
 import { LandingAskRich } from "@/components/landing/LandingAskRich";
+import { LandingContactForm } from "@/components/landing/LandingContactForm";
 import { useAuth } from "@/contexts/AuthContext";
 import { ArrowRight, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -142,7 +143,7 @@ const Landing = () => {
               className="text-base sm:text-lg tracking-wide max-w-md mx-auto mb-12"
               style={{ color: "hsl(222 20% 55%)", fontFamily: "Inter, system-ui, sans-serif", lineHeight: "1.7" }}
             >
-              Independent. Fact-based. Built by a parent, for parents.
+              Always Free. Independent. Fact-based. Built by a parent, for parents.
             </p>
             <Button
               onClick={scrollToAuth}
@@ -160,7 +161,7 @@ const Landing = () => {
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              Get started free
+              Get started
               <ArrowRight className="w-4 h-4" />
             </Button>
 
@@ -284,13 +285,13 @@ const Landing = () => {
           style={fade4.style}
         >
           <div className="max-w-2xl mx-auto rounded-2xl border p-6 sm:p-8" style={{ borderColor: "hsl(222 20% 22%)", backgroundColor: "hsl(222 30% 12% / 0.5)" }}>
-            <h2
+             <h2
               className="text-2xl sm:text-3xl font-display font-semibold mb-2"
               style={{ color: "hsl(0 0% 96%)" }}
             >
               Ask Rich anything.
             </h2>
-            <p className="text-sm mb-10" style={{ color: "hsl(222 20% 55%)" }}>
+            <p className="text-sm mb-10" style={{ color: "hsl(222 15% 70%)" }}>
               Get a real answer grounded in confirmed facts, not generic AI output.
             </p>
             <LandingAskRich onSignUpClick={scrollToAuth} />
@@ -345,7 +346,29 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* ─── SECTION 6: FOOTER ─── */}
+      {/* ─── SECTION 6: CONTACT ─── */}
+      <section className="bg-background relative">
+        <div
+          className="absolute top-0 left-0 right-0 h-px"
+          style={{
+            background: "linear-gradient(to right, transparent, hsl(175 60% 40% / 0.15), transparent)",
+          }}
+        />
+        <div className="content-section py-16 sm:py-20">
+          <div className="max-w-xl mx-auto">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "hsl(175 60% 40%)" }} />
+              <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Get in touch</p>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-8 text-center">
+              Contact us
+            </h2>
+            <LandingContactForm />
+          </div>
+        </div>
+      </section>
+
+      {/* ─── SECTION 7: FOOTER ─── */}
       <footer className="relative py-5">
         {/* Teal gradient top line */}
         <div
