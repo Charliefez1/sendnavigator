@@ -440,17 +440,17 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     if (parentTexts.length > 0) {
       const parentProse = parentTexts.join(". ").replace(/\.\./g, ".");
 
-      // Label
-      doc.setFontSize(10);
+      // Sub-heading
+      doc.setFontSize(12);
       doc.setFont("helvetica", "bold");
-      setColor(MID_TEXT);
-      y = checkPageBreak(y, 12);
-      doc.text(`In ${childName}'s parent's words`, margin + 5, y + 1);
-      y += 7;
+      setColor(NAVY);
+      y = checkPageBreak(y, 16);
+      doc.text(`In ${childName}'s parent's words`, margin, y);
+      y += 8;
 
       // Use page-break-safe boxed text renderer
       y = addBoxedText(parentProse, y);
-      y += 6;
+      y += 8;
     }
 
     // --- CHILD VOICE BLOCK ---
@@ -465,11 +465,11 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
       if (childTexts.length > 0) {
         y = checkPageBreak(y, 20);
 
-        doc.setFontSize(10);
+        doc.setFontSize(12);
         doc.setFont("helvetica", "bold");
         setColor([120, 90, 40]);
-        doc.text(`In ${childName}'s own words`, margin + 5, y);
-        y += 6;
+        doc.text(`In ${childName}'s own words`, margin, y);
+        y += 8;
 
         setColor(DARK_TEXT);
         for (const text of childTexts) {
@@ -484,11 +484,11 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     if (aiContent) {
       y = checkPageBreak(y, 20);
 
-      doc.setFontSize(10);
+      doc.setFontSize(12);
       doc.setFont("helvetica", "bold");
-      setColor(MID_TEXT);
+      setColor(NAVY);
       doc.text("What this tells us", margin, y);
-      y += 7;
+      y += 8;
 
       // Split AI content into paragraphs for better page break handling
       const cleanAI = cleanMarkdown(aiContent);
@@ -504,7 +504,14 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
 
     // --- CLOSING REFLECTION ---
     if (hasReflection) {
-      y = checkPageBreak(y, 15);
+      y = checkPageBreak(y, 20);
+
+      doc.setFontSize(12);
+      doc.setFont("helvetica", "bold");
+      setColor(NAVY);
+      doc.text("Closing reflection", margin, y);
+      y += 8;
+
       setColor(MID_TEXT);
       y = addWrappedText(section.reflection, margin, y, contentWidth, 10.5, "italic");
       setColor(DARK_TEXT);
