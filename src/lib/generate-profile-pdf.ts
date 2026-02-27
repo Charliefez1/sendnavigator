@@ -585,7 +585,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     y += 4;
     y = checkPageBreak(y, 40);
 
-    const askRichText = "Have more questions? Ask Rich is available on the Beacon SEND Navigator and can answer questions about your child's needs, the system, your rights, and what to do next. Everything is confidential and there are no wrong questions. Visit sendnavigator.neuro.support and use the Ask Rich feature.";
+    const askRichText = "Have more questions? Ask Rich is available on the Neurodiversity Global SEND Navigator and can answer questions about your child's needs, the system, your rights, and what to do next. Everything is confidential and there are no wrong questions. Visit sendnavigator.neuro.support and use the Ask Rich feature.";
     const askRichHeight = measureText(askRichText, contentWidth - 14, 10.5) + 12;
 
     setFill([245, 248, 252]);
