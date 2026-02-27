@@ -1,11 +1,11 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
-import { Upload, Loader2, CheckCircle, XCircle, Clock, RefreshCw, AlertTriangle } from "lucide-react";
+import { Upload, Loader2, CheckCircle, XCircle, Clock, RefreshCw, AlertTriangle, FileText, X, File } from "lucide-react";
 
 interface ContentUpdate {
   id: string;
@@ -18,6 +18,18 @@ interface ContentUpdate {
   result_summary: string | null;
 }
 
+const ACCEPTED_TYPES = [
+  "text/plain", "text/markdown", "text/csv", "text/html",
+  "application/json", "application/xml",
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+];
+
+const ACCEPT_STRING = ".txt,.md,.csv,.json,.xml,.html,.pdf,.doc,.docx,.pptx,.xlsx";
+
 export function ContentUpdateManager({ pin }: { pin: string }) {
   const [updates, setUpdates] = useState<ContentUpdate[]>([]);
   const [sourceName, setSourceName] = useState("");
@@ -25,6 +37,10 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
   const [breakingNews, setBreakingNews] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [processingId, setProcessingId] = useState<string | null>(null);
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [fileProcessing, setFileProcessing] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
   const fetchUpdates = useCallback(async () => {
@@ -40,16 +56,97 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
     fetchUpdates();
   }, [fetchUpdates]);
 
+  const handleFileSelect = (file: File) => {
+    if (file.size > 10 * 1024 * 1024) {
+      toast({ title: "File too large", description: "Max 10MB", variant: "destructive" });
+      return;
+    }
+    setUploadedFile(file);
+    if (!sourceName.trim()) {
+      setSourceName(file.name);
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) handleFileSelect(file);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragOver(false);
+    const file = e.dataTransfer.files?.[0];
+    if (file) handleFileSelect(file);
+  };
+
+  const processFile = async (): Promise<string> => {
+    if (!uploadedFile) return "";
+    
+    const ext = uploadedFile.name.split(".").pop()?.toLowerCase() || "";
+    const isText = ["txt", "md", "csv", "json", "xml", "html"].includes(ext);
+
+    if (isText) {
+      return await uploadedFile.text();
+    }
+
+    // For binary files: upload to storage, then parse via edge function
+    setFileProcessing(true);
+
+    try {
+      // Get signed upload URL
+      const { data: urlData, error: urlError } = await supabase.functions.invoke("admin-moderate", {
+        body: { pin, action: "upload_signed_url", id: { file_name: uploadedFile.name } },
+      });
+      if (urlError || !urlData?.data) throw new Error(urlData?.error || "Failed to get upload URL");
+
+      const { signedUrl, path } = urlData.data;
+
+      // Upload file using signed URL
+      const { error: uploadError } = await supabase.storage
+        .from("admin-uploads")
+        .uploadToSignedUrl(path, urlData.data.token, uploadedFile);
+      if (uploadError) throw uploadError;
+
+      // Parse document via edge function
+      const { data: parseData, error: parseError } = await supabase.functions.invoke("parse-document", {
+        body: { pin, file_path: path, file_name: uploadedFile.name },
+      });
+      if (parseError) throw parseError;
+      if (parseData?.error) throw new Error(parseData.error);
+
+      return parseData.text || "";
+    } finally {
+      setFileProcessing(false);
+    }
+  };
+
   const handleSubmit = async () => {
-    if (!rawContent.trim()) return;
+    if (!rawContent.trim() && !uploadedFile) return;
     setSubmitting(true);
     try {
-      // Insert via admin-moderate
+      let contentToSubmit = rawContent.trim();
+
+      // If there's an uploaded file, process it
+      if (uploadedFile) {
+        const fileText = await processFile();
+        if (fileText) {
+          contentToSubmit = contentToSubmit
+            ? `${contentToSubmit}\n\n--- Extracted from: ${uploadedFile.name} ---\n\n${fileText}`
+            : fileText;
+        }
+      }
+
+      if (!contentToSubmit) {
+        toast({ title: "No content to submit", variant: "destructive" });
+        setSubmitting(false);
+        return;
+      }
+
       const { data, error } = await supabase.functions.invoke("admin-moderate", {
         body: {
           pin,
           action: "insert_content_update",
-          id: { source_name: sourceName.trim() || "Manual submission", raw_content: rawContent.trim() },
+          id: { source_name: sourceName.trim() || "Manual submission", raw_content: contentToSubmit },
         },
       });
       if (error) throw error;
@@ -57,7 +154,6 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
 
       toast({ title: "Content submitted for processing" });
 
-      // If breaking news, flag all pages
       if (breakingNews) {
         await supabase.functions.invoke("admin-moderate", {
           body: {
@@ -72,6 +168,8 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
       setSourceName("");
       setRawContent("");
       setBreakingNews(false);
+      setUploadedFile(null);
+      if (fileInputRef.current) fileInputRef.current.value = "";
       await fetchUpdates();
     } catch (err: any) {
       toast({ title: "Failed to submit", description: err.message, variant: "destructive" });
@@ -113,13 +211,75 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
       <div className="bg-card border border-border rounded-xl p-5 space-y-4">
         <h3 className="font-display text-lg font-bold">Submit New Information</h3>
         <p className="text-sm text-muted-foreground">
-          Paste raw text from articles, government announcements, or briefings. The AI will extract facts, update the knowledge base, and flag affected pages.
+          Paste raw text or upload a document (PDF, Word, text files). The AI will extract facts, update the knowledge base, and flag affected pages.
         </p>
         <Input
           placeholder="Source name (e.g. 'GOV.UK announcement 23 Feb 2026')"
           value={sourceName}
           onChange={(e) => setSourceName(e.target.value)}
         />
+
+        {/* File upload zone */}
+        <div
+          onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+          onDragLeave={() => setDragOver(false)}
+          onDrop={handleDrop}
+          className={`border-2 border-dashed rounded-xl p-6 text-center transition-colors cursor-pointer ${
+            dragOver
+              ? "border-primary bg-primary/5"
+              : uploadedFile
+              ? "border-status-confirmed/40 bg-status-confirmed-bg"
+              : "border-border hover:border-primary/40"
+          }`}
+          onClick={() => fileInputRef.current?.click()}
+        >
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept={ACCEPT_STRING}
+            onChange={handleFileChange}
+            className="hidden"
+          />
+          {uploadedFile ? (
+            <div className="flex items-center justify-center gap-3">
+              <File className="h-5 w-5 text-status-confirmed" />
+              <span className="text-sm font-medium">{uploadedFile.name}</span>
+              <span className="text-xs text-muted-foreground">
+                ({(uploadedFile.size / 1024).toFixed(0)} KB)
+              </span>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-6 w-6 p-0"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setUploadedFile(null);
+                  if (fileInputRef.current) fileInputRef.current.value = "";
+                }}
+              >
+                <X className="h-3.5 w-3.5" />
+              </Button>
+            </div>
+          ) : (
+            <div className="space-y-2">
+              <FileText className="h-8 w-8 mx-auto text-muted-foreground" />
+              <p className="text-sm text-muted-foreground">
+                <span className="font-semibold text-foreground">Click to upload</span> or drag and drop
+              </p>
+              <p className="text-xs text-muted-foreground">
+                PDF, Word, PowerPoint, Excel, or plain text (max 10MB)
+              </p>
+            </div>
+          )}
+        </div>
+
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <span className="font-medium">OR</span>
+          <div className="flex-1 h-px bg-border" />
+          <span>paste text below</span>
+          <div className="flex-1 h-px bg-border" />
+        </div>
+
         <Textarea
           placeholder="Paste the raw content here..."
           value={rawContent}
@@ -139,11 +299,15 @@ export function ContentUpdateManager({ pin }: { pin: string }) {
         </div>
         <Button
           onClick={handleSubmit}
-          disabled={submitting || !rawContent.trim()}
+          disabled={submitting || fileProcessing || (!rawContent.trim() && !uploadedFile)}
           className="rounded-full gap-2"
         >
-          {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Upload className="h-4 w-4" />}
-          Submit for Processing
+          {submitting || fileProcessing ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            <Upload className="h-4 w-4" />
+          )}
+          {fileProcessing ? "Extracting text from document..." : "Submit for Processing"}
         </Button>
       </div>
 

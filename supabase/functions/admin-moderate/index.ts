@@ -56,6 +56,7 @@ const ALLOWED_ACTIONS = new Set([
   "review_list", "mark_reviewed", "mark_all_reviewed",
   "analytics_summary", "stats",
   "contact_list",
+  "upload_signed_url",
 ]);
 
 // ─── Rate limiting ───
@@ -547,6 +548,19 @@ Deno.serve(async (req) => {
             totalFeedback: feedback.count || 0,
           },
         }),
+        { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Upload signed URL for admin file uploads
+    if (action === "upload_signed_url") {
+      const filePath = `uploads/${Date.now()}-${id.file_name}`;
+      const { data, error } = await supabase.storage
+        .from("admin-uploads")
+        .createSignedUploadUrl(filePath);
+      if (error) throw error;
+      return new Response(
+        JSON.stringify({ data: { ...data, path: filePath } }),
         { headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
