@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useChildProfile, SECTION_TITLES, ChildProfileState } from "@/contexts/ChildProfileContext";
 import { sectionContent } from "@/config/child-profile-sections";
 import { childVoiceQuestions } from "@/config/child-voice-questions";
@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Download } from "lucide-react";
 import { generateProfilePDF } from "@/lib/generate-profile-pdf";
 import { supabase } from "@/integrations/supabase/client";
+import { ReportLoadingScreen } from "./ReportLoadingScreen";
 
 type Stage = "input" | "loading" | "complete";
 
@@ -131,18 +132,7 @@ export function FinalScreen() {
 
   // === LOADING SCREEN ===
   if (stage === "loading") {
-    return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="text-center space-y-4">
-          <h2 className="text-lg font-display font-semibold text-foreground">
-            Building your report.
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            This usually takes about 30 seconds.
-          </p>
-        </div>
-      </div>
-    );
+    return <ReportLoadingScreen />;
   }
 
   // === COMPLETE SCREEN ===
