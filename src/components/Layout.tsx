@@ -59,7 +59,7 @@ export function Layout({ children }: LayoutProps) {
         </>
       )}
 
-      {!isStartPage && <PreFooter />}
+      <PreFooter />
       <Footer />
       {!isReportPage && <JourneyFloatingBar />}
       <AskSendFloating />

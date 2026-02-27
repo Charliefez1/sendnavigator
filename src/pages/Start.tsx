@@ -6,7 +6,7 @@ import { HomeAskRich } from "@/components/landing/HomeAskRich";
 import { AnimatedFeatureShowcase } from "@/components/landing/AnimatedFeatureShowcase";
 import { GuideMe } from "@/components/GuideMe";
 import { AskQuestionCompact } from "@/components/AskQuestionCompact";
-import { PreFooter } from "@/components/PreFooter";
+
 import {
   ArrowRight,
   BookOpen,
@@ -390,10 +390,6 @@ const Index = () => {
           </div>
         </section>
 
-        {/* ─── PreFooter inside backdrop ─── */}
-        <div className="relative dark-prefooter [&_section]:bg-transparent [&_section]:border-t-0 [&_.content-wide]:py-10 [&_.prefooter-card]:bg-[hsl(222_35%_12%/0.85)] [&_.prefooter-card]:backdrop-blur-sm [&_.prefooter-card]:border-[hsl(222_20%_20%)] [&_.prefooter-heading]:text-[hsl(0_0%_92%)] [&_.prefooter-text]:text-[hsl(222_20%_60%)] [&_.prefooter-contact]:text-[hsl(222_20%_50%)]">
-          <PreFooter />
-        </div>
       </div>
 
       {/* Bottom padding for persistent ticker - matches footer bg */}
