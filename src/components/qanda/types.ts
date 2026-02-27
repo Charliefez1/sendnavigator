@@ -77,12 +77,12 @@ export function checkForRefusal(question: string): QandARefusal | null {
         { label: "Sources and how to read them", path: "/sources" },
       ],
       speculation: [
-        { label: "What is changing", path: "/what-is-changing" },
-        { label: "What the leaks are saying", path: "/what-the-leaks-are-saying" },
+        { label: "What is now in motion", path: "/what-is-changing" },
+        { label: "What has been reported", path: "/what-the-leaks-are-saying" },
       ],
       predictions: [
-        { label: "Timeline and next steps", path: "/timeline" },
-        { label: "What is changing", path: "/what-is-changing" },
+        { label: "What happens next", path: "/timeline" },
+        { label: "What is now in motion", path: "/what-is-changing" },
       ],
     };
 

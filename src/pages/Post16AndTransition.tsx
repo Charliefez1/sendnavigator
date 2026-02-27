@@ -352,10 +352,10 @@ export default function Post16AndTransition() {
           <h2 className="text-sm font-display font-bold text-foreground mb-2">A note on reform</h2>
           <div className="space-y-2 text-sm text-muted-foreground leading-relaxed">
             <p>
-              The White Paper is expected to propose changes to how SEND support works for young people in further education and in the transition to adulthood. We do not yet know the detail.
+              The Schools White Paper, published 23 February 2026, includes proposals affecting post-16 SEND support, including supported internships and transition planning. A formal consultation is open until 18 May 2026.
             </p>
             <p>
-              What we do know is that <strong>the current law has not changed</strong>. The rights described on this page are in force now.
+              The <strong>current law has not changed</strong>. The rights described on this page are in force now.
             </p>
             <p>
               If the law changes, this page will be updated and the change will be clearly labelled.

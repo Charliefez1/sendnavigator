@@ -147,7 +147,7 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
           <div className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0 bg-muted">
             <HelpCircle className="w-3.5 h-3.5 text-muted-foreground" />
           </div>
-          What we do not know yet
+          What is genuinely unknown
         </h3>
         <ul className="space-y-3">
           {answer.whatWeDoNotKnow.map((point, i) => (

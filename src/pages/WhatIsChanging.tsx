@@ -28,7 +28,7 @@ const sections: PageSectionDef[] = [
   { id: "workforce", icon: GraduationCap, title: "Workforce training" },
   { id: "inclusion", icon: MapPin, title: "Local inclusion and accountability" },
   { id: "digital", icon: Monitor, title: "Digital processes and standardisation" },
-  { id: "unchanged", icon: ShieldCheck, title: "What has not changed yet" },
+  { id: "unchanged", icon: ShieldCheck, title: "What remains protected" },
 ];
 
 export default function WhatIsChanging() {
@@ -264,7 +264,7 @@ export default function WhatIsChanging() {
         </div>
       </ContentBox>
 
-      <ContentBox id="unchanged" icon={ShieldCheck} title="What has not changed yet">
+      <ContentBox id="unchanged" icon={ShieldCheck} title="What remains protected">
         <div className="space-y-3">
           <p>
             <strong>Nothing in the White Paper changes existing law until the consultation closes and legislation passes Parliament.</strong> EHCPs remain legally enforceable. Appeal routes remain. Timescales remain.

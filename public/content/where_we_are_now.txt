@@ -1,7 +1,7 @@
-Title: Current situation: where is SEND provision today
+Title: What we know right now about SEND in England
 Route: /where-we-are-now
-Description: Understanding the current state of SEND support in England.
-Last updated: 23rd February 2026
+Description: The factual baseline of SEND provision in England today.
+Last updated: 27th February 2026
 Status: Confirmed
 Key topics: SEND system, EHCP demand, funding, postcode lottery
 Key numbers: 1.7m+ pupils with SEND, 638,700 EHCPs, £13.1bn spending, 95% councils in deficit
@@ -9,7 +9,7 @@ Key sources: DfE statistics, NAO report, IFS analysis
 
 ---
 
-Current situation: where is SEND provision in the UK today
+What we know right now: the current state of SEND in England
 
 In the UK, SEND support is not one single system. Each nation runs its own framework. This page focuses on England because the legal duties, the plan process, and the rights attached to an Education, Health and Care Plan are specific to England.
 

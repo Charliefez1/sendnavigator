@@ -1,15 +1,15 @@
-Title: Unconfirmed reports about SEND reform
+Title: What has been reported about SEND reform
 Route: /what-the-leaks-are-saying
-Description: Unconfirmed proposals and reported briefings. These are not government policy.
-Last updated: 23rd February 2026
+Description: What media outlets have reported and what those reports are based on.
+Last updated: 27th February 2026
 Status: Unconfirmed
-Key topics: Kite flying, Leaks, Media reports
+Key topics: Media reports, Kite flying, Leaks
 Key numbers: n/a
-Key sources: Guardian, iNews, Financial Times
+Key sources: Guardian, iNews, Financial Times, BBC
 
 ---
 
-Unconfirmed reports: government kite flying and what may or may not happen
+What has been reported: media coverage and its basis
 
 Alongside formal consultation and public debate, there has been a steady flow of unconfirmed reports about SEND reform. These often come from anonymous briefings, sector gossip, selective leaks, or early media coverage.
 

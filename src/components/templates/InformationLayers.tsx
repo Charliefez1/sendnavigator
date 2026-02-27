@@ -57,7 +57,7 @@ function DiscussedLayer({ children, emptyMessage }: Omit<InformationLayerProps, 
 
   return (
     <ScanCollapseWrapper
-      title="What is being discussed or reported"
+      title="What is actively being shaped or reported"
       statusBadge={<StatusBadge status="discussed" />}
       icon={<div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(42 87% 48% / 0.1)" }}><Newspaper className="w-3.5 h-3.5" style={{ color: "hsl(42 87% 48%)" }} /></div>}
     >

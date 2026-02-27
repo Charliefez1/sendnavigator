@@ -36,8 +36,8 @@ export interface LongerTermPossibility {
   id: string;
   title: string;
   description: string;
-  uncertaintyNote: string; // Required - must explain uncertainty
-  status: "uncertain";
+  uncertaintyNote: string;
+  status: "uncertain" | "confirmed";
 }
 
 export interface CurrentPosition {
@@ -226,10 +226,10 @@ export const upcomingDecisionPoints: UpcomingDecisionPoint[] = [
 export const longerTermPossibilities: LongerTermPossibility[] = [
   {
     id: "schools-white-paper",
-    title: "Schools White Paper with SEND reform proposals",
-    description: "A Schools White Paper is expected to include SEND reform proposals.",
-    uncertaintyNote: "No decisions have been made. This is based on sector reporting (December 2025). Any changes would require consultation, legislation, and parliamentary approval. Future dates are subject to parliamentary process.",
-    status: "uncertain",
+    title: "Schools White Paper published",
+    description: "The Schools White Paper 'Every Child Achieving and Thriving' was published on 23 February 2026. A formal consultation is open until 18 May 2026.",
+    uncertaintyNote: "The White Paper is published. The consultation closes 18 May 2026. Legislative changes would still require parliamentary approval.",
+    status: "confirmed",
   },
   {
     id: "draft-legislation",

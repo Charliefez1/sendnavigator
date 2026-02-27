@@ -1,7 +1,7 @@
-Title: Under discussion: SEND reform debates in 2026
+Title: What is actively being shaped: SEND reform consultation
 Route: /what-is-being-discussed
-Description: Ideas, proposals, and areas of debate that may shape future policy but are not settled.
-Last updated: 23rd February 2026
+Description: Live policy design, consultation themes, and where influence still matters.
+Last updated: 27th February 2026
 Status: Discussed
 Key topics: Individual Support Plans (ISPs), Tiered model, Mandatory mediation, Funding reform
 Key numbers: 130,000+ petition signatures, 90% tribunal win rate
@@ -9,7 +9,7 @@ Key sources: Schools White Paper 2026, Consultation documents
 
 ---
 
-Under discussion: what is being debated publicly right now
+What is actively being shaped: live policy design and consultation
 
 Alongside confirmed changes, there is active public discussion about deeper reform of SEND in England. These discussions are happening in Parliament, in select committees, across the sector, and in the media.
 

@@ -277,10 +277,10 @@ export default function HaveYourSay() {
       <section className="content-section py-6 pb-8">
         <div className="max-w-3xl flex flex-wrap gap-3">
           <Link to="/what-is-changing" className="text-sm px-4 py-2.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors">
-            What is changing →
+            What is now in motion →
           </Link>
-          <Link to="/what-this-could-mean" className="text-sm px-4 py-2.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors">
-            What this could mean →
+          <Link to="/what-is-being-discussed" className="text-sm px-4 py-2.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors">
+            What is actively being shaped →
           </Link>
           <Link to="/what-happens-next" className="text-sm px-4 py-2.5 rounded-lg bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors">
             What happens next →

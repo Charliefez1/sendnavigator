@@ -1,7 +1,7 @@
-Title: What we do not know about SEND reform
+Title: What is genuinely unknown about SEND reform
 Route: /what-we-do-not-know
-Description: Key decisions about rights, thresholds, and protections that have not been made.
-Last updated: 23rd February 2026
+Description: Unanswered questions with no published answers yet.
+Last updated: 27th February 2026
 Status: Unconfirmed
 Key topics: Eligibility, Standards, Funding, Transition, Health
 Key numbers: n/a
@@ -9,7 +9,7 @@ Key sources: Schools White Paper 2026
 
 ---
 
-What we do not know: questions parents are asking and why they matter
+What is genuinely unknown: questions that still have no published answers
 
 There is a lot we still do not know about the future of SEND in England. That uncertainty is not accidental. Many decisions have been deliberately delayed while consultation, piloting, and debate take place.
 
