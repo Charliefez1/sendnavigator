@@ -247,15 +247,15 @@ const Index = () => {
         </div>
         {/* Smooth fade into dark section below */}
         <div
-          className="h-24 sm:h-32"
+          className="h-40 sm:h-48"
           style={{
-            background: "linear-gradient(to bottom, hsl(var(--background)), hsl(222 35% 8%))",
+            background: "linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(222 28% 22%) 38%, hsl(222 32% 14%) 68%, hsl(222 35% 8%) 100%)",
           }}
         />
       </section>
 
       {/* ─── SECTIONS 3-5: Shared dark backdrop ─── */}
-      <div className="relative overflow-hidden" style={{ backgroundColor: "hsl(222 35% 8%)" }}>
+      <div className="relative overflow-hidden" style={{ background: "linear-gradient(to bottom, hsl(222 35% 10%), hsl(222 35% 8%) 22%)" }}>
 
         {/* ─── SECTION 3: ASK RICH ─── */}
         <section className="relative">
