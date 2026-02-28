@@ -209,6 +209,97 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     return y;
   };
 
+  /**
+   * Render Q&A pairs inside a warm background box.
+   * Each pair: question label in bold, answer in normal weight below it.
+   */
+  const addBoxedQAPairs = (
+    pairs: { label: string; answer: string }[],
+    startY: number,
+  ): number => {
+    const boxPadTop = 5;
+    const boxPadBottom = 5;
+    const boxPadX = 7;
+    const innerWidth = contentWidth - 14;
+
+    // Pre-calculate all lines for all pairs
+    type RenderedPair = { labelLines: string[]; answerLines: string[] };
+    const rendered: RenderedPair[] = pairs.map(p => {
+      doc.setFontSize(10);
+      doc.setFont("helvetica", "bold");
+      const labelLines: string[] = doc.splitTextToSize(p.label, innerWidth);
+      doc.setFontSize(11);
+      doc.setFont("helvetica", "normal");
+      const answerLines: string[] = doc.splitTextToSize(p.answer, innerWidth);
+      return { labelLines, answerLines };
+    });
+
+    const labelLineH = 10 * 0.353 * 1.5;
+    const answerLineH = 11 * 0.353 * 1.6;
+    const pairGap = 4;
+
+    // Flatten into drawable items for segment-based rendering
+    type DrawItem = { text: string; fontSize: number; style: "bold" | "normal"; lineH: number; gapAfter: number };
+    const items: DrawItem[] = [];
+    rendered.forEach((r, ri) => {
+      r.labelLines.forEach((line, li) => {
+        items.push({ text: line, fontSize: 10, style: "bold", lineH: labelLineH, gapAfter: li === r.labelLines.length - 1 ? 1 : 0 });
+      });
+      r.answerLines.forEach((line, li) => {
+        const isLast = li === r.answerLines.length - 1;
+        items.push({ text: line, fontSize: 11, style: "normal", lineH: answerLineH, gapAfter: isLast && ri < rendered.length - 1 ? pairGap : 0 });
+      });
+    });
+
+    // Render in page-break-safe segments
+    let y = startY;
+    let itemIdx = 0;
+    while (itemIdx < items.length) {
+      const availH = maxContentY - y - boxPadTop - boxPadBottom;
+      // Calculate how many items fit
+      let fitH = 0;
+      let fitCount = 0;
+      for (let i = itemIdx; i < items.length; i++) {
+        const needed = items[i].lineH + items[i].gapAfter;
+        if (fitH + needed > availH && fitCount > 0) break;
+        fitH += needed;
+        fitCount++;
+      }
+      if (fitCount === 0) fitCount = 1;
+
+      const segmentItems = items.slice(itemIdx, itemIdx + fitCount);
+      const segmentH = segmentItems.reduce((sum, it) => sum + it.lineH + it.gapAfter, 0);
+
+      if (y + segmentH + boxPadTop + boxPadBottom > maxContentY && itemIdx > 0) {
+        y = newPage();
+      }
+
+      // Draw background box
+      setFill(WARM_BG);
+      setDraw(WARM_BORDER);
+      doc.setLineWidth(0.3);
+      doc.roundedRect(margin, y - 3, contentWidth, segmentH + boxPadTop + boxPadBottom, 2, 2, "FD");
+
+      setColor(DARK_TEXT);
+      let ty = y + boxPadTop;
+      for (const item of segmentItems) {
+        doc.setFontSize(item.fontSize);
+        doc.setFont("helvetica", item.style);
+        doc.text(item.text, margin + boxPadX, ty);
+        ty += item.lineH + item.gapAfter;
+      }
+
+      itemIdx += segmentItems.length;
+      y = ty + boxPadBottom;
+
+      if (itemIdx < items.length) {
+        y = newPage();
+      }
+    }
+
+    return y;
+  };
+
   // Measure text height without rendering
   const measureText = (text: string, maxWidth: number, fontSize: number, lineHeightMultiplier = 1.6): number => {
     doc.setFontSize(fontSize);
@@ -228,6 +319,14 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
       if (/^#+\s*Some Things That May Help/i.test(line) || /^\*\*Some Things That May Help\*\*/i.test(line) || line.trim().toLowerCase() === "some things that may help") {
         if (currentKey) sections[currentKey] = currentContent.join("\n").trim();
         currentKey = "__suggestions__";
+        currentContent = [];
+        continue;
+      }
+
+      // Check for "Conclusion" section
+      if (/^#+\s*Conclusion/i.test(line) || /^\*\*Conclusion\*\*/i.test(line) || line.trim().toLowerCase() === "conclusion") {
+        if (currentKey) sections[currentKey] = currentContent.join("\n").trim();
+        currentKey = "__conclusion__";
         currentContent = [];
         continue;
       }
@@ -260,8 +359,11 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     const suggestions = sections["__suggestions__"] || "";
     delete sections["__suggestions__"];
 
+    const conclusion = sections["__conclusion__"] || "";
+    delete sections["__conclusion__"];
+
     const openingLine = lines.find(l => l.includes("This profile was built by someone")) || "";
-    return { sections, waysOfWorking, suggestions, openingLine };
+    return { sections, waysOfWorking, suggestions, conclusion, openingLine };
   };
 
   const cleanMarkdown = (text: string): string =>
@@ -426,20 +528,18 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
 
     // --- PARENT'S WORDS BLOCK ---
     const content = sectionContent[index];
-    const parentTexts: string[] = [];
+    const parentQAPairs: { label: string; answer: string }[] = [];
     if (content && hasAnswers) {
       content.questions.forEach((q) => {
         const val = section.answers?.[q.id];
         const displayValue = Array.isArray(val) ? val.join(", ") : val;
         if (displayValue && displayValue.trim()) {
-          parentTexts.push(displayValue.trim());
+          parentQAPairs.push({ label: q.label, answer: displayValue.trim() });
         }
       });
     }
 
-    if (parentTexts.length > 0) {
-      const parentProse = parentTexts.join(". ").replace(/\.\./g, ".");
-
+    if (parentQAPairs.length > 0) {
       // Sub-heading
       doc.setFontSize(12);
       doc.setFont("helvetica", "bold");
@@ -448,21 +548,23 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
       doc.text(`In ${childName}'s parent's words`, margin, y);
       y += 8;
 
-      // Use page-break-safe boxed text renderer
-      y = addBoxedText(parentProse, y);
+      // Render Q&A pairs inside warm background box
+      y = addBoxedQAPairs(parentQAPairs, y);
       y += 8;
     }
 
     // --- CHILD VOICE BLOCK ---
     if (hasChildVoice && cvQuestions) {
-      const childTexts: string[] = [];
+      const childQAPairs: { label: string; answer: string }[] = [];
       cvQuestions.forEach((q) => {
         const val = section.answers?.[q.id];
         const strVal = Array.isArray(val) ? val.join(", ") : val;
-        if (strVal && strVal.toString().trim()) childTexts.push(strVal.toString().trim());
+        if (strVal && strVal.toString().trim()) {
+          childQAPairs.push({ label: q.label, answer: strVal.toString().trim() });
+        }
       });
 
-      if (childTexts.length > 0) {
+      if (childQAPairs.length > 0) {
         y = checkPageBreak(y, 20);
 
         doc.setFontSize(12);
@@ -472,11 +574,14 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
         y += 8;
 
         setColor(DARK_TEXT);
-        for (const text of childTexts) {
-          y = addWrappedText(text, margin + 7, y, contentWidth - 14, 10.5, "italic");
-          y += 3;
+        for (const pair of childQAPairs) {
+          y = checkPageBreak(y, 18);
+          y = addWrappedText(pair.label, margin + 7, y, contentWidth - 14, 10, "bold");
+          y += 1;
+          y = addWrappedText(pair.answer, margin + 7, y, contentWidth - 14, 10.5, "italic");
+          y += 5;
         }
-        y += 6;
+        y += 4;
       }
     }
 
@@ -604,6 +709,38 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     y = addWrappedText(askRichText, margin + 7, y + 4, contentWidth - 14, 10.5);
     y += 8;
     setColor(DARK_TEXT);
+
+    footer();
+  }
+
+  // =============================================
+  // CONCLUSION — own page
+  // =============================================
+  if (parsed.conclusion) {
+    doc.addPage();
+    setFill(WHITE);
+    doc.rect(0, 0, pageWidth, pageHeight, "F");
+    y = margin;
+
+    doc.setFontSize(22);
+    doc.setFont("helvetica", "bold");
+    setColor(NAVY);
+    doc.text("Conclusion", margin, y);
+    y += 10;
+
+    setDraw(NAVY);
+    doc.setLineWidth(0.6);
+    doc.line(margin, y, margin + 55, y);
+    y += 12;
+
+    const cleanConclusion = cleanMarkdown(parsed.conclusion);
+    const conclusionParas = cleanConclusion.split(/\n\n+/).filter(p => p.trim());
+
+    setColor(DARK_TEXT);
+    for (const para of conclusionParas) {
+      y = addWrappedText(para, margin, y, contentWidth, 11.5, "normal", 1.7);
+      y += 6;
+    }
 
     footer();
   }

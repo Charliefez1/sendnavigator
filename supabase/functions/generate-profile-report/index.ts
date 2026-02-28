@@ -88,7 +88,9 @@ Rules for this section:
 - Frame every suggestion as an invitation not a prescription. "Have you tried" not "You should".
 - Never imply the parent has not tried hard enough or does not know their child.
 - Maximum five suggestions. Fewer is fine if fewer are relevant.
-- Use the same voice, tone, and language rules as the rest of the report.`;
+- Use the same voice, tone, and language rules as the rest of the report.
+
+After the Some Things That May Help block, produce a final block headed Conclusion. This is a one-page summary of everything in this profile. It should read as a standalone document that a professional could read in two minutes and understand who this child is, what they need, and what matters most. Draw on everything across all sections. Written in your voice. No more than 400 words. Do not repeat strategies already listed. Focus on the whole child: who they are, how they experience the world, what the adults around them need to understand, and the key priorities going forward.`;
 
 
 /**
