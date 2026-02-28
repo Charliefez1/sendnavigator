@@ -1,0 +1,433 @@
+MY CHILD: A PROFILE — COMPLETE TECHNICAL AND CONTENT AUDIT
+============================================================
+Generated: 28 February 2026
+Status: Beta (live at /my-child-profile)
+
+
+1. OVERVIEW
+-----------
+
+"My Child: A Profile" is a 22-section guided profiling tool that helps parents
+of neurodivergent children document who their child is — strengths, needs,
+experiences, and context — in their own words. It generates a professionally
+formatted PDF report combining the parent's answers with AI-generated insights
+written in Rich Ferriman's voice.
+
+The tool is entirely client-side for PDF generation (jsPDF). AI processing
+uses Claude Sonnet 4 via an edge function. Progress can be saved and restored
+using an 8-character access code (stored encrypted, 14-day expiry).
+
+URL: /my-child-profile
+Navigation: Featured in Parent Guides menu and on the Start page.
+
+
+2. USER JOURNEY (STAGES)
+-------------------------
+
+Stage 1: OPENING SCREEN (OpeningScreen.tsx)
+  - Introductory text explaining the tool's purpose
+  - Short and long version toggle ("Read more" / "Show less")
+  - Beta disclaimer notice
+  - GDPR consent checkbox (mandatory before proceeding)
+  - "Start the profile" button (disabled until consent given)
+  - "Save my progress and get an access code" button
+  - "Returning? Enter your access code here" — 8-character OTP input
+  - "Load test data (all sections filled)" — dev/test button (present in production)
+
+Stage 2: SETUP FLOW (SetupFlow.tsx) — 4 questions
+  Q1: Child's first name (free text)
+  Q2: Who is filling this in? (single select: parent/carer, parent with child, professional, someone else)
+  Q3: Who will this be shared with? (multi-select: class teacher, SENCO, headteacher, GP, CAMHS, social worker, family, the child, other)
+  Q4: Reason for building this profile (single select: school concerns, EHCP prep, recent diagnosis, something changed, want school to understand, other)
+
+Stage 3: PROFILE BUILDER (ProfileBuilder.tsx)
+  - Left sidebar with 22 section navigation (ProfileSidebar.tsx)
+  - Status indicators: empty (circle), in-progress (pencil), complete (check)
+  - Main content area showing current section (SectionTemplate.tsx)
+  - Save progress button in sidebar
+  - "Skip to final statement" button in sidebar
+  - Previous / Next section navigation at bottom
+  - Mobile: floating menu button, slide-out sidebar with overlay
+
+Stage 4: FINAL SCREEN (FinalScreen.tsx)
+  - Free-text closing statement: "What do you most want anyone reading this to understand?"
+  - Data sharing consent checkbox (anonymised summary for research)
+  - "No thanks, just generate my report" link
+  - "Generate my report" button (disabled until consent decision made)
+  - Loading screen (ReportLoadingScreen.tsx) with 4 animated stages
+  - Complete screen with optional post-generation anonymised data sharing prompt
+
+
+3. THE 22 SECTIONS
+-------------------
+
+Each section has:
+  - A framing paragraph (context-setting text displayed in a muted box)
+  - An optional sensitivity note (e.g., Section 5: Trauma)
+  - 3-6 questions (free text, text-large, or single-select)
+  - Optional "Child Voice" questions (toggle-enabled, visually distinct warm block)
+  - A closing reflection prompt (free text)
+
+Section  1: Environment (5 questions, 3 child voice)
+Section  2: People (6 questions, 2 child voice)
+Section  3: Settings (5 questions, 2 child voice)
+Section  4: Nervous System and Dysregulation (6 questions, 2 child voice)
+Section  5: Trauma (5 questions, 0 child voice) — has sensitivity note
+Section  6: Sensory Processing (7 questions, 3 child voice)
+Section  7: Executive Function and the Knowing-Doing Gap (6 questions, 2 child voice)
+Section  8: Sleep (6 questions, 0 child voice)
+Section  9: Dopamine Regulation (5 questions, 2 child voice)
+Section 10: Masking and the Cost of Compliance (6 questions, 2 child voice)
+Section 11: Communication and Social Understanding (6 questions, 2 child voice)
+Section 12: Behaviour (6 questions, 2 child voice)
+Section 13: Identity and Self Concept (5 questions, 2 child voice)
+Section 14: Strength Profile (5 questions, 3 child voice)
+Section 15: Developmental History (5 questions, 0 child voice)
+Section 16: Family System (5 questions, 0 child voice)
+Section 17: Physical Health (5 questions, 0 child voice)
+Section 18: School Fit vs Child Deficit (5 questions, 0 child voice)
+Section 19: Time, Transitions, and Future Blindness (5 questions, 0 child voice)
+Section 20: Demand Avoidance, Autonomy, and Reactions to Authority (5 questions, 0 child voice)
+Section 21: Hyperfocus, Interest-Based Motivation, and Zoning Out (5 questions, 2 child voice)
+Section 22: Emotional Intensity, Anger, and Rejection Sensitivity (6 questions, 2 child voice)
+
+Total parent questions: 119
+Total child voice questions: 29
+Grand total: 148 questions across 22 sections
+
+Sections WITHOUT child voice: 5 (Trauma), 8 (Sleep), 15 (Developmental History),
+  16 (Family System), 17 (Physical Health), 18 (School Fit), 19 (Time/Transitions),
+  20 (Demand Avoidance) — 8 sections total
+
+Sections WITH child voice: 14 sections
+
+
+4. QUESTION TYPES
+------------------
+
+- "text": Single-line free text (renders as 3-row textarea)
+- "text-large": Multi-line free text (renders as 6-row textarea)
+- "single-select": Radio-style selection from 3-6 predefined options (rendered as clickable buttons)
+
+Child voice questions are always free text (no type field, rendered as 3-row textareas).
+They are stored with "cv_" prefix on the question ID.
+
+
+5. DATA MODEL
+--------------
+
+Context: ChildProfileContext.tsx
+
+ChildProfileState {
+  setup: {
+    childName: string
+    filledBy: string
+    sharedWith: string[]
+    reason: string
+  }
+  sections: Record<number, {
+    answers: Record<string, string | string[]>  // keyed by question ID
+    reflection: string
+  }>
+  finalStatement: string
+}
+
+State is held in React context (useState). Not persisted to localStorage.
+State is lost on page refresh unless saved via access code.
+
+Section status logic:
+  - "empty": no answers and no reflection
+  - "complete": any answer or reflection present
+  - Note: there is no true "in-progress" state — any content = complete
+
+
+6. SAVE & RESTORE SYSTEM
+--------------------------
+
+Edge function: supabase/functions/save-profile/index.ts
+Database table: saved_profiles
+
+Schema:
+  - id: UUID (primary key)
+  - access_code: string (8 chars, uppercase alphanumeric excluding I/O/0/1)
+  - profile_data: JSONB (full ChildProfileState)
+  - stage: string ("opening" | "builder")
+  - active_section: integer
+  - created_at: timestamptz
+  - expires_at: timestamptz (default: 14 days from creation)
+
+Behaviour:
+  - Save: generates new 8-char code or updates existing if code provided
+  - Load: retrieves profile by access code if not expired
+  - Cleanup: calls cleanup_expired_profiles RPC on each request
+  - Collision avoidance: retries code generation up to 10 times
+
+
+7. AI REPORT GENERATION
+-------------------------
+
+Edge function: supabase/functions/generate-profile-report/index.ts
+
+AI Model: Claude Sonnet 4 (claude-sonnet-4-20250514)
+API: Anthropic direct (requires ANTHROPIC_API_KEY secret)
+Max tokens: 4000
+Temperature: 0.7
+
+Input: buildProfileText() in FinalScreen.tsx assembles all answered questions
+with their labels into a structured text document, organised by section.
+Format: "Question label\nAnswer value" pairs grouped under section headings.
+
+Knowledge base augmentation: Before sending to the AI, the edge function searches
+the knowledge_chunks table using full-text search (top 5 results) and prepends
+relevant passages as context for the AI to draw upon.
+
+System prompt rules:
+  - UK English only (behaviour, recognise, mum)
+  - No em dashes, no exclamation marks, no corporate language
+  - No Americanisms (great job, awesome, reach out, etc.)
+  - Voice: direct, grounded, human — speaks to parents
+  - CRITICAL: Child is never described with deficit/damage language
+  - Banned words when applied to child: broken, damaged, failing, lost, etc.
+  - Replacement framing: "not yet supported", "let down by the system", etc.
+
+Output structure per section (max 200 words each):
+  Paragraph 1: Reflect — mirrors what the parent described
+  Paragraph 2: Context — explains why this pattern exists
+  Paragraph 3: Practical strategies — specific to this child
+
+Special blocks generated:
+  1. Opening line: "This profile was built by someone who knows this child
+     better than any system ever will. Read it as such."
+  2. Ways of Working: 5-7 prioritised strategies in paragraph form
+  3. Some Things That May Help: Max 5 "Have you tried..." suggestions
+  4. Conclusion: One-page standalone summary (max 400 words)
+
+
+8. PDF REPORT STRUCTURE
+------------------------
+
+Generated by: src/lib/generate-profile-pdf.ts (862 lines)
+Library: jsPDF (client-side, no server involvement)
+Format: A4, 22mm margins
+
+Colour palette:
+  - NAVY [30, 41, 59] — headings, section titles
+  - DARK_TEXT [15, 23, 42] — body text
+  - MID_TEXT [71, 85, 105] — secondary text
+  - LIGHT_TEXT [100, 116, 139] — footer, subtle
+  - WARM_BG [248, 245, 240] — parent words background
+  - WARM_BORDER [220, 210, 195] — parent words border
+
+Page structure:
+
+  PAGE 1: COVER
+    - Neurodiversity Global logo (centered, max 180px)
+    - Horizontal rule
+    - Child's name (36pt bold)
+    - "A Profile" subtitle (16pt)
+    - Date
+    - "This profile was built by [filledBy]"
+    - Disclaimer: "This is not a diagnostic document."
+
+  PAGE 2: WHY WE BUILT THIS
+    - Heading with accent line
+    - Personalised intro incorporating reason and intended recipients
+    - AI opening line (italic)
+
+  PAGES 3-24+: SECTION PAGES (one per completed section)
+    Each section page contains:
+    - Section number + title (17pt bold navy)
+    - Accent line
+
+    Sub-block: "In [name]'s parent's words"
+    - Rendered as Q&A pairs in warm background box
+    - Question label in bold (10pt)
+    - Answer in normal weight (11pt)
+    - Page-break safe rendering
+
+    Sub-block: "In [name]'s own words" (if child voice answers exist)
+    - Question label in bold
+    - Answer in italic
+    - No background box
+
+    Sub-block: "What this tells us"
+    - AI-generated 3-paragraph insight
+
+    Sub-block: "Closing reflection"
+    - Parent's free-text reflection (italic, mid-grey)
+
+  WAYS OF WORKING PAGE
+    - Title (22pt bold navy) with accent line
+    - AI-generated prioritised strategies in paragraph form
+
+  SOME THINGS THAT MAY HELP PAGE
+    - Title with accent line
+    - "Have you tried..." suggestions (bold question, normal explanation)
+    - "Ask Rich" signpost box at bottom
+
+  CONCLUSION PAGE
+    - Title with accent line
+    - AI-generated one-page standalone summary (max 400 words)
+
+  CLOSING STATEMENT PAGE
+    - "What we most want you to know" (centered heading)
+    - Parent's final statement (centered text)
+    - Closing paragraph in italic
+
+  ABOUT NEURODIVERSITY GLOBAL PAGE
+    - NG logo (centered, max 160px)
+    - 10 paragraphs about the organisation
+    - "Find out more at neurodiversityglobal.com"
+
+Every page includes:
+  - Footer with horizontal rule
+  - Centred legal disclaimer (6.5pt)
+  - "sendnavigator.neuro.support" link
+
+File naming: {childname}-profile-{YYYYMMDD}.pdf
+
+
+9. COMPONENTS FILE MAP
+-----------------------
+
+src/pages/MyChildProfile.tsx
+  - Page wrapper, SEO head, ChildProfileProvider
+  - TEST_DATA constant (comprehensive test dataset for "Jake")
+  - Stage management: opening → setup → builder
+
+src/contexts/ChildProfileContext.tsx
+  - State management (useState, no persistence)
+  - SECTION_TITLES array (22 titles)
+  - State shape: setup, sections, finalStatement
+
+src/config/child-profile-sections.ts
+  - sectionContent: Record<number, SectionContent>
+  - 22 sections with framing text, optional notes, and question arrays
+
+src/config/child-voice-questions.ts
+  - childVoiceQuestions: Record<number, ChildVoiceQuestion[]>
+  - 14 sections with child voice questions
+
+src/components/child-profile/OpeningScreen.tsx
+  - GDPR consent, intro text, access code entry, save/restore
+  - Test data button
+
+src/components/child-profile/SetupFlow.tsx
+  - 4-step setup wizard (name, who, recipients, reason)
+
+src/components/child-profile/ProfileBuilder.tsx
+  - Main builder with sidebar + content area
+  - Section navigation, save button, skip to final
+
+src/components/child-profile/ProfileSidebar.tsx
+  - 22-item navigation with status icons
+
+src/components/child-profile/SectionTemplate.tsx
+  - Renders framing, questions, child voice toggle, reflection
+
+src/components/child-profile/ChildVoiceBlock.tsx
+  - Toggle-enabled warm-styled question block
+
+src/components/child-profile/FinalScreen.tsx
+  - Closing statement, consent, report generation trigger
+  - buildProfileText() function
+
+src/components/child-profile/ReportLoadingScreen.tsx
+  - 4-stage animated loading indicator
+
+src/components/child-profile/SaveProgressButton.tsx
+  - Save/update progress, display access code
+
+src/lib/generate-profile-pdf.ts
+  - 862 lines, full PDF generation logic
+  - AI report parsing, page layout, Q&A rendering
+
+supabase/functions/generate-profile-report/index.ts
+  - AI system prompt (locked, Rich's voice)
+  - Knowledge base search and RAG pipeline
+  - Anthropic API call
+
+supabase/functions/save-profile/index.ts
+  - Save/load/cleanup edge function
+  - Access code generation
+
+
+10. DATABASE TABLES USED
+--------------------------
+
+saved_profiles
+  - Stores in-progress profiles with access codes
+  - 14-day expiry, auto-cleanup via RPC
+
+knowledge_chunks
+  - Full-text searchable knowledge base
+  - Used by generate-profile-report for RAG context
+
+
+11. SECRETS REQUIRED
+---------------------
+
+ANTHROPIC_API_KEY — Used by generate-profile-report edge function
+
+
+12. KNOWN ISSUES AND GAPS
+---------------------------
+
+1. TEST DATA BUTTON IN PRODUCTION
+   The "Load test data (all sections filled)" button is visible on the
+   opening screen in production. It should be hidden behind an environment
+   check or admin flag.
+
+2. NO BEFOREUNLOAD WARNING
+   Users can accidentally navigate away or close the tab and lose all
+   progress. No window.onbeforeunload handler is implemented.
+
+3. ANONYMISED SUMMARY SHARING NOT WIRED
+   The post-generation consent screen offers "Share anonymised summary"
+   but the button only updates local UI state. No data is actually sent
+   to the backend.
+
+4. NO "IN-PROGRESS" STATUS
+   Section status jumps from "empty" to "complete" with any content.
+   There is no partial-completion status. The "in-progress" (pencil)
+   icon code exists in ProfileSidebar but is never triggered.
+
+5. MAX TOKENS MAY BE TIGHT
+   With the addition of the Conclusion block, the 4000 max_tokens limit
+   may risk truncation on profiles with many completed sections.
+   Consider increasing to 5000.
+
+6. STATE NOT IN LOCALSTORAGE
+   Profile state is only in React context. A page refresh loses everything
+   unless the user has manually saved with an access code.
+
+7. NO PRINT/EXPORT OF INDIVIDUAL SECTIONS
+   Users cannot export or print a single section — only the full report.
+
+8. NO PROGRESS INDICATOR IN BUILDER
+   Beyond the sidebar status icons, there is no overall completion
+   percentage or progress bar.
+
+
+13. TEST DATA
+--------------
+
+A comprehensive test dataset exists in MyChildProfile.tsx as TEST_DATA.
+It populates all 22 sections with realistic data for a child named "Jake"
+including parent answers, child voice answers, and reflections. This
+dataset is used for development testing and is accessible via the
+"Load test data" button on the opening screen.
+
+
+14. BRANDING
+-------------
+
+Logos used:
+  - neurodiversity-global-logo-trimmed.png (beacon logo, loaded but may not be used)
+  - neurodiversity-global-logo.jpeg (NG logo, used on cover and about page)
+
+Footer on every page: "sendnavigator.neuro.support"
+About page CTA: "neurodiversityglobal.com"
+
+
+END OF AUDIT
