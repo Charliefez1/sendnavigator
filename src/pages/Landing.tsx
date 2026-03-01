@@ -4,10 +4,11 @@ import { SEOHead } from "@/components/SEOHead";
 import { AuthForm } from "@/components/AuthForm";
 import { AnimatedFeatureShowcase } from "@/components/landing/AnimatedFeatureShowcase";
 import { LandingAskRich } from "@/components/landing/LandingAskRich";
+import askRichCharacter from "@/assets/ask-rich-character.png";
 import { LandingContactForm } from "@/components/landing/LandingContactForm";
 import { PersistentNewsTicker } from "@/components/PersistentNewsTicker";
 import { useAuth } from "@/contexts/AuthContext";
-import { ArrowRight, Check, AlertCircle, Search, Mail } from "lucide-react";
+import { ArrowRight, Check, AlertCircle, Mail } from "lucide-react";
 import ndgLogo from "@/assets/neurodiversity-global-education-logo-full.png";
 
 /* ── Fade-in on scroll ── */
@@ -241,17 +242,26 @@ const Landing = () => {
           <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* LEFT: Ask Rich */}
             <div className="rounded-2xl border p-6 sm:p-8" style={{ borderColor: "hsl(222 20% 22%)", backgroundColor: "hsl(222 30% 12% / 0.5)" }}>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(175 60% 40% / 0.12)" }}>
-                  <Search className="w-4 h-4" style={{ color: "hsl(175 60% 52%)" }} />
+              {/* Character + intro - matching site-wide style */}
+              <div className="flex flex-col sm:flex-row items-center gap-5 mb-6">
+                <img
+                  src={askRichCharacter}
+                  alt="Ask Rich"
+                  className="w-24 sm:w-28 rounded-2xl flex-shrink-0"
+                  style={{ border: "2px solid hsl(262 50% 50% / 0.3)" }}
+                />
+                <div className="text-center sm:text-left">
+                  <h2
+                    className="text-2xl sm:text-3xl font-display font-normal mb-2"
+                    style={{ color: "hsl(0 0% 96%)" }}
+                  >
+                    Got a question? Just ask.
+                  </h2>
+                  <p className="text-sm leading-relaxed" style={{ color: "hsl(222 20% 55%)" }}>
+                    I'm Rich, a SEND parent. Ask me anything about the reforms, EHCPs, or what to do right now. I'll give you a straight answer based on what we actually know.
+                  </p>
                 </div>
-                <h2 className="text-xl sm:text-2xl font-display font-semibold" style={{ color: "hsl(0 0% 96%)" }}>
-                  Ask Rich anything
-                </h2>
               </div>
-              <p className="text-sm mb-6" style={{ color: "hsl(222 15% 70%)" }}>
-                Get a real answer grounded in confirmed facts, not generic AI output.
-              </p>
               <LandingAskRich />
             </div>
 
