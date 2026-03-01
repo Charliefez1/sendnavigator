@@ -186,8 +186,8 @@ const Index = () => {
             </div>
 
             {/* Right column: Image with bottom fade */}
-            <div className="relative order-1 lg:order-2 flex justify-center overflow-hidden">
-              <div className="relative w-full">
+            <div className="relative order-1 lg:order-2 overflow-hidden">
+              <div className="relative w-full flex justify-center">
                 <img
                   src={creatorsDuo}
                   alt="Charlie and Rich — the team behind SEND Navigator"
@@ -196,7 +196,7 @@ const Index = () => {
                 {/* Bottom fade */}
                 <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
               </div>
-              <div className="mt-4 space-y-3 text-center lg:text-left">
+              <div className="mt-4 space-y-3 text-center lg:text-left px-2">
                 <p className="text-sm leading-relaxed text-foreground">
                   <strong>Charlie Ferriman</strong>, Co-Founder Neurodiversity Global and <strong>Richard Ferriman</strong>, Co-Founder of Neurodiversity Global. Father &amp; Son team, combining lived experience of neurodivergence across work, education, public sector and sport. Clients include NHS, ACAS, Fareshare, NASA, TransPennine Express and Kyndryl.
                 </p>
