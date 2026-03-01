@@ -73,14 +73,17 @@ const Landing = () => {
       <div
         className="w-full py-2.5 px-4 text-center text-xs sm:text-sm"
         style={{
-          backgroundColor: "hsl(222 28% 14%)",
-          borderBottom: "1px solid hsl(222 20% 22%)",
-          color: "hsl(222 20% 60%)",
+          backgroundColor: "hsl(42 87% 48% / 0.12)",
+          borderBottom: "1px solid hsl(42 87% 48% / 0.25)",
+          color: "hsl(42 60% 35%)",
         }}
       >
         <span className="inline-flex items-center gap-1.5">
           <AlertCircle className="w-3.5 h-3.5 flex-shrink-0" />
-          This is a beta version — we would love your feedback. Feedback section inside.
+          This is a beta version and we would love your feedback.{" "}
+          <Link to="/feedback" className="underline font-medium hover:opacity-80">
+            Tell us what you think
+          </Link>
         </span>
       </div>
 

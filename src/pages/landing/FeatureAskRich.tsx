@@ -8,10 +8,10 @@ const FeatureAskRich = () => (
     <SEOHead title="Ask Rich | SEND Navigator" description="Ask any question about SEND reform and get a grounded, honest answer drawn from confirmed sources." path="/feature/ask-rich" />
 
     <section className="relative py-16 sm:py-24 overflow-hidden" style={{ backgroundColor: "hsl(222 35% 10%)" }}>
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 30%, hsl(175 60% 40% / 0.15), transparent 70%)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 30%, hsl(262 50% 50% / 0.15), transparent 70%)" }} />
       <div className="relative content-section text-center">
-        <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: "hsl(175 60% 40% / 0.15)" }}>
-          <MessageCircle className="w-7 h-7" style={{ color: "hsl(175 60% 40%)" }} />
+        <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: "hsl(262 50% 50% / 0.15)" }}>
+          <MessageCircle className="w-7 h-7" style={{ color: "hsl(262 50% 50%)" }} />
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold mb-4" style={{ color: "hsl(0 0% 96%)" }}>
           Ask Rich
@@ -41,7 +41,7 @@ const FeatureAskRich = () => (
             "Covers EHCPs, ISPs, mainstream support, and more",
           ].map((item) => (
             <div key={item} className="flex items-start gap-3 p-4 rounded-lg border bg-card">
-              <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "hsl(175 60% 40%)" }} />
+              <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "hsl(262 50% 50%)" }} />
               <p className="text-sm text-foreground">{item}</p>
             </div>
           ))}
