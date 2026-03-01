@@ -196,11 +196,11 @@ const Index = () => {
                 {/* Bottom fade */}
                 <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
               </div>
-              <div className="mt-4 space-y-3 text-center lg:text-left px-2">
-                <p className="text-sm leading-relaxed text-foreground">
+              <div className="mt-4 space-y-2 text-center lg:text-left px-2">
+                <p className="text-xs leading-relaxed text-foreground">
                   <strong>Charlie Ferriman</strong>, Co-Founder Neurodiversity Global and <strong>Richard Ferriman</strong>, Co-Founder of Neurodiversity Global. Father &amp; Son team, combining lived experience of neurodivergence across work, education, public sector and sport. Clients include NHS, ACAS, Fareshare, NASA, TransPennine Express and Kyndryl.
                 </p>
-                <p className="text-sm leading-relaxed text-muted-foreground">
+                <p className="text-xs leading-relaxed text-muted-foreground">
                   Rich has 3 neurodivergent children and is himself AuADHD, Charlie, Rich's eldest son is ADD. The SEND Navigator exists to make just one day a little brighter and easier for SEND Parents across England. (GB Edition release April 26')
                 </p>
               </div>
