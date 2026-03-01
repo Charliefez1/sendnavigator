@@ -9,6 +9,7 @@ export default function RichFerriman() {
   return (
     <Layout>
       <PageOrientation icon={User}
+        sectionLabel="About"
         title="Rich Ferriman"
         description="Author of SEND Reform Navigator."
         lastUpdated="7th February 2026"

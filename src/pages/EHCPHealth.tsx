@@ -1,6 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { OnThisPage } from "@/components/templates";
+import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 
 import { Link } from "react-router-dom";
@@ -47,17 +47,13 @@ export default function EHCPHealth() {
         path="/ehcp-health"
       />
 
-      <header className="content-section py-8 border-b border-border">
-        <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">
-          The Health Side of Your Child's EHCP
-        </h1>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          Most parents focus on the education sections of an EHC plan. That is understandable. Sections F and I, what support the school provides and which school is named, are where the most visible battles happen.
-        </p>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mt-3">
-          But <strong>Sections C and G</strong> are where a significant amount of provision falls through the gaps, and where many families find that what the plan says and what actually happens are two different things.
-        </p>
-      </header>
+      <PageOrientation icon={Stethoscope}
+        sectionLabel="EHCP Guide"
+        title="The Health Side of Your Child's EHCP"
+        description="Sections C and G are where a significant amount of provision falls through the gaps. This page explains NHS duties in EHC plans and what to do when health provision is not delivered."
+        accentColor="hsl(220 70% 45%)"
+        showSearch={false}
+      />
 
       <LatestUpdatesStream />
 

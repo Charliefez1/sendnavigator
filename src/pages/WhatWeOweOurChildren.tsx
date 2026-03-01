@@ -1,6 +1,7 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { ExternalLink } from "lucide-react";
+import { PageOrientation } from "@/components/templates";
+import { ExternalLink, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import { WordFromRich } from "@/components/WordFromRich";
 
@@ -47,23 +48,13 @@ export default function WhatWeOweOurChildren() {
         path="/what-we-owe-our-children"
       />
 
-      {/* Series label */}
-      <div className="content-section pt-6 pb-2">
-        <div className="inline-flex items-center gap-2 rounded-lg bg-foreground/5 border border-foreground/10 px-4 py-2">
-          <span className="text-xs font-display font-bold uppercase tracking-widest text-foreground/70">Reality Bites</span>
-          <span className="text-xs text-muted-foreground"> - honest perspectives for neurodivergent families</span>
-        </div>
-      </div>
-
-      {/* Page header */}
-      <header className="content-section py-6 border-b border-border">
-        <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">
-          What We Owe Our Children
-        </h1>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          This is the first in a series called <strong>Reality Bites</strong>. These pieces do not tell you what the system owes you. They tell you what we owe our children — regardless of what the system does next.
-        </p>
-      </header>
+      <PageOrientation icon={FileText}
+        sectionLabel="Reality Bites"
+        title="What We Owe Our Children"
+        description="This is the first in a series called Reality Bites. These pieces tell you what we owe our children — regardless of what the system does next."
+        accentColor="hsl(262 60% 55%)"
+        showSearch={false}
+      />
 
       <WordFromRich>
         <p>I built this section because I think parents deserve honesty. The system is under real pressure. EHC plan numbers have more than doubled since 2015. Local authority high needs funding has not kept pace. The professionals trying to help your child are often working in conditions that make doing the job well very hard. None of that changes your child's rights. None of it is a reason to accept less than what your child is entitled to. But understanding why the system behaves the way it does helps you navigate it without taking it personally, and without assuming that every delay or refusal is bad faith. Some of it is. Most of it is a system that is broken and under-resourced, not a conspiracy against your family.</p>

@@ -7,6 +7,7 @@ const WhyIBuiltThis = () => {
   return (
     <Layout>
       <PageOrientation icon={Heart}
+        sectionLabel="About"
         title="Why I Built the SEND Navigator"
         description="A personal statement from Rich Ferriman"
         lastUpdated="15th February 2026"

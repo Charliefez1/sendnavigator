@@ -50,6 +50,7 @@ export default function About() {
     <Layout>
       <SEOHead title="About" description="Independence, governance, scope, and accountability of SEND Reform Navigator." path="/about" />
       <PageOrientation icon={BookOpen}
+        sectionLabel="About"
         title="About this resource"
         description="Independence, governance, scope, and accountability of SEND Reform Navigator."
       />

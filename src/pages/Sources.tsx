@@ -52,6 +52,7 @@ export default function Sources() {
   return (
     <Layout>
       <PageOrientation icon={BookOpen}
+        sectionLabel="About"
         title="Sources and Evidence Base"
         description="Every source this site draws on, grouped by type. You should be able to check anything we say."
         lastUpdated="25th February 2026"

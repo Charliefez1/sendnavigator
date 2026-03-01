@@ -13,6 +13,7 @@ export default function PrivacyPolicy() {
       />
       <div className="content-section py-8 space-y-8">
         <PageOrientation icon={Shield}
+          sectionLabel="About"
           title="Privacy Policy"
           description="How we collect, use, and protect your data. Last updated: 23 February 2026."
         />

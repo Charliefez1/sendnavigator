@@ -5,81 +5,86 @@ import { PageSearch } from "@/components/PageSearch";
 interface PageOrientationProps {
   title: string;
   description?: string;
+  /** Additional description content rendered below the main description */
+  descriptionExtra?: ReactNode;
   lastUpdated?: string;
   children?: ReactNode;
   accentColor?: string;
   showSearch?: boolean;
   icon?: ElementType;
+  /** Small uppercase section label above the title (e.g. "EHCP Guide", "Ask Rich") */
+  sectionLabel?: string;
 }
 
-export function PageOrientation({ 
-  title, 
-  description, 
+function hslAlpha(hsl: string, alpha: number): string {
+  return hsl.replace(")", ` / ${alpha})`);
+}
+
+export function PageOrientation({
+  title,
+  description,
+  descriptionExtra,
   lastUpdated = "20th February 2026",
   children,
   accentColor,
   showSearch = true,
   icon: Icon,
+  sectionLabel,
 }: PageOrientationProps) {
-  const accentHsl = accentColor || "hsl(175 60% 40%)";
+  const accent = accentColor || "hsl(175 60% 40%)";
 
   return (
-    <header className="relative overflow-hidden">
+    <header className="relative overflow-hidden bg-background">
       {/* Thin accent bar at very top */}
-      <div className="h-1 w-full" style={{ backgroundColor: accentHsl }} />
+      <div className="h-1 w-full" style={{ backgroundColor: accent }} />
 
-      {/* Subtle accent-tinted background */}
+      {/* Subtle accent radial glow from bottom */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: [
-            `linear-gradient(to bottom, hsl(222 35% 10%), hsl(222 35% 12%))`,
-            `radial-gradient(ellipse 80% 60% at 50% 30%, ${accentHsl.replace(")", " / 0.12)")}, transparent 70%)`,
-          ].join(", "),
-        }}
-      />
-      {/* Grain texture */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.025]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-          backgroundSize: "200px 200px",
+          background: `radial-gradient(ellipse 70% 60% at 50% 100%, ${hslAlpha(accent, 0.08)}, transparent 70%)`,
         }}
       />
 
       <div className="content-section relative py-10 sm:py-14 text-center">
-        {/* Icon */}
-        {Icon && (
-          <div
-            className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-5"
-            style={{ backgroundColor: `${accentHsl.replace(")", " / 0.15)")}` }}
-          >
-            <Icon className="w-6 h-6" style={{ color: accentHsl }} />
+        {/* Section label with icon */}
+        {(Icon || sectionLabel) && (
+          <div className="flex items-center justify-center gap-2 mb-3">
+            {Icon && (
+              <div
+                className="w-7 h-7 rounded-md flex items-center justify-center"
+                style={{ backgroundColor: hslAlpha(accent, 0.12) }}
+              >
+                <Icon className="w-4 h-4" style={{ color: accent }} />
+              </div>
+            )}
+            {sectionLabel && (
+              <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+                {sectionLabel}
+              </span>
+            )}
           </div>
         )}
 
-        <h1
-          className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold mb-3"
-          style={{ color: "hsl(0 0% 96%)" }}
-        >
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold text-foreground mb-3 max-w-3xl mx-auto">
           {title}
         </h1>
 
         {description && (
-          <p
-            className="text-base sm:text-lg leading-relaxed max-w-2xl mx-auto"
-            style={{ color: "hsl(222 20% 62%)" }}
-          >
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
             {description}
           </p>
         )}
 
+        {descriptionExtra && (
+          <div className="text-sm text-muted-foreground leading-relaxed max-w-2xl mx-auto mt-3">
+            {descriptionExtra}
+          </div>
+        )}
+
         {children && <div className="mt-3 flex justify-center">{children}</div>}
 
-        <div
-          className="flex items-center justify-center gap-2 text-sm mt-4"
-          style={{ color: "hsl(222 20% 50%)" }}
-        >
+        <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground mt-4">
           <Clock className="w-4 h-4" aria-hidden="true" />
           <span>Last updated: {lastUpdated}</span>
         </div>
@@ -91,11 +96,11 @@ export function PageOrientation({
         )}
       </div>
 
-      {/* Fade line */}
+      {/* Accent fade line */}
       <div
         className="h-px"
         style={{
-          background: `linear-gradient(to right, transparent, ${accentHsl.replace(")", " / 0.2)")}, transparent)`,
+          background: `linear-gradient(to right, transparent, ${hslAlpha(accent, 0.2)}, transparent)`,
         }}
       />
     </header>

@@ -35,6 +35,7 @@ export default function QuickRead() {
         keywords="SEND summary 2026, SEND reform quick guide, what is happening with SEND, EHCP changes summary, Schools White Paper summary, SEND parents guide, SEN reform England, ISP replacement EHCP"
       />
       <PageOrientation icon={BookOpen}
+        sectionLabel="Quick Read"
         title="SEND today: a quick read for parents"
         description="Everything across this site, brought together in one page. Where things stand, what is confirmed, what is not, and what the next 6 to 12 months are likely to look like."
         lastUpdated="23rd February 2026"

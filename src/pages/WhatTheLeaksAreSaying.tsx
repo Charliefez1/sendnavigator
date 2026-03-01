@@ -31,6 +31,7 @@ export default function WhatTheLeaksAreSaying() {
     <Layout>
       <SEOHead title="What has been reported about SEND reform" description="What major media outlets have reported about SEND reform, what those reports are based on, and how reporting has evolved." path="/what-the-leaks-are-saying" />
       <PageOrientation icon={FileText}
+        sectionLabel="SEND Reform Report"
         title="What has been reported: media coverage and its basis"
         description="What major outlets have reported, what those reports are actually based on, and how reporting has evolved over time."
         lastUpdated="26th February 2026"

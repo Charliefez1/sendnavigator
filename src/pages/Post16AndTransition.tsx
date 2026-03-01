@@ -78,9 +78,11 @@ export default function Post16AndTransition() {
       />
 
       <PageOrientation icon={Shield}
+        sectionLabel="EHCP Guide"
         title="Young People Aged 16 to 25"
         description="The SEND system does not end at 16. It does change. And the changes catch a lot of families off guard."
         lastUpdated="19th February 2026"
+        accentColor="hsl(220 70% 45%)"
       />
 
       {/* ═══ INTRO ═══ */}

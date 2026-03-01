@@ -35,6 +35,7 @@ export default function WhatTheLeaksDoNotMean() {
         path="/what-the-leaks-do-not-mean"
       />
       <PageOrientation icon={FileText}
+        sectionLabel="SEND Reform Report"
         title="What is often misunderstood: where fear runs ahead of evidence"
         description="Common misinterpretations addressed. What reports do not imply legally or operationally."
         lastUpdated="27th February 2026"
