@@ -87,7 +87,7 @@ export function GuideMe() {
             <h3 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors leading-tight">
               Ask Rich
             </h3>
-            <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">Want a more detailed, personal answer? Ask Rich directly. — Click for more.</p>
+            <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">Ask a question and get a plain-English answer. — Click for more.</p>
           </Link>
         </div>
 
