@@ -160,56 +160,70 @@ export function LandingAskRich({ onSignUpClick }: LandingAskRichProps) {
       {/* Loading with timer */}
       {isLoading && <ThinkingTimer />}
 
-      {/* Answer with 40% visible, then fade to sign-in */}
+      {/* Answer: first paragraph visible, rest behind paywall */}
       {answer && (
-        <div ref={answerRef} className="relative mt-5 rounded-xl overflow-hidden">
+        <div ref={answerRef} className="mt-5 space-y-4">
+          {/* Fully visible first paragraph */}
           <div
             className="rounded-xl p-6"
             style={{ backgroundColor: "hsl(222 28% 14%)", border: "1px solid hsl(222 20% 22%)" }}
           >
             <div className="space-y-3 text-sm leading-relaxed" style={{ color: "hsl(0 0% 85%)" }}>
-              {answer.plainAnswer.map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
+              <p>{answer.plainAnswer[0]}</p>
             </div>
           </div>
 
-          {/* Fade starting at 40% */}
-          <div
-            className="absolute inset-0 rounded-xl"
-            style={{
-              background: "linear-gradient(to bottom, transparent 35%, hsl(222 35% 8% / 0.5) 45%, hsl(222 35% 8% / 0.95) 55%, hsl(222 35% 8%) 65%)",
-              backdropFilter: "blur(6px)",
-              WebkitBackdropFilter: "blur(6px)",
-            }}
-          />
+          {/* Remaining paragraphs with fade */}
+          {answer.plainAnswer.length > 1 && (
+            <div className="relative rounded-xl overflow-hidden">
+              <div
+                className="rounded-xl p-6"
+                style={{ backgroundColor: "hsl(222 28% 14%)", border: "1px solid hsl(222 20% 22%)" }}
+              >
+                <div className="space-y-3 text-sm leading-relaxed" style={{ color: "hsl(0 0% 85%)" }}>
+                  {answer.plainAnswer.slice(1).map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                </div>
+              </div>
 
-          {/* CTA */}
-          <div className="absolute inset-x-0 bottom-0 flex flex-col items-center pb-8 px-6">
-            <Lock className="w-5 h-5 mb-3" style={{ color: "hsl(175 60% 52%)" }} />
-            <p className="text-sm font-medium mb-1 text-center" style={{ color: "hsl(0 0% 92%)" }}>
-              Sign in to read the full answer
-            </p>
-            <p className="text-xs mb-4 text-center" style={{ color: "hsl(222 20% 50%)" }}>
-              Free account, takes 30 seconds
-            </p>
-            <Button
-              onClick={() => {
-                // Save the question so after sign-up they get the full answer
-                if (question.trim()) {
-                  localStorage.setItem("landing_question", question.trim());
-                }
-                onSignUpClick?.();
-              }}
-              className="gap-2 rounded-full px-7"
-              style={{
-                boxShadow: "0 0 25px hsl(175 60% 40% / 0.2)",
-              }}
-            >
-              Get started free
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </div>
+              {/* Fade overlay */}
+              <div
+                className="absolute inset-0 rounded-xl"
+                style={{
+                  background: "linear-gradient(to bottom, transparent 10%, hsl(222 35% 8% / 0.6) 30%, hsl(222 35% 8% / 0.95) 50%, hsl(222 35% 8%) 65%)",
+                  backdropFilter: "blur(4px)",
+                  WebkitBackdropFilter: "blur(4px)",
+                }}
+              />
+
+              {/* CTA */}
+              <div className="absolute inset-x-0 bottom-0 flex flex-col items-center pb-8 px-6">
+                <Lock className="w-5 h-5 mb-3" style={{ color: "hsl(175 60% 52%)" }} />
+                <p className="text-sm font-medium mb-1 text-center" style={{ color: "hsl(0 0% 92%)" }}>
+                  Sign up free to read the full answer
+                </p>
+                <p className="text-xs mb-4 text-center" style={{ color: "hsl(222 20% 50%)" }}>
+                  Free account, takes 30 seconds
+                </p>
+                <Button
+                  onClick={() => {
+                    if (question.trim()) {
+                      localStorage.setItem("landing_question", question.trim());
+                    }
+                    onSignUpClick?.();
+                  }}
+                  className="gap-2 rounded-full px-7"
+                  style={{
+                    boxShadow: "0 0 25px hsl(175 60% 40% / 0.2)",
+                  }}
+                >
+                  Get started free
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
