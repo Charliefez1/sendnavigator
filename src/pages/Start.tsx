@@ -186,7 +186,7 @@ const Index = () => {
             </div>
 
             {/* Right column: Image with bottom fade */}
-            <div className="relative order-1 lg:order-2 flex justify-center">
+            <div className="relative order-1 lg:order-2 flex justify-center overflow-hidden">
               <div className="relative w-full">
                 <img
                   src={creatorsDuo}
@@ -194,7 +194,7 @@ const Index = () => {
                   className="w-full h-auto scale-110 origin-bottom"
                 />
                 {/* Bottom fade */}
-                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
               </div>
             </div>
           </div>
