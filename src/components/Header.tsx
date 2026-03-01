@@ -102,14 +102,14 @@ export function Header() {
   return (
     <header className="bg-navy text-navy-foreground sticky top-0 z-50">
       <div className="content-wide pt-1 pb-3">
-        <div className="hidden lg:grid lg:grid-cols-[auto_1fr_auto] items-center gap-2">
+        <div className="hidden lg:flex items-center gap-2">
           {/* Left: Logo */}
           <NavLink to="/" end className="flex-shrink-0">
             <img src={beaconLogo} alt="Neurodiversity Global SEND Navigator - Home" className="h-[52px]" />
           </NavLink>
 
-          {/* Center: Key direct links (desktop) — justified to centre of the row */}
-          <nav className="flex items-center justify-center gap-1" aria-label="Site pages">
+          {/* Nav links + Explore All — all on the same row, pushed right */}
+          <nav className="flex items-center gap-1 ml-auto" aria-label="Site pages">
             <NavLink
               to="/"
               end
@@ -186,8 +186,8 @@ export function Header() {
             </NavLink>
           </nav>
 
-          {/* Right: Explore All (desktop) */}
-          <div className="flex items-center justify-end">
+          {/* Explore All — sits right next to nav links */}
+          <div className="flex items-center">
             <div data-mega-menu className="relative">
               <button
                 onClick={() => setMegaMenuOpen(!megaMenuOpen)}
