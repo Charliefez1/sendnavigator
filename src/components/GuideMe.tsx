@@ -70,7 +70,7 @@ export function GuideMe() {
             <Link
               key={rec.path}
               to={rec.path}
-              className="block p-3 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/40 hover:bg-accent/50 transition-all group"
+              className="block px-3 py-2 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/40 hover:bg-accent/50 transition-all group"
             >
               <h3 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors leading-tight">
                 {rec.title}
@@ -82,7 +82,7 @@ export function GuideMe() {
           {/* Ask Rich option */}
           <Link
             to="/questions-and-answers"
-            className="block p-3 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/40 hover:bg-accent/50 transition-all group"
+            className="block px-3 py-2 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/40 hover:bg-accent/50 transition-all group"
           >
             <h3 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors leading-tight">
               Ask Rich
