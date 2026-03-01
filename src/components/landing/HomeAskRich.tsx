@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Search, Sparkles, Loader2 } from "lucide-react";
+import { Search, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { AnswerDisplay } from "@/components/qanda/AnswerDisplay";
@@ -119,8 +119,7 @@ export function HomeAskRich() {
       {/* Example questions */}
       {!response && !isLoading && (
         <div className="space-y-2.5">
-          <p className="text-xs flex items-center gap-1.5" style={{ color: "hsl(222 20% 45%)" }}>
-            <Sparkles className="w-3.5 h-3.5" />
+          <p className="text-xs" style={{ color: "hsl(222 20% 45%)" }}>
             Try an example question:
           </p>
           <div className="flex flex-wrap gap-2">
