@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
-import logoSendReform from "@/assets/logo-send-reform.png";
-import logoEhcpGuide from "@/assets/logo-ehcp-guide.png";
-import logoChildProfile from "@/assets/logo-child-profile.png";
-import logoWhatToDo from "@/assets/logo-what-to-do.png";
-import logoAskRich from "@/assets/logo-ask-rich.png";
-import logoSources from "@/assets/logo-sources.png";
+import { FileSearch, Shield, User, CheckSquare, MessageCircle, BookOpen } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-const features = [
+const features: {
+  icon: LucideIcon;
+  label: string;
+  headline: string;
+  description: string;
+  accentVar: string;
+  accentBgVar: string;
+  href: string;
+}[] = [
   {
-    logo: logoSendReform,
+    icon: FileSearch,
     label: "SEND Reform Report",
     headline: "Track every aspect of SEND reform",
     description:
@@ -18,7 +22,7 @@ const features = [
     href: "/feature/send-reform",
   },
   {
-    logo: logoEhcpGuide,
+    icon: Shield,
     label: "EHCP Guide",
     headline: "Understand your rights and the process",
     description:
@@ -28,7 +32,7 @@ const features = [
     href: "/feature/ehcp-guide",
   },
   {
-    logo: logoChildProfile,
+    icon: User,
     label: "My Child: A Profile",
     headline: "Build a profile to share with schools",
     description:
@@ -38,7 +42,7 @@ const features = [
     href: "/feature/my-child-profile",
   },
   {
-    logo: logoWhatToDo,
+    icon: CheckSquare,
     label: "What to do now",
     headline: "Practical steps based on current law",
     description:
@@ -48,7 +52,7 @@ const features = [
     href: "/feature/what-to-do-now",
   },
   {
-    logo: logoAskRich,
+    icon: MessageCircle,
     label: "Ask Rich",
     headline: "Get plain-English answers",
     description:
@@ -58,7 +62,7 @@ const features = [
     href: "/feature/ask-rich",
   },
   {
-    logo: logoSources,
+    icon: BookOpen,
     label: "Sources & Evidence",
     headline: "Every claim traced to its source",
     description:
@@ -73,6 +77,7 @@ export function AnimatedFeatureShowcase() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {features.map((feature) => {
+        const Icon = feature.icon;
         return (
           <Link
             key={feature.label}
@@ -85,11 +90,15 @@ export function AnimatedFeatureShowcase() {
             }}
           >
             <div className="flex items-center gap-3 mb-3">
-              <img
-                src={feature.logo}
-                alt={feature.label}
-                className="w-10 h-10 rounded-lg object-cover flex-shrink-0"
-              />
+              <div
+                className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                style={{ backgroundColor: `hsl(var(${feature.accentVar}) / 0.15)` }}
+              >
+                <Icon
+                  className="w-5 h-5"
+                  style={{ color: `hsl(var(${feature.accentVar}))` }}
+                />
+              </div>
               <h3
                 className="text-sm font-semibold leading-tight"
                 style={{ color: `hsl(var(${feature.accentVar}))` }}
