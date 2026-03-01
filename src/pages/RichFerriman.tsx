@@ -58,7 +58,7 @@ export default function RichFerriman() {
           </p>
 
           <p>
-            As co founder of <strong>Neurodiversity Global</strong>, I work to ensure neuroinclusion is strategic, not sentimental. We advise and are trusted by organisations including the NHS, NASA, University of Warwick, the London School of Economics, University of Birmingham, University of Brighton, University of Oxford, the Engineering Council, the Foreign Commonwealth and Development Office, ACAS, ASLEF, Kyndryl, Virgin Media, FareShare, and local education settings including my son's primary school.
+            As co founder of <strong>Neurodiversity Global</strong>, I work to ensure neuroinclusion is strategic, not sentimental. We advise and are trusted by organisations including the NHS, NASA, the Engineering Council, the Foreign Commonwealth and Development Office, ACAS, ASLEF, Kyndryl, Virgin Media, FareShare, and local education settings including my son's primary school.
           </p>
 
           <p>
