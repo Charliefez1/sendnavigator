@@ -170,40 +170,6 @@ const Index = () => {
       {/* ─── SECTION 1: NAVY HERO — Tell us why you're here ─── */}
       <section className="relative overflow-hidden bg-background">
         <div className="content-section relative py-10 sm:py-14">
-          {/* Quick links bar - the 5 colour buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
-            <Link to="/state-of-send-2026">
-              <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap rounded-full shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: "hsl(175 65% 41%)", color: "white" }}>
-                <BookOpen className="w-3.5 h-3.5" />
-                SEND Reform Report
-              </Button>
-            </Link>
-            <Link to="/ehcps">
-              <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap rounded-full shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: "hsl(220 70% 45%)", color: "white" }}>
-                <Shield className="w-3.5 h-3.5" />
-                EHCP Guide
-              </Button>
-            </Link>
-            <Link to="/my-child-profile">
-              <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap rounded-full shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: "hsl(42 87% 48%)", color: "hsl(30 40% 20%)" }}>
-                <ClipboardList className="w-3.5 h-3.5" />
-                My Child: A Profile
-              </Button>
-            </Link>
-            <Link to="/what-to-do-right-now">
-              <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap rounded-full shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: "hsl(8 75% 55%)", color: "white" }}>
-                <Scale className="w-3.5 h-3.5" />
-                What to do now
-              </Button>
-            </Link>
-            <Link to="/questions-and-answers">
-              <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap rounded-full shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: "hsl(262 60% 55%)", color: "white" }}>
-                <MessageCircleQuestion className="w-3.5 h-3.5" />
-                Ask Rich
-              </Button>
-            </Link>
-          </div>
-
           {/* Guide Me */}
           <div className="max-w-2xl mx-auto">
             <GuideMe />
