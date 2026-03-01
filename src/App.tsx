@@ -60,6 +60,12 @@ const DevolvedNations = lazy(() => import("./pages/DevolvedNations"));
 const MyChildProfile = lazy(() => import("./pages/MyChildProfile"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const FeatureSendReform = lazy(() => import("./pages/landing/FeatureSendReform"));
+const FeatureEHCPGuide = lazy(() => import("./pages/landing/FeatureEHCPGuide"));
+const FeatureMyChildProfile = lazy(() => import("./pages/landing/FeatureMyChildProfile"));
+const FeatureWhatToDoNow = lazy(() => import("./pages/landing/FeatureWhatToDoNow"));
+const FeatureAskRich = lazy(() => import("./pages/landing/FeatureAskRich"));
+const FeatureSources = lazy(() => import("./pages/landing/FeatureSources"));
 
 const queryClient = new QueryClient();
 
@@ -88,6 +94,12 @@ const App = () => (
                     <Routes>
                       {/* Public routes */}
                       <Route path="/landing" element={<Landing />} />
+                      <Route path="/feature/send-reform" element={<FeatureSendReform />} />
+                      <Route path="/feature/ehcp-guide" element={<FeatureEHCPGuide />} />
+                      <Route path="/feature/my-child-profile" element={<FeatureMyChildProfile />} />
+                      <Route path="/feature/what-to-do-now" element={<FeatureWhatToDoNow />} />
+                      <Route path="/feature/ask-rich" element={<FeatureAskRich />} />
+                      <Route path="/feature/sources" element={<FeatureSources />} />
                       <Route path="/about" element={<About />} />
                       <Route path="/sources" element={<Sources />} />
                       <Route path="/statistics-and-data" element={<StatisticsAndData />} />

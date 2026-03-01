@@ -20,7 +20,7 @@ interface AnswerData {
 }
 
 interface LandingAskRichProps {
-  onSignUpClick: () => void;
+  onSignUpClick?: () => void;
 }
 
 function ThinkingTimer() {
@@ -199,7 +199,7 @@ export function LandingAskRich({ onSignUpClick }: LandingAskRichProps) {
                 if (question.trim()) {
                   localStorage.setItem("landing_question", question.trim());
                 }
-                onSignUpClick();
+                onSignUpClick?.();
               }}
               className="gap-2 rounded-full px-7"
               style={{
