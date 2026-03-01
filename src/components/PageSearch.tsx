@@ -119,19 +119,19 @@ export function PageSearch({ label = "Search this page" }: PageSearchProps) {
   return (
     <div data-page-search-bar className="flex items-center gap-2">
       <div className="relative flex-1">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/50" />
         <input
           ref={inputRef}
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={label}
-          className="w-full pl-9 pr-3 py-2 text-sm bg-muted/30 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/40 text-foreground placeholder:text-muted-foreground"
+          className="w-full pl-9 pr-3 py-2 text-sm bg-white/10 border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30 text-white placeholder:text-white/50"
         />
       </div>
       {query && (
         <>
-          <span className="text-xs text-muted-foreground whitespace-nowrap">
+          <span className="text-xs text-white/60 whitespace-nowrap">
             {matchCount > 0 ? `${currentMatch}/${matchCount}` : "0 results"}
           </span>
           {matchCount > 1 && (

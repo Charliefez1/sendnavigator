@@ -91,7 +91,7 @@ export function OrientationBar() {
   if (isMobile) {
     return (
       <div
-        className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border px-3 py-1.5"
+        className="fixed top-[60px] left-0 right-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border px-3 py-1.5"
         role="navigation"
         aria-label="Page orientation"
       >
@@ -134,7 +134,7 @@ export function OrientationBar() {
   // Desktop
   return (
     <div
-      className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border"
+      className="fixed top-[60px] left-0 right-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border"
       role="navigation"
       aria-label="Page orientation"
     >
