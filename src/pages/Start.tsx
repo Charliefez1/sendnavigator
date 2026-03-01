@@ -187,14 +187,14 @@ const Index = () => {
 
             {/* Right column: Image with bottom fade */}
             <div className="relative order-1 lg:order-2 flex justify-center">
-              <div className="relative max-w-md w-full">
+              <div className="relative w-full">
                 <img
                   src={creatorsDuo}
                   alt="Charlie and Rich — the team behind SEND Navigator"
-                  className="w-full h-auto"
+                  className="w-full h-auto scale-110 origin-bottom"
                 />
                 {/* Bottom fade */}
-                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-background to-transparent" />
               </div>
             </div>
           </div>
