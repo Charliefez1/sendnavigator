@@ -1,7 +1,8 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
+import { PageOrientation } from "@/components/templates";
 import { Link } from "react-router-dom";
-import { CheckCircle2, ExternalLink, ArrowLeft } from "lucide-react";
+import { CheckCircle2, ExternalLink, ArrowLeft, Brain } from "lucide-react";
 import { ConfidenceLabel } from "@/components/ConfidenceLabel";
 import { WordFromRich } from "@/components/WordFromRich";
 
@@ -22,22 +23,13 @@ export default function UnderstandingAutism() {
         path="/understanding-your-child/autism"
       />
 
-      {/* Breadcrumb */}
-      <div className="content-section pt-6 pb-2">
-        <Link to="/understanding-your-child" className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors">
-          <ArrowLeft className="w-3 h-3" />
-          Understanding Your Child
-        </Link>
-      </div>
-
-      <header className="content-section py-4 border-b border-border">
-        <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">
-          Autism
-        </h1>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          Autism is a <strong>lifelong neurological difference</strong>. It affects how a person processes sensory information, communicates, builds social understanding, and experiences the world around them. It is not a mental health condition. It is not caused by parenting. It is not something to grow out of.
-        </p>
-      </header>
+      <PageOrientation
+        icon={Brain}
+        sectionLabel="Understanding Your Child"
+        title="Autism"
+        description="Autism is a lifelong neurological difference. It affects how a person processes sensory information, communicates, builds social understanding, and experiences the world around them. It is not a mental health condition. It is not caused by parenting. It is not something to grow out of."
+        accentColor="hsl(330 60% 52%)"
+      />
 
       <WordFromRich>
         <p>I am autistic. I have ADHD. I am dyslexic. For a long time I thought those things were problems to manage. They are not. They are a different operating system. One that most schools and systems were not designed around.</p>

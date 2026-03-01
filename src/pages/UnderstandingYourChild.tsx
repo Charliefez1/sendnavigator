@@ -1,7 +1,8 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
+import { PageOrientation } from "@/components/templates";
 import { Link } from "react-router-dom";
-import { ArrowRight, Brain, Zap, CheckCircle2, Clock } from "lucide-react";
+import { ArrowRight, Brain, Zap, CheckCircle2, Clock, Heart } from "lucide-react";
 import { ConfidenceLabel } from "@/components/ConfidenceLabel";
 
 export default function UnderstandingYourChild() {
@@ -13,17 +14,13 @@ export default function UnderstandingYourChild() {
         path="/understanding-your-child"
       />
 
-      <header className="content-section py-8 border-b border-border">
-        <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">
-          Understanding Your Child
-        </h1>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          <strong>You do not need a diagnosis to start understanding your child.</strong>
-        </p>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mt-3">
-          A diagnosis can open doors. To assessment, to support, to the right language in meetings. But many children <strong>wait years</strong> for one. And understanding what is happening for your child right now is both possible and useful, regardless of where you are in that process.
-        </p>
-      </header>
+      <PageOrientation
+        icon={Heart}
+        sectionLabel="Understanding Your Child"
+        title="Understanding Your Child"
+        description="You do not need a diagnosis to start understanding your child. A diagnosis can open doors — but understanding what is happening right now is both possible and useful, regardless of where you are in that process."
+        accentColor="hsl(330 60% 52%)"
+      />
 
       {/* Intro */}
       <section className="content-section py-6">

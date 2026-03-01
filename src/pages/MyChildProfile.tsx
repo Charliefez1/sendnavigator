@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
+import { PageOrientation } from "@/components/templates";
+import { UserRound } from "lucide-react";
 import { ChildProfileProvider, useChildProfile, ChildProfileState } from "@/contexts/ChildProfileContext";
 import { OpeningScreen } from "@/components/child-profile/OpeningScreen";
 import { SetupFlow } from "@/components/child-profile/SetupFlow";
@@ -359,6 +361,14 @@ const MyChildProfile = () => {
         title="My Child: A Profile - SEND Reform Navigator"
         description="Build a personalised profile document about your neurodivergent child. Download as PDF. Nothing is stored."
         path="/my-child-profile"
+      />
+      <PageOrientation
+        icon={UserRound}
+        sectionLabel="My Child: A Profile"
+        title="My Child: A Profile"
+        description="Build a personalised profile document about your neurodivergent child. Guided questions across 22 sections. Download as PDF. Nothing is stored."
+        accentColor="hsl(42 87% 50%)"
+        showSearch={false}
       />
       <ChildProfileProvider>
         <ProfileContent />
