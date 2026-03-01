@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import creatorsDuo from "@/assets/creators-duo.png";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { HomeAskRich } from "@/components/landing/HomeAskRich";
@@ -167,23 +168,35 @@ const Index = () => {
         keywords="SEND Navigator, SEND reform guide, EHCP guide parents, Schools White Paper 2026, SEND parents England, special educational needs help, neurodiversity, SEND rights, Individual Support Plans, SENDIASS"
       />
 
-      {/* ─── SECTION 1: NAVY HERO — Tell us why you're here ─── */}
+      {/* ─── SECTION 1: HERO — Tell us why you're here ─── */}
       <section className="relative overflow-hidden bg-background">
-        <div className="content-section relative py-10 sm:py-14">
-          {/* Guide Me */}
-          <div className="max-w-2xl mx-auto">
-            <GuideMe />
-          </div>
+        <div className="content-wide relative py-10 sm:py-14">
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+            {/* Left: Image with bottom fade */}
+            <div className="relative w-48 sm:w-56 lg:w-72 flex-shrink-0">
+              <img
+                src={creatorsDuo}
+                alt="Charlie and Rich — the team behind SEND Navigator"
+                className="w-full h-auto"
+              />
+              {/* Bottom fade into background */}
+              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background to-transparent" />
+            </div>
 
-          {/* Last updated */}
-          <div className="flex items-center justify-center gap-2 mt-6">
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary" />
-            <p className="text-xs text-muted-foreground">
-              <strong className="text-foreground">Last updated:</strong> 23rd February 2026
-            </p>
+            {/* Right: Guide Me */}
+            <div className="flex-1 max-w-2xl w-full">
+              <GuideMe />
+
+              {/* Last updated */}
+              <div className="flex items-center justify-center lg:justify-start gap-2 mt-6">
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary" />
+                <p className="text-xs text-muted-foreground">
+                  <strong className="text-foreground">Last updated:</strong> 23rd February 2026
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-
       </section>
 
       {/* ─── SECTION 2: FEATURE NAVIGATION (6 boxes from landing) ─── */}
