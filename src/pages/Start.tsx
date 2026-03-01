@@ -191,21 +191,10 @@ const Index = () => {
                 <img
                   src={creatorsDuo}
                   alt="Charlie and Rich — the team behind SEND Navigator"
-                  className="w-full h-auto"
+                  className="w-full h-auto scale-110 origin-bottom"
                 />
                 {/* Bottom fade */}
                 <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
-              </div>
-              <div className="mt-4 text-center lg:text-left space-y-2">
-                <p className="text-sm font-medium text-foreground">
-                  <strong>Charlie Ferriman</strong>, Co-Founder Neurodiversity Global and <strong>Richard Ferriman</strong>, Co-Founder of Neurodiversity Global.
-                </p>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Father &amp; Son team, combining lived experience of neurodivergence across work, education, public sector and sport. Clients include NHS, ACAS, Fareshare, NASA, TransPennine Express and Kyndryl.
-                </p>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  Rich has 3 neurodivergent children and is himself AuADHD. Charlie, Rich's eldest son, is ADD. The SEND Navigator exists to make just one day a little brighter and easier for SEND Parents across England. <span className="italic">(GB Edition release April 26')</span>
-                </p>
               </div>
             </div>
           </div>
