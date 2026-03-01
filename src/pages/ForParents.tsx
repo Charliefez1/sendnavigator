@@ -5,6 +5,7 @@ import type { PageSectionDef } from "@/components/templates";
 
 import { Link } from "react-router-dom";
 import { CheckCircle2, ExternalLink, Phone, Heart, Users, Scale, Shield, AlertTriangle, HelpCircle } from "lucide-react";
+import { ConfidenceLabel } from "@/components/ConfidenceLabel";
 import { WordFromRich } from "@/components/WordFromRich";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 
@@ -211,16 +212,9 @@ export default function ForParents() {
             />
           </div>
 
-          {/* Confidence label */}
-          <div className="rounded-lg bg-status-confirmed/10 border border-status-confirmed/30 p-4 flex items-start gap-3 mt-5">
-            <CheckCircle2 className="w-5 h-5 text-status-confirmed flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-xs font-semibold text-status-confirmed uppercase tracking-wider mb-1">Confirmed</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                The right to a carer's assessment under the <strong>Care Act 2014</strong> applies to adult carers who provide or intend to provide care for a disabled person.
-              </p>
-            </div>
-          </div>
+          <ConfidenceLabel status="confirmed">
+              The right to a carer's assessment under the <strong>Care Act 2014</strong> applies to adult carers who provide or intend to provide care for a disabled person.
+          </ConfidenceLabel>
         </div>
       </section>
 

@@ -5,6 +5,7 @@ import type { PageSectionDef } from "@/components/templates";
 
 import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, BarChart3, Scale, Shield, FileText, Phone, ListChecks } from "lucide-react";
+import { ConfidenceLabel } from "@/components/ConfidenceLabel";
 import { WordFromRich } from "@/components/WordFromRich";
 
 const sections: PageSectionDef[] = [
@@ -27,29 +28,6 @@ function SectionHeading({ id, children }: { id: string; children: React.ReactNod
   );
 }
 
-function ConfidenceConfirmed({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="rounded-lg bg-status-confirmed/10 border border-status-confirmed/30 p-4 flex items-start gap-3 mt-5">
-      <CheckCircle2 className="w-5 h-5 text-status-confirmed flex-shrink-0 mt-0.5" />
-      <div>
-        <p className="text-xs font-semibold text-status-confirmed uppercase tracking-wider mb-1">Confirmed</p>
-        <p className="text-sm text-muted-foreground leading-relaxed">{children}</p>
-      </div>
-    </div>
-  );
-}
-
-function ConfidenceDiscussed({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="rounded-lg bg-status-discussed/10 border border-status-discussed/30 p-4 flex items-start gap-3 mt-5">
-      <HelpCircle className="w-5 h-5 text-status-discussed flex-shrink-0 mt-0.5" />
-      <div>
-        <p className="text-xs font-semibold text-status-discussed uppercase tracking-wider mb-1">Discussed</p>
-        <p className="text-sm text-muted-foreground leading-relaxed">{children}</p>
-      </div>
-    </div>
-  );
-}
 
 export default function Exclusions() {
   return (
@@ -103,7 +81,7 @@ export default function Exclusions() {
             <p><strong>That is the pattern. It is well documented.</strong> It matters because it shapes your rights.</p>
           </div>
 
-          <ConfidenceConfirmed>DfE autumn term 2024/25 exclusion statistics, published 20 November 2025.</ConfidenceConfirmed>
+          <ConfidenceLabel status="confirmed">DfE autumn term 2024/25 exclusion statistics, published 20 November 2025.</ConfidenceLabel>
         </div>
       </section>
 
@@ -142,7 +120,7 @@ export default function Exclusions() {
             <p>If your child does not have an EHC plan but has identified SEN, the school must still make <strong>reasonable adjustments</strong> and provide appropriate support under the Equality Act 2010. A disability-related behaviour cannot lawfully be treated as a disciplinary matter without reasonable adjustments first having been made.</p>
             <p>Schools also have duties under the <strong>Children and Families Act 2014</strong>. A child cannot be excluded simply because supporting them is difficult or costly.</p>
           </div>
-          <ConfidenceConfirmed>Equality Act 2010, Children and Families Act 2014, DfE Suspension and Permanent Exclusion guidance (updated 2023).</ConfidenceConfirmed>
+          <ConfidenceLabel status="confirmed">Equality Act 2010, Children and Families Act 2014, DfE Suspension and Permanent Exclusion guidance (updated 2023).</ConfidenceLabel>
         </div>
       </section>
 
@@ -163,7 +141,7 @@ export default function Exclusions() {
             <p>For suspensions that would take your child <strong>over 15 days</strong> excluded in a term, the governing body must meet and consider reinstatement.</p>
             <p><strong>Your child must continue to receive full-time education from the sixth school day</strong> of any exclusion. The school is responsible for arranging this. If they fail to arrange it, they are breaking the law.</p>
           </div>
-          <ConfidenceConfirmed>DfE Suspension and Permanent Exclusion guidance, September 2023.</ConfidenceConfirmed>
+          <ConfidenceLabel status="confirmed">DfE Suspension and Permanent Exclusion guidance, September 2023.</ConfidenceLabel>
         </div>
       </section>
 
@@ -183,7 +161,7 @@ export default function Exclusions() {
             <p>The IRP cannot reinstate your child directly. But if the governing body refuses to follow a direction to reconsider, the school can be required to make a payment to a ring-fenced fund.</p>
             <p><strong>If your child has SEND, you can request that a SEND expert sits on the IRP. This is your right. Use it.</strong></p>
           </div>
-          <ConfidenceConfirmed>DfE Suspension and Permanent Exclusion guidance, September 2023.</ConfidenceConfirmed>
+          <ConfidenceLabel status="confirmed">DfE Suspension and Permanent Exclusion guidance, September 2023.</ConfidenceLabel>
         </div>
       </section>
 
@@ -214,7 +192,7 @@ export default function Exclusions() {
               </div>
             </div>
           </div>
-          <ConfidenceConfirmed>DfE Suspension and Permanent Exclusion guidance, September 2023; Equality Act 2010.</ConfidenceConfirmed>
+          <ConfidenceLabel status="confirmed">DfE Suspension and Permanent Exclusion guidance, September 2023; Equality Act 2010.</ConfidenceLabel>
         </div>
       </section>
 
@@ -273,7 +251,7 @@ export default function Exclusions() {
               → Track the reform progress <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
-          <ConfidenceDiscussed>Inclusion in mainstream schools and the role of AP are active topics in reform discussions, but specific policy proposals are not yet confirmed.</ConfidenceDiscussed>
+          <ConfidenceLabel status="discussed">Inclusion in mainstream schools and the role of AP are active topics in reform discussions, but specific policy proposals are not yet confirmed.</ConfidenceLabel>
         </div>
       </section>
 

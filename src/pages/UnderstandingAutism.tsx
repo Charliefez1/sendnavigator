@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { CheckCircle2, ExternalLink, ArrowLeft } from "lucide-react";
+import { ConfidenceLabel } from "@/components/ConfidenceLabel";
 import { WordFromRich } from "@/components/WordFromRich";
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
@@ -150,15 +151,9 @@ export default function UnderstandingAutism() {
 
       {/* Confidence label */}
       <section className="content-section py-4">
-        <div className="rounded-lg bg-status-confirmed/10 border border-status-confirmed/30 p-4 flex items-start gap-3">
-          <CheckCircle2 className="w-5 h-5 text-status-confirmed flex-shrink-0 mt-0.5" />
-          <div>
-            <p className="text-xs font-semibold text-status-confirmed uppercase tracking-wider mb-1">Confirmed</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              School-based SEND support and EHCP assessment requests <strong>do not require a prior diagnosis</strong>.
-            </p>
-          </div>
-        </div>
+        <ConfidenceLabel status="confirmed">
+          School-based SEND support and EHCP assessment requests <strong>do not require a prior diagnosis</strong>.
+        </ConfidenceLabel>
       </section>
 
       {/* Further reading */}
