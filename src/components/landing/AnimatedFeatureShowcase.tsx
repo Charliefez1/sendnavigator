@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   FileText, Shield, User, CheckSquare, MessageCircle, BookOpen,
 } from "lucide-react";
@@ -11,6 +12,7 @@ const features = [
       "Eight detailed sections covering what's confirmed, what's being discussed, and what hasn't changed.",
     accentVar: "--accent-teal",
     accentBgVar: "--accent-teal-bg",
+    href: "/feature/send-reform",
   },
   {
     icon: Shield,
@@ -20,6 +22,7 @@ const features = [
       "A plain-English guide to Education, Health and Care Plans. What they are, how they work, and what to do when things go wrong.",
     accentVar: "--accent-deep-blue",
     accentBgVar: "--accent-deep-blue-bg",
+    href: "/feature/ehcp-guide",
   },
   {
     icon: User,
@@ -29,6 +32,7 @@ const features = [
       "Create a professional, structured document about your child that you can share with schools and professionals.",
     accentVar: "--accent-amber",
     accentBgVar: "--accent-amber-bg",
+    href: "/feature/my-child-profile",
   },
   {
     icon: CheckSquare,
@@ -38,6 +42,7 @@ const features = [
       "Clear, practical actions you can take right now based on what the law actually says today.",
     accentVar: "--accent-coral",
     accentBgVar: "--accent-coral-bg",
+    href: "/feature/what-to-do-now",
   },
   {
     icon: MessageCircle,
@@ -47,6 +52,7 @@ const features = [
       "Ask any question about SEND reform and get a grounded, honest answer drawn from confirmed sources.",
     accentVar: "--accent-violet",
     accentBgVar: "--accent-violet-bg",
+    href: "/feature/ask-rich",
   },
   {
     icon: BookOpen,
@@ -56,6 +62,7 @@ const features = [
       "Legislation, government research, DfE data, and expert reviews, all in one place so you can verify everything yourself.",
     accentVar: "--accent-teal",
     accentBgVar: "--accent-teal-bg",
+    href: "/feature/sources",
   },
 ];
 
@@ -65,9 +72,10 @@ export function AnimatedFeatureShowcase() {
       {features.map((feature) => {
         const Icon = feature.icon;
         return (
-          <div
+          <Link
             key={feature.label}
-            className="rounded-xl border p-5 transition-shadow duration-200 hover:shadow-2xl"
+            to={feature.href}
+            className="rounded-xl border p-5 transition-all duration-200 hover:shadow-2xl hover:-translate-y-0.5 block"
             style={{
               borderColor: `hsl(var(${feature.accentVar}) / 0.25)`,
               backgroundColor: `hsl(var(${feature.accentBgVar}))`,
@@ -97,7 +105,7 @@ export function AnimatedFeatureShowcase() {
             <p className="text-xs text-muted-foreground leading-relaxed">
               {feature.description}
             </p>
-          </div>
+          </Link>
         );
       })}
     </div>
