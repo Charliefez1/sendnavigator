@@ -7,7 +7,7 @@ import { LandingAskRich } from "@/components/landing/LandingAskRich";
 import { LandingContactForm } from "@/components/landing/LandingContactForm";
 import { PersistentNewsTicker } from "@/components/PersistentNewsTicker";
 import { useAuth } from "@/contexts/AuthContext";
-import { ArrowRight, Check, AlertCircle } from "lucide-react";
+import { ArrowRight, Check, AlertCircle, Search, Mail } from "lucide-react";
 import ndgLogo from "@/assets/neurodiversity-global-education-logo-full.png";
 
 /* ── Fade-in on scroll ── */
@@ -238,16 +238,18 @@ const Landing = () => {
           className={`content-wide relative py-12 sm:py-16 ${fade3.className}`}
           style={fade3.style}
         >
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* LEFT: Ask Rich */}
             <div className="rounded-2xl border p-6 sm:p-8" style={{ borderColor: "hsl(222 20% 22%)", backgroundColor: "hsl(222 30% 12% / 0.5)" }}>
-              <h2
-                className="text-2xl sm:text-3xl font-display font-semibold mb-2"
-                style={{ color: "hsl(0 0% 96%)" }}
-              >
-                Ask Rich anything.
-              </h2>
-              <p className="text-sm mb-10" style={{ color: "hsl(222 15% 70%)" }}>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(175 60% 40% / 0.12)" }}>
+                  <Search className="w-4 h-4" style={{ color: "hsl(175 60% 52%)" }} />
+                </div>
+                <h2 className="text-xl sm:text-2xl font-display font-semibold" style={{ color: "hsl(0 0% 96%)" }}>
+                  Ask Rich anything
+                </h2>
+              </div>
+              <p className="text-sm mb-6" style={{ color: "hsl(222 15% 70%)" }}>
                 Get a real answer grounded in confirmed facts, not generic AI output.
               </p>
               <LandingAskRich />
@@ -255,16 +257,18 @@ const Landing = () => {
 
             {/* RIGHT: Contact Us */}
             <div className="rounded-2xl border p-6 sm:p-8" style={{ borderColor: "hsl(222 20% 22%)", backgroundColor: "hsl(222 30% 12% / 0.5)" }}>
-              <h2
-                className="text-2xl sm:text-3xl font-display font-semibold mb-2"
-                style={{ color: "hsl(0 0% 96%)" }}
-              >
-                Contact us
-              </h2>
-              <p className="text-sm mb-10" style={{ color: "hsl(222 15% 70%)" }}>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(175 60% 40% / 0.12)" }}>
+                  <Mail className="w-4 h-4" style={{ color: "hsl(175 60% 52%)" }} />
+                </div>
+                <h2 className="text-xl sm:text-2xl font-display font-semibold" style={{ color: "hsl(0 0% 96%)" }}>
+                  Contact us
+                </h2>
+              </div>
+              <p className="text-sm mb-6" style={{ color: "hsl(222 15% 70%)" }}>
                 Get in touch — we'd love to hear from you.
               </p>
-              <LandingContactForm />
+              <LandingContactForm variant="dark" />
             </div>
           </div>
         </div>

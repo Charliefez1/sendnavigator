@@ -10,7 +10,11 @@ const contactSchema = z.object({
   message: z.string().trim().min(1, "Message is required").max(2000),
 });
 
-export function LandingContactForm() {
+interface LandingContactFormProps {
+  variant?: "light" | "dark";
+}
+
+export function LandingContactForm({ variant = "light" }: LandingContactFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -30,7 +34,6 @@ export function LandingContactForm() {
       return;
     }
 
-    // Spam protection: honeypot and timing
     if (honeypot) return;
     if (Date.now() - loadedAt < 3000) {
       setError("Please wait a moment before submitting.");
@@ -53,6 +56,31 @@ export function LandingContactForm() {
     }
   };
 
+  const isDark = variant === "dark";
+
+  const inputStyle: React.CSSProperties = isDark
+    ? {
+        backgroundColor: "hsl(222 28% 14%)",
+        border: "1px solid hsl(222 20% 22%)",
+        color: "hsl(0 0% 90%)",
+      }
+    : {};
+
+  const inputFocus = isDark
+    ? {
+        onFocus: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+          e.currentTarget.style.borderColor = "hsl(175 60% 40% / 0.5)";
+          e.currentTarget.style.boxShadow = "0 0 0 3px hsl(175 60% 40% / 0.15)";
+        },
+        onBlur: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+          e.currentTarget.style.borderColor = "hsl(222 20% 22%)";
+          e.currentTarget.style.boxShadow = "none";
+        },
+      }
+    : {};
+
+  const labelColor = isDark ? "hsl(222 15% 72%)" : undefined;
+
   if (sent) {
     return (
       <div className="text-center py-8">
@@ -62,8 +90,10 @@ export function LandingContactForm() {
         >
           <Check className="w-6 h-6" style={{ color: "hsl(175 60% 52%)" }} />
         </div>
-        <p className="text-lg font-display font-medium text-foreground mb-1">Message sent</p>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-lg font-display font-medium mb-1" style={{ color: isDark ? "hsl(0 0% 96%)" : undefined }}>
+          Message sent
+        </p>
+        <p className="text-sm" style={{ color: isDark ? "hsl(222 20% 60%)" : undefined }}>
           Rich will get back to you as soon as he can.
         </p>
       </div>
@@ -74,7 +104,7 @@ export function LandingContactForm() {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="contact-name" className="block text-sm font-medium text-foreground mb-1.5">
+          <label htmlFor="contact-name" className="block text-sm font-medium mb-1.5" style={{ color: labelColor }}>
             Name
           </label>
           <input
@@ -82,14 +112,16 @@ export function LandingContactForm() {
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+            className={`w-full px-4 py-3 rounded-xl text-sm transition-all duration-300 ${!isDark ? "border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" : "outline-none"}`}
+            style={inputStyle}
             placeholder="Your name"
             maxLength={100}
             required
+            {...inputFocus}
           />
         </div>
         <div>
-          <label htmlFor="contact-email" className="block text-sm font-medium text-foreground mb-1.5">
+          <label htmlFor="contact-email" className="block text-sm font-medium mb-1.5" style={{ color: labelColor }}>
             Email
           </label>
           <input
@@ -97,15 +129,17 @@ export function LandingContactForm() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+            className={`w-full px-4 py-3 rounded-xl text-sm transition-all duration-300 ${!isDark ? "border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" : "outline-none"}`}
+            style={inputStyle}
             placeholder="you@example.com"
             maxLength={255}
             required
+            {...inputFocus}
           />
         </div>
       </div>
       <div>
-        <label htmlFor="contact-message" className="block text-sm font-medium text-foreground mb-1.5">
+        <label htmlFor="contact-message" className="block text-sm font-medium mb-1.5" style={{ color: labelColor }}>
           Message
         </label>
         <textarea
@@ -113,14 +147,16 @@ export function LandingContactForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           rows={4}
-          className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors resize-none"
+          className={`w-full px-4 py-3 rounded-xl text-sm transition-all duration-300 resize-none ${!isDark ? "border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary" : "outline-none"}`}
+          style={inputStyle}
           placeholder="How can we help?"
           maxLength={2000}
           required
+          {...inputFocus}
         />
       </div>
       {error && <p className="text-sm text-destructive">{error}</p>}
-      <Button type="submit" disabled={sending} className="gap-2 w-full sm:w-auto">
+      <Button type="submit" disabled={sending} className="gap-2 w-full sm:w-auto rounded-xl min-h-[48px] px-7">
         {sending ? "Sending…" : "Send message"}
         <Send className="w-4 h-4" />
       </Button>
