@@ -200,9 +200,6 @@ const Index = () => {
                 <p className="text-xs leading-relaxed text-foreground">
                   <strong>Charlie Ferriman</strong> and <strong>Richard Ferriman</strong> are the co founders of Neurodiversity Global. A father and son team ensuring neuroinclusion across work, education, the public sector and sport is strategic, not sentimental. We help organisations move beyond intent to build workplaces where neurodivergent people thrive. We advise and are trusted by organisations including the NHS, ACAS, Fareshare, NASA, TransPennine Express and Kyndryl. <a href="/neurodiversity-global" className="text-primary hover:underline font-medium">Find out more here.</a>
                 </p>
-                <p className="text-xs leading-relaxed text-muted-foreground">
-                  Rich has 3 neurodivergent children and is himself AuADHD, Charlie, Rich's eldest son is ADD. The SEND Navigator exists to make just one day a little brighter and easier for SEND Parents across England. (GB Edition release April 26')
-                </p>
               </div>
             </div>
           </div>
