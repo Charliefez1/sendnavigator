@@ -1,6 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { OnThisPage } from "@/components/templates";
+import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 
 import { Link } from "react-router-dom";
@@ -46,17 +46,13 @@ export default function AlternativeProvision() {
         path="/alternative-provision"
       />
 
-      <header className="content-section py-8 border-b border-border">
-        <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">
-          Alternative Provision: What It Is and What Your Rights Are
-        </h1>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          Alternative Provision, AP, is the part of the education system that sits outside mainstream and special schools. It includes Pupil Referral Units, AP academies and free schools, hospital schools, and a large and <strong>largely unregulated sector</strong> of private and voluntary providers.
-        </p>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mt-3">
-          Around <strong>43,000 children</strong> are in some form of AP at any given time in England. The majority have SEND. Many have EHC plans. Most arrived there through a route that involved unmet need, exclusion, or both.
-        </p>
-      </header>
+      <PageOrientation icon={BookOpen}
+        sectionLabel="What To Do Now"
+        title="Alternative Provision: What It Is and What Your Rights Are"
+        description="Alternative Provision sits outside mainstream and special schools. It includes Pupil Referral Units, AP academies, hospital schools, and a largely unregulated sector of private providers."
+        accentColor="hsl(8 75% 55%)"
+        showSearch={false}
+      />
 
       <OnThisPage sections={sections} />
       

@@ -1,6 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { OnThisPage } from "@/components/templates";
+import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 
 import { Link } from "react-router-dom";
@@ -38,17 +38,13 @@ export default function Exclusions() {
         path="/exclusions"
       />
 
-      <header className="content-section py-8 border-b border-border">
-        <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">
-          Exclusions and Your Child's Rights
-        </h1>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          Children with SEND are excluded from school at <strong>significantly higher rates</strong> than their peers. That is not a coincidence. It is a failure of the system to provide the support those children need.
-        </p>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mt-3">
-          This page explains what exclusions are, <strong>what your rights are</strong>, and what you can do if your child is excluded or is at risk of being excluded.
-        </p>
-      </header>
+      <PageOrientation icon={Shield}
+        sectionLabel="What To Do Now"
+        title="Exclusions and Your Child's Rights"
+        description="Children with SEND are excluded from school at significantly higher rates than their peers. This page explains what exclusions are, what your rights are, and what you can do."
+        accentColor="hsl(8 75% 55%)"
+        showSearch={false}
+      />
 
       <OnThisPage sections={sections} />
       

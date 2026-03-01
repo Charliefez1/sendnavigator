@@ -36,6 +36,7 @@ export default function WhatIsChanging() {
     <Layout>
       <SEOHead title="What is now in motion: confirmed SEND reforms 2026" description="Confirmed reforms already underway in SEND, including ISPs, Experts at Hand, and the four-level support model." path="/what-is-changing" />
       <PageOrientation icon={FileText}
+        sectionLabel="SEND Reform Report"
         title="What is now in motion: confirmed reforms following the Schools White Paper"
         description="Reforms already underway, funded, or formally announced. This section describes momentum, not speculation."
         lastUpdated="26th February 2026"

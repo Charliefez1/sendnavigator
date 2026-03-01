@@ -1,6 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { OnThisPage } from "@/components/templates";
+import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 
 import { Link } from "react-router-dom";
@@ -47,28 +47,14 @@ export default function DevolvedNations() {
         path="/devolved-nations"
       />
 
-      <header className="content-section py-8 border-b border-border">
-        <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-5 mb-5">
-          <div className="flex items-start gap-3">
-            <Info className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-sm font-semibold text-foreground mb-1">This site focuses on the English SEND system</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">Education and SEND provision are devolved. If you are in Wales, Scotland, or Northern Ireland, <strong>most of the legal detail on this site does not apply to your situation</strong>. The rights, plans, and processes are different. This page gets you to the right places.</p>
-            </div>
-          </div>
-        </div>
-
-        <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">
-          If You Are in Wales, Scotland, or Northern Ireland
-        </h1>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          This page explains the key differences between nations and points you to the right organisations. It does not attempt to replicate the depth of the England content. It is an honest signpost.
-        </p>
-        <div className="flex items-center gap-2 text-xs text-muted-foreground mt-4">
-          <Clock className="w-3.5 h-3.5" />
-          <span>Last reviewed: February 2026.</span>
-        </div>
-      </header>
+      <PageOrientation icon={MapPin}
+        sectionLabel="The System"
+        title="If You Are in Wales, Scotland, or Northern Ireland"
+        description="Education and SEND provision are devolved. This page explains the key differences between nations and points you to the right organisations."
+        lastUpdated="February 2026"
+        accentColor="hsl(8 75% 55%)"
+        showSearch={false}
+      />
 
       <WordFromRich>
         <p>If you are in Wales, Scotland, or Northern Ireland, I want to be straight with you. Most of this site was built around the English system. I am sorry this page cannot do more. What I can do is point you to the people who understand your system deeply, in your nation, with your legislation. The organisations listed here are the real thing. They know your rights. Use them.</p>

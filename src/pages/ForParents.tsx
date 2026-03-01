@@ -1,6 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { OnThisPage } from "@/components/templates";
+import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 
 import { Link } from "react-router-dom";
@@ -56,26 +56,13 @@ export default function ForParents() {
         path="/for-parents"
       />
 
-      <header className="content-section py-8 sm:py-10 border-b border-border">
-        <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-4">
-          You Are Carrying a Lot
-        </h1>
-        <div className="space-y-3 text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          <p><strong>This page is not about your child.</strong></p>
-          <p>It is about you.</p>
-          <p>
-            Parenting a neurodivergent child through a system that was not built for them, that is underfunded, inconsistent, and often hostile, is an <strong>exhausting and sometimes isolating experience</strong>.
-          </p>
-          <p>That does not need dressing up or softening.</p>
-          <p>
-            The research is clear on this. Parents of children with SEND report significantly higher rates of anxiety, depression, and burnout than the general population. <strong>Maternal mental health</strong> in particular is consistently flagged as a serious and underacknowledged consequence of navigating the SEND system.
-          </p>
-          <p>This page will not tell you to take a bath or practise gratitude.</p>
-          <p>
-            It will tell you <strong>what is actually available</strong>, what other parents have found useful, and how to know when you need more support than a website can give.
-          </p>
-        </div>
-      </header>
+      <PageOrientation icon={Heart}
+        sectionLabel="What To Do Now"
+        title="You Are Carrying a Lot"
+        description="This page is not about your child. It is about you. Parenting a neurodivergent child through a broken system is exhausting. This page explains what is actually available and how to know when you need more support."
+        accentColor="hsl(8 75% 55%)"
+        showSearch={false}
+      />
 
       <LatestUpdatesStream />
 

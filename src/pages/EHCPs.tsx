@@ -53,6 +53,7 @@ export default function EHCPs() {
         keywords="EHCP guide, Education Health Care Plan, EHCP process, EHCP rights, EHCP annual review, EHCP tribunal, SEN support, EHCP sections, EHCP assessment, EHCP appeal, SEND code of practice, Children and Families Act 2014"
       />
       <PageOrientation icon={Shield}
+        sectionLabel="EHCP Guide"
         title="EHCPs: a complete guide for parents"
         description="Everything you need to know about Education, Health and Care Plans in England. What they are, who qualifies, the process step by step, your rights at every stage, and what to do when things go wrong."
         lastUpdated="23rd February 2026"

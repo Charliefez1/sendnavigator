@@ -31,6 +31,7 @@ export default function WhatWeKnowSoFar() {
         path="/what-we-know-so-far"
       />
       <PageOrientation icon={FileText}
+        sectionLabel="SEND Reform Report"
         title="What we know right now: the current state of SEND in England"
         description="The current state of the SEND system based on confirmed facts, data, and the Schools White Paper."
         lastUpdated="26th February 2026"

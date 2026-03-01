@@ -1,7 +1,8 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
+import { PageOrientation } from "@/components/templates";
 import { Link } from "react-router-dom";
-import { Clock, ExternalLink } from "lucide-react";
+import { ExternalLink, MessageCircle } from "lucide-react";
 import gritImage from "@/assets/resource-grit-wont-save.jpg";
 import diagnosisImage from "@/assets/resource-real-diagnosis.jpg";
 import awbpImage from "@/assets/resource-awbp.png";
@@ -16,22 +17,14 @@ export default function RichsTake() {
         path="/richs-take"
       />
 
-      {/* Header */}
-      <header className="content-section py-8 sm:py-10 border-b border-border">
-        <div className="inline-block px-3 py-1 rounded-full bg-[hsl(var(--accent-violet-bg))] border border-[hsl(var(--accent-violet)/0.3)] text-xs font-semibold uppercase tracking-wider text-[hsl(var(--accent-violet))] mb-4">
-          Editorial. This is Rich's personal view.
-        </div>
-        <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">
-          Rich's Take
-        </h1>
-        <p className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-          What Rich Ferriman thinks about the Schools White Paper. Not neutral. Not spin. Just honest.
-        </p>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mt-4">
-          <Clock className="w-4 h-4" aria-hidden="true" />
-          <span>Last updated: 23rd February 2026</span>
-        </div>
-      </header>
+      <PageOrientation icon={MessageCircle}
+        sectionLabel="Ask Rich"
+        title="Rich's Take"
+        description="What Rich Ferriman thinks about the Schools White Paper. Not neutral. Not spin. Just honest."
+        lastUpdated="23rd February 2026"
+        accentColor="hsl(262 60% 55%)"
+        showSearch={false}
+      />
 
       {/* Article body */}
       <article className="content-section py-8 sm:py-10 max-w-2xl">

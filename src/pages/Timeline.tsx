@@ -127,6 +127,7 @@ export default function Timeline() {
     <Layout>
       <SEOHead title="What happens next: SEND reform timeline" description="Key milestones, consultation windows, and decision points in SEND reform. Grounded and date-stamped." path="/timeline" />
       <PageOrientation icon={FileText}
+        sectionLabel="SEND Reform Report"
         title="What happens next: milestones, decisions, and what to watch for"
         description="Key milestones, consultation windows, and decision points. Grounded and date-stamped."
         lastUpdated="26th February 2026"

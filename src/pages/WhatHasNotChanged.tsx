@@ -29,6 +29,7 @@ export default function WhatHasNotChanged() {
     <Layout>
       <SEOHead title="What remains protected in the SEND system" description="Legal rights and protections that remain in force, including EHCP protections and tribunal appeal routes." path="/what-has-not-changed" />
       <PageOrientation icon={FileText}
+        sectionLabel="SEND Reform Report"
         title="What remains protected: your legal rights are still in force"
         description="Legal rights that cannot change without legislation. EHCP protections, tribunal routes, and what anchors reassurance."
         lastUpdated="26th February 2026"

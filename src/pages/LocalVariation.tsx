@@ -1,6 +1,6 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
-import { OnThisPage } from "@/components/templates";
+import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 
 import { Link } from "react-router-dom";
@@ -42,19 +42,14 @@ export default function LocalVariation() {
         path="/local-variation"
       />
 
-      <header className="content-section py-8 border-b border-border">
-        <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">
-          Why Where You Live Matters
-        </h1>
-        <p className="text-base text-muted-foreground leading-relaxed max-w-2xl font-medium">Local Authority Variation in SEND</p>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mt-3">
-          The support a child with SEND receives in England depends substantially on <strong>where they live</strong>. Two children with identical needs, living in different local authority areas, may receive entirely different levels of support, face entirely different waiting times, and have entirely different outcomes.
-        </p>
-        <div className="flex items-center gap-2 text-xs text-muted-foreground mt-4">
-          <Clock className="w-3.5 h-3.5" />
-          <span>Last reviewed: February 2026. Financial picture updated following November 2025 Budget.</span>
-        </div>
-      </header>
+      <PageOrientation icon={MapPin}
+        sectionLabel="The System"
+        title="Why Where You Live Matters"
+        description="The support a child with SEND receives in England depends substantially on where they live. Two children with identical needs, living in different areas, may receive entirely different levels of support."
+        lastUpdated="February 2026"
+        accentColor="hsl(8 75% 55%)"
+        showSearch={false}
+      />
 
       <LatestUpdatesStream />
 

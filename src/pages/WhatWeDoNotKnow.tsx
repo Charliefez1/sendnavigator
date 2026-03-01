@@ -31,6 +31,7 @@ export default function WhatWeDoNotKnow() {
     <Layout>
       <SEOHead title="What is genuinely unknown about SEND reform" description="Unanswered questions with no published answers yet about SEND reform thresholds, enforcement, and transition." path="/what-we-do-not-know" />
       <PageOrientation icon={FileText}
+        sectionLabel="SEND Reform Report"
         title="What is genuinely unknown: questions that still have no published answers"
         description="What has not been decided or written yet. Thresholds, enforcement mechanisms, and transition detail."
         lastUpdated="26th February 2026"

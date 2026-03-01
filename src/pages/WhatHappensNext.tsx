@@ -28,6 +28,7 @@ export default function WhatHappensNext() {
     <Layout>
       <SEOHead title="What happens next and when for SEND reform" description="The path from now to change in SEND provision in England." path="/what-happens-next" />
       <PageOrientation icon={FileText}
+        sectionLabel="SEND Reform Report"
         title="What happens next and when: the path from now to change"
         description="Understanding the stages between discussion and implementation."
         lastUpdated="23rd February 2026"

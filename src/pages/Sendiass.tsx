@@ -63,9 +63,11 @@ export default function Sendiass() {
       />
 
       <PageOrientation icon={Phone}
+        sectionLabel="What To Do Now"
         title="Free Help in Your Area"
         description="Every local authority in England is legally required to fund a free, impartial Information, Advice and Support Service for families with SEND children and young people."
         lastUpdated="19th February 2026"
+        accentColor="hsl(8 75% 55%)"
       />
 
       {/* ═══ INTRO ═══ */}

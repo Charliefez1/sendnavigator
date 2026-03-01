@@ -31,6 +31,7 @@ export default function WhatIsBeingDiscussed() {
     <Layout>
       <SEOHead title="What is actively being shaped: SEND reform consultation 2026" description="Areas where SEND policy design is still open, consultation themes, and where influence and challenge still matter." path="/what-is-being-discussed" />
       <PageOrientation icon={FileText}
+        sectionLabel="SEND Reform Report"
         title="What is actively being shaped: live policy design and consultation"
         description="Areas where policy design is still open. Consultation themes, trade-offs being debated, and where influence still matters."
         lastUpdated="26th February 2026"
