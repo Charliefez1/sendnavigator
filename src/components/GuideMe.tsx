@@ -70,24 +70,24 @@ export function GuideMe() {
             <Link
               key={rec.path}
               to={rec.path}
-              className="block px-3 py-2 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/40 hover:bg-accent/50 transition-all group"
+              className="block px-3 py-1.5 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/40 hover:bg-accent/50 transition-all group"
             >
               <h3 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors leading-tight">
                 {rec.title}
               </h3>
-              <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{rec.reason}</p>
+              <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{rec.reason} — Click for more.</p>
             </Link>
           ))}
 
           {/* Ask Rich option */}
           <Link
             to="/questions-and-answers"
-            className="block px-3 py-2 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/40 hover:bg-accent/50 transition-all group"
+            className="block px-3 py-1.5 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/40 hover:bg-accent/50 transition-all group"
           >
             <h3 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors leading-tight">
               Ask Rich
             </h3>
-            <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">Want a more detailed, personal answer? Ask Rich directly.</p>
+            <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">Want a more detailed, personal answer? Ask Rich directly. — Click for more.</p>
           </Link>
         </div>
 
