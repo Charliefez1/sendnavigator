@@ -70,17 +70,25 @@ export function GuideMe() {
             <Link
               key={rec.path}
               to={rec.path}
-              className="flex items-start gap-3 p-3.5 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/30 transition-all group"
+              className="block p-3 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/40 hover:bg-accent/50 transition-all group"
             >
-              <div className="flex-1 min-w-0">
-                <h3 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors leading-tight">
-                  {rec.title}
-                </h3>
-                <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{rec.reason}</p>
-              </div>
-              <ArrowRight className="w-3.5 h-3.5 text-muted-foreground/50 flex-shrink-0 mt-1 group-hover:text-primary transition-colors" />
+              <h3 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors leading-tight">
+                {rec.title}
+              </h3>
+              <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{rec.reason}</p>
             </Link>
           ))}
+
+          {/* Ask Rich option */}
+          <Link
+            to="/questions-and-answers"
+            className="block p-3 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/40 hover:bg-accent/50 transition-all group"
+          >
+            <h3 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors leading-tight">
+              Ask Rich
+            </h3>
+            <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">Want a more detailed, personal answer? Ask Rich directly.</p>
+          </Link>
         </div>
 
         <button
