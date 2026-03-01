@@ -215,7 +215,7 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* ─── SECTION 3: ASK RICH ─── */}
+      {/* ─── SECTION 3: ASK RICH + CONTACT ─── */}
       <section
         className="relative overflow-hidden"
         style={{ backgroundColor: "hsl(222 35% 8%)" }}
@@ -235,42 +235,37 @@ const Landing = () => {
         />
         <div
           ref={fade3.ref}
-          className={`content-section relative py-12 sm:py-15 ${fade3.className}`}
+          className={`content-wide relative py-12 sm:py-16 ${fade3.className}`}
           style={fade3.style}
         >
-          <div className="max-w-2xl mx-auto rounded-2xl border p-6 sm:p-8" style={{ borderColor: "hsl(222 20% 22%)", backgroundColor: "hsl(222 30% 12% / 0.5)" }}>
-            <h2
-              className="text-2xl sm:text-3xl font-display font-semibold mb-2"
-              style={{ color: "hsl(0 0% 96%)" }}
-            >
-              Ask Rich anything.
-            </h2>
-            <p className="text-sm mb-10" style={{ color: "hsl(222 15% 70%)" }}>
-              Get a real answer grounded in confirmed facts, not generic AI output.
-            </p>
-            <LandingAskRich />
-          </div>
-        </div>
-      </section>
-
-      {/* ─── SECTION 4: CONTACT ─── */}
-      <section className="bg-background relative">
-        <div
-          className="absolute top-0 left-0 right-0 h-px"
-          style={{
-            background: "linear-gradient(to right, transparent, hsl(175 60% 40% / 0.15), transparent)",
-          }}
-        />
-        <div className="content-section py-16 sm:py-20">
-          <div className="max-w-xl mx-auto">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "hsl(175 60% 40%)" }} />
-              <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">Get in touch</p>
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            {/* LEFT: Ask Rich */}
+            <div className="rounded-2xl border p-6 sm:p-8" style={{ borderColor: "hsl(222 20% 22%)", backgroundColor: "hsl(222 30% 12% / 0.5)" }}>
+              <h2
+                className="text-2xl sm:text-3xl font-display font-semibold mb-2"
+                style={{ color: "hsl(0 0% 96%)" }}
+              >
+                Ask Rich anything.
+              </h2>
+              <p className="text-sm mb-10" style={{ color: "hsl(222 15% 70%)" }}>
+                Get a real answer grounded in confirmed facts, not generic AI output.
+              </p>
+              <LandingAskRich />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-8 text-center">
-              Contact us
-            </h2>
-            <LandingContactForm />
+
+            {/* RIGHT: Contact Us */}
+            <div className="rounded-2xl border p-6 sm:p-8" style={{ borderColor: "hsl(222 20% 22%)", backgroundColor: "hsl(222 30% 12% / 0.5)" }}>
+              <h2
+                className="text-2xl sm:text-3xl font-display font-semibold mb-2"
+                style={{ color: "hsl(0 0% 96%)" }}
+              >
+                Contact us
+              </h2>
+              <p className="text-sm mb-10" style={{ color: "hsl(222 15% 70%)" }}>
+                Get in touch — we'd love to hear from you.
+              </p>
+              <LandingContactForm />
+            </div>
           </div>
         </div>
       </section>
