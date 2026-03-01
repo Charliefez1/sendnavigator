@@ -121,37 +121,44 @@ const Landing = () => {
             {/* LEFT: Title & message */}
             <div className="text-center lg:text-left">
               <h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-display font-semibold mb-6"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-display font-semibold mb-4"
                 style={{ color: "hsl(0 0% 96%)", lineHeight: "1.08" }}
               >
-                Your child's SEND rights.
-                <br />
-                <span
-                  className="relative inline-block mt-2"
-                  style={{
-                    color: "hsl(175 60% 52%)",
-                    textShadow: "0 0 40px hsl(175 60% 40% / 0.35)",
-                  }}
-                >
-                  Explained by someone who gets it.
-                </span>
+                SEND Navigator
               </h1>
               <p
-                className="text-base sm:text-lg tracking-wide max-w-md mx-auto lg:mx-0 mb-8"
-                style={{ color: "hsl(222 20% 55%)", fontFamily: "Inter, system-ui, sans-serif", lineHeight: "1.7" }}
+                className="text-base sm:text-lg max-w-md mx-auto lg:mx-0 mb-6"
+                style={{ color: "hsl(222 20% 62%)", lineHeight: "1.7" }}
               >
-                Always Free. Independent. Fact-based. Built by a parent, for parents.
+                A calm, independent place to understand SEND, use practical tools, and work out what to do next.
               </p>
 
+              {/* Value props */}
+              <ul className="space-y-2.5 mb-6 max-w-md mx-auto lg:mx-0">
+                {[
+                  "Clear explanations of the system.",
+                  "Practical tools to communicate needs and take action.",
+                  "Plain English answers to real questions, based on evidence and lived experience.",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-sm" style={{ color: "hsl(222 15% 72%)" }}>
+                    <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "hsl(175 60% 45%)" }} />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+
               {/* Trust badges */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-8">
-                {["Free", "No spam", "No ads", "Built by SEND Parents"].map((badge) => (
-                  <span key={badge} className="flex items-center gap-1.5 text-xs" style={{ color: "hsl(222 20% 60%)" }}>
-                    <Check className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "hsl(175 60% 40%)" }} />
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
+                {["Always free", "No ads", "A safe space", "Independent & fact-based", "Built by parents"].map((badge) => (
+                  <span key={badge} className="flex items-center gap-1.5 text-xs" style={{ color: "hsl(222 20% 58%)" }}>
+                    <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "hsl(175 60% 40%)" }} />
                     {badge}
                   </span>
                 ))}
               </div>
+              <p className="text-xs max-w-md mx-auto lg:mx-0 mb-8" style={{ color: "hsl(222 20% 48%)", lineHeight: "1.6" }}>
+                Parent focused. Open and useful to teachers, SENCOs, professionals, and anyone supporting a child.
+              </p>
 
               {/* NDG logo */}
               <div className="flex flex-col items-center lg:items-start gap-1">
