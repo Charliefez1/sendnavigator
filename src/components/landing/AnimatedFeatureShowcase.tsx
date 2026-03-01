@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
-import {
-  FileText, Shield, User, CheckSquare, MessageCircle, BookOpen,
-} from "lucide-react";
+import logoSendReform from "@/assets/logo-send-reform.png";
+import logoEhcpGuide from "@/assets/logo-ehcp-guide.png";
+import logoChildProfile from "@/assets/logo-child-profile.png";
+import logoWhatToDo from "@/assets/logo-what-to-do.png";
+import logoAskRich from "@/assets/logo-ask-rich.png";
+import logoSources from "@/assets/logo-sources.png";
 
 const features = [
   {
-    icon: FileText,
+    logo: logoSendReform,
     label: "SEND Reform Report",
     headline: "Track every aspect of SEND reform",
     description:
@@ -15,7 +18,7 @@ const features = [
     href: "/feature/send-reform",
   },
   {
-    icon: Shield,
+    logo: logoEhcpGuide,
     label: "EHCP Guide",
     headline: "Understand your rights and the process",
     description:
@@ -25,7 +28,7 @@ const features = [
     href: "/feature/ehcp-guide",
   },
   {
-    icon: User,
+    logo: logoChildProfile,
     label: "My Child: A Profile",
     headline: "Build a profile to share with schools",
     description:
@@ -35,7 +38,7 @@ const features = [
     href: "/feature/my-child-profile",
   },
   {
-    icon: CheckSquare,
+    logo: logoWhatToDo,
     label: "What to do now",
     headline: "Practical steps based on current law",
     description:
@@ -45,7 +48,7 @@ const features = [
     href: "/feature/what-to-do-now",
   },
   {
-    icon: MessageCircle,
+    logo: logoAskRich,
     label: "Ask Rich",
     headline: "Get plain-English answers",
     description:
@@ -55,7 +58,7 @@ const features = [
     href: "/feature/ask-rich",
   },
   {
-    icon: BookOpen,
+    logo: logoSources,
     label: "Sources & Evidence",
     headline: "Every claim traced to its source",
     description:
@@ -70,7 +73,6 @@ export function AnimatedFeatureShowcase() {
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {features.map((feature) => {
-        const Icon = feature.icon;
         return (
           <Link
             key={feature.label}
@@ -83,15 +85,11 @@ export function AnimatedFeatureShowcase() {
             }}
           >
             <div className="flex items-center gap-3 mb-3">
-              <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
-                style={{ backgroundColor: `hsl(var(${feature.accentVar}) / 0.12)` }}
-              >
-                <Icon
-                  className="w-4.5 h-4.5"
-                  style={{ color: `hsl(var(${feature.accentVar}))` }}
-                />
-              </div>
+              <img
+                src={feature.logo}
+                alt={feature.label}
+                className="w-10 h-10 rounded-lg object-cover flex-shrink-0"
+              />
               <h3
                 className="text-sm font-semibold leading-tight"
                 style={{ color: `hsl(var(${feature.accentVar}))` }}
