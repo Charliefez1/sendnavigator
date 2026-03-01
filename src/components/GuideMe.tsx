@@ -70,9 +70,9 @@ export function GuideMe() {
             <Link
               key={rec.path}
               to={rec.path}
-              className="block px-3 py-1.5 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/40 hover:bg-accent/50 transition-all group"
+              className="block px-3 pt-2 pb-2 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/40 hover:bg-accent/50 transition-all group"
             >
-              <h3 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors leading-tight">
+              <h3 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors leading-tight m-0 p-0">
                 {rec.title}
               </h3>
               <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{rec.reason} <strong>Click for more.</strong></p>
@@ -82,9 +82,9 @@ export function GuideMe() {
           {/* Ask Rich option */}
           <Link
             to="/questions-and-answers"
-            className="block px-3 py-1.5 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/40 hover:bg-accent/50 transition-all group"
+            className="block px-3 pt-2 pb-2 bg-background border border-border rounded-lg hover:shadow-md hover:border-primary/40 hover:bg-accent/50 transition-all group"
           >
-            <h3 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors leading-tight">
+            <h3 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors leading-tight m-0 p-0">
               Ask Rich
             </h3>
             <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">Ask a question and get a plain-English answer. <strong>Click for more.</strong></p>
