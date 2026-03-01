@@ -191,7 +191,7 @@ const Index = () => {
                 <img
                   src={creatorsDuo}
                   alt="Charlie and Rich — the team behind SEND Navigator"
-                  className="w-full h-auto scale-110 origin-bottom"
+                  className="w-full h-auto"
                 />
                 {/* Bottom fade */}
                 <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background via-background/60 to-transparent pointer-events-none" />
