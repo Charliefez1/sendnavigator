@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { FileSearch, Shield, User, CheckSquare, MessageCircle, BookOpen } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const features: {
   icon: LucideIcon;
@@ -10,6 +11,7 @@ const features: {
   accentVar: string;
   accentBgVar: string;
   href: string;
+  authHref: string;
 }[] = [
   {
     icon: FileSearch,
@@ -20,6 +22,7 @@ const features: {
     accentVar: "--accent-teal",
     accentBgVar: "--accent-teal-bg",
     href: "/feature/send-reform",
+    authHref: "/what-is-changing",
   },
   {
     icon: Shield,
@@ -30,6 +33,7 @@ const features: {
     accentVar: "--accent-deep-blue",
     accentBgVar: "--accent-deep-blue-bg",
     href: "/feature/ehcp-guide",
+    authHref: "/ehcps",
   },
   {
     icon: User,
@@ -40,6 +44,7 @@ const features: {
     accentVar: "--accent-amber",
     accentBgVar: "--accent-amber-bg",
     href: "/feature/my-child-profile",
+    authHref: "/my-child-profile",
   },
   {
     icon: CheckSquare,
@@ -50,6 +55,7 @@ const features: {
     accentVar: "--accent-coral",
     accentBgVar: "--accent-coral-bg",
     href: "/feature/what-to-do-now",
+    authHref: "/what-to-do-right-now",
   },
   {
     icon: MessageCircle,
@@ -60,6 +66,7 @@ const features: {
     accentVar: "--accent-violet",
     accentBgVar: "--accent-violet-bg",
     href: "/feature/ask-rich",
+    authHref: "/questions-and-answers",
   },
   {
     icon: BookOpen,
@@ -70,18 +77,22 @@ const features: {
     accentVar: "--accent-teal",
     accentBgVar: "--accent-teal-bg",
     href: "/feature/sources",
+    authHref: "/sources",
   },
 ];
 
 export function AnimatedFeatureShowcase() {
+  const { user } = useAuth();
+
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {features.map((feature) => {
         const Icon = feature.icon;
+        const destination = user ? feature.authHref : feature.href;
         return (
           <Link
             key={feature.label}
-            to={feature.href}
+            to={destination}
             className="group rounded-xl border p-5 transition-all duration-200 hover:shadow-2xl hover:-translate-y-0.5 block"
             style={{
               borderColor: `hsl(var(${feature.accentVar}) / 0.25)`,
@@ -116,7 +127,7 @@ export function AnimatedFeatureShowcase() {
               className="text-xs font-medium opacity-60 group-hover:opacity-100 transition-opacity duration-200"
               style={{ color: `hsl(var(${feature.accentVar}))` }}
             >
-              Click to explore →
+              {user ? "Go to tool →" : "Click to explore →"}
             </span>
           </Link>
         );
