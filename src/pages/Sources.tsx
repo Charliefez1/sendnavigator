@@ -6,7 +6,7 @@ import { StatusBadge } from "@/components/StatusBadge";
 import { WordFromRich } from "@/components/WordFromRich";
 import { getSourcesByCategory } from "@/config/sources";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Search, BookOpen } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 // Auto-generate from the source registry
@@ -51,7 +51,7 @@ export default function Sources() {
 
   return (
     <Layout>
-      <PageOrientation
+      <PageOrientation icon={BookOpen}
         title="Sources and Evidence Base"
         description="Every source this site draws on, grouped by type. You should be able to check anything we say."
         lastUpdated="25th February 2026"

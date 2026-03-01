@@ -8,6 +8,7 @@ import {
   WatchNextSection,
 } from "@/components/templates";
 import { ComparisonColumns } from "@/components/templates/DataVisuals";
+import { FileText } from "lucide-react";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 
 export default function WhatThisCouldMean() {
@@ -36,7 +37,7 @@ export default function WhatThisCouldMean() {
 
   return (
     <Layout>
-      <PageOrientation
+      <PageOrientation icon={FileText}
         title="What this could mean"
         description="Practical implications of confirmed and proposed changes for different groups."
         accentColor="hsl(175 65% 41%)"

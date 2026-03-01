@@ -11,7 +11,7 @@ import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { TierDiagram, RightsChecklist } from "@/components/templates/DataVisuals";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
-import { Users, BarChart3, Wind, AlertTriangle, List, EyeOff, Megaphone, Filter, Shield, CheckCircle2 } from "lucide-react";
+import { Users, BarChart3, Wind, AlertTriangle, List, EyeOff, Megaphone, Filter, Shield, CheckCircle2, FileText } from "lucide-react";
 
 const sections: PageSectionDef[] = [
   { id: "impact", icon: Users, title: "How will this impact children and parents" },
@@ -30,7 +30,7 @@ export default function WhatTheLeaksAreSaying() {
   return (
     <Layout>
       <SEOHead title="What has been reported about SEND reform" description="What major media outlets have reported about SEND reform, what those reports are based on, and how reporting has evolved." path="/what-the-leaks-are-saying" />
-      <PageOrientation
+      <PageOrientation icon={FileText}
         title="What has been reported: media coverage and its basis"
         description="What major outlets have reported, what those reports are actually based on, and how reporting has evolved over time."
         lastUpdated="26th February 2026"

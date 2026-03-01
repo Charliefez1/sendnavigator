@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 export default function HowToUse() {
   return (
     <Layout>
-      <PageOrientation
+      <PageOrientation icon={BookOpen}
         title="How to use this guide"
         description="Everything you need to know to get the most from this resource"
         lastUpdated="7th February 2026"

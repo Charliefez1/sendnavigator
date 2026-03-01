@@ -62,7 +62,7 @@ export default function Sendiass() {
         description="Every local authority in England funds a free SEND advice service called SENDIASS. Most parents have never heard of it."
       />
 
-      <PageOrientation
+      <PageOrientation icon={Phone}
         title="Free Help in Your Area"
         description="Every local authority in England is legally required to fund a free, impartial Information, Advice and Support Service for families with SEND children and young people."
         lastUpdated="19th February 2026"

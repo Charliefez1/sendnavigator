@@ -4,7 +4,7 @@ import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 
 import { StatusBadge } from "@/components/StatusBadge";
-import { ExternalLink, GraduationCap, Scale, Users, Briefcase, CalendarDays, AlertTriangle, ShieldCheck } from "lucide-react";
+import { ExternalLink, GraduationCap, Scale, Users, Briefcase, CalendarDays, AlertTriangle, ShieldCheck, Shield } from "lucide-react";
 import { WordFromRich } from "@/components/WordFromRich";
 
 const pageSections: PageSectionDef[] = [
@@ -77,7 +77,7 @@ export default function Post16AndTransition() {
         description="EHCP rights beyond school age. What changes at 16, 18, and 19, transition planning, and what to do if the LA tries to end the plan."
       />
 
-      <PageOrientation
+      <PageOrientation icon={Shield}
         title="Young People Aged 16 to 25"
         description="The SEND system does not end at 16. It does change. And the changes catch a lot of families off guard."
         lastUpdated="19th February 2026"

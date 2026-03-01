@@ -11,7 +11,7 @@ import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { RightsChecklist } from "@/components/templates/DataVisuals";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
-import { Users, BarChart3, Shield, HelpCircle, EyeOff, Heart, Filter, Zap, Lightbulb, Anchor } from "lucide-react";
+import { Users, BarChart3, Shield, HelpCircle, EyeOff, Heart, Filter, Zap, Lightbulb, Anchor, FileText } from "lucide-react";
 
 const sections: PageSectionDef[] = [
   { id: "impact", icon: Users, title: "How will this impact children and parents" },
@@ -34,7 +34,7 @@ export default function WhatTheLeaksDoNotMean() {
         description="Common misinterpretations of SEND reform proposals. Where fear runs ahead of evidence."
         path="/what-the-leaks-do-not-mean"
       />
-      <PageOrientation
+      <PageOrientation icon={FileText}
         title="What is often misunderstood: where fear runs ahead of evidence"
         description="Common misinterpretations addressed. What reports do not imply legally or operationally."
         lastUpdated="27th February 2026"

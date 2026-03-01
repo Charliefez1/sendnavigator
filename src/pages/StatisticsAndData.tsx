@@ -97,7 +97,7 @@ const sourceLinks: { category: string; sources: SourceLink[] }[] = [
 export default function StatisticsAndData() {
   return (
     <Layout>
-      <PageOrientation
+      <PageOrientation icon={BarChart3}
         title="Statistics and data"
         description="Key SEND statistics for England, using the most recent official data available. These figures show the current scale and pressures in the system."
         lastUpdated="23rd February 2026"

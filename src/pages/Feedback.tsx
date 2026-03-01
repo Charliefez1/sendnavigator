@@ -123,7 +123,7 @@ export default function Feedback() {
     <Layout>
       <SEOHead title="Feedback, Suggestions and Issues" description="Share your thoughts, suggest improvements, or report issues. All submissions are reviewed." path="/feedback" />
       <div className="content-section py-8 space-y-8">
-        <PageOrientation
+        <PageOrientation icon={MessageSquare}
           title="Feedback, Suggestions and Issues"
           description="Share your thoughts, suggest improvements, or report issues. Let us know if we have made a mistake or you want to challenge the information on the site. All submissions are reviewed before publishing."
         />
