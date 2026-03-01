@@ -75,7 +75,7 @@ export function AnimatedFeatureShowcase() {
           <Link
             key={feature.label}
             to={feature.href}
-            className="rounded-xl border p-5 transition-all duration-200 hover:shadow-2xl hover:-translate-y-0.5 block"
+            className="group rounded-xl border p-5 transition-all duration-200 hover:shadow-2xl hover:-translate-y-0.5 block"
             style={{
               borderColor: `hsl(var(${feature.accentVar}) / 0.25)`,
               backgroundColor: `hsl(var(${feature.accentBgVar}))`,
@@ -102,9 +102,15 @@ export function AnimatedFeatureShowcase() {
             <p className="text-sm font-semibold text-foreground leading-snug mb-1.5">
               {feature.headline}
             </p>
-            <p className="text-xs text-muted-foreground leading-relaxed">
+            <p className="text-xs text-muted-foreground leading-relaxed mb-3">
               {feature.description}
             </p>
+            <span
+              className="text-xs font-medium opacity-60 group-hover:opacity-100 transition-opacity duration-200"
+              style={{ color: `hsl(var(${feature.accentVar}))` }}
+            >
+              Click to explore →
+            </span>
           </Link>
         );
       })}
