@@ -1,11 +1,12 @@
 import { Layout } from "@/components/Layout";
 import { PageOrientation } from "@/components/templates";
 import { Link } from "react-router-dom";
+import { Heart } from "lucide-react";
 
 const WhyIBuiltThis = () => {
   return (
     <Layout>
-      <PageOrientation
+      <PageOrientation icon={Heart}
         title="Why I Built the SEND Navigator"
         description="A personal statement from Rich Ferriman"
         lastUpdated="15th February 2026"

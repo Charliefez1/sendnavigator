@@ -11,7 +11,7 @@ import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { StatCard, TierDiagram } from "@/components/templates/DataVisuals";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
-import { Users, BarChart3, ClipboardList, Monitor, GraduationCap, Building2, MapPin, PoundSterling, ShieldCheck, Layers, Brain, Baby, School, ArrowRightLeft } from "lucide-react";
+import { Users, BarChart3, ClipboardList, Monitor, GraduationCap, Building2, MapPin, PoundSterling, ShieldCheck, Layers, Brain, Baby, School, ArrowRightLeft, FileText } from "lucide-react";
 
 const sections: PageSectionDef[] = [
   { id: "impact", icon: Users, title: "How will this impact children and parents" },
@@ -35,7 +35,7 @@ export default function WhatIsChanging() {
   return (
     <Layout>
       <SEOHead title="What is now in motion: confirmed SEND reforms 2026" description="Confirmed reforms already underway in SEND, including ISPs, Experts at Hand, and the four-level support model." path="/what-is-changing" />
-      <PageOrientation
+      <PageOrientation icon={FileText}
         title="What is now in motion: confirmed reforms following the Schools White Paper"
         description="Reforms already underway, funded, or formally announced. This section describes momentum, not speculation."
         lastUpdated="26th February 2026"

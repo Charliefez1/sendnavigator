@@ -12,7 +12,7 @@ import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { VisualTimeline } from "@/components/templates/VisualTimeline";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
-import { History, CalendarClock, Users, AlertTriangle, FileQuestion, ShieldCheck, GitBranch } from "lucide-react";
+import { History, CalendarClock, Users, AlertTriangle, FileQuestion, ShieldCheck, GitBranch, FileText } from "lucide-react";
 
 const timelineMilestones = [
   {
@@ -126,7 +126,7 @@ export default function Timeline() {
   return (
     <Layout>
       <SEOHead title="What happens next: SEND reform timeline" description="Key milestones, consultation windows, and decision points in SEND reform. Grounded and date-stamped." path="/timeline" />
-      <PageOrientation
+      <PageOrientation icon={FileText}
         title="What happens next: milestones, decisions, and what to watch for"
         description="Key milestones, consultation windows, and decision points. Grounded and date-stamped."
         lastUpdated="26th February 2026"

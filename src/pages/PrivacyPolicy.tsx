@@ -1,6 +1,7 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
+import { Shield } from "lucide-react";
 
 export default function PrivacyPolicy() {
   return (
@@ -11,7 +12,7 @@ export default function PrivacyPolicy() {
         path="/privacy-policy"
       />
       <div className="content-section py-8 space-y-8">
-        <PageOrientation
+        <PageOrientation icon={Shield}
           title="Privacy Policy"
           description="How we collect, use, and protect your data. Last updated: 23 February 2026."
         />

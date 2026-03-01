@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { PageOrientation } from "@/components/templates";
 import { ContactDetails } from "@/components/ContactDetails";
+import { User } from "lucide-react";
 import childhoodPhoto from "@/assets/rich-ferriman-childhood.jpeg";
 
 export default function RichFerriman() {
   return (
     <Layout>
-      <PageOrientation
+      <PageOrientation icon={User}
         title="Rich Ferriman"
         description="Author of SEND Reform Navigator."
         lastUpdated="7th February 2026"

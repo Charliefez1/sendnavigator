@@ -22,7 +22,7 @@ import { AskEHCP } from "@/components/AskEHCP";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import {
   FileText, BarChart3, Users, ClipboardList, Scale, School,
-  RefreshCw, AlertTriangle, Gavel, Search, PoundSterling, Clock, ShieldCheck, ChevronDown
+  RefreshCw, AlertTriangle, Gavel, Search, PoundSterling, Clock, ShieldCheck, ChevronDown, Shield
 } from "lucide-react";
 
 const sections: PageSectionDef[] = [
@@ -52,7 +52,7 @@ export default function EHCPs() {
         dateModified="2026-02-23"
         keywords="EHCP guide, Education Health Care Plan, EHCP process, EHCP rights, EHCP annual review, EHCP tribunal, SEN support, EHCP sections, EHCP assessment, EHCP appeal, SEND code of practice, Children and Families Act 2014"
       />
-      <PageOrientation
+      <PageOrientation icon={Shield}
         title="EHCPs: a complete guide for parents"
         description="Everything you need to know about Education, Health and Care Plans in England. What they are, who qualifies, the process step by step, your rights at every stage, and what to do when things go wrong."
         lastUpdated="23rd February 2026"

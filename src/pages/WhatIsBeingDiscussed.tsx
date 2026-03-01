@@ -10,7 +10,7 @@ import type { PageSectionDef } from "@/components/templates";
 
 import { StatusBadge } from "@/components/StatusBadge";
 import { TierDiagram, StatCard } from "@/components/templates/DataVisuals";
-import { Users, BarChart3, Layers, TrendingDown, PoundSterling, Gavel, School, Clock, MessageCircle, AlertTriangle } from "lucide-react";
+import { Users, BarChart3, Layers, TrendingDown, PoundSterling, Gavel, School, Clock, MessageCircle, AlertTriangle, FileText } from "lucide-react";
 
 const sections: PageSectionDef[] = [
   { id: "impact", icon: Users, title: "How will this impact children and parents" },
@@ -30,7 +30,7 @@ export default function WhatIsBeingDiscussed() {
   return (
     <Layout>
       <SEOHead title="What is actively being shaped: SEND reform consultation 2026" description="Areas where SEND policy design is still open, consultation themes, and where influence and challenge still matter." path="/what-is-being-discussed" />
-      <PageOrientation
+      <PageOrientation icon={FileText}
         title="What is actively being shaped: live policy design and consultation"
         description="Areas where policy design is still open. Consultation themes, trade-offs being debated, and where influence still matters."
         lastUpdated="26th February 2026"

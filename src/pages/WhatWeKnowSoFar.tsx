@@ -10,7 +10,7 @@ import type { PageSectionDef } from "@/components/templates";
 
 import { StatusBadge } from "@/components/StatusBadge";
 import { StatCard, PercentageRing, HorizontalBarChart } from "@/components/templates/DataVisuals";
-import { Users, BarChart3, TrendingUp, AlertTriangle, PoundSterling, Scale, Heart } from "lucide-react";
+import { Users, BarChart3, TrendingUp, AlertTriangle, PoundSterling, Scale, Heart, FileText } from "lucide-react";
 
 const sections: PageSectionDef[] = [
   { id: "impact", icon: Users, title: "How will this impact children and parents" },
@@ -30,7 +30,7 @@ export default function WhatWeKnowSoFar() {
         description="The current state of the SEND system based on confirmed facts, data, and the Schools White Paper published 23 February 2026."
         path="/what-we-know-so-far"
       />
-      <PageOrientation
+      <PageOrientation icon={FileText}
         title="What we know right now: the current state of SEND in England"
         description="The current state of the SEND system based on confirmed facts, data, and the Schools White Paper."
         lastUpdated="26th February 2026"

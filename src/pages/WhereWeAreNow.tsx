@@ -11,7 +11,7 @@ import type { PageSectionDef } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
 import { StatCard, PercentageRing, HorizontalBarChart } from "@/components/templates/DataVisuals";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
-import { Users, BarChart3, MapPin, TrendingUp, PoundSterling, Globe, AlertTriangle, Scale } from "lucide-react";
+import { Users, BarChart3, MapPin, TrendingUp, PoundSterling, Globe, AlertTriangle, Scale, FileText } from "lucide-react";
 
 const sections: PageSectionDef[] = [
   { id: "impact", icon: Users, title: "How will this impact children and parents" },
@@ -28,7 +28,7 @@ export default function WhereWeAreNow() {
   return (
     <Layout>
       <SEOHead title="What we know right now about SEND in England" description="The current state of SEND provision in England, confirmed facts, funding data, and system pressures." path="/where-we-are-now" />
-      <PageOrientation
+      <PageOrientation icon={FileText}
         title="What we know right now: the current state of SEND in England"
         description="The factual baseline. Current state of SEND support, existing legal protections, and how the system is performing today."
         lastUpdated="23rd February 2026"

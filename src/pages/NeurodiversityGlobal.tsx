@@ -2,12 +2,12 @@ import { Layout } from "@/components/Layout";
 import { PageOrientation } from "@/components/templates";
 import { ContactDetails } from "@/components/ContactDetails";
 import { ContactForm } from "@/components/ContactForm";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Globe } from "lucide-react";
 
 export default function NeurodiversityGlobal() {
   return (
     <Layout>
-      <PageOrientation
+      <PageOrientation icon={Globe}
         title="About Neurodiversity Global"
         description="The organisation behind SEND Reform Navigator."
         lastUpdated="7th February 2026"

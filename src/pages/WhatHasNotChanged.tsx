@@ -10,7 +10,7 @@ import type { PageSectionDef } from "@/components/templates";
 
 import { StatusBadge } from "@/components/StatusBadge";
 import { RightsChecklist, PercentageRing } from "@/components/templates/DataVisuals";
-import { Users, BarChart3, Scale, Shield, Gavel, AlertTriangle, Clock, ShieldCheck, MessageCircle } from "lucide-react";
+import { Users, BarChart3, Scale, Shield, Gavel, AlertTriangle, Clock, ShieldCheck, MessageCircle, FileText } from "lucide-react";
 
 const sections: PageSectionDef[] = [
   { id: "impact", icon: Users, title: "How will this impact children and parents" },
@@ -28,7 +28,7 @@ export default function WhatHasNotChanged() {
   return (
     <Layout>
       <SEOHead title="What remains protected in the SEND system" description="Legal rights and protections that remain in force, including EHCP protections and tribunal appeal routes." path="/what-has-not-changed" />
-      <PageOrientation
+      <PageOrientation icon={FileText}
         title="What remains protected: your legal rights are still in force"
         description="Legal rights that cannot change without legislation. EHCP protections, tribunal routes, and what anchors reassurance."
         lastUpdated="26th February 2026"

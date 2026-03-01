@@ -173,7 +173,7 @@ export default function WhatToDoRightNow() {
         dateModified="2026-02-23"
         keywords="SEND help now, EHCP not being followed, school not meeting needs, SEND tribunal, IPSEA model letters, local authority SEND complaint, LGSCO SEND, SEND assessment refused, EHCP annual review, Children and Families Act 2014"
       />
-      <PageOrientation
+      <PageOrientation icon={CheckCircle}
         title="What to do right now"
         description="This page is for parents whose child is not getting the support they need today. Not next year. Now."
         accentColor="hsl(8 75% 55%)"

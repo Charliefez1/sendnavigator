@@ -29,7 +29,7 @@ export default function CommunityQuestions() {
   return (
     <Layout>
       <div className="content-section py-8 space-y-8">
-        <PageOrientation
+        <PageOrientation icon={MessageCircleQuestion}
           title="Lived Experience & Comments"
           description="Comments and experiences shared by families and professionals navigating SEND. Share yours below. Approved contributions help others."
         />

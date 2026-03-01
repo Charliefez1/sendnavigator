@@ -10,7 +10,7 @@ import type { PageSectionDef } from "@/components/templates";
 
 import { StatusBadge } from "@/components/StatusBadge";
 import { RightsChecklist } from "@/components/templates/DataVisuals";
-import { Users, BarChart3, HelpCircle, ClipboardList, PoundSterling, ArrowRightLeft, Heart, Target, Shield, Gavel } from "lucide-react";
+import { Users, BarChart3, HelpCircle, ClipboardList, PoundSterling, ArrowRightLeft, Heart, Target, Shield, Gavel, FileText } from "lucide-react";
 
 const sections: PageSectionDef[] = [
   { id: "impact", icon: Users, title: "How will this impact children and parents" },
@@ -30,7 +30,7 @@ export default function WhatWeDoNotKnow() {
   return (
     <Layout>
       <SEOHead title="What is genuinely unknown about SEND reform" description="Unanswered questions with no published answers yet about SEND reform thresholds, enforcement, and transition." path="/what-we-do-not-know" />
-      <PageOrientation
+      <PageOrientation icon={FileText}
         title="What is genuinely unknown: questions that still have no published answers"
         description="What has not been decided or written yet. Thresholds, enforcement mechanisms, and transition detail."
         lastUpdated="26th February 2026"
