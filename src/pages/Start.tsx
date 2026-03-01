@@ -171,20 +171,9 @@ const Index = () => {
       {/* ─── SECTION 1: HERO — Tell us why you're here ─── */}
       <section className="relative overflow-hidden bg-background">
         <div className="content-wide relative py-10 sm:py-14">
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-            {/* Left: Image with bottom fade */}
-            <div className="relative w-48 sm:w-56 lg:w-72 flex-shrink-0">
-              <img
-                src={creatorsDuo}
-                alt="Charlie and Rich — the team behind SEND Navigator"
-                className="w-full h-auto"
-              />
-              {/* Bottom fade into background */}
-              <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background to-transparent" />
-            </div>
-
-            {/* Right: Guide Me */}
-            <div className="flex-1 max-w-2xl w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* Left column: Guide Me */}
+            <div className="w-full order-2 lg:order-1">
               <GuideMe />
 
               {/* Last updated */}
@@ -193,6 +182,19 @@ const Index = () => {
                 <p className="text-xs text-muted-foreground">
                   <strong className="text-foreground">Last updated:</strong> 23rd February 2026
                 </p>
+              </div>
+            </div>
+
+            {/* Right column: Image with bottom fade */}
+            <div className="relative order-1 lg:order-2 flex justify-center">
+              <div className="relative max-w-md w-full">
+                <img
+                  src={creatorsDuo}
+                  alt="Charlie and Rich — the team behind SEND Navigator"
+                  className="w-full h-auto"
+                />
+                {/* Bottom fade */}
+                <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-background to-transparent" />
               </div>
             </div>
           </div>
