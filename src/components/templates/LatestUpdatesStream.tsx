@@ -3,6 +3,7 @@ import { Clock, ChevronDown, ChevronUp, Pin } from "lucide-react";
 import { latestUpdates } from "@/config/latest-updates";
 import { supabase } from "@/integrations/supabase/client";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { usePageAccent } from "@/contexts/PageAccentContext";
 
 const DEFAULT_VISIBLE = 3;
 
@@ -27,7 +28,12 @@ function formatDate(dateStr: string): string {
   }
 }
 
+function hslAlpha(hsl: string, alpha: number): string {
+  return hsl.replace(")", ` / ${alpha})`);
+}
+
 export function LatestUpdatesStream() {
+  const accent = usePageAccent() || "hsl(175 65% 41%)";
   const [expanded, setExpanded] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [dbItems, setDbItems] = useState<DbNewsItem[]>([]);
@@ -73,12 +79,15 @@ export function LatestUpdatesStream() {
   return (
     <section className="content-section py-2">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-        <div className="rounded-xl border border-border bg-card px-5 py-4 shadow-card hover:shadow-card-hover transition-shadow duration-200">
+        <div
+          className="rounded-xl border bg-card px-5 py-4 shadow-card hover:shadow-card-hover transition-shadow duration-200"
+          style={{ borderColor: hslAlpha(accent, 0.15) }}
+        >
           <CollapsibleTrigger asChild>
             <button className="flex items-center justify-between w-full gap-3">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-4 h-4 text-primary" />
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: hslAlpha(accent, 0.1) }}>
+                  <Clock className="w-4 h-4" style={{ color: accent }} />
                 </div>
                 <h2 className="text-base font-display font-semibold text-foreground">
                   Latest Updates
@@ -93,14 +102,18 @@ export function LatestUpdatesStream() {
               {visible.map((entry) => (
                 <div
                   key={entry.key}
-                  className="border-l-2 border-primary/30 pl-4"
+                  className="border-l-2 pl-4"
+                  style={{ borderColor: hslAlpha(accent, 0.3) }}
                 >
                   <div className="flex items-center gap-2 mb-1">
                     <p className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">
                       {entry.date}
                     </p>
                     {entry.isPinned && (
-                      <span className="inline-flex items-center gap-0.5 text-[9px] uppercase tracking-wider font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded">
+                      <span
+                        className="inline-flex items-center gap-0.5 text-[9px] uppercase tracking-wider font-bold px-1.5 py-0.5 rounded"
+                        style={{ color: accent, backgroundColor: hslAlpha(accent, 0.1) }}
+                      >
                         <Pin className="w-2.5 h-2.5" /> Pinned
                       </span>
                     )}
@@ -123,7 +136,8 @@ export function LatestUpdatesStream() {
             {hasMore && (
               <button
                 onClick={() => setExpanded(!expanded)}
-                className="mt-4 flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors"
+                className="mt-4 flex items-center gap-1.5 text-xs font-medium transition-colors"
+                style={{ color: accent }}
               >
                 {expanded ? (
                   <>
