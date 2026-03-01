@@ -5,7 +5,7 @@ import type { PageSectionDef } from "@/components/templates";
 
 import { Link } from "react-router-dom";
 import { CheckCircle2, ExternalLink, AlertTriangle, ArrowRight, Clock, Info, FileText, MapPin, Scale } from "lucide-react";
-import { WordFromRich } from "@/components/WordFromRich";
+import { ConfidenceLabel } from "@/components/ConfidenceLabel";
 const pageSections: PageSectionDef[] = [
   { id: "reference-table", icon: FileText, title: "Quick reference" },
   { id: "wales", icon: MapPin, title: "Wales" },
@@ -18,17 +18,7 @@ function SH({ id, children }: { id: string; children: React.ReactNode }) {
   return <h2 id={id} className="text-lg font-display font-semibold text-foreground mt-10 mb-4 first:mt-0 scroll-mt-20">{children}</h2>;
 }
 
-function CC({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="rounded-lg bg-status-confirmed/10 border border-status-confirmed/30 p-4 flex items-start gap-3 mt-5">
-      <CheckCircle2 className="w-5 h-5 text-status-confirmed flex-shrink-0 mt-0.5" />
-      <div>
-        <p className="text-xs font-semibold text-status-confirmed uppercase tracking-wider mb-1">Confirmed</p>
-        <p className="text-sm text-muted-foreground leading-relaxed">{children}</p>
-      </div>
-    </div>
-  );
-}
+import { WordFromRich } from "@/components/WordFromRich";
 
 function EL({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -158,7 +148,7 @@ export default function DevolvedNations() {
             <EL href="https://childrenslegalcentre.wales">Children's Legal Centre Wales - legal support for children's rights</EL>
           </div>
 
-          <CC>Additional Learning Needs and Education Tribunal (Wales) Act 2018; ALN Code for Wales 2021; Welsh Government implementation guidance.</CC>
+          <ConfidenceLabel status="confirmed">Additional Learning Needs and Education Tribunal (Wales) Act 2018; ALN Code for Wales 2021; Welsh Government implementation guidance.</ConfidenceLabel>
         </div>
       </section>
 
@@ -201,7 +191,7 @@ export default function DevolvedNations() {
              <EL href="https://education.gov.scot/parentzone">Parentzone Scotland - information and guidance for parents</EL>
           </div>
 
-          <CC>Education (Additional Support for Learning) (Scotland) Act 2004 as amended 2009; Scottish Government additional support for learning guidance 2017; Scottish Children's Services Coalition data.</CC>
+          <ConfidenceLabel status="confirmed">Education (Additional Support for Learning) (Scotland) Act 2004 as amended 2009; Scottish Government additional support for learning guidance 2017; Scottish Children's Services Coalition data.</ConfidenceLabel>
         </div>
       </section>
 
@@ -247,7 +237,7 @@ export default function DevolvedNations() {
              <EL href="https://www.niccy.org">NICCY - Northern Ireland Commissioner for Children and Young People</EL>
           </div>
 
-          <CC>Education (Northern Ireland) Order 1996; SENDO 2005; SEND Act (NI) 2016; Education Authority Northern Ireland; SENAC; NICCY Too Little Too Late review 2020. 2016 SEND Act: passed but not fully implemented as of early 2026.</CC>
+          <ConfidenceLabel status="confirmed">Education (Northern Ireland) Order 1996; SENDO 2005; SEND Act (NI) 2016; Education Authority Northern Ireland; SENAC; NICCY Too Little Too Late review 2020. 2016 SEND Act: passed but not fully implemented as of early 2026.</ConfidenceLabel>
         </div>
       </section>
 
@@ -272,7 +262,7 @@ export default function DevolvedNations() {
             </div>
           </div>
 
-          <CC>Children and Families Act 2014 (England); Education (Additional Support for Learning) (Scotland) Act 2004; the duty to consider existing plans on transfer is established in guidance across nations. Specific timescales and processes vary. Always get specialist advice from the relevant national organisation before and after a move.</CC>
+          <ConfidenceLabel status="confirmed">Children and Families Act 2014 (England); Education (Additional Support for Learning) (Scotland) Act 2004; the duty to consider existing plans on transfer is established in guidance across nations. Specific timescales and processes vary. Always get specialist advice from the relevant national organisation before and after a move.</ConfidenceLabel>
         </div>
       </section>
 

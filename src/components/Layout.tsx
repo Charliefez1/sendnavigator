@@ -15,6 +15,7 @@ import { CookieConsent } from "./CookieConsent";
 import { AskSendFloating } from "./AskSendFloating";
 import { AnnouncementBanner } from "./AnnouncementBanner";
 import { PersistentNewsTicker } from "./PersistentNewsTicker";
+import { OrientationBar } from "./OrientationBar";
 
 
 interface LayoutProps {
@@ -32,6 +33,7 @@ export function Layout({ children }: LayoutProps) {
       <Header />
       <AnnouncementBanner />
       <JourneyNavigation />
+      <OrientationBar />
       <ScanModeBanner />
 
       {isReportPage ? (

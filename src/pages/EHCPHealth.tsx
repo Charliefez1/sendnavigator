@@ -5,6 +5,7 @@ import type { PageSectionDef } from "@/components/templates";
 
 import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Clock, Scale, Heart, FileText, MapPin, Stethoscope } from "lucide-react";
+import { ConfidenceLabel } from "@/components/ConfidenceLabel";
 import { WordFromRich } from "@/components/WordFromRich";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 const sections: PageSectionDef[] = [
@@ -27,29 +28,6 @@ function SectionHeading({ id, children }: { id: string; children: React.ReactNod
   );
 }
 
-function ConfidenceConfirmed({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="rounded-lg bg-status-confirmed/10 border border-status-confirmed/30 p-4 flex items-start gap-3 mt-5">
-      <CheckCircle2 className="w-5 h-5 text-status-confirmed flex-shrink-0 mt-0.5" />
-      <div>
-        <p className="text-xs font-semibold text-status-confirmed uppercase tracking-wider mb-1">Confirmed</p>
-        <p className="text-sm text-muted-foreground leading-relaxed">{children}</p>
-      </div>
-    </div>
-  );
-}
-
-function ConfidenceUnknown({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="rounded-lg bg-muted/50 border border-border p-4 flex items-start gap-3 mt-5">
-      <HelpCircle className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
-      <div>
-        <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">Unknown</p>
-        <p className="text-sm text-muted-foreground leading-relaxed">{children}</p>
-      </div>
-    </div>
-  );
-}
 
 function ExtLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -117,7 +95,7 @@ export default function EHCPHealth() {
             </div>
           </div>
 
-          <ConfidenceConfirmed>Children and Families Act 2014, Section 42. The health commissioning body (in most cases the local ICB) has a legal duty to provide health care provision specified in Section G of an EHC plan.</ConfidenceConfirmed>
+          <ConfidenceLabel status="confirmed">Children and Families Act 2014, Section 42. The health commissioning body (in most cases the local ICB) has a legal duty to provide health care provision specified in Section G of an EHC plan.</ConfidenceLabel>
         </div>
       </section>
 
@@ -154,7 +132,7 @@ export default function EHCPHealth() {
             </ul>
             <p>If a health body fails to respond to an assessment request, the LA is not excused from completing the assessment. And if health provision is not being delivered as specified in Section G, <strong>the NHS body responsible is in breach of its statutory duty</strong>.</p>
           </div>
-          <ConfidenceConfirmed>Children and Families Act 2014; Special Educational Needs and Disability Regulations 2014.</ConfidenceConfirmed>
+          <ConfidenceLabel status="confirmed">Children and Families Act 2014; Special Educational Needs and Disability Regulations 2014.</ConfidenceLabel>
         </div>
       </section>
 
@@ -206,7 +184,7 @@ export default function EHCPHealth() {
             </ul>
             <p>You have the right to request amendments before the plan is finalised. <strong>Use it.</strong></p>
           </div>
-          <ConfidenceConfirmed>Right to request amendments to a draft EHC plan under the Special Educational Needs and Disability Regulations 2014.</ConfidenceConfirmed>
+          <ConfidenceLabel status="confirmed">Right to request amendments to a draft EHC plan under the Special Educational Needs and Disability Regulations 2014.</ConfidenceLabel>
         </div>
       </section>
 
@@ -233,7 +211,7 @@ export default function EHCPHealth() {
              <ExtLink href="https://www.annafreud.org">→ Anna Freud Centre - resources for families</ExtLink>
           </div>
 
-          <ConfidenceUnknown>CAMHS thresholds are set locally and vary significantly by ICB. There is no national threshold standard.</ConfidenceUnknown>
+          <ConfidenceLabel status="unconfirmed">CAMHS thresholds are set locally and vary significantly by ICB. There is no national threshold standard.</ConfidenceLabel>
         </div>
       </section>
 
@@ -287,7 +265,7 @@ export default function EHCPHealth() {
             <p>An extended appeal allows the Tribunal to consider health and social care provision, not just educational provision. This is <strong>relatively underused by families</strong> but can be the most effective route where health provision has not been delivered or where Section G is inadequate.</p>
             <p>If you are considering an appeal and health provision is an issue, <strong>raise this with IPSEA or your legal representative at the earliest stage</strong>.</p>
           </div>
-          <ConfidenceConfirmed>Children and Families Act 2014, Section 55; SEND Tribunal jurisdiction over extended appeals.</ConfidenceConfirmed>
+          <ConfidenceLabel status="confirmed">Children and Families Act 2014, Section 55; SEND Tribunal jurisdiction over extended appeals.</ConfidenceLabel>
         </div>
       </section>
 

@@ -2,6 +2,7 @@ import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { ArrowRight, Brain, Zap, CheckCircle2, Clock } from "lucide-react";
+import { ConfidenceLabel } from "@/components/ConfidenceLabel";
 
 export default function UnderstandingYourChild() {
   return (
@@ -114,15 +115,9 @@ export default function UnderstandingYourChild() {
 
       {/* Confidence label */}
       <section className="content-section py-6">
-        <div className="rounded-lg bg-status-confirmed/10 border border-status-confirmed/30 p-4 flex items-start gap-3">
-          <CheckCircle2 className="w-5 h-5 text-status-confirmed flex-shrink-0 mt-0.5" />
-          <div>
-            <p className="text-xs font-semibold text-status-confirmed uppercase tracking-wider mb-1">Confirmed</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              The duty to make reasonable adjustments under the <strong>Equality Act 2010</strong> applies regardless of whether a child has a formal diagnosis.
-            </p>
-          </div>
-        </div>
+        <ConfidenceLabel status="confirmed">
+          The duty to make reasonable adjustments under the <strong>Equality Act 2010</strong> applies regardless of whether a child has a formal diagnosis.
+        </ConfidenceLabel>
       </section>
     </Layout>
   );

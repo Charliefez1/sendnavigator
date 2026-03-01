@@ -5,6 +5,7 @@ import type { PageSectionDef } from "@/components/templates";
 
 import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Users, Shield, Scale, BarChart3, FileText, BookOpen } from "lucide-react";
+import { ConfidenceLabel } from "@/components/ConfidenceLabel";
 import { WordFromRich } from "@/components/WordFromRich";
 
 const sections: PageSectionDef[] = [
@@ -26,29 +27,6 @@ function SectionHeading({ id, children }: { id: string; children: React.ReactNod
   );
 }
 
-function ConfidenceConfirmed({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="rounded-lg bg-status-confirmed/10 border border-status-confirmed/30 p-4 flex items-start gap-3 mt-5">
-      <CheckCircle2 className="w-5 h-5 text-status-confirmed flex-shrink-0 mt-0.5" />
-      <div>
-        <p className="text-xs font-semibold text-status-confirmed uppercase tracking-wider mb-1">Confirmed</p>
-        <p className="text-sm text-muted-foreground leading-relaxed">{children}</p>
-      </div>
-    </div>
-  );
-}
-
-function ConfidenceDiscussed({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="rounded-lg bg-status-discussed/10 border border-status-discussed/30 p-4 flex items-start gap-3 mt-5">
-      <HelpCircle className="w-5 h-5 text-status-discussed flex-shrink-0 mt-0.5" />
-      <div>
-        <p className="text-xs font-semibold text-status-discussed uppercase tracking-wider mb-1">Discussed</p>
-        <p className="text-sm text-muted-foreground leading-relaxed">{children}</p>
-      </div>
-    </div>
-  );
-}
 
 function ExtLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -106,7 +84,7 @@ export default function AlternativeProvision() {
               <li className="flex gap-2"><span className="text-primary font-bold">·</span><span><strong>LA-funded placements</strong> in non-state provision covers a range of settings including independent schools and providers not registered as schools.</span></li>
             </ul>
           </div>
-          <ConfidenceConfirmed>DfE statutory guidance on Alternative Provision; DfE school and pupils characteristics statistics 2024/25.</ConfidenceConfirmed>
+          <ConfidenceLabel status="confirmed">DfE statutory guidance on Alternative Provision; DfE school and pupils characteristics statistics 2024/25.</ConfidenceLabel>
         </div>
       </section>
 
@@ -145,7 +123,7 @@ export default function AlternativeProvision() {
             </ul>
             <p>The most common stated reason for school-arranged AP placements is off-site placement for behavioural support. In many cases, the behaviour that precedes AP placement is a <strong>direct consequence of unmet SEND need</strong>. The placement addresses the symptom. The underlying need often goes unmet in AP too.</p>
           </div>
-          <ConfidenceConfirmed>DfE alternative provision census data; DfE schools, pupils and their characteristics 2023/24 and 2024/25.</ConfidenceConfirmed>
+          <ConfidenceLabel status="confirmed">DfE alternative provision census data; DfE schools, pupils and their characteristics 2023/24 and 2024/25.</ConfidenceLabel>
         </div>
       </section>
 
@@ -158,7 +136,7 @@ export default function AlternativeProvision() {
             <p>At key stage 4, the average attainment score for pupils in AP is far below the national average. Pass rates for five or more GCSEs at grade C and above are <strong>in the low single figures in percentage terms</strong> for AP pupils, compared to over 50% nationally.</p>
             <p>These are not outcomes that reflect the ability of the children in AP. They reflect the quality and consistency of the provision, and the <strong>cumulative impact of disrupted education, unmet need, and low expectations</strong>.</p>
           </div>
-          <ConfidenceConfirmed>Parliamentary evidence to the Alternative Provision inquiry; DfE attainment data.</ConfidenceConfirmed>
+          <ConfidenceLabel status="confirmed">Parliamentary evidence to the Alternative Provision inquiry; DfE attainment data.</ConfidenceLabel>
         </div>
       </section>
 
@@ -185,7 +163,7 @@ export default function AlternativeProvision() {
             </div>
           </div>
 
-          <ConfidenceConfirmed>Children and Families Act 2014; Equality Act 2010; DfE AP statutory guidance.</ConfidenceConfirmed>
+          <ConfidenceLabel status="confirmed">Children and Families Act 2014; Equality Act 2010; DfE AP statutory guidance.</ConfidenceLabel>
         </div>
       </section>
 
@@ -233,7 +211,7 @@ export default function AlternativeProvision() {
               </div>
             </div>
           </div>
-          <ConfidenceConfirmed>DfE Alternative Provision statutory guidance (2013, updated); Education Act 1996, Section 29A.</ConfidenceConfirmed>
+          <ConfidenceLabel status="confirmed">DfE Alternative Provision statutory guidance (2013, updated); Education Act 1996, Section 29A.</ConfidenceLabel>
         </div>
       </section>
 
@@ -287,7 +265,7 @@ export default function AlternativeProvision() {
               → Track reform progress <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
-          <ConfidenceDiscussed>Three-tier AP system, local partnerships, and inclusion dashboards are proposals from the Improvement Plan. Implementation status and White Paper commitments are unconfirmed.</ConfidenceDiscussed>
+          <ConfidenceLabel status="discussed">Three-tier AP system, local partnerships, and inclusion dashboards are proposals from the Improvement Plan. Implementation status and White Paper commitments are unconfirmed.</ConfidenceLabel>
         </div>
       </section>
 

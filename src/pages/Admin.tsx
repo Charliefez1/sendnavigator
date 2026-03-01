@@ -34,7 +34,7 @@ interface FeedbackItem {
   created_at: string;
 }
 
-function StatusBadge({ status }: { status: string }) {
+function AdminStatusBadge({ status }: { status: string }) {
   const styles: Record<string, string> = {
     pending: "bg-status-discussed-bg text-status-discussed border border-status-discussed/30",
     approved: "bg-status-confirmed-bg text-status-confirmed border border-status-confirmed/30",
@@ -83,7 +83,7 @@ function FeedbackAdmin({ feedbackItems, pin, callAdmin, refreshData, handleActio
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1 space-y-1">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <StatusBadge status={f.status} />
+                  <AdminStatusBadge status={f.status} />
                   <span className="text-xs bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full">
                     {f.feedback_type}
                   </span>
@@ -525,7 +525,7 @@ export default function Admin() {
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 space-y-1">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <StatusBadge status={q.status} />
+                        <AdminStatusBadge status={q.status} />
                         {q.page_submitted_from && (
                           <span className="text-xs text-muted-foreground">from {q.page_submitted_from}</span>
                         )}

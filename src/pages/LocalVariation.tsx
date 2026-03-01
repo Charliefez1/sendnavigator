@@ -5,7 +5,7 @@ import type { PageSectionDef } from "@/components/templates";
 
 import { Link } from "react-router-dom";
 import { CheckCircle2, HelpCircle, ExternalLink, AlertTriangle, ArrowRight, Clock, Search, Scale, Users, MapPin, FileText, Shield } from "lucide-react";
-import { WordFromRich } from "@/components/WordFromRich";
+import { ConfidenceLabel } from "@/components/ConfidenceLabel";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 const pageSections: PageSectionDef[] = [
   { id: "inspection-evidence", icon: Search, title: "Inspection evidence" },
@@ -22,29 +22,7 @@ function SH({ id, children }: { id: string; children: React.ReactNode }) {
   return <h2 id={id} className="text-lg font-display font-semibold text-foreground mt-10 mb-4 first:mt-0 scroll-mt-20">{children}</h2>;
 }
 
-function CC({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="rounded-lg bg-status-confirmed/10 border border-status-confirmed/30 p-4 flex items-start gap-3 mt-5">
-      <CheckCircle2 className="w-5 h-5 text-status-confirmed flex-shrink-0 mt-0.5" />
-      <div>
-        <p className="text-xs font-semibold text-status-confirmed uppercase tracking-wider mb-1">Confirmed</p>
-        <p className="text-sm text-muted-foreground leading-relaxed">{children}</p>
-      </div>
-    </div>
-  );
-}
-
-function CD({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="rounded-lg bg-status-discussed/10 border border-status-discussed/30 p-4 flex items-start gap-3 mt-5">
-      <HelpCircle className="w-5 h-5 text-status-discussed flex-shrink-0 mt-0.5" />
-      <div>
-        <p className="text-xs font-semibold text-status-discussed uppercase tracking-wider mb-1">Discussed</p>
-        <p className="text-sm text-muted-foreground leading-relaxed">{children}</p>
-      </div>
-    </div>
-  );
-}
+import { WordFromRich } from "@/components/WordFromRich";
 
 function EL({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -118,7 +96,7 @@ export default function LocalVariation() {
             <p>The system as a whole is not failing uniformly. <strong>The pattern is uneven.</strong> Some areas are delivering well. Many are not.</p>
           </div>
 
-          <CC>Ofsted and CQC Area SEND inspections and outcomes in England, as at 31 December 2024 (published June 2025).</CC>
+          <ConfidenceLabel status="confirmed">Ofsted and CQC Area SEND inspections and outcomes in England, as at 31 December 2024 (published June 2025).</ConfidenceLabel>
         </div>
       </section>
 
@@ -164,7 +142,7 @@ export default function LocalVariation() {
             <p className="text-sm text-muted-foreground leading-relaxed">This is a <strong>significant structural shift</strong>. It removes some of the immediate financial threat to councils. It does not, on its own, fix the quality of provision or reduce waiting times.</p>
           </div>
 
-          <CC>Deficit figures: Institute for Fiscal Studies (December 2025); County Councils Network survey data; DfE high needs funding operational guidance 2025/26. Government announcement: HM Treasury Budget 2025 (November 2025); IFS analysis December 2025.</CC>
+          <ConfidenceLabel status="confirmed">Deficit figures: Institute for Fiscal Studies (December 2025); County Councils Network survey data; DfE high needs funding operational guidance 2025/26. Government announcement: HM Treasury Budget 2025 (November 2025); IFS analysis December 2025.</ConfidenceLabel>
         </div>
       </section>
 
@@ -186,8 +164,8 @@ export default function LocalVariation() {
             </div>
           </div>
 
-          <CC>Safety Valve agreements exist and their general terms. DfE Dedicated Schools Grant very high deficit intervention guidance.</CC>
-          <CD>Concerns about downward pressure on provision; contested by DfE. Not independently confirmed.</CD>
+          <ConfidenceLabel status="confirmed">Safety Valve agreements exist and their general terms. DfE Dedicated Schools Grant very high deficit intervention guidance.</ConfidenceLabel>
+          <ConfidenceLabel status="discussed">Concerns about downward pressure on provision; contested by DfE. Not independently confirmed.</ConfidenceLabel>
         </div>
       </section>
 
@@ -205,7 +183,7 @@ export default function LocalVariation() {
             <p>When significant failings are found in area inspections, the specific accountabilities are not always clear. A school may be delivering well in an area where the system around it is failing.</p>
             <p>Ofsted updated its Area SEND inspection framework in <strong>June 2025</strong> specifically to make accountability clearer, naming which partner needs to act when failings are identified.</p>
           </div>
-          <CC>Ofsted Area SEND inspection framework and handbook, updated June 2025.</CC>
+          <ConfidenceLabel status="confirmed">Ofsted Area SEND inspection framework and handbook, updated June 2025.</ConfidenceLabel>
         </div>
       </section>
 
@@ -252,7 +230,7 @@ export default function LocalVariation() {
             <p className="text-sm text-muted-foreground leading-relaxed mt-1">Established that local authorities cannot reduce provision to a level below what is needed to meet statutory duty purely on cost grounds. <strong>This remains good law.</strong></p>
           </div>
 
-          <CC>R v East Sussex County Council ex parte Tandy [1998] AC 714. This principle is confirmed and remains applicable to EHC plan provision under the Children and Families Act 2014.</CC>
+          <ConfidenceLabel status="confirmed">R v East Sussex County Council ex parte Tandy [1998] AC 714. This principle is confirmed and remains applicable to EHC plan provision under the Children and Families Act 2014.</ConfidenceLabel>
         </div>
       </section>
 
@@ -285,7 +263,7 @@ export default function LocalVariation() {
               → Track reform progress <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
-          <CD>National standards, local inclusion plans, and dashboards are proposals from the Improvement Plan. Legislative status is unconfirmed. White Paper timing as stated by ministers but not guaranteed.</CD>
+          <ConfidenceLabel status="discussed">National standards, local inclusion plans, and dashboards are proposals from the Improvement Plan. Legislative status is unconfirmed. White Paper timing as stated by ministers but not guaranteed.</ConfidenceLabel>
         </div>
       </section>
 

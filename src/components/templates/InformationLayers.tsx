@@ -39,7 +39,7 @@ function ConfirmedLayer({ children, emptyMessage }: Omit<InformationLayerProps, 
     <ScanCollapseWrapper
       title="What is confirmed"
       statusBadge={<StatusBadge status="confirmed" />}
-      icon={<div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(175 65% 41% / 0.1)" }}><CheckCircle className="w-3.5 h-3.5" style={{ color: "hsl(175 65% 41%)" }} /></div>}
+      icon={<div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 bg-status-confirmed/10"><CheckCircle className="w-3.5 h-3.5 text-status-confirmed" /></div>}
     >
       {isEmpty ? (
         <p className="text-muted-foreground italic text-sm">
@@ -59,7 +59,7 @@ function DiscussedLayer({ children, emptyMessage }: Omit<InformationLayerProps, 
     <ScanCollapseWrapper
       title="What is actively being shaped or reported"
       statusBadge={<StatusBadge status="discussed" />}
-      icon={<div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(42 87% 48% / 0.1)" }}><Newspaper className="w-3.5 h-3.5" style={{ color: "hsl(42 87% 48%)" }} /></div>}
+      icon={<div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 bg-status-discussed/10"><Newspaper className="w-3.5 h-3.5 text-status-discussed" /></div>}
     >
       {isEmpty ? (
         <p className="text-muted-foreground italic text-sm">
@@ -79,11 +79,11 @@ function UnconfirmedLayer({ children, emptyMessage }: Omit<InformationLayerProps
     <ScanCollapseWrapper
       title="What is unconfirmed or leaked"
       statusBadge={<StatusBadge status="unconfirmed" />}
-      icon={<div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(25 85% 52% / 0.1)" }}><AlertTriangle className="w-3.5 h-3.5" style={{ color: "hsl(25 85% 52%)" }} /></div>}
+      icon={<div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 bg-status-unconfirmed/10"><AlertTriangle className="w-3.5 h-3.5 text-status-unconfirmed" /></div>}
     >
       {!isEmpty && (
-        <div className="rounded-lg border p-3 mb-4 flex gap-3 text-sm shadow-sm" style={{ backgroundColor: "hsl(25 55% 96%)", borderColor: "hsl(25 50% 85%)" }}>
-          <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: "hsl(25 85% 52%)" }} />
+        <div className="rounded-lg border p-3 mb-4 flex gap-3 text-sm shadow-sm bg-status-unconfirmed-bg border-status-unconfirmed/20">
+          <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5 text-status-unconfirmed" />
           <span className="text-muted-foreground">
             This information is not confirmed policy. It may never happen.
           </span>
