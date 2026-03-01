@@ -66,6 +66,7 @@ const FeatureMyChildProfile = lazy(() => import("./pages/landing/FeatureMyChildP
 const FeatureWhatToDoNow = lazy(() => import("./pages/landing/FeatureWhatToDoNow"));
 const FeatureAskRich = lazy(() => import("./pages/landing/FeatureAskRich"));
 const FeatureSources = lazy(() => import("./pages/landing/FeatureSources"));
+const FeatureGetInTouch = lazy(() => import("./pages/landing/FeatureGetInTouch"));
 
 const queryClient = new QueryClient();
 
@@ -100,6 +101,7 @@ const App = () => (
                       <Route path="/feature/what-to-do-now" element={<FeatureWhatToDoNow />} />
                       <Route path="/feature/ask-rich" element={<FeatureAskRich />} />
                       <Route path="/feature/sources" element={<FeatureSources />} />
+                      <Route path="/feature/get-in-touch" element={<FeatureGetInTouch />} />
                       <Route path="/about" element={<About />} />
                       <Route path="/sources" element={<Sources />} />
                       <Route path="/statistics-and-data" element={<StatisticsAndData />} />

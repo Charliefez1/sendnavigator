@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import {
-  FileText, Shield, User, CheckSquare, MessageCircle, BookOpen,
+  FileText, Shield, User, CheckSquare, MessageCircle, BookOpen, Mail,
 } from "lucide-react";
 
 const features = [
@@ -45,6 +45,16 @@ const features = [
     href: "/feature/what-to-do-now",
   },
   {
+    icon: BookOpen,
+    label: "Sources & Evidence",
+    headline: "Every claim traced to its source",
+    description:
+      "Legislation, government research, DfE data, and expert reviews, all in one place so you can verify everything yourself.",
+    accentVar: "--accent-teal",
+    accentBgVar: "--accent-teal-bg",
+    href: "/feature/sources",
+  },
+  {
     icon: MessageCircle,
     label: "Ask Rich",
     headline: "Get plain-English answers",
@@ -55,14 +65,14 @@ const features = [
     href: "/feature/ask-rich",
   },
   {
-    icon: BookOpen,
-    label: "Sources & Evidence",
-    headline: "Every claim traced to its source",
+    icon: Mail,
+    label: "Get in Touch",
+    headline: "Contact Rich directly",
     description:
-      "Legislation, government research, DfE data, and expert reviews, all in one place so you can verify everything yourself.",
-    accentVar: "--accent-teal",
-    accentBgVar: "--accent-teal-bg",
-    href: "/feature/sources",
+      "Whether you have a question, suggestion, or just want to share your experience — every message is read personally.",
+    accentVar: "--accent-coral",
+    accentBgVar: "--accent-coral-bg",
+    href: "/feature/get-in-touch",
   },
 ];
 
