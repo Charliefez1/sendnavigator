@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, Sparkles } from "lucide-react";
+import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { exampleQuestions } from "./types";
 
@@ -51,8 +51,7 @@ export function QuestionInput({ onSubmit, isLoading, initialValue }: QuestionInp
       </form>
 
       <div className="space-y-3">
-        <p className="text-sm text-muted-foreground flex items-center gap-1.5">
-          <Sparkles className="w-4 h-4" aria-hidden="true" />
+        <p className="text-sm text-muted-foreground">
           Try an example question:
         </p>
         <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2">

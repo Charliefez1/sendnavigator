@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Search, Sparkles, Lock, ArrowRight, Loader2 } from "lucide-react";
+import { Search, Lock, ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -123,7 +123,6 @@ export function LandingAskRich({ onSignUpClick }: LandingAskRichProps) {
       {/* Examples */}
       {!answer && !isLoading && (
         <div className="flex flex-wrap gap-2 mt-4">
-          <Sparkles className="w-3.5 h-3.5 mt-3" style={{ color: "hsl(222 20% 45%)" }} aria-hidden="true" />
           {exampleQuestions.map((ex) => (
             <button
               key={ex}
