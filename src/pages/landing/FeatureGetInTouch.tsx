@@ -1,23 +1,23 @@
 import { Link } from "react-router-dom";
 import { SEOHead } from "@/components/SEOHead";
-import { MessageCircle, ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
+import { Mail, ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const FeatureAskRich = () => (
+const FeatureGetInTouch = () => (
   <div className="min-h-screen bg-background">
-    <SEOHead title="Ask Rich | SEND Navigator" description="Ask any question about SEND reform and get a grounded, honest answer drawn from confirmed sources." path="/feature/ask-rich" />
+    <SEOHead title="Get in Touch | SEND Navigator" description="Contact Rich Ferriman directly. Whether you have a question, suggestion, or just want to say hello — we'd love to hear from you." path="/feature/get-in-touch" />
 
     <section className="relative py-16 sm:py-24 overflow-hidden" style={{ backgroundColor: "hsl(222 35% 10%)" }}>
       <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 30%, hsl(175 60% 40% / 0.15), transparent 70%)" }} />
       <div className="relative content-section text-center">
         <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: "hsl(175 60% 40% / 0.15)" }}>
-          <MessageCircle className="w-7 h-7" style={{ color: "hsl(175 60% 40%)" }} />
+          <Mail className="w-7 h-7" style={{ color: "hsl(175 60% 40%)" }} />
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold mb-4" style={{ color: "hsl(0 0% 96%)" }}>
-          Ask Rich
+          Get in Touch
         </h1>
         <p className="text-lg max-w-2xl mx-auto" style={{ color: "hsl(222 20% 60%)" }}>
-          Ask any question about SEND reform and get a grounded, honest answer drawn from confirmed sources.
+          Contact Rich Ferriman directly. Whether you have a question, suggestion, or just want to say hello — we'd love to hear from you.
         </p>
       </div>
     </section>
@@ -25,20 +25,20 @@ const FeatureAskRich = () => (
     <section className="content-section py-12 sm:py-16">
       <div className="max-w-3xl mx-auto space-y-8">
         <div>
-          <h2 className="text-2xl font-display font-semibold text-foreground mb-4">What you will find</h2>
+          <h2 className="text-2xl font-display font-semibold text-foreground mb-4">Why get in touch?</h2>
           <p className="text-muted-foreground leading-relaxed mb-6">
-            Ask Rich is our AI-powered question and answer tool. It is trained on confirmed SEND reform sources, government publications, and legal frameworks. Unlike generic AI, it will tell you when it does not know something, and it always explains where its answer comes from.
+            This site is built by a parent, for parents. If something doesn't make sense, or you think we've missed something, or you just want to share your experience — we want to hear from you. Every message is read personally by Rich Ferriman.
           </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
           {[
-            "Answers grounded in confirmed government sources",
-            "Clear distinction between fact and speculation",
-            "Source references included with every answer",
-            "Written in plain English, not legal jargon",
-            "Honest about what is not yet known",
-            "Covers EHCPs, ISPs, mainstream support, and more",
+            "Suggest a topic or question we should cover",
+            "Report something that's unclear or incorrect",
+            "Share your experience of SEND reform",
+            "Ask about partnerships or collaboration",
+            "Offer feedback on how we can improve",
+            "Just say hello — it means a lot",
           ].map((item) => (
             <div key={item} className="flex items-start gap-3 p-4 rounded-lg border bg-card">
               <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "hsl(175 60% 40%)" }} />
@@ -48,9 +48,9 @@ const FeatureAskRich = () => (
         </div>
 
         <div>
-          <h2 className="text-2xl font-display font-semibold text-foreground mb-4">Why it matters</h2>
+          <h2 className="text-2xl font-display font-semibold text-foreground mb-4">What happens next</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Parents are drowning in misinformation about SEND reform. Social media is full of panic and half-truths. Ask Rich gives you a calm, grounded place to ask your questions and get an honest answer, even if that answer is "we don't know yet."
+            Rich reads every message personally. If your question needs a detailed response, he will reply directly. If your feedback helps improve the site, you'll see the changes reflected here. This is a community effort and your input shapes what we build next.
           </p>
         </div>
 
@@ -59,7 +59,7 @@ const FeatureAskRich = () => (
             <Link to="/landing"><ArrowLeft className="w-4 h-4" /> Back to home</Link>
           </Button>
           <Button asChild variant="outline" size="lg" className="gap-2">
-            <Link to="/landing">Sign up to ask your question <ArrowRight className="w-4 h-4" /></Link>
+            <Link to="/landing">Sign up to get in touch <ArrowRight className="w-4 h-4" /></Link>
           </Button>
         </div>
       </div>
@@ -67,4 +67,4 @@ const FeatureAskRich = () => (
   </div>
 );
 
-export default FeatureAskRich;
+export default FeatureGetInTouch;
