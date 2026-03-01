@@ -18,7 +18,7 @@ const ExperienceModeContext = createContext<ExperienceModeContextType>({
 
 export function ExperienceModeProvider({ children }: { children: ReactNode }) {
   const [mode, setMode] = useState<ExperienceMode>("read");
-  const [orientationOn, setOrientationOn] = useState(false);
+  const [orientationOn, setOrientationOn] = useState(true);
 
   return (
     <ExperienceModeContext.Provider value={{ mode, setMode, orientationOn, setOrientationOn }}>
