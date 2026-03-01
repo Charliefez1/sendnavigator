@@ -167,35 +167,73 @@ const Index = () => {
         keywords="SEND Navigator, SEND reform guide, EHCP guide parents, Schools White Paper 2026, SEND parents England, special educational needs help, neurodiversity, SEND rights, Individual Support Plans, SENDIASS"
       />
 
-      {/* ─── SECTION 1: SPLIT HERO — Guide Me + What's Inside ─── */}
+      {/* ─── SECTION 1: NAVY HERO — Tell us why you're here ─── */}
       <section className="relative overflow-hidden bg-background">
-        <div className="content-wide relative py-10 sm:py-14">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-            {/* Left: Tell us why you're here */}
-            <div>
-              <GuideMe />
-              {/* Last updated */}
-              <div className="flex items-center gap-2 mt-6">
-                <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary" />
-                <p className="text-xs text-muted-foreground">
-                  <strong className="text-foreground">Last updated:</strong> 23rd February 2026
-                </p>
-              </div>
-            </div>
+        <div className="content-section relative py-10 sm:py-14">
+          {/* Quick links bar - the 5 colour buttons */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
+            <Link to="/state-of-send-2026">
+              <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap rounded-full shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: "hsl(175 65% 41%)", color: "white" }}>
+                <BookOpen className="w-3.5 h-3.5" />
+                SEND Reform Report
+              </Button>
+            </Link>
+            <Link to="/ehcps">
+              <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap rounded-full shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: "hsl(220 70% 45%)", color: "white" }}>
+                <Shield className="w-3.5 h-3.5" />
+                EHCP Guide
+              </Button>
+            </Link>
+            <Link to="/my-child-profile">
+              <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap rounded-full shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: "hsl(42 87% 48%)", color: "hsl(30 40% 20%)" }}>
+                <ClipboardList className="w-3.5 h-3.5" />
+                My Child: A Profile
+              </Button>
+            </Link>
+            <Link to="/what-to-do-right-now">
+              <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap rounded-full shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: "hsl(8 75% 55%)", color: "white" }}>
+                <Scale className="w-3.5 h-3.5" />
+                What to do now
+              </Button>
+            </Link>
+            <Link to="/questions-and-answers">
+              <Button size="sm" className="gap-1.5 text-xs whitespace-nowrap rounded-full shadow-md hover:shadow-lg transition-shadow" style={{ backgroundColor: "hsl(262 60% 55%)", color: "white" }}>
+                <MessageCircleQuestion className="w-3.5 h-3.5" />
+                Ask Rich
+              </Button>
+            </Link>
+          </div>
 
-            {/* Right: What's inside */}
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "hsl(175 65% 41%)" }} />
-                <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                  What's inside
-                </p>
-              </div>
-              <h2 className="text-xl sm:text-2xl font-display font-semibold text-foreground mb-6">
-                Everything you need in one place
-              </h2>
-              <AnimatedFeatureShowcase />
-            </div>
+          {/* Guide Me */}
+          <div className="max-w-2xl mx-auto">
+            <GuideMe />
+          </div>
+
+          {/* Last updated */}
+          <div className="flex items-center justify-center gap-2 mt-6">
+            <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary" />
+            <p className="text-xs text-muted-foreground">
+              <strong className="text-foreground">Last updated:</strong> 23rd February 2026
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+      {/* ─── SECTION 2: FEATURE NAVIGATION (6 boxes from landing) ─── */}
+      <section className="bg-background">
+        <div className="content-wide py-10 sm:py-14">
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "hsl(175 65% 41%)" }} />
+            <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+              What's inside
+            </p>
+          </div>
+          <h2 className="text-xl sm:text-2xl font-display font-semibold text-foreground mb-8 text-center">
+            Everything you need in one place
+          </h2>
+          <div className="max-w-4xl mx-auto">
+            <AnimatedFeatureShowcase />
           </div>
         </div>
       </section>
