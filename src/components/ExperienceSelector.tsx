@@ -124,7 +124,7 @@ export function ExperienceSelector() {
         </div>
 
         {/* Site identity */}
-        <Link to="/" className="group flex items-center gap-2 shrink-0 ml-auto">
+        <Link to="/feedback" className="group flex items-center gap-2 shrink-0 ml-auto">
           <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white/15 transition-colors">
             <Heart className="w-3.5 h-3.5 text-red-500" aria-hidden="true" />
           </div>
