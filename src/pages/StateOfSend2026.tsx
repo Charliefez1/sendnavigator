@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { PageOrientation } from "@/components/templates";
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
@@ -451,26 +452,18 @@ export default function StateOfSend2026() {
         keywords="SEND reform 2026, state of SEND, Schools White Paper 2026, Individual Support Plans, ISP SEND, SEND England, EHCP changes, SEND funding reform, mainstream inclusion, SEND review, special educational needs reform"
       />
 
-      <header className="content-section py-6 sm:py-8 border-b border-border" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 100%, hsl(175 65% 41% / 0.06), transparent 70%)" }}>
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(175 65% 41% / 0.12)" }}>
-            <BookOpen className="w-4 h-4" style={{ color: "hsl(175 65% 41%)" }} />
-          </div>
-          <div className="inline-flex items-center gap-2 rounded-lg bg-foreground/5 border border-foreground/10 px-3 py-1">
-            <span className="text-xs font-display font-bold uppercase tracking-widest text-foreground/70">8-Part Report</span>
-          </div>
+      <PageOrientation
+        icon={BookOpen}
+        sectionLabel="SEND Reform Report"
+        title="The State of SEND 2026"
+        description="A structured, evidence-based report tracking SEND reform in England. Eight sections move from what is confirmed through what is actively being shaped to what is genuinely unknown. Read in order, or jump to what matters most to you."
+        accentColor="hsl(175 65% 45%)"
+        lastUpdated="27th February 2026"
+      >
+        <div className="inline-flex items-center gap-2 rounded-lg bg-foreground/5 border border-foreground/10 px-3 py-1">
+          <span className="text-xs font-display font-bold uppercase tracking-widest text-foreground/70">8-Part Report</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">
-          The State of SEND 2026
-        </h1>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          A structured, evidence-based report tracking SEND reform in England. Eight sections move from <strong>what is confirmed</strong> through <strong>what is actively being shaped</strong> to <strong>what is genuinely unknown</strong>. Read in order, or jump to what matters most to you.
-        </p>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mt-3">
-          <Clock className="w-4 h-4" aria-hidden="true" />
-          <span>Last updated: 27th February 2026</span>
-        </div>
-      </header>
+      </PageOrientation>
 
       {/* Confidence key */}
       <section className="content-section py-3">

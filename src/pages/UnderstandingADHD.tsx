@@ -1,7 +1,8 @@
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
+import { PageOrientation } from "@/components/templates";
 import { Link } from "react-router-dom";
-import { CheckCircle2, ExternalLink, ArrowLeft } from "lucide-react";
+import { CheckCircle2, ExternalLink, ArrowLeft, Zap } from "lucide-react";
 import { ConfidenceLabel } from "@/components/ConfidenceLabel";
 import { WordFromRich } from "@/components/WordFromRich";
 
@@ -22,28 +23,13 @@ export default function UnderstandingADHD() {
         path="/understanding-your-child/adhd"
       />
 
-      {/* Breadcrumb */}
-      <div className="content-section pt-6 pb-2">
-        <Link to="/understanding-your-child" className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors">
-          <ArrowLeft className="w-3 h-3" />
-          Understanding Your Child
-        </Link>
-      </div>
-
-      <header className="content-section py-4 border-b border-border">
-        <h1 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-3">
-          ADHD
-        </h1>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-          ADHD is Attention Deficit Hyperactivity Disorder. The name is not particularly accurate. ADHD is not simply a deficit of attention. It is a <strong>difference in how the brain manages attention, motivation, impulse control, and emotional regulation</strong>, driven largely by how the dopamine system works.
-        </p>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mt-3">
-          It is a lifelong neurological profile. It is not caused by bad parenting, too much screen time, or lack of effort. It was always there. For many children it is only identified when the demands of school start to exceed what the brain can manage without support.
-        </p>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mt-3">
-          ADHD comes in three presentations: <strong>predominantly inattentive</strong>, <strong>predominantly hyperactive-impulsive</strong>, and <strong>combined</strong>. The hyperactive version is the one most people picture. The inattentive version, often called ADD, is quieter, frequently missed, and disproportionately common in girls.
-        </p>
-      </header>
+      <PageOrientation
+        icon={Zap}
+        sectionLabel="Understanding Your Child"
+        title="ADHD"
+        description="ADHD is a difference in how the brain manages attention, motivation, impulse control, and emotional regulation. It is a lifelong neurological profile — not caused by bad parenting, too much screen time, or lack of effort."
+        accentColor="hsl(330 60% 52%)"
+      />
 
       <WordFromRich>
         <p>I am autistic. I have ADHD. I am dyslexic. For a long time I thought those things were problems to manage. They are not. They are a different operating system. One that most schools and systems were not designed around.</p>

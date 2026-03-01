@@ -28,13 +28,13 @@ export default function CommunityQuestions() {
 
   return (
     <Layout>
+      <PageOrientation icon={MessageCircleQuestion}
+        sectionLabel="Take Action"
+        title="Lived Experience & Comments"
+        description="Comments and experiences shared by families and professionals navigating SEND. Share yours below. Approved contributions help others."
+        accentColor="hsl(262 60% 55%)"
+      />
       <div className="content-section py-8 space-y-8">
-        <PageOrientation icon={MessageCircleQuestion}
-          sectionLabel="Ask Rich"
-          title="Lived Experience & Comments"
-          description="Comments and experiences shared by families and professionals navigating SEND. Share yours below. Approved contributions help others."
-          accentColor="hsl(262 60% 55%)"
-        />
 
 
         <AskQuestionCompact />

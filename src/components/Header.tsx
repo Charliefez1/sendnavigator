@@ -14,9 +14,10 @@ interface NavGroup {
   items: NavItem[];
 }
 
-const navGroups: NavGroup[] = [
+const navGroups: (NavGroup & { color: string })[] = [
   {
     label: "SEND Reform Report",
+    color: "hsl(175 65% 45%)",
     items: [
       { path: "/state-of-send-2026", label: "Report Overview" },
       { path: "/state-of-send-2026/where-we-are-now", label: "What we know right now" },
@@ -31,6 +32,7 @@ const navGroups: NavGroup[] = [
   },
   {
     label: "Parent Guides",
+    color: "hsl(220 70% 55%)",
     items: [
       { path: "/ehcps", label: "The EHCP Guide" },
       { path: "/ehcp-health", label: "Health in EHCPs" },
@@ -47,6 +49,7 @@ const navGroups: NavGroup[] = [
   },
   {
     label: "Take Action",
+    color: "hsl(262 60% 55%)",
     items: [
       { path: "/have-your-say", label: "Have your say" },
       { path: "/questions-and-answers", label: "Ask Rich" },
@@ -57,6 +60,7 @@ const navGroups: NavGroup[] = [
   },
   {
     label: "The System",
+    color: "hsl(195 70% 45%)",
     items: [
       { path: "/local-variation", label: "Why where you live matters" },
       { path: "/devolved-nations", label: "Wales, Scotland & NI" },
@@ -64,6 +68,7 @@ const navGroups: NavGroup[] = [
   },
   {
     label: "About",
+    color: "hsl(150 50% 42%)",
     items: [
       { path: "/about", label: "About this resource" },
       { path: "/sources", label: "Sources & evidence" },
@@ -200,7 +205,10 @@ export function Header() {
                   <div className="grid grid-cols-3 gap-6">
                     {navGroups.map((group) => (
                       <div key={group.label}>
-                        <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground mb-2">{group.label}</p>
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: group.color }} />
+                          <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: group.color }}>{group.label}</p>
+                        </div>
                         <ul className="space-y-0.5">
                           {group.items.map((item) => (
                             <li key={item.path}>
@@ -210,9 +218,10 @@ export function Header() {
                                 className={({ isActive }) =>
                                   cn(
                                     "block px-2 py-1.5 text-sm rounded-md transition-colors",
-                                    isActive ? "bg-primary/10 text-primary font-medium" : "text-foreground hover:bg-muted"
+                                    isActive ? "font-medium" : "text-foreground hover:bg-muted"
                                   )
                                 }
+                                style={({ isActive }) => isActive ? { backgroundColor: `${group.color}15`, color: group.color } : undefined}
                               >
                                 {item.label}
                               </NavLink>
@@ -258,7 +267,10 @@ export function Header() {
           <nav className="lg:hidden mt-2 pt-3 border-t border-white/10 animate-fade-in pb-4 max-h-[70vh] overflow-y-auto" aria-label="Site pages">
             {navGroups.map((group) => (
               <div key={group.label} className="mt-3 first:mt-0">
-                <p className="px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white/40">{group.label}</p>
+                <div className="flex items-center gap-2 px-3 py-1">
+                  <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: group.color }} />
+                  <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: group.color }}>{group.label}</p>
+                </div>
                 <div className="space-y-0.5 mt-1">
                   {group.items.map((item) => (
                     <NavLink
