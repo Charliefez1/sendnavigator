@@ -25,6 +25,9 @@ export function PageOrientation({
 
   return (
     <header className="relative overflow-hidden">
+      {/* Thin accent bar at very top */}
+      <div className="h-1 w-full" style={{ backgroundColor: accentHsl }} />
+
       {/* Subtle accent-tinted background */}
       <div
         className="absolute inset-0 pointer-events-none"

@@ -3,8 +3,14 @@ import { Search, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
+import { usePageAccent } from "@/contexts/PageAccentContext";
+
+function hslAlpha(hsl: string, alpha: number): string {
+  return hsl.replace(")", ` / ${alpha})`);
+}
 
 export function AskEHCP() {
+  const accent = usePageAccent() || "hsl(220 70% 45%)";
   const [question, setQuestion] = useState("");
   const navigate = useNavigate();
 
@@ -25,9 +31,15 @@ export function AskEHCP() {
   ];
 
   return (
-    <div className="border-2 border-primary rounded-2xl p-5 shadow-lg bg-card">
+    <div
+      className="rounded-2xl border-2 p-5 shadow-lg bg-card"
+      style={{
+        borderColor: hslAlpha(accent, 0.3),
+        boxShadow: `0 8px 32px -8px ${hslAlpha(accent, 0.1)}, 0 4px 16px -4px rgba(0,0,0,0.06)`,
+      }}
+    >
       <form onSubmit={handleSubmit} className="space-y-3">
-        <div className="flex items-center gap-2 text-primary">
+        <div className="flex items-center gap-2" style={{ color: accent }}>
           <MessageCircle className="h-5 w-5" />
           <span className="font-semibold text-sm">Ask a question about EHCPs</span>
         </div>
@@ -49,6 +61,7 @@ export function AskEHCP() {
             disabled={!question.trim()}
             size="sm"
             className="rounded-full px-4 min-h-[44px]"
+            style={{ backgroundColor: accent }}
           >
             Ask
           </Button>
@@ -59,9 +72,7 @@ export function AskEHCP() {
           <button
             key={s}
             type="button"
-            onClick={() => {
-              setQuestion(s);
-            }}
+            onClick={() => setQuestion(s)}
             className="text-xs px-2.5 py-1 rounded-full border border-border bg-muted/50 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
           >
             {s}
