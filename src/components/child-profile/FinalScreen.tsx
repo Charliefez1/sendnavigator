@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Download, LayoutDashboard } from "lucide-react";
 import { generateProfilePDF } from "@/lib/generate-profile-pdf";
+import { isStructuredReport } from "@/types/ai-report";
 import { supabase } from "@/integrations/supabase/client";
 import { ReportLoadingScreen } from "./ReportLoadingScreen";
 
@@ -118,7 +119,10 @@ export function FinalScreen({ onViewDashboard }: FinalScreenProps) {
         throw new Error(data.error);
       }
 
-      const aiReport = data.report;
+      // Use structured JSON if available, otherwise fall back to text blob
+      const aiReport = data.structured && isStructuredReport(data.structured)
+        ? data.structured
+        : data.report;
 
       await generateProfilePDF({ state, aiReport });
 
