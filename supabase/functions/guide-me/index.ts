@@ -68,6 +68,59 @@ You MUST respond with valid JSON in this exact format:
 
 Match based on what the person actually said. If they mention school, EHCPs, exclusions, leaks, reforms, their child, feeling overwhelmed, etc. - pick the pages that genuinely help. If unsure, include /questions-and-answers so they can ask Rich directly.`;
 
+const AMERICAN_TO_UK: Array<[string, string]> = [
+  ["behavior", "behaviour"],
+  ["behaviors", "behaviours"],
+  ["behavioral", "behavioural"],
+  ["organize", "organise"],
+  ["organized", "organised"],
+  ["organizing", "organising"],
+  ["organization", "organisation"],
+  ["recognize", "recognise"],
+  ["recognized", "recognised"],
+  ["analyze", "analyse"],
+  ["analyzed", "analysed"],
+  ["center", "centre"],
+  ["color", "colour"],
+  ["favorite", "favourite"],
+  ["defense", "defence"],
+  ["offense", "offence"],
+];
+
+function applyCase(source: string, replacement: string): string {
+  if (source.toUpperCase() === source) return replacement.toUpperCase();
+  if (source[0] && source[0] === source[0].toUpperCase()) {
+    return replacement.charAt(0).toUpperCase() + replacement.slice(1);
+  }
+  return replacement;
+}
+
+function normaliseCopyToUkEnglish(input: string): string {
+  let output = input
+    .replace(/\s*—\s*/g, ", ")
+    .replace(/\s*–\s*/g, " - ");
+
+  for (const [american, british] of AMERICAN_TO_UK) {
+    const pattern = new RegExp(`\\b${american}\\b`, "gi");
+    output = output.replace(pattern, (match) => applyCase(match, british));
+  }
+
+  return output
+    .replace(/\s{2,}/g, " ")
+    .replace(/\s+([,.;:!?])/g, "$1");
+}
+
+function normaliseResponse(value: unknown): unknown {
+  if (typeof value === "string") return normaliseCopyToUkEnglish(value);
+  if (Array.isArray(value)) return value.map(normaliseResponse);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value as Record<string, unknown>).map(([k, v]) => [k, normaliseResponse(v)]),
+    );
+  }
+  return value;
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -148,8 +201,10 @@ serve(async (req) => {
       };
     }
 
+    const sanitisedParsed = normaliseResponse(parsed);
+
     return new Response(
-      JSON.stringify(parsed),
+      JSON.stringify(sanitisedParsed),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (e) {
