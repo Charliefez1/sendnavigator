@@ -7,8 +7,9 @@ import { ChildProfileProvider, useChildProfile, ChildProfileState } from "@/cont
 import { OpeningScreen } from "@/components/child-profile/OpeningScreen";
 import { SetupFlow } from "@/components/child-profile/SetupFlow";
 import { ProfileBuilder } from "@/components/child-profile/ProfileBuilder";
+import { ProfileDashboard } from "@/components/child-profile/ProfileDashboard";
 
-type Stage = "opening" | "setup" | "builder";
+type Stage = "opening" | "setup" | "builder" | "dashboard";
 
 const TEST_DATA: ChildProfileState = {
   setup: {
@@ -349,7 +350,21 @@ function ProfileContent() {
         />
       )}
       {stage === "setup" && <SetupFlow onComplete={() => setStage("builder")} />}
-      {stage === "builder" && <ProfileBuilder initialSection={initialSection} />}
+      {stage === "builder" && (
+        <ProfileBuilder
+          initialSection={initialSection}
+          onViewDashboard={() => setStage("dashboard")}
+        />
+      )}
+      {stage === "dashboard" && (
+        <ProfileDashboard
+          onBack={() => setStage("builder")}
+          onNavigateToSection={(index) => {
+            setInitialSection(index);
+            setStage("builder");
+          }}
+        />
+      )}
     </>
   );
 }

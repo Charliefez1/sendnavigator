@@ -5,10 +5,14 @@ import { childVoiceQuestions } from "@/config/child-voice-questions";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Download } from "lucide-react";
+import { Download, LayoutDashboard } from "lucide-react";
 import { generateProfilePDF } from "@/lib/generate-profile-pdf";
 import { supabase } from "@/integrations/supabase/client";
 import { ReportLoadingScreen } from "./ReportLoadingScreen";
+
+interface FinalScreenProps {
+  onViewDashboard?: () => void;
+}
 
 type Stage = "input" | "loading" | "complete";
 
@@ -80,7 +84,7 @@ function buildProfileText(state: ChildProfileState): string {
   return lines.join("\n");
 }
 
-export function FinalScreen() {
+export function FinalScreen({ onViewDashboard }: FinalScreenProps) {
   const { state, updateFinalStatement } = useChildProfile();
   const childName = state.setup.childName || "your child";
 
@@ -188,6 +192,15 @@ export function FinalScreen() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               We will make sure all data from this session is deleted. Nothing is stored, nothing is shared. Your report is the only copy.
             </p>
+          </div>
+        )}
+
+        {onViewDashboard && (
+          <div className="pt-4 border-t border-border">
+            <Button variant="outline" size="sm" onClick={onViewDashboard} className="gap-1.5">
+              <LayoutDashboard className="w-3.5 h-3.5" />
+              View dashboard
+            </Button>
           </div>
         )}
       </div>

@@ -11,9 +11,10 @@ import { cn } from "@/lib/utils";
 
 interface ProfileBuilderProps {
   initialSection?: number;
+  onViewDashboard?: () => void;
 }
 
-export function ProfileBuilder({ initialSection = 0 }: ProfileBuilderProps) {
+export function ProfileBuilder({ initialSection = 0, onViewDashboard }: ProfileBuilderProps) {
   const [activeSection, setActiveSection] = useState(initialSection);
   const [showFinal, setShowFinal] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -23,7 +24,7 @@ export function ProfileBuilder({ initialSection = 0 }: ProfileBuilderProps) {
   }, [activeSection, showFinal]);
 
   if (showFinal) {
-    return <FinalScreen />;
+    return <FinalScreen onViewDashboard={onViewDashboard} />;
   }
 
   const isLast = activeSection === SECTION_TITLES.length - 1;
@@ -62,6 +63,10 @@ export function ProfileBuilder({ initialSection = 0 }: ProfileBuilderProps) {
             setActiveSection(i);
             setSidebarOpen(false);
           }}
+          onViewDashboard={onViewDashboard ? () => {
+            onViewDashboard();
+            setSidebarOpen(false);
+          } : undefined}
         />
         <div className="mt-4 px-3">
           <SaveProgressButton activeSection={activeSection} />
