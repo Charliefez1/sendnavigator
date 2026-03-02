@@ -1,43 +1,45 @@
 
 
-## Two bugs identified
+## Emailing the Profile Report
 
-**Bug 1: Clicking Dashboard during report generation kills the report**
-The FinalScreen (with its report loading/preview stages) lives inside ProfileBuilder. When you click "Dashboard" in the compact header, the parent stage changes to `"dashboard"`, which unmounts ProfileBuilder entirely — destroying the report generation state. When you go back, ProfileBuilder remounts fresh and the report is gone.
+### What you want
+Send the completed profile report to parents via email from `rich@neurodiversityglobal.com`, including the report content and a section about Neurodiversity Global.
 
-**Bug 2: Report preview not rendering / no PDF download**
-After report generation completes, FinalScreen calls `handleDownloadPDF` which calls `generateProfilePDF` and then sets `stage = "complete"`. The "complete" stage shows a static message but no longer shows the report preview or offers another download. The report preview should be the primary destination after generation, with download as a button within it — which is how `ReportPreview` works. But the flow in `FinalScreen` goes loading → preview → (download click) → complete. If anything resets state in between, it breaks.
+### What's possible
+Yes, this is achievable. However, Lovable's built-in email system only handles authentication emails (password resets, verification etc.), so for transactional emails like this we need **Resend** — a simple email API that works well from backend functions.
 
-## Plan
+### What you'll need to do (outside Lovable)
+1. **Create a free Resend account** at [resend.com](https://resend.com)
+2. **Verify the domain** `neurodiversityglobal.com` in Resend (add DNS records they provide)
+3. **Get your Resend API key** from the Resend dashboard
 
-### 1. Lift FinalScreen/report state to the parent level
-Add `"final"` and `"report-preview"` to the parent `Stage` type in `MyChildProfile.tsx`. This way switching to dashboard and back preserves the report state (which is already cached in ChildProfileContext as `state.aiReport`).
+Once you provide the API key, I'll store it securely and build everything else.
 
-**Changes to `src/pages/MyChildProfile.tsx`:**
-- Change `Stage` to include `"final" | "report-preview"`
-- Render `FinalScreen` when stage is `"final"`
-- Render `ReportPreview` when stage is `"report-preview"`
-- Pass stage transitions so dashboard button works without unmounting report state
+### What I'll build
 
-### 2. Update ProfileBuilder to use parent stage for final/report
-Instead of ProfileBuilder managing `showFinal` internally, it calls `onShowFinal` prop to transition the parent stage.
+**1. Collect email address in FinalScreen**
+- Add an email input field on the final screen (before report generation)
+- Optional — the user can skip it and just download the PDF
 
-**Changes to `src/components/child-profile/ProfileBuilder.tsx`:**
-- Add `onShowFinal` prop, remove internal `showFinal` state
-- "Final statement" and "Skip to final statement" buttons call `onShowFinal()`
+**2. New edge function: `email-profile-report`**
+- Receives: parent email, child name, the generated report text (structured sections)
+- Builds an HTML email in Rich's voice with:
+  - A warm intro from Rich
+  - The full AI-generated report (formatted for email)
+  - An "About Neurodiversity Global" footer section
+- Sends from `rich@neurodiversityglobal.com` via Resend API
+- Note: PDF attachment is not straightforward from edge functions (PDF is generated client-side with jsPDF). Instead, the email will contain the report as formatted HTML, which is arguably better for email anyway.
 
-### 3. Fix FinalScreen to return to report-preview correctly
-**Changes to `src/components/child-profile/FinalScreen.tsx`:**
-- After successful report generation, call a new `onReportReady` prop to transition parent to `"report-preview"` stage
-- Remove the internal preview/complete stages that duplicate ReportPreview
-
-### 4. Hide Dashboard button during report loading
-**Changes to `src/components/child-profile/ProfileCompactHeader.tsx`:**
-- Accept optional `showDashboard` prop (default true), hide the button when false (e.g. during loading)
+**3. Trigger after report generation**
+- After the AI report is generated and cached, if the user provided an email, call the edge function
+- Show a toast confirmation: "Report sent to your email"
 
 ### Files changed
-- `src/pages/MyChildProfile.tsx` — expanded Stage type, render FinalScreen and ReportPreview at parent level
-- `src/components/child-profile/ProfileBuilder.tsx` — delegate final/report to parent via props
-- `src/components/child-profile/FinalScreen.tsx` — simplify to input-only, delegate preview to parent
-- `src/components/child-profile/ProfileCompactHeader.tsx` — optional dashboard button visibility
+- `src/components/child-profile/FinalScreen.tsx` — add email input
+- `supabase/functions/email-profile-report/index.ts` — new edge function
+- `supabase/config.toml` — register the new function
+- `src/pages/MyChildProfile.tsx` — trigger email send after report ready
+
+### One question
+Shall I proceed with setting up Resend for this, or would you prefer a different approach?
 
