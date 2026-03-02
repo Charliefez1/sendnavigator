@@ -26,6 +26,7 @@ export function Layout({ children }: LayoutProps) {
   const location = useLocation();
   const isReportPage = location.pathname.startsWith("/state-of-send-2026/");
   const isStartPage = location.pathname === "/" || location.pathname === "/start";
+  const isProfilePage = location.pathname === "/my-child-profile";
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -51,7 +52,7 @@ export function Layout({ children }: LayoutProps) {
         <>
           <main id="main-content" className={`flex-1 ${isStartPage ? 'pb-0' : 'pb-32'}`} role="main" tabIndex={-1}>
             {children}
-            {!isStartPage && (
+            {!isStartPage && !isProfilePage && (
               <div className="content-section py-6 space-y-4">
                 <AskQuestionCompact />
               </div>
