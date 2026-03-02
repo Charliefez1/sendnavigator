@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, ReactNode } from "react";
+import { StructuredAIReport } from "@/types/ai-report";
 
 export const SECTION_TITLES = [
   "Environment",
@@ -41,10 +42,18 @@ export interface SectionData {
   reflection: string;
 }
 
+export interface CachedAIReport {
+  generatedAt: string;
+  model: string;
+  report: string;
+  structured?: StructuredAIReport;
+}
+
 export interface ChildProfileState {
   setup: SetupData;
   sections: Record<number, SectionData>;
   finalStatement: string;
+  aiReport?: CachedAIReport;
 }
 
 interface ChildProfileContextType {
@@ -54,6 +63,8 @@ interface ChildProfileContextType {
   updateSectionReflection: (sectionIndex: number, value: string) => void;
   updateFinalStatement: (value: string) => void;
   getSectionStatus: (sectionIndex: number) => SectionStatus;
+  updateAiReport: (report: CachedAIReport) => void;
+  clearAiReport: () => void;
   loadState: (data: ChildProfileState) => void;
   reset: () => void;
 }
@@ -124,13 +135,25 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
     return "complete";
   };
 
+  const updateAiReport = (report: CachedAIReport) => {
+    setState((prev) => ({ ...prev, aiReport: report }));
+  };
+
+  const clearAiReport = () => {
+    setState((prev) => {
+      if (!prev.aiReport) return prev;
+      const { aiReport: _, ...rest } = prev;
+      return rest as ChildProfileState;
+    });
+  };
+
   const loadState = (data: ChildProfileState) => setState(data);
 
   const reset = () => setState({ ...defaultState, setup: { ...defaultSetup } });
 
   return (
     <ChildProfileContext.Provider
-      value={{ state, updateSetup, updateSectionAnswer, updateSectionReflection, updateFinalStatement, getSectionStatus, loadState, reset }}
+      value={{ state, updateSetup, updateSectionAnswer, updateSectionReflection, updateFinalStatement, getSectionStatus, updateAiReport, clearAiReport, loadState, reset }}
     >
       {children}
     </ChildProfileContext.Provider>

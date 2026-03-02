@@ -2,12 +2,13 @@ import jsPDF from "jspdf";
 import { ChildProfileState, SECTION_TITLES } from "@/contexts/ChildProfileContext";
 import { sectionContent } from "@/config/child-profile-sections";
 import { childVoiceQuestions } from "@/config/child-voice-questions";
+import { StructuredAIReport, isStructuredReport } from "@/types/ai-report";
 import beaconLogoUrl from "@/assets/neurodiversity-global-logo-trimmed.png";
 import ngLogoUrl from "@/assets/neurodiversity-global-logo.jpeg";
 
 interface ReportData {
   state: ChildProfileState;
-  aiReport: string;
+  aiReport: string | StructuredAIReport;
 }
 
 // === Colour palette (RGB) ===
@@ -374,7 +375,26 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
       .replace(/^[-–—]\s+/gm, "")
       .trim();
 
-  const parsed = parseAIReport(aiReport);
+  /** Map structured AI report to the same shape as parseAIReport returns */
+  const mapStructuredToParsed = (report: StructuredAIReport) => {
+    const sections: Record<string, string> = {};
+    for (const insight of report.sectionInsights) {
+      sections[`section_${insight.sectionIndex}`] = insight.reflection;
+    }
+    return {
+      sections,
+      waysOfWorking: report.waysOfWorking,
+      suggestions: report.someThingsThatMayHelp,
+      conclusion: report.conclusion,
+      openingLine: report.openingLine,
+    };
+  };
+
+  // Parse AI report: structured JSON or legacy text blob
+  const structured = isStructuredReport(aiReport) ? aiReport : null;
+  const parsed = structured
+    ? mapStructuredToParsed(structured)
+    : parseAIReport(aiReport as string);
 
   // =============================================
   // PAGE 1: COVER
@@ -438,6 +458,88 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
   );
   doc.setFontSize(8.5);
   doc.text("sendnavigator.neuro.support", pageWidth / 2, pageHeight - 34, { align: "center" });
+
+  // =============================================
+  // PAGE 1.5: AT A GLANCE (structured reports only)
+  // =============================================
+  if (structured && structured.topSummary) {
+    doc.addPage();
+    setFill(WHITE);
+    doc.rect(0, 0, pageWidth, pageHeight, "F");
+    y = margin;
+
+    // Title
+    doc.setFontSize(22);
+    doc.setFont("helvetica", "bold");
+    setColor(NAVY);
+    doc.text("At a Glance", margin, y);
+    y += 10;
+
+    setDraw(NAVY);
+    doc.setLineWidth(0.6);
+    doc.line(margin, y, margin + 55, y);
+    y += 14;
+
+    // Opening line in italic
+    if (structured.openingLine) {
+      setColor(MID_TEXT);
+      y = addWrappedText(structured.openingLine, margin, y, contentWidth, 10.5, "italic");
+      y += 10;
+    }
+
+    // Headline
+    if (structured.topSummary.headline) {
+      setColor(DARK_TEXT);
+      doc.setFontSize(13);
+      doc.setFont("helvetica", "bold");
+      const headlineLines: string[] = doc.splitTextToSize(structured.topSummary.headline, contentWidth);
+      const headlineLineH = 13 * 0.353 * 1.6;
+      for (const line of headlineLines) {
+        doc.text(line, margin, y);
+        y += headlineLineH;
+      }
+      y += 8;
+    }
+
+    // Bullets
+    if (structured.topSummary.bullets.length > 0) {
+      setColor(DARK_TEXT);
+      for (const bullet of structured.topSummary.bullets) {
+        y = checkPageBreak(y, 14);
+        doc.setFontSize(11);
+        doc.setFont("helvetica", "normal");
+        const bulletText = `\u2022  ${bullet}`;
+        const bulletLines: string[] = doc.splitTextToSize(bulletText, contentWidth - 10);
+        const bulletLineH = 11 * 0.353 * 1.6;
+        for (let i = 0; i < bulletLines.length; i++) {
+          doc.text(bulletLines[i], margin + (i === 0 ? 0 : 6), y);
+          y += bulletLineH;
+        }
+        y += 2;
+      }
+      y += 6;
+    }
+
+    // "What helps most" block from waysOfWorking (first 3 paragraphs)
+    if (structured.waysOfWorking) {
+      y = checkPageBreak(y, 30);
+      doc.setFontSize(14);
+      doc.setFont("helvetica", "bold");
+      setColor(NAVY);
+      doc.text("What helps most", margin, y);
+      y += 10;
+
+      const wowParas = structured.waysOfWorking.split(/\n\n+/).filter(p => p.trim());
+      const firstParas = wowParas.slice(0, 3);
+      setColor(DARK_TEXT);
+      for (const para of firstParas) {
+        y = addWrappedText(para, margin, y, contentWidth, 11);
+        y += 4;
+      }
+    }
+
+    footer();
+  }
 
   // =============================================
   // PAGE 2: WHY WE BUILT THIS
