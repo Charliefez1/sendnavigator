@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useChildProfile, SECTION_TITLES, ChildProfileState } from "@/contexts/ChildProfileContext";
 import { sectionContent } from "@/config/child-profile-sections";
 import { childVoiceQuestions } from "@/config/child-voice-questions";
@@ -10,12 +10,13 @@ import { generateProfilePDF } from "@/lib/generate-profile-pdf";
 import { isStructuredReport } from "@/types/ai-report";
 import { supabase } from "@/integrations/supabase/client";
 import { ReportLoadingScreen } from "./ReportLoadingScreen";
+import { ReportPreview } from "./ReportPreview";
 
 interface FinalScreenProps {
   onViewDashboard?: () => void;
 }
 
-type Stage = "input" | "loading" | "complete";
+type Stage = "input" | "loading" | "preview" | "complete";
 
 function buildProfileText(state: ChildProfileState): string {
   const lines: string[] = [];
@@ -86,10 +87,11 @@ function buildProfileText(state: ChildProfileState): string {
 }
 
 export function FinalScreen({ onViewDashboard }: FinalScreenProps) {
-  const { state, updateFinalStatement } = useChildProfile();
+  const { state, updateFinalStatement, updateAiReport } = useChildProfile();
   const childName = state.setup.childName || "your child";
 
-  const [stage, setStage] = useState<Stage>("input");
+  // If we already have a cached report, start on preview
+  const [stage, setStage] = useState<Stage>(state.aiReport ? "preview" : "input");
   const [consentDecided, setConsentDecided] = useState(false);
   const [consentGiven, setConsentGiven] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -119,14 +121,19 @@ export function FinalScreen({ onViewDashboard }: FinalScreenProps) {
         throw new Error(data.error);
       }
 
-      // Use structured JSON if available, otherwise fall back to text blob
-      const aiReport = data.structured && isStructuredReport(data.structured)
+      // Store AI report in context for caching and preview
+      const structured = data.structured && isStructuredReport(data.structured)
         ? data.structured
-        : data.report;
+        : undefined;
 
-      await generateProfilePDF({ state, aiReport });
+      updateAiReport({
+        generatedAt: new Date().toISOString(),
+        model: "claude-sonnet-4-20250514",
+        report: data.report,
+        structured,
+      });
 
-      setStage("complete");
+      setStage("preview");
     } catch (e) {
       console.error("Report generation failed:", e);
       if (e instanceof Error && e.message === "NO_SECTIONS_COMPLETED") {
@@ -139,9 +146,29 @@ export function FinalScreen({ onViewDashboard }: FinalScreenProps) {
     }
   };
 
+  const handleDownloadPDF = async () => {
+    if (!state.aiReport) return;
+    const aiReport = state.aiReport.structured && isStructuredReport(state.aiReport.structured)
+      ? state.aiReport.structured
+      : state.aiReport.report;
+    await generateProfilePDF({ state, aiReport });
+    setStage("complete");
+  };
+
   // === LOADING SCREEN ===
   if (stage === "loading") {
     return <ReportLoadingScreen />;
+  }
+
+  // === PREVIEW SCREEN ===
+  if (stage === "preview") {
+    return (
+      <ReportPreview
+        onDownloadPDF={handleDownloadPDF}
+        onBackToEdit={() => setStage("input")}
+        onRegenerate={handleGenerateReport}
+      />
+    );
   }
 
   // === COMPLETE SCREEN ===

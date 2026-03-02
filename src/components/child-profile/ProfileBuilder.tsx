@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { SECTION_TITLES } from "@/contexts/ChildProfileContext";
+import { SECTION_TITLES, useChildProfile } from "@/contexts/ChildProfileContext";
 import { ProfileSidebar } from "./ProfileSidebar";
 import { SectionTemplate } from "./SectionTemplate";
 import { FinalScreen } from "./FinalScreen";
 import { SaveProgressButton } from "./SaveProgressButton";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight, Home, Menu, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Home, Menu, X, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ProfileBuilderProps {
@@ -15,13 +15,24 @@ interface ProfileBuilderProps {
 }
 
 export function ProfileBuilder({ initialSection = 0, onViewDashboard }: ProfileBuilderProps) {
+  const { state } = useChildProfile();
   const [activeSection, setActiveSection] = useState(initialSection);
   const [showFinal, setShowFinal] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [editedSinceReport, setEditedSinceReport] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [activeSection, showFinal]);
+
+  // Track edits after report generation
+  useEffect(() => {
+    if (state.aiReport) {
+      setEditedSinceReport(true);
+    }
+  // Only trigger when sections or finalStatement change while aiReport exists
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.sections, state.finalStatement]);
 
   if (showFinal) {
     return <FinalScreen onViewDashboard={onViewDashboard} />;
@@ -103,6 +114,14 @@ export function ProfileBuilder({ initialSection = 0, onViewDashboard }: ProfileB
           <Home className="w-3.5 h-3.5" />
           Back to home
         </Link>
+        {state.aiReport && editedSinceReport && (
+          <div className="rounded-lg border border-amber-500/50 bg-amber-500/10 p-3 mb-4 flex items-start gap-2">
+            <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+            <p className="text-xs text-foreground">
+              You have changed the profile since the last report. Regenerate to update the report.
+            </p>
+          </div>
+        )}
         <SectionTemplate sectionIndex={activeSection} />
 
         {/* Navigation buttons */}
