@@ -462,6 +462,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
   // =============================================
   // PAGE 1.5: AT A GLANCE (structured reports only)
   // =============================================
+  let y = margin;
   if (structured && structured.topSummary) {
     doc.addPage();
     setFill(WHITE);
@@ -547,7 +548,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
   doc.addPage();
   setFill(WHITE);
   doc.rect(0, 0, pageWidth, pageHeight, "F");
-  let y = margin;
+  y = margin;
 
   doc.setFontSize(18);
   doc.setFont("helvetica", "bold");
