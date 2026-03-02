@@ -381,7 +381,7 @@ const MyChildProfile = () => {
         icon={UserRound}
         sectionLabel="My Child: A Profile"
         title="My Child: A Profile"
-        description="Build a personalised profile document about your neurodivergent child. Guided questions across 22 sections. Download as PDF. Nothing is stored."
+        description="22 guided sections, an at-a-glance dashboard, a structured AI report you can preview in your browser, and a downloadable PDF. Nothing is stored."
         accentColor="hsl(42 87% 50%)"
         showSearch={false}
       />
