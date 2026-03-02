@@ -136,4 +136,3 @@ MyChildProfile.tsx         MODIFIED    Dashboard stage routing
 3. `"in-progress"` status type exists but is never returned by `getSectionStatus`
 4. Child voice questions still missing for 8 of 22 sections
 5. Anonymised summary sharing still has no backend implementation
-
