@@ -1,160 +1,38 @@
 import { useState, useEffect } from "react";
-import { useChildProfile, SECTION_TITLES, ChildProfileState } from "@/contexts/ChildProfileContext";
-import { sectionContent } from "@/config/child-profile-sections";
-import { childVoiceQuestions } from "@/config/child-voice-questions";
+import { useChildProfile } from "@/contexts/ChildProfileContext";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Download, ArrowLeft, Mail } from "lucide-react";
-import { isStructuredReport } from "@/types/ai-report";
-import { supabase } from "@/integrations/supabase/client";
 
 interface FinalScreenProps {
+  onGenerate: (email?: string) => void;
   onViewDashboard?: () => void;
-  onReportLoading?: () => void;
-  onReportReady?: (email?: string) => void;
-  onReportError?: () => void;
   onBackToBuilder?: () => void;
 }
 
-function buildProfileText(state: ChildProfileState): string {
-  const lines: string[] = [];
-
-  lines.push(`Child's name: ${state.setup.childName || "Not provided"}`);
-  lines.push(`Reason for building this profile: ${state.setup.reason || "Not provided"}`);
-  lines.push(`Who this will be shared with: ${state.setup.sharedWith.length > 0 ? state.setup.sharedWith.join(", ") : "Not specified"}`);
-  lines.push("");
-
-  SECTION_TITLES.forEach((title, index) => {
-    const section = state.sections[index];
-    if (!section) return;
-
-    const content = sectionContent[index];
-    const parentAnswers: string[] = [];
-    const childAnswers: string[] = [];
-
-    if (content) {
-      content.questions.forEach((q) => {
-        const val = section.answers?.[q.id];
-        const displayValue = Array.isArray(val) ? val.join(", ") : val;
-        if (displayValue && displayValue.trim()) {
-          parentAnswers.push(`${q.label}\n${displayValue.trim()}`);
-        }
-      });
-    }
-
-    const cvQuestions = childVoiceQuestions[index];
-    if (cvQuestions) {
-      cvQuestions.forEach((q) => {
-        const val = section.answers?.[q.id];
-        const strVal = Array.isArray(val) ? val.join(", ") : val;
-        if (strVal && strVal.toString().trim()) {
-          childAnswers.push(`${q.label}\n${strVal.toString().trim()}`);
-        }
-      });
-    }
-
-    const hasContent = parentAnswers.length > 0 || childAnswers.length > 0 || section.reflection.trim().length > 0;
-    if (!hasContent) return;
-
-    lines.push(`Section ${index + 1}: ${title}`);
-
-    if (parentAnswers.length > 0) {
-      lines.push("Parent answers:");
-      lines.push(parentAnswers.join("\n\n"));
-    }
-
-    if (childAnswers.length > 0) {
-      lines.push("Child answers (in the child's own words):");
-      lines.push(childAnswers.join("\n\n"));
-    }
-
-    if (section.reflection.trim()) {
-      lines.push(`Closing reflection: ${section.reflection.trim()}`);
-    }
-
-    lines.push("");
-  });
-
-  if (state.finalStatement.trim()) {
-    lines.push(`Final closing statement from the parent: ${state.finalStatement.trim()}`);
-  }
-
-  return lines.join("\n");
-}
-
-export function FinalScreen({ onViewDashboard, onReportLoading, onReportReady, onReportError, onBackToBuilder }: FinalScreenProps) {
-  const { state, updateFinalStatement, updateAiReport } = useChildProfile();
+export function FinalScreen({ onGenerate, onViewDashboard, onBackToBuilder }: FinalScreenProps) {
+  const { state, updateFinalStatement } = useChildProfile();
   const childName = state.setup.childName || "your child";
 
   const [consentDecided, setConsentDecided] = useState(false);
   const [consentGiven, setConsentGiven] = useState(false);
   const [parentEmail, setParentEmail] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [emptySectionsWarning, setEmptySectionsWarning] = useState(false);
 
-  // If we already have a cached report, go straight to preview
+  // If we already have a cached report, trigger generation flow immediately (parent will handle redirect)
   useEffect(() => {
-    if (state.aiReport && onReportReady) {
-      onReportReady();
+    if (state.aiReport) {
+      onGenerate();
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (state.aiReport && onReportReady) {
+  if (state.aiReport) {
     return null;
   }
 
   const canGenerate = consentDecided;
-
-  const handleGenerateReport = async () => {
-    setError(null);
-    setEmptySectionsWarning(false);
-
-    // Transition parent to loading stage
-    onReportLoading?.();
-
-    try {
-      const profileText = buildProfileText(state);
-
-      const { data, error: fnError } = await supabase.functions.invoke(
-        "generate-profile-report",
-        { body: { profileText } }
-      );
-
-      if (fnError) {
-        throw new Error(fnError.message || "Failed to generate report");
-      }
-
-      if (data?.error) {
-        throw new Error(data.error);
-      }
-
-      const structured = data.structured && isStructuredReport(data.structured)
-        ? data.structured
-        : undefined;
-
-      updateAiReport({
-        generatedAt: new Date().toISOString(),
-        model: "claude-sonnet-4-20250514",
-        report: data.report,
-        structured,
-      });
-
-      // Transition parent to report preview, passing email for sending
-      onReportReady?.(parentEmail.trim() || undefined);
-    } catch (e) {
-      console.error("Report generation failed:", e);
-      // Return to final screen so user can retry
-      onReportError?.();
-      if (e instanceof Error && e.message === "NO_SECTIONS_COMPLETED") {
-        setEmptySectionsWarning(true);
-        return;
-      }
-      setError(e instanceof Error ? e.message : "Something went wrong. Please try again.");
-    }
-  };
 
   return (
     <div className="max-w-2xl mx-auto py-12 px-4 space-y-8">
@@ -203,18 +81,6 @@ export function FinalScreen({ onViewDashboard, onReportLoading, onReportReady, o
         </Button>
       )}
 
-      {emptySectionsWarning && (
-        <div className="rounded-lg border border-amber-500/50 bg-amber-500/10 p-4">
-          <p className="text-sm text-foreground font-medium">You have not completed any sections yet. Complete at least one section before generating your report.</p>
-        </div>
-      )}
-
-      {error && (
-        <div className="rounded-lg border border-destructive/50 bg-destructive/10 p-4">
-          <p className="text-sm text-destructive">{error}</p>
-        </div>
-      )}
-
       {/* Consent + generate */}
       <div className="space-y-5 pt-4 border-t border-border">
         <div className="flex items-start gap-3">
@@ -234,7 +100,7 @@ export function FinalScreen({ onViewDashboard, onReportLoading, onReportReady, o
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
           <Button
-            onClick={handleGenerateReport}
+            onClick={() => onGenerate(parentEmail.trim() || undefined)}
             size="lg"
             className="gap-2"
             disabled={!canGenerate}

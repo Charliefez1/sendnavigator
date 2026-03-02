@@ -1,9 +1,11 @@
-import { useState, useCallback } from "react";
+import { useState, useRef } from "react";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
 import { UserRound } from "lucide-react";
-import { ChildProfileProvider, useChildProfile, ChildProfileState } from "@/contexts/ChildProfileContext";
+import { ChildProfileProvider, useChildProfile, ChildProfileState, SECTION_TITLES } from "@/contexts/ChildProfileContext";
+import { sectionContent } from "@/config/child-profile-sections";
+import { childVoiceQuestions } from "@/config/child-voice-questions";
 import { OpeningScreen } from "@/components/child-profile/OpeningScreen";
 import { SetupFlow } from "@/components/child-profile/SetupFlow";
 import { ProfileBuilder } from "@/components/child-profile/ProfileBuilder";
@@ -328,9 +330,69 @@ const TEST_DATA: ChildProfileState = {
   finalStatement: "Jake is a brilliant, creative, sensitive boy who is being broken by a system that does not understand him. We are not asking for special treatment. We are asking for people to see him. All of him. Not just the bit that happens when he is overwhelmed. He deserves to go to school without it costing him his mental health. We need help and we need it now.",
 };
 
+function buildProfileText(state: ChildProfileState): string {
+  const lines: string[] = [];
+  lines.push(`Child's name: ${state.setup.childName || "Not provided"}`);
+  lines.push(`Reason for building this profile: ${state.setup.reason || "Not provided"}`);
+  lines.push(`Who this will be shared with: ${state.setup.sharedWith.length > 0 ? state.setup.sharedWith.join(", ") : "Not specified"}`);
+  lines.push("");
+
+  SECTION_TITLES.forEach((title, index) => {
+    const section = state.sections[index];
+    if (!section) return;
+    const content = sectionContent[index];
+    const parentAnswers: string[] = [];
+    const childAnswers: string[] = [];
+
+    if (content) {
+      content.questions.forEach((q) => {
+        const val = section.answers?.[q.id];
+        const displayValue = Array.isArray(val) ? val.join(", ") : val;
+        if (displayValue && displayValue.trim()) {
+          parentAnswers.push(`${q.label}\n${displayValue.trim()}`);
+        }
+      });
+    }
+
+    const cvQuestions = childVoiceQuestions[index];
+    if (cvQuestions) {
+      cvQuestions.forEach((q) => {
+        const val = section.answers?.[q.id];
+        const strVal = Array.isArray(val) ? val.join(", ") : val;
+        if (strVal && strVal.toString().trim()) {
+          childAnswers.push(`${q.label}\n${strVal.toString().trim()}`);
+        }
+      });
+    }
+
+    const hasContent = parentAnswers.length > 0 || childAnswers.length > 0 || section.reflection.trim().length > 0;
+    if (!hasContent) return;
+
+    lines.push(`Section ${index + 1}: ${title}`);
+    if (parentAnswers.length > 0) {
+      lines.push("Parent answers:");
+      lines.push(parentAnswers.join("\n\n"));
+    }
+    if (childAnswers.length > 0) {
+      lines.push("Child answers (in the child's own words):");
+      lines.push(childAnswers.join("\n\n"));
+    }
+    if (section.reflection.trim()) {
+      lines.push(`Closing reflection: ${section.reflection.trim()}`);
+    }
+    lines.push("");
+  });
+
+  if (state.finalStatement.trim()) {
+    lines.push(`Final closing statement from the parent: ${state.finalStatement.trim()}`);
+  }
+  return lines.join("\n");
+}
+
 function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage) => void }) {
   const [initialSection, setInitialSection] = useState(0);
-  const { loadState, state } = useChildProfile();
+  const { loadState, state, updateAiReport } = useChildProfile();
+  const pendingEmailRef = useRef<string | undefined>();
 
   const handleRestore = (data: { profile_data: any; stage: string; active_section: number }) => {
     loadState(data.profile_data);
@@ -353,6 +415,76 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
       ? state.aiReport.structured
       : state.aiReport.report;
     await generateProfilePDF({ state, aiReport });
+  };
+
+  const handleGenerateReport = async (email?: string) => {
+    // If report is already cached, skip straight to preview
+    if (state.aiReport) {
+      setStage("report-preview");
+      return;
+    }
+
+    pendingEmailRef.current = email;
+    setStage("report-loading");
+
+    try {
+      const profileText = buildProfileText(state);
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 120_000);
+
+      const { data, error: fnError } = await supabase.functions.invoke(
+        "generate-profile-report",
+        { body: { profileText }, signal: controller.signal as any }
+      );
+
+      clearTimeout(timeoutId);
+
+      if (fnError) throw new Error(fnError.message || "Failed to generate report");
+      if (data?.error) throw new Error(data.error);
+
+      const structured = data.structured && isStructuredReport(data.structured)
+        ? data.structured
+        : undefined;
+
+      updateAiReport({
+        generatedAt: new Date().toISOString(),
+        model: "claude-sonnet-4-20250514",
+        report: data.report,
+        structured,
+      });
+
+      setStage("report-preview");
+
+      // Send email in background if provided
+      if (pendingEmailRef.current) {
+        supabase.functions
+          .invoke("email-profile-report", {
+            body: {
+              email: pendingEmailRef.current,
+              childName: state.setup.childName || "your child",
+              report: data.report,
+              structured,
+            },
+          })
+          .then(({ error }) => {
+            if (error) {
+              console.error("Email send failed:", error);
+              toast({ title: "Email could not be sent", description: "Your report is still available to download.", variant: "destructive" });
+            } else {
+              toast({ title: "Report sent to your email", description: `A copy has been sent to ${pendingEmailRef.current}.` });
+            }
+          });
+      }
+    } catch (e) {
+      console.error("Report generation failed:", e);
+      setStage("final");
+      toast({
+        title: "Report generation failed",
+        description: e instanceof Error ? e.message : "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   // Hide dashboard button during report loading
@@ -395,35 +527,8 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
       )}
       {stage === "final" && (
         <FinalScreen
+          onGenerate={handleGenerateReport}
           onViewDashboard={() => setStage("dashboard")}
-          onReportLoading={() => setStage("report-loading")}
-          onReportError={() => setStage("final")}
-          onReportReady={(email) => {
-            setStage("report-preview");
-            // Send email in the background if provided
-            if (email && state.aiReport) {
-              const structured = state.aiReport.structured && isStructuredReport(state.aiReport.structured)
-                ? state.aiReport.structured
-                : undefined;
-              supabase.functions
-                .invoke("email-profile-report", {
-                  body: {
-                    email,
-                    childName: state.setup.childName || "your child",
-                    report: state.aiReport.report,
-                    structured,
-                  },
-                })
-                .then(({ error }) => {
-                  if (error) {
-                    console.error("Email send failed:", error);
-                    toast({ title: "Email could not be sent", description: "Your report is still available to download.", variant: "destructive" });
-                  } else {
-                    toast({ title: "Report sent to your email", description: `A copy has been sent to ${email}.` });
-                  }
-                });
-            }
-          }}
           onBackToBuilder={() => setStage("builder")}
         />
       )}
