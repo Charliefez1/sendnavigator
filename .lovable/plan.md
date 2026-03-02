@@ -1,26 +1,43 @@
 
 
-## Update "My Child: A Profile" pages to reflect the full tool
+## Two bugs identified
 
-The new features (dashboard, report preview, structured AI, regeneration) are all wired up correctly in code. But the two user-facing pages that describe the tool have not been updated to reflect them.
+**Bug 1: Clicking Dashboard during report generation kills the report**
+The FinalScreen (with its report loading/preview stages) lives inside ProfileBuilder. When you click "Dashboard" in the compact header, the parent stage changes to `"dashboard"`, which unmounts ProfileBuilder entirely — destroying the report generation state. When you go back, ProfileBuilder remounts fresh and the report is gone.
 
-### What needs updating
+**Bug 2: Report preview not rendering / no PDF download**
+After report generation completes, FinalScreen calls `handleDownloadPDF` which calls `generateProfilePDF` and then sets `stage = "complete"`. The "complete" stage shows a static message but no longer shows the report preview or offers another download. The report preview should be the primary destination after generation, with download as a button within it — which is how `ReportPreview` works. But the flow in `FinalScreen` goes loading → preview → (download click) → complete. If anything resets state in between, it breaks.
 
-**1. Feature landing page (`src/pages/landing/FeatureMyChildProfile.tsx`)**
-The guest-facing page at `/feature/my-child-profile` still lists 8 bullet points that predate the new features. Update to:
-- Add new bullets: "Preview your report in-browser before downloading", "At-a-glance dashboard showing strengths, needs, and progress", "Regenerate your report after making edits"
-- Update the "AI-generated professional summary report" bullet to mention structured insights
-- Add a "How it works" section with a simple 5-step numbered list (Start → Answer → Review dashboard → Generate report → Download PDF)
-- Update the "Why it matters" copy to mention the dashboard and preview
+## Plan
 
-**2. Main tool page header (`src/pages/MyChildProfile.tsx`)**
-The `PageOrientation` description is generic. Update it to mention the dashboard and report preview alongside the existing "22 sections" and "Download as PDF" messaging.
+### 1. Lift FinalScreen/report state to the parent level
+Add `"final"` and `"report-preview"` to the parent `Stage` type in `MyChildProfile.tsx`. This way switching to dashboard and back preserves the report state (which is already cached in ChildProfileContext as `state.aiReport`).
 
-**3. Opening screen (`src/components/child-profile/OpeningScreen.tsx`)**
-Add a brief line in the short version mentioning the dashboard and report preview so users know what to expect before they start: "When you are ready, you can preview an AI-generated summary, view a dashboard of your child's profile, and download everything as a PDF."
+**Changes to `src/pages/MyChildProfile.tsx`:**
+- Change `Stage` to include `"final" | "report-preview"`
+- Render `FinalScreen` when stage is `"final"`
+- Render `ReportPreview` when stage is `"report-preview"`
+- Pass stage transitions so dashboard button works without unmounting report state
+
+### 2. Update ProfileBuilder to use parent stage for final/report
+Instead of ProfileBuilder managing `showFinal` internally, it calls `onShowFinal` prop to transition the parent stage.
+
+**Changes to `src/components/child-profile/ProfileBuilder.tsx`:**
+- Add `onShowFinal` prop, remove internal `showFinal` state
+- "Final statement" and "Skip to final statement" buttons call `onShowFinal()`
+
+### 3. Fix FinalScreen to return to report-preview correctly
+**Changes to `src/components/child-profile/FinalScreen.tsx`:**
+- After successful report generation, call a new `onReportReady` prop to transition parent to `"report-preview"` stage
+- Remove the internal preview/complete stages that duplicate ReportPreview
+
+### 4. Hide Dashboard button during report loading
+**Changes to `src/components/child-profile/ProfileCompactHeader.tsx`:**
+- Accept optional `showDashboard` prop (default true), hide the button when false (e.g. during loading)
 
 ### Files changed
-- `src/pages/landing/FeatureMyChildProfile.tsx` — expanded feature list, new "How it works" section
-- `src/pages/MyChildProfile.tsx` — updated PageOrientation description (1 line)
-- `src/components/child-profile/OpeningScreen.tsx` — add 1 sentence to the short intro
+- `src/pages/MyChildProfile.tsx` — expanded Stage type, render FinalScreen and ReportPreview at parent level
+- `src/components/child-profile/ProfileBuilder.tsx` — delegate final/report to parent via props
+- `src/components/child-profile/FinalScreen.tsx` — simplify to input-only, delegate preview to parent
+- `src/components/child-profile/ProfileCompactHeader.tsx` — optional dashboard button visibility
 
