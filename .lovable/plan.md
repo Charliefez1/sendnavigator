@@ -1,44 +1,235 @@
 
 
-## Fix 1: Add questions alongside answers in the PDF
+## My Child: A Profile — Complete Technical and Functional Specification
 
-**The problem**: In `src/lib/generate-profile-pdf.ts` (lines 428-453), the PDF collects only answer values without their question labels, then joins them into a single paragraph. This produces the contextless output you described.
+Here is the full breakdown of everything that has been built. I will create a text file you can download that covers every layer of the tool.
 
-**The fix**: Change the "In [name]'s parent's words" block to render each answer as a **question label in bold** followed by the answer text underneath. Same treatment for child voice answers (lines 457-481). This gives every answer its context.
+---
 
-**Before**: `"Over an hour. He wakes two or three times a week..."`
-**After**:
+### 1. USER JOURNEY (5 stages)
+
+**Stage 1: Opening Screen** (`OpeningScreen.tsx`)
+- Introductory text explaining the tool's purpose
+- Short version / long version toggle ("Read more" / "Show less")
+- Amber beta disclaimer with FlaskConical icon
+- GDPR consent checkbox (mandatory before proceeding)
+- Two actions: "Start the profile" or "Save my progress and get an access code"
+- Access code entry (8-character OTP) for returning users
+- Dev/test button to load pre-populated test data across all 22 sections
+
+**Stage 2: Setup Flow** (`SetupFlow.tsx`) — 4 questions
+1. Child's first name (text input)
+2. Who is filling this in (single-select: parent/carer, parent with child, professional, someone else)
+3. Who will it be shared with (multi-select: class teacher, SENCO, headteacher, GP/paediatrician, CAMHS, social worker, family, the child, other)
+4. Reason for building (single-select: school concerns, EHCP prep, recent diagnosis, something changed, want school to understand, other)
+
+**Stage 3: Profile Builder** (`ProfileBuilder.tsx`)
+- Left sidebar with 22 section links and status indicators
+- Mobile: floating menu button + overlay sidebar
+- "Back to home" link
+- Save progress button
+- "Skip to final statement" shortcut
+- Previous/Next navigation at bottom of each section
+
+**Stage 4: Final Screen** (`FinalScreen.tsx`)
+- Free-text area: "What do you most want anyone reading this document to understand about [child]?"
+- Data sharing consent: checkbox to share anonymised summary + "No thanks" fallback
+- Generate report button (disabled until consent decision made)
+- Error handling for empty sections and API failures
+
+**Stage 5: Report Complete**
+- PDF auto-downloads
+- Post-generation prompt: share anonymised summary or decline
+- Privacy reassurance text for either choice
+
+---
+
+### 2. THE 22 SECTIONS (in order)
+
+Each section has: a framing paragraph, 3–6 questions (text, text-large, or single-select), an optional sensitivity note, optional child voice questions, and a closing reflection textarea.
+
 ```text
-How long does it take your child to fall asleep?
-Over an hour.
-
-How often does your child wake during the night?
-He wakes two or three times a week. Usually between 2 and 4am...
+ #  Section Title                                              Questions  Child Voice Qs
+ 1  Environment                                                5          3
+ 2  People                                                     6          2
+ 3  Settings                                                   5          2
+ 4  Nervous System and Dysregulation                           6          2
+ 5  Trauma                                                     5          0
+ 6  Sensory Processing                                         7          3
+ 7  Executive Function and the Knowing-Doing Gap               6          2
+ 8  Sleep                                                      6          0
+ 9  Dopamine Regulation                                        5          2
+10  Masking and the Cost of Compliance                         6          2
+11  Communication and Social Understanding                     6          2
+12  Behaviour                                                  6          2
+13  Identity and Self Concept                                  5          2
+14  Strength Profile                                           5          3
+15  Developmental History                                      5          0
+16  Family System                                              5          0
+17  Physical Health                                            5          0
+18  School Fit vs Child Deficit                                5          0
+19  Time, Transitions, and Future Blindness                    5          0
+20  Demand Avoidance, Autonomy, and Reactions to Authority     5          0
+21  Hyperfocus, Interest-Based Motivation, and Zoning Out      5          2
+22  Emotional Intensity, Anger, and Rejection Sensitivity      6          2
 ```
 
-Each Q&A pair rendered inside the warm background box, with the question in bold and the answer in normal weight below it.
+**Total: 123 parent questions + 31 child voice questions = 154 questions**
 
-## Fix 2: Add a one-page "Conclusion" summary
+Question types used:
+- `text` — single-line textarea (3 rows)
+- `text-large` — larger textarea (6 rows)
+- `single-select` — button list, one choice
 
-**The change**: Add a new section to the AI system prompt in `supabase/functions/generate-profile-report/index.ts` requesting a **Conclusion** block after "Some Things That May Help". This should be a one-page overview summarising the whole child — who they are, what matters most, and the key priorities — drawing on everything across all sections.
+Child voice questions are all free-text (textarea). They appear inside a toggled block with a Switch: "Would you like to ask [child] these questions directly?" Styled in a warm accent-coloured box labelled "In [child]'s own words".
 
-**PDF changes** in `src/lib/generate-profile-pdf.ts`:
-- Parse the new `__conclusion__` block from the AI output (in `parseAIReport`)
-- Render it as its own page between "Some Things That May Help" and the parent's closing statement
-- Title: "Conclusion" with the same navy heading and accent line styling as other pages
+---
 
-**AI prompt addition** (appended after the "Some Things That May Help" rules):
-```text
-After the Some Things That May Help block, produce a final block headed Conclusion.
-This is a one-page summary of everything in this profile. It should read as a 
-standalone document that a professional could read in two minutes and understand 
-who this child is, what they need, and what matters most. Written in your voice. 
-No more than 400 words.
+### 3. STATE MANAGEMENT (`ChildProfileContext.tsx`)
+
+React Context holding:
+```
+ChildProfileState {
+  setup: { childName, filledBy, sharedWith[], reason }
+  sections: Record<sectionIndex, { answers: Record<questionId, string|string[]>, reflection: string }>
+  finalStatement: string
+}
 ```
 
-## Files to change
+Methods: `updateSetup`, `updateSectionAnswer`, `updateSectionReflection`, `updateFinalStatement`, `getSectionStatus`, `loadState`, `reset`
 
-1. **`src/lib/generate-profile-pdf.ts`** — render Q&A pairs with labels; add Conclusion page
-2. **`supabase/functions/generate-profile-report/index.ts`** — add Conclusion instruction to system prompt
-3. **`src/components/child-profile/FinalScreen.tsx`** — update `buildProfileText()` to ensure question labels are clearly marked (already partially done, but worth ensuring consistency)
+Section status logic: "empty" (no answers, no reflection), "complete" (any answer or reflection present). No "in-progress" distinction currently.
+
+**No localStorage persistence.** State is lost on page refresh unless saved via access code.
+
+---
+
+### 4. SAVE/RESTORE SYSTEM (`save-profile` edge function)
+
+- Generates an 8-character alphanumeric access code
+- Stores profile data, current stage, and active section index in the `saved_profiles` database table
+- Data is encrypted and auto-deleted after 14 days
+- Load by access code returns the full state for restoration
+
+---
+
+### 5. AI REPORT GENERATION (`generate-profile-report` edge function)
+
+**Model:** Claude Sonnet 4 (claude-sonnet-4-20250514) via Anthropic API  
+**Temperature:** 0.7  
+**Max tokens:** 4,000  
+
+**Input:** Plain text built by `buildProfileText()` in FinalScreen.tsx:
+- Child's name, reason, who it will be shared with
+- Each completed section: parent answers (with question labels), child voice answers, closing reflection
+
+**Knowledge base augmentation:** Before sending to Claude, the function searches the `knowledge_chunks` table using full-text search (tsquery) on the parent's answers, returning up to 5 relevant passages as context.
+
+**System prompt (93 lines, ~2,500 words) instructs:**
+- Voice: Rich Ferriman, direct/grounded/human, UK English only
+- Per section: 3 paragraphs (reflect back, context, practical strategies), max 200 words
+- Banned language: deficit/damage/broken language about the child — always attribute difficulty to system/environment
+- Must begin with: "This profile was built by someone who knows this child better than any system ever will. Read it as such."
+- Final blocks: "Ways of Working" (5–7 priority strategies in prose), "Some Things That May Help" (max 5 suggestions, "Have you tried..." format), "Conclusion" (max 400 words standalone summary)
+
+**Specific strategy domains encoded in the prompt:**
+- Sensory regulation, after-school recovery, screen/dopamine management, demands/autonomy, sleep, emotional regulation, executive function, school communication
+
+---
+
+### 6. PDF GENERATION (`generate-profile-pdf.ts`)
+
+**Library:** jsPDF, client-side, A4 format  
+**862 lines of code**
+
+**Colour palette:** Navy headings, dark body text, warm beige backgrounds for parent/child content boxes, subtle page background
+
+**PDF structure (page by page):**
+
+1. **Cover page** — Neurodiversity Global logo (centred), child's name (36pt), "A Profile", date, built-by line, disclaimer
+2. **Why we built this profile** — Reason, who it will be shared with, AI opening line in italic
+3. **Section pages (one per completed section):**
+   - Section number + title + accent line
+   - "In [child]'s parent's words" — Q&A pairs in warm background box (question label bold, answer normal)
+   - "In [child]'s own words" — child voice Q&A (label bold, answer italic)
+   - "What this tells us" — AI-generated insight (3 paragraphs)
+   - "Closing reflection" — parent's reflection in italic
+4. **Ways of Working** — full-page AI-generated prose
+5. **Some Things That May Help** — "Have you tried..." suggestions + Ask Rich signpost box
+6. **Conclusion** — standalone AI summary (max 400 words)
+7. **Closing statement** — parent's final words centred on warm background
+8. **About Neurodiversity Global** — logo, 10 paragraphs about NG, contact link
+
+**Every page** has a footer with: horizontal rule, 6.5pt legal disclaimer (centred, multi-line), and "sendnavigator.neuro.support" URL.
+
+**Page break handling:** Content is rendered in segments with automatic page breaks. Boxed Q&A pairs split across pages with continuous background rendering.
+
+**File naming:** `{childname}-profile-{YYYYMMDD}.pdf`
+
+---
+
+### 7. LOADING SCREEN (`ReportLoadingScreen.tsx`)
+
+4-stage animated progress:
+1. "Reading your answers" — 8 seconds
+2. "Building personalised insights" — 25 seconds
+3. "Writing your report" — 40 seconds
+4. "Preparing your download" — 15 seconds
+
+Visual: step list with spinner on active, checkmark on complete, faded for upcoming. "Please don't close this page."
+
+---
+
+### 8. FILES INVOLVED
+
+```text
+PAGES:
+  src/pages/MyChildProfile.tsx          — Main page, stage routing, test data
+
+STATE:
+  src/contexts/ChildProfileContext.tsx   — Context provider, state shape, methods
+
+CONTENT CONFIG:
+  src/config/child-profile-sections.ts  — 22 sections, framing text, 123 questions
+  src/config/child-voice-questions.ts   — 31 child voice questions across 14 sections
+
+COMPONENTS:
+  src/components/child-profile/OpeningScreen.tsx      — Welcome, consent, access code
+  src/components/child-profile/SetupFlow.tsx           — 4-step setup wizard
+  src/components/child-profile/ProfileBuilder.tsx      — Main builder with sidebar
+  src/components/child-profile/ProfileSidebar.tsx      — Section list with status
+  src/components/child-profile/SectionTemplate.tsx     — Question rendering
+  src/components/child-profile/ChildVoiceBlock.tsx     — Child voice toggle + questions
+  src/components/child-profile/FinalScreen.tsx         — Final statement + report trigger
+  src/components/child-profile/ReportLoadingScreen.tsx — Animated loading UI
+  src/components/child-profile/SaveProgressButton.tsx  — Save with access code
+
+PDF:
+  src/lib/generate-profile-pdf.ts       — 862-line PDF builder
+
+EDGE FUNCTIONS:
+  supabase/functions/generate-profile-report/index.ts  — AI report generation
+  supabase/functions/save-profile/index.ts             — Save/load with access code
+
+CONTENT:
+  public/content/my_child_profile.txt   — Page metadata
+```
+
+---
+
+### 9. KNOWN GAPS / LIMITATIONS
+
+1. **No localStorage persistence** — closing the browser loses all progress unless saved via access code
+2. **No unsaved progress warning** — no beforeunload or navigation guard
+3. **No section "in-progress" status** — only "empty" or "complete"
+4. **Single AI model** — Claude Sonnet 4 only, no fallback
+5. **No PDF preview** — downloads immediately, no in-browser preview
+6. **No edit-after-generation** — once generated, cannot modify and regenerate
+7. **No multi-language support**
+8. **Child voice sections not available for all 22 sections** — only 14 of 22 have child voice questions
+9. **Anonymised summary sharing** — UI exists but no backend implementation visible for actually storing/processing the anonymised data
+
+---
+
+I will create this as a downloadable text file at `public/my-child-profile-audit.txt` (replacing the existing one) so you have a permanent reference for planning your upgrade.
 
