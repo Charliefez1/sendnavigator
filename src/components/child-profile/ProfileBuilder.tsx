@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { SECTION_TITLES, useChildProfile } from "@/contexts/ChildProfileContext";
 import { ProfileSidebar } from "./ProfileSidebar";
 import { SectionTemplate } from "./SectionTemplate";
-import { FinalScreen } from "./FinalScreen";
 import { SaveProgressButton } from "./SaveProgressButton";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, Home, Menu, X, AlertCircle } from "lucide-react";
@@ -12,31 +11,26 @@ import { cn } from "@/lib/utils";
 interface ProfileBuilderProps {
   initialSection?: number;
   onViewDashboard?: () => void;
+  onShowFinal?: () => void;
 }
 
-export function ProfileBuilder({ initialSection = 0, onViewDashboard }: ProfileBuilderProps) {
+export function ProfileBuilder({ initialSection = 0, onViewDashboard, onShowFinal }: ProfileBuilderProps) {
   const { state } = useChildProfile();
   const [activeSection, setActiveSection] = useState(initialSection);
-  const [showFinal, setShowFinal] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [editedSinceReport, setEditedSinceReport] = useState(false);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
-  }, [activeSection, showFinal]);
+  }, [activeSection]);
 
   // Track edits after report generation
   useEffect(() => {
     if (state.aiReport) {
       setEditedSinceReport(true);
     }
-  // Only trigger when sections or finalStatement change while aiReport exists
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.sections, state.finalStatement]);
-
-  if (showFinal) {
-    return <FinalScreen onViewDashboard={onViewDashboard} />;
-  }
 
   const isLast = activeSection === SECTION_TITLES.length - 1;
 
@@ -82,19 +76,21 @@ export function ProfileBuilder({ initialSection = 0, onViewDashboard }: ProfileB
         <div className="mt-4 px-3">
           <SaveProgressButton activeSection={activeSection} />
         </div>
-        <div className="mt-3 px-3">
-          <Button
-            variant="outline"
-            size="sm"
-            className="w-full text-xs"
-            onClick={() => {
-              setShowFinal(true);
-              setSidebarOpen(false);
-            }}
-          >
-            Skip to final statement
-          </Button>
-        </div>
+        {onShowFinal && (
+          <div className="mt-3 px-3">
+            <Button
+              variant="outline"
+              size="sm"
+              className="w-full text-xs"
+              onClick={() => {
+                onShowFinal();
+                setSidebarOpen(false);
+              }}
+            >
+              Skip to final statement
+            </Button>
+          </div>
+        )}
       </aside>
 
       {/* Overlay for mobile */}
@@ -138,7 +134,7 @@ export function ProfileBuilder({ initialSection = 0, onViewDashboard }: ProfileB
           </Button>
 
           {isLast ? (
-            <Button size="sm" onClick={() => setShowFinal(true)} className="gap-1.5">
+            <Button size="sm" onClick={() => onShowFinal?.()} className="gap-1.5">
               Final statement
               <ArrowRight className="w-3.5 h-3.5" />
             </Button>
