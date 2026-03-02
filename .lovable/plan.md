@@ -1,235 +1,139 @@
 
 
-## My Child: A Profile — Complete Technical and Functional Specification
+## My Child: A Profile — GitHub Update Audit
 
-Here is the full breakdown of everything that has been built. I will create a text file you can download that covers every layer of the tool.
-
----
-
-### 1. USER JOURNEY (5 stages)
-
-**Stage 1: Opening Screen** (`OpeningScreen.tsx`)
-- Introductory text explaining the tool's purpose
-- Short version / long version toggle ("Read more" / "Show less")
-- Amber beta disclaimer with FlaskConical icon
-- GDPR consent checkbox (mandatory before proceeding)
-- Two actions: "Start the profile" or "Save my progress and get an access code"
-- Access code entry (8-character OTP) for returning users
-- Dev/test button to load pre-populated test data across all 22 sections
-
-**Stage 2: Setup Flow** (`SetupFlow.tsx`) — 4 questions
-1. Child's first name (text input)
-2. Who is filling this in (single-select: parent/carer, parent with child, professional, someone else)
-3. Who will it be shared with (multi-select: class teacher, SENCO, headteacher, GP/paediatrician, CAMHS, social worker, family, the child, other)
-4. Reason for building (single-select: school concerns, EHCP prep, recent diagnosis, something changed, want school to understand, other)
-
-**Stage 3: Profile Builder** (`ProfileBuilder.tsx`)
-- Left sidebar with 22 section links and status indicators
-- Mobile: floating menu button + overlay sidebar
-- "Back to home" link
-- Save progress button
-- "Skip to final statement" shortcut
-- Previous/Next navigation at bottom of each section
-
-**Stage 4: Final Screen** (`FinalScreen.tsx`)
-- Free-text area: "What do you most want anyone reading this document to understand about [child]?"
-- Data sharing consent: checkbox to share anonymised summary + "No thanks" fallback
-- Generate report button (disabled until consent decision made)
-- Error handling for empty sections and API failures
-
-**Stage 5: Report Complete**
-- PDF auto-downloads
-- Post-generation prompt: share anonymised summary or decline
-- Privacy reassurance text for either choice
+Here is what has changed since the last Lovable-side audit (1st March 2026). These are the additions and modifications that came in through GitHub.
 
 ---
 
-### 2. THE 22 SECTIONS (in order)
+### NEW COMPONENTS
 
-Each section has: a framing paragraph, 3–6 questions (text, text-large, or single-select), an optional sensitivity note, optional child voice questions, and a closing reflection textarea.
+**1. ReportPreview (`src/components/child-profile/ReportPreview.tsx`)** — entirely new
+- In-browser preview of the AI report before PDF download
+- Renders structured reports with dedicated cards: At a Glance, Ways of Working, Some Things That May Help, Conclusion
+- Collapsible section-by-section insights accordion
+- Action buttons: Download PDF, Back to edit, Regenerate report
+- Regeneration cooldown: warns if regenerating within 60 seconds of last generation
+- Legacy fallback for non-structured reports (shows first 2000 characters)
+
+**2. ProfileDashboard (`src/components/child-profile/ProfileDashboard.tsx`)** — entirely new
+- At-a-glance dashboard summarising the full profile
+- Six cards: Child overview, Section completion (with progress bar), Key strengths, Key needs, Communication snapshot, What helps most
+- Each section row is clickable to navigate back to that section in the builder
+- Pulls data via utility functions from `profile-dashboard-utils.ts`
+
+**3. Dashboard Utilities (`src/lib/profile-dashboard-utils.ts`)** — entirely new
+- `extractChildOverview` — name, reason, filled-by
+- `extractKeyStrengths` — pulls from Strength Profile section (up to 5 items + child voice)
+- `extractKeyNeeds` — pulls from Nervous System, Sensory, Behaviour sections
+- `extractCommunicationSnapshot` — literal language, expressing feelings, social cues
+- `extractWhatHelps` — from dysregulation helps + sensory seeking + reflections
+- `extractSectionCompletion` — progress tracker across all 22 sections
+- `hasAnyContent` — boolean check
+
+---
+
+### NEW TYPES
+
+**`src/types/ai-report.ts`** — entirely new
+- `StructuredAIReport` interface (version 2 format):
+  - `openingLine`, `topSummary` (headline + bullets), `sectionInsights[]`, `waysOfWorking`, `someThingsThatMayHelp`, `conclusion`
+- `isStructuredReport()` type guard function
+
+---
+
+### MODIFIED: AI Edge Function (`generate-profile-report`)
+
+- **System prompt expanded** from ~93 lines to ~129 lines
+- **New JSON output format**: AI now returns structured JSON (version 2) instead of plain text
+  - `topSummary` with headline + 4-6 bullets
+  - `sectionInsights[]` with per-section reflections
+  - Separate `waysOfWorking`, `someThingsThatMayHelp`, `conclusion` fields
+- **JSON parsing**: function now attempts to parse AI response as structured JSON, falls back to legacy text
+- **Max tokens increased**: from 4,000 to 8,000
+- **Knowledge base search**: unchanged (still uses tsquery on `knowledge_chunks`)
+
+---
+
+### MODIFIED: State Management (`ChildProfileContext.tsx`)
+
+- **New type**: `SectionStatus` now includes `"in-progress"` (was only `"empty"` | `"complete"`)
+- **New state field**: `aiReport?: CachedAIReport` added to `ChildProfileState`
+- **New methods**: `updateAiReport()` and `clearAiReport()` for caching the generated report in context
+- **Status logic**: still only returns `"empty"` or `"complete"` in practice (no in-progress detection yet)
+
+---
+
+### MODIFIED: FinalScreen (`FinalScreen.tsx`)
+
+- **New stage**: `"preview"` added between `"loading"` and `"complete"`
+- After generation, goes to preview (ReportPreview) instead of auto-downloading
+- PDF download moved to preview screen via `handleDownloadPDF`
+- Report cached in context via `updateAiReport()` — returning to FinalScreen shows preview immediately
+- **Dashboard link**: new `onViewDashboard` prop with LayoutDashboard button on complete screen
+
+---
+
+### MODIFIED: ProfileBuilder (`ProfileBuilder.tsx`)
+
+- **Dashboard stage**: new `onViewDashboard` prop wired through sidebar
+- **Edit tracking**: `editedSinceReport` state warns users when they edit after generating a report
+- **Stale report banner**: amber warning "You have changed the profile since the last report. Regenerate to update the report."
+
+---
+
+### MODIFIED: PDF Generator (`generate-profile-pdf.ts`)
+
+- **Grew from 862 to 965 lines** (+103 lines)
+- **New page**: "At a Glance" page for structured reports (between cover and "Why we built this")
+  - Renders opening line, headline, bullets, and first 3 paragraphs of Ways of Working
+- **Structured report support**: PDF now maps `StructuredAIReport` fields into dedicated pages
+- **Variable scoping fix**: `let y` declaration moved to prevent TS2448 errors
+
+---
+
+### MODIFIED: MyChildProfile page
+
+- **New stage**: `"dashboard"` added to stage routing
+- Dashboard accessible from ProfileBuilder sidebar and FinalScreen complete state
+- Navigation from dashboard back to builder with section jump
+
+---
+
+### UNCHANGED
+
+- 22 sections, 123 parent questions, 31 child voice questions — no changes
+- Opening screen, setup flow — no changes
+- Save/restore system (access code) — no changes
+- Child voice questions config — no changes
+- Test data — no changes
+
+---
+
+### SUMMARY TABLE
 
 ```text
- #  Section Title                                              Questions  Child Voice Qs
- 1  Environment                                                5          3
- 2  People                                                     6          2
- 3  Settings                                                   5          2
- 4  Nervous System and Dysregulation                           6          2
- 5  Trauma                                                     5          0
- 6  Sensory Processing                                         7          3
- 7  Executive Function and the Knowing-Doing Gap               6          2
- 8  Sleep                                                      6          0
- 9  Dopamine Regulation                                        5          2
-10  Masking and the Cost of Compliance                         6          2
-11  Communication and Social Understanding                     6          2
-12  Behaviour                                                  6          2
-13  Identity and Self Concept                                  5          2
-14  Strength Profile                                           5          3
-15  Developmental History                                      5          0
-16  Family System                                              5          0
-17  Physical Health                                            5          0
-18  School Fit vs Child Deficit                                5          0
-19  Time, Transitions, and Future Blindness                    5          0
-20  Demand Avoidance, Autonomy, and Reactions to Authority     5          0
-21  Hyperfocus, Interest-Based Motivation, and Zoning Out      5          2
-22  Emotional Intensity, Anger, and Rejection Sensitivity      6          2
-```
-
-**Total: 123 parent questions + 31 child voice questions = 154 questions**
-
-Question types used:
-- `text` — single-line textarea (3 rows)
-- `text-large` — larger textarea (6 rows)
-- `single-select` — button list, one choice
-
-Child voice questions are all free-text (textarea). They appear inside a toggled block with a Switch: "Would you like to ask [child] these questions directly?" Styled in a warm accent-coloured box labelled "In [child]'s own words".
-
----
-
-### 3. STATE MANAGEMENT (`ChildProfileContext.tsx`)
-
-React Context holding:
-```
-ChildProfileState {
-  setup: { childName, filledBy, sharedWith[], reason }
-  sections: Record<sectionIndex, { answers: Record<questionId, string|string[]>, reflection: string }>
-  finalStatement: string
-}
-```
-
-Methods: `updateSetup`, `updateSectionAnswer`, `updateSectionReflection`, `updateFinalStatement`, `getSectionStatus`, `loadState`, `reset`
-
-Section status logic: "empty" (no answers, no reflection), "complete" (any answer or reflection present). No "in-progress" distinction currently.
-
-**No localStorage persistence.** State is lost on page refresh unless saved via access code.
-
----
-
-### 4. SAVE/RESTORE SYSTEM (`save-profile` edge function)
-
-- Generates an 8-character alphanumeric access code
-- Stores profile data, current stage, and active section index in the `saved_profiles` database table
-- Data is encrypted and auto-deleted after 14 days
-- Load by access code returns the full state for restoration
-
----
-
-### 5. AI REPORT GENERATION (`generate-profile-report` edge function)
-
-**Model:** Claude Sonnet 4 (claude-sonnet-4-20250514) via Anthropic API  
-**Temperature:** 0.7  
-**Max tokens:** 4,000  
-
-**Input:** Plain text built by `buildProfileText()` in FinalScreen.tsx:
-- Child's name, reason, who it will be shared with
-- Each completed section: parent answers (with question labels), child voice answers, closing reflection
-
-**Knowledge base augmentation:** Before sending to Claude, the function searches the `knowledge_chunks` table using full-text search (tsquery) on the parent's answers, returning up to 5 relevant passages as context.
-
-**System prompt (93 lines, ~2,500 words) instructs:**
-- Voice: Rich Ferriman, direct/grounded/human, UK English only
-- Per section: 3 paragraphs (reflect back, context, practical strategies), max 200 words
-- Banned language: deficit/damage/broken language about the child — always attribute difficulty to system/environment
-- Must begin with: "This profile was built by someone who knows this child better than any system ever will. Read it as such."
-- Final blocks: "Ways of Working" (5–7 priority strategies in prose), "Some Things That May Help" (max 5 suggestions, "Have you tried..." format), "Conclusion" (max 400 words standalone summary)
-
-**Specific strategy domains encoded in the prompt:**
-- Sensory regulation, after-school recovery, screen/dopamine management, demands/autonomy, sleep, emotional regulation, executive function, school communication
-
----
-
-### 6. PDF GENERATION (`generate-profile-pdf.ts`)
-
-**Library:** jsPDF, client-side, A4 format  
-**862 lines of code**
-
-**Colour palette:** Navy headings, dark body text, warm beige backgrounds for parent/child content boxes, subtle page background
-
-**PDF structure (page by page):**
-
-1. **Cover page** — Neurodiversity Global logo (centred), child's name (36pt), "A Profile", date, built-by line, disclaimer
-2. **Why we built this profile** — Reason, who it will be shared with, AI opening line in italic
-3. **Section pages (one per completed section):**
-   - Section number + title + accent line
-   - "In [child]'s parent's words" — Q&A pairs in warm background box (question label bold, answer normal)
-   - "In [child]'s own words" — child voice Q&A (label bold, answer italic)
-   - "What this tells us" — AI-generated insight (3 paragraphs)
-   - "Closing reflection" — parent's reflection in italic
-4. **Ways of Working** — full-page AI-generated prose
-5. **Some Things That May Help** — "Have you tried..." suggestions + Ask Rich signpost box
-6. **Conclusion** — standalone AI summary (max 400 words)
-7. **Closing statement** — parent's final words centred on warm background
-8. **About Neurodiversity Global** — logo, 10 paragraphs about NG, contact link
-
-**Every page** has a footer with: horizontal rule, 6.5pt legal disclaimer (centred, multi-line), and "sendnavigator.neuro.support" URL.
-
-**Page break handling:** Content is rendered in segments with automatic page breaks. Boxed Q&A pairs split across pages with continuous background rendering.
-
-**File naming:** `{childname}-profile-{YYYYMMDD}.pdf`
-
----
-
-### 7. LOADING SCREEN (`ReportLoadingScreen.tsx`)
-
-4-stage animated progress:
-1. "Reading your answers" — 8 seconds
-2. "Building personalised insights" — 25 seconds
-3. "Writing your report" — 40 seconds
-4. "Preparing your download" — 15 seconds
-
-Visual: step list with spinner on active, checkmark on complete, faded for upcoming. "Please don't close this page."
-
----
-
-### 8. FILES INVOLVED
-
-```text
-PAGES:
-  src/pages/MyChildProfile.tsx          — Main page, stage routing, test data
-
-STATE:
-  src/contexts/ChildProfileContext.tsx   — Context provider, state shape, methods
-
-CONTENT CONFIG:
-  src/config/child-profile-sections.ts  — 22 sections, framing text, 123 questions
-  src/config/child-voice-questions.ts   — 31 child voice questions across 14 sections
-
-COMPONENTS:
-  src/components/child-profile/OpeningScreen.tsx      — Welcome, consent, access code
-  src/components/child-profile/SetupFlow.tsx           — 4-step setup wizard
-  src/components/child-profile/ProfileBuilder.tsx      — Main builder with sidebar
-  src/components/child-profile/ProfileSidebar.tsx      — Section list with status
-  src/components/child-profile/SectionTemplate.tsx     — Question rendering
-  src/components/child-profile/ChildVoiceBlock.tsx     — Child voice toggle + questions
-  src/components/child-profile/FinalScreen.tsx         — Final statement + report trigger
-  src/components/child-profile/ReportLoadingScreen.tsx — Animated loading UI
-  src/components/child-profile/SaveProgressButton.tsx  — Save with access code
-
-PDF:
-  src/lib/generate-profile-pdf.ts       — 862-line PDF builder
-
-EDGE FUNCTIONS:
-  supabase/functions/generate-profile-report/index.ts  — AI report generation
-  supabase/functions/save-profile/index.ts             — Save/load with access code
-
-CONTENT:
-  public/content/my_child_profile.txt   — Page metadata
+Component                  Status      Key Change
+─────────────────────────  ──────────  ─────────────────────────────────────
+ReportPreview.tsx          NEW         In-browser report preview before PDF
+ProfileDashboard.tsx       NEW         At-a-glance dashboard with 6 cards
+profile-dashboard-utils.ts NEW         Data extraction for dashboard
+ai-report.ts               NEW         StructuredAIReport type + guard
+generate-profile-report    MODIFIED    Structured JSON output, 8k tokens
+ChildProfileContext.tsx    MODIFIED    AI report caching, new methods
+FinalScreen.tsx            MODIFIED    Preview stage, dashboard link
+ProfileBuilder.tsx         MODIFIED    Dashboard nav, stale report warning
+generate-profile-pdf.ts   MODIFIED    At a Glance page, structured support
+MyChildProfile.tsx         MODIFIED    Dashboard stage routing
 ```
 
 ---
 
-### 9. KNOWN GAPS / LIMITATIONS
+### CURRENT KNOWN GAPS
 
-1. **No localStorage persistence** — closing the browser loses all progress unless saved via access code
-2. **No unsaved progress warning** — no beforeunload or navigation guard
-3. **No section "in-progress" status** — only "empty" or "complete"
-4. **Single AI model** — Claude Sonnet 4 only, no fallback
-5. **No PDF preview** — downloads immediately, no in-browser preview
-6. **No edit-after-generation** — once generated, cannot modify and regenerate
-7. **No multi-language support**
-8. **Child voice sections not available for all 22 sections** — only 14 of 22 have child voice questions
-9. **Anonymised summary sharing** — UI exists but no backend implementation visible for actually storing/processing the anonymised data
-
----
-
-I will create this as a downloadable text file at `public/my-child-profile-audit.txt` (replacing the existing one) so you have a permanent reference for planning your upgrade.
+1. No localStorage auto-save (unchanged)
+2. No unsaved progress warning (unchanged)
+3. `"in-progress"` status type exists but is never returned by `getSectionStatus`
+4. Child voice questions still missing for 8 of 22 sections
+5. Anonymised summary sharing still has no backend implementation
 
