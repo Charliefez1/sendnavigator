@@ -13,6 +13,7 @@ import { AuthProvider } from "@/contexts/AuthContext";
 import { ExperienceSelector } from "@/components/ExperienceSelector";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { CopyStandardsEnforcer } from "@/components/CopyStandardsEnforcer";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 // Lazy-loaded pages
 const Landing = lazy(() => import("./pages/Landing"));
@@ -89,6 +90,7 @@ const App = () => (
                 <Toaster />
                 <Sonner />
                 <BrowserRouter>
+                  <ScrollToTop />
                   <CopyStandardsEnforcer />
                   <ExperienceSelector />
                   <PageViewTracker />
