@@ -4,7 +4,7 @@
  * This is the ONLY source of information Ask Rich may use.
  * Ask Rich must NOT introduce external knowledge.
  * 
- * Last updated: 25th February 2026
+ * Last updated: 2nd March 2026
  * Refactored into modular files for maintainability.
  */
 
@@ -18,8 +18,17 @@ import { timelineInformation } from "./timeline-information";
 import { operationalReformArchitecture } from "./operational-reform";
 import { raceEthnicitySend } from "./race-ethnicity-send";
 
+// Deep research: Neurodivergent children evidence base
+import { neurodivergentChildrenOverview } from "./neurodivergent-children-overview";
+import { behaviourAsCommunication } from "./behaviour-as-communication";
+import { schoolExperience } from "./school-experience";
+import { familyExperience } from "./family-experience";
+import { coOccurringProfiles } from "./co-occurring-profiles";
+import { whatWorksWhatDoesnt } from "./what-works-what-doesnt";
+import { lifeOutcomesAndModels } from "./life-outcomes-and-models";
+
 export const KNOWLEDGE_BASE = {
-  lastUpdated: "25th February 2026",
+  lastUpdated: "2nd March 2026",
   
   currentLegalPosition,
   confirmedChanges,
@@ -30,6 +39,15 @@ export const KNOWLEDGE_BASE = {
   timelineInformation,
   operationalReformArchitecture,
   raceEthnicitySend,
+
+  // Deep research: Neurodivergent children evidence base
+  neurodivergentChildrenOverview,
+  behaviourAsCommunication,
+  schoolExperience,
+  familyExperience,
+  coOccurringProfiles,
+  whatWorksWhatDoesnt,
+  lifeOutcomesAndModels,
 
   // Internal navigation
   internalPages: [
