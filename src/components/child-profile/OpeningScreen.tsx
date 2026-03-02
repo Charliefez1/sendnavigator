@@ -1,15 +1,50 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, KeyRound, Loader2, Save, FlaskConical } from "lucide-react";
+import { ArrowRight, KeyRound, Loader2, Save, FlaskConical, ChevronDown, ChevronUp } from "lucide-react";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { Checkbox } from "@/components/ui/checkbox";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { SECTION_TITLES } from "@/contexts/ChildProfileContext";
 
 interface OpeningScreenProps {
   onStart: () => void;
   onRestore?: (data: { profile_data: any; stage: string; active_section: number }) => void;
   onLoadTestData?: () => void;
+}
+
+const SECTION_GROUPS = [
+  { label: "Environment and setting", sections: [0, 1, 2] },
+  { label: "Nervous system, sensory, and regulation", sections: [3, 4, 5, 8, 20, 21] },
+  { label: "Thinking, learning, and executive function", sections: [6, 7] },
+  { label: "Masking, communication, and behaviour", sections: [9, 10, 11, 19] },
+  { label: "Identity, strengths, and self-concept", sections: [12, 13] },
+  { label: "History, family, health, and transitions", sections: [14, 15, 16, 17, 18] },
+];
+
+function SectionsList() {
+  const [open, setOpen] = useState(false);
+  return (
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <CollapsibleTrigger className="flex items-center gap-2 text-sm text-primary underline underline-offset-2 hover:text-primary/80 transition-colors cursor-pointer">
+        {open ? "Hide" : "See"} all 22 sections
+        {open ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+      </CollapsibleTrigger>
+      <CollapsibleContent className="mt-3 space-y-4">
+        {SECTION_GROUPS.map((group) => (
+          <div key={group.label}>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-1">{group.label}</p>
+            <ul className="text-sm text-foreground list-disc pl-5 space-y-0.5">
+              {group.sections.map((i) => (
+                <li key={i}>{SECTION_TITLES[i]}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </CollapsibleContent>
+    </Collapsible>
+  );
 }
 
 export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScreenProps) {
@@ -104,6 +139,48 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
           </button>
         </div>
       )}
+
+      {/* What this tool does */}
+      <div className="mt-8 space-y-6">
+        <div className="space-y-3">
+          <h2 className="text-base font-semibold text-foreground">What this tool does</h2>
+          <p className="text-sm text-foreground leading-relaxed">
+            This tool walks you through <strong>22 guided sections</strong> covering the areas that matter most when understanding a neurodivergent child: environment, sensory processing, executive function, masking, behaviour, communication, identity, strengths, and more.
+          </p>
+          <ul className="text-sm text-muted-foreground leading-relaxed list-disc pl-5 space-y-1.5">
+            <li>Each section starts with a short framing paragraph explaining why it matters</li>
+            <li>You answer questions in your own words, at your own pace</li>
+            <li>Optional <strong>"child voice"</strong> questions let your child contribute directly if they want to</li>
+            <li>A closing reflection at the end of each section for anything else you want to say</li>
+            <li>Skip any section that does not apply</li>
+          </ul>
+        </div>
+
+        {/* What you get at the end */}
+        <div className="space-y-3">
+          <h2 className="text-base font-semibold text-foreground">What you get at the end</h2>
+          <ul className="text-sm text-muted-foreground leading-relaxed list-disc pl-5 space-y-1.5">
+            <li>An <strong>at-a-glance dashboard</strong> summarising everything you have told us</li>
+            <li>An <strong>AI-generated report</strong> written in plain language, drawing on the SEND Navigator research base</li>
+            <li>A <strong>downloadable PDF</strong> you can share with schools, SENCOs, GPs, or keep for yourself</li>
+            <li>Optionally, the report <strong>emailed directly to you</strong></li>
+          </ul>
+        </div>
+
+        {/* How it works */}
+        <div className="space-y-3">
+          <h2 className="text-base font-semibold text-foreground">How it works</h2>
+          <ol className="text-sm text-muted-foreground leading-relaxed list-decimal pl-5 space-y-1.5">
+            <li>Tell us about your child (name, who is filling this in, who it is for)</li>
+            <li>Work through the sections at your own pace (skip any that do not apply)</li>
+            <li>View your dashboard and add a final statement</li>
+            <li>Generate your AI report and download the PDF</li>
+          </ol>
+        </div>
+
+        {/* What the sections cover */}
+        <SectionsList />
+      </div>
 
       {/* Beta disclaimer */}
       <div className="mt-6 bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 space-y-2">
