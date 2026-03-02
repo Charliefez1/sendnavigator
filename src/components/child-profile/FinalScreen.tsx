@@ -15,6 +15,7 @@ interface FinalScreenProps {
   onViewDashboard?: () => void;
   onReportLoading?: () => void;
   onReportReady?: (email?: string) => void;
+  onReportError?: () => void;
   onBackToBuilder?: () => void;
 }
 
@@ -84,7 +85,7 @@ function buildProfileText(state: ChildProfileState): string {
   return lines.join("\n");
 }
 
-export function FinalScreen({ onViewDashboard, onReportLoading, onReportReady, onBackToBuilder }: FinalScreenProps) {
+export function FinalScreen({ onViewDashboard, onReportLoading, onReportReady, onReportError, onBackToBuilder }: FinalScreenProps) {
   const { state, updateFinalStatement, updateAiReport } = useChildProfile();
   const childName = state.setup.childName || "your child";
 
@@ -145,6 +146,8 @@ export function FinalScreen({ onViewDashboard, onReportLoading, onReportReady, o
       onReportReady?.(parentEmail.trim() || undefined);
     } catch (e) {
       console.error("Report generation failed:", e);
+      // Return to final screen so user can retry
+      onReportError?.();
       if (e instanceof Error && e.message === "NO_SECTIONS_COMPLETED") {
         setEmptySectionsWarning(true);
         return;

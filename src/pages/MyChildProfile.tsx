@@ -397,6 +397,7 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
         <FinalScreen
           onViewDashboard={() => setStage("dashboard")}
           onReportLoading={() => setStage("report-loading")}
+          onReportError={() => setStage("final")}
           onReportReady={(email) => {
             setStage("report-preview");
             // Send email in the background if provided
