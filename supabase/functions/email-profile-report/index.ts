@@ -1,0 +1,213 @@
+import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+};
+
+interface StructuredSection {
+  sectionIndex: number;
+  sectionTitle: string;
+  reflection: string;
+}
+
+interface StructuredReport {
+  version: 2;
+  openingLine: string;
+  topSummary: { headline: string; bullets: string[] };
+  sectionInsights: StructuredSection[];
+  waysOfWorking: string;
+  someThingsThatMayHelp: string;
+  conclusion: string;
+}
+
+interface RequestBody {
+  email: string;
+  childName: string;
+  report: string;
+  structured?: StructuredReport;
+}
+
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function markdownToHtml(text: string): string {
+  return escapeHtml(text)
+    .split("\n\n")
+    .map((p) => `<p style="margin:0 0 12px 0;line-height:1.6;">${p.replace(/\n/g, "<br>")}</p>`)
+    .join("");
+}
+
+function buildStructuredHtml(s: StructuredReport, childName: string): string {
+  const sections = s.sectionInsights
+    .map(
+      (si) => `
+      <tr><td style="padding:16px 24px;border-bottom:1px solid #e5e5e5;">
+        <h3 style="margin:0 0 8px 0;font-size:16px;color:#1a1a1a;">${escapeHtml(si.sectionTitle)}</h3>
+        <p style="margin:0;line-height:1.6;color:#333;">${escapeHtml(si.reflection)}</p>
+      </td></tr>`
+    )
+    .join("");
+
+  return `
+    <tr><td style="padding:24px;background:#f8f5f0;border-radius:8px;">
+      <h2 style="margin:0 0 8px 0;font-size:20px;color:#1a1a1a;">${escapeHtml(s.topSummary.headline)}</h2>
+      <ul style="margin:0;padding-left:20px;color:#333;">
+        ${s.topSummary.bullets.map((b) => `<li style="margin-bottom:6px;line-height:1.5;">${escapeHtml(b)}</li>`).join("")}
+      </ul>
+    </td></tr>
+    <tr><td style="padding:24px 0;">
+      <p style="margin:0 0 16px 0;line-height:1.6;color:#333;font-style:italic;">${escapeHtml(s.openingLine)}</p>
+    </td></tr>
+    <tr><td>
+      <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e5e5e5;border-radius:8px;overflow:hidden;">
+        ${sections}
+      </table>
+    </td></tr>
+    ${s.waysOfWorking ? `
+    <tr><td style="padding:24px 0;">
+      <h2 style="margin:0 0 12px 0;font-size:18px;color:#1a1a1a;">Ways of Working</h2>
+      ${markdownToHtml(s.waysOfWorking)}
+    </td></tr>` : ""}
+    ${s.someThingsThatMayHelp ? `
+    <tr><td style="padding:0 0 24px 0;">
+      <h2 style="margin:0 0 12px 0;font-size:18px;color:#1a1a1a;">Some Things That May Help</h2>
+      ${markdownToHtml(s.someThingsThatMayHelp)}
+    </td></tr>` : ""}
+    ${s.conclusion ? `
+    <tr><td style="padding:0 0 24px 0;">
+      <h2 style="margin:0 0 12px 0;font-size:18px;color:#1a1a1a;">Conclusion</h2>
+      ${markdownToHtml(s.conclusion)}
+    </td></tr>` : ""}
+  `;
+}
+
+function buildEmail(childName: string, report: string, structured?: StructuredReport): string {
+  const displayName = childName || "your child";
+
+  const reportHtml = structured
+    ? buildStructuredHtml(structured, displayName)
+    : `<tr><td style="padding:24px 0;">${markdownToHtml(report)}</td></tr>`;
+
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background-color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width:640px;margin:0 auto;padding:32px 16px;">
+    <!-- Header -->
+    <tr><td style="padding:0 0 24px 0;border-bottom:2px solid #d4a843;">
+      <h1 style="margin:0;font-size:24px;color:#1a1a1a;">My Child: A Profile</h1>
+      <p style="margin:4px 0 0 0;font-size:14px;color:#666;">A profile of ${escapeHtml(displayName)}</p>
+    </td></tr>
+
+    <!-- Personal note from Rich -->
+    <tr><td style="padding:24px 0;">
+      <p style="margin:0 0 12px 0;line-height:1.6;color:#333;">Hello,</p>
+      <p style="margin:0 0 12px 0;line-height:1.6;color:#333;">Thank you for taking the time to complete this profile. I know how much thought, energy, and emotion goes into describing your child to others — especially when you feel like the system is not seeing them clearly.</p>
+      <p style="margin:0 0 12px 0;line-height:1.6;color:#333;">Below is the report that was generated from everything you shared. It is yours. Use it however helps — for school meetings, EHCP applications, paediatrician appointments, or simply as a record of who ${escapeHtml(displayName)} really is.</p>
+      <p style="margin:0 0 0 0;line-height:1.6;color:#333;">You are doing an extraordinary thing for your child.</p>
+      <p style="margin:12px 0 0 0;line-height:1.6;color:#333;font-weight:600;">Rich Ferriman</p>
+    </td></tr>
+
+    <!-- Divider -->
+    <tr><td style="padding:0;"><hr style="border:none;border-top:1px solid #e5e5e5;margin:0;"></td></tr>
+
+    <!-- Report content -->
+    ${reportHtml}
+
+    <!-- Divider -->
+    <tr><td style="padding:24px 0 0 0;"><hr style="border:none;border-top:2px solid #d4a843;margin:0;"></td></tr>
+
+    <!-- About Neurodiversity Global -->
+    <tr><td style="padding:24px 0;">
+      <h2 style="margin:0 0 12px 0;font-size:18px;color:#1a1a1a;">About Neurodiversity Global</h2>
+      <p style="margin:0 0 12px 0;line-height:1.6;color:#333;">Neurodiversity Global is an independent platform built by Rich Ferriman — a parent of neurodivergent children and founder of the SEND Navigator.</p>
+      <p style="margin:0 0 12px 0;line-height:1.6;color:#333;">We believe every neurodivergent child deserves to be understood on their own terms. Our tools are designed to give families a voice — not through jargon or tick-boxes, but through genuine understanding of who their child is.</p>
+      <p style="margin:0 0 12px 0;line-height:1.6;color:#333;">
+        <a href="https://sendnavigator.lovable.app" style="color:#d4a843;text-decoration:underline;">Visit SEND Navigator</a> &nbsp;|&nbsp;
+        <a href="https://neurodiversityglobal.com" style="color:#d4a843;text-decoration:underline;">Neurodiversity Global</a>
+      </p>
+    </td></tr>
+
+    <!-- Footer -->
+    <tr><td style="padding:16px 0 0 0;border-top:1px solid #e5e5e5;">
+      <p style="margin:0;font-size:12px;color:#999;line-height:1.5;">This report was generated using the My Child: A Profile tool on SEND Navigator. It is not stored on our servers. This email is the only copy sent outside your device.</p>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+}
+
+Deno.serve(async (req) => {
+  if (req.method === "OPTIONS") {
+    return new Response(null, { headers: corsHeaders });
+  }
+
+  try {
+    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+    if (!RESEND_API_KEY) {
+      throw new Error("RESEND_API_KEY is not configured");
+    }
+
+    const body: RequestBody = await req.json();
+
+    if (!body.email || !body.email.includes("@")) {
+      return new Response(JSON.stringify({ error: "Valid email is required" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (!body.report && !body.structured) {
+      return new Response(JSON.stringify({ error: "Report content is required" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const childName = body.childName || "your child";
+    const html = buildEmail(childName, body.report || "", body.structured);
+
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Rich Ferriman <rich@neurodiversityglobal.com>",
+        to: [body.email],
+        subject: `${childName}'s Profile Report — from SEND Navigator`,
+        html,
+      }),
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      console.error("Resend API error:", errText);
+      throw new Error(`Email send failed: ${res.status}`);
+    }
+
+    const data = await res.json();
+
+    return new Response(JSON.stringify({ success: true, id: data.id }), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  } catch (error) {
+    console.error("email-profile-report error:", error);
+    return new Response(
+      JSON.stringify({ error: error instanceof Error ? error.message : "Unknown error" }),
+      {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      }
+    );
+  }
+});
