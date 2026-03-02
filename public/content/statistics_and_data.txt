@@ -1,7 +1,7 @@
 Title: Statistics and data
 Route: /statistics-and-data
 Description: Key SEND statistics for England, using the most recent official data available.
-Last updated: 23rd February 2026
+Last updated: 1st March 2026
 Status: Confirmed
 Key topics: Statistics, Data, Funding, Tribunals
 Key numbers: 638,700 EHCPs, 25,000 appeals, £9.4bn funding

@@ -1,7 +1,7 @@
 Title: ADHD - Understanding Your Child
 Route: /understanding-your-child/adhd
 Description: What ADHD actually is, how the dopamine system works differently, what it looks like at school and home, and what reasonable adjustments make a practical difference.
-Last updated: 23rd February 2026
+Last updated: 1st March 2026
 Status: Confirmed
 Key topics: ADHD, Dopamine, Regulation, School adjustments
 Key numbers: n/a

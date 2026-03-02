@@ -33,7 +33,7 @@ export default function HaveYourSay() {
         sectionLabel="Take Action"
         title="How To Have Your Say on SEND Reform"
         description="The Schools White Paper, Every Child Achieving and Thriving, was published on 23 February 2026. A formal consultation is expected to follow. This page explains how to make your voice count."
-        lastUpdated="23rd February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(8 75% 55%)"
       />
 

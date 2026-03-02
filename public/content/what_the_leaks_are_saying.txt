@@ -1,7 +1,7 @@
 Title: What has been reported about SEND reform
 Route: /what-the-leaks-are-saying
 Description: What media outlets have reported and what those reports are based on.
-Last updated: 27th February 2026
+Last updated: 1st March 2026
 Status: Unconfirmed
 Key topics: Media reports, Kite flying, Leaks
 Key numbers: n/a

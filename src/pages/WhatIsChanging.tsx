@@ -39,7 +39,7 @@ export default function WhatIsChanging() {
         sectionLabel="SEND Reform Report"
         title="What is now in motion: confirmed reforms following the Schools White Paper"
         description="Reforms already underway, funded, or formally announced. This section describes momentum, not speculation."
-        lastUpdated="26th February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">

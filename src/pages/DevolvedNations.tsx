@@ -51,7 +51,7 @@ export default function DevolvedNations() {
         sectionLabel="The System"
         title="If You Are in Wales, Scotland, or Northern Ireland"
         description="Education and SEND provision are devolved. This page explains the key differences between nations and points you to the right organisations."
-        lastUpdated="February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(8 75% 55%)"
         showSearch={false}
       />

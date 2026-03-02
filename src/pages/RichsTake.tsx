@@ -21,7 +21,7 @@ export default function RichsTake() {
         sectionLabel="Ask Rich"
         title="Rich's Take"
         description="What Rich Ferriman thinks about the Schools White Paper. Not neutral. Not spin. Just honest."
-        lastUpdated="23rd February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(262 60% 55%)"
         showSearch={false}
       />

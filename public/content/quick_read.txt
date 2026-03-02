@@ -1,7 +1,7 @@
 Title: SEND today: a quick read for parents
 Route: /quick-read
 Description: Everything across this site, brought together in one page. Where things stand, what is confirmed, what is not, and what the next 6 to 12 months are likely to look like.
-Last updated: 23rd February 2026
+Last updated: 1st March 2026
 Status: Confirmed
 Key topics: Summary, Overview
 Key numbers: 576,000 EHCPs, 60% issued on time

@@ -1,7 +1,7 @@
 Title: The Health Side of Your Child's EHCP
 Route: /ehcp-health
 Description: NHS duties in EHC plans. What Sections C and G mean, what happens when health provision isn't delivered, and how to challenge it.
-Last updated: 23rd February 2026
+Last updated: 1st March 2026
 Status: Confirmed
 Key topics: NHS duties, Section G, CAMHS, Therapies
 Key numbers: n/a

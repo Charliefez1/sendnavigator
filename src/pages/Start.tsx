@@ -180,7 +180,7 @@ const Index = () => {
               <div className="flex items-center justify-center lg:justify-start gap-2 mt-6">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary" />
                 <p className="text-xs text-muted-foreground">
-                  <strong className="text-foreground">Last updated:</strong> 23rd February 2026
+                  <strong className="text-foreground">Last updated:</strong> 1st March 2026
                 </p>
               </div>
             </div>

@@ -1,7 +1,7 @@
 Title: Privacy Policy
 Route: /privacy-policy
 Description: How the SEND Reform Navigator collects, uses, and protects your data.
-Last updated: 23 February 2026
+Last updated: 1st March 2026
 Status: Confirmed
 Key topics: Privacy, Data protection, GDPR
 Key numbers: n/a

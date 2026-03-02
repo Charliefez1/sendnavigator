@@ -31,7 +31,7 @@ export default function WhatHappensNext() {
         sectionLabel="SEND Reform Report"
         title="What happens next and when: the path from now to change"
         description="Understanding the stages between discussion and implementation."
-        lastUpdated="23rd February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">

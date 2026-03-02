@@ -12,7 +12,7 @@ export default function RichFerriman() {
         sectionLabel="About"
         title="Rich Ferriman"
         description="Author of SEND Reform Navigator."
-        lastUpdated="7th February 2026"
+        lastUpdated="1st March 2026"
       />
 
       <section className="content-section py-8 border-t border-border">

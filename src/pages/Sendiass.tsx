@@ -66,7 +66,7 @@ export default function Sendiass() {
         sectionLabel="What To Do Now"
         title="Free Help in Your Area"
         description="Every local authority in England is legally required to fund a free, impartial Information, Advice and Support Service for families with SEND children and young people."
-        lastUpdated="19th February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(8 75% 55%)"
       />
 

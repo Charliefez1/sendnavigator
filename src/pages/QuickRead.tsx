@@ -38,7 +38,7 @@ export default function QuickRead() {
         sectionLabel="Quick Read"
         title="SEND today: a quick read for parents"
         description="Everything across this site, brought together in one page. Where things stand, what is confirmed, what is not, and what the next 6 to 12 months are likely to look like."
-        lastUpdated="23rd February 2026"
+        lastUpdated="1st March 2026"
       />
 
       <section className="content-section py-8" aria-labelledby="quickread-heading">

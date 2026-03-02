@@ -1,40 +1,40 @@
 route|title|description|last_updated|status|content_file
-/state-of-send-2026|The State of SEND 2026 - Report|An 8-part report tracking SEND reform in England.|2026-02-27|confirmed|state_of_send_2026.txt
-/state-of-send-2026/where-we-are-now|What we know right now|The factual baseline of SEND provision in England today.|2026-02-27|confirmed|where_we_are_now.txt
-/state-of-send-2026/what-is-changing|What is now in motion|Confirmed reforms already underway following the Schools White Paper.|2026-02-27|confirmed|what_is_changing.txt
-/state-of-send-2026/what-has-not-changed|What remains protected|Legal rights and protections that remain in force.|2026-02-27|confirmed|what_has_not_changed.txt
-/state-of-send-2026/what-is-being-discussed|What is actively being shaped|Live policy design, consultation themes, and where influence matters.|2026-02-27|discussed|what_is_being_discussed.txt
-/state-of-send-2026/what-we-do-not-know|What is genuinely unknown|Unanswered questions with no published answers yet.|2026-02-27|unconfirmed|what_we_do_not_know.txt
-/state-of-send-2026/what-the-leaks-are-saying|What has been reported|What media outlets have reported and what those reports are based on.|2026-02-27|unconfirmed|what_the_leaks_are_saying.txt
-/state-of-send-2026/what-the-leaks-do-not-mean|What is often misunderstood|Common misinterpretations addressed.|2026-02-27|confirmed|what_the_leaks_do_not_mean.txt
-/state-of-send-2026/timeline|What happens next|Key milestones, consultation windows, and decision points.|2026-02-27|discussed|timeline.txt
-/ehcps|The EHCP Guide|A complete guide for parents in England.|2026-02-23|confirmed|ehcps.txt
-/ehcp-health|Health in EHCPs|NHS duties in EHC plans.|2026-02-23|confirmed|ehcp_health.txt
-/understanding-your-child|Understanding Your Child|Practical guides to autism and ADHD.|2026-02-23|confirmed|understanding_your_child.txt
-/understanding-your-child/autism|Understanding Autism|What autism is and how to get support.|2026-02-23|confirmed|understanding_autism.txt
-/understanding-your-child/adhd|Understanding ADHD|What ADHD is and how to get support.|2026-02-23|confirmed|understanding_adhd.txt
-/exclusions|Exclusions and Rights|Your rights when your child is excluded.|2026-02-23|confirmed|exclusions.txt
-/alternative-provision|Alternative Provision|What AP is and your rights.|2026-02-23|confirmed|alternative_provision.txt
-/post-16-and-transition|Post-16 & Transition|Rights beyond school age.|2026-02-19|confirmed|post_16_and_transition.txt
-/what-to-do-right-now|What To Do Right Now|Practical steps if support is missing.|2026-02-23|confirmed|what_to_do_right_now.txt
-/sendiass|SENDIASS|Free help in your area.|2026-02-19|confirmed|sendiass.txt
-/quick-read|Quick Read Summary|A short summary of where SEND provision stands.|2026-02-23|confirmed|quick_read.txt
-/local-variation|Local Variation|Why where you live matters.|2026-02-23|confirmed|local_variation.txt
-/devolved-nations|Devolved Nations|Wales, Scotland, and Northern Ireland.|2026-02-23|confirmed|devolved_nations.txt
-/have-your-say|Have Your Say|How to respond to the consultation.|2026-02-23|confirmed|have_your_say.txt
-/for-parents|For Parents|Support and wellbeing for parents.|2026-02-23|confirmed|for_parents.txt
-/what-we-owe-our-children|What We Owe Our Children|Reality Bites - honest perspectives.|2026-02-23|confirmed|what_we_owe_our_children.txt
-/about|About|Independence and governance.|2026-02-23|confirmed|about.txt
-/how-to-use|How To Use|How to get the most from this resource.|2026-02-07|confirmed|how_to_use.txt
-/why-i-built-this|Why I Built This|A personal statement from Rich Ferriman.|2026-02-15|confirmed|why_i_built_this.txt
-/sources|Sources|Evidence base and references.|2026-02-25|confirmed|sources.txt
-/richs-take|Rich's Take|Editorial view on the White Paper.|2026-02-23|discussed|richs_take.txt
-/community-questions|Community Questions|Lived experience and comments.|2026-02-23|confirmed|community_questions.txt
-/statistics-and-data|Statistics and Data|Key SEND statistics for England.|2026-02-23|confirmed|statistics_and_data.txt
-/start|Start Page|Home page with all navigation.|2026-02-23|confirmed|start.txt
-/questions-and-answers|Ask Rich|Q&A section.|2026-02-23|confirmed|questions_and_answers.txt
-/privacy-policy|Privacy Policy|Data protection and privacy.|2026-02-23|confirmed|privacy_policy.txt
-/my-child-profile|My Child Profile|Tool to build a child profile.|2026-02-23|confirmed|my_child_profile.txt
-/neurodiversity-global|Neurodiversity Global|About the organisation.|2026-02-07|confirmed|neurodiversity_global.txt
-/rich-ferriman|Rich Ferriman|About the author.|2026-02-07|confirmed|rich_ferriman.txt
-/what-happens-next|What Happens Next|The path from now to change.|2026-02-23|discussed|what_happens_next.txt
+/state-of-send-2026|The State of SEND 2026 - Report|An 8-part report tracking SEND reform in England.|2026-03-01|confirmed|state_of_send_2026.txt
+/state-of-send-2026/where-we-are-now|What we know right now|The factual baseline of SEND provision in England today.|2026-03-01|confirmed|where_we_are_now.txt
+/state-of-send-2026/what-is-changing|What is now in motion|Confirmed reforms already underway following the Schools White Paper.|2026-03-01|confirmed|what_is_changing.txt
+/state-of-send-2026/what-has-not-changed|What remains protected|Legal rights and protections that remain in force.|2026-03-01|confirmed|what_has_not_changed.txt
+/state-of-send-2026/what-is-being-discussed|What is actively being shaped|Live policy design, consultation themes, and where influence matters.|2026-03-01|discussed|what_is_being_discussed.txt
+/state-of-send-2026/what-we-do-not-know|What is genuinely unknown|Unanswered questions with no published answers yet.|2026-03-01|unconfirmed|what_we_do_not_know.txt
+/state-of-send-2026/what-the-leaks-are-saying|What has been reported|What media outlets have reported and what those reports are based on.|2026-03-01|unconfirmed|what_the_leaks_are_saying.txt
+/state-of-send-2026/what-the-leaks-do-not-mean|What is often misunderstood|Common misinterpretations addressed.|2026-03-01|confirmed|what_the_leaks_do_not_mean.txt
+/state-of-send-2026/timeline|What happens next|Key milestones, consultation windows, and decision points.|2026-03-01|discussed|timeline.txt
+/ehcps|The EHCP Guide|A complete guide for parents in England.|2026-03-01|confirmed|ehcps.txt
+/ehcp-health|Health in EHCPs|NHS duties in EHC plans.|2026-03-01|confirmed|ehcp_health.txt
+/understanding-your-child|Understanding Your Child|Practical guides to autism and ADHD.|2026-03-01|confirmed|understanding_your_child.txt
+/understanding-your-child/autism|Understanding Autism|What autism is and how to get support.|2026-03-01|confirmed|understanding_autism.txt
+/understanding-your-child/adhd|Understanding ADHD|What ADHD is and how to get support.|2026-03-01|confirmed|understanding_adhd.txt
+/exclusions|Exclusions and Rights|Your rights when your child is excluded.|2026-03-01|confirmed|exclusions.txt
+/alternative-provision|Alternative Provision|What AP is and your rights.|2026-03-01|confirmed|alternative_provision.txt
+/post-16-and-transition|Post-16 & Transition|Rights beyond school age.|2026-03-01|confirmed|post_16_and_transition.txt
+/what-to-do-right-now|What To Do Right Now|Practical steps if support is missing.|2026-03-01|confirmed|what_to_do_right_now.txt
+/sendiass|SENDIASS|Free help in your area.|2026-03-01|confirmed|sendiass.txt
+/quick-read|Quick Read Summary|A short summary of where SEND provision stands.|2026-03-01|confirmed|quick_read.txt
+/local-variation|Local Variation|Why where you live matters.|2026-03-01|confirmed|local_variation.txt
+/devolved-nations|Devolved Nations|Wales, Scotland, and Northern Ireland.|2026-03-01|confirmed|devolved_nations.txt
+/have-your-say|Have Your Say|How to respond to the consultation.|2026-03-01|confirmed|have_your_say.txt
+/for-parents|For Parents|Support and wellbeing for parents.|2026-03-01|confirmed|for_parents.txt
+/what-we-owe-our-children|What We Owe Our Children|Reality Bites - honest perspectives.|2026-03-01|confirmed|what_we_owe_our_children.txt
+/about|About|Independence and governance.|2026-03-01|confirmed|about.txt
+/how-to-use|How To Use|How to get the most from this resource.|2026-03-01|confirmed|how_to_use.txt
+/why-i-built-this|Why I Built This|A personal statement from Rich Ferriman.|2026-03-01|confirmed|why_i_built_this.txt
+/sources|Sources|Evidence base and references.|2026-03-01|confirmed|sources.txt
+/richs-take|Rich's Take|Editorial view on the White Paper.|2026-03-01|discussed|richs_take.txt
+/community-questions|Community Questions|Lived experience and comments.|2026-03-01|confirmed|community_questions.txt
+/statistics-and-data|Statistics and Data|Key SEND statistics for England.|2026-03-01|confirmed|statistics_and_data.txt
+/start|Start Page|Home page with all navigation.|2026-03-01|confirmed|start.txt
+/questions-and-answers|Ask Rich|Q&A section.|2026-03-01|confirmed|questions_and_answers.txt
+/privacy-policy|Privacy Policy|Data protection and privacy.|2026-03-01|confirmed|privacy_policy.txt
+/my-child-profile|My Child Profile|Tool to build a child profile.|2026-03-01|confirmed|my_child_profile.txt
+/neurodiversity-global|Neurodiversity Global|About the organisation.|2026-03-01|confirmed|neurodiversity_global.txt
+/rich-ferriman|Rich Ferriman|About the author.|2026-03-01|confirmed|rich_ferriman.txt
+/what-happens-next|What Happens Next|The path from now to change.|2026-03-01|discussed|what_happens_next.txt

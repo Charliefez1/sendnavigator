@@ -32,7 +32,7 @@ export default function WhatHasNotChanged() {
         sectionLabel="SEND Reform Report"
         title="What remains protected: your legal rights are still in force"
         description="Legal rights that cannot change without legislation. EHCP protections, tribunal routes, and what anchors reassurance."
-        lastUpdated="26th February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">

@@ -1,7 +1,7 @@
 Title: Rich Ferriman
 Route: /rich-ferriman
 Description: Author of SEND Reform Navigator.
-Last updated: 7th February 2026
+Last updated: 1st March 2026
 Status: Confirmed
 Key topics: Biography, Lived experience
 Key numbers: 30 years experience, 4 neurodivergent children

@@ -1,7 +1,7 @@
 Title: Understanding Your Child
 Route: /understanding-your-child
 Description: You do not need a diagnosis to start understanding your child. Practical guides to autism and ADHD for parents navigating the SEND system.
-Last updated: 23rd February 2026
+Last updated: 1st March 2026
 Status: Confirmed
 Key topics: Autism, ADHD, Neurodivergence, Diagnosis
 Key numbers: n/a

@@ -32,7 +32,7 @@ export default function WhereWeAreNow() {
         sectionLabel="SEND Reform Report"
         title="What we know right now: the current state of SEND in England"
         description="The factual baseline. Current state of SEND support, existing legal protections, and how the system is performing today."
-        lastUpdated="23rd February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">

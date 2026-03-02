@@ -130,7 +130,7 @@ export default function Timeline() {
         sectionLabel="SEND Reform Report"
         title="What happens next: milestones, decisions, and what to watch for"
         description="Key milestones, consultation windows, and decision points. Grounded and date-stamped."
-        lastUpdated="26th February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">
