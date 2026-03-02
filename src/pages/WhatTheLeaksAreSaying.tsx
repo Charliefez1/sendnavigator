@@ -34,7 +34,7 @@ export default function WhatTheLeaksAreSaying() {
         sectionLabel="SEND Reform Report"
         title="What has been reported: media coverage and its basis"
         description="What major outlets have reported, what those reports are actually based on, and how reporting has evolved over time."
-        lastUpdated="26th February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">

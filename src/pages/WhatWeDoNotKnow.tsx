@@ -34,7 +34,7 @@ export default function WhatWeDoNotKnow() {
         sectionLabel="SEND Reform Report"
         title="What is genuinely unknown: questions that still have no published answers"
         description="What has not been decided or written yet. Thresholds, enforcement mechanisms, and transition detail."
-        lastUpdated="26th February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">

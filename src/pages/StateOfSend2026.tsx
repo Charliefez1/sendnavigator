@@ -458,7 +458,7 @@ export default function StateOfSend2026() {
         title="The State of SEND 2026"
         description="A structured, evidence-based report tracking SEND reform in England. Eight sections move from what is confirmed through what is actively being shaped to what is genuinely unknown. Read in order, or jump to what matters most to you."
         accentColor="hsl(175 65% 45%)"
-        lastUpdated="27th February 2026"
+        lastUpdated="1st March 2026"
       >
         <div className="inline-flex items-center gap-2 rounded-lg bg-foreground/5 border border-foreground/10 px-3 py-1">
           <span className="text-xs font-display font-bold uppercase tracking-widest text-foreground/70">8-Part Report</span>

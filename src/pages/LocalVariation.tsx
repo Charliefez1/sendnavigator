@@ -46,7 +46,7 @@ export default function LocalVariation() {
         sectionLabel="The System"
         title="Why Where You Live Matters"
         description="The support a child with SEND receives in England depends substantially on where they live. Two children with identical needs, living in different areas, may receive entirely different levels of support."
-        lastUpdated="February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(8 75% 55%)"
         showSearch={false}
       />

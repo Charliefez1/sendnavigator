@@ -1,7 +1,7 @@
 Title: If You Are in Wales, Scotland, or Northern Ireland
 Route: /devolved-nations
 Description: SEND provision is devolved. Each nation has different legislation, terminology, and organisations. Find the right system and the right support for your nation.
-Last updated: 23rd February 2026
+Last updated: 1st March 2026
 Status: Confirmed
 Key topics: Devolved nations, Wales, Scotland, Northern Ireland
 Key numbers: n/a

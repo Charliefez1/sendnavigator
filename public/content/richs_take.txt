@@ -1,7 +1,7 @@
 Title: Rich's Take
 Route: /richs-take
 Description: What Rich Ferriman thinks about the Schools White Paper. Not neutral. Not spin. Just honest.
-Last updated: 23rd February 2026
+Last updated: 1st March 2026
 Status: Discussed
 Key topics: Editorial, Opinion, White Paper analysis
 Key numbers: n/a

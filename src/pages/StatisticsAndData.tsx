@@ -101,7 +101,7 @@ export default function StatisticsAndData() {
         sectionLabel="SEND Reform Report"
         title="Statistics and data"
         description="Key SEND statistics for England, using the most recent official data available. These figures show the current scale and pressures in the system."
-        lastUpdated="23rd February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(175 65% 41%)"
       />
 

@@ -1,7 +1,7 @@
 Title: What we know right now about SEND in England
 Route: /where-we-are-now
 Description: The factual baseline of SEND provision in England today.
-Last updated: 27th February 2026
+Last updated: 1st March 2026
 Status: Confirmed
 Key topics: SEND system, EHCP demand, funding, postcode lottery
 Key numbers: 1.7m+ pupils with SEND, 638,700 EHCPs, £13.1bn spending, 95% councils in deficit

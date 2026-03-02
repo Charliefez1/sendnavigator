@@ -24,7 +24,7 @@ export function PageOrientation({
   title,
   description,
   descriptionExtra,
-  lastUpdated = "20th February 2026",
+  lastUpdated = "1st March 2026",
   children,
   accentColor,
   showSearch = true,

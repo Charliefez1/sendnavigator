@@ -38,7 +38,7 @@ export default function WhatTheLeaksDoNotMean() {
         sectionLabel="SEND Reform Report"
         title="What is often misunderstood: where fear runs ahead of evidence"
         description="Common misinterpretations addressed. What reports do not imply legally or operationally."
-        lastUpdated="27th February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">

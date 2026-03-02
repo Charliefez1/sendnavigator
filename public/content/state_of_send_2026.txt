@@ -1,7 +1,7 @@
 Title: The State of SEND 2026 - Report
 Route: /state-of-send-2026
 Description: An 8-part report tracking SEND reform in England. From confirmed changes to unanswered questions. Everything families need to know.
-Last updated: 27th February 2026
+Last updated: 1st March 2026
 Status: Confirmed
 Key topics: Reform report, White Paper, SEND system
 Key numbers: 8 sections

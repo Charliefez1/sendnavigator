@@ -34,7 +34,7 @@ export default function WhatIsBeingDiscussed() {
         sectionLabel="SEND Reform Report"
         title="What is actively being shaped: live policy design and consultation"
         description="Areas where policy design is still open. Consultation themes, trade-offs being debated, and where influence still matters."
-        lastUpdated="26th February 2026"
+        lastUpdated="1st March 2026"
         accentColor="hsl(175 65% 41%)"
       >
         <div className="mt-3">

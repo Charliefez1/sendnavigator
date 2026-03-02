@@ -1,7 +1,7 @@
 Title: What remains protected in the SEND system
 Route: /what-has-not-changed
 Description: Legal rights and protections that remain in force.
-Last updated: 27th February 2026
+Last updated: 1st March 2026
 Status: Confirmed
 Key topics: Children and Families Act 2014, EHCP rights, Tribunal appeals, Timelines
 Key numbers: 20-week deadline, 90% tribunal win rate

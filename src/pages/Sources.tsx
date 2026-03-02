@@ -55,7 +55,7 @@ export default function Sources() {
         sectionLabel="About"
         title="Sources and Evidence Base"
         description="Every source this site draws on, grouped by type. You should be able to check anything we say."
-        lastUpdated="25th February 2026"
+        lastUpdated="1st March 2026"
       />
 
       {/* ═══ INTRODUCTION ═══ */}

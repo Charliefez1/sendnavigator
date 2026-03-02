@@ -1,7 +1,7 @@
 Title: EHCPs: a complete guide for parents
 Route: /ehcps
 Description: Everything you need to know about Education, Health and Care Plans in England. What they are, who qualifies, the process step by step, your rights at every stage, and what to do when things go wrong.
-Last updated: 23rd February 2026
+Last updated: 1st March 2026
 Status: Confirmed
 Key topics: EHCP process, Legal rights, Tribunal, Annual reviews
 Key numbers: 638,700 EHCPs, 20 weeks timeline, 95% tribunal win rate

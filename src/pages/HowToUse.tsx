@@ -21,7 +21,7 @@ export default function HowToUse() {
         sectionLabel="About"
         title="How to use this guide"
         description="Everything you need to know to get the most from this resource"
-        lastUpdated="7th February 2026"
+        lastUpdated="1st March 2026"
       />
 
       {/* Overview */}

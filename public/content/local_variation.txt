@@ -1,7 +1,7 @@
 Title: Why Where You Live Matters
 Route: /local-variation
 Description: SEND provision varies dramatically by area. Inspection evidence, financial pressure, Safety Valve agreements, and what it means for your child's rights.
-Last updated: 23rd February 2026
+Last updated: 1st March 2026
 Status: Confirmed
 Key topics: Postcode lottery, Inspections, Safety Valve, Deficits
 Key numbers: 54 inspections, £3.3bn deficit

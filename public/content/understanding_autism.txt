@@ -1,7 +1,7 @@
 Title: Autism - Understanding Your Child
 Route: /understanding-your-child/autism
 Description: What autism actually is, how it presents at school and home, what reasonable adjustments to ask for, and how to describe your child's needs clearly in meetings.
-Last updated: 23rd February 2026
+Last updated: 1st March 2026
 Status: Confirmed
 Key topics: Autism, Sensory processing, Masking, Adjustments
 Key numbers: n/a
