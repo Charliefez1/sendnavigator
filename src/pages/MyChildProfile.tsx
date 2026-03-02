@@ -8,6 +8,7 @@ import { OpeningScreen } from "@/components/child-profile/OpeningScreen";
 import { SetupFlow } from "@/components/child-profile/SetupFlow";
 import { ProfileBuilder } from "@/components/child-profile/ProfileBuilder";
 import { ProfileDashboard } from "@/components/child-profile/ProfileDashboard";
+import { ProfileCompactHeader } from "@/components/child-profile/ProfileCompactHeader";
 
 type Stage = "opening" | "setup" | "builder" | "dashboard";
 
@@ -320,10 +321,9 @@ const TEST_DATA: ChildProfileState = {
   finalStatement: "Jake is a brilliant, creative, sensitive boy who is being broken by a system that does not understand him. We are not asking for special treatment. We are asking for people to see him. All of him. Not just the bit that happens when he is overwhelmed. He deserves to go to school without it costing him his mental health. We need help and we need it now.",
 };
 
-function ProfileContent() {
-  const [stage, setStage] = useState<Stage>("opening");
+function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage) => void }) {
   const [initialSection, setInitialSection] = useState(0);
-  const { loadState } = useChildProfile();
+  const { loadState, state } = useChildProfile();
 
   const handleRestore = (data: { profile_data: any; stage: string; active_section: number }) => {
     loadState(data.profile_data);
@@ -342,6 +342,14 @@ function ProfileContent() {
 
   return (
     <>
+      {/* Compact header when past opening */}
+      {stage !== "opening" && (
+        <ProfileCompactHeader
+          childName={state.setup?.childName}
+          onViewDashboard={() => setStage("dashboard")}
+        />
+      )}
+
       {stage === "opening" && (
         <OpeningScreen
           onStart={() => setStage("setup")}
@@ -370,6 +378,8 @@ function ProfileContent() {
 }
 
 const MyChildProfile = () => {
+  const [stage, setStage] = useState<Stage>("opening");
+
   return (
     <Layout>
       <SEOHead
@@ -377,16 +387,18 @@ const MyChildProfile = () => {
         description="Build a personalised profile document about your neurodivergent child. Download as PDF. Nothing is stored."
         path="/my-child-profile"
       />
-      <PageOrientation
-        icon={UserRound}
-        sectionLabel="My Child: A Profile"
-        title="My Child: A Profile"
-        description="22 guided sections, an at-a-glance dashboard, a structured AI report you can preview in your browser, and a downloadable PDF. Nothing is stored."
-        accentColor="hsl(42 87% 50%)"
-        showSearch={false}
-      />
+      {stage === "opening" && (
+        <PageOrientation
+          icon={UserRound}
+          sectionLabel="My Child: A Profile"
+          title="My Child: A Profile"
+          description="22 guided sections, an at-a-glance dashboard, a structured AI report you can preview in your browser, and a downloadable PDF. Nothing is stored."
+          accentColor="hsl(42 87% 50%)"
+          showSearch={false}
+        />
+      )}
       <ChildProfileProvider>
-        <ProfileContent />
+        <ProfileContent stage={stage} setStage={setStage} />
       </ChildProfileProvider>
     </Layout>
   );
