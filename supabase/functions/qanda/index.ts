@@ -25,6 +25,59 @@ function getClientIp(req: Request): string {
     req.headers.get("cf-connecting-ip") || "unknown";
 }
 
+const AMERICAN_TO_UK: Array<[string, string]> = [
+  ["behavior", "behaviour"],
+  ["behaviors", "behaviours"],
+  ["behavioral", "behavioural"],
+  ["organize", "organise"],
+  ["organized", "organised"],
+  ["organizing", "organising"],
+  ["organization", "organisation"],
+  ["recognize", "recognise"],
+  ["recognized", "recognised"],
+  ["analyze", "analyse"],
+  ["analyzed", "analysed"],
+  ["center", "centre"],
+  ["color", "colour"],
+  ["favorite", "favourite"],
+  ["defense", "defence"],
+  ["offense", "offence"],
+];
+
+function applyCase(source: string, replacement: string): string {
+  if (source.toUpperCase() === source) return replacement.toUpperCase();
+  if (source[0] && source[0] === source[0].toUpperCase()) {
+    return replacement.charAt(0).toUpperCase() + replacement.slice(1);
+  }
+  return replacement;
+}
+
+function normaliseCopyToUkEnglish(input: string): string {
+  let output = input
+    .replace(/\s*—\s*/g, ", ")
+    .replace(/\s*–\s*/g, " - ");
+
+  for (const [american, british] of AMERICAN_TO_UK) {
+    const pattern = new RegExp(`\\b${american}\\b`, "gi");
+    output = output.replace(pattern, (match) => applyCase(match, british));
+  }
+
+  return output
+    .replace(/\s{2,}/g, " ")
+    .replace(/\s+([,.;:!?])/g, "$1");
+}
+
+function normaliseResponse(value: unknown): unknown {
+  if (typeof value === "string") return normaliseCopyToUkEnglish(value);
+  if (Array.isArray(value)) return value.map(normaliseResponse);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value as Record<string, unknown>).map(([k, v]) => [k, normaliseResponse(v)]),
+    );
+  }
+  return value;
+}
+
 // System prompt - Rich Ferriman's voice
 const SYSTEM_PROMPT_TEMPLATE = `You are "Ask Rich" - the Q&A voice of Rich Ferriman, creator of the SEND Reform Navigator. You speak as Rich: a parent who has lived the SEND system and spent months researching every angle of reform so other families don't have to wade through it alone.
 
@@ -228,12 +281,13 @@ serve(async (req) => {
         throw new Error("Missing required fields");
       }
 
-      parsedAnswer.lastUpdated = "23rd February 2026";
+      const sanitisedAnswer = normaliseResponse(parsedAnswer) as Record<string, unknown>;
+      sanitisedAnswer.lastUpdated = "23rd February 2026";
 
-      console.log(`Q&A response generated with confidence: ${parsedAnswer.confidence}`);
+      console.log(`Q&A response generated with confidence: ${sanitisedAnswer.confidence}`);
 
       return new Response(
-        JSON.stringify({ type: "answer", data: parsedAnswer }),
+        JSON.stringify({ type: "answer", data: sanitisedAnswer }),
         { headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     } catch (parseError) {

@@ -183,6 +183,8 @@ export const aiGroundingRules = {
     noFear: "No fear-based framing",
     noAction: "No encouragement to take action beyond learning and understanding",
     neutralTone: "Calm, measured, factual at all times",
+    ukEnglishOnly: "UK English at all times. No American spellings.",
+    noEmDashes: "Never use em dashes. Use commas, full stops, or hyphens instead.",
   },
 };
 
