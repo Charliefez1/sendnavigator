@@ -224,14 +224,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ─── Share a comment (light background) ─── */}
-      <section className="bg-background relative">
-        <div className="content-section py-8">
-          <div className="max-w-2xl mx-auto">
-            <AskQuestionCompact />
-          </div>
-        </div>
-      </section>
 
       {/* ─── SECTIONS 3-5: Shared dark backdrop ─── */}
       <div className="relative overflow-hidden" style={{ backgroundColor: "hsl(222 35% 8%)" }}>
