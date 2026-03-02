@@ -1,22 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useChildProfile, SECTION_TITLES, ChildProfileState } from "@/contexts/ChildProfileContext";
 import { sectionContent } from "@/config/child-profile-sections";
 import { childVoiceQuestions } from "@/config/child-voice-questions";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Download, LayoutDashboard } from "lucide-react";
-import { generateProfilePDF } from "@/lib/generate-profile-pdf";
+import { Download, ArrowLeft } from "lucide-react";
 import { isStructuredReport } from "@/types/ai-report";
 import { supabase } from "@/integrations/supabase/client";
-import { ReportLoadingScreen } from "./ReportLoadingScreen";
-import { ReportPreview } from "./ReportPreview";
 
 interface FinalScreenProps {
   onViewDashboard?: () => void;
+  onReportLoading?: () => void;
+  onReportReady?: () => void;
+  onBackToBuilder?: () => void;
 }
-
-type Stage = "input" | "loading" | "preview" | "complete";
 
 function buildProfileText(state: ChildProfileState): string {
   const lines: string[] = [];
@@ -34,7 +32,6 @@ function buildProfileText(state: ChildProfileState): string {
     const parentAnswers: string[] = [];
     const childAnswers: string[] = [];
 
-    // Parent answers
     if (content) {
       content.questions.forEach((q) => {
         const val = section.answers?.[q.id];
@@ -45,7 +42,6 @@ function buildProfileText(state: ChildProfileState): string {
       });
     }
 
-    // Child voice answers
     const cvQuestions = childVoiceQuestions[index];
     if (cvQuestions) {
       cvQuestions.forEach((q) => {
@@ -86,24 +82,34 @@ function buildProfileText(state: ChildProfileState): string {
   return lines.join("\n");
 }
 
-export function FinalScreen({ onViewDashboard }: FinalScreenProps) {
+export function FinalScreen({ onViewDashboard, onReportLoading, onReportReady, onBackToBuilder }: FinalScreenProps) {
   const { state, updateFinalStatement, updateAiReport } = useChildProfile();
   const childName = state.setup.childName || "your child";
 
-  // If we already have a cached report, start on preview
-  const [stage, setStage] = useState<Stage>(state.aiReport ? "preview" : "input");
   const [consentDecided, setConsentDecided] = useState(false);
   const [consentGiven, setConsentGiven] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [emptySectionsWarning, setEmptySectionsWarning] = useState(false);
-  const [postChoice, setPostChoice] = useState<"shared" | "declined" | null>(null);
+
+  // If we already have a cached report, go straight to preview
+  useEffect(() => {
+    if (state.aiReport && onReportReady) {
+      onReportReady();
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (state.aiReport && onReportReady) {
+    return null;
+  }
 
   const canGenerate = consentDecided;
 
   const handleGenerateReport = async () => {
     setError(null);
     setEmptySectionsWarning(false);
-    setStage("loading");
+
+    // Transition parent to loading stage
+    onReportLoading?.();
 
     try {
       const profileText = buildProfileText(state);
@@ -121,7 +127,6 @@ export function FinalScreen({ onViewDashboard }: FinalScreenProps) {
         throw new Error(data.error);
       }
 
-      // Store AI report in context for caching and preview
       const structured = data.structured && isStructuredReport(data.structured)
         ? data.structured
         : undefined;
@@ -133,112 +138,18 @@ export function FinalScreen({ onViewDashboard }: FinalScreenProps) {
         structured,
       });
 
-      setStage("preview");
+      // Transition parent to report preview
+      onReportReady?.();
     } catch (e) {
       console.error("Report generation failed:", e);
       if (e instanceof Error && e.message === "NO_SECTIONS_COMPLETED") {
         setEmptySectionsWarning(true);
-        setStage("input");
         return;
       }
       setError(e instanceof Error ? e.message : "Something went wrong. Please try again.");
-      setStage("input");
     }
   };
 
-  const handleDownloadPDF = async () => {
-    if (!state.aiReport) return;
-    const aiReport = state.aiReport.structured && isStructuredReport(state.aiReport.structured)
-      ? state.aiReport.structured
-      : state.aiReport.report;
-    await generateProfilePDF({ state, aiReport });
-    setStage("complete");
-  };
-
-  // === LOADING SCREEN ===
-  if (stage === "loading") {
-    return <ReportLoadingScreen />;
-  }
-
-  // === PREVIEW SCREEN ===
-  if (stage === "preview") {
-    return (
-      <ReportPreview
-        onDownloadPDF={handleDownloadPDF}
-        onBackToEdit={() => setStage("input")}
-        onRegenerate={handleGenerateReport}
-      />
-    );
-  }
-
-  // === COMPLETE SCREEN ===
-  if (stage === "complete") {
-    return (
-      <div className="max-w-2xl mx-auto py-12 px-4 space-y-8">
-        <div>
-          <h2 className="text-lg font-display font-semibold text-foreground">
-            Your report is ready.
-          </h2>
-          <p className="text-sm text-muted-foreground mt-2">
-            Your answers have not been stored. This is the only copy. Keep it safe.
-          </p>
-        </div>
-
-        {!postChoice && (
-          <div className="space-y-5 pt-4 border-t border-border">
-            <p className="text-sm text-foreground leading-relaxed">
-              Would you be willing to share an anonymised summary of this profile to help build a public picture of what neurodivergent children are experiencing in schools? No names. No school. Nothing that identifies your child.
-            </p>
-
-            <div className="flex gap-3">
-              <Button
-                onClick={() => setPostChoice("shared")}
-                size="sm"
-              >
-                Share anonymised summary
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setPostChoice("declined")}
-              >
-                No thanks
-              </Button>
-            </div>
-          </div>
-        )}
-
-        {postChoice === "shared" && (
-          <div className="rounded-lg border border-primary/30 bg-primary/5 p-4 space-y-2">
-            <p className="text-sm font-medium text-foreground">Thank you.</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Your anonymised summary will be used solely to help build a broader picture of the experiences of neurodivergent children in schools across the UK. No names, no school, and nothing that could identify your child will ever be included. The data is encrypted, never shared with third parties, and is not used to train AI models.
-            </p>
-          </div>
-        )}
-
-        {postChoice === "declined" && (
-          <div className="rounded-lg border border-border bg-muted/50 p-4 space-y-2">
-            <p className="text-sm font-medium text-foreground">No problem at all.</p>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              We will make sure all data from this session is deleted. Nothing is stored, nothing is shared. Your report is the only copy.
-            </p>
-          </div>
-        )}
-
-        {onViewDashboard && (
-          <div className="pt-4 border-t border-border">
-            <Button variant="outline" size="sm" onClick={onViewDashboard} className="gap-1.5">
-              <LayoutDashboard className="w-3.5 h-3.5" />
-              View dashboard
-            </Button>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  // === INPUT SCREEN (default) ===
   return (
     <div className="max-w-2xl mx-auto py-12 px-4 space-y-8">
       <div>
@@ -259,6 +170,13 @@ export function FinalScreen({ onViewDashboard }: FinalScreenProps) {
           className="resize-y"
         />
       </div>
+
+      {onBackToBuilder && (
+        <Button variant="outline" size="sm" onClick={onBackToBuilder} className="gap-1.5">
+          <ArrowLeft className="w-3.5 h-3.5" />
+          Back to sections
+        </Button>
+      )}
 
       {emptySectionsWarning && (
         <div className="rounded-lg border border-amber-500/50 bg-amber-500/10 p-4">

@@ -9,8 +9,13 @@ import { SetupFlow } from "@/components/child-profile/SetupFlow";
 import { ProfileBuilder } from "@/components/child-profile/ProfileBuilder";
 import { ProfileDashboard } from "@/components/child-profile/ProfileDashboard";
 import { ProfileCompactHeader } from "@/components/child-profile/ProfileCompactHeader";
+import { FinalScreen } from "@/components/child-profile/FinalScreen";
+import { ReportPreview } from "@/components/child-profile/ReportPreview";
+import { ReportLoadingScreen } from "@/components/child-profile/ReportLoadingScreen";
+import { generateProfilePDF } from "@/lib/generate-profile-pdf";
+import { isStructuredReport } from "@/types/ai-report";
 
-type Stage = "opening" | "setup" | "builder" | "dashboard";
+type Stage = "opening" | "setup" | "builder" | "dashboard" | "final" | "report-loading" | "report-preview";
 
 const TEST_DATA: ChildProfileState = {
   setup: {
@@ -340,6 +345,17 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
     setStage("builder");
   };
 
+  const handleDownloadPDF = async () => {
+    if (!state.aiReport) return;
+    const aiReport = state.aiReport.structured && isStructuredReport(state.aiReport.structured)
+      ? state.aiReport.structured
+      : state.aiReport.report;
+    await generateProfilePDF({ state, aiReport });
+  };
+
+  // Hide dashboard button during report loading
+  const showDashboard = stage !== "report-loading";
+
   return (
     <>
       {/* Compact header when past opening */}
@@ -347,6 +363,7 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
         <ProfileCompactHeader
           childName={state.setup?.childName}
           onViewDashboard={() => setStage("dashboard")}
+          showDashboard={showDashboard}
         />
       )}
 
@@ -362,6 +379,7 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
         <ProfileBuilder
           initialSection={initialSection}
           onViewDashboard={() => setStage("dashboard")}
+          onShowFinal={() => setStage("final")}
         />
       )}
       {stage === "dashboard" && (
@@ -371,6 +389,24 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
             setInitialSection(index);
             setStage("builder");
           }}
+        />
+      )}
+      {stage === "final" && (
+        <FinalScreen
+          onViewDashboard={() => setStage("dashboard")}
+          onReportLoading={() => setStage("report-loading")}
+          onReportReady={() => setStage("report-preview")}
+          onBackToBuilder={() => setStage("builder")}
+        />
+      )}
+      {stage === "report-loading" && (
+        <ReportLoadingScreen />
+      )}
+      {stage === "report-preview" && (
+        <ReportPreview
+          onDownloadPDF={handleDownloadPDF}
+          onBackToEdit={() => setStage("final")}
+          onRegenerate={() => setStage("final")}
         />
       )}
     </>

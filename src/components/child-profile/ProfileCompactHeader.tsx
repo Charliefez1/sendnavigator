@@ -7,9 +7,10 @@ interface ProfileCompactHeaderProps {
   onViewDashboard?: () => void;
   onSave?: () => void;
   childName?: string;
+  showDashboard?: boolean;
 }
 
-export function ProfileCompactHeader({ onViewDashboard, onSave, childName }: ProfileCompactHeaderProps) {
+export function ProfileCompactHeader({ onViewDashboard, onSave, childName, showDashboard = true }: ProfileCompactHeaderProps) {
   const { getSectionStatus } = useChildProfile();
 
   const completedCount = SECTION_TITLES.reduce(
@@ -45,13 +46,13 @@ export function ProfileCompactHeader({ onViewDashboard, onSave, childName }: Pro
 
           {/* Right: actions */}
           <div className="flex items-center gap-2 flex-shrink-0">
-            {onViewDashboard && (
+            {showDashboard && onViewDashboard && (
               <Button variant="outline" size="sm" onClick={onViewDashboard} className="gap-1.5 hidden sm:inline-flex">
                 <LayoutDashboard className="w-3.5 h-3.5" />
                 Dashboard
               </Button>
             )}
-            {onViewDashboard && (
+            {showDashboard && onViewDashboard && (
               <Button variant="outline" size="icon" onClick={onViewDashboard} className="sm:hidden h-8 w-8">
                 <LayoutDashboard className="w-3.5 h-3.5" />
               </Button>
