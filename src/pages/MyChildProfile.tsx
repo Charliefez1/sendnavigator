@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
@@ -14,6 +14,8 @@ import { ReportPreview } from "@/components/child-profile/ReportPreview";
 import { ReportLoadingScreen } from "@/components/child-profile/ReportLoadingScreen";
 import { generateProfilePDF } from "@/lib/generate-profile-pdf";
 import { isStructuredReport } from "@/types/ai-report";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/hooks/use-toast";
 
 type Stage = "opening" | "setup" | "builder" | "dashboard" | "final" | "report-loading" | "report-preview";
 
@@ -395,7 +397,32 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
         <FinalScreen
           onViewDashboard={() => setStage("dashboard")}
           onReportLoading={() => setStage("report-loading")}
-          onReportReady={() => setStage("report-preview")}
+          onReportReady={(email) => {
+            setStage("report-preview");
+            // Send email in the background if provided
+            if (email && state.aiReport) {
+              const structured = state.aiReport.structured && isStructuredReport(state.aiReport.structured)
+                ? state.aiReport.structured
+                : undefined;
+              supabase.functions
+                .invoke("email-profile-report", {
+                  body: {
+                    email,
+                    childName: state.setup.childName || "your child",
+                    report: state.aiReport.report,
+                    structured,
+                  },
+                })
+                .then(({ error }) => {
+                  if (error) {
+                    console.error("Email send failed:", error);
+                    toast({ title: "Email could not be sent", description: "Your report is still available to download.", variant: "destructive" });
+                  } else {
+                    toast({ title: "Report sent to your email", description: `A copy has been sent to ${email}.` });
+                  }
+                });
+            }
+          }}
           onBackToBuilder={() => setStage("builder")}
         />
       )}

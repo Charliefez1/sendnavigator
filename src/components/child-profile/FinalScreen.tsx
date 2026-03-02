@@ -3,16 +3,18 @@ import { useChildProfile, SECTION_TITLES, ChildProfileState } from "@/contexts/C
 import { sectionContent } from "@/config/child-profile-sections";
 import { childVoiceQuestions } from "@/config/child-voice-questions";
 import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Download, ArrowLeft } from "lucide-react";
+import { Download, ArrowLeft, Mail } from "lucide-react";
 import { isStructuredReport } from "@/types/ai-report";
 import { supabase } from "@/integrations/supabase/client";
 
 interface FinalScreenProps {
   onViewDashboard?: () => void;
   onReportLoading?: () => void;
-  onReportReady?: () => void;
+  onReportReady?: (email?: string) => void;
   onBackToBuilder?: () => void;
 }
 
@@ -88,6 +90,7 @@ export function FinalScreen({ onViewDashboard, onReportLoading, onReportReady, o
 
   const [consentDecided, setConsentDecided] = useState(false);
   const [consentGiven, setConsentGiven] = useState(false);
+  const [parentEmail, setParentEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [emptySectionsWarning, setEmptySectionsWarning] = useState(false);
 
@@ -138,8 +141,8 @@ export function FinalScreen({ onViewDashboard, onReportLoading, onReportReady, o
         structured,
       });
 
-      // Transition parent to report preview
-      onReportReady?.();
+      // Transition parent to report preview, passing email for sending
+      onReportReady?.(parentEmail.trim() || undefined);
     } catch (e) {
       console.error("Report generation failed:", e);
       if (e instanceof Error && e.message === "NO_SECTIONS_COMPLETED") {
@@ -169,6 +172,25 @@ export function FinalScreen({ onViewDashboard, onReportLoading, onReportReady, o
           rows={8}
           className="resize-y"
         />
+      </div>
+
+      {/* Optional email input */}
+      <div className="space-y-2">
+        <Label htmlFor="parent-email" className="flex items-center gap-1.5 text-sm font-medium text-foreground">
+          <Mail className="w-3.5 h-3.5" />
+          Email me a copy of the report (optional)
+        </Label>
+        <Input
+          id="parent-email"
+          type="email"
+          value={parentEmail}
+          onChange={(e) => setParentEmail(e.target.value)}
+          placeholder="your@email.com"
+          className="max-w-sm"
+        />
+        <p className="text-xs text-muted-foreground">
+          If provided, we'll email you a formatted copy of the report from Rich Ferriman. Your email is not stored.
+        </p>
       </div>
 
       {onBackToBuilder && (
