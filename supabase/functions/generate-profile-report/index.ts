@@ -90,7 +90,43 @@ Rules for this section:
 - Maximum five suggestions. Fewer is fine if fewer are relevant.
 - Use the same voice, tone, and language rules as the rest of the report.
 
-After the Some Things That May Help block, produce a final block headed Conclusion. This is a one-page summary of everything in this profile. It should read as a standalone document that a professional could read in two minutes and understand who this child is, what they need, and what matters most. Draw on everything across all sections. Written in your voice. No more than 400 words. Do not repeat strategies already listed. Focus on the whole child: who they are, how they experience the world, what the adults around them need to understand, and the key priorities going forward.`;
+After the Some Things That May Help block, produce a final block headed Conclusion. This is a one-page summary of everything in this profile. It should read as a standalone document that a professional could read in two minutes and understand who this child is, what they need, and what matters most. Draw on everything across all sections. Written in your voice. No more than 400 words. Do not repeat strategies already listed. Focus on the whole child: who they are, how they experience the world, what the adults around them need to understand, and the key priorities going forward.
+
+OUTPUT FORMAT. You must return your response as a single valid JSON object. No markdown. No code fences. No extra text outside the JSON. The JSON must have this exact structure:
+
+{
+  "version": 2,
+  "openingLine": "This profile was built by someone who knows this child better than any system ever will. Read it as such.",
+  "topSummary": {
+    "headline": "One sentence about who this child is and what matters most.",
+    "bullets": [
+      "First bullet: what helps this child most.",
+      "Second bullet: what makes things harder.",
+      "Third bullet: what adults need to know first.",
+      "Fourth bullet: what this child needs to feel safe.",
+      "Fifth bullet: what this child is good at.",
+      "Sixth bullet: what changes under stress."
+    ]
+  },
+  "sectionInsights": [
+    {
+      "sectionIndex": 0,
+      "sectionTitle": "Section title here",
+      "reflection": "Three paragraphs as described in the section rules above. Paragraph one reflects back. Paragraph two gives context. Paragraph three gives strategies."
+    }
+  ],
+  "waysOfWorking": "Five to seven paragraphs as described above. Plain text. No numbered lists.",
+  "someThingsThatMayHelp": "Each suggestion on its own line starting with Have you tried. Maximum five suggestions.",
+  "conclusion": "One page conclusion as described above. Maximum 400 words."
+}
+
+Rules for the JSON output:
+- The topSummary bullets must be exactly 4 to 6 items. Each bullet is one sentence in plain English. A teacher should be able to read them in under one minute.
+- The topSummary headline must be one sentence about who this child is.
+- Include one sectionInsights entry for every section the parent completed. If a section has no parent input, do not include it.
+- The sectionIndex must be the zero-based index matching the section order.
+- All string values must be plain text. No markdown. No asterisks. No hash symbols. No em dashes.
+- Do not wrap the JSON in code fences or any other formatting.`;
 
 
 /**
@@ -215,7 +251,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         model: "claude-sonnet-4-20250514",
-        max_tokens: 4000,
+        max_tokens: 8000,
         temperature: 0.7,
         system: SYSTEM_PROMPT,
         messages,
@@ -234,6 +270,22 @@ serve(async (req) => {
     const data = await response.json();
     const aiText = data.content?.[0]?.text || "";
 
+    // Try to parse as structured JSON (version 2)
+    try {
+      // Strip potential code fences the model may have added
+      const cleaned = aiText.replace(/^```(?:json)?\s*\n?/i, "").replace(/\n?```\s*$/i, "").trim();
+      const parsed = JSON.parse(cleaned);
+      if (parsed && parsed.version === 2 && parsed.topSummary && Array.isArray(parsed.sectionInsights)) {
+        return new Response(
+          JSON.stringify({ report: aiText, structured: parsed }),
+          { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    } catch {
+      // JSON parse failed — fall through to legacy format
+    }
+
+    // Legacy fallback: return raw text blob
     return new Response(
       JSON.stringify({ report: aiText }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
