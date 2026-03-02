@@ -74,7 +74,7 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
         <div className="space-y-5 text-sm text-foreground leading-relaxed">
           <p className="font-medium text-base text-foreground">Before we start.</p>
           <p>You know your child <strong>better than any professional ever will</strong>. The system does not always make space for that knowledge.</p>
-          <p>This tool helps you put it into words. The document you build is yours. Share it, copy it, or keep it for yourself.</p>
+          <p>This tool helps you put it into words. When you are ready, you can view a dashboard of your child's profile, preview an AI-generated summary, and download everything as a PDF. The document you build is yours. Share it, copy it, or keep it for yourself.</p>
           <p>Take your time. Skip anything that does not apply. There is no right answer. There is only <strong>what is true for your child</strong>.</p>
           <p className="font-medium">This is a guide. It is not a diagnosis.</p>
           <p>You can complete this in one session or save your progress and return. Saved answers are <strong>stored securely for 14 days</strong> then deleted automatically.</p>
