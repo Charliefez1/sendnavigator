@@ -507,5 +507,5 @@ export function extractReadiness(state: ChildProfileState, getSectionStatus: (in
   if (ratio < 0.6 || depth < 40) {
     return { level: "good", label: "Getting there", description: "Your profile has enough for a meaningful report. More detail will make it even better.", canGenerate: true };
   }
-  return { level: "strong", label: "Ready for a powerful report", description: "Your profile is rich with detail. This will generate something meaningful.", canGenerate: true };
+  return { level: "strong", label: "Ready to generate", description: "Your profile has plenty of detail. This will help create something truly useful.", canGenerate: true };
 }
