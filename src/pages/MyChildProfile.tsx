@@ -24,6 +24,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import { normaliseCopyObject } from "@/lib/copy-standards";
 import { checkReflectionIntegrity } from "@/lib/reflection-parser";
+import { lintReportContent, logLintResults } from "@/lib/content-lint";
 
 type Stage = "opening" | "setup" | "mode-select" | "builder" | "dashboard" | "final" | "report-loading" | "report-preview";
 
@@ -354,6 +355,21 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
     const aiReport = state.aiReport.structured && isStructuredReport(state.aiReport.structured)
       ? state.aiReport.structured
       : state.aiReport.report;
+
+    // Content lint gate — block PDF in dev mode if severe issues found
+    if (import.meta.env.DEV) {
+      const lintResult = lintReportContent(aiReport);
+      logLintResults(lintResult);
+      if (!lintResult.passed) {
+        toast({
+          title: "Content lint failed",
+          description: `${lintResult.errors.length} severe issue(s) found. Check the console for details. Fix before publishing.`,
+          variant: "destructive",
+        });
+        return;
+      }
+    }
+
     await generateProfilePDF({ state, aiReport });
   };
 
@@ -394,13 +410,20 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
         structured,
       }));
 
-      // Dev-mode integrity check for section heading completeness
-      if (import.meta.env.DEV && structured?.sectionInsights) {
-        const warnings = checkReflectionIntegrity(structured.sectionInsights);
-        if (warnings.length > 0) {
-          console.warn("[Report Integrity]", warnings.length, "issues found:");
-          warnings.forEach((w) => console.warn("  •", w));
+      // Dev-mode quality checks
+      if (import.meta.env.DEV) {
+        // Section heading completeness
+        if (structured?.sectionInsights) {
+          const warnings = checkReflectionIntegrity(structured.sectionInsights);
+          if (warnings.length > 0) {
+            console.warn("[Report Integrity]", warnings.length, "issues found:");
+            warnings.forEach((w) => console.warn("  •", w));
+          }
         }
+
+        // Content lint — US spellings, adversarial tone, clinical language
+        const lintResult = lintReportContent(structured || data.report);
+        logLintResults(lintResult);
       }
 
       setStage("report-preview");
