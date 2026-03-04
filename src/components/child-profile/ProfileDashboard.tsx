@@ -4,8 +4,15 @@ import { hasAnyContent } from "@/lib/profile-dashboard-utils";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { ArrowLeft, Bug, Copy, Check, Activity } from "lucide-react";
+import { ArrowLeft, Bug, Copy, Check, Activity, FlaskConical } from "lucide-react";
 import { analyseEpisodePatterns } from "@/lib/episode-pattern-engine";
+import {
+  getTopWeightedSignals,
+  getCrossDomainSignals,
+  getExplainabilitySamples,
+  generateSimulatedRadars,
+  getDomainDistribution,
+} from "@/lib/scoring-diagnostics";
 import { EpisodePhase } from "@/config/signal-library";
 import { ProfileIdentityHeader } from "./dashboard/ProfileIdentityHeader";
 import { ProfileWheel } from "./dashboard/ProfileWheel";
@@ -25,6 +32,7 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
   const [devMode, setDevMode] = useState(false);
   const [showPayload, setShowPayload] = useState(false);
   const [showEpisodeDebug, setShowEpisodeDebug] = useState(false);
+  const [showDiagnostics, setShowDiagnostics] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const scoringPayload = JSON.stringify(
@@ -84,6 +92,15 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
             <Activity className="w-3.5 h-3.5" />
             Episode Signal Debug
           </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setShowDiagnostics(true)}
+            className="gap-1.5 text-xs border-dashed"
+          >
+            <FlaskConical className="w-3.5 h-3.5" />
+            Scoring Diagnostics
+          </Button>
         </div>
       )}
 
@@ -111,6 +128,12 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
         open={showEpisodeDebug}
         onOpenChange={setShowEpisodeDebug}
         signals={derived.signals}
+      />
+
+      <ScoringDiagnosticsDialog
+        open={showDiagnostics}
+        onOpenChange={setShowDiagnostics}
+        domainScores={derived.domain_scores}
       />
 
       {/* 1. Identity Header */}
@@ -267,6 +290,191 @@ function EpisodeDebugDialog({ open, onOpenChange, signals }: EpisodeDebugDialogP
               </div>
             </div>
           )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+// ───────────────────────────────────────────────────
+// Scoring Diagnostics Dialog (dev only)
+// ───────────────────────────────────────────────────
+
+import { DomainScores } from "@/lib/scoring-engine";
+import { DOMAIN_KEYS as DIAG_DOMAIN_KEYS } from "@/config/signal-library";
+
+interface ScoringDiagnosticsDialogProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  domainScores: Record<string, DomainScores>;
+}
+
+function ScoringDiagnosticsDialog({ open, onOpenChange, domainScores }: ScoringDiagnosticsDialogProps) {
+  const report = useMemo(() => {
+    if (!open) return null;
+    return {
+      distribution: getDomainDistribution(50),
+      topSignals: getTopWeightedSignals(20),
+      crossDomain: getCrossDomainSignals(),
+      explainability: getExplainabilitySamples(domainScores),
+      radars: generateSimulatedRadars(10),
+    };
+  }, [open, domainScores]);
+
+  if (!report) return null;
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-3xl max-h-[85vh] flex flex-col">
+        <DialogHeader>
+          <DialogTitle className="text-sm flex items-center gap-2">
+            <FlaskConical className="w-4 h-4" />
+            Scoring Model Diagnostics
+          </DialogTitle>
+          <DialogDescription className="text-xs">
+            Structural verification of scoring calibration, signal weights, and distribution.
+          </DialogDescription>
+        </DialogHeader>
+
+        <div className="flex-1 overflow-auto space-y-6 text-xs">
+          {/* 1. Domain Distribution */}
+          <section>
+            <h3 className="font-semibold text-sm mb-2">1. Domain Distribution (50 simulated profiles)</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-[11px] border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-1 px-2 font-medium">Domain</th>
+                    <th className="text-center py-1 px-1 font-medium">Unk</th>
+                    {[0, 1, 2, 3, 4].map((n) => (
+                      <th key={n} className="text-center py-1 px-1 font-medium">{n}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {report.distribution.map((d) => (
+                    <tr key={d.domain} className="border-b border-border/50">
+                      <td className="py-1 px-2 truncate max-w-[120px]">{d.domain}</td>
+                      <td className="text-center py-1 px-1 text-muted-foreground">{d.distribution.Unknown}</td>
+                      {[0, 1, 2, 3, 4].map((n) => {
+                        const count = d.distribution[String(n)];
+                        const pct = count / 50;
+                        return (
+                          <td key={n} className="text-center py-1 px-1">
+                            <span className={pct > 0.5 ? "text-destructive font-semibold" : ""}>
+                              {count}
+                            </span>
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-[10px] text-muted-foreground mt-1">
+              Red = more than 50% of profiles at that level (possible saturation).
+            </p>
+          </section>
+
+          {/* 2. Top Weighted Signals */}
+          <section>
+            <h3 className="font-semibold text-sm mb-2">2. Top 20 Weighted Signals</h3>
+            <div className="space-y-0.5">
+              {report.topSignals.map((sig, i) => (
+                <div key={i} className="flex items-center gap-2 py-0.5">
+                  <span className="text-muted-foreground w-4 text-right">{i + 1}.</span>
+                  <span className={`px-1 rounded text-[9px] font-medium ${
+                    sig.isFreetext
+                      ? "bg-[hsl(var(--accent-amber-bg))] text-[hsl(var(--accent-amber))]"
+                      : "bg-[hsl(var(--accent-teal-bg))] text-[hsl(var(--accent-teal))]"
+                  }`}>
+                    {sig.isFreetext ? "free" : "opt"} w{sig.weight}
+                  </span>
+                  <span className="flex-1 truncate">{sig.label}</span>
+                  <span className="text-muted-foreground text-[10px]">{sig.domain}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 3. Cross-Domain Signals */}
+          <section>
+            <h3 className="font-semibold text-sm mb-2">3. Cross-Domain Signals ({report.crossDomain.length})</h3>
+            <div className="space-y-1">
+              {report.crossDomain.map((cd, i) => (
+                <div key={i} className="flex items-center gap-2 py-0.5">
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
+                    {cd.primaryDomain}
+                  </span>
+                  <span className="text-muted-foreground">→</span>
+                  {cd.crossDomains.map((d) => (
+                    <span key={d} className="text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground border border-border">
+                      {d}
+                    </span>
+                  ))}
+                  <span className="text-[10px] text-muted-foreground ml-auto truncate max-w-[200px]">{cd.label}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 4. Explainability Samples */}
+          <section>
+            <h3 className="font-semibold text-sm mb-2">4. Explainability Samples</h3>
+            <div className="space-y-1.5">
+              {report.explainability.map((ex) => (
+                <div key={ex.domain} className="bg-muted/50 rounded p-2 border border-border/50">
+                  <p className="font-medium text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">{ex.domain}</p>
+                  <p className="text-foreground">{ex.sentence}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* 5. Simulated Radar Shapes */}
+          <section>
+            <h3 className="font-semibold text-sm mb-2">5. Simulated Radar Shapes (10 profiles)</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-[10px] border-collapse">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-1 px-1 font-medium">#</th>
+                    {DIAG_DOMAIN_KEYS.map((d) => (
+                      <th key={d} className="text-center py-1 px-0.5 font-medium" title={d}>
+                        {d.substring(0, 3)}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {report.radars.map((r) => (
+                    <tr key={r.id} className="border-b border-border/50">
+                      <td className="py-1 px-1 text-muted-foreground">{r.id}</td>
+                      {DIAG_DOMAIN_KEYS.map((d) => {
+                        const score = r.scores[d];
+                        const val = score?.intensity;
+                        return (
+                          <td key={d} className="text-center py-1 px-0.5">
+                            <span className={
+                              val === null ? "text-muted-foreground italic" :
+                              val === 4 ? "text-destructive font-semibold" :
+                              val === 0 ? "text-muted-foreground" : ""
+                            }>
+                              {val === null ? "?" : val}
+                            </span>
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-[10px] text-muted-foreground mt-1">
+              ? = Unknown (insufficient data). Red 4 = possible saturation.
+            </p>
+          </section>
         </div>
       </DialogContent>
     </Dialog>
