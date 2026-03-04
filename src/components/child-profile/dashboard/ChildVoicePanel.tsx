@@ -43,7 +43,7 @@ export function ChildVoicePanel({ state, onNavigateToSection }: Props) {
           <div className="rounded-xl bg-amber-50/50 dark:bg-amber-950/10 border border-amber-200/40 dark:border-amber-800/20 p-6 text-center">
             <MessageSquareHeart className="w-8 h-8 text-amber-400/60 mx-auto mb-3" />
             <p className="text-sm text-foreground font-medium mb-1">
-              {childName}'s voice makes this profile powerful
+              {childName}'s voice brings this profile to life
             </p>
             <p className="text-xs text-muted-foreground max-w-md mx-auto">
               Even one or two answers in their own words can change how a school sees them. Look for the "child voice" questions in each section.
