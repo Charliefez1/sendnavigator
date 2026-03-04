@@ -554,8 +554,8 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
 
   return (
     <>
-      {/* Compact header when past opening */}
-      {stage !== "opening" && (
+      {/* Compact header when past opening — hide during setup/mode-select since mode isn't chosen yet */}
+      {stage !== "opening" && stage !== "setup" && stage !== "mode-select" && (
         <ProfileCompactHeader
           childName={state.setup?.childName}
           onViewDashboard={() => setStage("dashboard")}

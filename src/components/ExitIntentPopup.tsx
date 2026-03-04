@@ -35,11 +35,15 @@ export function ExitIntentPopup() {
   const lastScrollY = useRef(0);
   const scrollingUp = useRef(0);
   const cooldownRef = useRef(false);
+  const location = window.location;
+
+  // Disable on profile tool pages to avoid interrupting the flow
+  const isProfilePage = location.pathname === "/my-child-profile";
 
   const triggerPopup = useCallback(() => {
-    if (!armedRef.current || cooldownRef.current || sessionStorage.getItem("exitIntentDismissed")) return;
+    if (!armedRef.current || cooldownRef.current || isProfilePage || sessionStorage.getItem("exitIntentDismissed")) return;
     setShow(true);
-  }, []);
+  }, [isProfilePage]);
 
   const startCooldown = useCallback(() => {
     cooldownRef.current = true;
