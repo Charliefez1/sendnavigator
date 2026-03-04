@@ -22,6 +22,23 @@ const WARM_BORDER = [220, 210, 195]; // parent words border
 const WHITE = [255, 255, 255];
 const PAGE_BG = [252, 251, 249];  // very subtle warm white
 
+// === Typography tokens (pt) — single scale, no shrink-to-fit ===
+const TYPE = {
+  COVER_NAME: 36,    // Cover page: child's name only
+  H1: 20,            // Page titles (At a Glance, Ways of Working, Conclusion)
+  H2: 16,            // Secondary page titles (Why we built this, About)
+  H3: 13,            // Sub-page headings (What helps most, final statement heading)
+  SUB: 11,           // Sub-headings within sections (In parent's words, reflection headings)
+  BODY: 11,          // All body text, bullets, Q&A answers
+  BODY_SMALL: 10,    // Q&A labels (bold), about page body
+  CAPTION: 9,        // Section numbers, cover disclaimer
+  DISCLAIMER: 6.5,   // Footer disclaimer
+  FOOTER_URL: 7,     // Footer URL
+} as const;
+
+/** Exported for dev-mode visual regression check */
+export const PDF_TYPE_TOKENS = TYPE;
+
 /**
  * Load an image URL and return a base64 data URL suitable for jsPDF.
  */
@@ -101,18 +118,18 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     doc.setLineWidth(0.3);
     doc.line(margin, pageHeight - FOOTER_ZONE_HEIGHT, pageWidth - margin, pageHeight - FOOTER_ZONE_HEIGHT);
 
-    doc.setFontSize(6.5);
+    doc.setFontSize(TYPE.DISCLAIMER);
     doc.setFont("helvetica", "normal");
     setColor(LIGHT_TEXT);
     const disclaimerLines: string[] = doc.splitTextToSize(DISCLAIMER_TEXT, contentWidth);
-    const dlLineH = 6.5 * 0.353 * 1.4;
+    const dlLineH = TYPE.DISCLAIMER * 0.353 * 1.4;
     let dy = pageHeight - FOOTER_ZONE_HEIGHT + 3;
     for (const line of disclaimerLines) {
       doc.text(line, pageWidth / 2, dy, { align: "center" });
       dy += dlLineH;
     }
 
-    doc.setFontSize(7);
+    doc.setFontSize(TYPE.FOOTER_URL);
     doc.text("send.neurodiversityglobal.com", pageWidth / 2, pageHeight - 7, { align: "center" });
     setColor(DARK_TEXT);
   };
@@ -161,10 +178,10 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     text: string,
     y: number,
   ): number => {
-    doc.setFontSize(11);
+    doc.setFontSize(TYPE.BODY);
     doc.setFont("helvetica", "normal");
     const lines: string[] = doc.splitTextToSize(text, contentWidth - 14);
-    const lineHeight = 11 * 0.353 * 1.6;
+    const lineHeight = TYPE.BODY * 0.353 * 1.6;
     const boxPadTop = 5;
     const boxPadBottom = 5;
     const boxPadX = 7;
@@ -191,7 +208,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
 
       // Render lines
       setColor(DARK_TEXT);
-      doc.setFontSize(11);
+      doc.setFontSize(TYPE.BODY);
       doc.setFont("helvetica", "normal");
       let ty = y + boxPadTop;
       for (const line of segmentLines) {
@@ -227,17 +244,17 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     // Pre-calculate all lines for all pairs
     type RenderedPair = { labelLines: string[]; answerLines: string[] };
     const rendered: RenderedPair[] = pairs.map(p => {
-      doc.setFontSize(10);
+      doc.setFontSize(TYPE.BODY_SMALL);
       doc.setFont("helvetica", "bold");
       const labelLines: string[] = doc.splitTextToSize(p.label, innerWidth);
-      doc.setFontSize(11);
+      doc.setFontSize(TYPE.BODY);
       doc.setFont("helvetica", "normal");
       const answerLines: string[] = doc.splitTextToSize(p.answer, innerWidth);
       return { labelLines, answerLines };
     });
 
-    const labelLineH = 10 * 0.353 * 1.5;
-    const answerLineH = 11 * 0.353 * 1.6;
+    const labelLineH = TYPE.BODY_SMALL * 0.353 * 1.5;
+    const answerLineH = TYPE.BODY * 0.353 * 1.6;
     const pairGap = 4;
 
     // Flatten into drawable items for segment-based rendering
@@ -245,11 +262,11 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     const items: DrawItem[] = [];
     rendered.forEach((r, ri) => {
       r.labelLines.forEach((line, li) => {
-        items.push({ text: line, fontSize: 10, style: "bold", lineH: labelLineH, gapAfter: li === r.labelLines.length - 1 ? 1 : 0 });
+        items.push({ text: line, fontSize: TYPE.BODY_SMALL, style: "bold", lineH: labelLineH, gapAfter: li === r.labelLines.length - 1 ? 1 : 0 });
       });
       r.answerLines.forEach((line, li) => {
         const isLast = li === r.answerLines.length - 1;
-        items.push({ text: line, fontSize: 11, style: "normal", lineH: answerLineH, gapAfter: isLast && ri < rendered.length - 1 ? pairGap : 0 });
+        items.push({ text: line, fontSize: TYPE.BODY, style: "normal", lineH: answerLineH, gapAfter: isLast && ri < rendered.length - 1 ? pairGap : 0 });
       });
     });
 
@@ -450,24 +467,24 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
   doc.line(margin, 55, pageWidth - margin, 55);
 
   // Child's name
-  doc.setFontSize(36);
+  doc.setFontSize(TYPE.COVER_NAME);
   doc.setFont("helvetica", "bold");
   setColor(NAVY);
   doc.text(childName, pageWidth / 2, 80, { align: "center" });
 
   // Subtitle
-  doc.setFontSize(16);
+  doc.setFontSize(TYPE.H2);
   doc.setFont("helvetica", "normal");
   setColor(MID_TEXT);
   doc.text("A Profile", pageWidth / 2, 92, { align: "center" });
 
   // Date
-  doc.setFontSize(11);
+  doc.setFontSize(TYPE.BODY);
   setColor(MID_TEXT);
   doc.text(today, pageWidth / 2, 108, { align: "center" });
 
   // Built by
-  doc.setFontSize(11);
+  doc.setFontSize(TYPE.BODY);
   doc.setFont("helvetica", "normal");
   setColor(DARK_TEXT);
   doc.text(`This profile was built by ${filledBy}.`, pageWidth / 2, 125, { align: "center" });
@@ -478,7 +495,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
   doc.line(margin + 30, 140, pageWidth - margin - 30, 140);
 
   // Cover disclaimer
-  doc.setFontSize(9);
+  doc.setFontSize(TYPE.CAPTION);
   setColor(LIGHT_TEXT);
   doc.text(
     "This is not a diagnostic document. It is a parent-prepared profile.",
@@ -486,7 +503,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     pageHeight - 40,
     { align: "center" }
   );
-  doc.setFontSize(8.5);
+  doc.setFontSize(TYPE.CAPTION);
   doc.text("send.neurodiversityglobal.com", pageWidth / 2, pageHeight - 34, { align: "center" });
 
   // =============================================
@@ -500,7 +517,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     y = margin;
 
     // Title
-    doc.setFontSize(18);
+    doc.setFontSize(TYPE.H1);
     doc.setFont("helvetica", "bold");
     setColor(NAVY);
     doc.text("At a Glance", margin, y);
@@ -514,17 +531,17 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     // Opening line in italic
     if (structured.openingLine) {
       setColor(MID_TEXT);
-      y = addWrappedText(structured.openingLine, margin, y, contentWidth, 10.5, "italic");
+      y = addWrappedText(structured.openingLine, margin, y, contentWidth, TYPE.BODY, "italic");
       y += 10;
     }
 
     // Headline
     if (structured.topSummary.headline) {
       setColor(DARK_TEXT);
-      doc.setFontSize(11.5);
+      doc.setFontSize(TYPE.BODY);
       doc.setFont("helvetica", "bold");
       const headlineLines: string[] = doc.splitTextToSize(structured.topSummary.headline, contentWidth);
-      const headlineLineH = 11.5 * 0.353 * 1.6;
+      const headlineLineH = TYPE.BODY * 0.353 * 1.6;
       for (const line of headlineLines) {
         doc.text(line, margin, y);
         y += headlineLineH;
@@ -537,11 +554,11 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
       setColor(DARK_TEXT);
       for (const bullet of structured.topSummary.bullets) {
         y = checkPageBreak(y, 14);
-        doc.setFontSize(11);
+        doc.setFontSize(TYPE.BODY);
         doc.setFont("helvetica", "normal");
         const bulletText = `\u2022  ${bullet}`;
         const bulletLines: string[] = doc.splitTextToSize(bulletText, contentWidth - 10);
-        const bulletLineH = 11 * 0.353 * 1.6;
+        const bulletLineH = TYPE.BODY * 0.353 * 1.6;
         for (let i = 0; i < bulletLines.length; i++) {
           doc.text(bulletLines[i], margin + (i === 0 ? 0 : 6), y);
           y += bulletLineH;
@@ -554,7 +571,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     // "What helps most" block from waysOfWorking (first 3 paragraphs, broken down)
     if (structured.waysOfWorking) {
       y = checkPageBreak(y, 30);
-      doc.setFontSize(13);
+      doc.setFontSize(TYPE.H3);
       doc.setFont("helvetica", "bold");
       setColor(NAVY);
       doc.text("What helps most", margin, y);
@@ -564,7 +581,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
       const firstParas = wowParas.slice(0, 5);
       setColor(DARK_TEXT);
       for (const para of firstParas) {
-        y = addWrappedText(para, margin, y, contentWidth, 10.5);
+        y = addWrappedText(para, margin, y, contentWidth, TYPE.BODY);
         y += 5;
       }
     }
@@ -580,7 +597,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
   doc.rect(0, 0, pageWidth, pageHeight, "F");
   y = margin;
 
-  doc.setFontSize(16);
+  doc.setFontSize(TYPE.H2);
   doc.setFont("helvetica", "bold");
   setColor(NAVY);
   doc.text("Why we built this profile", margin, y);
@@ -601,12 +618,12 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     : `I am building this profile for ${childName}. This document contains what I know about my child. It is written from experience, not from a textbook.`;
 
   setColor(DARK_TEXT);
-  y = addWrappedText(whyText, margin, y, contentWidth, 11);
+  y = addWrappedText(whyText, margin, y, contentWidth, TYPE.BODY);
   y += 10;
 
   if (parsed.openingLine) {
     setColor(MID_TEXT);
-    y = addWrappedText(parsed.openingLine, margin, y, contentWidth, 10.5, "italic");
+    y = addWrappedText(parsed.openingLine, margin, y, contentWidth, TYPE.BODY, "italic");
     setColor(DARK_TEXT);
   }
 
@@ -641,13 +658,13 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     y = margin;
 
     // Section number + title
-    doc.setFontSize(9);
+    doc.setFontSize(TYPE.CAPTION);
     doc.setFont("helvetica", "normal");
     setColor(LIGHT_TEXT);
     doc.text(`Section ${index + 1}`, margin, y);
     y += 6;
 
-    doc.setFontSize(15);
+    doc.setFontSize(TYPE.H2);
     doc.setFont("helvetica", "bold");
     setColor(NAVY);
     doc.text(title, margin, y);
@@ -674,7 +691,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
 
     if (parentQAPairs.length > 0) {
       // Sub-heading
-      doc.setFontSize(11);
+      doc.setFontSize(TYPE.SUB);
       doc.setFont("helvetica", "bold");
       setColor(NAVY);
       y = checkPageBreak(y, 14);
@@ -700,7 +717,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
       if (childQAPairs.length > 0) {
         y = checkPageBreak(y, 20);
 
-        doc.setFontSize(11);
+        doc.setFontSize(TYPE.SUB);
         doc.setFont("helvetica", "bold");
         setColor([120, 90, 40]);
         doc.text(`In ${childName}'s own words`, margin, y);
@@ -709,9 +726,9 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
         setColor(DARK_TEXT);
         for (const pair of childQAPairs) {
           y = checkPageBreak(y, 18);
-          y = addWrappedText(pair.label, margin + 7, y, contentWidth - 14, 10, "bold");
+          y = addWrappedText(pair.label, margin + 7, y, contentWidth - 14, TYPE.BODY_SMALL, "bold");
           y += 1;
-          y = addWrappedText(pair.answer, margin + 7, y, contentWidth - 14, 10.5, "italic");
+          y = addWrappedText(pair.answer, margin + 7, y, contentWidth - 14, TYPE.BODY, "italic");
           y += 5;
         }
         y += 4;
@@ -724,7 +741,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
       for (const block of blocks) {
         y = checkPageBreak(y, 20);
 
-        doc.setFontSize(11);
+        doc.setFontSize(TYPE.SUB);
         doc.setFont("helvetica", "bold");
         setColor(NAVY);
         doc.text(block.heading, margin, y);
@@ -735,7 +752,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
 
         setColor(DARK_TEXT);
         for (const para of paragraphs) {
-          y = addWrappedText(para, margin, y, contentWidth, 10.5);
+          y = addWrappedText(para, margin, y, contentWidth, TYPE.BODY);
           y += 5;
         }
         y += 4;
@@ -746,14 +763,14 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     if (hasReflection) {
       y = checkPageBreak(y, 20);
 
-      doc.setFontSize(11);
+      doc.setFontSize(TYPE.SUB);
       doc.setFont("helvetica", "bold");
       setColor(NAVY);
       doc.text("Closing reflection", margin, y);
       y += 8;
 
       setColor(MID_TEXT);
-      y = addWrappedText(section.reflection, margin, y, contentWidth, 10.5, "italic");
+      y = addWrappedText(section.reflection, margin, y, contentWidth, TYPE.BODY, "italic");
       setColor(DARK_TEXT);
       y += 6;
     }
@@ -770,7 +787,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     doc.rect(0, 0, pageWidth, pageHeight, "F");
     y = margin;
 
-    doc.setFontSize(18);
+    doc.setFontSize(TYPE.H1);
     doc.setFont("helvetica", "bold");
     setColor(NAVY);
     doc.text("Ways of Working", margin, y);
@@ -785,7 +802,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     const wowParas = breakLongParagraphs(cleanWoW);
     setColor(DARK_TEXT);
     for (const para of wowParas) {
-      y = addWrappedText(para, margin, y, contentWidth, 10.5, "normal", 1.7);
+      y = addWrappedText(para, margin, y, contentWidth, TYPE.BODY, "normal", 1.7);
       y += 6;
     }
 
@@ -801,7 +818,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     doc.rect(0, 0, pageWidth, pageHeight, "F");
     y = margin;
 
-    doc.setFontSize(18);
+    doc.setFontSize(TYPE.H1);
     doc.setFont("helvetica", "bold");
     setColor(NAVY);
     doc.text("Some Things That May Help", margin, y);
@@ -821,13 +838,13 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
 
       const questionMatch = block.match(/^(Have you tried [^?]+\?)\s*(.*)/is);
       if (questionMatch) {
-        y = addWrappedText(questionMatch[1], margin, y, contentWidth, 11, "bold");
+        y = addWrappedText(questionMatch[1], margin, y, contentWidth, TYPE.BODY, "bold");
         y += 1;
         if (questionMatch[2].trim()) {
-          y = addWrappedText(questionMatch[2].trim(), margin, y, contentWidth, 11);
+          y = addWrappedText(questionMatch[2].trim(), margin, y, contentWidth, TYPE.BODY);
         }
       } else {
-        y = addWrappedText(block, margin, y, contentWidth, 11);
+        y = addWrappedText(block, margin, y, contentWidth, TYPE.BODY);
       }
       y += 6;
     }
@@ -837,7 +854,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     y = checkPageBreak(y, 40);
 
     const askRichText = "Have more questions? Ask Rich is available on the Neurodiversity Global SEND Navigator and can answer questions about your child's needs, the system, your rights, and what to do next. Everything is confidential and there are no wrong questions. Visit send.neurodiversityglobal.com and use the Ask Rich feature.";
-    const askRichHeight = measureText(askRichText, contentWidth - 14, 10.5) + 12;
+    const askRichHeight = measureText(askRichText, contentWidth - 14, TYPE.BODY) + 12;
 
     setFill([245, 248, 252]);
     setDraw([180, 195, 215]);
@@ -845,7 +862,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     doc.roundedRect(margin, y - 3, contentWidth, askRichHeight, 2, 2, "FD");
 
     setColor(MID_TEXT);
-    y = addWrappedText(askRichText, margin + 7, y + 4, contentWidth - 14, 10.5);
+    y = addWrappedText(askRichText, margin + 7, y + 4, contentWidth - 14, TYPE.BODY);
     y += 8;
     setColor(DARK_TEXT);
 
@@ -861,7 +878,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     doc.rect(0, 0, pageWidth, pageHeight, "F");
     y = margin;
 
-    doc.setFontSize(18);
+    doc.setFontSize(TYPE.H1);
     doc.setFont("helvetica", "bold");
     setColor(NAVY);
     doc.text("Conclusion", margin, y);
@@ -877,7 +894,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
 
     setColor(DARK_TEXT);
     for (const para of conclusionParas) {
-      y = addWrappedText(para, margin, y, contentWidth, 10.5, "normal", 1.7);
+      y = addWrappedText(para, margin, y, contentWidth, TYPE.BODY, "normal", 1.7);
       y += 6;
     }
 
@@ -892,7 +909,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
   y = margin + 30;
 
   if (state.finalStatement.trim()) {
-    doc.setFontSize(13);
+    doc.setFontSize(TYPE.H3);
     doc.setFont("helvetica", "bold");
     setColor(NAVY);
     doc.text("What we most want you to know", pageWidth / 2, y, { align: "center" });
@@ -904,11 +921,11 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     y += 4;
 
     setColor(DARK_TEXT);
-    doc.setFontSize(12);
+    doc.setFontSize(TYPE.BODY);
     doc.setFont("helvetica", "normal");
 
     const stmtLines: string[] = doc.splitTextToSize(state.finalStatement, contentWidth - 20);
-    const lineHeight = 12 * 0.353 * 1.7;
+    const lineHeight = TYPE.BODY * 0.353 * 1.7;
     for (const line of stmtLines) {
       y = checkPageBreak(y, lineHeight + 2);
       doc.text(line, pageWidth / 2, y, { align: "center" });
@@ -924,8 +941,8 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
   setColor(MID_TEXT);
   const closingText = `This profile was built by ${childName}'s parent. It represents our knowledge of our child. We welcome questions and conversation. We ask that this document is read in full before any conclusions are drawn.`;
   const closingLines: string[] = doc.splitTextToSize(closingText, contentWidth - 30);
-  const closingLineH = 9.5 * 0.353 * 1.6;
-  doc.setFontSize(9.5);
+  const closingLineH = TYPE.CAPTION * 0.353 * 1.6;
+  doc.setFontSize(TYPE.CAPTION);
   doc.setFont("helvetica", "italic");
   for (const line of closingLines) {
     doc.text(line, pageWidth / 2, y, { align: "center" });
@@ -954,7 +971,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     } catch { /* ignore logo errors */ }
   }
 
-  doc.setFontSize(16);
+  doc.setFontSize(TYPE.H2);
   doc.setFont("helvetica", "bold");
   setColor(NAVY);
   doc.text("About Neurodiversity Global", margin, y);
@@ -980,15 +997,14 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
 
   setColor(DARK_TEXT);
   for (const para of ngParagraphs) {
-    // Check if this paragraph would cause an orphan on a new page
-    const paraHeight = measureText(para, contentWidth, 10, 1.5);
+    const paraHeight = measureText(para, contentWidth, TYPE.BODY_SMALL, 1.5);
     y = checkPageBreak(y, paraHeight + 4);
-    y = addWrappedText(para, margin, y, contentWidth, 10, "normal", 1.5);
+    y = addWrappedText(para, margin, y, contentWidth, TYPE.BODY_SMALL, "normal", 1.5);
     y += 4;
   }
 
   y += 6;
-  doc.setFontSize(10.5);
+  doc.setFontSize(TYPE.BODY);
   doc.setFont("helvetica", "bold");
   setColor(NAVY);
   doc.text("Find out more at neurodiversityglobal.com", margin, y);
