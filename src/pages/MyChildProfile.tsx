@@ -476,7 +476,7 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
 
       updateAiReport({
         generatedAt: new Date().toISOString(),
-        model: "claude-sonnet-4-20250514",
+        model: "openai/gpt-5",
         report: data.report,
         structured,
       });
