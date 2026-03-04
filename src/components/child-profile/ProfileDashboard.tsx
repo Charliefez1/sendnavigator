@@ -4,8 +4,9 @@ import { hasAnyContent } from "@/lib/profile-dashboard-utils";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { ArrowLeft, Bug, Copy, Check, Activity, FlaskConical } from "lucide-react";
+import { ArrowLeft, Bug, Copy, Check, Activity, FlaskConical, Upload } from "lucide-react";
 import { analyseEpisodePatterns } from "@/lib/episode-pattern-engine";
+import { createDevTestProfile } from "@/lib/dev-test-profile";
 import {
   getTopWeightedSignals,
   getCrossDomainSignals,
@@ -27,7 +28,7 @@ interface ProfileDashboardProps {
 }
 
 export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport }: ProfileDashboardProps) {
-  const { state, getSectionStatus, derived } = useChildProfile();
+  const { state, getSectionStatus, derived, loadState } = useChildProfile();
   const hasContent = hasAnyContent(state);
   const [devMode, setDevMode] = useState(false);
   const [showPayload, setShowPayload] = useState(false);
@@ -100,6 +101,18 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
           >
             <FlaskConical className="w-3.5 h-3.5" />
             Scoring Diagnostics
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => {
+              const testData = createDevTestProfile();
+              loadState(testData);
+            }}
+            className="gap-1.5 text-xs border-dashed"
+          >
+            <Upload className="w-3.5 h-3.5" />
+            Load Test Profile
           </Button>
         </div>
       )}
