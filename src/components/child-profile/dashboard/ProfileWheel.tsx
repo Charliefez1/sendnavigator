@@ -5,14 +5,14 @@ import { DomainScores, ExplainableSignal } from "@/lib/scoring-engine";
 import { DOMAIN_KEYS, DomainKey, INTENSITY_LABELS, SCORE_SCALE_MAX, DOMAIN_SECTION_MAP, ContextCategory } from "@/config/signal-library";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer } from "recharts";
-import { Compass, Info, ChevronDown, ArrowRight, Lightbulb, AlertTriangle } from "lucide-react";
+import { Compass, Info, ChevronDown, ArrowRight, Lightbulb } from "lucide-react";
 
 type ViewMode = "evidence" | "intensity" | "confidence";
 
 const VIEW_CONFIG: Record<ViewMode, { label: string; description: string }> = {
-  evidence: { label: "Information", description: "Volume and breadth of information in each domain" },
-  intensity: { label: "Impact", description: "Weighted profile impact based on severity signals" },
-  confidence: { label: "Confidence", description: "Reliability based on source diversity and consistency" },
+  evidence: { label: "Detail", description: "How much information has been provided in each area" },
+  intensity: { label: "Impact", description: "How strongly each area appears to affect your child" },
+  confidence: { label: "Reliability", description: "How reliable each area's score is, based on the range of sources" },
 };
 
 interface Props {
@@ -43,9 +43,16 @@ export function ProfileWheel({ state, onNavigateToSection }: Props) {
     (d) => d.evidence > 0 || (d.intensity !== null && d.intensity > 0)
   );
 
+  // Check confidence per domain for visual dimming
+  const domainConfidence: Record<string, number> = {};
+  for (const domain of DOMAIN_KEYS) {
+    const scores = derived.domain_scores[domain];
+    domainConfidence[domain] = scores?.confidence ?? 0;
+  }
+
   const data = DOMAIN_KEYS.map((domain) => {
     const scores = derived.domain_scores[domain];
-    if (!scores) return { domain, score: 0, fullMark: SCORE_SCALE_MAX, isUnknown: false };
+    if (!scores) return { domain, score: 0, fullMark: SCORE_SCALE_MAX, isUnknown: false, lowConfidence: false };
     let value: number;
     const isUnknown = (viewMode === "intensity" && scores.intensity === null);
     if (viewMode === "intensity") {
@@ -60,10 +67,12 @@ export function ProfileWheel({ state, onNavigateToSection }: Props) {
       score: value,
       fullMark: SCORE_SCALE_MAX,
       isUnknown,
+      lowConfidence: scores.confidence < 2 && scores.evidence > 0,
     };
   });
 
   const hasUnknowns = data.some((d) => d.isUnknown);
+  const hasLowConfidence = data.some((d) => d.lowConfidence);
 
   function getScoreColor(score: number, isUnknown?: boolean): string {
     if (isUnknown) return "hsl(var(--muted-foreground) / 0.2)";
@@ -119,11 +128,12 @@ export function ProfileWheel({ state, onNavigateToSection }: Props) {
                   tick={({ x, y, payload }: any) => {
                     const entry = data.find((d) => d.domain === payload.value);
                     const isUnknown = entry?.isUnknown;
+                    const isLowConf = entry?.lowConfidence;
                     return (
                       <text
                         x={x}
                         y={y}
-                        fill={isUnknown ? "hsl(var(--muted-foreground) / 0.4)" : "hsl(var(--muted-foreground))"}
+                        fill={isUnknown ? "hsl(var(--muted-foreground) / 0.4)" : isLowConf ? "hsl(var(--muted-foreground) / 0.6)" : "hsl(var(--muted-foreground))"}
                         fontSize={9}
                         textAnchor="middle"
                         dominantBaseline="central"
@@ -147,25 +157,18 @@ export function ProfileWheel({ state, onNavigateToSection }: Props) {
             </ResponsiveContainer>
             {hasUnknowns && viewMode === "intensity" && (
               <p className="text-[10px] text-muted-foreground text-center mt-1 italic">
-                Dashed segments indicate domains with insufficient data
+                Dashed areas show where more information is needed
+              </p>
+            )}
+            {hasLowConfidence && viewMode === "intensity" && !hasUnknowns && (
+              <p className="text-[10px] text-muted-foreground text-center mt-1 italic">
+                Some areas are based on limited sources — expanding the detail below will show where
               </p>
             )}
           </div>
         ) : (
           <div className="flex items-center justify-center h-48 text-sm text-muted-foreground">
             Start filling in sections to see your profile shape emerge
-          </div>
-        )}
-
-        {/* Freetext saturation banner */}
-        {hasAnyScore && Object.values(derived.domain_scores).some(
-          (d) => d.freetextContributionRatio > 0.5
-        ) && (
-          <div className="flex items-start gap-2 p-2.5 rounded-lg bg-[hsl(var(--accent-amber-bg))] border border-[hsl(var(--accent-amber)/0.3)] text-xs">
-            <AlertTriangle className="w-3.5 h-3.5 text-[hsl(var(--accent-amber))] flex-shrink-0 mt-0.5" />
-            <p className="text-foreground/80">
-              Some domains are mostly based on written notes. Adding structured tick-box answers will improve reliability.
-            </p>
           </div>
         )}
 
@@ -177,13 +180,14 @@ export function ProfileWheel({ state, onNavigateToSection }: Props) {
             const sectionIndex = DOMAIN_SECTION_MAP[domain];
             const isExpanded = expandedDomain === domain;
             const isUnknown = viewMode === "intensity" && scores.intensity === null;
+            const isLowConf = scores.confidence < 2 && scores.evidence > 0;
             const displayScore = viewMode === "intensity" ? scores.intensity : viewMode === "confidence" ? scores.confidence : scores.evidence;
 
             return (
               <div key={domain} className="rounded-md">
                 <button
                   onClick={() => setExpandedDomain(isExpanded ? null : domain)}
-                  className={`w-full flex items-center gap-2 text-xs text-left px-2 py-1.5 rounded-md hover:bg-muted transition-colors ${isUnknown ? "opacity-60" : ""}`}
+                  className={`w-full flex items-center gap-2 text-xs text-left px-2 py-1.5 rounded-md hover:bg-muted transition-colors ${isUnknown || isLowConf ? "opacity-60" : ""}`}
                 >
                   <span
                     className={`w-2 h-2 rounded-full flex-shrink-0 ${isUnknown ? "border border-dashed border-muted-foreground bg-transparent" : ""}`}
@@ -236,6 +240,7 @@ function DomainExplainer({
   confidenceHint?: string;
 }) {
   const isUnknown = scores.intensity === null;
+  const highFreetext = scores.freetextContributionRatio > 0.5;
 
   return (
     <div className="ml-4 mr-2 mb-2 p-3 bg-muted/50 rounded-lg space-y-2.5 text-xs border border-border/50">
@@ -247,11 +252,21 @@ function DomainExplainer({
         </div>
       )}
 
+      {/* Freetext nudge — inline per domain */}
+      {highFreetext && !isUnknown && (
+        <div className="flex items-start gap-2 bg-[hsl(var(--accent-amber-bg))] border border-[hsl(var(--accent-amber)/0.3)] rounded p-2 text-foreground/80">
+          <Info className="w-3.5 h-3.5 text-[hsl(var(--accent-amber))] flex-shrink-0 mt-0.5" />
+          <p className="text-[11px]">
+            This section is mostly based on your written notes. Going back and answering the tick-box questions will strengthen how reliable this part of the profile is.
+          </p>
+        </div>
+      )}
+
       {/* Score summary */}
       <div className="grid grid-cols-3 gap-2">
         <ScorePill label="Impact" value={scores.intensityLabel} muted={isUnknown} />
-        <ScorePill label="Information" value={scores.evidenceLabel} />
-        <ScorePill label="Confidence" value={scores.confidenceLabel} />
+        <ScorePill label="Detail" value={scores.evidenceLabel} />
+        <ScorePill label="Reliability" value={scores.confidenceLabel} />
       </div>
 
       {/* Why this score */}
@@ -294,23 +309,23 @@ function DomainExplainer({
         </div>
       )}
 
-      {/* What would increase confidence */}
+      {/* How to strengthen this */}
       {confidenceHint && scores.confidence < 3 && (
         <div className="flex items-start gap-1.5 text-muted-foreground bg-background/80 rounded p-2 border border-border/30">
           <Lightbulb className="w-3 h-3 mt-0.5 text-[hsl(var(--accent-amber))] flex-shrink-0" />
           <div>
-            <p className="text-[10px] uppercase tracking-wider font-medium text-[hsl(var(--accent-amber))] mb-0.5">Increase confidence</p>
+            <p className="text-[10px] uppercase tracking-wider font-medium text-[hsl(var(--accent-amber))] mb-0.5">How to strengthen this</p>
             <p className="text-foreground/80">{confidenceHint}</p>
           </div>
         </div>
       )}
 
-      {/* Improve this domain */}
+      {/* Go back to this section */}
       <button
         onClick={() => onNavigateToSection?.(sectionIndex)}
         className="flex items-center gap-1.5 text-primary hover:underline font-medium"
       >
-        Improve this domain
+        Go back to this section
         <ArrowRight className="w-3 h-3" />
       </button>
     </div>
