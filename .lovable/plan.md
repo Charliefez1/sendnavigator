@@ -1,40 +1,50 @@
 
 
-## What needs doing
+## Plan: Reduce freetext saturation and narrative bias in scoring
 
-Two things:
+### What changes
 
-1. **Add hover-over explainer tooltips across the Report Dashboard** — each card and the Section Insights heading needs a small info icon that, on hover (desktop) or tap (mobile), shows a short plain-English explanation of what the section is and what the parent should do with it.
+All changes are in **`src/lib/scoring-engine.ts`** and **`src/components/child-profile/dashboard/ProfileWheel.tsx`** (for the banner). No database, edge function, or signal library changes needed.
 
-2. **Clarify the "Regenerate" behaviour** — currently, "Regenerate" on a section insight calls the AI again with the *current section answers* and produces a fresh reflection. The parent then gets a side-by-side comparison and can accept or reject the new version. This means a parent could regenerate repeatedly until they get wording they prefer. This is the intended design (the data does not change, only the AI's phrasing). But nowhere in the UI does it explain this. We need to make it obvious.
+### 1. Tag freetext signals as `evidence_only` by default
 
-## Design: reusable InfoTip component
+In `extractSignalsFromAnswers`, add a new field `signalType: "evidence_only" | "trait_confirmed"` to each signal. Freetext signals get `"evidence_only"` by default. Structured option signals get `"trait_confirmed"`. Update the `Signal` interface in `signal-library.ts` to include this optional field.
 
-Create a small `InfoTip` component wrapping `@radix-ui/react-tooltip` (already installed, pattern exists in `ContentBox.tsx`). It renders an `Info` icon (12-14px) that shows a tooltip on hover/focus. This keeps it consistent and avoids duplicating tooltip boilerplate everywhere.
+### 2. Exclude `evidence_only` signals from intensity calculation
 
-```text
-[Icon] Card title  [ⓘ ← hover shows tooltip]
+In `scoreDomain`, when selecting the top 6 signals for intensity (`cappedSignals`), filter out signals where `signalType === "evidence_only"`. They still count toward **evidence** and **signal counts** but do not inflate the `weightedSum` used for intensity.
+
+### 3. Cap freetext intensity contribution at 2 per domain
+
+Even if a freetext signal is somehow `trait_confirmed` (future: via a tick-box), at most 2 freetext-origin signals may enter the intensity calculation per domain. Add a counter during the capping step.
+
+### 4. Add `freetextContributionRatio` diagnostic
+
+Add a new field to `DomainScores`:
 ```
+freetextContributionRatio: number; // 0–1
+```
+Calculated as `freetextWeightedSum / totalWeightedSum` across all confirmed signals (not just the capped ones). This is a transparency metric.
 
-## Explainer text for each card/section
+### 5. Show banner when ratio > 0.5
 
-| Element | Tooltip text |
-|---------|-------------|
-| **At a glance** | "A short summary of the key themes from your child's profile. This is the overview that appears at the top of the PDF." |
-| **Ways of working** | "Practical strategies for the adults around your child. Written based on what you told us across all sections." |
-| **Some things that may help** | "Suggested approaches and adjustments. These are not prescriptions. Use what feels right for your child." |
-| **Conclusion** | "A closing reflection drawing together what the profile tells us about your child as a whole person." |
-| **Section insights (N)** | "Each section you completed has its own AI-written reflection. You can review them one by one. Accept the ones that feel right, exclude any that do not, or regenerate for a fresh version. Regenerating re-reads your answers and writes a new reflection. Your answers stay the same. Only the wording changes." |
-| **Regenerate** button (inside each card) | "Ask the AI to write a fresh reflection for this section using your current answers. You will see both versions side by side and can choose which to keep." |
-| **Accept** button | "Include this reflection in your final report." |
-| **Exclude** button | "Remove this reflection from your final report." |
-| **Edit section** button | "Go back to this section to change your answers. You can regenerate the report afterwards." |
+In `ProfileWheel.tsx`, after rendering domain scores, check each domain's `freetextContributionRatio`. If any domain exceeds 0.5, show a small amber banner beneath the radar chart:
 
-## Files to change
+> "Some domains are mostly based on written notes. Adding structured answers will improve reliability."
 
-1. **New file: `src/components/child-profile/InfoTip.tsx`** — small reusable tooltip wrapper using the existing Tooltip primitives and the `Info` icon from lucide.
+### Files to change
 
-2. **`src/components/child-profile/ReportDashboard.tsx`** — import `InfoTip`, add it next to each `CardTitle` and the "Section insights" heading. Add tooltips to the action buttons inside `SectionInsightCard`.
+| File | Change |
+|------|--------|
+| `src/config/signal-library.ts` | Add optional `signalType?: "evidence_only" \| "trait_confirmed"` to `Signal` interface |
+| `src/lib/scoring-engine.ts` | Tag freetext signals as `evidence_only`, filter them from intensity calc, cap at 2, compute `freetextContributionRatio`, bump `SCORING_VERSION` |
+| `src/components/child-profile/dashboard/ProfileWheel.tsx` | Read `freetextContributionRatio` from domain scores, render amber banner if any domain > 0.5 |
 
-No database changes. No edge function changes. No scoring engine changes.
+### Acceptance criteria met
+
+- Freetext weight stays at 1 and cannot inflate intensity (evidence_only by default)
+- At most 2 freetext signals can contribute to intensity per domain
+- `freetextContributionRatio` diagnostic exposed per domain
+- Banner warns parents when freetext dominates a domain
+- Structured signals dominate intensity; verbose parents no longer inflate scores
 
