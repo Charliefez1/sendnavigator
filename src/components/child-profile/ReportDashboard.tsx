@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useChildProfile, SECTION_TITLES } from "@/contexts/ChildProfileContext";
 import { isStructuredReport, StructuredAIReport, StructuredSectionInsight } from "@/types/ai-report";
+import { parseReflectionBlocks } from "@/lib/reflection-parser";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -269,12 +270,17 @@ function SectionInsightCard({
           </div>
         </div>
         <CollapsibleContent>
-          <CardContent className="pt-0 pb-3 space-y-3">
-            <div className="text-xs text-foreground leading-relaxed space-y-2">
-              {insight.reflection.split(/\n+/).filter(p => p.trim()).map((para, j) => (
-                <p key={j}>{para.trim()}</p>
+          <CardContent className="pt-0 pb-3 space-y-4">
+              {parseReflectionBlocks(insight.reflection).map((block, j) => (
+                <div key={j}>
+                  <p className="text-[11px] font-semibold text-primary mb-1">{block.heading}</p>
+                  <div className="text-xs text-foreground leading-relaxed space-y-1.5">
+                    {block.content.split(/\n+/).filter(p => p.trim()).map((para, k) => (
+                      <p key={k}>{para.trim()}</p>
+                    ))}
+                  </div>
+                </div>
               ))}
-            </div>
             <div className="flex flex-wrap gap-2 pt-1">
               {status !== "accepted" && (
                 <span className="inline-flex items-center gap-1">
