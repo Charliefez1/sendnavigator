@@ -120,7 +120,11 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
           sourceType: mapping.sourceType,
           sourceReliability: mapping.sourceType === "child" ? "medium" : "high",
           confirmed: true,
-          contextCategory: mapping.freeTextSignal.contextCategory || mapping.contextCategory,
+          // Freetext signals must NEVER be "theme" — force to "context" as safety net
+          contextCategory: (() => {
+            const cat = mapping.freeTextSignal!.contextCategory || mapping.contextCategory;
+            return cat === "theme" ? "context" : cat;
+          })(),
         });
 
         // Cross-domain signals

@@ -106,9 +106,9 @@ export const SIGNAL_MAPPINGS: SignalMapping[] = [
   { questionId: "classroom_description", sectionIndex: 0, domain: "Environment", sourceType: "parent", freeTextSignal: { label: "Classroom environment described", baseWeight: 2, contextCategory: "context" } },
   { questionId: "after_school", sectionIndex: 0, domain: "Environment", sourceType: "parent", freeTextSignal: { label: "After-school state described", baseWeight: 2, contextCategory: "context" }, crossDomains: ["Masking", "Nervous System"] },
   { questionId: "settled_environment", sectionIndex: 0, domain: "Environment", sourceType: "parent", freeTextSignal: { label: "Settled environment identified", baseWeight: 1, contextCategory: "context" } },
-  { questionId: "cv_classroom_feel", sectionIndex: 0, domain: "Environment", sourceType: "child", freeTextSignal: { label: "Child describes classroom experience", baseWeight: 2, contextCategory: "theme" } },
+  { questionId: "cv_classroom_feel", sectionIndex: 0, domain: "Environment", sourceType: "child", freeTextSignal: { label: "Child describes classroom experience", baseWeight: 2, contextCategory: "context" } },
   { questionId: "cv_calm_place", sectionIndex: 0, domain: "Environment", sourceType: "child", freeTextSignal: { label: "Child identifies calm place", baseWeight: 1, contextCategory: "context" } },
-  { questionId: "cv_hardest_moving", sectionIndex: 0, domain: "Environment", sourceType: "child", freeTextSignal: { label: "Child describes transition difficulty", baseWeight: 2, contextCategory: "mechanism" } },
+  { questionId: "cv_hardest_moving", sectionIndex: 0, domain: "Environment", sourceType: "child", freeTextSignal: { label: "Child describes transition difficulty", baseWeight: 2, contextCategory: "context" } },
 
   // ── Nervous System (section 3) ──
   {
@@ -122,13 +122,13 @@ export const SIGNAL_MAPPINGS: SignalMapping[] = [
       "It varies significantly": [{ label: "Recovery time varies significantly", weight: 2, contextCategory: "context" }],
     },
   },
-  { questionId: "dysregulation_description", sectionIndex: 3, domain: "Nervous System", sourceType: "parent", freeTextSignal: { label: "Dysregulation described in detail", baseWeight: 3, contextCategory: "theme" } },
-  { questionId: "early_warning_signs", sectionIndex: 3, domain: "Nervous System", sourceType: "parent", freeTextSignal: { label: "Early warning signs identified", baseWeight: 2, contextCategory: "mechanism" } },
-  { questionId: "dysregulation_patterns", sectionIndex: 3, domain: "Nervous System", sourceType: "parent", freeTextSignal: { label: "Dysregulation patterns identified", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "helps_or_worsens", sectionIndex: 3, domain: "Nervous System", sourceType: "parent", freeTextSignal: { label: "Helps/worsens strategies described", baseWeight: 2, contextCategory: "mechanism" } },
-  { questionId: "shame_response", sectionIndex: 3, domain: "Nervous System", sourceType: "parent", freeTextSignal: { label: "Shame response after episodes described", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "cv_upset_body", sectionIndex: 3, domain: "Nervous System", sourceType: "child", freeTextSignal: { label: "Child describes body sensations during overwhelm", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "cv_calmer", sectionIndex: 3, domain: "Nervous System", sourceType: "child", freeTextSignal: { label: "Child identifies calming strategies", baseWeight: 2, contextCategory: "mechanism" } },
+  { questionId: "dysregulation_description", sectionIndex: 3, domain: "Nervous System", sourceType: "parent", freeTextSignal: { label: "Dysregulation described in detail", baseWeight: 3, contextCategory: "context" } },
+  { questionId: "early_warning_signs", sectionIndex: 3, domain: "Nervous System", sourceType: "parent", freeTextSignal: { label: "Early warning signs identified", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "dysregulation_patterns", sectionIndex: 3, domain: "Nervous System", sourceType: "parent", freeTextSignal: { label: "Dysregulation patterns identified", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "helps_or_worsens", sectionIndex: 3, domain: "Nervous System", sourceType: "parent", freeTextSignal: { label: "Helps/worsens strategies described", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "shame_response", sectionIndex: 3, domain: "Nervous System", sourceType: "parent", freeTextSignal: { label: "Shame response after episodes described", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "cv_upset_body", sectionIndex: 3, domain: "Nervous System", sourceType: "child", freeTextSignal: { label: "Child describes body sensations during overwhelm", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "cv_calmer", sectionIndex: 3, domain: "Nervous System", sourceType: "child", freeTextSignal: { label: "Child identifies calming strategies", baseWeight: 2, contextCategory: "context" } },
 
   // ── Sensory (section 5) ──
   {
@@ -156,13 +156,13 @@ export const SIGNAL_MAPPINGS: SignalMapping[] = [
       "Sometimes": [{ label: "Interoception difficulties — sometimes", weight: 2, contextCategory: "mechanism" }],
     },
   },
-  { questionId: "noise_sensitivity", sectionIndex: 5, domain: "Sensory", sourceType: "parent", freeTextSignal: { label: "Noise sensitivity described", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "texture_distress", sectionIndex: 5, domain: "Sensory", sourceType: "parent", freeTextSignal: { label: "Texture distress described", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "fidgeting", sectionIndex: 5, domain: "Sensory", sourceType: "parent", freeTextSignal: { label: "Fidgeting patterns described", baseWeight: 2, contextCategory: "mechanism" } },
-  { questionId: "sensory_seeking", sectionIndex: 5, domain: "Sensory", sourceType: "parent", freeTextSignal: { label: "Sensory seeking behaviours identified", baseWeight: 2, contextCategory: "mechanism" } },
-  { questionId: "cv_bothering_sound", sectionIndex: 5, domain: "Sensory", sourceType: "child", freeTextSignal: { label: "Child identifies bothersome sounds", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "cv_hate_wearing", sectionIndex: 5, domain: "Sensory", sourceType: "child", freeTextSignal: { label: "Child describes clothing sensitivities", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "cv_fidget", sectionIndex: 5, domain: "Sensory", sourceType: "child", freeTextSignal: { label: "Child describes fidgeting experience", baseWeight: 2, contextCategory: "mechanism" } },
+  { questionId: "noise_sensitivity", sectionIndex: 5, domain: "Sensory", sourceType: "parent", freeTextSignal: { label: "Noise sensitivity described", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "texture_distress", sectionIndex: 5, domain: "Sensory", sourceType: "parent", freeTextSignal: { label: "Texture distress described", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "fidgeting", sectionIndex: 5, domain: "Sensory", sourceType: "parent", freeTextSignal: { label: "Fidgeting patterns described", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "sensory_seeking", sectionIndex: 5, domain: "Sensory", sourceType: "parent", freeTextSignal: { label: "Sensory seeking behaviours identified", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "cv_bothering_sound", sectionIndex: 5, domain: "Sensory", sourceType: "child", freeTextSignal: { label: "Child identifies bothersome sounds", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "cv_hate_wearing", sectionIndex: 5, domain: "Sensory", sourceType: "child", freeTextSignal: { label: "Child describes clothing sensitivities", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "cv_fidget", sectionIndex: 5, domain: "Sensory", sourceType: "child", freeTextSignal: { label: "Child describes fidgeting experience", baseWeight: 2, contextCategory: "context" } },
 
   // ── Executive Function (section 6) ──
   {
@@ -190,11 +190,11 @@ export const SIGNAL_MAPPINGS: SignalMapping[] = [
       "Sometimes": [{ label: "Time blindness — sometimes", weight: 2, contextCategory: "mechanism" }],
     },
   },
-  { questionId: "task_initiation", sectionIndex: 6, domain: "Executive Function", sourceType: "parent", freeTextSignal: { label: "Task initiation difficulties described", baseWeight: 2, contextCategory: "mechanism" } },
-  { questionId: "variable_ability", sectionIndex: 6, domain: "Executive Function", sourceType: "parent", freeTextSignal: { label: "Variable ability described", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "procrastination", sectionIndex: 6, domain: "Executive Function", sourceType: "parent", freeTextSignal: { label: "Procrastination pattern described", baseWeight: 2, contextCategory: "mechanism" } },
-  { questionId: "cv_lots_instructions", sectionIndex: 6, domain: "Executive Function", sourceType: "child", freeTextSignal: { label: "Child describes instruction overload", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "cv_cannot_start", sectionIndex: 6, domain: "Executive Function", sourceType: "child", freeTextSignal: { label: "Child describes inability to start", baseWeight: 2, contextCategory: "mechanism" } },
+  { questionId: "task_initiation", sectionIndex: 6, domain: "Executive Function", sourceType: "parent", freeTextSignal: { label: "Task initiation difficulties described", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "variable_ability", sectionIndex: 6, domain: "Executive Function", sourceType: "parent", freeTextSignal: { label: "Variable ability described", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "procrastination", sectionIndex: 6, domain: "Executive Function", sourceType: "parent", freeTextSignal: { label: "Procrastination pattern described", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "cv_lots_instructions", sectionIndex: 6, domain: "Executive Function", sourceType: "child", freeTextSignal: { label: "Child describes instruction overload", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "cv_cannot_start", sectionIndex: 6, domain: "Executive Function", sourceType: "child", freeTextSignal: { label: "Child describes inability to start", baseWeight: 2, contextCategory: "context" } },
 
   // ── Masking (section 9) ──
   {
@@ -230,9 +230,9 @@ export const SIGNAL_MAPPINGS: SignalMapping[] = [
       "Sometimes": [{ label: "Sometimes complies to avoid conflict", weight: 2, contextCategory: "mechanism" }],
     },
   },
-  { questionId: "after_school_collapse", sectionIndex: 9, domain: "Masking", sourceType: "parent", freeTextSignal: { label: "After-school collapse described", baseWeight: 3, contextCategory: "theme" } },
-  { questionId: "suppressed_distress", sectionIndex: 9, domain: "Masking", sourceType: "parent", freeTextSignal: { label: "Suppressed distress described", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "cv_act_differently", sectionIndex: 9, domain: "Masking", sourceType: "child", freeTextSignal: { label: "Child describes acting differently", baseWeight: 2, contextCategory: "theme" } },
+  { questionId: "after_school_collapse", sectionIndex: 9, domain: "Masking", sourceType: "parent", freeTextSignal: { label: "After-school collapse described", baseWeight: 3, contextCategory: "context" } },
+  { questionId: "suppressed_distress", sectionIndex: 9, domain: "Masking", sourceType: "parent", freeTextSignal: { label: "Suppressed distress described", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "cv_act_differently", sectionIndex: 9, domain: "Masking", sourceType: "child", freeTextSignal: { label: "Child describes acting differently", baseWeight: 2, contextCategory: "context" } },
   { questionId: "cv_tiring_school", sectionIndex: 9, domain: "Masking", sourceType: "child", freeTextSignal: { label: "Child describes school as tiring", baseWeight: 2, contextCategory: "context" } },
 
   // ── Communication (section 10) ──
@@ -252,32 +252,32 @@ export const SIGNAL_MAPPINGS: SignalMapping[] = [
       "Sometimes": [{ label: "Sometimes struggles with emotion reading", weight: 2, contextCategory: "mechanism" }],
     },
   },
-  { questionId: "literal_language", sectionIndex: 10, domain: "Communication", sourceType: "parent", freeTextSignal: { label: "Literal language processing described", baseWeight: 2, contextCategory: "mechanism" } },
-  { questionId: "expressing_feelings", sectionIndex: 10, domain: "Communication", sourceType: "parent", freeTextSignal: { label: "Feeling expression difficulties described", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "social_cues", sectionIndex: 10, domain: "Communication", sourceType: "parent", freeTextSignal: { label: "Social cue difficulties described", baseWeight: 2, contextCategory: "mechanism" } },
+  { questionId: "literal_language", sectionIndex: 10, domain: "Communication", sourceType: "parent", freeTextSignal: { label: "Literal language processing described", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "expressing_feelings", sectionIndex: 10, domain: "Communication", sourceType: "parent", freeTextSignal: { label: "Feeling expression difficulties described", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "social_cues", sectionIndex: 10, domain: "Communication", sourceType: "parent", freeTextSignal: { label: "Social cue difficulties described", baseWeight: 2, contextCategory: "context" } },
   { questionId: "social_misunderstanding", sectionIndex: 10, domain: "Communication", sourceType: "parent", freeTextSignal: { label: "Social misunderstanding incident described", baseWeight: 2, contextCategory: "context" } },
-  { questionId: "cv_extra_time", sectionIndex: 10, domain: "Communication", sourceType: "child", freeTextSignal: { label: "Child needs extra processing time", baseWeight: 2, contextCategory: "mechanism" } },
-  { questionId: "cv_right_words", sectionIndex: 10, domain: "Communication", sourceType: "child", freeTextSignal: { label: "Child struggles to find words for feelings", baseWeight: 2, contextCategory: "theme" } },
+  { questionId: "cv_extra_time", sectionIndex: 10, domain: "Communication", sourceType: "child", freeTextSignal: { label: "Child needs extra processing time", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "cv_right_words", sectionIndex: 10, domain: "Communication", sourceType: "child", freeTextSignal: { label: "Child struggles to find words for feelings", baseWeight: 2, contextCategory: "context" } },
 
   // ── Behaviour (section 11) ──
   { questionId: "recent_incident", sectionIndex: 11, domain: "Behaviour", sourceType: "parent", freeTextSignal: { label: "Recent incident described in detail", baseWeight: 3, contextCategory: "context" } },
   { questionId: "before_incident", sectionIndex: 11, domain: "Behaviour", sourceType: "parent", freeTextSignal: { label: "Pre-incident context provided", baseWeight: 2, contextCategory: "context" } },
-  { questionId: "child_intent", sectionIndex: 11, domain: "Behaviour", sourceType: "parent", freeTextSignal: { label: "Parent interprets child's intent", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "behaviour_patterns", sectionIndex: 11, domain: "Behaviour", sourceType: "parent", freeTextSignal: { label: "Behaviour patterns identified", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "adult_response", sectionIndex: 11, domain: "Behaviour", sourceType: "parent", freeTextSignal: { label: "Adult response patterns described", baseWeight: 2, contextCategory: "mechanism" } },
-  { questionId: "makes_sense_to_you", sectionIndex: 11, domain: "Behaviour", sourceType: "parent", freeTextSignal: { label: "Parent provides behaviour interpretation", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "cv_what_starts_it", sectionIndex: 11, domain: "Behaviour", sourceType: "child", freeTextSignal: { label: "Child identifies behaviour triggers", baseWeight: 2, contextCategory: "mechanism" } },
-  { questionId: "cv_adults_better_worse", sectionIndex: 11, domain: "Behaviour", sourceType: "child", freeTextSignal: { label: "Child describes helpful/unhelpful adult responses", baseWeight: 2, contextCategory: "mechanism" } },
+  { questionId: "child_intent", sectionIndex: 11, domain: "Behaviour", sourceType: "parent", freeTextSignal: { label: "Parent interprets child's intent", baseWeight: 2, contextCategory: "source" } },
+  { questionId: "behaviour_patterns", sectionIndex: 11, domain: "Behaviour", sourceType: "parent", freeTextSignal: { label: "Behaviour patterns identified", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "adult_response", sectionIndex: 11, domain: "Behaviour", sourceType: "parent", freeTextSignal: { label: "Adult response patterns described", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "makes_sense_to_you", sectionIndex: 11, domain: "Behaviour", sourceType: "parent", freeTextSignal: { label: "Parent provides behaviour interpretation", baseWeight: 2, contextCategory: "source" } },
+  { questionId: "cv_what_starts_it", sectionIndex: 11, domain: "Behaviour", sourceType: "child", freeTextSignal: { label: "Child identifies behaviour triggers", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "cv_adults_better_worse", sectionIndex: 11, domain: "Behaviour", sourceType: "child", freeTextSignal: { label: "Child describes helpful/unhelpful adult responses", baseWeight: 2, contextCategory: "context" } },
 
   // ── Strengths (section 13) ──
-  { questionId: "genuine_strengths", sectionIndex: 13, domain: "Strengths", sourceType: "parent", freeTextSignal: { label: "Genuine strengths described", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "deep_focus", sectionIndex: 13, domain: "Strengths", sourceType: "parent", freeTextSignal: { label: "Deep focus areas identified", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "lights_them_up", sectionIndex: 13, domain: "Strengths", sourceType: "parent", freeTextSignal: { label: "Motivating interests identified", baseWeight: 2, contextCategory: "theme" } },
+  { questionId: "genuine_strengths", sectionIndex: 13, domain: "Strengths", sourceType: "parent", freeTextSignal: { label: "Genuine strengths described", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "deep_focus", sectionIndex: 13, domain: "Strengths", sourceType: "parent", freeTextSignal: { label: "Deep focus areas identified", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "lights_them_up", sectionIndex: 13, domain: "Strengths", sourceType: "parent", freeTextSignal: { label: "Motivating interests identified", baseWeight: 2, contextCategory: "context" } },
   { questionId: "others_notice", sectionIndex: 13, domain: "Strengths", sourceType: "parent", freeTextSignal: { label: "External strength recognition described", baseWeight: 2, contextCategory: "source" } },
-  { questionId: "unrecognised_strength", sectionIndex: 13, domain: "Strengths", sourceType: "parent", freeTextSignal: { label: "Unrecognised strength identified", baseWeight: 1, contextCategory: "theme" } },
-  { questionId: "cv_really_good_at", sectionIndex: 13, domain: "Strengths", sourceType: "child", freeTextSignal: { label: "Child identifies own strengths", baseWeight: 2, contextCategory: "theme" } },
-  { questionId: "cv_lose_track_time", sectionIndex: 13, domain: "Strengths", sourceType: "child", freeTextSignal: { label: "Child identifies flow activities", baseWeight: 2, contextCategory: "mechanism" } },
-  { questionId: "cv_teachers_knew", sectionIndex: 13, domain: "Strengths", sourceType: "child", freeTextSignal: { label: "Child wishes teachers knew strengths", baseWeight: 1, contextCategory: "theme" } },
+  { questionId: "unrecognised_strength", sectionIndex: 13, domain: "Strengths", sourceType: "parent", freeTextSignal: { label: "Unrecognised strength identified", baseWeight: 1, contextCategory: "context" } },
+  { questionId: "cv_really_good_at", sectionIndex: 13, domain: "Strengths", sourceType: "child", freeTextSignal: { label: "Child identifies own strengths", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "cv_lose_track_time", sectionIndex: 13, domain: "Strengths", sourceType: "child", freeTextSignal: { label: "Child identifies flow activities", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "cv_teachers_knew", sectionIndex: 13, domain: "Strengths", sourceType: "child", freeTextSignal: { label: "Child wishes teachers knew strengths", baseWeight: 1, contextCategory: "context" } },
 ];
 
 // ───────────────────────────────────────────────────
