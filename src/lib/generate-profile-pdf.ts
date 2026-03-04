@@ -363,7 +363,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     const conclusion = sections["__conclusion__"] || "";
     delete sections["__conclusion__"];
 
-    const openingLine = lines.find(l => l.includes("This profile was built by someone")) || "";
+    const openingLine = lines.find(l => l.includes("Purpose and how to use this profile") || l.includes("This profile brings together")) || "";
     return { sections, waysOfWorking, suggestions, conclusion, openingLine };
   };
 

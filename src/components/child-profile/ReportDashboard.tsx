@@ -107,7 +107,11 @@ export function ReportDashboard({
           </CardHeader>
           <CardContent className="space-y-3">
             {structured.openingLine && (
-              <p className="text-xs italic text-muted-foreground">{structured.openingLine}</p>
+              <div className="text-xs text-muted-foreground space-y-1.5">
+                {structured.openingLine.split(/\n+/).filter(p => p.trim()).map((para, i) => (
+                  <p key={i} className={i === 0 ? "font-medium text-foreground text-sm" : ""}>{para.trim()}</p>
+                ))}
+              </div>
             )}
             {structured.topSummary.headline && (
               <p className="text-sm font-medium text-foreground">{structured.topSummary.headline}</p>

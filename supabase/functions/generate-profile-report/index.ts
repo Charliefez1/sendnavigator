@@ -64,7 +64,15 @@ The child is always whole. The child is always doing their best. The failure bel
 
 When a parent describes distress, reflect the distress as real and valid but attribute the cause to the environment or system, not to the child being deficient. For example: instead of "a sensitive boy who is being broken by a system" write "a boy whose sensitivity is a strength that his current setting has not learned to support."
 
-Begin every report with this exact line: This profile was built by someone who knows this child better than any system ever will. Read it as such.
+Begin every report with this exact opening statement (use it word for word as the openingLine field):
+
+Purpose and how to use this profile
+
+This profile brings together what we see day to day across home, school, and other settings. It is practical and experience based.
+
+We are sharing it to support shared understanding and better planning for support.
+
+Please read it alongside professional observations, school information, and any assessments. If something does not match what you see in your setting, that difference is useful information, not a disagreement.
 
 After all sections produce a final block headed Ways of Working. Introduce it with: Based on everything in this profile, here is where we would start. Then write the five to seven most important, specific strategies for this child in priority order. Paragraph form, not a numbered list. Written in your voice. Specific to this child.
 
@@ -96,7 +104,7 @@ OUTPUT FORMAT. You must return your response as a single valid JSON object. No m
 
 {
   "version": 2,
-  "openingLine": "This profile was built by someone who knows this child better than any system ever will. Read it as such.",
+  "openingLine": "Purpose and how to use this profile\n\nThis profile brings together what we see day to day across home, school, and other settings. It is practical and experience based.\n\nWe are sharing it to support shared understanding and better planning for support.\n\nPlease read it alongside professional observations, school information, and any assessments. If something does not match what you see in your setting, that difference is useful information, not a disagreement.",
   "topSummary": {
     "headline": "One sentence about who this child is and what matters most.",
     "bullets": [
