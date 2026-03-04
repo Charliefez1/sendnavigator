@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { useChildProfile } from "@/contexts/ChildProfileContext";
 import { hasAnyContent } from "@/lib/profile-dashboard-utils";
+import { analyseThemes, ThemeAnalysisResult } from "@/lib/theme-engine";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -30,6 +31,12 @@ interface ProfileDashboardProps {
 export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport }: ProfileDashboardProps) {
   const { state, getSectionStatus, derived, loadState } = useChildProfile();
   const hasContent = hasAnyContent(state);
+
+  // Compute structured theme analysis from confirmed signals
+  const themeAnalysis = useMemo<ThemeAnalysisResult>(() => {
+    const confirmed = (derived.signals || []).filter((s) => s.confirmed);
+    return analyseThemes(confirmed, state);
+  }, [derived, state]);
   const [devMode, setDevMode] = useState(false);
   const [showPayload, setShowPayload] = useState(false);
   const [showEpisodeDebug, setShowEpisodeDebug] = useState(false);
@@ -172,7 +179,7 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
             />
           </div>
           <ChildVoicePanel state={state} onNavigateToSection={onNavigateToSection} />
-          <EmergingThemes state={state} onNavigateToSection={onNavigateToSection} />
+          <EmergingThemes analysis={themeAnalysis} onNavigateToSection={onNavigateToSection} />
         </>
       )}
     </div>
