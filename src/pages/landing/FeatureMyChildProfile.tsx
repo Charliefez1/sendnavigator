@@ -40,7 +40,7 @@ const FeatureMyChildProfile = () => (
             "At-a-glance dashboard showing strengths, needs, and progress",
             "Download as a formatted PDF to share",
             "Regenerate your report after making edits",
-            "Save and resume with a unique access code",
+            "Save and resume using Quick mode restore",
             "Built from real SEND parent experience",
             "Sections on strengths, not just difficulties",
           ].map((item) => (
@@ -56,7 +56,7 @@ const FeatureMyChildProfile = () => (
           <ol className="space-y-4">
             {[
               { step: "1", title: "Start the profile", desc: "Give consent, then begin answering guided questions about your child." },
-              { step: "2", title: "Answer at your own pace", desc: "Work through 22 sections. Skip anything that does not apply. Save and return with an access code." },
+              { step: "2", title: "Answer at your own pace", desc: "Work through 22 sections. Skip anything that does not apply. Save your progress and return any time." },
               { step: "3", title: "Review your dashboard", desc: "See an at-a-glance summary of strengths, needs, communication style, and section progress." },
               { step: "4", title: "Generate your report", desc: "AI creates a structured, professional summary with insights for each section, ways of working, and practical suggestions." },
               { step: "5", title: "Preview and download", desc: "Read the full report in your browser first, then download as a formatted PDF to share." },

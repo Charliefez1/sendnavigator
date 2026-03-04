@@ -112,7 +112,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     }
 
     doc.setFontSize(7);
-    doc.text("sendnavigator.neuro.support", pageWidth / 2, pageHeight - 7, { align: "center" });
+    doc.text("send.neurodiversityglobal.com", pageWidth / 2, pageHeight - 7, { align: "center" });
     setColor(DARK_TEXT);
   };
 
@@ -486,7 +486,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     { align: "center" }
   );
   doc.setFontSize(8.5);
-  doc.text("sendnavigator.neuro.support", pageWidth / 2, pageHeight - 34, { align: "center" });
+  doc.text("send.neurodiversityglobal.com", pageWidth / 2, pageHeight - 34, { align: "center" });
 
   // =============================================
   // PAGE 1.5: AT A GLANCE (structured reports only)
@@ -833,7 +833,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     y += 4;
     y = checkPageBreak(y, 40);
 
-    const askRichText = "Have more questions? Ask Rich is available on the Neurodiversity Global SEND Navigator and can answer questions about your child's needs, the system, your rights, and what to do next. Everything is confidential and there are no wrong questions. Visit sendnavigator.neuro.support and use the Ask Rich feature.";
+    const askRichText = "Have more questions? Ask Rich is available on the Neurodiversity Global SEND Navigator and can answer questions about your child's needs, the system, your rights, and what to do next. Everything is confidential and there are no wrong questions. Visit send.neurodiversityglobal.com and use the Ask Rich feature.";
     const askRichHeight = measureText(askRichText, contentWidth - 14, 10.5) + 12;
 
     setFill([245, 248, 252]);

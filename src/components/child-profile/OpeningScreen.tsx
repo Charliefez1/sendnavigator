@@ -272,8 +272,8 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
         <AccessCodeEntry onRestore={onRestore} />
       </div>
 
-      {/* ── Dev test button ── */}
-      {onLoadTestData && (
+      {/* ── Dev test button (development only) ── */}
+      {onLoadTestData && import.meta.env.DEV && (
         <div className="mt-10 pt-6 border-t border-border">
           <Button onClick={onLoadTestData} variant="outline" size="sm" className="gap-2 text-muted-foreground">
             <FlaskConical className="w-3.5 h-3.5" />
