@@ -242,25 +242,34 @@ serve(async (req) => {
 
     messages.push({ role: "user", content: userContent });
 
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${LOVABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "openai/gpt-5",
-        max_completion_tokens: 8000,
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          ...messages,
-        ],
-      }),
+    const requestBody = JSON.stringify({
+      model: "google/gemini-3-flash-preview",
+      max_tokens: 8000,
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        ...messages,
+      ],
     });
 
-    if (!response.ok) {
+    // Retry with exponential backoff for transient failures
+    let response: Response | null = null;
+    const maxRetries = 2;
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${LOVABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: requestBody,
+      });
+
+      if (response.ok) break;
+
       const errorText = await response.text();
-      console.error("AI gateway error:", response.status, errorText);
+      console.error(`AI gateway error (attempt ${attempt + 1}):`, response.status, errorText);
+
+      // Don't retry client errors or rate limits
       if (response.status === 429) {
         return new Response(
           JSON.stringify({ error: "Rate limit exceeded. Please try again in a moment." }),
@@ -273,6 +282,22 @@ serve(async (req) => {
           { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } }
         );
       }
+      if (response.status < 500) {
+        return new Response(
+          JSON.stringify({ error: "AI service error" }),
+          { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+
+      // Retry transient 5xx errors with backoff
+      if (attempt < maxRetries) {
+        const delay = Math.pow(2, attempt + 1) * 1000; // 2s, 4s
+        console.log(`Retrying in ${delay}ms...`);
+        await new Promise((r) => setTimeout(r, delay));
+      }
+    }
+
+    if (!response || !response.ok) {
       return new Response(
         JSON.stringify({ error: "AI service temporarily unavailable" }),
         { status: 502, headers: { ...corsHeaders, "Content-Type": "application/json" } }
