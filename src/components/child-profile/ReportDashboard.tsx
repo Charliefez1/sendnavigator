@@ -26,6 +26,41 @@ import {
 } from "@/components/ui/collapsible";
 import { InfoTip } from "./InfoTip";
 
+/**
+ * Split a block of text into readable paragraphs.
+ * First splits on double newlines. If any paragraph is still very long
+ * (over ~120 chars / ~3 sentences), break it on sentence boundaries so
+ * neurodivergent readers get breathing room between ideas.
+ */
+function splitIntoParagraphs(text: string): string[] {
+  if (!text?.trim()) return [];
+  const rawParagraphs = text.split(/\n\n+/).map(p => p.trim()).filter(Boolean);
+  const result: string[] = [];
+
+  for (const para of rawParagraphs) {
+    if (para.length <= 150) {
+      result.push(para);
+      continue;
+    }
+    // Split on sentence boundaries (period followed by space and capital letter)
+    const sentences = para.match(/[^.!?]+[.!?]+(?:\s|$)/g) || [para];
+    let current = "";
+    for (const sentence of sentences) {
+      const trimmed = sentence.trim();
+      if (!trimmed) continue;
+      if (current && (current + " " + trimmed).length > 150) {
+        result.push(current);
+        current = trimmed;
+      } else {
+        current = current ? current + " " + trimmed : trimmed;
+      }
+    }
+    if (current) result.push(current);
+  }
+
+  return result;
+}
+
 interface ReportDashboardProps {
   onDownloadPDF: () => void;
   onBackToEdit: () => void;
@@ -140,9 +175,9 @@ export function ReportDashboard({
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-xs text-foreground leading-relaxed space-y-2">
-              {structured.waysOfWorking.split(/\n\n+/).filter(p => p.trim()).slice(0, 3).map((para, i) => (
-                <p key={i}>{para.trim()}</p>
+            <div className="text-xs text-foreground leading-relaxed space-y-3">
+              {splitIntoParagraphs(structured.waysOfWorking).map((para, i) => (
+                <p key={i}>{para}</p>
               ))}
             </div>
           </CardContent>
@@ -158,9 +193,9 @@ export function ReportDashboard({
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-xs text-foreground leading-relaxed space-y-2">
-              {structured.someThingsThatMayHelp.split(/\n+/).filter(l => l.trim()).slice(0, 5).map((line, i) => (
-                <p key={i}>{line.trim()}</p>
+            <div className="text-xs text-foreground leading-relaxed space-y-3">
+              {splitIntoParagraphs(structured.someThingsThatMayHelp).map((line, i) => (
+                <p key={i}>{line}</p>
               ))}
             </div>
           </CardContent>
@@ -176,9 +211,9 @@ export function ReportDashboard({
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-xs text-foreground leading-relaxed space-y-2">
-              {structured.conclusion.split(/\n\n+/).filter(p => p.trim()).slice(0, 3).map((para, i) => (
-                <p key={i}>{para.trim()}</p>
+            <div className="text-xs text-foreground leading-relaxed space-y-3">
+              {splitIntoParagraphs(structured.conclusion).map((para, i) => (
+                <p key={i}>{para}</p>
               ))}
             </div>
           </CardContent>

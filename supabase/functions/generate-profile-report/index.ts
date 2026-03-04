@@ -77,7 +77,7 @@ We are sharing it to support shared understanding and better planning for suppor
 
 Please read it alongside professional observations, school information, and any assessments. If something does not match what you see in your setting, that difference is useful information, not a disagreement.
 
-After all sections produce a final block headed Ways of Working. Introduce it with: Based on everything in this profile, here is where we would start. Then write the five to seven most important, specific strategies for this child in priority order. Paragraph form, not a numbered list. Written in your voice. Specific to this child.
+After all sections produce a final block headed Ways of Working. Introduce it with: Based on everything in this profile, here is where we would start. Then write the five to seven most important, specific strategies for this child in priority order. Each strategy must be its own short paragraph of two to three sentences maximum. Separate each paragraph with a blank line. Never write a wall of text. Every idea gets its own breathing room. Written in your voice. Specific to this child.
 
 After the Ways of Working block, produce a final block headed Some Things That May Help. This contains a maximum of five practical suggestions drawn from everything the parent has described. Each suggestion must be relevant to this specific child. Do not list generic strategies. Do not repeat strategies already covered in the Ways of Working block.
 
@@ -101,7 +101,7 @@ Rules for this section:
 - Maximum five suggestions. Fewer is fine if fewer are relevant.
 - Use the same voice, tone, and language rules as the rest of the report.
 
-After the Some Things That May Help block, produce a final block headed Conclusion. This is a one-page summary of everything in this profile. It should read as a standalone document that a professional could read in two minutes and understand who this child is, what they need, and what matters most. Draw on everything across all sections. Written in your voice. No more than 400 words. Do not repeat strategies already listed. Focus on the whole child: who they are, how they experience the world, what the adults around them need to understand, and the key priorities going forward.
+After the Some Things That May Help block, produce a final block headed Conclusion. This is a one-page summary of everything in this profile. It should read as a standalone document that a professional could read in two minutes and understand who this child is, what they need, and what matters most. Draw on everything across all sections. Written in your voice. No more than 400 words. Do not repeat strategies already listed. Focus on the whole child: who they are, how they experience the world, what the adults around them need to understand, and the key priorities going forward. Write in short paragraphs of two to three sentences maximum. Separate each paragraph with a blank line. Never write a single long block of text. Many parents reading this are themselves neurodivergent. Dense text walls are inaccessible. Give every idea room to land.
 
 OUTPUT FORMAT. You must return your response as a single valid JSON object. No markdown. No code fences. No extra text outside the JSON. The JSON must have this exact structure:
 
@@ -126,9 +126,9 @@ OUTPUT FORMAT. You must return your response as a single valid JSON object. No m
       "reflection": "What you told us\nTwo or three sentences reflecting back.\n\nWhat this tells us\nTwo or three sentences of context.\n\nWhat could help\nThree to five sentences of strategies."
     }
   ],
-  "waysOfWorking": "Five to seven paragraphs as described above. Plain text. No numbered lists.",
-  "someThingsThatMayHelp": "Each suggestion on its own line starting with Have you tried. Maximum five suggestions.",
-  "conclusion": "One page conclusion as described above. Maximum 400 words."
+  "waysOfWorking": "Five to seven short paragraphs separated by blank lines. Each paragraph two to three sentences max. Plain text. No numbered lists.",
+  "someThingsThatMayHelp": "Each suggestion on its own line starting with Have you tried. Maximum five suggestions. Separate with blank lines.",
+  "conclusion": "Short paragraphs of two to three sentences separated by blank lines. Maximum 400 words. Never a single block of text."
 }
 
 Rules for the JSON output:
