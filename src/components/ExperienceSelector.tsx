@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BookOpen, ScanLine, Headphones, Sun, Moon, Type, Heart, Zap, Compass } from "lucide-react";
+import { BookOpen, ScanLine, Headphones, Sun, Moon, Type, Heart, Zap, Compass, ExternalLink } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
@@ -143,20 +143,25 @@ export function ExperienceSelector() {
         </div>
         </div>
 
-        {/* Site identity */}
-        <Link to="/feedback" className="group flex items-center gap-2 shrink-0 ml-auto">
-          <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white/15 transition-colors">
-            <Heart className="w-3.5 h-3.5 text-red-500" aria-hidden="true" />
-          </div>
-          <div>
-            
-
-
-            
-
-
-          </div>
-        </Link>
+        {/* External links */}
+        <div className="flex items-center gap-1.5 shrink-0 ml-auto">
+          <a
+            href="https://www.neurodiversityglobal.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-medium text-white/50 hover:text-white hover:bg-white/10 transition-colors"
+            aria-label="Visit Neurodiversity Global website"
+          >
+            <ExternalLink className="w-3 h-3" />
+            <span className="hidden sm:inline">Neurodiversity Global</span>
+          </a>
+          <div className="w-px h-4 bg-white/10" />
+          <Link to="/feedback" className="group flex items-center gap-1.5 shrink-0">
+            <div className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-white/15 transition-colors">
+              <Heart className="w-3.5 h-3.5 text-red-500" aria-hidden="true" />
+            </div>
+          </Link>
+        </div>
       </div>
     </div>);
 
