@@ -142,9 +142,24 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
       <h1 className="text-2xl font-display font-semibold text-foreground mb-3">
         My Child: A Profile
       </h1>
-      <p className="text-base text-foreground leading-relaxed">
-        A structured document about your child that you build, you own, and you share on your terms.
-      </p>
+
+      <div className="text-sm text-foreground leading-relaxed space-y-3">
+        <p>
+          How many times have you needed to have a 'quiet word' with a teacher, fellow parent, a club or even family, to say 'just so you know, there are a few things about my child you need to know'?
+        </p>
+        <p>
+          I have. Many times. But sometimes I just wish I had a 'this is George' document that I could share, just to help others see him as I do.
+        </p>
+        <p>
+          My Child: A Profile, is that.
+        </p>
+        <p>
+          At Neurodiversity Global, we have built the ability for you to create a structured document about your child that YOU build, YOU own, and YOU share on your terms.
+        </p>
+        <p>
+          We have added much more information from thousands of sources that also offer advice, thoughts, ideas, strategies and more.
+        </p>
+      </div>
 
       {/* ── What it does ── */}
       <div className="mt-8">
@@ -152,7 +167,7 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
           What this tool does
         </h2>
         <p className="text-sm text-foreground leading-relaxed">
-          It walks you through guided questions covering the areas that matter most when understanding a neurodivergent child: environment, sensory processing, executive function, masking, communication, identity, strengths, and more. At the end, you get a professional-looking profile and an AI-generated report you can download as a PDF.
+          It walks you through guided questions covering the areas that matter most when understanding a neurodivergent child: environment, sensory processing, executive function, masking, communication, identity, strengths, and more. At the end, you get a professional profile and report you can download as a PDF.
         </p>
       </div>
 
