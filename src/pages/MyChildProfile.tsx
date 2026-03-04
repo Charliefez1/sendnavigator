@@ -23,6 +23,7 @@ import type { ReportMode } from "@/config/mini-profile-sections";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import { normaliseCopyObject } from "@/lib/copy-standards";
+import { checkReflectionIntegrity } from "@/lib/reflection-parser";
 
 type Stage = "opening" | "setup" | "mode-select" | "builder" | "dashboard" | "final" | "report-loading" | "report-preview";
 
@@ -392,6 +393,15 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
         report: data.report,
         structured,
       }));
+
+      // Dev-mode integrity check for section heading completeness
+      if (import.meta.env.DEV && structured?.sectionInsights) {
+        const warnings = checkReflectionIntegrity(structured.sectionInsights);
+        if (warnings.length > 0) {
+          console.warn("[Report Integrity]", warnings.length, "issues found:");
+          warnings.forEach((w) => console.warn("  •", w));
+        }
+      }
 
       setStage("report-preview");
 

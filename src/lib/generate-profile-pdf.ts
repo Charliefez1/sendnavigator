@@ -3,6 +3,7 @@ import { ChildProfileState, SECTION_TITLES } from "@/contexts/ChildProfileContex
 import { sectionContent } from "@/config/child-profile-sections";
 import { childVoiceQuestions } from "@/config/child-voice-questions";
 import { StructuredAIReport, isStructuredReport } from "@/types/ai-report";
+import { parseReflectionBlocks } from "@/lib/reflection-parser";
 import beaconLogoUrl from "@/assets/neurodiversity-global-logo-trimmed.png";
 import ngLogoUrl from "@/assets/neurodiversity-global-logo.jpeg";
 
@@ -717,26 +718,28 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
       }
     }
 
-    // --- AI RESPONSE BLOCK ---
+    // --- AI RESPONSE BLOCKS (What you told us / What this tells us / What could help) ---
     if (aiContent) {
-      y = checkPageBreak(y, 20);
+      const blocks = parseReflectionBlocks(aiContent);
+      for (const block of blocks) {
+        y = checkPageBreak(y, 20);
 
-      doc.setFontSize(11);
-      doc.setFont("helvetica", "bold");
-      setColor(NAVY);
-      doc.text("What this tells us", margin, y);
-      y += 8;
+        doc.setFontSize(11);
+        doc.setFont("helvetica", "bold");
+        setColor(NAVY);
+        doc.text(block.heading, margin, y);
+        y += 8;
 
-      // Break long AI paragraphs into readable chunks
-      const cleanAI = cleanMarkdown(aiContent);
-      const paragraphs = breakLongParagraphs(cleanAI);
-      
-      setColor(DARK_TEXT);
-      for (const para of paragraphs) {
-        y = addWrappedText(para, margin, y, contentWidth, 10.5);
-        y += 5;
+        const cleanAI = cleanMarkdown(block.content);
+        const paragraphs = breakLongParagraphs(cleanAI);
+
+        setColor(DARK_TEXT);
+        for (const para of paragraphs) {
+          y = addWrappedText(para, margin, y, contentWidth, 10.5);
+          y += 5;
+        }
+        y += 4;
       }
-      y += 4;
     }
 
     // --- CLOSING REFLECTION ---
