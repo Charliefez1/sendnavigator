@@ -214,12 +214,12 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
 
       {/* ── Beta + GDPR ── */}
       <div className="mt-10 space-y-4">
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-lg p-4 space-y-2">
+        <div className="bg-amber-500/15 border border-amber-500/50 rounded-lg p-5 space-y-2">
           <div className="flex items-center gap-2">
-            <FlaskConical className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0" />
-            <p className="text-xs font-semibold text-foreground">Beta</p>
+            <FlaskConical className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" />
+            <p className="text-base font-bold text-foreground">Beta</p>
           </div>
-          <p className="text-xs text-muted-foreground leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             This tool is in active development. Content and questions are being refined daily. Everything here is a guide only and should not be treated as medical advice, a diagnosis, or a legal document.
           </p>
         </div>
