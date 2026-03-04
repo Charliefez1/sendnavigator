@@ -12,6 +12,8 @@ export type SourceReliability = "low" | "medium" | "high";
 export type ContextCategory = "theme" | "mechanism" | "context" | "source";
 export type EpisodePhase = "early_warning" | "trigger" | "escalation" | "shutdown" | "recovery";
 
+export type SignalType = "evidence_only" | "trait_confirmed";
+
 export interface Signal {
   id: string;
   domain: string;
@@ -27,6 +29,8 @@ export interface Signal {
   contextTags?: Record<string, string>;
   /** Optional: maps this signal to an episode cycle phase for future episode detection */
   episodePhase?: EpisodePhase;
+  /** Whether this signal contributes to intensity or evidence only */
+  signalType?: SignalType;
 }
 
 export interface SignalMapping {
@@ -326,4 +330,4 @@ export const INTENSITY_LABELS: Record<number, string> = {
 
 export const SCORE_SCALE_MAX = 4;
 
-export const SCORING_VERSION = "v1.2";
+export const SCORING_VERSION = "v1.3";

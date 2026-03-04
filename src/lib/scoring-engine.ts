@@ -10,6 +10,7 @@
 import { ChildProfileState } from "@/contexts/ChildProfileContext";
 import {
   Signal,
+  SignalType,
   SIGNAL_MAPPINGS,
   DOMAIN_KEYS,
   DOMAIN_SECTION_MAP,
@@ -46,6 +47,7 @@ export interface DomainScores {
   evidenceLabel: string;
   confidenceLabel: string;
   normalisedScore: number;  // 0–1 diagnostic field
+  freetextContributionRatio: number; // 0–1 diagnostic: freetext weight / total weight
   rawTotals: {
     weightedSum: number;
     signalCount: number;
@@ -148,6 +150,7 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
           confirmed: true,
           contextCategory: sig.contextCategory || mapping.contextCategory,
           episodePhase: sig.episodePhase || mapping.episodePhase,
+          signalType: "trait_confirmed",
         });
       }
     }
@@ -174,6 +177,7 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
             return cat === "theme" ? "context" : cat;
           })(),
           episodePhase: mapping.freeTextSignal.episodePhase || mapping.episodePhase,
+          signalType: "evidence_only",
         });
 
         // Cross-domain signals
@@ -190,6 +194,7 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
               sourceReliability: "medium",
               confirmed: true,
               contextCategory: "context",
+              signalType: "evidence_only",
             });
           }
         }
@@ -213,6 +218,7 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
         sourceReliability: "high",
         confirmed: true,
         contextCategory: "source",
+        signalType: "evidence_only",
       });
     }
   }
@@ -304,11 +310,24 @@ function getMaxPossibleWeight(domain: string): number {
   return Math.max(max, 1); // avoid division by zero
 }
 
+function computeFreetextRatio(confirmedSignals: Signal[]): number {
+  const totalWeight = confirmedSignals.reduce((s, sig) => s + sig.weight, 0);
+  if (totalWeight === 0) return 0;
+  const freetextWeight = confirmedSignals
+    .filter((s) => s.signalType === "evidence_only")
+    .reduce((s, sig) => s + sig.weight, 0);
+  return freetextWeight / totalWeight;
+}
+
+/** Max freetext signals allowed in intensity calculation per domain */
+const MAX_FREETEXT_INTENSITY_SIGNALS = 2;
+
 function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<string>): DomainScores {
   const domainSignals = signals.filter((s) => s.domain === domain);
   const confirmedSignals = domainSignals.filter((s) => s.confirmed);
   const now = new Date().toISOString();
   const maxPossible = getMaxPossibleWeight(domain);
+  const freetextContributionRatio = computeFreetextRatio(confirmedSignals);
 
   // Unknown state: fewer than 2 confirmed signals → intensity = null
   if (confirmedSignals.length < MIN_CONFIRMED_FOR_INTENSITY) {
@@ -323,6 +342,7 @@ function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<
       evidenceLabel: evidence === 0 ? INTENSITY_LABELS[0] : INTENSITY_LABELS[evidence],
       confidenceLabel: domainSignals.length === 0 ? INTENSITY_LABELS[0] : INTENSITY_LABELS[1],
       normalisedScore: 0,
+      freetextContributionRatio,
       rawTotals: {
         weightedSum: confirmedSignals.reduce((s, sig) => s + sig.weight, 0),
         signalCount: domainSignals.length,
@@ -335,15 +355,29 @@ function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<
     };
   }
 
-  // Cap at top 6 signals by weight for intensity calculation
+  // ── Intensity signal selection: exclude evidence_only, cap freetext at 2 ──
   const sortedConfirmed = [...confirmedSignals].sort((a, b) => b.weight - a.weight);
-  const cappedSignals = sortedConfirmed.slice(0, MAX_INTENSITY_SIGNALS);
-  const weightedSum = cappedSignals.reduce((sum, s) => sum + s.weight, 0);
+
+  // Separate trait_confirmed from evidence_only for intensity
+  const intensityEligible: Signal[] = [];
+  let freetextIntensityCount = 0;
+  for (const sig of sortedConfirmed) {
+    if (sig.signalType === "evidence_only") continue; // freetext defaults → skip
+    // trait_confirmed freetext (future: tick-box confirmed) — cap at 2
+    if (sig.id.includes("_freetext") || sig.id.includes("_cross_")) {
+      if (freetextIntensityCount >= MAX_FREETEXT_INTENSITY_SIGNALS) continue;
+      freetextIntensityCount++;
+    }
+    intensityEligible.push(sig);
+    if (intensityEligible.length >= MAX_INTENSITY_SIGNALS) break;
+  }
+
+  const weightedSum = intensityEligible.reduce((sum, s) => sum + s.weight, 0);
 
   // Dynamic normalisation: ratio of achieved weight to max possible
   const normalisedScore = Math.min(1, weightedSum / maxPossible);
 
-  // Evidence: based on unique signal IDs (diversity, not volume)
+  // Evidence: based on unique signal IDs (diversity, not volume) — ALL signals count
   const uniqueIds = new Set(domainSignals.map((s) => s.id));
   const evidence = evidenceFromUnique(uniqueIds.size);
 
@@ -357,6 +391,7 @@ function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<
       evidenceLabel: INTENSITY_LABELS[evidence] || INTENSITY_LABELS[0],
       confidenceLabel: INTENSITY_LABELS[1],
       normalisedScore,
+      freetextContributionRatio,
       rawTotals: { weightedSum, signalCount: domainSignals.length, confirmedCount: confirmedSignals.length, maxPossibleWeight: maxPossible },
       topSignals: confirmedSignals.slice(0, 3).map(toExplainable),
       sourceBreakdown: buildSourceBreakdown(domainSignals),
@@ -373,7 +408,7 @@ function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<
     ...sectionSourceTypes,
   ]);
   const hasConfirmedStructured = confirmedSignals.some(
-    (s) => s.confirmed && s.sourceReliability !== "low"
+    (s) => s.confirmed && s.signalType === "trait_confirmed" && s.sourceReliability !== "low"
   );
 
   // Confidence from source type count
@@ -397,8 +432,6 @@ function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<
     confidence = evidence;
   }
 
-  // Already sorted above as sortedConfirmed
-
   return {
     intensity,
     evidence,
@@ -407,6 +440,7 @@ function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<
     evidenceLabel: INTENSITY_LABELS[evidence] || INTENSITY_LABELS[0],
     confidenceLabel: INTENSITY_LABELS[confidence] || INTENSITY_LABELS[0],
     normalisedScore,
+    freetextContributionRatio,
     rawTotals: { weightedSum, signalCount: domainSignals.length, confirmedCount: confirmedSignals.length, maxPossibleWeight: maxPossible },
     topSignals: sortedConfirmed.slice(0, 3).map(toExplainable),
     sourceBreakdown: buildSourceBreakdown(domainSignals),
