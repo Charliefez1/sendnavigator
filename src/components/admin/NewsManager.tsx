@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { EyeOff, Eye, Trash2, RefreshCw, ExternalLink, Play } from "lucide-react";
+import { EyeOff, Eye, Trash2, RefreshCw, ExternalLink, Play, CheckCheck } from "lucide-react";
 
 interface NewsItem {
   id: string;
@@ -84,6 +84,40 @@ export function NewsManager({ pin }: NewsManagerProps) {
     }
   };
 
+  const handlePublishAll = async () => {
+    const hiddenItems = items.filter((i) => i.status === "hidden");
+    if (hiddenItems.length === 0) {
+      toast({ title: "No hidden items to publish" });
+      return;
+    }
+    try {
+      for (const item of hiddenItems) {
+        await callAdmin({ action: "news_update_status", table: "news_items", id: { itemId: item.id, status: "published" } });
+      }
+      toast({ title: `Published ${hiddenItems.length} items` });
+      await fetchItems();
+    } catch {
+      toast({ title: "Failed to publish all", variant: "destructive" });
+    }
+  };
+
+  const handleHideAll = async () => {
+    const pubItems = items.filter((i) => i.status === "published");
+    if (pubItems.length === 0) {
+      toast({ title: "No published items to hide" });
+      return;
+    }
+    try {
+      for (const item of pubItems) {
+        await callAdmin({ action: "news_update_status", table: "news_items", id: { itemId: item.id, status: "hidden" } });
+      }
+      toast({ title: `Hidden ${pubItems.length} items` });
+      await fetchItems();
+    } catch {
+      toast({ title: "Failed to hide all", variant: "destructive" });
+    }
+  };
+
   if (loading) {
     return <p className="text-muted-foreground text-center py-8">Loading news items...</p>;
   }
@@ -97,15 +131,29 @@ export function NewsManager({ pin }: NewsManagerProps) {
         <p className="text-sm text-muted-foreground">
           {items.length} items ({publishedCount} published, {hiddenCount} hidden)
         </p>
-        <Button
-          size="sm"
-          onClick={handleRunTracker}
-          disabled={running}
-          className="rounded-full gap-1.5"
-        >
-          {running ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Play className="h-4 w-4" />}
-          {running ? "Running..." : "Run Tracker Now"}
-        </Button>
+        <div className="flex gap-2 flex-wrap">
+          {hiddenCount > 0 && (
+            <Button size="sm" variant="outline" onClick={handlePublishAll} className="rounded-full gap-1.5">
+              <CheckCheck className="h-4 w-4" />
+              Publish All ({hiddenCount})
+            </Button>
+          )}
+          {publishedCount > 0 && (
+            <Button size="sm" variant="outline" onClick={handleHideAll} className="rounded-full gap-1.5">
+              <EyeOff className="h-4 w-4" />
+              Hide All ({publishedCount})
+            </Button>
+          )}
+          <Button
+            size="sm"
+            onClick={handleRunTracker}
+            disabled={running}
+            className="rounded-full gap-1.5"
+          >
+            {running ? <RefreshCw className="h-4 w-4 animate-spin" /> : <Play className="h-4 w-4" />}
+            {running ? "Running..." : "Run Tracker Now"}
+          </Button>
+        </div>
       </div>
 
       {items.map((item) => (
