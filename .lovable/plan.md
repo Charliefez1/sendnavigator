@@ -1,56 +1,39 @@
 
 
-## Reimagined Profile Dashboard
+## Diagnosis
 
-### The Problem
+The edge function logs reveal two distinct failures:
 
-The current dashboard is a flat grid of bullet point cards. It reads like a checklist, not a portrait of a child. Parents will not pay for a list. They will pay for something that makes them feel seen, that captures who their child actually is, and that they can hand to a school and say "this is my child."
+1. **Temperature parameter error (400)**: The `openai/gpt-5` model rejected `temperature: 0.7`. This was fixed in a previous edit but the log entry persists from before the fix.
 
-### The Vision
+2. **Connection closed before message completed (Http error)**: This is the current, active bug. The client sets a 120-second AbortController timeout. The `openai/gpt-5` model with a ~4,000-word system prompt, knowledge base context, and a full 22-section profile text is exceeding that window. The client aborts, the edge function sees "connection closed", and the user gets a generic failure toast.
 
-A single screen that tells the story of a child across three layers: who they are, what the world needs to understand, and how ready this profile is to generate something powerful.
+## Root cause
 
-### Architecture: 5 New Panels
+`openai/gpt-5` is the slowest and most expensive model available. For a full profile with all 22 sections, the input payload can exceed 10,000 tokens, and the 8,000 max completion tokens output takes GPT-5 well beyond 120 seconds. Edge functions themselves have a ~150s wall clock limit, so even raising the client timeout would only buy marginal headroom.
 
-**1. Child Identity Header**
-A warm, personalised hero block at the top. Shows the child's name large, the reason for building this profile, who completed it, and the report mode (Mini/Full). Includes a circular "profile depth" ring (not just completion %, but weighted by answer length and reflection presence) so parents see that a 40% complete profile with rich answers is more valuable than an 80% profile with one word answers.
+## Plan
 
-**2. Profile Wheel (Radar Chart)**
-A recharts RadarChart mapping the 8 core domains (Environment, Nervous System, Sensory, Executive Function, Masking, Communication, Behaviour, Strengths) as axes. Each axis scores 0 to 3 based on: 0 = empty, 1 = started (some answers), 2 = detailed (most answers filled), 3 = rich (answers + reflection + child voice). This gives parents a visual shape of where they have gone deep and where gaps remain. Clicking a segment navigates to that section.
+### 1. Switch to `google/gemini-3-flash-preview` (edge function)
 
-**3. In Their Own Words**
-A dedicated panel that pulls all child voice answers from across every section and displays them as a warm, quote-style mosaic. These are the child's actual words, formatted with large quotation marks and a soft amber background. If no child voice answers exist, this panel shows a gentle prompt: "Your child's voice makes this profile powerful. Even one or two answers can change how a school sees them."
+Replace `openai/gpt-5` with `google/gemini-3-flash-preview` in the edge function. This model is fast, capable, handles large context well, and is the recommended default. It should complete in 30-60 seconds for a full profile, well within timeouts.
 
-**4. Emerging Themes**
-Instead of fixed "strengths" and "needs" cards, this panel uses pattern detection across answers to surface 3 to 5 short theme sentences. For example, if sensory answers mention noise and the nervous system section mentions overwhelm, the theme might read: "Noise is a significant trigger that connects to dysregulation." This uses client side keyword matching (no AI call), scanning for common terms across sections and grouping them. Each theme links to the relevant sections.
+Update the `model` field in the `generate-profile-report/index.ts` fetch body and the `max_completion_tokens` parameter (rename to `max_tokens` if needed for Gemini compatibility, or keep as-is since the gateway normalises it).
 
-**5. Next Steps and Readiness**
-A smart recommendation panel. It analyses which sections are empty, which are thin, and which have no reflection, then produces 2 to 3 ranked suggestions: "Add a reflection to Sensory Processing to deepen this section" or "The Behaviour section would benefit from the child's voice." Below this, a clear call to action: "Generate report" (enabled/disabled based on minimum threshold) with a readiness label like "Your profile is ready for a meaningful report" or "A few more sections will make the report much stronger."
+### 2. Increase client timeout to 180 seconds (MyChildProfile.tsx)
 
-### Technical Approach
+Change the AbortController timeout from `120_000` to `180_000` as a safety margin, matching the edge function wall clock limit more closely.
 
-**New files:**
-- `src/components/child-profile/dashboard/ProfileIdentityHeader.tsx`
-- `src/components/child-profile/dashboard/ProfileWheel.tsx`
-- `src/components/child-profile/dashboard/ChildVoicePanel.tsx`
-- `src/components/child-profile/dashboard/EmergingThemes.tsx`
-- `src/components/child-profile/dashboard/ReadinessPanel.tsx`
+### 3. Update the stored model name in the client (MyChildProfile.tsx)
 
-**Updated files:**
-- `src/components/child-profile/ProfileDashboard.tsx` (compose the 5 panels)
-- `src/lib/profile-dashboard-utils.ts` (add depth scoring, theme extraction, child voice collection, readiness logic)
+Change the `model` field in the `updateAiReport` call from `"openai/gpt-5"` to `"google/gemini-3-flash-preview"` so the report metadata is accurate.
 
-**Key details:**
-- The radar chart uses `recharts` (already installed) with `RadarChart`, `PolarGrid`, `PolarAngleAxis`, `Radar`
-- Theme extraction scans all answers for keyword overlap across sections (e.g. "noise", "overwhelm", "meltdown") using a small dictionary of ~30 common SEND terms grouped into theme clusters
-- Depth scoring weights: answer present = 1, answer > 50 chars = 2, reflection present = +0.5, child voice present = +0.5
-- Child voice collection iterates `childVoiceQuestions` config and pulls matching answers from state
-- No new database tables or edge functions required
-- No changes to PDF generation, report dashboard, or section model
+### 4. Add retry with exponential backoff for transient failures (edge function)
 
-### What stays the same
-- Section completion list (moved into the Readiness panel as a collapsible checklist)
-- Back to profile button
-- Navigation to sections on click
-- All existing extraction functions remain available
+Wrap the AI gateway fetch call in a simple retry loop (max 2 retries, 2s then 4s delay) to handle transient 500/503 errors from the gateway without requiring the user to manually retry.
+
+### Files changed
+
+- `supabase/functions/generate-profile-report/index.ts` — model switch + retry logic
+- `src/pages/MyChildProfile.tsx` — timeout increase + model name update
 
