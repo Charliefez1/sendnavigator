@@ -81,9 +81,14 @@ export function ReportLoadingScreen() {
           })}
         </div>
 
-        <p className="text-xs text-muted-foreground">
-          Please don't close this page.
-        </p>
+        <div className="bg-destructive/10 border border-destructive/20 rounded-lg px-4 py-3 mt-2">
+          <p className="text-sm font-semibold text-destructive">
+            Please do not close or navigate away from this page.
+          </p>
+          <p className="text-xs text-destructive/80 mt-1">
+            A full profile can take up to 4 minutes to process.
+          </p>
+        </div>
       </div>
     </div>
   );
