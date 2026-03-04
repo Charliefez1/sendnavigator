@@ -1,37 +1,32 @@
 
 
-# Domain Migration: sendnavigator.lovable.app → send.neurodiversityglobal.com
+# Fix: Report Generation Failing
 
-## Summary
+## Problem
 
-A bulk find-and-replace of `sendnavigator.lovable.app` with `send.neurodiversityglobal.com` across 10 files containing 292 references. This ensures Google, Bing, ChatGPT, Claude, and Perplexity all attribute content to your authoritative domain under neurodiversityglobal.com.
+The edge function logs show `Http: connection closed before message completed`. The client is disconnecting before the Anthropic API finishes responding. With a full 22-section profile, the Claude API call can take 60-90 seconds, and Supabase edge functions have execution time limits that can cause premature termination.
 
-## Files to update
+## Solution
 
-| File | Changes |
-|---|---|
-| `index.html` | Canonical, OG URLs, Twitter image URLs, all JSON-LD blocks (~20 references) |
-| `src/components/SEOHead.tsx` | `BASE_URL` constant (line 15) |
-| `src/pages/Landing.tsx` | JSON-LD URL (line 66) |
-| `public/sitemap.xml` | Every `<loc>` URL (~35 references) |
-| `public/robots.txt` | Sitemap URL (line 84) |
-| `public/llms.txt` | All page links (~12 references) |
-| `supabase/functions/admin-moderate/index.ts` | `PRIMARY_ORIGIN` (line 4) |
-| `supabase/functions/process-update/index.ts` | `PRIMARY_ORIGIN` (line 4) |
-| `supabase/functions/parse-document/index.ts` | `PRIMARY_ORIGIN` (line 4) |
-| `supabase/functions/email-profile-report/index.ts` | Email footer link (line 134) |
+Switch from the direct Anthropic API call to the **Lovable AI proxy**, which is already available in this project (the `LOVABLE_API_KEY` secret is configured). This removes the dependency on the separate `ANTHROPIC_API_KEY`, provides better connection handling, and uses the OpenAI-compatible endpoint format.
 
-## Edge function CORS
+### Changes
 
-The `PRIMARY_ORIGIN` in the three edge functions will change to `https://send.neurodiversityglobal.com`. The existing wildcard check for `*.lovable.app` and `*.lovableproject.com` will continue to allow preview/dev access.
+**File: `supabase/functions/generate-profile-report/index.ts`**
 
-## What stays the same
+Replace the Anthropic API call with a Lovable AI proxy call:
+- Use the Lovable AI gateway URL (`https://api.lovable.dev/v1/chat/completions`) with the `LOVABLE_API_KEY`
+- Switch to `openai/gpt-5` (strong reasoning, excellent for this structured JSON output task) or keep using `claude-sonnet-4-20250514` via the proxy
+- Use the OpenAI-compatible chat completions format
+- The system prompt and all content rules remain identical
 
-All content, structured data schemas, meta descriptions, and robots.txt crawler permissions remain unchanged. Only the domain string is swapped.
+The key change is approximately 15 lines in the API call section (lines 245-268), swapping the Anthropic fetch for the Lovable AI fetch. Everything else (CORS, knowledge base search, JSON parsing, response format) stays the same.
 
-## After you publish
+**File: `src/pages/MyChildProfile.tsx`** (line 479)
 
-1. **Google Search Console**: Add `send.neurodiversityglobal.com` as a URL prefix property (your verified parent domain should make this instant). Submit the sitemap at `https://send.neurodiversityglobal.com/sitemap.xml`.
-2. **Bing Webmaster Tools**: Same process, add the subdomain and submit the sitemap.
-3. Google will begin re-indexing with the correct canonical URLs within days.
+Update the model name string in `updateAiReport` to match whichever model is used via the proxy.
+
+### Why this fixes it
+
+The Lovable AI proxy has better timeout handling and connection management than a direct Anthropic API call from an edge function. It also means one fewer external API key to manage.
 
