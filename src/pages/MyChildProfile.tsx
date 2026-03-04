@@ -462,7 +462,7 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
       const profileText = buildProfileText(state);
 
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 120_000);
+      const timeoutId = setTimeout(() => controller.abort(), 180_000);
 
       const { data, error: fnError } = await supabase.functions.invoke(
         "generate-profile-report",
@@ -480,7 +480,7 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
 
       updateAiReport({
         generatedAt: new Date().toISOString(),
-        model: "openai/gpt-5",
+        model: "google/gemini-3-flash-preview",
         report: data.report,
         structured,
       });
