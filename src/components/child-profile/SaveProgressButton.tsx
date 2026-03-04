@@ -9,14 +9,11 @@ interface SaveProgressButtonProps {
 }
 
 export function SaveProgressButton({ activeSection }: SaveProgressButtonProps) {
-  const { state } = useChildProfile();
+  const { state, accessCode, setAccessCode, markClean } = useChildProfile();
   const [saving, setSaving] = useState(false);
-  const [accessCode, setAccessCode] = useState<string | null>(null);
+  const [showCode, setShowCode] = useState(false);
   const [error, setError] = useState("");
   const [copied, setCopied] = useState(false);
-
-  // Store the code for re-saves
-  const [storedCode, setStoredCode] = useState<string | null>(null);
 
   const handleSave = async () => {
     setSaving(true);
@@ -25,10 +22,11 @@ export function SaveProgressButton({ activeSection }: SaveProgressButtonProps) {
       const { data, error: fnError } = await supabase.functions.invoke("save-profile", {
         body: {
           action: "save",
-          access_code: storedCode,
+          access_code: accessCode,
           profile_data: state,
           stage: "builder",
           active_section: activeSection,
+          report_mode: state.reportMode,
         },
       });
       if (fnError) throw fnError;
@@ -36,8 +34,11 @@ export function SaveProgressButton({ activeSection }: SaveProgressButtonProps) {
         setError(data.error);
         return;
       }
-      setAccessCode(data.access_code);
-      setStoredCode(data.access_code);
+      if (data?.access_code) {
+        setAccessCode(data.access_code);
+        setShowCode(true);
+      }
+      markClean();
     } catch {
       setError("Could not save. Please try again.");
     } finally {
@@ -52,7 +53,7 @@ export function SaveProgressButton({ activeSection }: SaveProgressButtonProps) {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  if (accessCode) {
+  if (accessCode && showCode) {
     return (
       <div className="bg-muted/40 border border-border rounded-lg p-4 space-y-3">
         <div className="flex items-center gap-2 text-sm font-medium text-foreground">

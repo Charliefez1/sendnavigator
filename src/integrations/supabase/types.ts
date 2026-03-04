@@ -286,9 +286,11 @@ export type Database = {
           created_at: string
           expires_at: string
           id: string
+          last_active_at: string
           profile_data: Json
           report_mode: string
           stage: string
+          user_id: string | null
         }
         Insert: {
           access_code: string
@@ -298,9 +300,11 @@ export type Database = {
           created_at?: string
           expires_at?: string
           id?: string
+          last_active_at?: string
           profile_data: Json
           report_mode?: string
           stage?: string
+          user_id?: string | null
         }
         Update: {
           access_code?: string
@@ -310,9 +314,11 @@ export type Database = {
           created_at?: string
           expires_at?: string
           id?: string
+          last_active_at?: string
           profile_data?: Json
           report_mode?: string
           stage?: string
+          user_id?: string | null
         }
         Relationships: []
       }

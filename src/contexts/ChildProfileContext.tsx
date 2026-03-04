@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
 import { StructuredAIReport } from "@/types/ai-report";
 import type { ReportMode } from "@/config/mini-profile-sections";
 
@@ -37,9 +37,7 @@ export interface SetupData {
 }
 
 export interface SectionData {
-  /** Answers keyed by question id */
   answers: Record<string, string | string[]>;
-  /** The closing reflection */
   reflection: string;
 }
 
@@ -60,6 +58,9 @@ export interface ChildProfileState {
 
 interface ChildProfileContextType {
   state: ChildProfileState;
+  accessCode: string | null;
+  setAccessCode: (code: string | null) => void;
+  isDirty: boolean;
   updateSetup: (data: Partial<SetupData>) => void;
   updateSectionAnswer: (sectionIndex: number, questionId: string, value: string | string[]) => void;
   updateSectionReflection: (sectionIndex: number, value: string) => void;
@@ -70,7 +71,10 @@ interface ChildProfileContextType {
   setReportMode: (mode: ReportMode) => void;
   loadState: (data: ChildProfileState) => void;
   reset: () => void;
+  markClean: () => void;
 }
+
+const LOCAL_STORAGE_KEY = "my-child-profile-draft";
 
 const defaultSetup: SetupData = {
   childName: "",
@@ -86,13 +90,69 @@ const defaultState: ChildProfileState = {
   reportMode: "full",
 };
 
+function loadFromLocalStorage(): ChildProfileState | null {
+  try {
+    const raw = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (parsed && parsed.setup) return parsed;
+  } catch {
+    // Corrupted data, ignore
+  }
+  return null;
+}
+
+function saveToLocalStorage(state: ChildProfileState) {
+  try {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
+  } catch {
+    // Storage full or unavailable, ignore
+  }
+}
+
+function clearLocalStorage() {
+  try {
+    localStorage.removeItem(LOCAL_STORAGE_KEY);
+  } catch {
+    // Ignore
+  }
+}
+
 const ChildProfileContext = createContext<ChildProfileContextType | null>(null);
 
 export function ChildProfileProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<ChildProfileState>({ ...defaultState });
+  const [state, setState] = useState<ChildProfileState>(() => {
+    return loadFromLocalStorage() || { ...defaultState };
+  });
+  const [accessCode, setAccessCode] = useState<string | null>(null);
+  const [isDirty, setIsDirty] = useState(false);
+
+  // Auto-save to localStorage on state change (debounced)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      saveToLocalStorage(state);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [state]);
+
+  // Warn on page close if dirty
+  useEffect(() => {
+    const handler = (e: BeforeUnloadEvent) => {
+      if (isDirty) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [isDirty]);
+
+  const markDirty = useCallback(() => setIsDirty(true), []);
+  const markClean = useCallback(() => setIsDirty(false), []);
 
   const updateSetup = (data: Partial<SetupData>) => {
     setState((prev) => ({ ...prev, setup: { ...prev.setup, ...data } }));
+    markDirty();
   };
 
   const updateSectionAnswer = (sectionIndex: number, questionId: string, value: string | string[]) => {
@@ -109,6 +169,7 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
         },
       };
     });
+    markDirty();
   };
 
   const updateSectionReflection = (sectionIndex: number, value: string) => {
@@ -122,10 +183,12 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
         },
       };
     });
+    markDirty();
   };
 
   const updateFinalStatement = (value: string) => {
     setState((prev) => ({ ...prev, finalStatement: value }));
+    markDirty();
   };
 
   const getSectionStatus = (sectionIndex: number): SectionStatus => {
@@ -155,13 +218,38 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
     setState((prev) => ({ ...prev, reportMode: mode }));
   };
 
-  const loadState = (data: ChildProfileState) => setState({ ...defaultState, ...data, reportMode: data.reportMode || "full" });
+  const loadState = (data: ChildProfileState) => {
+    const newState = { ...defaultState, ...data, reportMode: data.reportMode || "full" };
+    setState(newState);
+    setIsDirty(false);
+  };
 
-  const reset = () => setState({ ...defaultState, setup: { ...defaultSetup } });
+  const reset = () => {
+    setState({ ...defaultState, setup: { ...defaultSetup } });
+    setAccessCode(null);
+    setIsDirty(false);
+    clearLocalStorage();
+  };
 
   return (
     <ChildProfileContext.Provider
-      value={{ state, updateSetup, updateSectionAnswer, updateSectionReflection, updateFinalStatement, getSectionStatus, updateAiReport, clearAiReport, setReportMode, loadState, reset }}
+      value={{
+        state,
+        accessCode,
+        setAccessCode,
+        isDirty,
+        updateSetup,
+        updateSectionAnswer,
+        updateSectionReflection,
+        updateFinalStatement,
+        getSectionStatus,
+        updateAiReport,
+        clearAiReport,
+        setReportMode,
+        loadState,
+        reset,
+        markClean,
+      }}
     >
       {children}
     </ChildProfileContext.Provider>
