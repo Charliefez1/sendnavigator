@@ -1,43 +1,40 @@
 
 
-## Problem diagnosis
+## What needs doing
 
-The "everything is Very high" issue is entirely caused by the **test data**, not the scoring engine. The `TEST_DATA` constant in `MyChildProfile.tsx` (lines 28-336) fills all 22 sections with the most extreme answer options for every structured question:
+Two things:
 
-- `transitions`: "Almost always difficult" (weight 3)
-- `recovery_time`: "Several hours" (weight 3)
-- `school_home_difference`: "Yes, significantly different" (weight 3)
-- `post_school_exhaustion`: "Yes, they need significant time to recover" (weight 3)
-- `knowing_doing_gap`: "Yes, frequently" (weight 3)
-- Every other structured question is also set to the highest severity option
+1. **Add hover-over explainer tooltips across the Report Dashboard** — each card and the Section Insights heading needs a small info icon that, on hover (desktop) or tap (mobile), shows a short plain-English explanation of what the section is and what the parent should do with it.
 
-On top of that, every free-text field is filled with detailed, lengthy content that generates additional weight-1 signals, and every section has a reflection, adding yet more signals per domain.
+2. **Clarify the "Regenerate" behaviour** — currently, "Regenerate" on a section insight calls the AI again with the *current section answers* and produces a fresh reflection. The parent then gets a side-by-side comparison and can accept or reject the new version. This means a parent could regenerate repeatedly until they get wording they prefer. This is the intended design (the data does not change, only the AI's phrasing). But nowhere in the UI does it explain this. We need to make it obvious.
 
-The scoring engine is working correctly. It caps intensity signals at the top 6 by weight, normalises against max possible weight, and applies gating rules. But when every input is maximum severity, the output will naturally be maximum too.
+## Design: reusable InfoTip component
 
-The separate `dev-test-profile.ts` (loaded via the dashboard dev button) is better calibrated with moderate answers but only covers 8 sections.
+Create a small `InfoTip` component wrapping `@radix-ui/react-tooltip` (already installed, pattern exists in `ContentBox.tsx`). It renders an `Info` icon (12-14px) that shows a tooltip on hover/focus. This keeps it consistent and avoids duplicating tooltip boilerplate everywhere.
 
-The internal error (36d...) is an editor/chat platform issue, not a code bug.
+```text
+[Icon] Card title  [ⓘ ← hover shows tooltip]
+```
 
-## Plan
+## Explainer text for each card/section
 
-### 1. Rewrite TEST_DATA with realistic varied severity
+| Element | Tooltip text |
+|---------|-------------|
+| **At a glance** | "A short summary of the key themes from your child's profile. This is the overview that appears at the top of the PDF." |
+| **Ways of working** | "Practical strategies for the adults around your child. Written based on what you told us across all sections." |
+| **Some things that may help** | "Suggested approaches and adjustments. These are not prescriptions. Use what feels right for your child." |
+| **Conclusion** | "A closing reflection drawing together what the profile tells us about your child as a whole person." |
+| **Section insights (N)** | "Each section you completed has its own AI-written reflection. You can review them one by one. Accept the ones that feel right, exclude any that do not, or regenerate for a fresh version. Regenerating re-reads your answers and writes a new reflection. Your answers stay the same. Only the wording changes." |
+| **Regenerate** button (inside each card) | "Ask the AI to write a fresh reflection for this section using your current answers. You will see both versions side by side and can choose which to keep." |
+| **Accept** button | "Include this reflection in your final report." |
+| **Exclude** button | "Remove this reflection from your final report." |
+| **Edit section** button | "Go back to this section to change your answers. You can regenerate the report afterwards." |
 
-Replace the `TEST_DATA` in `MyChildProfile.tsx` with a profile that has:
+## Files to change
 
-- **2-3 domains genuinely high** (Nervous System, Masking) — keep extreme answers here
-- **2-3 domains moderate** (Environment, Sensory, Behaviour) — use mid-range structured options like "Sometimes difficult", "Sometimes"
-- **2-3 domains low or light** (Communication, Strengths) — use mild options or leave some questions unanswered
-- **1-2 domains with insufficient data** (Energy and Recovery stays sparse) — leave most questions blank so it shows "Unknown"
-- **Some sections left completely empty** (e.g., Trauma section 4, Physical Health section 16) to test the "no data" path
+1. **New file: `src/components/child-profile/InfoTip.tsx`** — small reusable tooltip wrapper using the existing Tooltip primitives and the `Info` icon from lucide.
 
-This means changing the structured answer values (e.g., `"Almost always difficult"` → `"Sometimes difficult"`) and removing some free-text answers entirely from lower-severity domains.
+2. **`src/components/child-profile/ReportDashboard.tsx`** — import `InfoTip`, add it next to each `CardTitle` and the "Section insights" heading. Add tooltips to the action buttons inside `SectionInsightCard`.
 
-### 2. Update dev-test-profile.ts to match
-
-Align the mini dev test profile with the same philosophy — varied, not uniformly high.
-
-### 3. No scoring engine changes needed
-
-The engine is functioning as designed. The issue is purely input data.
+No database changes. No edge function changes. No scoring engine changes.
 
