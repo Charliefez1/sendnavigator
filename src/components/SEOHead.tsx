@@ -12,7 +12,7 @@ interface SEOHeadProps {
 }
 
 const SITE_NAME = "SEND Navigator";
-const BASE_URL = "https://sendnavigator.lovable.app";
+const BASE_URL = "https://send.neurodiversityglobal.com";
 const OG_IMAGE = `${BASE_URL}/og-image.png`;
 
 export function SEOHead({

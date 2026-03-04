@@ -5,25 +5,25 @@
 
   <!-- Home & Entry Points -->
   <url>
-    <loc>https://sendnavigator.lovable.app/</loc>
-    <lastmod>2026-02-27</lastmod>
+    <loc>https://send.neurodiversityglobal.com/</loc>
+    <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/start</loc>
+    <loc>https://send.neurodiversityglobal.com/start</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/landing</loc>
+    <loc>https://send.neurodiversityglobal.com/landing</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/quick-read</loc>
+    <loc>https://send.neurodiversityglobal.com/quick-read</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -31,55 +31,55 @@
 
   <!-- State of SEND 2026 Report -->
   <url>
-    <loc>https://sendnavigator.lovable.app/state-of-send-2026</loc>
+    <loc>https://send.neurodiversityglobal.com/state-of-send-2026</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/state-of-send-2026/where-we-are-now</loc>
+    <loc>https://send.neurodiversityglobal.com/state-of-send-2026/where-we-are-now</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/state-of-send-2026/what-is-changing</loc>
+    <loc>https://send.neurodiversityglobal.com/state-of-send-2026/what-is-changing</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/state-of-send-2026/what-has-not-changed</loc>
+    <loc>https://send.neurodiversityglobal.com/state-of-send-2026/what-has-not-changed</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/state-of-send-2026/what-is-being-discussed</loc>
+    <loc>https://send.neurodiversityglobal.com/state-of-send-2026/what-is-being-discussed</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/state-of-send-2026/what-we-do-not-know</loc>
+    <loc>https://send.neurodiversityglobal.com/state-of-send-2026/what-we-do-not-know</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/state-of-send-2026/what-the-leaks-are-saying</loc>
+    <loc>https://send.neurodiversityglobal.com/state-of-send-2026/what-the-leaks-are-saying</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/state-of-send-2026/what-the-leaks-do-not-mean</loc>
+    <loc>https://send.neurodiversityglobal.com/state-of-send-2026/what-the-leaks-do-not-mean</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/state-of-send-2026/timeline</loc>
+    <loc>https://send.neurodiversityglobal.com/state-of-send-2026/timeline</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -87,43 +87,43 @@
 
   <!-- Core Guides -->
   <url>
-    <loc>https://sendnavigator.lovable.app/ehcps</loc>
+    <loc>https://send.neurodiversityglobal.com/ehcps</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/ehcp-health</loc>
+    <loc>https://send.neurodiversityglobal.com/ehcp-health</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/what-to-do-right-now</loc>
+    <loc>https://send.neurodiversityglobal.com/what-to-do-right-now</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/exclusions</loc>
+    <loc>https://send.neurodiversityglobal.com/exclusions</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/alternative-provision</loc>
+    <loc>https://send.neurodiversityglobal.com/alternative-provision</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/post-16-and-transition</loc>
+    <loc>https://send.neurodiversityglobal.com/post-16-and-transition</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/my-child-profile</loc>
+    <loc>https://send.neurodiversityglobal.com/my-child-profile</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -131,19 +131,19 @@
 
   <!-- Understanding Your Child -->
   <url>
-    <loc>https://sendnavigator.lovable.app/understanding-your-child</loc>
+    <loc>https://send.neurodiversityglobal.com/understanding-your-child</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/understanding-your-child/autism</loc>
+    <loc>https://send.neurodiversityglobal.com/understanding-your-child/autism</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/understanding-your-child/adhd</loc>
+    <loc>https://send.neurodiversityglobal.com/understanding-your-child/adhd</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -151,25 +151,25 @@
 
   <!-- Community & Interaction -->
   <url>
-    <loc>https://sendnavigator.lovable.app/questions-and-answers</loc>
+    <loc>https://send.neurodiversityglobal.com/questions-and-answers</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/community-questions</loc>
+    <loc>https://send.neurodiversityglobal.com/community-questions</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/have-your-say</loc>
+    <loc>https://send.neurodiversityglobal.com/have-your-say</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/richs-take</loc>
+    <loc>https://send.neurodiversityglobal.com/richs-take</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
@@ -177,31 +177,31 @@
 
   <!-- Support & Resources -->
   <url>
-    <loc>https://sendnavigator.lovable.app/for-parents</loc>
+    <loc>https://send.neurodiversityglobal.com/for-parents</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/sendiass</loc>
+    <loc>https://send.neurodiversityglobal.com/sendiass</loc>
     <lastmod>2026-02-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/local-variation</loc>
+    <loc>https://send.neurodiversityglobal.com/local-variation</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/devolved-nations</loc>
+    <loc>https://send.neurodiversityglobal.com/devolved-nations</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/what-we-owe-our-children</loc>
+    <loc>https://send.neurodiversityglobal.com/what-we-owe-our-children</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -209,13 +209,13 @@
 
   <!-- Data & Evidence -->
   <url>
-    <loc>https://sendnavigator.lovable.app/sources</loc>
+    <loc>https://send.neurodiversityglobal.com/sources</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.65</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/statistics-and-data</loc>
+    <loc>https://send.neurodiversityglobal.com/statistics-and-data</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -223,43 +223,43 @@
 
   <!-- About & Meta -->
   <url>
-    <loc>https://sendnavigator.lovable.app/about</loc>
+    <loc>https://send.neurodiversityglobal.com/about</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/how-to-use</loc>
+    <loc>https://send.neurodiversityglobal.com/how-to-use</loc>
     <lastmod>2026-02-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/why-i-built-this</loc>
+    <loc>https://send.neurodiversityglobal.com/why-i-built-this</loc>
     <lastmod>2026-02-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/rich-ferriman</loc>
+    <loc>https://send.neurodiversityglobal.com/rich-ferriman</loc>
     <lastmod>2026-02-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/neurodiversity-global</loc>
+    <loc>https://send.neurodiversityglobal.com/neurodiversity-global</loc>
     <lastmod>2026-02-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/feedback</loc>
+    <loc>https://send.neurodiversityglobal.com/feedback</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://sendnavigator.lovable.app/privacy-policy</loc>
+    <loc>https://send.neurodiversityglobal.com/privacy-policy</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>

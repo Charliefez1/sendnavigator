@@ -131,7 +131,7 @@ function buildEmail(childName: string, report: string, structured?: StructuredRe
       <p style="margin:0 0 12px 0;line-height:1.6;color:#333;">Neurodiversity Global is an independent platform built by Rich Ferriman — a parent of neurodivergent children and founder of the SEND Navigator.</p>
       <p style="margin:0 0 12px 0;line-height:1.6;color:#333;">We believe every neurodivergent child deserves to be understood on their own terms. Our tools are designed to give families a voice — not through jargon or tick-boxes, but through genuine understanding of who their child is.</p>
       <p style="margin:0 0 12px 0;line-height:1.6;color:#333;">
-        <a href="https://sendnavigator.lovable.app" style="color:#d4a843;text-decoration:underline;">Visit SEND Navigator</a> &nbsp;|&nbsp;
+        <a href="https://send.neurodiversityglobal.com" style="color:#d4a843;text-decoration:underline;">Visit SEND Navigator</a> &nbsp;|&nbsp;
         <a href="https://neurodiversityglobal.com" style="color:#d4a843;text-decoration:underline;">Neurodiversity Global</a>
       </p>
     </td></tr>
