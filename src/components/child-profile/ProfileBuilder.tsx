@@ -5,24 +5,36 @@ import { ProfileSidebar } from "./ProfileSidebar";
 import { SectionTemplate } from "./SectionTemplate";
 import { SaveProgressButton } from "./SaveProgressButton";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight, Home, Menu, X, AlertCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, Home, Menu, X, AlertCircle, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ProfileBuilderProps {
   initialSection?: number;
+  activeSections?: number[];
   onViewDashboard?: () => void;
   onShowFinal?: () => void;
+  onUpgradeToFull?: () => void;
 }
 
-export function ProfileBuilder({ initialSection = 0, onViewDashboard, onShowFinal }: ProfileBuilderProps) {
+export function ProfileBuilder({ initialSection = 0, activeSections, onViewDashboard, onShowFinal, onUpgradeToFull }: ProfileBuilderProps) {
   const { state } = useChildProfile();
-  const [activeSection, setActiveSection] = useState(initialSection);
+
+  // Use activeSections if provided, otherwise all sections
+  const sections = activeSections ?? SECTION_TITLES.map((_, i) => i);
+  const isMiniMode = state.reportMode === "mini";
+
+  // Map initialSection to position within the active set
+  const initialPos = Math.max(0, sections.indexOf(initialSection) !== -1 ? sections.indexOf(initialSection) : 0);
+  const [activePos, setActivePos] = useState(initialPos);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [editedSinceReport, setEditedSinceReport] = useState(false);
 
+  // The actual section index from SECTION_TITLES
+  const activeSection = sections[activePos] ?? 0;
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
-  }, [activeSection]);
+  }, [activePos]);
 
   // Track edits after report generation
   useEffect(() => {
@@ -32,7 +44,7 @@ export function ProfileBuilder({ initialSection = 0, onViewDashboard, onShowFina
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.sections, state.finalStatement]);
 
-  const isLast = activeSection === SECTION_TITLES.length - 1;
+  const isLast = activePos === sections.length - 1;
 
   return (
     <div className="flex min-h-[calc(100vh-4rem)]">
@@ -64,9 +76,13 @@ export function ProfileBuilder({ initialSection = 0, onViewDashboard, onShowFina
         </p>
         <ProfileSidebar
           activeSection={activeSection}
-          onSelectSection={(i) => {
-            setActiveSection(i);
-            setSidebarOpen(false);
+          activeSections={sections}
+          onSelectSection={(sectionIndex) => {
+            const pos = sections.indexOf(sectionIndex);
+            if (pos !== -1) {
+              setActivePos(pos);
+              setSidebarOpen(false);
+            }
           }}
           onViewDashboard={onViewDashboard ? () => {
             onViewDashboard();
@@ -118,6 +134,20 @@ export function ProfileBuilder({ initialSection = 0, onViewDashboard, onShowFina
             </p>
           </div>
         )}
+        {/* Upgrade to full banner for mini mode */}
+        {isMiniMode && onUpgradeToFull && (
+          <div className="rounded-lg border border-primary/30 bg-primary/5 p-3 mb-4 flex items-start gap-2">
+            <ArrowUpRight className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+            <div className="flex-1">
+              <p className="text-xs text-foreground">
+                You are using the mini profile ({sections.length} sections). Want the full picture?
+              </p>
+              <Button variant="link" size="sm" className="h-auto p-0 text-xs text-primary" onClick={onUpgradeToFull}>
+                Upgrade to full profile ({SECTION_TITLES.length} sections)
+              </Button>
+            </div>
+          </div>
+        )}
         <SectionTemplate sectionIndex={activeSection} />
 
         {/* Navigation buttons */}
@@ -125,8 +155,8 @@ export function ProfileBuilder({ initialSection = 0, onViewDashboard, onShowFina
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setActiveSection(Math.max(0, activeSection - 1))}
-            disabled={activeSection === 0}
+            onClick={() => setActivePos(Math.max(0, activePos - 1))}
+            disabled={activePos === 0}
             className="gap-1.5"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
@@ -141,7 +171,7 @@ export function ProfileBuilder({ initialSection = 0, onViewDashboard, onShowFina
           ) : (
             <Button
               size="sm"
-              onClick={() => setActiveSection(activeSection + 1)}
+              onClick={() => setActivePos(activePos + 1)}
               className="gap-1.5"
             >
               Next section

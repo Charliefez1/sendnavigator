@@ -281,28 +281,37 @@ export type Database = {
         Row: {
           access_code: string
           active_section: number
+          ai_report: Json | null
+          consent_given_at: string | null
           created_at: string
           expires_at: string
           id: string
           profile_data: Json
+          report_mode: string
           stage: string
         }
         Insert: {
           access_code: string
           active_section?: number
+          ai_report?: Json | null
+          consent_given_at?: string | null
           created_at?: string
           expires_at?: string
           id?: string
           profile_data: Json
+          report_mode?: string
           stage?: string
         }
         Update: {
           access_code?: string
           active_section?: number
+          ai_report?: Json | null
+          consent_given_at?: string | null
           created_at?: string
           expires_at?: string
           id?: string
           profile_data?: Json
+          report_mode?: string
           stage?: string
         }
         Relationships: []
