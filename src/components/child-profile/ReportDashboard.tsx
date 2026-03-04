@@ -23,6 +23,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import { InfoTip } from "./InfoTip";
 
 interface ReportDashboardProps {
   onDownloadPDF: () => void;
@@ -101,6 +102,7 @@ export function ReportDashboard({
             <CardTitle className="flex items-center gap-2 text-sm font-medium">
               <Eye className="w-4 h-4 text-primary" />
               At a glance
+              <InfoTip content="A short summary of the key themes from your child's profile. This is the overview that appears at the top of the PDF." />
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -129,6 +131,7 @@ export function ReportDashboard({
             <CardTitle className="flex items-center gap-2 text-sm font-medium">
               <MessageSquare className="w-4 h-4 text-blue-500" />
               Ways of working
+              <InfoTip content="Practical strategies for the adults around your child. Written based on what you told us across all sections." />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -146,6 +149,7 @@ export function ReportDashboard({
             <CardTitle className="flex items-center gap-2 text-sm font-medium">
               <Lightbulb className="w-4 h-4 text-amber-500" />
               Some things that may help
+              <InfoTip content="Suggested approaches and adjustments. These are not prescriptions. Use what feels right for your child." />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -163,6 +167,7 @@ export function ReportDashboard({
             <CardTitle className="flex items-center gap-2 text-sm font-medium">
               <FileText className="w-4 h-4 text-green-600" />
               Conclusion
+              <InfoTip content="A closing reflection drawing together what the profile tells us about your child as a whole person." />
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -178,8 +183,9 @@ export function ReportDashboard({
       {/* Section-by-section insights */}
       {structured.sectionInsights.length > 0 && (
         <div className="space-y-3">
-          <h3 className="text-sm font-semibold text-foreground">
+          <h3 className="text-sm font-semibold text-foreground flex items-center gap-2">
             Section insights ({structured.sectionInsights.length})
+            <InfoTip content="Each section you completed has its own AI-written reflection. You can review them one by one. Accept the ones that feel right, exclude any that do not, or regenerate for a fresh version. Regenerating re-reads your answers and writes a new reflection. Your answers stay the same. Only the wording changes." />
           </h3>
           <div className="space-y-3">
             {structured.sectionInsights.map((insight) => (
@@ -267,24 +273,36 @@ function SectionInsightCard({
             </div>
             <div className="flex flex-wrap gap-2 pt-1">
               {status !== "accepted" && (
-                <Button variant="outline" size="sm" className="h-7 text-[11px] gap-1" onClick={onAccept}>
-                  <Check className="w-3 h-3" /> Accept
-                </Button>
+                <span className="inline-flex items-center gap-1">
+                  <Button variant="outline" size="sm" className="h-7 text-[11px] gap-1" onClick={onAccept}>
+                    <Check className="w-3 h-3" /> Accept
+                  </Button>
+                  <InfoTip content="Include this reflection in your final report." side="bottom" />
+                </span>
               )}
               {status !== "rejected" && (
-                <Button variant="outline" size="sm" className="h-7 text-[11px] gap-1" onClick={onReject}>
-                  <X className="w-3 h-3" /> Exclude
-                </Button>
+                <span className="inline-flex items-center gap-1">
+                  <Button variant="outline" size="sm" className="h-7 text-[11px] gap-1" onClick={onReject}>
+                    <X className="w-3 h-3" /> Exclude
+                  </Button>
+                  <InfoTip content="Remove this reflection from your final report." side="bottom" />
+                </span>
               )}
               {onEdit && (
-                <Button variant="ghost" size="sm" className="h-7 text-[11px] gap-1" onClick={onEdit}>
-                  <Pencil className="w-3 h-3" /> Edit section
-                </Button>
+                <span className="inline-flex items-center gap-1">
+                  <Button variant="ghost" size="sm" className="h-7 text-[11px] gap-1" onClick={onEdit}>
+                    <Pencil className="w-3 h-3" /> Edit section
+                  </Button>
+                  <InfoTip content="Go back to this section to change your answers. You can regenerate the report afterwards." side="bottom" />
+                </span>
               )}
               {onRegenerate && (
-                <Button variant="ghost" size="sm" className="h-7 text-[11px] gap-1" onClick={onRegenerate}>
-                  <RefreshCw className="w-3 h-3" /> Regenerate
-                </Button>
+                <span className="inline-flex items-center gap-1">
+                  <Button variant="ghost" size="sm" className="h-7 text-[11px] gap-1" onClick={onRegenerate}>
+                    <RefreshCw className="w-3 h-3" /> Regenerate
+                  </Button>
+                  <InfoTip content="Ask the AI to write a fresh reflection for this section using your current answers. You will see both versions side by side and can choose which to keep." side="bottom" />
+                </span>
               )}
             </div>
           </CardContent>
