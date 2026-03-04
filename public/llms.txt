@@ -19,18 +19,18 @@ This site covers:
 
 ## Key Pages
 
-- [Home](https://sendnavigator.lovable.app/): Main entry point
-- [State of SEND 2026](https://sendnavigator.lovable.app/state-of-send-2026): Full report on SEND reform
-- [EHCP Guide](https://sendnavigator.lovable.app/ehcps): Comprehensive guide to Education Health Care Plans
-- [What To Do Right Now](https://sendnavigator.lovable.app/what-to-do-right-now): Practical steps for parents
-- [Ask Rich](https://sendnavigator.lovable.app/questions-and-answers): AI-powered Q&A grounded in SEND knowledge
-- [Understanding Autism](https://sendnavigator.lovable.app/understanding-your-child/autism): Parent-friendly autism guide
-- [Understanding ADHD](https://sendnavigator.lovable.app/understanding-your-child/adhd): Parent-friendly ADHD guide
-- [Exclusions](https://sendnavigator.lovable.app/exclusions): Rights around school exclusions
-- [Post-16 Transition](https://sendnavigator.lovable.app/post-16-and-transition): Moving beyond school age
-- [SENDIASS](https://sendnavigator.lovable.app/sendiass): Free impartial advice for families
-- [Sources](https://sendnavigator.lovable.app/sources): Evidence base and references
-- [Statistics](https://sendnavigator.lovable.app/statistics-and-data): SEND data and analysis
+- [Home](https://send.neurodiversityglobal.com/): Main entry point
+- [State of SEND 2026](https://send.neurodiversityglobal.com/state-of-send-2026): Full report on SEND reform
+- [EHCP Guide](https://send.neurodiversityglobal.com/ehcps): Comprehensive guide to Education Health Care Plans
+- [What To Do Right Now](https://send.neurodiversityglobal.com/what-to-do-right-now): Practical steps for parents
+- [Ask Rich](https://send.neurodiversityglobal.com/questions-and-answers): AI-powered Q&A grounded in SEND knowledge
+- [Understanding Autism](https://send.neurodiversityglobal.com/understanding-your-child/autism): Parent-friendly autism guide
+- [Understanding ADHD](https://send.neurodiversityglobal.com/understanding-your-child/adhd): Parent-friendly ADHD guide
+- [Exclusions](https://send.neurodiversityglobal.com/exclusions): Rights around school exclusions
+- [Post-16 Transition](https://send.neurodiversityglobal.com/post-16-and-transition): Moving beyond school age
+- [SENDIASS](https://send.neurodiversityglobal.com/sendiass): Free impartial advice for families
+- [Sources](https://send.neurodiversityglobal.com/sources): Evidence base and references
+- [Statistics](https://send.neurodiversityglobal.com/statistics-and-data): SEND data and analysis
 
 ## Important Context
 

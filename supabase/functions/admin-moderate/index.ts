@@ -1,7 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 // ─── CORS: allow production + Lovable preview domains ───
-const PRIMARY_ORIGIN = "https://sendnavigator.lovable.app";
+const PRIMARY_ORIGIN = "https://send.neurodiversityglobal.com";
 const ALLOWED_EXACT_ORIGINS = new Set([
   PRIMARY_ORIGIN,
 ]);

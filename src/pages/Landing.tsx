@@ -63,7 +63,7 @@ const Landing = () => {
           "@type": "EducationalOrganization",
           "name": "Neurodiversity Global SEND Navigator",
           "description": "Independent SEND reform guide for parents in England",
-          "url": "https://sendnavigator.lovable.app",
+          "url": "https://send.neurodiversityglobal.com",
           "founder": { "@type": "Person", "name": "Rich Ferriman" },
           "areaServed": { "@type": "Country", "name": "United Kingdom" },
           "audience": { "@type": "EducationalAudience", "educationalRole": "parent" },

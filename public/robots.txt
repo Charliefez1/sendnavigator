@@ -81,4 +81,4 @@ Allow: /
 Disallow: /admin
 Disallow: /reset-password
 
-Sitemap: https://sendnavigator.lovable.app/sitemap.xml
+Sitemap: https://send.neurodiversityglobal.com/sitemap.xml
