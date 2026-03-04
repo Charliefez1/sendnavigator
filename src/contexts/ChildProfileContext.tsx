@@ -1,6 +1,7 @@
-import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useCallback, useMemo, ReactNode } from "react";
 import { StructuredAIReport } from "@/types/ai-report";
 import type { ReportMode } from "@/config/mini-profile-sections";
+import { computeDerivedProfile, needsRecompute, DerivedProfileData } from "@/lib/scoring-engine";
 
 export const SECTION_TITLES = [
   "Environment",
@@ -54,10 +55,13 @@ export interface ChildProfileState {
   finalStatement: string;
   aiReport?: CachedAIReport;
   reportMode: ReportMode;
+  derived?: DerivedProfileData;
 }
 
 interface ChildProfileContextType {
   state: ChildProfileState;
+  derived: DerivedProfileData;
+  derivedNeedsSave: boolean;
   accessCode: string | null;
   setAccessCode: (code: string | null) => void;
   isDirty: boolean;
@@ -72,6 +76,7 @@ interface ChildProfileContextType {
   loadState: (data: ChildProfileState) => void;
   reset: () => void;
   markClean: () => void;
+  markDerivedSaved: () => void;
 }
 
 const LOCAL_STORAGE_KEY = "my-child-profile-draft";
@@ -126,14 +131,31 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
   });
   const [accessCode, setAccessCode] = useState<string | null>(null);
   const [isDirty, setIsDirty] = useState(false);
+  const [derivedNeedsSave, setDerivedNeedsSave] = useState(false);
+
+  // Compute derived scores — use saved if version matches, else recompute
+  const derived = useMemo(() => {
+    if (state.derived && !needsRecompute(state.derived)) {
+      return state.derived;
+    }
+    const freshDerived = computeDerivedProfile(state);
+    return freshDerived;
+  }, [state]);
+
+  // When derived is recomputed (version mismatch or missing from loaded data), mark as needing save
+  useEffect(() => {
+    if (!state.derived || needsRecompute(state.derived)) {
+      setDerivedNeedsSave(true);
+    }
+  }, [state.derived]);
 
   // Auto-save to localStorage on state change (debounced)
   useEffect(() => {
     const timer = setTimeout(() => {
-      saveToLocalStorage(state);
+      saveToLocalStorage({ ...state, derived });
     }, 500);
     return () => clearTimeout(timer);
-  }, [state]);
+  }, [state, derived]);
 
   // Warn on page close if dirty
   useEffect(() => {
@@ -149,6 +171,13 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
 
   const markDirty = useCallback(() => setIsDirty(true), []);
   const markClean = useCallback(() => setIsDirty(false), []);
+  const markDerivedSaved = useCallback(() => setDerivedNeedsSave(false), []);
+
+  const recomputeAndSet = useCallback((newState: ChildProfileState) => {
+    const freshDerived = computeDerivedProfile(newState);
+    setState({ ...newState, derived: freshDerived });
+    setDerivedNeedsSave(true);
+  }, []);
 
   const updateSetup = (data: Partial<SetupData>) => {
     setState((prev) => ({ ...prev, setup: { ...prev.setup, ...data } }));
@@ -158,7 +187,7 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
   const updateSectionAnswer = (sectionIndex: number, questionId: string, value: string | string[]) => {
     setState((prev) => {
       const existing = prev.sections[sectionIndex] || { answers: {}, reflection: "" };
-      return {
+      const newState = {
         ...prev,
         sections: {
           ...prev.sections,
@@ -168,22 +197,29 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
           },
         },
       };
+      // Recompute derived on answer change
+      const freshDerived = computeDerivedProfile(newState);
+      return { ...newState, derived: freshDerived };
     });
     markDirty();
+    setDerivedNeedsSave(true);
   };
 
   const updateSectionReflection = (sectionIndex: number, value: string) => {
     setState((prev) => {
       const existing = prev.sections[sectionIndex] || { answers: {}, reflection: "" };
-      return {
+      const newState = {
         ...prev,
         sections: {
           ...prev.sections,
           [sectionIndex]: { ...existing, reflection: value },
         },
       };
+      const freshDerived = computeDerivedProfile(newState);
+      return { ...newState, derived: freshDerived };
     });
     markDirty();
+    setDerivedNeedsSave(true);
   };
 
   const updateFinalStatement = (value: string) => {
@@ -220,7 +256,14 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
 
   const loadState = (data: ChildProfileState) => {
     const newState = { ...defaultState, ...data, reportMode: data.reportMode || "full" };
-    setState(newState);
+    // Check if loaded derived data is valid; if not, recompute
+    if (needsRecompute(newState.derived)) {
+      const freshDerived = computeDerivedProfile(newState);
+      setState({ ...newState, derived: freshDerived });
+      setDerivedNeedsSave(true);
+    } else {
+      setState(newState);
+    }
     setIsDirty(false);
   };
 
@@ -228,6 +271,7 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
     setState({ ...defaultState, setup: { ...defaultSetup } });
     setAccessCode(null);
     setIsDirty(false);
+    setDerivedNeedsSave(false);
     clearLocalStorage();
   };
 
@@ -235,6 +279,8 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
     <ChildProfileContext.Provider
       value={{
         state,
+        derived,
+        derivedNeedsSave,
         accessCode,
         setAccessCode,
         isDirty,
@@ -249,6 +295,7 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
         loadState,
         reset,
         markClean,
+        markDerivedSaved,
       }}
     >
       {children}

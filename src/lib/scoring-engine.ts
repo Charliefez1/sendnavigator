@@ -17,11 +17,23 @@ import {
   DomainKey,
   SCORE_SCALE_MAX,
   INTENSITY_LABELS,
+  SCORING_VERSION,
+  ContextCategory,
 } from "@/config/signal-library";
 
 // ───────────────────────────────────────────────────
-// Derived types (stored in profile_data)
+// Derived types (stored in profile_data.derived)
 // ───────────────────────────────────────────────────
+
+export interface ExplainableSignal {
+  id: string;
+  label: string;
+  weight: 1 | 2 | 3;
+  sourceType: string;
+  confirmed: boolean;
+  contextCategory?: ContextCategory;
+  contextTags?: Record<string, string>;
+}
 
 export interface DomainScores {
   intensity: number | null; // 0–4 or null (unknown)
@@ -30,19 +42,29 @@ export interface DomainScores {
   intensityLabel: string;
   evidenceLabel: string;
   confidenceLabel: string;
-  topSignals: Signal[];
+  rawTotals: {
+    weightedSum: number;
+    signalCount: number;
+    confirmedCount: number;
+  };
+  topSignals: ExplainableSignal[];
   sourceBreakdown: Record<string, number>;
   lastUpdated: string;
 }
 
-export interface DerivedProfileData {
-  version: number;
-  computedAt: string;
-  domains: Record<string, DomainScores>;
-  signals: Signal[];
+export interface DomainExplainability {
+  topSignals: ExplainableSignal[];
+  sourceBreakdown: Record<string, number>;
+  confidenceHint: string;
 }
 
-const CURRENT_VERSION = 1;
+export interface DerivedProfileData {
+  scoring_version: string;
+  last_computed_at: string;
+  domain_scores: Record<string, DomainScores>;
+  explainability: Record<string, DomainExplainability>;
+  signals: Signal[];
+}
 
 // ───────────────────────────────────────────────────
 // Signal extraction from answers
@@ -73,7 +95,8 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
           weight: sig.weight,
           sourceType: mapping.sourceType,
           sourceReliability: mapping.sourceType === "child" ? "medium" : "high",
-          confirmed: true,
+          confirmed: true, // Structured answers are always confirmed
+          contextCategory: sig.contextCategory || mapping.contextCategory,
         });
       }
     }
@@ -82,7 +105,6 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
     if (mapping.freeTextSignal) {
       const len = strVal.trim().length;
       if (len > 0) {
-        // Boost weight for detailed answers
         let weight = mapping.freeTextSignal.baseWeight;
         if (len > 100) weight = Math.min(3, weight + 1) as 1 | 2 | 3;
 
@@ -95,7 +117,8 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
           weight,
           sourceType: mapping.sourceType,
           sourceReliability: mapping.sourceType === "child" ? "medium" : "high",
-          confirmed: true,
+          confirmed: true, // Structured free-text from questionnaire = confirmed
+          contextCategory: mapping.freeTextSignal.contextCategory || mapping.contextCategory,
         });
 
         // Cross-domain signals (lighter weight)
@@ -111,6 +134,7 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
               sourceType: mapping.sourceType,
               sourceReliability: "medium",
               confirmed: true,
+              contextCategory: "context",
             });
           }
         }
@@ -118,7 +142,7 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
     }
   }
 
-  // Also count reflections as evidence signals
+  // Reflections as evidence signals
   for (const domain of DOMAIN_KEYS) {
     const sIdx = DOMAIN_SECTION_MAP[domain];
     const section = state.sections[sIdx];
@@ -133,6 +157,7 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
         sourceType: "parent",
         sourceReliability: "high",
         confirmed: true,
+        contextCategory: "source",
       });
     }
   }
@@ -144,9 +169,7 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
 // Scoring per domain
 // ───────────────────────────────────────────────────
 
-/** Normalise a raw weighted sum into 0–4 using thresholds */
 function normalise(rawSum: number, thresholds: number[]): number {
-  // thresholds = [t1, t2, t3, t4] → score 1 if >= t1, 2 if >= t2, etc.
   let score = 0;
   for (const t of thresholds) {
     if (rawSum >= t) score++;
@@ -160,6 +183,7 @@ function scoreDomain(signals: Signal[], domain: string): DomainScores {
   const now = new Date().toISOString();
 
   if (domainSignals.length < 2) {
+    const topSigs = domainSignals.slice(0, 3).map(toExplainable);
     return {
       intensity: domainSignals.length === 0 ? null : null,
       evidence: domainSignals.length === 0 ? 0 : 1,
@@ -167,7 +191,12 @@ function scoreDomain(signals: Signal[], domain: string): DomainScores {
       intensityLabel: "Unknown",
       evidenceLabel: domainSignals.length === 0 ? INTENSITY_LABELS[0] : INTENSITY_LABELS[1],
       confidenceLabel: domainSignals.length === 0 ? INTENSITY_LABELS[0] : INTENSITY_LABELS[1],
-      topSignals: domainSignals.slice(0, 3),
+      rawTotals: {
+        weightedSum: domainSignals.reduce((s, sig) => s + sig.weight, 0),
+        signalCount: domainSignals.length,
+        confirmedCount: domainSignals.filter(s => s.confirmed).length,
+      },
+      topSignals: topSigs,
       sourceBreakdown: buildSourceBreakdown(domainSignals),
       lastUpdated: now,
     };
@@ -176,14 +205,14 @@ function scoreDomain(signals: Signal[], domain: string): DomainScores {
   const confirmedSignals = domainSignals.filter((s) => s.confirmed);
   const weightedSum = confirmedSignals.reduce((sum, s) => sum + s.weight, 0);
 
-  // Evidence: how much data do we have?
+  // Evidence: volume and breadth
   const evidenceRaw = domainSignals.length;
   const evidence = normalise(evidenceRaw, [2, 4, 6, 8]);
 
-  // Intensity: how strong are the signals? (weighted sum)
+  // Intensity: weighted impact from confirmed signals only
   let intensity = normalise(weightedSum, [3, 6, 10, 15]);
 
-  // Confidence gating rules
+  // Confidence: reliability based on source diversity
   const sourceTypes = new Set(confirmedSignals.map((s) => s.sourceType));
   const hasConfirmedStructured = confirmedSignals.some(
     (s) => s.confirmed && s.sourceReliability !== "low"
@@ -201,7 +230,6 @@ function scoreDomain(signals: Signal[], domain: string): DomainScores {
     confidence = 2;
   }
 
-  // Sort signals by weight desc for top 3
   const sorted = [...confirmedSignals].sort((a, b) => b.weight - a.weight);
 
   return {
@@ -211,9 +239,26 @@ function scoreDomain(signals: Signal[], domain: string): DomainScores {
     intensityLabel: intensity === null ? "Unknown" : INTENSITY_LABELS[intensity] || "Unknown",
     evidenceLabel: INTENSITY_LABELS[evidence] || INTENSITY_LABELS[0],
     confidenceLabel: INTENSITY_LABELS[confidence] || INTENSITY_LABELS[0],
-    topSignals: sorted.slice(0, 3),
+    rawTotals: {
+      weightedSum,
+      signalCount: domainSignals.length,
+      confirmedCount: confirmedSignals.length,
+    },
+    topSignals: sorted.slice(0, 3).map(toExplainable),
     sourceBreakdown: buildSourceBreakdown(domainSignals),
     lastUpdated: now,
+  };
+}
+
+function toExplainable(sig: Signal): ExplainableSignal {
+  return {
+    id: sig.id,
+    label: sig.label,
+    weight: sig.weight,
+    sourceType: sig.sourceType,
+    confirmed: sig.confirmed,
+    contextCategory: sig.contextCategory,
+    contextTags: sig.contextTags,
   };
 }
 
@@ -229,18 +274,28 @@ function buildSourceBreakdown(signals: Signal[]): Record<string, number> {
 // Main compute function
 // ───────────────────────────────────────────────────
 
+import { CONFIDENCE_HINTS } from "@/config/signal-library";
+
 export function computeDerivedProfile(state: ChildProfileState): DerivedProfileData {
   const signals = extractSignalsFromAnswers(state);
-  const domains: Record<string, DomainScores> = {};
+  const domain_scores: Record<string, DomainScores> = {};
+  const explainability: Record<string, DomainExplainability> = {};
 
   for (const domain of DOMAIN_KEYS) {
-    domains[domain] = scoreDomain(signals, domain);
+    const scores = scoreDomain(signals, domain);
+    domain_scores[domain] = scores;
+    explainability[domain] = {
+      topSignals: scores.topSignals,
+      sourceBreakdown: scores.sourceBreakdown,
+      confidenceHint: CONFIDENCE_HINTS[domain] || "Add information from a second source to increase confidence.",
+    };
   }
 
   return {
-    version: CURRENT_VERSION,
-    computedAt: new Date().toISOString(),
-    domains,
+    scoring_version: SCORING_VERSION,
+    last_computed_at: new Date().toISOString(),
+    domain_scores,
+    explainability,
     signals,
   };
 }
@@ -248,6 +303,6 @@ export function computeDerivedProfile(state: ChildProfileState): DerivedProfileD
 /** Check if derived data needs recomputing (version mismatch or missing) */
 export function needsRecompute(derived: DerivedProfileData | undefined): boolean {
   if (!derived) return true;
-  if (derived.version !== CURRENT_VERSION) return true;
+  if (derived.scoring_version !== SCORING_VERSION) return true;
   return false;
 }
