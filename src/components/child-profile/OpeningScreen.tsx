@@ -4,7 +4,6 @@ import {
   ArrowRight,
   KeyRound,
   Loader2,
-  Save,
   FlaskConical,
   ClipboardList,
   Lightbulb,
@@ -16,10 +15,12 @@ import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp
 import { Checkbox } from "@/components/ui/checkbox";
 import { supabase } from "@/integrations/supabase/client";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { MyProfilesList } from "./MyProfilesList";
 
 interface OpeningScreenProps {
   onStart: () => void;
-  onRestore?: (data: { profile_data: any; stage: string; active_section: number }) => void;
+  onRestore?: (data: { profile_data: any; stage: string; active_section: number; report_mode?: string; ai_report?: any; access_code?: string }) => void;
   onLoadTestData?: () => void;
 }
 
@@ -69,7 +70,7 @@ function AccessCodeEntry({
         setError(data.error);
         return;
       }
-      onRestore?.(data);
+      onRestore?.({ ...data, access_code: code });
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -85,7 +86,7 @@ function AccessCodeEntry({
         className="text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground transition-colors inline-flex items-center gap-1.5"
       >
         <KeyRound className="w-3.5 h-3.5" />
-        Returning? Enter your access code
+        Have an access code? Enter it here
       </button>
     );
   }
@@ -110,23 +111,19 @@ function AccessCodeEntry({
 }
 
 export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScreenProps) {
+  const { user } = useAuth();
   const [consentGiven, setConsentGiven] = useState(false);
-  const [saving, setSaving] = useState(false);
-  const [accessCode, setAccessCode] = useState("");
-  const [error, setError] = useState("");
 
-  const handleSaveAndGetCode = async () => {
-    setSaving(true);
+  const handleLoadFromList = async (accessCode: string) => {
     try {
       const { data, error: fnError } = await supabase.functions.invoke("save-profile", {
-        body: { action: "save", profile_data: {}, stage: "opening", active_section: 0 },
+        body: { action: "load", access_code: accessCode },
       });
       if (fnError) throw fnError;
-      if (data?.access_code) setAccessCode(data.access_code);
+      if (data?.error) return;
+      onRestore?.({ ...data, access_code: accessCode });
     } catch {
-      setError("Something went wrong. Please try again.");
-    } finally {
-      setSaving(false);
+      // Silently fail
     }
   };
 
@@ -138,7 +135,7 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
         style={{ background: "radial-gradient(ellipse 70% 40% at 50% 0%, hsl(42 87% 48% / 0.06), transparent 70%)" }}
       />
 
-      {/* ── What it is ── */}
+      {/* ── Title ── */}
       <h1 className="text-2xl font-display font-semibold text-foreground mb-3">
         My Child: A Profile
       </h1>
@@ -181,25 +178,31 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
         </p>
       </div>
 
+      {/* ── Saved profiles list (logged in users) ── */}
+      {user && (
+        <div className="mt-10">
+          <MyProfilesList
+            onLoadProfile={handleLoadFromList}
+            onCreateNew={onStart}
+          />
+        </div>
+      )}
+
       {/* ── Visual process ── */}
       <div className="mt-10">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-5">
           How it works
         </h2>
         <div className="relative">
-          {/* Connecting line */}
           <div className="absolute left-5 top-5 bottom-5 w-px bg-border" aria-hidden="true" />
-
           <div className="space-y-0">
             {PROCESS_STEPS.map((step, index) => {
               const Icon = step.icon;
               return (
                 <div key={step.title} className="relative flex gap-4 pb-6 last:pb-0">
-                  {/* Step number circle */}
                   <div className="relative z-10 flex-shrink-0 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold">
                     {index + 1}
                   </div>
-                  {/* Content */}
                   <div className="pt-1.5">
                     <div className="flex items-center gap-2 mb-0.5">
                       <Icon className="w-4 h-4 text-primary" aria-hidden="true" />
@@ -210,8 +213,6 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
                 </div>
               );
             })}
-
-            {/* Final outcome */}
             <div className="relative flex gap-4">
               <div className="relative z-10 flex-shrink-0 w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center">
                 <CheckCircle className="w-5 h-5" />
@@ -259,31 +260,12 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
       </div>
 
       {/* ── Actions ── */}
-      {accessCode ? (
-        <div className="mt-8 bg-card border border-border rounded-lg p-5 space-y-3 max-w-sm">
-          <p className="text-sm font-medium text-foreground">Your access code</p>
-          <p className="text-3xl font-mono font-bold tracking-widest text-primary">{accessCode}</p>
-          <p className="text-xs text-muted-foreground">Write this down. It is the only way to return to your profile.</p>
-          <Button onClick={onStart} size="sm" className="gap-2 mt-2">
-            Continue to the profile
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Button>
-        </div>
-      ) : (
-        <div className="mt-8 flex flex-col sm:flex-row gap-3">
-          <Button onClick={onStart} size="lg" className="gap-2" disabled={!consentGiven}>
-            Start the profile
-            <ArrowRight className="w-4 h-4" />
-          </Button>
-          <Button onClick={handleSaveAndGetCode} variant="outline" size="lg" className="gap-2" disabled={saving || !consentGiven}>
-            {saving && <Loader2 className="w-4 h-4 animate-spin" />}
-            <Save className="w-4 h-4" />
-            Save and get an access code
-          </Button>
-        </div>
-      )}
-
-      {error && <p className="text-xs text-destructive mt-2">{error}</p>}
+      <div className="mt-8 flex flex-col sm:flex-row gap-3">
+        <Button onClick={onStart} size="lg" className="gap-2" disabled={!consentGiven}>
+          Start a new profile
+          <ArrowRight className="w-4 h-4" />
+        </Button>
+      </div>
 
       {/* ── Return with code ── */}
       <div className="mt-6">

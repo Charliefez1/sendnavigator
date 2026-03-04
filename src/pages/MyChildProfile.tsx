@@ -396,7 +396,7 @@ function buildProfileText(state: ChildProfileState): string {
 
 function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage) => void }) {
   const [initialSection, setInitialSection] = useState(0);
-  const { loadState, state, updateAiReport, clearAiReport, setReportMode } = useChildProfile();
+  const { loadState, state, updateAiReport, clearAiReport, setReportMode, setAccessCode, markClean } = useChildProfile();
   const pendingEmailRef = useRef<string | undefined>();
 
   // Section regeneration state
@@ -412,12 +412,16 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
     ? [...MINI_SECTIONS]
     : SECTION_TITLES.map((_, i) => i);
 
-  const handleRestore = (data: { profile_data: any; stage: string; active_section: number; report_mode?: string; ai_report?: any }) => {
+  const handleRestore = (data: { profile_data: any; stage: string; active_section: number; report_mode?: string; ai_report?: any; access_code?: string }) => {
     const profileData = { ...data.profile_data, reportMode: data.report_mode || data.profile_data?.reportMode || "full" };
     loadState(profileData);
     if (data.ai_report) {
       updateAiReport(data.ai_report);
     }
+    if (data.access_code) {
+      setAccessCode(data.access_code);
+    }
+    markClean();
     setInitialSection(data.active_section || 0);
     if (data.stage === "builder") {
       setStage("builder");
