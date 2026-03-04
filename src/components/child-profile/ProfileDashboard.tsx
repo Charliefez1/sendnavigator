@@ -169,17 +169,19 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
         </Card>
       ) : (
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <ProfileWheel state={state} onNavigateToSection={onNavigateToSection} />
-            <ReadinessPanel
-              state={state}
-              getSectionStatus={getSectionStatus}
-              onNavigateToSection={onNavigateToSection}
-              onGenerateReport={onGenerateReport}
-            />
-          </div>
+          {/* Profile Shape — own section */}
+          <ProfileWheel state={state} onNavigateToSection={onNavigateToSection} />
+
           <ChildVoicePanel state={state} onNavigateToSection={onNavigateToSection} />
           <EmergingThemes analysis={themeAnalysis} onNavigateToSection={onNavigateToSection} />
+
+          {/* Next Steps & Readiness — own section at bottom */}
+          <ReadinessPanel
+            state={state}
+            getSectionStatus={getSectionStatus}
+            onNavigateToSection={onNavigateToSection}
+            onGenerateReport={onGenerateReport}
+          />
         </>
       )}
     </div>
