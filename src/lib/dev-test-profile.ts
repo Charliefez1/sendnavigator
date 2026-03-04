@@ -1,9 +1,12 @@
 /**
  * Dev Test Profile — pre-filled profile data for scoring verification.
  *
- * Covers all 9 domains with varied signal intensities to produce
- * a non-uniform radar shape. Includes both structured answers and
- * free-text reflections to test weighting and cross-domain routing.
+ * Covers mini-report sections (0, 3, 5, 6, 9, 10, 11, 13) with varied
+ * signal intensities to produce a non-uniform radar shape.
+ * - Nervous System (3) and Masking (9): HIGH
+ * - Sensory (5) and Executive Function (6): MODERATE
+ * - Environment (0) and Behaviour (11): LOW-MODERATE
+ * - Communication (10) and Strengths (13): LOW
  */
 
 import type { ChildProfileState, SectionSourceTypes } from "@/contexts/ChildProfileContext";
@@ -16,54 +19,47 @@ export function createDevTestProfile(): ChildProfileState {
     sections[i] = { answers: {}, reflection: "" };
   }
 
-  // ── Section 0: Environment (moderate) ──
+  // ── Section 0: Environment (low-moderate) ──
   sections[0].answers = {
     transitions: "Sometimes difficult",
-    home_predictability: "Mixed, some routine, some unpredictability",
-    classroom_description: "Busy classroom, 30 children, open plan. He sits near the door which helps.",
-    after_school: "Usually quiet and withdrawn for about an hour after school. Needs snacks and screen time before he can talk about his day.",
-    settled_environment: "Grandma's house — quiet, predictable, one-to-one attention.",
-    cv_classroom_feel: "It's really loud and I can't think sometimes.",
-    cv_calm_place: "My bedroom with the door closed.",
+    home_predictability: "Generally predictable and calm",
+    classroom_description: "Open plan classroom, about 30 children. He sits near the door which helps.",
+    cv_classroom_feel: "It is really loud sometimes.",
+    cv_calm_place: "The library.",
   };
-  sections[0].reflection = "School environment clearly affects him but he's found some coping strategies. Home is generally predictable.";
 
   // ── Section 3: Nervous System (high) ──
   sections[3].answers = {
     recovery_time: "Several hours",
-    dysregulation_description: "When overwhelmed he shuts down completely — goes nonverbal, hides under furniture, covers ears. Can last 20 minutes to 2 hours. Afterwards he's exhausted and often tearful.",
+    dysregulation_description: "When overwhelmed he shuts down completely — goes nonverbal, hides under furniture, covers ears. Can last 20 minutes to 2 hours. Afterwards he is exhausted and often tearful.",
     early_warning_signs: "Starts humming loudly, pacing, picking at skin on fingers. Gets very rigid about small things.",
-    dysregulation_patterns: "Worse on Mondays and after PE. Better on days with art or music. Much worse when routine changes without warning.",
-    helps_or_worsens: "Pressure (weighted blanket), dim lights, and being left alone help. Talking to him, touching him, or asking questions makes it worse.",
-    shame_response: "He apologises repeatedly afterwards, says he's broken, asks if we still love him. This is heartbreaking.",
-    cv_upset_body: "My chest gets really tight and my hands go tingly. Sometimes I can't see properly.",
+    dysregulation_patterns: "Worse on Mondays and after PE. Much worse when routine changes without warning.",
+    helps_or_worsens: "Pressure (weighted blanket), dim lights, and being left alone help. Talking to him or asking questions makes it worse.",
+    shame_response: "He apologises repeatedly afterwards, says he is broken.",
+    cv_upset_body: "My chest gets really tight and my hands go tingly.",
     cv_calmer: "Being under my blanket with my cat. Nobody talking to me.",
   };
-  sections[3].reflection = "His nervous system is clearly under significant strain. The school day depletes him and recovery takes the whole evening.";
+  sections[3].reflection = "His nervous system is clearly under significant strain. The school day depletes him.";
 
-  // ── Section 5: Sensory (moderate-high) ──
+  // ── Section 5: Sensory (moderate) ──
   sections[5].answers = {
     pain_temperature: "Sometimes",
     movement_seeking: "Both at different times",
-    interoception: "Yes, regularly",
-    noise_sensitivity: "Assembly is unbearable. Hand dryers in toilets. Other children screaming in the playground.",
-    texture_distress: "Won't wear anything with seams, tags, or certain fabrics. School uniform is a daily battle.",
-    fidgeting: "Constantly moving — rocking on chair, clicking pens, chewing sleeves. Teachers see it as disruptive but it helps him concentrate.",
-    cv_bothering_sound: "The fire alarm. And when loads of people talk at the same time in the dinner hall.",
-    cv_hate_wearing: "My school trousers. They're scratchy and horrible.",
+    interoception: "Sometimes",
+    noise_sensitivity: "Assembly is uncomfortable. Hand dryers bother him.",
+    texture_distress: "Prefers soft fabrics. Tags need to be removed.",
+    cv_bothering_sound: "The hand dryer in the toilets.",
   };
 
-  // ── Section 6: Executive Function (high) ──
+  // ── Section 6: Executive Function (moderate) ──
   sections[6].answers = {
-    knowing_doing_gap: "Yes, frequently",
+    knowing_doing_gap: "Sometimes",
     multi_step_instructions: "Struggles with more than two steps",
-    time_blindness: "Yes, regularly",
-    task_initiation: "He knows what he needs to do but literally cannot start. He describes it as his brain being stuck. Gets worse with tasks he finds boring.",
-    variable_ability: "Some days he can write a whole page easily. Other days he can barely write his name. Teachers think he's choosing not to work.",
-    cv_lots_instructions: "I forget what I'm supposed to do and then I get in trouble.",
-    cv_cannot_start: "I just sit there and stare at the paper. I want to do it but nothing happens.",
+    time_blindness: "Sometimes",
+    task_initiation: "He struggles to start tasks independently, especially boring ones.",
+    cv_lots_instructions: "I forget what I am supposed to do.",
+    cv_cannot_start: "I want to do it but nothing happens.",
   };
-  sections[6].reflection = "The gap between what he knows and what he can do is enormous. School interprets this as laziness.";
 
   // ── Section 9: Masking (very high) ──
   sections[9].answers = {
@@ -71,41 +67,36 @@ export function createDevTestProfile(): ChildProfileState {
     post_school_exhaustion: "Yes, they need significant time to recover",
     teacher_discrepancy: "Yes, regularly",
     compliance_avoidance: "Yes, frequently",
-    after_school_collapse: "Complete meltdown within 10 minutes of getting home. Throws bag, screams, sometimes hits. This is the real him — school gets the performance.",
-    suppressed_distress: "He holds everything in all day. Teachers say he's fine. He's not fine.",
-    cv_act_differently: "I pretend to be normal at school. It's really tiring.",
-    cv_tiring_school: "By the end of the day I feel like I've run a marathon but nobody can tell.",
+    after_school_collapse: "Complete meltdown within 10 minutes of getting home. This is the real him — school gets the performance.",
+    suppressed_distress: "He holds everything in all day. Teachers say he is fine. He is not fine.",
+    cv_act_differently: "I pretend to be normal at school. It is really tiring.",
+    cv_tiring_school: "By the end of the day I feel like I have run a marathon but nobody can tell.",
   };
 
-  // ── Section 10: Communication (low-moderate) ──
+  // ── Section 10: Communication (low) ──
   sections[10].answers = {
     response_time: "Sometimes",
     reading_emotions: "Sometimes",
-    literal_language: "Takes things very literally sometimes — idioms confuse him.",
-    expressing_feelings: "Struggles to name emotions. Uses physical descriptions instead — 'my head is buzzy' rather than 'I'm anxious'.",
+    literal_language: "Takes things quite literally sometimes.",
     cv_extra_time: "Sometimes I need to think for a long time before I can answer.",
   };
 
-  // ── Section 11: Behaviour (moderate) ──
+  // ── Section 11: Behaviour (low-moderate) ──
   sections[11].answers = {
-    recent_incident: "Threw a chair in class last week after being told to redo his work. Teacher saw defiance. I saw a child who had been masking all day and reached his limit.",
-    before_incident: "It was after lunch (always harder). He'd already been told off twice for fidgeting. The work redo was the final straw.",
-    child_intent: "He wasn't trying to hurt anyone. He was overwhelmed and had no capacity left to regulate.",
-    behaviour_patterns: "Almost always happens in the afternoon, almost always on days with changes to routine or after PE.",
-    cv_what_starts_it: "When people keep telling me to do things and I can't do any more.",
+    recent_incident: "Threw a chair in class last week after being told to redo his work.",
+    before_incident: "It was after lunch. He had already been told off twice for fidgeting.",
+    child_intent: "He was not trying to hurt anyone. He was overwhelmed.",
+    cv_what_starts_it: "When people keep telling me to do things and I cannot do any more.",
   };
 
-  // ── Section 13: Strengths (moderate) ──
+  // ── Section 13: Strengths (low — positive content, few signals) ──
   sections[13].answers = {
-    genuine_strengths: "Incredibly kind and empathetic. Notices when other children are upset before anyone else does.",
-    deep_focus: "Can spend 3 hours building complex Lego sets without a break. Knows everything about marine biology.",
-    lights_them_up: "The ocean. Sharks. David Attenborough. Building things with his hands.",
-    others_notice: "His swimming teacher says he's the most determined child she's ever taught.",
-    cv_really_good_at: "I'm really good at knowing about sharks and I can build anything with Lego.",
-    cv_lose_track_time: "When I'm reading about the ocean I forget about everything else.",
+    genuine_strengths: "Kind and empathetic. Notices when other children are upset.",
+    deep_focus: "Can spend a couple of hours building Lego sets.",
+    cv_really_good_at: "I am really good at knowing about sharks.",
   };
 
-  // Set multi-source types for a couple of sections to test confidence
+  // Set multi-source types for high-signal sections to test confidence
   const sectionSourceTypes: SectionSourceTypes = {
     3: ["parent", "school"],  // NS has parent + school input
     9: ["parent", "school"],  // Masking has both perspectives
@@ -119,7 +110,7 @@ export function createDevTestProfile(): ChildProfileState {
       reason: "Testing scoring model",
     },
     sections,
-    finalStatement: "He is so much more than his difficulties. I need the people around him to see that.",
+    finalStatement: "He is so much more than his difficulties.",
     reportMode: "mini",
     sectionSourceTypes,
   } as ChildProfileState;
