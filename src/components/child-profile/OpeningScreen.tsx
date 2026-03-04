@@ -228,18 +228,8 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
         </div>
       </div>
 
-      {/* ── Beta + GDPR ── */}
+      {/* ── GDPR Consent ── */}
       <div className="mt-10 space-y-4">
-        <div className="bg-amber-500/15 border border-amber-500/50 rounded-lg p-5 space-y-2">
-          <div className="flex items-center gap-2">
-            <FlaskConical className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" />
-            <p className="text-base font-bold text-foreground">Beta</p>
-          </div>
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            This tool is in active development. Content and questions are being refined daily. Everything here is a guide only and should not be treated as medical advice, a diagnosis, or a legal document.
-          </p>
-        </div>
-
         <div className="bg-card border border-border rounded-lg p-4 space-y-3">
           <p className="text-xs font-semibold text-foreground">Data and privacy</p>
           <p className="text-xs text-muted-foreground leading-relaxed">
@@ -265,6 +255,17 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
           Start a new profile
           <ArrowRight className="w-4 h-4" />
         </Button>
+      </div>
+
+      {/* ── Beta notice (below start button, smaller) ── */}
+      <div className="mt-6 bg-amber-500/15 border border-amber-500/50 rounded-lg p-4 space-y-1.5">
+        <div className="flex items-center gap-1.5">
+          <FlaskConical className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0" />
+          <p className="text-xs font-semibold text-foreground">Beta</p>
+        </div>
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          This tool is in active development. Content and questions are being refined daily. Everything here is a guide only and should not be treated as medical advice, a diagnosis, or a legal document.
+        </p>
       </div>
 
       {/* ── Return with code ── */}
