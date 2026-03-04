@@ -1,39 +1,43 @@
 
 
-## Diagnosis
+## Problem diagnosis
 
-The edge function logs reveal two distinct failures:
+The "everything is Very high" issue is entirely caused by the **test data**, not the scoring engine. The `TEST_DATA` constant in `MyChildProfile.tsx` (lines 28-336) fills all 22 sections with the most extreme answer options for every structured question:
 
-1. **Temperature parameter error (400)**: The `openai/gpt-5` model rejected `temperature: 0.7`. This was fixed in a previous edit but the log entry persists from before the fix.
+- `transitions`: "Almost always difficult" (weight 3)
+- `recovery_time`: "Several hours" (weight 3)
+- `school_home_difference`: "Yes, significantly different" (weight 3)
+- `post_school_exhaustion`: "Yes, they need significant time to recover" (weight 3)
+- `knowing_doing_gap`: "Yes, frequently" (weight 3)
+- Every other structured question is also set to the highest severity option
 
-2. **Connection closed before message completed (Http error)**: This is the current, active bug. The client sets a 120-second AbortController timeout. The `openai/gpt-5` model with a ~4,000-word system prompt, knowledge base context, and a full 22-section profile text is exceeding that window. The client aborts, the edge function sees "connection closed", and the user gets a generic failure toast.
+On top of that, every free-text field is filled with detailed, lengthy content that generates additional weight-1 signals, and every section has a reflection, adding yet more signals per domain.
 
-## Root cause
+The scoring engine is working correctly. It caps intensity signals at the top 6 by weight, normalises against max possible weight, and applies gating rules. But when every input is maximum severity, the output will naturally be maximum too.
 
-`openai/gpt-5` is the slowest and most expensive model available. For a full profile with all 22 sections, the input payload can exceed 10,000 tokens, and the 8,000 max completion tokens output takes GPT-5 well beyond 120 seconds. Edge functions themselves have a ~150s wall clock limit, so even raising the client timeout would only buy marginal headroom.
+The separate `dev-test-profile.ts` (loaded via the dashboard dev button) is better calibrated with moderate answers but only covers 8 sections.
+
+The internal error (36d...) is an editor/chat platform issue, not a code bug.
 
 ## Plan
 
-### 1. Switch to `google/gemini-3-flash-preview` (edge function)
+### 1. Rewrite TEST_DATA with realistic varied severity
 
-Replace `openai/gpt-5` with `google/gemini-3-flash-preview` in the edge function. This model is fast, capable, handles large context well, and is the recommended default. It should complete in 30-60 seconds for a full profile, well within timeouts.
+Replace the `TEST_DATA` in `MyChildProfile.tsx` with a profile that has:
 
-Update the `model` field in the `generate-profile-report/index.ts` fetch body and the `max_completion_tokens` parameter (rename to `max_tokens` if needed for Gemini compatibility, or keep as-is since the gateway normalises it).
+- **2-3 domains genuinely high** (Nervous System, Masking) — keep extreme answers here
+- **2-3 domains moderate** (Environment, Sensory, Behaviour) — use mid-range structured options like "Sometimes difficult", "Sometimes"
+- **2-3 domains low or light** (Communication, Strengths) — use mild options or leave some questions unanswered
+- **1-2 domains with insufficient data** (Energy and Recovery stays sparse) — leave most questions blank so it shows "Unknown"
+- **Some sections left completely empty** (e.g., Trauma section 4, Physical Health section 16) to test the "no data" path
 
-### 2. Increase client timeout to 180 seconds (MyChildProfile.tsx)
+This means changing the structured answer values (e.g., `"Almost always difficult"` → `"Sometimes difficult"`) and removing some free-text answers entirely from lower-severity domains.
 
-Change the AbortController timeout from `120_000` to `180_000` as a safety margin, matching the edge function wall clock limit more closely.
+### 2. Update dev-test-profile.ts to match
 
-### 3. Update the stored model name in the client (MyChildProfile.tsx)
+Align the mini dev test profile with the same philosophy — varied, not uniformly high.
 
-Change the `model` field in the `updateAiReport` call from `"openai/gpt-5"` to `"google/gemini-3-flash-preview"` so the report metadata is accurate.
+### 3. No scoring engine changes needed
 
-### 4. Add retry with exponential backoff for transient failures (edge function)
-
-Wrap the AI gateway fetch call in a simple retry loop (max 2 retries, 2s then 4s delay) to handle transient 500/503 errors from the gateway without requiring the user to manually retry.
-
-### Files changed
-
-- `supabase/functions/generate-profile-report/index.ts` — model switch + retry logic
-- `src/pages/MyChildProfile.tsx` — timeout increase + model name update
+The engine is functioning as designed. The issue is purely input data.
 
