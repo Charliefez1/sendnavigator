@@ -38,4 +38,5 @@ This site covers:
 - Information is updated regularly as reforms develop
 - This is not legal or medical advice
 - Content is grounded in lived experience and official sources
-- Last major update: 23rd February 2026 (Schools White Paper response)
+- "My Child: A Profile" is a guided profiling tool that helps parents describe their child in their own words, with AI generated insights
+- Last major update: 4th March 2026
