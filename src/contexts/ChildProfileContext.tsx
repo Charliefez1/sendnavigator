@@ -1,7 +1,8 @@
-import { createContext, useContext, useState, useEffect, useCallback, useMemo, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useCallback, useMemo, useRef, ReactNode } from "react";
 import { StructuredAIReport } from "@/types/ai-report";
 import type { ReportMode } from "@/config/mini-profile-sections";
 import { computeDerivedProfile, needsRecompute, DerivedProfileData } from "@/lib/scoring-engine";
+import type { SourceType } from "@/config/signal-library";
 
 export const SECTION_TITLES = [
   "Environment",
@@ -49,6 +50,9 @@ export interface CachedAIReport {
   structured?: StructuredAIReport;
 }
 
+/** Per-section source type markers set by user */
+export type SectionSourceTypes = Record<number, SourceType[]>;
+
 export interface ChildProfileState {
   setup: SetupData;
   sections: Record<number, SectionData>;
@@ -56,6 +60,7 @@ export interface ChildProfileState {
   aiReport?: CachedAIReport;
   reportMode: ReportMode;
   derived?: DerivedProfileData;
+  sectionSourceTypes?: SectionSourceTypes;
 }
 
 interface ChildProfileContextType {
@@ -73,6 +78,7 @@ interface ChildProfileContextType {
   updateAiReport: (report: CachedAIReport) => void;
   clearAiReport: () => void;
   setReportMode: (mode: ReportMode) => void;
+  setSectionSourceTypes: (sectionIndex: number, types: SourceType[]) => void;
   loadState: (data: ChildProfileState) => void;
   reset: () => void;
   markClean: () => void;
@@ -133,13 +139,15 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
   const [isDirty, setIsDirty] = useState(false);
   const [derivedNeedsSave, setDerivedNeedsSave] = useState(false);
 
+  // Debounce timer ref for reflection recompute
+  const reflectionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   // Compute derived scores — use saved if version matches, else recompute
   const derived = useMemo(() => {
     if (state.derived && !needsRecompute(state.derived)) {
       return state.derived;
     }
-    const freshDerived = computeDerivedProfile(state);
-    return freshDerived;
+    return computeDerivedProfile(state);
   }, [state]);
 
   // When derived is recomputed (version mismatch or missing from loaded data), mark as needing save
@@ -173,17 +181,12 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
   const markClean = useCallback(() => setIsDirty(false), []);
   const markDerivedSaved = useCallback(() => setDerivedNeedsSave(false), []);
 
-  const recomputeAndSet = useCallback((newState: ChildProfileState) => {
-    const freshDerived = computeDerivedProfile(newState);
-    setState({ ...newState, derived: freshDerived });
-    setDerivedNeedsSave(true);
-  }, []);
-
   const updateSetup = (data: Partial<SetupData>) => {
     setState((prev) => ({ ...prev, setup: { ...prev.setup, ...data } }));
     markDirty();
   };
 
+  // Immediate recompute for structured answers (single-select, checkboxes)
   const updateSectionAnswer = (sectionIndex: number, questionId: string, value: string | string[]) => {
     setState((prev) => {
       const existing = prev.sections[sectionIndex] || { answers: {}, reflection: "" };
@@ -197,7 +200,6 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
           },
         },
       };
-      // Recompute derived on answer change
       const freshDerived = computeDerivedProfile(newState);
       return { ...newState, derived: freshDerived };
     });
@@ -205,22 +207,38 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
     setDerivedNeedsSave(true);
   };
 
+  // Debounced recompute for reflection fields (free text) — 350ms
   const updateSectionReflection = (sectionIndex: number, value: string) => {
+    // Update text immediately (responsive typing)
     setState((prev) => {
       const existing = prev.sections[sectionIndex] || { answers: {}, reflection: "" };
-      const newState = {
+      return {
         ...prev,
         sections: {
           ...prev.sections,
           [sectionIndex]: { ...existing, reflection: value },
         },
       };
-      const freshDerived = computeDerivedProfile(newState);
-      return { ...newState, derived: freshDerived };
     });
     markDirty();
-    setDerivedNeedsSave(true);
+
+    // Debounce the derived recompute
+    if (reflectionTimerRef.current) clearTimeout(reflectionTimerRef.current);
+    reflectionTimerRef.current = setTimeout(() => {
+      setState((prev) => {
+        const freshDerived = computeDerivedProfile(prev);
+        return { ...prev, derived: freshDerived };
+      });
+      setDerivedNeedsSave(true);
+    }, 350);
   };
+
+  // Cleanup debounce timer
+  useEffect(() => {
+    return () => {
+      if (reflectionTimerRef.current) clearTimeout(reflectionTimerRef.current);
+    };
+  }, []);
 
   const updateFinalStatement = (value: string) => {
     setState((prev) => ({ ...prev, finalStatement: value }));
@@ -254,9 +272,19 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
     setState((prev) => ({ ...prev, reportMode: mode }));
   };
 
+  const setSectionSourceTypes = (sectionIndex: number, types: SourceType[]) => {
+    setState((prev) => {
+      const newSectionSources = { ...prev.sectionSourceTypes, [sectionIndex]: types };
+      const newState = { ...prev, sectionSourceTypes: newSectionSources };
+      const freshDerived = computeDerivedProfile(newState);
+      return { ...newState, derived: freshDerived };
+    });
+    markDirty();
+    setDerivedNeedsSave(true);
+  };
+
   const loadState = (data: ChildProfileState) => {
     const newState = { ...defaultState, ...data, reportMode: data.reportMode || "full" };
-    // Check if loaded derived data is valid; if not, recompute
     if (needsRecompute(newState.derived)) {
       const freshDerived = computeDerivedProfile(newState);
       setState({ ...newState, derived: freshDerived });
@@ -292,6 +320,7 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
         updateAiReport,
         clearAiReport,
         setReportMode,
+        setSectionSourceTypes,
         loadState,
         reset,
         markClean,

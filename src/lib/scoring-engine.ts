@@ -10,7 +10,6 @@
 import { ChildProfileState } from "@/contexts/ChildProfileContext";
 import {
   Signal,
-  SignalMapping,
   SIGNAL_MAPPINGS,
   DOMAIN_KEYS,
   DOMAIN_SECTION_MAP,
@@ -19,6 +18,8 @@ import {
   INTENSITY_LABELS,
   SCORING_VERSION,
   ContextCategory,
+  CONFIDENCE_HINTS,
+  SourceType,
 } from "@/config/signal-library";
 
 // ───────────────────────────────────────────────────
@@ -95,7 +96,7 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
           weight: sig.weight,
           sourceType: mapping.sourceType,
           sourceReliability: mapping.sourceType === "child" ? "medium" : "high",
-          confirmed: true, // Structured answers are always confirmed
+          confirmed: true,
           contextCategory: sig.contextCategory || mapping.contextCategory,
         });
       }
@@ -117,11 +118,11 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
           weight,
           sourceType: mapping.sourceType,
           sourceReliability: mapping.sourceType === "child" ? "medium" : "high",
-          confirmed: true, // Structured free-text from questionnaire = confirmed
+          confirmed: true,
           contextCategory: mapping.freeTextSignal.contextCategory || mapping.contextCategory,
         });
 
-        // Cross-domain signals (lighter weight)
+        // Cross-domain signals
         if (mapping.crossDomains) {
           for (const crossDomain of mapping.crossDomains) {
             signals.push({
@@ -166,6 +167,34 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
 }
 
 // ───────────────────────────────────────────────────
+// Collect section-level source types for confidence
+// ───────────────────────────────────────────────────
+
+function collectSectionSourceTypes(state: ChildProfileState, domain: DomainKey): Set<string> {
+  const sectionIndex = DOMAIN_SECTION_MAP[domain];
+  const sources = new Set<string>();
+
+  // Always "parent" if there's data
+  const section = state.sections[sectionIndex];
+  if (section) {
+    const hasContent = Object.values(section.answers).some((v) =>
+      Array.isArray(v) ? v.length > 0 : (v || "").trim().length > 0
+    );
+    if (hasContent) sources.add("parent");
+  }
+
+  // Check user-set section source types
+  const sectionSources = state.sectionSourceTypes?.[sectionIndex];
+  if (sectionSources) {
+    for (const src of sectionSources) {
+      sources.add(src);
+    }
+  }
+
+  return sources;
+}
+
+// ───────────────────────────────────────────────────
 // Scoring per domain
 // ───────────────────────────────────────────────────
 
@@ -178,23 +207,29 @@ function normalise(rawSum: number, thresholds: number[]): number {
   return Math.min(score, SCORE_SCALE_MAX);
 }
 
-function scoreDomain(signals: Signal[], domain: string): DomainScores {
+/** Minimum confirmed signals required before intensity can be computed */
+const MIN_CONFIRMED_FOR_INTENSITY = 2;
+
+function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<string>): DomainScores {
   const domainSignals = signals.filter((s) => s.domain === domain);
+  const confirmedSignals = domainSignals.filter((s) => s.confirmed);
   const now = new Date().toISOString();
 
-  if (domainSignals.length < 2) {
+  // Unknown state: fewer than 2 confirmed signals → intensity = null
+  if (confirmedSignals.length < MIN_CONFIRMED_FOR_INTENSITY) {
     const topSigs = domainSignals.slice(0, 3).map(toExplainable);
+    const evidence = domainSignals.length === 0 ? 0 : 1;
     return {
-      intensity: domainSignals.length === 0 ? null : null,
-      evidence: domainSignals.length === 0 ? 0 : 1,
+      intensity: null,
+      evidence,
       confidence: domainSignals.length === 0 ? 0 : 1,
       intensityLabel: "Unknown",
-      evidenceLabel: domainSignals.length === 0 ? INTENSITY_LABELS[0] : INTENSITY_LABELS[1],
+      evidenceLabel: evidence === 0 ? INTENSITY_LABELS[0] : INTENSITY_LABELS[1],
       confidenceLabel: domainSignals.length === 0 ? INTENSITY_LABELS[0] : INTENSITY_LABELS[1],
       rawTotals: {
-        weightedSum: domainSignals.reduce((s, sig) => s + sig.weight, 0),
+        weightedSum: confirmedSignals.reduce((s, sig) => s + sig.weight, 0),
         signalCount: domainSignals.length,
-        confirmedCount: domainSignals.filter(s => s.confirmed).length,
+        confirmedCount: confirmedSignals.length,
       },
       topSignals: topSigs,
       sourceBreakdown: buildSourceBreakdown(domainSignals),
@@ -202,18 +237,37 @@ function scoreDomain(signals: Signal[], domain: string): DomainScores {
     };
   }
 
-  const confirmedSignals = domainSignals.filter((s) => s.confirmed);
   const weightedSum = confirmedSignals.reduce((sum, s) => sum + s.weight, 0);
 
   // Evidence: volume and breadth
   const evidenceRaw = domainSignals.length;
   const evidence = normalise(evidenceRaw, [2, 4, 6, 8]);
 
+  // Also check: if evidence < 2, intensity stays unknown
+  if (evidence < 2) {
+    return {
+      intensity: null,
+      evidence,
+      confidence: 1,
+      intensityLabel: "Unknown",
+      evidenceLabel: INTENSITY_LABELS[evidence] || INTENSITY_LABELS[0],
+      confidenceLabel: INTENSITY_LABELS[1],
+      rawTotals: { weightedSum, signalCount: domainSignals.length, confirmedCount: confirmedSignals.length },
+      topSignals: confirmedSignals.slice(0, 3).map(toExplainable),
+      sourceBreakdown: buildSourceBreakdown(domainSignals),
+      lastUpdated: now,
+    };
+  }
+
   // Intensity: weighted impact from confirmed signals only
-  let intensity = normalise(weightedSum, [3, 6, 10, 15]);
+  let intensity: number | null = normalise(weightedSum, [3, 6, 10, 15]);
 
   // Confidence: reliability based on source diversity
-  const sourceTypes = new Set(confirmedSignals.map((s) => s.sourceType));
+  // Combine signal source types + section-level source markers
+  const allSourceTypes = new Set<string>([
+    ...confirmedSignals.map((s) => s.sourceType),
+    ...sectionSourceTypes,
+  ]);
   const hasConfirmedStructured = confirmedSignals.some(
     (s) => s.confirmed && s.sourceReliability !== "low"
   );
@@ -221,12 +275,12 @@ function scoreDomain(signals: Signal[], domain: string): DomainScores {
   let confidence = normalise(confirmedSignals.length, [2, 4, 6, 8]);
 
   // Gate: intensity > 2 requires at least one confirmed structured signal
-  if (!hasConfirmedStructured && intensity > 2) {
+  if (!hasConfirmedStructured && intensity !== null && intensity > 2) {
     intensity = 2;
   }
 
-  // Gate: confidence > 2 requires 2+ independent source types
-  if (sourceTypes.size < 2 && confidence > 2) {
+  // Gate: confidence > 2 requires 2+ independent source types (signal + section level)
+  if (allSourceTypes.size < 2 && confidence > 2) {
     confidence = 2;
   }
 
@@ -239,11 +293,7 @@ function scoreDomain(signals: Signal[], domain: string): DomainScores {
     intensityLabel: intensity === null ? "Unknown" : INTENSITY_LABELS[intensity] || "Unknown",
     evidenceLabel: INTENSITY_LABELS[evidence] || INTENSITY_LABELS[0],
     confidenceLabel: INTENSITY_LABELS[confidence] || INTENSITY_LABELS[0],
-    rawTotals: {
-      weightedSum,
-      signalCount: domainSignals.length,
-      confirmedCount: confirmedSignals.length,
-    },
+    rawTotals: { weightedSum, signalCount: domainSignals.length, confirmedCount: confirmedSignals.length },
     topSignals: sorted.slice(0, 3).map(toExplainable),
     sourceBreakdown: buildSourceBreakdown(domainSignals),
     lastUpdated: now,
@@ -274,15 +324,14 @@ function buildSourceBreakdown(signals: Signal[]): Record<string, number> {
 // Main compute function
 // ───────────────────────────────────────────────────
 
-import { CONFIDENCE_HINTS } from "@/config/signal-library";
-
 export function computeDerivedProfile(state: ChildProfileState): DerivedProfileData {
   const signals = extractSignalsFromAnswers(state);
   const domain_scores: Record<string, DomainScores> = {};
   const explainability: Record<string, DomainExplainability> = {};
 
   for (const domain of DOMAIN_KEYS) {
-    const scores = scoreDomain(signals, domain);
+    const sectionSources = collectSectionSourceTypes(state, domain);
+    const scores = scoreDomain(signals, domain, sectionSources);
     domain_scores[domain] = scores;
     explainability[domain] = {
       topSignals: scores.topSignals,

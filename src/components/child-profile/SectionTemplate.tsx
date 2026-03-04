@@ -3,7 +3,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { sectionContent, SectionQuestion } from "@/config/child-profile-sections";
 import { ChildVoiceBlock } from "./ChildVoiceBlock";
 import { cn } from "@/lib/utils";
-import { AlertTriangle } from "lucide-react";
+import { AlertTriangle, Users } from "lucide-react";
+import { DOMAIN_SECTION_MAP, type SourceType } from "@/config/signal-library";
+
+// Which section indices are core domains (have scoring)
+const CORE_SECTION_INDICES = new Set(Object.values(DOMAIN_SECTION_MAP));
+
+const SOURCE_TYPE_OPTIONS: { value: SourceType; label: string }[] = [
+  { value: "parent", label: "Parent" },
+  { value: "school", label: "School" },
+  { value: "clinician", label: "Report" },
+  { value: "other", label: "Other" },
+];
 
 interface SectionTemplateProps {
   sectionIndex: number;
@@ -48,12 +59,54 @@ function SingleSelectQuestion({ question, value, onChange }: { question: Section
   );
 }
 
+function SourceTypeSelector({ sectionIndex }: { sectionIndex: number }) {
+  const { state, setSectionSourceTypes } = useChildProfile();
+  const currentSources = state.sectionSourceTypes?.[sectionIndex] || [];
+
+  const toggle = (src: SourceType) => {
+    const next = currentSources.includes(src)
+      ? currentSources.filter((s) => s !== src)
+      : [...currentSources, src];
+    setSectionSourceTypes(sectionIndex, next);
+  };
+
+  return (
+    <div className="bg-muted/30 border border-border rounded-lg p-3 space-y-2">
+      <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
+        <Users className="w-3.5 h-3.5" />
+        Who contributed to this section?
+      </div>
+      <p className="text-[11px] text-muted-foreground">
+        Select all sources. Adding a second source type increases the confidence score for this domain.
+      </p>
+      <div className="flex flex-wrap gap-1.5">
+        {SOURCE_TYPE_OPTIONS.map((opt) => (
+          <button
+            key={opt.value}
+            type="button"
+            onClick={() => toggle(opt.value)}
+            className={cn(
+              "px-3 py-1.5 rounded-md text-xs font-medium border transition-colors",
+              currentSources.includes(opt.value)
+                ? "border-primary bg-primary/10 text-primary"
+                : "border-border bg-background text-muted-foreground hover:text-foreground hover:bg-muted"
+            )}
+          >
+            {opt.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function SectionTemplate({ sectionIndex }: SectionTemplateProps) {
   const { state, updateSectionAnswer, updateSectionReflection } = useChildProfile();
   const title = SECTION_TITLES[sectionIndex];
   const sectionData = state.sections[sectionIndex];
   const childName = state.setup.childName || "your child";
   const content = sectionContent[sectionIndex];
+  const isCoreSection = CORE_SECTION_INDICES.has(sectionIndex);
 
   const getAnswer = (questionId: string): string => {
     const val = sectionData?.answers?.[questionId];
@@ -123,6 +176,9 @@ export function SectionTemplate({ sectionIndex }: SectionTemplateProps) {
 
       {/* Child voice toggle */}
       <ChildVoiceBlock sectionIndex={sectionIndex} />
+
+      {/* Source type selector — only for core scored domains */}
+      {isCoreSection && <SourceTypeSelector sectionIndex={sectionIndex} />}
 
       {/* Closing reflection */}
       <div className="pt-6 border-t border-border space-y-2">
