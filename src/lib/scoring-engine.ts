@@ -65,23 +65,37 @@ export interface DomainExplainability {
 // Episode Cycle Model (schema only — detection not active)
 // ───────────────────────────────────────────────────
 
+export const EPISODE_SCHEMA_VERSION = "v1";
+
 export const EPISODE_TYPES = ["shutdown", "meltdown", "panic", "rage", "dissociation", "avoidance"] as const;
 export type EpisodeType = (typeof EPISODE_TYPES)[number];
 
 export interface EpisodeData {
-  early_signals: string[];
+  evidenceScore: number;
+  confidenceScore: number;
+  contexts: string[];
+  earlySignals: string[];
   triggers: string[];
-  point_of_no_return: string[];
+  pointOfNoReturn: string[];
   supports: string[];
-  recovery_needs: string[];
-  recovery_time_range: string;
-  next_day_impacts: string[];
+  recoveryNeeds: string[];
+  recoveryTimeRange: string;
+  nextDayImpacts: string[];
 }
 
-export type EpisodeModel = Record<EpisodeType, EpisodeData | null>;
+export interface EpisodeModel {
+  schema_version: string;
+  shutdown: EpisodeData | null;
+  meltdown: EpisodeData | null;
+  panic: EpisodeData | null;
+  rage: EpisodeData | null;
+  dissociation: EpisodeData | null;
+  avoidance: EpisodeData | null;
+}
 
 function createEmptyEpisodeModel(): EpisodeModel {
   return {
+    schema_version: EPISODE_SCHEMA_VERSION,
     shutdown: null,
     meltdown: null,
     panic: null,
@@ -426,12 +440,18 @@ export function computeDerivedProfile(state: ChildProfileState): DerivedProfileD
     };
   }
 
+  // Preserve existing episode_model data across scoring recomputes
+  const existingEpisodeModel = (state as any).derived?.episode_model;
+  const episode_model: EpisodeModel = existingEpisodeModel?.schema_version === EPISODE_SCHEMA_VERSION
+    ? existingEpisodeModel
+    : createEmptyEpisodeModel();
+
   return {
     scoring_version: SCORING_VERSION,
     last_computed_at: new Date().toISOString(),
     domain_scores,
     explainability,
-    episode_model: createEmptyEpisodeModel(),
+    episode_model,
     signals,
   };
 }
