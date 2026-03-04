@@ -10,6 +10,7 @@
 export type SourceType = "parent" | "child" | "school" | "clinician" | "ai-suggested" | "other";
 export type SourceReliability = "low" | "medium" | "high";
 export type ContextCategory = "theme" | "mechanism" | "context" | "source";
+export type EpisodePhase = "early_warning" | "trigger" | "escalation" | "shutdown" | "recovery";
 
 export interface Signal {
   id: string;
@@ -24,6 +25,8 @@ export interface Signal {
   setting?: string;
   contextCategory?: ContextCategory;
   contextTags?: Record<string, string>;
+  /** Optional: maps this signal to an episode cycle phase for future episode detection */
+  episodePhase?: EpisodePhase;
 }
 
 export interface SignalMapping {
@@ -32,10 +35,12 @@ export interface SignalMapping {
   domain: string;
   sourceType: SourceType;
   contextCategory?: ContextCategory;
+  /** Optional: default episode phase for signals from this mapping */
+  episodePhase?: EpisodePhase;
   /** For single-select: map option text → signal(s) */
-  optionSignals?: Record<string, { label: string; weight: 1 | 2 | 3; contextCategory?: ContextCategory }[]>;
+  optionSignals?: Record<string, { label: string; weight: 1 | 2 | 3; contextCategory?: ContextCategory; episodePhase?: EpisodePhase }[]>;
   /** For free-text: a base signal emitted when answer exists */
-  freeTextSignal?: { label: string; baseWeight: 1 | 2 | 3; contextCategory?: ContextCategory };
+  freeTextSignal?: { label: string; baseWeight: 1 | 2 | 3; contextCategory?: ContextCategory; episodePhase?: EpisodePhase };
   /** Optional cross-domain tagging */
   crossDomains?: string[];
 }

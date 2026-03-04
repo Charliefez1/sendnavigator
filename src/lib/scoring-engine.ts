@@ -20,6 +20,7 @@ import {
   ContextCategory,
   CONFIDENCE_HINTS,
   SourceType,
+  EpisodePhase,
 } from "@/config/signal-library";
 
 // ───────────────────────────────────────────────────
@@ -34,6 +35,7 @@ export interface ExplainableSignal {
   confirmed: boolean;
   contextCategory?: ContextCategory;
   contextTags?: Record<string, string>;
+  episodePhase?: EpisodePhase;
 }
 
 export interface DomainScores {
@@ -145,6 +147,7 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
           sourceReliability: mapping.sourceType === "child" ? "medium" : "high",
           confirmed: true,
           contextCategory: sig.contextCategory || mapping.contextCategory,
+          episodePhase: sig.episodePhase || mapping.episodePhase,
         });
       }
     }
@@ -170,6 +173,7 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
             const cat = mapping.freeTextSignal!.contextCategory || mapping.contextCategory;
             return cat === "theme" ? "context" : cat;
           })(),
+          episodePhase: mapping.freeTextSignal.episodePhase || mapping.episodePhase,
         });
 
         // Cross-domain signals
@@ -409,6 +413,7 @@ function toExplainable(sig: Signal): ExplainableSignal {
     confirmed: sig.confirmed,
     contextCategory: sig.contextCategory,
     contextTags: sig.contextTags,
+    episodePhase: sig.episodePhase,
   };
 }
 
