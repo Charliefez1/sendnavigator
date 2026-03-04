@@ -225,23 +225,27 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
 // ───────────────────────────────────────────────────
 
 function collectSectionSourceTypes(state: ChildProfileState, domain: DomainKey): Set<string> {
-  const sectionIndex = DOMAIN_SECTION_MAP[domain];
   const sources = new Set<string>();
 
-  // Always "parent" if there's data
-  const section = state.sections[sectionIndex];
-  if (section) {
-    const hasContent = Object.values(section.answers).some((v) =>
-      Array.isArray(v) ? v.length > 0 : (v || "").trim().length > 0
-    );
-    if (hasContent) sources.add("parent");
-  }
+  // Energy and Recovery pulls from multiple sections
+  const sectionIndices = domain === "Energy and Recovery"
+    ? [0, 3, 9]
+    : [DOMAIN_SECTION_MAP[domain]];
 
-  // Check user-set section source types
-  const sectionSources = state.sectionSourceTypes?.[sectionIndex];
-  if (sectionSources) {
-    for (const src of sectionSources) {
-      sources.add(src);
+  for (const sectionIndex of sectionIndices) {
+    const section = state.sections[sectionIndex];
+    if (section) {
+      const hasContent = Object.values(section.answers).some((v) =>
+        Array.isArray(v) ? v.length > 0 : (v || "").trim().length > 0
+      );
+      if (hasContent) sources.add("parent");
+    }
+
+    const sectionSources = state.sectionSourceTypes?.[sectionIndex];
+    if (sectionSources) {
+      for (const src of sectionSources) {
+        sources.add(src);
+      }
     }
   }
 

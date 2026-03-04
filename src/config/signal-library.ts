@@ -57,6 +57,7 @@ export const DOMAIN_KEYS = [
   "Communication",
   "Behaviour",
   "Strengths",
+  "Energy and Recovery",
 ] as const;
 
 export type DomainKey = (typeof DOMAIN_KEYS)[number];
@@ -70,6 +71,7 @@ export const DOMAIN_SECTION_MAP: Record<DomainKey, number> = {
   Communication: 10,
   Behaviour: 11,
   Strengths: 13,
+  "Energy and Recovery": 3, // Primary section: Nervous System (shares with NS, also pulls from Environment & Masking)
 };
 
 /** Hints for improving confidence per domain */
@@ -82,6 +84,7 @@ export const CONFIDENCE_HINTS: Record<DomainKey, string> = {
   Communication: "Speech and language input or a teacher's view on social interactions would increase reliability.",
   Behaviour: "Include an account from someone who sees the child in a different context (club, family member).",
   Strengths: "Ask someone outside the family who knows the child well to describe what they notice.",
+  "Energy and Recovery": "Compare energy patterns across different days — school days vs weekends, or mornings vs evenings.",
 };
 
 // ───────────────────────────────────────────────────
@@ -109,7 +112,7 @@ export const SIGNAL_MAPPINGS: SignalMapping[] = [
     },
   },
   { questionId: "classroom_description", sectionIndex: 0, domain: "Environment", sourceType: "parent", freeTextSignal: { label: "Classroom environment described", baseWeight: 2, contextCategory: "context" } },
-  { questionId: "after_school", sectionIndex: 0, domain: "Environment", sourceType: "parent", freeTextSignal: { label: "After-school state described", baseWeight: 2, contextCategory: "context" }, crossDomains: ["Masking", "Nervous System"] },
+  { questionId: "after_school", sectionIndex: 0, domain: "Environment", sourceType: "parent", freeTextSignal: { label: "After-school state described", baseWeight: 2, contextCategory: "context" }, crossDomains: ["Masking", "Nervous System", "Energy and Recovery"] },
   { questionId: "settled_environment", sectionIndex: 0, domain: "Environment", sourceType: "parent", freeTextSignal: { label: "Settled environment identified", baseWeight: 1, contextCategory: "context" } },
   { questionId: "cv_classroom_feel", sectionIndex: 0, domain: "Environment", sourceType: "child", freeTextSignal: { label: "Child describes classroom experience", baseWeight: 2, contextCategory: "context" } },
   { questionId: "cv_calm_place", sectionIndex: 0, domain: "Environment", sourceType: "child", freeTextSignal: { label: "Child identifies calm place", baseWeight: 1, contextCategory: "context" } },
@@ -235,7 +238,7 @@ export const SIGNAL_MAPPINGS: SignalMapping[] = [
       "Sometimes": [{ label: "Sometimes complies to avoid conflict", weight: 2, contextCategory: "mechanism" }],
     },
   },
-  { questionId: "after_school_collapse", sectionIndex: 9, domain: "Masking", sourceType: "parent", freeTextSignal: { label: "After-school collapse described", baseWeight: 3, contextCategory: "context" } },
+  { questionId: "after_school_collapse", sectionIndex: 9, domain: "Masking", sourceType: "parent", freeTextSignal: { label: "After-school collapse described", baseWeight: 3, contextCategory: "context" }, crossDomains: ["Energy and Recovery"] },
   { questionId: "suppressed_distress", sectionIndex: 9, domain: "Masking", sourceType: "parent", freeTextSignal: { label: "Suppressed distress described", baseWeight: 2, contextCategory: "context" } },
   { questionId: "cv_act_differently", sectionIndex: 9, domain: "Masking", sourceType: "child", freeTextSignal: { label: "Child describes acting differently", baseWeight: 2, contextCategory: "context" } },
   { questionId: "cv_tiring_school", sectionIndex: 9, domain: "Masking", sourceType: "child", freeTextSignal: { label: "Child describes school as tiring", baseWeight: 2, contextCategory: "context" } },
@@ -283,6 +286,31 @@ export const SIGNAL_MAPPINGS: SignalMapping[] = [
   { questionId: "cv_really_good_at", sectionIndex: 13, domain: "Strengths", sourceType: "child", freeTextSignal: { label: "Child identifies own strengths", baseWeight: 2, contextCategory: "context" } },
   { questionId: "cv_lose_track_time", sectionIndex: 13, domain: "Strengths", sourceType: "child", freeTextSignal: { label: "Child identifies flow activities", baseWeight: 2, contextCategory: "context" } },
   { questionId: "cv_teachers_knew", sectionIndex: 13, domain: "Strengths", sourceType: "child", freeTextSignal: { label: "Child wishes teachers knew strengths", baseWeight: 1, contextCategory: "context" } },
+
+  // ── Energy and Recovery (cross-domain — pulls from sections 0, 3, 9) ──
+  // Dedicated signals mapped to existing questions via cross-domain routing
+  {
+    questionId: "recovery_time", sectionIndex: 3, domain: "Energy and Recovery", sourceType: "parent",
+    contextCategory: "mechanism",
+    optionSignals: {
+      "The rest of the day or longer": [{ label: "Recovery takes rest of day or longer", weight: 3, contextCategory: "mechanism" }],
+      "Several hours": [{ label: "Recovery takes several hours", weight: 3, contextCategory: "mechanism" }],
+      "30 minutes to an hour": [{ label: "Recovery takes 30–60 minutes", weight: 2, contextCategory: "mechanism" }],
+      "It varies significantly": [{ label: "Recovery time varies significantly", weight: 2, contextCategory: "context" }],
+    },
+  },
+  {
+    questionId: "post_school_exhaustion", sectionIndex: 9, domain: "Energy and Recovery", sourceType: "parent",
+    contextCategory: "mechanism",
+    optionSignals: {
+      "Yes, they need significant time to recover": [{ label: "Post-school exhaustion — significant recovery needed", weight: 3, contextCategory: "mechanism" }],
+      "Sometimes": [{ label: "Post-school exhaustion — sometimes", weight: 2, contextCategory: "mechanism" }],
+    },
+  },
+  { questionId: "shame_response", sectionIndex: 3, domain: "Energy and Recovery", sourceType: "parent", freeTextSignal: { label: "Post-episode shame depletes energy further", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "cv_tiring_school", sectionIndex: 9, domain: "Energy and Recovery", sourceType: "child", freeTextSignal: { label: "Child reports school as energy-draining", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "dysregulation_patterns", sectionIndex: 3, domain: "Energy and Recovery", sourceType: "parent", freeTextSignal: { label: "Dysregulation patterns suggest energy depletion cycle", baseWeight: 2, contextCategory: "context" } },
+  { questionId: "helps_or_worsens", sectionIndex: 3, domain: "Energy and Recovery", sourceType: "parent", freeTextSignal: { label: "Recovery strategies indicate energy management needs", baseWeight: 2, contextCategory: "context" } },
 ];
 
 // ───────────────────────────────────────────────────
@@ -298,4 +326,4 @@ export const INTENSITY_LABELS: Record<number, string> = {
 
 export const SCORE_SCALE_MAX = 4;
 
-export const SCORING_VERSION = "v1.1";
+export const SCORING_VERSION = "v1.2";
