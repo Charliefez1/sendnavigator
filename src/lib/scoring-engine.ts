@@ -254,12 +254,15 @@ function collectSectionSourceTypes(state: ChildProfileState, domain: DomainKey):
 
 /** Map a 0–1 normalised score to the 0–4 scale */
 function intensityFromNormalised(n: number): number {
-  if (n < 0.20) return 0;
-  if (n < 0.40) return 1;
-  if (n < 0.60) return 2;
-  if (n < 0.80) return 3;
+  if (n <= 0.20) return 0;
+  if (n <= 0.40) return 1;
+  if (n <= 0.60) return 2;
+  if (n <= 0.80) return 3;
   return 4;
 }
+
+/** Max signals that contribute to intensity calculation */
+const MAX_INTENSITY_SIGNALS = 6;
 
 /** Evidence based on unique signal diversity, not raw count */
 function evidenceFromUnique(uniqueCount: number): number {
@@ -328,7 +331,10 @@ function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<
     };
   }
 
-  const weightedSum = confirmedSignals.reduce((sum, s) => sum + s.weight, 0);
+  // Cap at top 6 signals by weight for intensity calculation
+  const sortedConfirmed = [...confirmedSignals].sort((a, b) => b.weight - a.weight);
+  const cappedSignals = sortedConfirmed.slice(0, MAX_INTENSITY_SIGNALS);
+  const weightedSum = cappedSignals.reduce((sum, s) => sum + s.weight, 0);
 
   // Dynamic normalisation: ratio of achieved weight to max possible
   const normalisedScore = Math.min(1, weightedSum / maxPossible);
@@ -387,7 +393,7 @@ function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<
     confidence = evidence;
   }
 
-  const sorted = [...confirmedSignals].sort((a, b) => b.weight - a.weight);
+  // Already sorted above as sortedConfirmed
 
   return {
     intensity,
@@ -398,7 +404,7 @@ function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<
     confidenceLabel: INTENSITY_LABELS[confidence] || INTENSITY_LABELS[0],
     normalisedScore,
     rawTotals: { weightedSum, signalCount: domainSignals.length, confirmedCount: confirmedSignals.length, maxPossibleWeight: maxPossible },
-    topSignals: sorted.slice(0, 3).map(toExplainable),
+    topSignals: sortedConfirmed.slice(0, 3).map(toExplainable),
     sourceBreakdown: buildSourceBreakdown(domainSignals),
     lastUpdated: now,
   };
