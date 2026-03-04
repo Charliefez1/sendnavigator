@@ -43,10 +43,12 @@ export interface DomainScores {
   intensityLabel: string;
   evidenceLabel: string;
   confidenceLabel: string;
+  normalisedScore: number;  // 0–1 diagnostic field
   rawTotals: {
     weightedSum: number;
     signalCount: number;
     confirmedCount: number;
+    maxPossibleWeight: number;
   };
   topSignals: ExplainableSignal[];
   sourceBreakdown: Record<string, number>;
@@ -102,12 +104,11 @@ function extractSignalsFromAnswers(state: ChildProfileState): Signal[] {
       }
     }
 
-    // Free-text signal
+    // Free-text signal — ALWAYS weight 1 unless library explicitly overrides
     if (mapping.freeTextSignal) {
       const len = strVal.trim().length;
       if (len > 0) {
-        let weight = mapping.freeTextSignal.baseWeight;
-        if (len > 100) weight = Math.min(3, weight + 1) as 1 | 2 | 3;
+        const weight: 1 | 2 | 3 = 1; // Fixed at 1 for free text to prevent inflation
 
         signals.push({
           id: `${mapping.questionId}_freetext`,
@@ -195,41 +196,78 @@ function collectSectionSourceTypes(state: ChildProfileState, domain: DomainKey):
 }
 
 // ───────────────────────────────────────────────────
-// Scoring per domain
+// Scoring per domain — dynamic scaling model
 // ───────────────────────────────────────────────────
 
-function normalise(rawSum: number, thresholds: number[]): number {
-  let score = 0;
-  for (const t of thresholds) {
-    if (rawSum >= t) score++;
-    else break;
-  }
-  return Math.min(score, SCORE_SCALE_MAX);
+/** Map a 0–1 normalised score to the 0–4 scale */
+function intensityFromNormalised(n: number): number {
+  if (n < 0.20) return 0;
+  if (n < 0.40) return 1;
+  if (n < 0.60) return 2;
+  if (n < 0.80) return 3;
+  return 4;
+}
+
+/** Evidence based on unique signal diversity, not raw count */
+function evidenceFromUnique(uniqueCount: number): number {
+  if (uniqueCount <= 0) return 0;
+  if (uniqueCount <= 1) return 1;
+  if (uniqueCount <= 3) return 2;
+  if (uniqueCount <= 6) return 3;
+  return 4;
 }
 
 /** Minimum confirmed signals required before intensity can be computed */
 const MIN_CONFIRMED_FOR_INTENSITY = 2;
 
+/** Count the max possible weight for a domain from the signal library */
+function getMaxPossibleWeight(domain: string): number {
+  // For each mapping in this domain, take the highest possible weight it could produce
+  let max = 0;
+  for (const mapping of SIGNAL_MAPPINGS) {
+    if (mapping.domain !== domain) continue;
+    if (mapping.optionSignals) {
+      // Take the highest weighted option
+      let best = 0;
+      for (const opts of Object.values(mapping.optionSignals)) {
+        const optMax = opts.reduce((s, o) => s + o.weight, 0);
+        if (optMax > best) best = optMax;
+      }
+      max += best;
+    }
+    if (mapping.freeTextSignal) {
+      max += 1; // free text is always weight 1
+    }
+  }
+  // Reflections contribute 1
+  max += 1;
+  return Math.max(max, 1); // avoid division by zero
+}
+
 function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<string>): DomainScores {
   const domainSignals = signals.filter((s) => s.domain === domain);
   const confirmedSignals = domainSignals.filter((s) => s.confirmed);
   const now = new Date().toISOString();
+  const maxPossible = getMaxPossibleWeight(domain);
 
   // Unknown state: fewer than 2 confirmed signals → intensity = null
   if (confirmedSignals.length < MIN_CONFIRMED_FOR_INTENSITY) {
     const topSigs = domainSignals.slice(0, 3).map(toExplainable);
-    const evidence = domainSignals.length === 0 ? 0 : 1;
+    const uniqueIds = new Set(domainSignals.map((s) => s.id));
+    const evidence = evidenceFromUnique(uniqueIds.size);
     return {
       intensity: null,
       evidence,
       confidence: domainSignals.length === 0 ? 0 : 1,
       intensityLabel: "Unknown",
-      evidenceLabel: evidence === 0 ? INTENSITY_LABELS[0] : INTENSITY_LABELS[1],
+      evidenceLabel: evidence === 0 ? INTENSITY_LABELS[0] : INTENSITY_LABELS[evidence],
       confidenceLabel: domainSignals.length === 0 ? INTENSITY_LABELS[0] : INTENSITY_LABELS[1],
+      normalisedScore: 0,
       rawTotals: {
         weightedSum: confirmedSignals.reduce((s, sig) => s + sig.weight, 0),
         signalCount: domainSignals.length,
         confirmedCount: confirmedSignals.length,
+        maxPossibleWeight: maxPossible,
       },
       topSignals: topSigs,
       sourceBreakdown: buildSourceBreakdown(domainSignals),
@@ -239,11 +277,14 @@ function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<
 
   const weightedSum = confirmedSignals.reduce((sum, s) => sum + s.weight, 0);
 
-  // Evidence: volume and breadth
-  const evidenceRaw = domainSignals.length;
-  const evidence = normalise(evidenceRaw, [2, 4, 6, 8]);
+  // Dynamic normalisation: ratio of achieved weight to max possible
+  const normalisedScore = Math.min(1, weightedSum / maxPossible);
 
-  // Also check: if evidence < 2, intensity stays unknown
+  // Evidence: based on unique signal IDs (diversity, not volume)
+  const uniqueIds = new Set(domainSignals.map((s) => s.id));
+  const evidence = evidenceFromUnique(uniqueIds.size);
+
+  // If evidence < 2, intensity stays unknown
   if (evidence < 2) {
     return {
       intensity: null,
@@ -252,18 +293,18 @@ function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<
       intensityLabel: "Unknown",
       evidenceLabel: INTENSITY_LABELS[evidence] || INTENSITY_LABELS[0],
       confidenceLabel: INTENSITY_LABELS[1],
-      rawTotals: { weightedSum, signalCount: domainSignals.length, confirmedCount: confirmedSignals.length },
+      normalisedScore,
+      rawTotals: { weightedSum, signalCount: domainSignals.length, confirmedCount: confirmedSignals.length, maxPossibleWeight: maxPossible },
       topSignals: confirmedSignals.slice(0, 3).map(toExplainable),
       sourceBreakdown: buildSourceBreakdown(domainSignals),
       lastUpdated: now,
     };
   }
 
-  // Intensity: weighted impact from confirmed signals only
-  let intensity: number | null = normalise(weightedSum, [3, 6, 10, 15]);
+  // Intensity from normalised score
+  let intensity: number | null = intensityFromNormalised(normalisedScore);
 
-  // Confidence: reliability based on source diversity
-  // Combine signal source types + section-level source markers
+  // Confidence: based on source diversity
   const allSourceTypes = new Set<string>([
     ...confirmedSignals.map((s) => s.sourceType),
     ...sectionSourceTypes,
@@ -272,16 +313,25 @@ function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<
     (s) => s.confirmed && s.sourceReliability !== "low"
   );
 
-  let confidence = normalise(confirmedSignals.length, [2, 4, 6, 8]);
+  // Confidence from source type count
+  let confidence: number;
+  const sourceCount = allSourceTypes.size;
+  if (sourceCount >= 3) {
+    confidence = 4;
+  } else if (sourceCount >= 2) {
+    confidence = 3;
+  } else {
+    confidence = Math.min(2, evidenceFromUnique(confirmedSignals.length));
+  }
 
   // Gate: intensity > 2 requires at least one confirmed structured signal
   if (!hasConfirmedStructured && intensity !== null && intensity > 2) {
     intensity = 2;
   }
 
-  // Gate: confidence > 2 requires 2+ independent source types (signal + section level)
-  if (allSourceTypes.size < 2 && confidence > 2) {
-    confidence = 2;
+  // Gate: confidence must never exceed evidence
+  if (confidence > evidence) {
+    confidence = evidence;
   }
 
   const sorted = [...confirmedSignals].sort((a, b) => b.weight - a.weight);
@@ -293,7 +343,8 @@ function scoreDomain(signals: Signal[], domain: string, sectionSourceTypes: Set<
     intensityLabel: intensity === null ? "Unknown" : INTENSITY_LABELS[intensity] || "Unknown",
     evidenceLabel: INTENSITY_LABELS[evidence] || INTENSITY_LABELS[0],
     confidenceLabel: INTENSITY_LABELS[confidence] || INTENSITY_LABELS[0],
-    rawTotals: { weightedSum, signalCount: domainSignals.length, confirmedCount: confirmedSignals.length },
+    normalisedScore,
+    rawTotals: { weightedSum, signalCount: domainSignals.length, confirmedCount: confirmedSignals.length, maxPossibleWeight: maxPossible },
     topSignals: sorted.slice(0, 3).map(toExplainable),
     sourceBreakdown: buildSourceBreakdown(domainSignals),
     lastUpdated: now,
