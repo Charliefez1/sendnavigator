@@ -22,6 +22,7 @@ import { MINI_SECTIONS } from "@/config/mini-profile-sections";
 import type { ReportMode } from "@/config/mini-profile-sections";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
+import { normaliseCopyObject } from "@/lib/copy-standards";
 
 type Stage = "opening" | "setup" | "mode-select" | "builder" | "dashboard" | "final" | "report-loading" | "report-preview";
 
@@ -382,15 +383,15 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
       if (data?.error) throw new Error(data.error);
 
       const structured = data.structured && isStructuredReport(data.structured)
-        ? data.structured
+        ? normaliseCopyObject(data.structured)
         : undefined;
 
-      updateAiReport({
+      updateAiReport(normaliseCopyObject({
         generatedAt: new Date().toISOString(),
         model: "google/gemini-3-flash-preview",
         report: data.report,
         structured,
-      });
+      }));
 
       setStage("report-preview");
 
@@ -502,7 +503,7 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
     const insights = [...(structured.sectionInsights || [])];
     const idx = insights.findIndex((s: any) => s.sectionIndex === regenState.sectionIndex);
     if (idx !== -1) {
-      insights[idx] = { ...insights[idx], reflection: regenState.newReflection };
+      insights[idx] = { ...insights[idx], reflection: normaliseCopyObject(regenState.newReflection) };
     }
     structured.sectionInsights = insights;
 
