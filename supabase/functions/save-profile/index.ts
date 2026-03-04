@@ -31,10 +31,9 @@ async function getUserId(req: Request): Promise<string | null> {
     { global: { headers: { Authorization: authHeader } } }
   );
 
-  const token = authHeader.replace("Bearer ", "");
-  const { data, error } = await supabase.auth.getClaims(token);
-  if (error || !data?.claims) return null;
-  return data.claims.sub as string;
+  const { data: { user }, error } = await supabase.auth.getUser();
+  if (error || !user) return null;
+  return user.id;
 }
 
 Deno.serve(async (req) => {
@@ -52,7 +51,7 @@ Deno.serve(async (req) => {
     const { action, access_code, profile_data, stage, active_section, report_mode, ai_report, consent_given_at } = await req.json();
 
     // Clean up expired profiles on each request
-    await adminSupabase.rpc("cleanup_expired_profiles").catch(() => {});
+    try { await adminSupabase.rpc("cleanup_expired_profiles"); } catch (_) { /* ignore */ }
 
     if (action === "save") {
       // Check if updating an existing code
