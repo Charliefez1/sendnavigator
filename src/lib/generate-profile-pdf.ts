@@ -375,6 +375,35 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
       .replace(/^[-–—]\s+/gm, "")
       .trim();
 
+  /**
+   * Break long paragraphs into shorter ones (~2-3 sentences each).
+   * Preserves existing paragraph breaks (double newlines).
+   */
+  const breakLongParagraphs = (text: string): string[] => {
+    const rawParas = text.split(/\n\n+/).filter(p => p.trim());
+    const result: string[] = [];
+    for (const para of rawParas) {
+      const trimmed = para.trim();
+      // Split on sentence boundaries (. followed by space and uppercase letter)
+      const sentences = trimmed.match(/[^.!?]*[.!?]+(?:\s|$)/g) || [trimmed];
+      if (sentences.length <= 3) {
+        result.push(trimmed);
+      } else {
+        // Group into chunks of 2-3 sentences
+        let chunk: string[] = [];
+        for (let i = 0; i < sentences.length; i++) {
+          chunk.push(sentences[i].trim());
+          if (chunk.length >= 2 && (i === sentences.length - 1 || chunk.length >= 3)) {
+            result.push(chunk.join(" "));
+            chunk = [];
+          }
+        }
+        if (chunk.length > 0) result.push(chunk.join(" "));
+      }
+    }
+    return result;
+  };
+
   /** Map structured AI report to the same shape as parseAIReport returns */
   const mapStructuredToParsed = (report: StructuredAIReport) => {
     const sections: Record<string, string> = {};
@@ -470,16 +499,16 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     y = margin;
 
     // Title
-    doc.setFontSize(22);
+    doc.setFontSize(18);
     doc.setFont("helvetica", "bold");
     setColor(NAVY);
     doc.text("At a Glance", margin, y);
-    y += 10;
+    y += 8;
 
     setDraw(NAVY);
-    doc.setLineWidth(0.6);
-    doc.line(margin, y, margin + 55, y);
-    y += 14;
+    doc.setLineWidth(0.5);
+    doc.line(margin, y, margin + 45, y);
+    y += 12;
 
     // Opening line in italic
     if (structured.openingLine) {
@@ -491,10 +520,10 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     // Headline
     if (structured.topSummary.headline) {
       setColor(DARK_TEXT);
-      doc.setFontSize(13);
+      doc.setFontSize(11.5);
       doc.setFont("helvetica", "bold");
       const headlineLines: string[] = doc.splitTextToSize(structured.topSummary.headline, contentWidth);
-      const headlineLineH = 13 * 0.353 * 1.6;
+      const headlineLineH = 11.5 * 0.353 * 1.6;
       for (const line of headlineLines) {
         doc.text(line, margin, y);
         y += headlineLineH;
@@ -521,21 +550,21 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
       y += 6;
     }
 
-    // "What helps most" block from waysOfWorking (first 3 paragraphs)
+    // "What helps most" block from waysOfWorking (first 3 paragraphs, broken down)
     if (structured.waysOfWorking) {
       y = checkPageBreak(y, 30);
-      doc.setFontSize(14);
+      doc.setFontSize(13);
       doc.setFont("helvetica", "bold");
       setColor(NAVY);
       doc.text("What helps most", margin, y);
       y += 10;
 
-      const wowParas = structured.waysOfWorking.split(/\n\n+/).filter(p => p.trim());
-      const firstParas = wowParas.slice(0, 3);
+      const wowParas = breakLongParagraphs(structured.waysOfWorking);
+      const firstParas = wowParas.slice(0, 5);
       setColor(DARK_TEXT);
       for (const para of firstParas) {
-        y = addWrappedText(para, margin, y, contentWidth, 11);
-        y += 4;
+        y = addWrappedText(para, margin, y, contentWidth, 10.5);
+        y += 5;
       }
     }
 
@@ -550,7 +579,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
   doc.rect(0, 0, pageWidth, pageHeight, "F");
   y = margin;
 
-  doc.setFontSize(18);
+  doc.setFontSize(16);
   doc.setFont("helvetica", "bold");
   setColor(NAVY);
   doc.text("Why we built this profile", margin, y);
@@ -617,7 +646,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     doc.text(`Section ${index + 1}`, margin, y);
     y += 6;
 
-    doc.setFontSize(17);
+    doc.setFontSize(15);
     doc.setFont("helvetica", "bold");
     setColor(NAVY);
     doc.text(title, margin, y);
@@ -644,10 +673,10 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
 
     if (parentQAPairs.length > 0) {
       // Sub-heading
-      doc.setFontSize(12);
+      doc.setFontSize(11);
       doc.setFont("helvetica", "bold");
       setColor(NAVY);
-      y = checkPageBreak(y, 16);
+      y = checkPageBreak(y, 14);
       doc.text(`In ${childName}'s parent's words`, margin, y);
       y += 8;
 
@@ -670,7 +699,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
       if (childQAPairs.length > 0) {
         y = checkPageBreak(y, 20);
 
-        doc.setFontSize(12);
+        doc.setFontSize(11);
         doc.setFont("helvetica", "bold");
         setColor([120, 90, 40]);
         doc.text(`In ${childName}'s own words`, margin, y);
@@ -692,20 +721,20 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     if (aiContent) {
       y = checkPageBreak(y, 20);
 
-      doc.setFontSize(12);
+      doc.setFontSize(11);
       doc.setFont("helvetica", "bold");
       setColor(NAVY);
       doc.text("What this tells us", margin, y);
       y += 8;
 
-      // Split AI content into paragraphs for better page break handling
+      // Break long AI paragraphs into readable chunks
       const cleanAI = cleanMarkdown(aiContent);
-      const paragraphs = cleanAI.split(/\n\n+/).filter(p => p.trim());
+      const paragraphs = breakLongParagraphs(cleanAI);
       
       setColor(DARK_TEXT);
       for (const para of paragraphs) {
-        y = addWrappedText(para, margin, y, contentWidth, 11);
-        y += 4;
+        y = addWrappedText(para, margin, y, contentWidth, 10.5);
+        y += 5;
       }
       y += 4;
     }
@@ -714,7 +743,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     if (hasReflection) {
       y = checkPageBreak(y, 20);
 
-      doc.setFontSize(12);
+      doc.setFontSize(11);
       doc.setFont("helvetica", "bold");
       setColor(NAVY);
       doc.text("Closing reflection", margin, y);
@@ -738,20 +767,24 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     doc.rect(0, 0, pageWidth, pageHeight, "F");
     y = margin;
 
-    doc.setFontSize(22);
+    doc.setFontSize(18);
     doc.setFont("helvetica", "bold");
     setColor(NAVY);
     doc.text("Ways of Working", margin, y);
-    y += 10;
+    y += 8;
 
     setDraw(NAVY);
-    doc.setLineWidth(0.6);
-    doc.line(margin, y, margin + 55, y);
+    doc.setLineWidth(0.5);
+    doc.line(margin, y, margin + 45, y);
     y += 12;
 
     const cleanWoW = cleanMarkdown(parsed.waysOfWorking);
+    const wowParas = breakLongParagraphs(cleanWoW);
     setColor(DARK_TEXT);
-    y = addWrappedText(cleanWoW, margin, y, contentWidth, 11.5, "normal", 1.7);
+    for (const para of wowParas) {
+      y = addWrappedText(para, margin, y, contentWidth, 10.5, "normal", 1.7);
+      y += 6;
+    }
 
     footer();
   }
@@ -765,15 +798,15 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     doc.rect(0, 0, pageWidth, pageHeight, "F");
     y = margin;
 
-    doc.setFontSize(22);
+    doc.setFontSize(18);
     doc.setFont("helvetica", "bold");
     setColor(NAVY);
     doc.text("Some Things That May Help", margin, y);
-    y += 10;
+    y += 8;
 
     setDraw(NAVY);
-    doc.setLineWidth(0.6);
-    doc.line(margin, y, margin + 55, y);
+    doc.setLineWidth(0.5);
+    doc.line(margin, y, margin + 45, y);
     y += 12;
 
     const cleanSuggestions = cleanMarkdown(parsed.suggestions);
@@ -825,23 +858,23 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     doc.rect(0, 0, pageWidth, pageHeight, "F");
     y = margin;
 
-    doc.setFontSize(22);
+    doc.setFontSize(18);
     doc.setFont("helvetica", "bold");
     setColor(NAVY);
     doc.text("Conclusion", margin, y);
-    y += 10;
+    y += 8;
 
     setDraw(NAVY);
-    doc.setLineWidth(0.6);
-    doc.line(margin, y, margin + 55, y);
+    doc.setLineWidth(0.5);
+    doc.line(margin, y, margin + 45, y);
     y += 12;
 
     const cleanConclusion = cleanMarkdown(parsed.conclusion);
-    const conclusionParas = cleanConclusion.split(/\n\n+/).filter(p => p.trim());
+    const conclusionParas = breakLongParagraphs(cleanConclusion);
 
     setColor(DARK_TEXT);
     for (const para of conclusionParas) {
-      y = addWrappedText(para, margin, y, contentWidth, 11.5, "normal", 1.7);
+      y = addWrappedText(para, margin, y, contentWidth, 10.5, "normal", 1.7);
       y += 6;
     }
 
@@ -918,7 +951,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
     } catch { /* ignore logo errors */ }
   }
 
-  doc.setFontSize(18);
+  doc.setFontSize(16);
   doc.setFont("helvetica", "bold");
   setColor(NAVY);
   doc.text("About Neurodiversity Global", margin, y);
