@@ -9,7 +9,7 @@ interface SaveProgressButtonProps {
 }
 
 export function SaveProgressButton({ activeSection }: SaveProgressButtonProps) {
-  const { state, accessCode, setAccessCode, markClean } = useChildProfile();
+  const { state, derived, accessCode, setAccessCode, markClean, markDerivedSaved, derivedNeedsSave } = useChildProfile();
   const [saving, setSaving] = useState(false);
   const [showCode, setShowCode] = useState(false);
   const [error, setError] = useState("");
@@ -19,11 +19,17 @@ export function SaveProgressButton({ activeSection }: SaveProgressButtonProps) {
     setSaving(true);
     setError("");
     try {
+      // Include derived data in profile_data for persistence
+      const profileDataWithDerived = {
+        ...state,
+        derived,
+      };
+
       const { data, error: fnError } = await supabase.functions.invoke("save-profile", {
         body: {
           action: "save",
           access_code: accessCode,
-          profile_data: state,
+          profile_data: profileDataWithDerived,
           stage: "builder",
           active_section: activeSection,
           report_mode: state.reportMode,
@@ -39,6 +45,7 @@ export function SaveProgressButton({ activeSection }: SaveProgressButtonProps) {
         setShowCode(true);
       }
       markClean();
+      markDerivedSaved();
     } catch {
       setError("Could not save. Please try again.");
     } finally {
@@ -59,6 +66,9 @@ export function SaveProgressButton({ activeSection }: SaveProgressButtonProps) {
         <div className="flex items-center gap-2 text-sm font-medium text-foreground">
           <Check className="w-4 h-4 text-primary" />
           Progress saved
+          {derivedNeedsSave && (
+            <span className="text-[10px] text-muted-foreground ml-auto">Scores updated</span>
+          )}
         </div>
         <p className="text-xs text-muted-foreground">
           Your access code is:
@@ -84,10 +94,15 @@ export function SaveProgressButton({ activeSection }: SaveProgressButtonProps) {
 
   return (
     <div>
-      <Button variant="outline" size="sm" onClick={handleSave} disabled={saving} className="gap-1.5">
-        {saving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Save className="w-3.5 h-3.5" />}
-        Save my progress
-      </Button>
+      <div className="flex items-center gap-2">
+        <Button variant="outline" size="sm" onClick={handleSave} disabled={saving} className="gap-1.5">
+          {saving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Save className="w-3.5 h-3.5" />}
+          Save my progress
+        </Button>
+        {derivedNeedsSave && (
+          <span className="text-[10px] text-muted-foreground animate-in fade-in">Scores updated</span>
+        )}
+      </div>
       {error && <p className="text-xs text-destructive mt-1">{error}</p>}
     </div>
   );

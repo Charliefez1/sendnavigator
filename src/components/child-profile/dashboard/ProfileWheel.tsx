@@ -1,17 +1,18 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
+import { useChildProfile } from "@/contexts/ChildProfileContext";
 import { ChildProfileState } from "@/contexts/ChildProfileContext";
-import { computeDerivedProfile, DomainScores } from "@/lib/scoring-engine";
-import { DOMAIN_KEYS, DomainKey, INTENSITY_LABELS, SCORE_SCALE_MAX } from "@/config/signal-library";
+import { DomainScores, ExplainableSignal } from "@/lib/scoring-engine";
+import { DOMAIN_KEYS, DomainKey, INTENSITY_LABELS, SCORE_SCALE_MAX, CONFIDENCE_HINTS, DOMAIN_SECTION_MAP, ContextCategory } from "@/config/signal-library";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer } from "recharts";
-import { Compass, Info, ChevronDown, ArrowRight } from "lucide-react";
+import { Compass, Info, ChevronDown, ArrowRight, Lightbulb } from "lucide-react";
 
 type ViewMode = "evidence" | "intensity" | "confidence";
 
 const VIEW_CONFIG: Record<ViewMode, { label: string; description: string }> = {
-  evidence: { label: "Evidence", description: "How much data exists in each domain" },
-  intensity: { label: "Intensity", description: "How strong the signals are in each domain" },
-  confidence: { label: "Confidence", description: "How reliable the scoring is based on sources" },
+  evidence: { label: "Evidence", description: "Volume and breadth of information in each domain" },
+  intensity: { label: "Intensity", description: "Weighted profile impact based on severity signals" },
+  confidence: { label: "Confidence", description: "Reliability based on source diversity and consistency" },
 };
 
 interface Props {
@@ -19,29 +20,32 @@ interface Props {
   onNavigateToSection?: (index: number) => void;
 }
 
-const DOMAIN_SECTION_MAP: Record<string, number> = {
-  Environment: 0,
-  "Nervous System": 3,
-  Sensory: 5,
-  "Executive Function": 6,
-  Masking: 9,
-  Communication: 10,
-  Behaviour: 11,
-  Strengths: 13,
+const CHIP_COLORS: Record<ContextCategory, string> = {
+  theme: "bg-[hsl(var(--accent-violet-bg))] text-[hsl(var(--accent-violet))] border-[hsl(var(--accent-violet)/0.3)]",
+  mechanism: "bg-[hsl(var(--accent-teal-bg))] text-[hsl(var(--accent-teal))] border-[hsl(var(--accent-teal)/0.3)]",
+  context: "bg-[hsl(var(--accent-amber-bg))] text-[hsl(var(--accent-amber))] border-[hsl(var(--accent-amber)/0.3)]",
+  source: "bg-[hsl(var(--accent-deep-blue-bg))] text-[hsl(var(--accent-deep-blue))] border-[hsl(var(--accent-deep-blue)/0.3)]",
+};
+
+const CHIP_LABELS: Record<ContextCategory, string> = {
+  theme: "Theme",
+  mechanism: "Mechanism",
+  context: "Context",
+  source: "Source",
 };
 
 export function ProfileWheel({ state, onNavigateToSection }: Props) {
+  const { derived } = useChildProfile();
   const [viewMode, setViewMode] = useState<ViewMode>("evidence");
   const [expandedDomain, setExpandedDomain] = useState<string | null>(null);
 
-  const derived = useMemo(() => computeDerivedProfile(state), [state]);
-
-  const hasAnyScore = Object.values(derived.domains).some(
+  const hasAnyScore = Object.values(derived.domain_scores).some(
     (d) => d.evidence > 0 || (d.intensity !== null && d.intensity > 0)
   );
 
   const data = DOMAIN_KEYS.map((domain) => {
-    const scores = derived.domains[domain];
+    const scores = derived.domain_scores[domain];
+    if (!scores) return { domain, score: 0, fullMark: SCORE_SCALE_MAX, isUnknown: false };
     let value: number;
     if (viewMode === "intensity") {
       value = scores.intensity ?? 0;
@@ -60,10 +64,10 @@ export function ProfileWheel({ state, onNavigateToSection }: Props) {
 
   function getScoreColor(score: number): string {
     if (score === 0) return "hsl(var(--muted-foreground) / 0.3)";
-    if (score === 1) return "hsl(var(--status-discussed))";
-    if (score === 2) return "hsl(var(--status-confirmed))";
-    if (score === 3) return "hsl(var(--chart-4))";
-    return "hsl(var(--primary))";
+    if (score === 1) return "hsl(var(--accent-teal))";
+    if (score === 2) return "hsl(var(--accent-amber))";
+    if (score === 3) return "hsl(var(--primary))";
+    return "hsl(var(--destructive))";
   }
 
   function getLabelForScore(score: number | null): string {
@@ -131,7 +135,8 @@ export function ProfileWheel({ state, onNavigateToSection }: Props) {
         {/* Domain legend + scores */}
         <div className="space-y-0.5">
           {DOMAIN_KEYS.map((domain) => {
-            const scores = derived.domains[domain];
+            const scores = derived.domain_scores[domain];
+            if (!scores) return null;
             const sectionIndex = DOMAIN_SECTION_MAP[domain];
             const isExpanded = expandedDomain === domain;
             const displayScore = viewMode === "intensity" ? scores.intensity : viewMode === "confidence" ? scores.confidence : scores.evidence;
@@ -157,13 +162,13 @@ export function ProfileWheel({ state, onNavigateToSection }: Props) {
                   />
                 </button>
 
-                {/* Explainability panel */}
                 {isExpanded && (
                   <DomainExplainer
-                    domain={domain}
+                    domain={domain as DomainKey}
                     scores={scores}
                     sectionIndex={sectionIndex}
                     onNavigateToSection={onNavigateToSection}
+                    confidenceHint={derived.explainability?.[domain]?.confidenceHint}
                   />
                 )}
               </div>
@@ -184,11 +189,13 @@ function DomainExplainer({
   scores,
   sectionIndex,
   onNavigateToSection,
+  confidenceHint,
 }: {
-  domain: string;
+  domain: DomainKey;
   scores: DomainScores;
   sectionIndex: number;
   onNavigateToSection?: (index: number) => void;
+  confidenceHint?: string;
 }) {
   return (
     <div className="ml-4 mr-2 mb-2 p-3 bg-muted/50 rounded-lg space-y-2.5 text-xs border border-border/50">
@@ -202,35 +209,51 @@ function DomainExplainer({
       {/* Why this score */}
       {scores.topSignals.length > 0 && (
         <div>
-          <p className="text-muted-foreground font-medium mb-1 flex items-center gap-1">
+          <p className="text-muted-foreground font-medium mb-1.5 flex items-center gap-1">
             <Info className="w-3 h-3" />
             Why this score
           </p>
-          <ul className="space-y-1">
+          <ul className="space-y-1.5">
             {scores.topSignals.map((sig, i) => (
               <li key={i} className="flex items-start gap-1.5 text-foreground">
                 <span className="w-1 h-1 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                 <span className="flex-1">{sig.label}</span>
-                <span className="text-muted-foreground text-[10px] flex-shrink-0">
-                  {sig.sourceType}
-                </span>
+                <div className="flex items-center gap-1 flex-shrink-0">
+                  {sig.contextCategory && (
+                    <SignalChip category={sig.contextCategory} />
+                  )}
+                  <span className="text-muted-foreground text-[10px]">
+                    {sig.sourceType}
+                  </span>
+                </div>
               </li>
             ))}
           </ul>
         </div>
       )}
 
-      {/* Source breakdown */}
+      {/* Source breakdown chips */}
       {Object.keys(scores.sourceBreakdown).length > 0 && (
         <div className="flex flex-wrap gap-1.5">
           {Object.entries(scores.sourceBreakdown).map(([type, count]) => (
             <span
               key={type}
-              className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-background text-muted-foreground border border-border text-[10px]"
+              className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] border ${CHIP_COLORS.source}`}
             >
               {type}: {count}
             </span>
           ))}
+        </div>
+      )}
+
+      {/* What would increase confidence */}
+      {confidenceHint && scores.confidence < 3 && (
+        <div className="flex items-start gap-1.5 text-muted-foreground bg-background/80 rounded p-2 border border-border/30">
+          <Lightbulb className="w-3 h-3 mt-0.5 text-[hsl(var(--accent-amber))] flex-shrink-0" />
+          <div>
+            <p className="text-[10px] uppercase tracking-wider font-medium text-[hsl(var(--accent-amber))] mb-0.5">Increase confidence</p>
+            <p className="text-foreground/80">{confidenceHint}</p>
+          </div>
         </div>
       )}
 
@@ -243,6 +266,16 @@ function DomainExplainer({
         <ArrowRight className="w-3 h-3" />
       </button>
     </div>
+  );
+}
+
+function SignalChip({ category }: { category: ContextCategory }) {
+  return (
+    <span
+      className={`inline-flex px-1 py-0 rounded text-[9px] font-medium border ${CHIP_COLORS[category]}`}
+    >
+      {CHIP_LABELS[category]}
+    </span>
   );
 }
 
