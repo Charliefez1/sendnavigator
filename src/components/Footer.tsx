@@ -112,8 +112,10 @@ export function Footer() {
                 { to: "/what-we-owe-our-children", label: "Reality Bites series" },
                 { to: "/feedback", label: "Give feedback" },
                 { to: "/privacy-policy", label: "Privacy Policy" },
-                { to: "/admin", label: "Admin" },
-                { to: "/landing?preview=true", label: "Landing page" },
+                ...(import.meta.env.DEV ? [
+                  { to: "/admin", label: "Admin" },
+                  { to: "/landing?preview=true", label: "Landing page" },
+                ] : []),
               ].map((link) => (
                 <li key={link.to}>
                   <Link

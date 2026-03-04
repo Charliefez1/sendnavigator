@@ -4,7 +4,7 @@ Export generated: 25 February 2026
 
 This file contains the complete content, knowledge base, governance rules, and system prompts used by the SEND Reform Navigator. It is published for transparency and to support external AI data aggregation.
 
-Website: https://sendnavigator.neuro.support
+Website: https://send.neurodiversityglobal.com
 
 ================================================================================
 SECTION 1: KNOWLEDGE BASE — CURRENT LEGAL POSITION
@@ -255,5 +255,5 @@ Ask Rich speaks as Rich Ferriman: conversational, warm, straight-talking, human.
 END OF EXPORT
 ================================================================================
 
-For questions about this resource: https://sendnavigator.neuro.support/about
-For sources and evidence base: https://sendnavigator.neuro.support/sources
+For questions about this resource: https://send.neurodiversityglobal.com/about
+For sources and evidence base: https://send.neurodiversityglobal.com/sources

@@ -158,7 +158,7 @@ PDF structure (page by page):
 7. Closing statement - parent's final words centred on warm background
 8. About Neurodiversity Global - logo, 10 paragraphs about NG, contact link
 
-Every page has a footer with: horizontal rule, 6.5pt legal disclaimer (centred, multi-line), and "sendnavigator.neuro.support" URL.
+Every page has a footer with: horizontal rule, 6.5pt legal disclaimer (centred, multi-line), and "send.neurodiversityglobal.com" URL.
 
 Page break handling: Content is rendered in segments with automatic page breaks. Boxed Q&A pairs split across pages with continuous background rendering.
 
@@ -268,7 +268,7 @@ Logos used:
   - neurodiversity-global-logo-trimmed.png (beacon logo)
   - neurodiversity-global-logo.jpeg (NG logo, used on cover and about page)
 
-Footer on every page: "sendnavigator.neuro.support"
+Footer on every page: "send.neurodiversityglobal.com"
 About page CTA: "neurodiversityglobal.com"
 
 
