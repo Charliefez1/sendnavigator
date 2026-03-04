@@ -61,11 +61,42 @@ export interface DomainExplainability {
   confidenceHint: string;
 }
 
+// ───────────────────────────────────────────────────
+// Episode Cycle Model (schema only — detection not active)
+// ───────────────────────────────────────────────────
+
+export const EPISODE_TYPES = ["shutdown", "meltdown", "panic", "rage", "dissociation", "avoidance"] as const;
+export type EpisodeType = (typeof EPISODE_TYPES)[number];
+
+export interface EpisodeData {
+  early_signals: string[];
+  triggers: string[];
+  point_of_no_return: string[];
+  supports: string[];
+  recovery_needs: string[];
+  recovery_time_range: string;
+  next_day_impacts: string[];
+}
+
+export type EpisodeModel = Record<EpisodeType, EpisodeData | null>;
+
+function createEmptyEpisodeModel(): EpisodeModel {
+  return {
+    shutdown: null,
+    meltdown: null,
+    panic: null,
+    rage: null,
+    dissociation: null,
+    avoidance: null,
+  };
+}
+
 export interface DerivedProfileData {
   scoring_version: string;
   last_computed_at: string;
   domain_scores: Record<string, DomainScores>;
   explainability: Record<string, DomainExplainability>;
+  episode_model: EpisodeModel;
   signals: Signal[];
 }
 
@@ -400,6 +431,7 @@ export function computeDerivedProfile(state: ChildProfileState): DerivedProfileD
     last_computed_at: new Date().toISOString(),
     domain_scores,
     explainability,
+    episode_model: createEmptyEpisodeModel(),
     signals,
   };
 }
