@@ -267,7 +267,7 @@ function SectionInsightCard({
         <CollapsibleContent>
           <CardContent className="pt-0 pb-3 space-y-3">
             <div className="text-xs text-foreground leading-relaxed space-y-2">
-              {insight.reflection.split(/\n\n+/).filter(p => p.trim()).map((para, j) => (
+              {insight.reflection.split(/\n+/).filter(p => p.trim()).map((para, j) => (
                 <p key={j}>{para.trim()}</p>
               ))}
             </div>
