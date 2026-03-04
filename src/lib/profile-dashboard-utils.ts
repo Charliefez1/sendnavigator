@@ -1,4 +1,6 @@
 import { ChildProfileState, SECTION_TITLES, SectionStatus } from "@/contexts/ChildProfileContext";
+import { childVoiceQuestions } from "@/config/child-voice-questions";
+import { MINI_SECTIONS } from "@/config/mini-profile-sections";
 
 // Section index constants (0-based)
 const NERVOUS_SYSTEM = 3;
@@ -60,7 +62,6 @@ export function extractKeyStrengths(state: ChildProfileState): KeyStrengths {
     if (items.length >= 5) break;
   }
 
-  // Add child voice if we still have room
   if (items.length < 5) {
     const cv = getAnswer(state, STRENGTHS, "cv_really_good_at");
     if (cv) items.push(firstSentence(cv));
@@ -121,15 +122,13 @@ export interface WhatHelps {
 export function extractWhatHelps(state: ChildProfileState): WhatHelps {
   const items: string[] = [];
 
-  // Pull from specific answer fields known to contain "what helps"
   const helpsAnswer = getAnswer(state, NERVOUS_SYSTEM, "helps_or_worsens");
   if (helpsAnswer) items.push(firstSentence(helpsAnswer));
 
   const sensorySeek = getAnswer(state, SENSORY, "sensory_seeking");
   if (sensorySeek) items.push(firstSentence(sensorySeek));
 
-  // Scan key reflections
-  const reflectionSections = [NERVOUS_SYSTEM, SENSORY, 7, BEHAVIOUR]; // 7 = Sleep
+  const reflectionSections = [NERVOUS_SYSTEM, SENSORY, 7, BEHAVIOUR];
   for (const idx of reflectionSections) {
     if (items.length >= 5) break;
     const refl = getReflection(state, idx);
@@ -179,4 +178,334 @@ export function hasAnyContent(state: ChildProfileState): boolean {
     );
     return hasAnswers || section.reflection.trim().length > 0;
   });
+}
+
+// =====================================================
+// NEW: Profile Depth Scoring
+// =====================================================
+
+export interface DomainScore {
+  domain: string;
+  sectionIndex: number;
+  score: number; // 0–3
+  label: string;
+}
+
+const RADAR_DOMAINS: { domain: string; sectionIndex: number }[] = [
+  { domain: "Environment", sectionIndex: 0 },
+  { domain: "Nervous System", sectionIndex: 3 },
+  { domain: "Sensory", sectionIndex: 5 },
+  { domain: "Exec. Function", sectionIndex: 6 },
+  { domain: "Masking", sectionIndex: 9 },
+  { domain: "Communication", sectionIndex: 10 },
+  { domain: "Behaviour", sectionIndex: 11 },
+  { domain: "Strengths", sectionIndex: 13 },
+];
+
+function scoreDomain(state: ChildProfileState, sectionIndex: number): number {
+  const section = state.sections[sectionIndex];
+  if (!section) return 0;
+
+  const answers = Object.entries(section.answers).filter(([, v]) =>
+    Array.isArray(v) ? v.length > 0 : (v || "").trim().length > 0
+  );
+  if (answers.length === 0 && !section.reflection?.trim()) return 0;
+
+  // Count rich answers (>50 chars)
+  const richCount = answers.filter(([, v]) => {
+    const text = Array.isArray(v) ? v.join(", ") : v;
+    return text.length > 50;
+  }).length;
+
+  const hasReflection = (section.reflection || "").trim().length > 0;
+
+  // Check child voice
+  const cvQuestions = childVoiceQuestions[sectionIndex] || [];
+  const hasChildVoice = cvQuestions.some((q) => {
+    const val = section.answers?.[q.id];
+    return val && (Array.isArray(val) ? val.length > 0 : val.trim().length > 0);
+  });
+
+  // Scoring: 1 = started, 2 = detailed, 3 = rich
+  if (richCount >= 2 && (hasReflection || hasChildVoice)) return 3;
+  if (answers.length >= 2 || richCount >= 1) return 2;
+  return 1;
+}
+
+const SCORE_LABELS = ["Empty", "Started", "Detailed", "Rich"];
+
+export function extractDomainScores(state: ChildProfileState): DomainScore[] {
+  return RADAR_DOMAINS.map(({ domain, sectionIndex }) => {
+    const score = scoreDomain(state, sectionIndex);
+    return { domain, sectionIndex, score, label: SCORE_LABELS[score] };
+  });
+}
+
+/** Overall profile depth as a 0–100 value, weighted by answer quality. */
+export function extractProfileDepth(state: ChildProfileState): number {
+  const scores = extractDomainScores(state);
+  const maxPossible = scores.length * 3;
+  const total = scores.reduce((sum, s) => sum + s.score, 0);
+  return maxPossible > 0 ? Math.round((total / maxPossible) * 100) : 0;
+}
+
+// =====================================================
+// NEW: Child Voice Collection
+// =====================================================
+
+export interface ChildVoiceEntry {
+  quote: string;
+  questionLabel: string;
+  sectionIndex: number;
+  sectionTitle: string;
+}
+
+export function extractChildVoiceEntries(state: ChildProfileState): ChildVoiceEntry[] {
+  const entries: ChildVoiceEntry[] = [];
+
+  for (const [sectionIndexStr, questions] of Object.entries(childVoiceQuestions)) {
+    const sectionIndex = Number(sectionIndexStr);
+    const section = state.sections[sectionIndex];
+    if (!section) continue;
+
+    for (const q of questions) {
+      const val = section.answers?.[q.id];
+      const text = val ? (Array.isArray(val) ? val.join(", ") : val.trim()) : "";
+      if (text) {
+        entries.push({
+          quote: text,
+          questionLabel: q.label,
+          sectionIndex,
+          sectionTitle: SECTION_TITLES[sectionIndex] || `Section ${sectionIndex + 1}`,
+        });
+      }
+    }
+  }
+
+  return entries;
+}
+
+// =====================================================
+// NEW: Emerging Themes (keyword-based pattern detection)
+// =====================================================
+
+export interface EmergingTheme {
+  label: string;
+  description: string;
+  linkedSections: number[];
+}
+
+interface ThemeCluster {
+  label: string;
+  description: string;
+  keywords: string[];
+}
+
+const THEME_CLUSTERS: ThemeCluster[] = [
+  {
+    label: "Sensory overwhelm",
+    description: "Noise, light, or sensory input appears to be a significant factor across multiple areas.",
+    keywords: ["noise", "loud", "sound", "light", "bright", "overwhelm", "sensory", "headphones", "cover ears", "too much"],
+  },
+  {
+    label: "Dysregulation and meltdowns",
+    description: "Signs of emotional or nervous system dysregulation connect across different contexts.",
+    keywords: ["meltdown", "shutdown", "dysregulat", "overwhelm", "explode", "rage", "outburst", "can't cope", "fight or flight", "freeze"],
+  },
+  {
+    label: "Masking and exhaustion",
+    description: "Holding it together in some settings may be causing collapse or withdrawal in others.",
+    keywords: ["mask", "hold it together", "different at home", "exhausted", "collapse", "after school", "fine at school", "bottling", "pretend"],
+  },
+  {
+    label: "Anxiety and avoidance",
+    description: "Anxiety patterns appear to drive avoidance or distress across different situations.",
+    keywords: ["anxious", "anxiety", "worry", "avoid", "refuse", "won't go", "scared", "panic", "dread", "sick feeling"],
+  },
+  {
+    label: "Communication gaps",
+    description: "Difficulty expressing needs or being understood seems to affect multiple areas.",
+    keywords: ["can't explain", "doesn't say", "misunderstood", "literal", "social cue", "wrong thing", "finds it hard to say", "non-verbal", "goes quiet"],
+  },
+  {
+    label: "Executive function challenges",
+    description: "Planning, organising, or starting tasks appears to be a consistent challenge.",
+    keywords: ["forget", "organis", "plan", "start", "instruction", "lose things", "distract", "focus", "attention", "can't begin"],
+  },
+  {
+    label: "Sleep and recovery",
+    description: "Sleep difficulties may be compounding daytime challenges.",
+    keywords: ["sleep", "tired", "wake", "nightmare", "melatonin", "won't settle", "restless", "exhausted", "can't switch off"],
+  },
+  {
+    label: "Demand avoidance",
+    description: "Responses to demands or expectations appear to be a recurring pattern.",
+    keywords: ["demand", "won't", "refuse", "control", "autonomy", "told to", "authority", "defian", "oppositional", "pda"],
+  },
+  {
+    label: "Identity and self-worth",
+    description: "How they see themselves may be shaping their responses and willingness to engage.",
+    keywords: ["stupid", "can't do", "different", "weird", "broken", "not like others", "self-esteem", "confidence", "identity", "who am i"],
+  },
+  {
+    label: "Strength-based motivation",
+    description: "Clear areas of deep interest and capability emerge when the right conditions exist.",
+    keywords: ["love", "passion", "hours", "brilliant", "creative", "talent", "special interest", "hyper-focus", "expert", "knows everything"],
+  },
+];
+
+export function extractEmergingThemes(state: ChildProfileState): EmergingTheme[] {
+  // Collect all text from all sections
+  const sectionTexts: Map<number, string> = new Map();
+
+  for (const [indexStr, section] of Object.entries(state.sections)) {
+    const idx = Number(indexStr);
+    const parts: string[] = [];
+    for (const val of Object.values(section.answers)) {
+      const text = Array.isArray(val) ? val.join(" ") : val;
+      if (text?.trim()) parts.push(text.toLowerCase());
+    }
+    if (section.reflection?.trim()) parts.push(section.reflection.toLowerCase());
+    if (parts.length > 0) sectionTexts.set(idx, parts.join(" "));
+  }
+
+  if (sectionTexts.size === 0) return [];
+
+  const allText = Array.from(sectionTexts.values()).join(" ");
+  const themes: EmergingTheme[] = [];
+
+  for (const cluster of THEME_CLUSTERS) {
+    const matchingSections = new Set<number>();
+    let hitCount = 0;
+
+    for (const keyword of cluster.keywords) {
+      if (allText.includes(keyword)) {
+        hitCount++;
+        // Find which sections contain this keyword
+        for (const [idx, text] of sectionTexts) {
+          if (text.includes(keyword)) matchingSections.add(idx);
+        }
+      }
+    }
+
+    // Require at least 2 keyword hits across at least 2 sections for a theme
+    if (hitCount >= 2 && matchingSections.size >= 2) {
+      themes.push({
+        label: cluster.label,
+        description: cluster.description,
+        linkedSections: Array.from(matchingSections).sort((a, b) => a - b),
+      });
+    }
+  }
+
+  // Return top 5 themes sorted by number of linked sections
+  return themes
+    .sort((a, b) => b.linkedSections.length - a.linkedSections.length)
+    .slice(0, 5);
+}
+
+// =====================================================
+// NEW: Readiness & Next Steps
+// =====================================================
+
+export interface ReadinessSuggestion {
+  text: string;
+  sectionIndex: number;
+  priority: number; // lower = more important
+}
+
+export function extractReadinessSuggestions(
+  state: ChildProfileState,
+  getSectionStatus: (index: number) => SectionStatus
+): ReadinessSuggestion[] {
+  const suggestions: ReadinessSuggestion[] = [];
+  const activeSections = state.reportMode === "mini" ? [...MINI_SECTIONS] : SECTION_TITLES.map((_, i) => i);
+
+  for (const idx of activeSections) {
+    const status = getSectionStatus(idx);
+    const title = SECTION_TITLES[idx];
+    const section = state.sections[idx];
+
+    if (status === "empty") {
+      suggestions.push({
+        text: `Start the "${title}" section to build a fuller picture.`,
+        sectionIndex: idx,
+        priority: 10,
+      });
+      continue;
+    }
+
+    // Check if thin (few answers, short)
+    const answers = section ? Object.entries(section.answers).filter(([, v]) =>
+      Array.isArray(v) ? v.length > 0 : (v || "").trim().length > 0
+    ) : [];
+
+    const richCount = answers.filter(([, v]) => {
+      const text = Array.isArray(v) ? v.join(", ") : v;
+      return text.length > 50;
+    }).length;
+
+    if (richCount === 0 && answers.length > 0) {
+      suggestions.push({
+        text: `Add more detail to "${title}" — longer answers create a stronger report.`,
+        sectionIndex: idx,
+        priority: 5,
+      });
+    }
+
+    // Check reflection
+    const hasReflection = (section?.reflection || "").trim().length > 0;
+    if (!hasReflection && answers.length > 0) {
+      suggestions.push({
+        text: `Add a reflection to "${title}" to deepen this section.`,
+        sectionIndex: idx,
+        priority: 7,
+      });
+    }
+
+    // Check child voice
+    const cvQuestions = childVoiceQuestions[idx] || [];
+    if (cvQuestions.length > 0) {
+      const hasCV = cvQuestions.some((q) => {
+        const val = section?.answers?.[q.id];
+        return val && (Array.isArray(val) ? val.length > 0 : val.trim().length > 0);
+      });
+      if (!hasCV && answers.length > 0) {
+        suggestions.push({
+          text: `"${title}" would benefit from your child's voice.`,
+          sectionIndex: idx,
+          priority: 6,
+        });
+      }
+    }
+  }
+
+  return suggestions.sort((a, b) => a.priority - b.priority).slice(0, 3);
+}
+
+export type ReadinessLevel = "not-ready" | "minimal" | "good" | "strong";
+
+export interface ReadinessInfo {
+  level: ReadinessLevel;
+  label: string;
+  description: string;
+  canGenerate: boolean;
+}
+
+export function extractReadiness(state: ChildProfileState, getSectionStatus: (index: number) => SectionStatus): ReadinessInfo {
+  const activeSections = state.reportMode === "mini" ? [...MINI_SECTIONS] : SECTION_TITLES.map((_, i) => i);
+  const filledCount = activeSections.filter((idx) => getSectionStatus(idx) !== "empty").length;
+  const ratio = filledCount / activeSections.length;
+  const depth = extractProfileDepth(state);
+
+  if (ratio === 0) {
+    return { level: "not-ready", label: "Not started", description: "Start filling in sections to build your child's profile.", canGenerate: false };
+  }
+  if (ratio < 0.3 || depth < 15) {
+    return { level: "minimal", label: "Just getting started", description: "A few more sections will make the report much stronger.", canGenerate: false };
+  }
+  if (ratio < 0.6 || depth < 40) {
+    return { level: "good", label: "Getting there", description: "Your profile has enough for a meaningful report. More detail will make it even better.", canGenerate: true };
+  }
+  return { level: "strong", label: "Ready for a powerful report", description: "Your profile is rich with detail. This will generate something meaningful.", canGenerate: true };
 }

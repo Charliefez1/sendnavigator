@@ -649,6 +649,7 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
             setInitialSection(index);
             setStage("builder");
           }}
+          onGenerateReport={() => setStage("final")}
         />
       )}
       {stage === "final" && (
