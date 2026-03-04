@@ -293,4 +293,4 @@ export const INTENSITY_LABELS: Record<number, string> = {
 
 export const SCORE_SCALE_MAX = 4;
 
-export const SCORING_VERSION = "v1.0";
+export const SCORING_VERSION = "v1.1";
