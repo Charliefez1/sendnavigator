@@ -5,7 +5,7 @@ import { DomainScores, ExplainableSignal } from "@/lib/scoring-engine";
 import { DOMAIN_KEYS, DomainKey, INTENSITY_LABELS, SCORE_SCALE_MAX, DOMAIN_SECTION_MAP, ContextCategory } from "@/config/signal-library";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer } from "recharts";
-import { Compass, Info, ChevronDown, ArrowRight, Lightbulb } from "lucide-react";
+import { Compass, Info, ChevronDown, ArrowRight, Lightbulb, AlertTriangle } from "lucide-react";
 
 type ViewMode = "evidence" | "intensity" | "confidence";
 
@@ -154,6 +154,18 @@ export function ProfileWheel({ state, onNavigateToSection }: Props) {
         ) : (
           <div className="flex items-center justify-center h-48 text-sm text-muted-foreground">
             Start filling in sections to see your profile shape emerge
+          </div>
+        )}
+
+        {/* Freetext saturation banner */}
+        {hasAnyScore && Object.values(derived.domain_scores).some(
+          (d) => d.freetextContributionRatio > 0.5
+        ) && (
+          <div className="flex items-start gap-2 p-2.5 rounded-lg bg-[hsl(var(--accent-amber-bg))] border border-[hsl(var(--accent-amber)/0.3)] text-xs">
+            <AlertTriangle className="w-3.5 h-3.5 text-[hsl(var(--accent-amber))] flex-shrink-0 mt-0.5" />
+            <p className="text-foreground/80">
+              Some domains are mostly based on written notes. Adding structured tick-box answers will improve reliability.
+            </p>
           </div>
         )}
 
