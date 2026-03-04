@@ -8,20 +8,25 @@ import { sectionContent } from "@/config/child-profile-sections";
 import { childVoiceQuestions } from "@/config/child-voice-questions";
 import { OpeningScreen } from "@/components/child-profile/OpeningScreen";
 import { SetupFlow } from "@/components/child-profile/SetupFlow";
+import { ModeSelectScreen } from "@/components/child-profile/ModeSelectScreen";
 import { ProfileBuilder } from "@/components/child-profile/ProfileBuilder";
 import { ProfileDashboard } from "@/components/child-profile/ProfileDashboard";
 import { ProfileCompactHeader } from "@/components/child-profile/ProfileCompactHeader";
 import { FinalScreen } from "@/components/child-profile/FinalScreen";
-import { ReportPreview } from "@/components/child-profile/ReportPreview";
+import { ReportDashboard } from "@/components/child-profile/ReportDashboard";
+import { SectionRegenConfirm } from "@/components/child-profile/SectionRegenConfirm";
 import { ReportLoadingScreen } from "@/components/child-profile/ReportLoadingScreen";
 import { generateProfilePDF } from "@/lib/generate-profile-pdf";
 import { isStructuredReport } from "@/types/ai-report";
+import { MINI_SECTIONS } from "@/config/mini-profile-sections";
+import type { ReportMode } from "@/config/mini-profile-sections";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 
-type Stage = "opening" | "setup" | "builder" | "dashboard" | "final" | "report-loading" | "report-preview";
+type Stage = "opening" | "setup" | "mode-select" | "builder" | "dashboard" | "final" | "report-loading" | "report-preview";
 
 const TEST_DATA: ChildProfileState = {
+  reportMode: "full",
   setup: {
     childName: "Jake",
     filledBy: "A parent or carer",
@@ -391,11 +396,28 @@ function buildProfileText(state: ChildProfileState): string {
 
 function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage) => void }) {
   const [initialSection, setInitialSection] = useState(0);
-  const { loadState, state, updateAiReport } = useChildProfile();
+  const { loadState, state, updateAiReport, clearAiReport, setReportMode } = useChildProfile();
   const pendingEmailRef = useRef<string | undefined>();
 
-  const handleRestore = (data: { profile_data: any; stage: string; active_section: number }) => {
-    loadState(data.profile_data);
+  // Section regeneration state
+  const [regenState, setRegenState] = useState<{
+    sectionIndex: number;
+    loading: boolean;
+    oldReflection: string;
+    newReflection?: string;
+  } | null>(null);
+
+  // Get the active section indices based on report mode
+  const activeSections = state.reportMode === "mini"
+    ? [...MINI_SECTIONS]
+    : SECTION_TITLES.map((_, i) => i);
+
+  const handleRestore = (data: { profile_data: any; stage: string; active_section: number; report_mode?: string; ai_report?: any }) => {
+    const profileData = { ...data.profile_data, reportMode: data.report_mode || data.profile_data?.reportMode || "full" };
+    loadState(profileData);
+    if (data.ai_report) {
+      updateAiReport(data.ai_report);
+    }
     setInitialSection(data.active_section || 0);
     if (data.stage === "builder") {
       setStage("builder");
@@ -406,6 +428,11 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
 
   const handleLoadTestData = () => {
     loadState(TEST_DATA);
+    setStage("builder");
+  };
+
+  const handleModeSelect = (mode: ReportMode) => {
+    setReportMode(mode);
     setStage("builder");
   };
 
@@ -487,6 +514,96 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
     }
   };
 
+  const handleRegenerateSection = async (sectionIndex: number) => {
+    if (!state.aiReport?.structured) return;
+
+    const structured = state.aiReport.structured as any;
+    const existingInsight = structured.sectionInsights?.find(
+      (s: any) => s.sectionIndex === sectionIndex
+    );
+    const oldReflection = existingInsight?.reflection || "";
+
+    setRegenState({ sectionIndex, loading: true, oldReflection });
+
+    try {
+      // Build section text from the profile data
+      const section = state.sections[sectionIndex];
+      const content = sectionContent[sectionIndex];
+      const lines: string[] = [];
+
+      if (content && section) {
+        content.questions.forEach((q) => {
+          const val = section.answers?.[q.id];
+          const displayValue = Array.isArray(val) ? val.join(", ") : val;
+          if (displayValue?.trim()) lines.push(`${q.label}: ${displayValue.trim()}`);
+        });
+      }
+
+      const cvQuestions = childVoiceQuestions[sectionIndex];
+      if (cvQuestions && section) {
+        cvQuestions.forEach((q) => {
+          const val = section.answers?.[q.id];
+          const strVal = Array.isArray(val) ? val.join(", ") : val;
+          if (strVal?.toString().trim()) lines.push(`Child voice - ${q.label}: ${strVal.toString().trim()}`);
+        });
+      }
+
+      if (section?.reflection?.trim()) lines.push(`Closing reflection: ${section.reflection.trim()}`);
+
+      const childContext = `Child: ${state.setup.childName || "Not named"}. Reason: ${state.setup.reason || "Not provided"}.`;
+
+      const { data, error: fnError } = await supabase.functions.invoke("regenerate-section", {
+        body: {
+          sectionIndex,
+          sectionTitle: SECTION_TITLES[sectionIndex],
+          sectionText: lines.join("\n"),
+          childContext,
+        },
+      });
+
+      if (fnError) throw fnError;
+      if (data?.error) throw new Error(data.error);
+
+      setRegenState({
+        sectionIndex,
+        loading: false,
+        oldReflection,
+        newReflection: data.reflection || "",
+      });
+    } catch (e) {
+      console.error("Section regeneration failed:", e);
+      setRegenState(null);
+      toast({
+        title: "Regeneration failed",
+        description: e instanceof Error ? e.message : "Something went wrong.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleAcceptRegen = () => {
+    if (!regenState?.newReflection || !state.aiReport?.structured) {
+      setRegenState(null);
+      return;
+    }
+
+    const structured = { ...state.aiReport.structured } as any;
+    const insights = [...(structured.sectionInsights || [])];
+    const idx = insights.findIndex((s: any) => s.sectionIndex === regenState.sectionIndex);
+    if (idx !== -1) {
+      insights[idx] = { ...insights[idx], reflection: regenState.newReflection };
+    }
+    structured.sectionInsights = insights;
+
+    updateAiReport({
+      ...state.aiReport,
+      structured,
+    });
+
+    setRegenState(null);
+    toast({ title: "Section updated", description: "The new AI insight has been applied." });
+  };
+
   // Hide dashboard button during report loading
   const showDashboard = stage !== "report-loading";
 
@@ -508,12 +625,17 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
           onLoadTestData={handleLoadTestData}
         />
       )}
-      {stage === "setup" && <SetupFlow onComplete={() => setStage("builder")} />}
+      {stage === "setup" && <SetupFlow onComplete={() => setStage("mode-select")} />}
+      {stage === "mode-select" && <ModeSelectScreen onSelect={handleModeSelect} />}
       {stage === "builder" && (
         <ProfileBuilder
           initialSection={initialSection}
+          activeSections={activeSections}
           onViewDashboard={() => setStage("dashboard")}
           onShowFinal={() => setStage("final")}
+          onUpgradeToFull={() => {
+            setReportMode("full");
+          }}
         />
       )}
       {stage === "dashboard" && (
@@ -536,10 +658,30 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
         <ReportLoadingScreen />
       )}
       {stage === "report-preview" && (
-        <ReportPreview
+        <ReportDashboard
           onDownloadPDF={handleDownloadPDF}
           onBackToEdit={() => setStage("final")}
-          onRegenerate={() => setStage("final")}
+          onRegenerate={() => {
+            clearAiReport();
+            setStage("final");
+          }}
+          onEditSection={(sectionIndex) => {
+            setInitialSection(sectionIndex);
+            setStage("builder");
+          }}
+          onRegenerateSection={handleRegenerateSection}
+        />
+      )}
+
+      {/* Section regeneration confirm dialog */}
+      {regenState && (
+        <SectionRegenConfirm
+          sectionTitle={SECTION_TITLES[regenState.sectionIndex]}
+          oldReflection={regenState.oldReflection}
+          newReflection={regenState.newReflection || ""}
+          loading={regenState.loading}
+          onAccept={handleAcceptRegen}
+          onReject={() => setRegenState(null)}
         />
       )}
     </>

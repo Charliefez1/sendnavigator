@@ -4,6 +4,7 @@ import { Circle, CheckCircle2, Pencil, LayoutDashboard } from "lucide-react";
 
 interface ProfileSidebarProps {
   activeSection: number;
+  activeSections?: number[];
   onSelectSection: (index: number) => void;
   onViewDashboard?: () => void;
 }
@@ -19,8 +20,9 @@ function StatusIcon({ status }: { status: SectionStatus }) {
   }
 }
 
-export function ProfileSidebar({ activeSection, onSelectSection, onViewDashboard }: ProfileSidebarProps) {
+export function ProfileSidebar({ activeSection, activeSections, onSelectSection, onViewDashboard }: ProfileSidebarProps) {
   const { getSectionStatus } = useChildProfile();
+  const visibleSections = activeSections ?? SECTION_TITLES.map((_, i) => i);
 
   return (
     <nav className="space-y-0.5" aria-label="Profile sections">
@@ -33,7 +35,8 @@ export function ProfileSidebar({ activeSection, onSelectSection, onViewDashboard
           <span className="font-medium">View dashboard</span>
         </button>
       )}
-      {SECTION_TITLES.map((title, index) => {
+      {visibleSections.map((index) => {
+        const title = SECTION_TITLES[index];
         const status = getSectionStatus(index);
         const isActive = activeSection === index;
 

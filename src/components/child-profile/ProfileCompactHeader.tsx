@@ -1,7 +1,8 @@
-import { Save, LayoutDashboard, UserRound, ArrowLeft } from "lucide-react";
+import { LayoutDashboard, UserRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { useChildProfile, SECTION_TITLES } from "@/contexts/ChildProfileContext";
+import { MINI_SECTIONS } from "@/config/mini-profile-sections";
 
 interface ProfileCompactHeaderProps {
   onViewDashboard?: () => void;
@@ -11,13 +12,17 @@ interface ProfileCompactHeaderProps {
 }
 
 export function ProfileCompactHeader({ onViewDashboard, onSave, childName, showDashboard = true }: ProfileCompactHeaderProps) {
-  const { getSectionStatus } = useChildProfile();
+  const { getSectionStatus, state } = useChildProfile();
 
-  const completedCount = SECTION_TITLES.reduce(
-    (count, _, i) => count + (getSectionStatus(i) === "complete" ? 1 : 0),
+  const activeSections = state.reportMode === "mini"
+    ? [...MINI_SECTIONS]
+    : SECTION_TITLES.map((_, i) => i);
+
+  const completedCount = activeSections.reduce(
+    (count, i) => count + (getSectionStatus(i) === "complete" ? 1 : 0),
     0
   );
-  const percentage = Math.round((completedCount / SECTION_TITLES.length) * 100);
+  const percentage = Math.round((completedCount / activeSections.length) * 100);
 
   return (
     <div className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 sticky top-0 z-30">
@@ -38,7 +43,8 @@ export function ProfileCompactHeader({ onViewDashboard, onSave, childName, showD
               <div className="flex items-center gap-2 mt-0.5">
                 <Progress value={percentage} className="h-1.5 w-24" />
                 <span className="text-xs text-muted-foreground whitespace-nowrap">
-                  {completedCount}/{SECTION_TITLES.length} sections
+                  {completedCount}/{activeSections.length} sections
+                  {state.reportMode === "mini" && " (mini)"}
                 </span>
               </div>
             </div>
