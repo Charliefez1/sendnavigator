@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { Layout } from "@/components/Layout";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
@@ -689,7 +689,16 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
 }
 
 const MyChildProfile = () => {
-  const [stage, setStage] = useState<Stage>("opening");
+  const [stage, setStageRaw] = useState<Stage>("opening");
+
+  const setStage = useCallback((s: Stage) => {
+    setStageRaw(s);
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0 });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    });
+  }, []);
 
   return (
     <Layout>
