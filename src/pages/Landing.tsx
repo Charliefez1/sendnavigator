@@ -95,7 +95,7 @@ const Landing = () => {
             backgroundImage: `url(${heroChildren})`,
             backgroundSize: "cover",
             backgroundPosition: "center 30%",
-            opacity: 0.18,
+            opacity: 0.32,
           }}
         />
         {/* Dark overlay for readability */}
@@ -103,9 +103,9 @@ const Landing = () => {
           className="absolute inset-0 pointer-events-none"
           style={{
             background: [
-              "linear-gradient(to bottom, hsl(222 35% 10% / 0.4) 0%, hsl(222 35% 10% / 0.7) 100%)",
-              "radial-gradient(ellipse 90% 50% at 50% -10%, hsl(175 60% 40% / 0.2), transparent 65%)",
-              "radial-gradient(ellipse 70% 60% at 85% 90%, hsl(262 50% 50% / 0.12), transparent 55%)",
+              "linear-gradient(to bottom, hsl(222 35% 10% / 0.2) 0%, hsl(222 35% 10% / 0.5) 100%)",
+              "radial-gradient(ellipse 90% 50% at 50% -10%, hsl(175 60% 40% / 0.15), transparent 65%)",
+              "radial-gradient(ellipse 70% 60% at 85% 90%, hsl(262 50% 50% / 0.08), transparent 55%)",
             ].join(", "),
           }}
         />
