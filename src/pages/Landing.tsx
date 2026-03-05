@@ -83,12 +83,42 @@ const Landing = () => {
                 <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
                   SEND Navigator
                 </h1>
-                <p className="text-lg md:text-xl font-semibold mb-3" style={{ color: "hsl(175 60% 52%)" }}>
+                <p className="text-base sm:text-lg text-white/80 leading-relaxed mb-5">
                   A calm, independent place to understand SEND, use practical tools, and work out what to do next.
                 </p>
-                <p className="text-sm md:text-base italic text-white/60 leading-relaxed">
+
+                <ul className="space-y-2.5 mb-5">
+                  {[
+                    "Clear explanations of the system.",
+                    "Practical tools to communicate needs and take action.",
+                    "Plain English answers to real questions, based on evidence and lived experience.",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-white/70">
+                      <div className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0" style={{ backgroundColor: "hsl(175 60% 52%)" }} />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="flex flex-wrap items-center gap-3 mb-5">
+                  {["Always free", "No ads", "A safe space", "Independent & fact-based", "Built by parents"].map((badge) => (
+                    <span key={badge} className="flex items-center gap-1.5 text-xs text-white/50">
+                      <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "hsl(175 60% 40%)" }} />
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+
+                <p className="text-xs text-white/40 leading-relaxed mb-5">
                   Parent focused. Open and useful to teachers, SENCOs, professionals, and anyone supporting a child.
                 </p>
+
+                <div className="flex flex-col items-start gap-1">
+                  <img src={ndgLogo} alt="Neurodiversity Global" className="h-16 brightness-0 invert opacity-70" />
+                  <p className="text-xs text-white/40">
+                    A free resource site by Neurodiversity Global
+                  </p>
+                </div>
               </div>
 
               {/* RIGHT: Login form card */}
