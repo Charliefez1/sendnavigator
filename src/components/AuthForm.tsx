@@ -11,6 +11,7 @@ interface AuthFormProps {
 
 export function AuthForm({ variant = "default" }: AuthFormProps) {
   const [mode, setMode] = useState<"signin" | "signup" | "reset">("signin");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -32,7 +33,7 @@ export function AuthForm({ variant = "default" }: AuthFormProps) {
         setMode("signin");
       }
     } else if (mode === "signup") {
-      const { error } = await signUp(email, password);
+      const { error } = await signUp(email, password, name);
       if (error) {
         const msg = error.message?.includes("already registered")
           ? "An account with this email already exists. Try signing in instead."
@@ -77,6 +78,23 @@ export function AuthForm({ variant = "default" }: AuthFormProps) {
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
+        {mode === "signup" && (
+          <div>
+            <Label className={`text-xs font-medium mb-1.5 block ${isGlass ? "text-white/80" : "text-foreground"}`}>
+              Your name
+            </Label>
+            <input
+              type="text"
+              placeholder="First and last name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className={inputClass}
+              style={inputStyle}
+            />
+          </div>
+        )}
+
         <div>
           <Label className={`text-xs font-medium mb-1.5 block ${isGlass ? "text-white/80" : "text-foreground"}`}>
             Email
