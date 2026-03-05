@@ -67,10 +67,16 @@ const Landing = () => {
 
               {/* LEFT: Hero text */}
               <div className="flex flex-col justify-center p-8 sm:p-10 md:p-12">
-                <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4" style={{ fontFamily: "'Cooper Hewitt', sans-serif" }}>
+                <h1
+                  className="text-3xl md:text-5xl font-black text-white leading-tight mb-4"
+                  style={{ fontFamily: "'Cooper Hewitt', sans-serif", fontWeight: 900 }}
+                >
                   SEND Navigator
                 </h1>
-                <p className="text-base sm:text-lg font-bold text-white/80 leading-relaxed mb-5" style={{ fontFamily: "'Cooper Hewitt', sans-serif" }}>
+                <p
+                  className="text-base sm:text-lg font-black text-white leading-relaxed mb-5"
+                  style={{ fontFamily: "'Cooper Hewitt', sans-serif", fontWeight: 900 }}
+                >
                   A calm, independent place to understand SEND, use practical tools, and work out what to do next.
                 </p>
 
