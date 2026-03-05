@@ -126,15 +126,21 @@ export function AnimatedFeatureShowcase() {
             </p>
 
             {/* Description */}
-            <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+            <p className="text-xs text-muted-foreground leading-relaxed mb-5">
               {feature.description}
             </p>
 
+            {/* Button */}
             <span
-              className="text-xs font-medium opacity-50 group-hover:opacity-100 transition-opacity duration-300"
-              style={{ color: `hsl(var(${feature.accentVar}))` }}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition-all duration-200 group-hover:brightness-110 group-hover:shadow-sm"
+              style={{
+                backgroundColor: `hsl(var(${feature.accentVar}) / 0.1)`,
+                color: `hsl(var(${feature.accentVar}))`,
+                border: `1px solid hsl(var(${feature.accentVar}) / 0.2)`,
+              }}
             >
-              {user ? "Go to tool →" : "Explore →"}
+              {feature.label}
+              <span className="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
             </span>
           </Link>
         );
