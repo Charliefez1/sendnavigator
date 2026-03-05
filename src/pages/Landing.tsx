@@ -70,7 +70,7 @@ const Landing = () => {
                 <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4" style={{ fontFamily: "'Cooper Hewitt', sans-serif" }}>
                   SEND Navigator
                 </h1>
-                <p className="text-base sm:text-lg text-white/80 leading-relaxed mb-5" style={{ fontFamily: "'Cooper Hewitt', sans-serif" }}>
+                <p className="text-base sm:text-lg font-bold text-white/80 leading-relaxed mb-5" style={{ fontFamily: "'Cooper Hewitt', sans-serif" }}>
                   A calm, independent place to understand SEND, use practical tools, and work out what to do next.
                 </p>
 
@@ -101,7 +101,7 @@ const Landing = () => {
                 </p>
 
                 <div className="flex flex-col items-start gap-1">
-                  <img src={ndgLogo} alt="Neurodiversity Global" className="h-16 brightness-0 invert opacity-70" />
+                  <img src={ndgLogo} alt="Neurodiversity Global" className="h-16" />
                   <p className="text-xs text-white/40">
                     A free resource site by Neurodiversity Global
                   </p>
