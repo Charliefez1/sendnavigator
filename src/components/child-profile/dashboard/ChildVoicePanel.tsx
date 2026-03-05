@@ -16,53 +16,55 @@ export function ChildVoicePanel({ state, onNavigateToSection }: Props) {
   const [showAll, setShowAll] = useState(false);
   const displayEntries = showAll ? entries : entries.slice(0, 3);
 
+  if (entries.length === 0) {
+    return (
+      <Card className="col-span-full border-0 shadow-md bg-gradient-to-r from-[hsl(var(--accent-amber-bg))] to-card">
+        <CardContent className="p-6 flex items-center gap-4">
+          <div className="w-12 h-12 rounded-full bg-[hsl(var(--accent-amber))] / 0.15 flex items-center justify-center flex-shrink-0">
+            <MessageSquareHeart className="w-6 h-6 text-[hsl(var(--accent-amber))]" />
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-foreground">{childName}'s voice brings this profile to life</p>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              Look for the "child voice" questions in each section — even one answer changes how a school reads the profile.
+            </p>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
-    <Card className="col-span-full">
+    <Card className="col-span-full border-0 shadow-md">
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-sm font-medium">
-          <MessageSquareHeart className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+          <MessageSquareHeart className="w-4 h-4 text-[hsl(var(--accent-amber))]" />
           In their own words
-          {entries.length > 0 && (
-            <span className="text-[10px] text-muted-foreground font-normal ml-auto">{entries.length} quote{entries.length !== 1 ? "s" : ""}</span>
-          )}
+          <span className="text-[10px] text-muted-foreground font-normal ml-auto">{entries.length} quote{entries.length !== 1 ? "s" : ""}</span>
         </CardTitle>
       </CardHeader>
       <CardContent>
-        {entries.length > 0 ? (
-          <>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {displayEntries.map((entry, i) => (
-                <button
-                  key={i}
-                  onClick={() => onNavigateToSection?.(entry.sectionIndex)}
-                  className="text-left rounded-xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200/50 dark:border-amber-800/30 p-3 hover:border-amber-300 dark:hover:border-amber-700 transition-colors group"
-                >
-                  <Quote className="w-3.5 h-3.5 text-amber-400 dark:text-amber-500 mb-1.5 opacity-60" />
-                  <p className="text-xs text-foreground leading-relaxed line-clamp-2 italic">
-                    "{entry.quote}"
-                  </p>
-                  <p className="text-[10px] text-muted-foreground mt-1.5 group-hover:text-foreground transition-colors">
-                    {entry.sectionTitle}
-                  </p>
-                </button>
-              ))}
-            </div>
-            {entries.length > 3 && !showAll && (
-              <Button variant="ghost" size="sm" className="w-full mt-2 gap-1 text-xs" onClick={() => setShowAll(true)}>
-                See all {entries.length} quotes <ArrowRight className="w-3 h-3" />
-              </Button>
-            )}
-          </>
-        ) : (
-          <div className="rounded-xl bg-amber-50/50 dark:bg-amber-950/10 border border-amber-200/40 dark:border-amber-800/20 p-5 text-center">
-            <MessageSquareHeart className="w-7 h-7 text-amber-400/60 mx-auto mb-2" />
-            <p className="text-xs text-foreground font-medium mb-0.5">
-              {childName}'s voice brings this profile to life
-            </p>
-            <p className="text-[11px] text-muted-foreground max-w-sm mx-auto">
-              Look for the "child voice" questions in each section.
-            </p>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          {displayEntries.map((entry, i) => (
+            <button
+              key={i}
+              onClick={() => onNavigateToSection?.(entry.sectionIndex)}
+              className="text-left rounded-xl bg-gradient-to-br from-[hsl(var(--accent-amber-bg))] to-card border border-[hsl(var(--accent-amber)/0.2)] p-4 hover:border-[hsl(var(--accent-amber)/0.4)] transition-all group hover:shadow-sm"
+            >
+              <Quote className="w-4 h-4 text-[hsl(var(--accent-amber))] mb-2 opacity-60" />
+              <p className="text-sm text-foreground leading-relaxed line-clamp-3 italic">
+                "{entry.quote}"
+              </p>
+              <p className="text-[10px] text-muted-foreground mt-2 group-hover:text-foreground transition-colors">
+                {entry.sectionTitle}
+              </p>
+            </button>
+          ))}
+        </div>
+        {entries.length > 3 && !showAll && (
+          <Button variant="ghost" size="sm" className="w-full mt-3 gap-1 text-xs" onClick={() => setShowAll(true)}>
+            See all {entries.length} quotes <ArrowRight className="w-3 h-3" />
+          </Button>
         )}
       </CardContent>
     </Card>
