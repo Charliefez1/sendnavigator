@@ -60,7 +60,7 @@ function loadImageAsBase64(url: string): Promise<{ data: string; width: number; 
   });
 }
 
-export async function generateProfilePDF({ state, aiReport }: ReportData) {
+export async function generateProfilePDF({ state, aiReport }: ReportData): Promise<string> {
   // Check if any sections have content
   const hasAnySectionContent = SECTION_TITLES.some((_, index) => {
     const section = state.sections[index];
@@ -109,7 +109,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
   const setFill = (rgb: number[]) => doc.setFillColor(rgb[0], rgb[1], rgb[2]);
   const setDraw = (rgb: number[]) => doc.setDrawColor(rgb[0], rgb[1], rgb[2]);
 
-  const DISCLAIMER_TEXT = "This report is a personal guide created to help you understand and articulate your child's needs. While every care has been taken in producing this document, Neurodiversity Global cannot be held responsible for decisions made on the basis of its content. This is not a legal document and does not constitute professional medical, educational, or legal advice. Always seek qualified professional support where needed.";
+  const DISCLAIMER_TEXT = "This profile was created by a parent, for their child. It draws on lived experience and the shared knowledge of a parent community. It is not a clinical assessment, a diagnosis, or professional advice. Always work alongside qualified professionals for formal assessments and decisions about provision.";
   const FOOTER_ZONE_HEIGHT = 22;
   const maxContentY = pageHeight - FOOTER_ZONE_HEIGHT - 4;
 
@@ -497,12 +497,10 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
   // Cover disclaimer
   doc.setFontSize(TYPE.CAPTION);
   setColor(LIGHT_TEXT);
-  doc.text(
-    "This is not a diagnostic document. It is a parent-prepared profile.",
-    pageWidth / 2,
-    pageHeight - 40,
-    { align: "center" }
-  );
+  const coverDisclaimer1 = "This is not a diagnostic document. It is a parent-prepared profile built from lived experience.";
+  const coverDisclaimer2 = "It does not constitute professional advice. Always work alongside qualified professionals.";
+  doc.text(coverDisclaimer1, pageWidth / 2, pageHeight - 44, { align: "center" });
+  doc.text(coverDisclaimer2, pageWidth / 2, pageHeight - 38, { align: "center" });
   doc.setFontSize(TYPE.CAPTION);
   doc.text("send.neurodiversityglobal.com", pageWidth / 2, pageHeight - 34, { align: "center" });
 
@@ -1011,7 +1009,11 @@ export async function generateProfilePDF({ state, aiReport }: ReportData) {
 
   footer();
 
-  // === Download ===
+  // === Download + return base64 ===
   const safeName = childName.toLowerCase().replace(/[^a-z0-9]/g, "");
   doc.save(`${safeName}-profile-${dateCompact}.pdf`);
+
+  // Return base64 for email attachment (strip data URL prefix)
+  const base64 = doc.output("datauristring").split(",")[1];
+  return base64;
 }

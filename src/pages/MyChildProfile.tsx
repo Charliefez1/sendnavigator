@@ -428,16 +428,21 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
 
       setStage("report-preview");
 
-      // Send email in background if provided
+      // Send email in background if provided — include PDF attachment
       if (pendingEmailRef.current) {
-        supabase.functions
-          .invoke("email-profile-report", {
-            body: {
-              email: pendingEmailRef.current,
-              childName: state.setup.childName || "your child",
-              report: data.report,
-              structured,
-            },
+        // Generate PDF as base64 for attachment
+        const emailAiReport = structured || data.report;
+        generateProfilePDF({ state, aiReport: emailAiReport })
+          .then((pdfBase64) => {
+            return supabase.functions.invoke("email-profile-report", {
+              body: {
+                email: pendingEmailRef.current,
+                childName: state.setup.childName || "your child",
+                report: data.report,
+                structured,
+                pdfBase64,
+              },
+            });
           })
           .then(({ error }) => {
             if (error) {
@@ -446,6 +451,10 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
             } else {
               toast({ title: "Report sent to your email", description: `A copy has been sent to ${pendingEmailRef.current}.` });
             }
+          })
+          .catch((err) => {
+            console.error("Email send failed:", err);
+            toast({ title: "Email could not be sent", description: "Your report is still available to download.", variant: "destructive" });
           });
       }
     } catch (e) {
