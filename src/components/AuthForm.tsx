@@ -47,7 +47,7 @@ export function AuthForm() {
   };
 
   return (
-    <div className="bg-card border border-border rounded-xl p-5 sm:p-6 shadow-lg w-full max-w-sm">
+    <div className="bg-transparent border-0 rounded-xl p-5 sm:p-6 w-full max-w-sm">
       <h2 className="text-base font-semibold text-foreground mb-1">
         {mode === "signin" ? "Sign in to continue" : mode === "signup" ? "Create your account" : "Reset your password"}
       </h2>

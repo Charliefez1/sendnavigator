@@ -10,6 +10,7 @@ import { PersistentNewsTicker } from "@/components/PersistentNewsTicker";
 import { useAuth } from "@/contexts/AuthContext";
 import { ArrowRight, Check, AlertCircle, Mail } from "lucide-react";
 import ndgLogo from "@/assets/neurodiversity-global-education-logo-full.png";
+import heroChildren from "@/assets/landing-hero-children.png";
 
 /* ── Fade-in on scroll ── */
 function useFadeIn() {
@@ -87,14 +88,24 @@ const Landing = () => {
 
       {/* ─── SECTION 1: SPLIT HERO ─── */}
       <section className="relative min-h-[85vh] flex flex-col overflow-hidden" style={{ backgroundColor: "hsl(222 35% 10%)" }}>
-        {/* Layered gradient backdrop */}
+        {/* Hero background image */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: `url(${heroChildren})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center 30%",
+            opacity: 0.18,
+          }}
+        />
+        {/* Dark overlay for readability */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background: [
-              "radial-gradient(ellipse 90% 50% at 50% -10%, hsl(175 60% 40% / 0.25), transparent 65%)",
-              "radial-gradient(ellipse 70% 60% at 85% 90%, hsl(262 50% 50% / 0.15), transparent 55%)",
-              "radial-gradient(ellipse 50% 40% at 10% 70%, hsl(175 60% 40% / 0.08), transparent 50%)",
+              "linear-gradient(to bottom, hsl(222 35% 10% / 0.4) 0%, hsl(222 35% 10% / 0.7) 100%)",
+              "radial-gradient(ellipse 90% 50% at 50% -10%, hsl(175 60% 40% / 0.2), transparent 65%)",
+              "radial-gradient(ellipse 70% 60% at 85% 90%, hsl(262 50% 50% / 0.12), transparent 55%)",
             ].join(", "),
           }}
         />
@@ -182,9 +193,10 @@ const Landing = () => {
                   parents staying informed
                 </p>
                 <div
-                  className="rounded-xl overflow-hidden"
+                  className="rounded-xl overflow-hidden backdrop-blur-xl"
                   style={{
                     boxShadow: "0 0 40px hsl(175 60% 40% / 0.15), 0 8px 32px hsl(0 0% 0% / 0.4)",
+                    backgroundColor: "hsl(222 35% 12% / 0.65)",
                   }}
                 >
                   <AuthForm />
