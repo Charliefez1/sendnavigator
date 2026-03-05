@@ -4,6 +4,7 @@ import { PageOrientation } from "@/components/templates";
 import { ContactDetails } from "@/components/ContactDetails";
 import { User } from "lucide-react";
 import childhoodPhoto from "@/assets/rich-ferriman-childhood.jpeg";
+import richPhoto from "@/assets/rich-ferriman-photo.png";
 
 export default function RichFerriman() {
   return (
@@ -17,6 +18,13 @@ export default function RichFerriman() {
 
       <section className="content-section py-8 border-t border-border">
         <div className="prose-calm space-y-6">
+          <figure className="my-2 mb-6">
+            <img 
+              src={richPhoto} 
+              alt="Rich Ferriman speaking at a conference" 
+              className="rounded-xl w-full max-w-lg mx-auto"
+            />
+          </figure>
           <p className="text-lg leading-relaxed">
             I do not work in theory. I have <strong>lived the realities behind the statistics</strong>. Late diagnosis. Systems that did not work. The personal cost of pushing through anyway. That experience drives the clarity, urgency, pragmatism, and strategic insight I bring to my work, shaped by <strong>more than 30 years in senior executive roles</strong>.
           </p>

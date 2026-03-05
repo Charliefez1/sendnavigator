@@ -10,7 +10,7 @@ import {
   ReviewScheduleSection,
 } from "@/components/governance";
 import { BookOpen, Users, Shield, RefreshCw, AlertTriangle, Scale, Eye, MessageSquare, Calendar, User } from "lucide-react";
-import richBio from "@/assets/rich-ferriman-bio.png";
+import richPhoto from "@/assets/rich-ferriman-photo.png";
 
 const sections = [
   { id: "why", icon: BookOpen, title: "Why this resource exists" },
@@ -136,9 +136,9 @@ export default function About() {
           </div>
           <div className="flex flex-col sm:flex-row gap-6">
             <img
-              src={richBio}
-              alt="Rich Ferriman"
-              className="w-24 h-24 rounded-lg object-cover flex-shrink-0"
+              src={richPhoto}
+              alt="Rich Ferriman speaking at a conference"
+              className="w-28 h-28 rounded-xl object-cover flex-shrink-0"
             />
             <div className="space-y-3 text-sm text-muted-foreground leading-relaxed max-w-2xl">
               <p>
