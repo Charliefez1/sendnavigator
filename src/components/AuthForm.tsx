@@ -34,18 +34,21 @@ export function AuthForm({ variant = "default" }: AuthFormProps) {
     } else if (mode === "signup") {
       const { error } = await signUp(email, password);
       if (error) {
-        toast({ title: "Sign up failed", description: error.message, variant: "destructive" });
+        const msg = error.message?.includes("already registered")
+          ? "An account with this email already exists. Try signing in instead."
+          : error.message;
+        toast({ title: "Sign up failed", description: msg, variant: "destructive" });
+        if (error.message?.includes("already registered")) setMode("signin");
       } else {
-        toast({
-          title: "Check your email",
-          description: "We've sent you a confirmation link. Please verify your email to sign in.",
-        });
-        setMode("signin");
+        toast({ title: "Account created", description: "You're now signed in." });
       }
     } else {
       const { error } = await signIn(email, password);
       if (error) {
-        toast({ title: "Sign in failed", description: error.message, variant: "destructive" });
+        const msg = error.message?.includes("Invalid login credentials")
+          ? "Incorrect email or password. Please try again."
+          : error.message;
+        toast({ title: "Sign in failed", description: msg, variant: "destructive" });
       }
     }
 
