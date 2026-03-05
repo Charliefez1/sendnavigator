@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FileSearch, Shield, User, CheckSquare, MessageCircle, BookOpen } from "lucide-react";
+import { Scale, ShieldCheck, Heart, ListChecks, MessageSquareText, Library } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -14,7 +14,7 @@ const features: {
   authHref: string;
 }[] = [
   {
-    icon: FileSearch,
+    icon: Scale,
     label: "SEND Reform Report",
     headline: "Track every aspect of SEND reform",
     description:
@@ -25,7 +25,7 @@ const features: {
     authHref: "/what-is-changing",
   },
   {
-    icon: Shield,
+    icon: ShieldCheck,
     label: "EHCP Guide",
     headline: "Understand your rights and the process",
     description:
@@ -36,7 +36,7 @@ const features: {
     authHref: "/ehcps",
   },
   {
-    icon: User,
+    icon: Heart,
     label: "My Child: A Profile",
     headline: "Build a profile to share with schools",
     description:
@@ -47,7 +47,7 @@ const features: {
     authHref: "/my-child-profile",
   },
   {
-    icon: CheckSquare,
+    icon: ListChecks,
     label: "What to do now",
     headline: "Practical steps based on current law",
     description:
@@ -58,7 +58,7 @@ const features: {
     authHref: "/what-to-do-right-now",
   },
   {
-    icon: MessageCircle,
+    icon: MessageSquareText,
     label: "Ask Rich",
     headline: "Get plain-English answers",
     description:
@@ -69,7 +69,7 @@ const features: {
     authHref: "/questions-and-answers",
   },
   {
-    icon: BookOpen,
+    icon: Library,
     label: "Sources & Evidence",
     headline: "Every claim traced to its source",
     description:
