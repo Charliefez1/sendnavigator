@@ -18,10 +18,13 @@ const FILLED_BY_OPTIONS = [
 
 const SHARED_WITH_OPTIONS = [
   "Class teacher",
-  "SENCO",
+  "SENCO or SEN Teacher",
   "Headteacher",
-  "GP or paediatrician",
+  "Educational psychologist",
+  "GP or community paediatrician",
   "CAMHS",
+  "Speech and language therapist",
+  "Occupational therapist",
   "Social worker",
   "Family members",
   "The child themselves",

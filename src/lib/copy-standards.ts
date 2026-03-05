@@ -40,7 +40,7 @@ const AMERICAN_TO_UK: Array<[string, string]> = [
   ["counseling", "counselling"],
   ["catalog", "catalogue"],
   ["aging", "ageing"],
-  ["pediatrician", "paediatrician"],
+  ["pediatrician", "community paediatrician"],
   ["pediatric", "paediatric"],
   ["pediatrics", "paediatrics"],
   ["specialized", "specialised"],
@@ -120,14 +120,17 @@ const SEND_VOCABULARY: Array<[RegExp, string]> = [
   [/\bvacation\b/gi, "holiday"],
   [/\bvacations\b/gi, "holidays"],
 
-  // Therapy/clinical
+  // Therapy/clinical — UK SEND professional terms
   [/\bspeech-language pathologist\b/gi, "speech and language therapist"],
   [/\bspeech language pathologist\b/gi, "speech and language therapist"],
   [/\bspeech pathologist\b/gi, "speech and language therapist"],
   [/\bSLP\b/g, "SALT"],
-  [/\boccupational therapist\b/gi, "occupational therapist"], // same but ensure casing
+  [/\boccupational therapist\b/gi, "occupational therapist"],
   [/\bphysical therapist\b/gi, "physiotherapist"],
   [/\bphysical therapy\b/gi, "physiotherapy"],
+
+  // Standalone "paediatrician" → "community paediatrician"
+  [/\bpaediatrician\b(?!\s+services)(?!\s+team)/gi, "community paediatrician"],
 
   // US role terms
   [/\bschool psychologist\b/gi, "educational psychologist"],

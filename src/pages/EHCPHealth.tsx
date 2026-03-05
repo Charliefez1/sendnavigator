@@ -170,7 +170,7 @@ export default function EHCPHealth() {
           <SectionHeading id="getting-g-right">Getting Section G right in the first place</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p><strong>The most effective intervention is at the assessment stage</strong>, before the plan is finalised.</p>
-            <p>When the LA requests health advice as part of the needs assessment, you can also request that specific health professionals are asked to contribute. If your child is under CAMHS, a paediatrician, a speech and language therapist, or any other health service, those services should be providing evidence to the assessment.</p>
+            <p>When the LA requests health advice as part of the needs assessment, you can also request that specific health professionals are asked to contribute. If your child is under CAMHS, a community paediatrician, a speech and language therapist, or any other health service, those services should be providing evidence to the assessment.</p>
             <p>If they have not been contacted, you can ask the LA directly why not and request that they are.</p>
             <p>When you receive the draft plan for comment, Section C and Section G deserve close scrutiny. Ask yourself:</p>
             <ul className="space-y-2 ml-1">

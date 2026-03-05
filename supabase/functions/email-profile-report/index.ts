@@ -27,6 +27,7 @@ interface RequestBody {
   childName: string;
   report: string;
   structured?: StructuredReport;
+  pdfBase64?: string;
 }
 
 function escapeHtml(text: string): string {
@@ -111,7 +112,7 @@ function buildEmail(childName: string, report: string, structured?: StructuredRe
     <tr><td style="padding:24px 0;">
       <p style="margin:0 0 12px 0;line-height:1.6;color:#333;">Hello,</p>
       <p style="margin:0 0 12px 0;line-height:1.6;color:#333;">Thank you for taking the time to complete this profile. I know how much thought, energy, and emotion goes into describing your child to others — especially when you feel like the system is not seeing them clearly.</p>
-      <p style="margin:0 0 12px 0;line-height:1.6;color:#333;">Below is the report that was generated from everything you shared. It is yours. Use it however helps — for school meetings, EHCP applications, paediatrician appointments, or simply as a record of who ${escapeHtml(displayName)} really is.</p>
+      <p style="margin:0 0 12px 0;line-height:1.6;color:#333;">Below is a summary of the report that was generated from everything you shared, and the full report is attached as a PDF. It is yours. Use it however helps — for school meetings, EHCP reviews, educational psychologist assessments, or simply as a record of who ${escapeHtml(displayName)} really is.</p>
       <p style="margin:0 0 0 0;line-height:1.6;color:#333;">You are doing an extraordinary thing for your child.</p>
       <p style="margin:12px 0 0 0;line-height:1.6;color:#333;font-weight:600;">Rich Ferriman</p>
     </td></tr>
@@ -134,6 +135,13 @@ function buildEmail(childName: string, report: string, structured?: StructuredRe
         <a href="https://send.neurodiversityglobal.com" style="color:#d4a843;text-decoration:underline;">Visit SEND Navigator</a> &nbsp;|&nbsp;
         <a href="https://neurodiversityglobal.com" style="color:#d4a843;text-decoration:underline;">Neurodiversity Global</a>
       </p>
+    </td></tr>
+
+    <!-- Parent-to-parent notice -->
+    <tr><td style="padding:16px 0;background:#f8f5f0;border-radius:6px;">
+      <p style="margin:0 16px 8px 16px;font-size:13px;color:#333;line-height:1.6;font-weight:600;">A note about what this is</p>
+      <p style="margin:0 16px 8px 16px;font-size:12px;color:#555;line-height:1.6;">This profile was created by a parent, for their child. It is not a clinical assessment, a diagnosis, or professional advice. It is a practical document built from lived experience, designed to help you describe your child in your own words.</p>
+      <p style="margin:0 16px;font-size:12px;color:#555;line-height:1.6;">The SEND Navigator is built by parents who have been through the system themselves. We share guidance, strategies, and ideas that work for families in our community. We always recommend working alongside qualified professionals — SENDCOs, educational psychologists, speech and language therapists, and your child's school team — for formal assessments and decisions about provision.</p>
     </td></tr>
 
     <!-- Footer -->
@@ -175,18 +183,32 @@ Deno.serve(async (req) => {
     const childName = body.childName || "your child";
     const html = buildEmail(childName, body.report || "", body.structured);
 
+    // Build Resend payload
+    const safeName = childName.toLowerCase().replace(/[^a-z0-9]/g, "") || "child";
+    const emailPayload: Record<string, unknown> = {
+      from: "Rich Ferriman <rich@neurodiversityglobal.com>",
+      to: [body.email],
+      subject: `${childName}'s Profile Report — from SEND Navigator`,
+      html,
+    };
+
+    // Attach full PDF if provided
+    if (body.pdfBase64) {
+      emailPayload.attachments = [
+        {
+          filename: `${safeName}-profile-report.pdf`,
+          content: body.pdfBase64,
+        },
+      ];
+    }
+
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${RESEND_API_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        from: "Rich Ferriman <rich@neurodiversityglobal.com>",
-        to: [body.email],
-        subject: `${childName}'s Profile Report — from SEND Navigator`,
-        html,
-      }),
+      body: JSON.stringify(emailPayload),
     });
 
     if (!res.ok) {
