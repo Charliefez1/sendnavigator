@@ -85,7 +85,7 @@ export function AnimatedFeatureShowcase() {
   const { user } = useAuth();
 
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {features.map((feature) => {
         const Icon = feature.icon;
         const destination = user ? feature.authHref : feature.href;
@@ -93,41 +93,48 @@ export function AnimatedFeatureShowcase() {
           <Link
             key={feature.label}
             to={destination}
-            className="group rounded-xl border p-5 transition-all duration-200 hover:shadow-2xl hover:-translate-y-0.5 block"
-            style={{
-              borderColor: `hsl(var(${feature.accentVar}) / 0.25)`,
-              backgroundColor: `hsl(var(${feature.accentBgVar}))`,
-              boxShadow: `0 8px 32px -8px hsl(var(${feature.accentVar}) / 0.25), 0 4px 16px -4px rgba(0,0,0,0.3)`,
-            }}
+            className="group relative rounded-xl border border-border bg-card p-6 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 block overflow-hidden"
           >
-            <div className="flex items-center gap-3 mb-3">
-              <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                style={{ backgroundColor: `hsl(var(${feature.accentVar}) / 0.15)` }}
-              >
-                <Icon
-                  className="w-5 h-5"
-                  style={{ color: `hsl(var(${feature.accentVar}))` }}
-                />
-              </div>
-              <h3
-                className="text-sm font-semibold leading-tight"
+            {/* Accent top border */}
+            <div
+              className="absolute top-0 left-0 right-0 h-[3px] transition-all duration-300 group-hover:h-[4px]"
+              style={{ backgroundColor: `hsl(var(${feature.accentVar}))` }}
+            />
+
+            {/* Icon */}
+            <div
+              className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 mb-4"
+              style={{ backgroundColor: `hsl(var(${feature.accentVar}) / 0.1)` }}
+            >
+              <Icon
+                className="w-5 h-5"
                 style={{ color: `hsl(var(${feature.accentVar}))` }}
-              >
-                {feature.label}
-              </h3>
+              />
             </div>
-            <p className="text-sm font-semibold text-foreground leading-snug mb-1.5">
-              {feature.headline}
-            </p>
-            <p className="text-xs text-muted-foreground leading-relaxed mb-3">
-              {feature.description}
-            </p>
-            <span
-              className="text-xs font-medium opacity-60 group-hover:opacity-100 transition-opacity duration-200"
+
+            {/* Eyebrow label */}
+            <p
+              className="text-[11px] font-semibold uppercase tracking-wider mb-1.5"
               style={{ color: `hsl(var(${feature.accentVar}))` }}
             >
-              {user ? "Go to tool →" : "Click to explore →"}
+              {feature.label}
+            </p>
+
+            {/* Headline */}
+            <p className="text-[15px] font-bold text-foreground leading-snug mb-2">
+              {feature.headline}
+            </p>
+
+            {/* Description */}
+            <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+              {feature.description}
+            </p>
+
+            <span
+              className="text-xs font-medium opacity-50 group-hover:opacity-100 transition-opacity duration-300"
+              style={{ color: `hsl(var(${feature.accentVar}))` }}
+            >
+              {user ? "Go to tool →" : "Explore →"}
             </span>
           </Link>
         );
