@@ -30,7 +30,7 @@ export function ReadinessPanel({ state, getSectionStatus, onNavigateToSection, o
   };
 
   return (
-    <Card>
+    <Card className="border-0 shadow-md">
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-sm font-medium">
           <Sparkles className="w-4 h-4 text-primary" />

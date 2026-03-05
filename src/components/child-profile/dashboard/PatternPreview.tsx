@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Zap, AlertTriangle, ArrowRight, Lightbulb } from "lucide-react";
+import { Zap, AlertTriangle, ArrowRight, Lightbulb, Network } from "lucide-react";
 import type { ThemeAnalysisResult } from "@/lib/theme-engine";
 import type { ThemeConfidence } from "@/config/theme-ontology";
 
@@ -12,58 +12,67 @@ interface Props {
 
 const CONFIDENCE_STYLES: Record<ThemeConfidence, string> = {
   emerging: "bg-muted text-muted-foreground",
-  developing: "bg-accent text-accent-foreground",
-  established: "bg-primary/10 text-primary",
+  developing: "bg-[hsl(var(--accent-amber-bg))] text-[hsl(var(--accent-amber))]",
+  established: "bg-primary/15 text-primary",
 };
 
 export function PatternPreview({ analysis, onViewAll }: Props) {
   const { themes, patterns, contradictions } = analysis;
   const totalItems = themes.length + patterns.length + contradictions.length;
 
-  if (totalItems === 0) return null;
+  if (totalItems === 0) {
+    return (
+      <Card className="border-0 shadow-md">
+        <CardContent className="p-6 text-center">
+          <Network className="w-8 h-8 text-muted-foreground/30 mx-auto mb-2" />
+          <p className="text-xs text-muted-foreground">Patterns emerge as you add more detail across sections</p>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
-    <Card>
+    <Card className="border-0 shadow-md">
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-sm font-medium">
-          <Lightbulb className="w-4 h-4 text-amber-500" />
+          <Lightbulb className="w-4 h-4 text-[hsl(var(--accent-amber))]" />
           Detected patterns
-          <Badge variant="secondary" className="text-[10px] ml-auto">{totalItems}</Badge>
+          <Badge variant="secondary" className="text-[10px] ml-auto border-0">{totalItems}</Badge>
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-2.5">
-        {/* Top themes (max 2) */}
-        {themes.slice(0, 2).map((t) => (
-          <div key={t.theme} className="flex items-start gap-2 text-xs">
-            <Lightbulb className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
+      <CardContent className="space-y-2">
+        {/* Top themes */}
+        {themes.slice(0, 3).map((t) => (
+          <div key={t.theme} className="flex items-center gap-2 text-xs rounded-lg p-2 bg-muted/50">
+            <div className="w-1.5 h-8 rounded-full flex-shrink-0" style={{ backgroundColor: t.confidence === "established" ? "hsl(var(--primary))" : t.confidence === "developing" ? "hsl(var(--accent-amber))" : "hsl(var(--border))" }} />
             <div className="flex-1 min-w-0">
-              <span className="font-medium text-foreground">{t.theme}</span>
-              <span className={`ml-1.5 inline-flex text-[9px] px-1.5 py-0 rounded-full ${CONFIDENCE_STYLES[t.confidence]}`}>
-                {t.confidence}
-              </span>
+              <p className="font-semibold text-foreground truncate">{t.theme}</p>
+              <p className="text-[10px] text-muted-foreground">{t.totalSignalCount} signals · {t.mechanisms.length} mechanism{t.mechanisms.length !== 1 ? "s" : ""}</p>
             </div>
+            <span className={`text-[9px] px-1.5 py-0.5 rounded-full flex-shrink-0 ${CONFIDENCE_STYLES[t.confidence]}`}>
+              {t.confidence}
+            </span>
           </div>
         ))}
 
-        {/* Top patterns (max 2) */}
+        {/* Patterns */}
         {patterns.slice(0, 2).map((p) => (
-          <div key={p.pattern.id} className="flex items-start gap-2 text-xs">
-            <Zap className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+          <div key={p.pattern.id} className="flex items-center gap-2 text-xs rounded-lg p-2 bg-[hsl(var(--accent-amber-bg))]">
+            <Zap className="w-3.5 h-3.5 text-[hsl(var(--accent-amber))] shrink-0" />
             <span className="font-medium text-foreground">{p.pattern.label}</span>
           </div>
         ))}
 
-        {/* Contradictions (max 1) */}
+        {/* Contradictions */}
         {contradictions.slice(0, 1).map((c, i) => (
-          <div key={i} className="flex items-start gap-2 text-xs">
-            <AlertTriangle className="w-3.5 h-3.5 text-purple-500 shrink-0 mt-0.5" />
+          <div key={i} className="flex items-center gap-2 text-xs rounded-lg p-2 bg-[hsl(var(--accent-violet-bg))]">
+            <AlertTriangle className="w-3.5 h-3.5 text-[hsl(var(--accent-violet))] shrink-0" />
             <span className="text-foreground">Environment sensitivity — {c.domain}</span>
           </div>
         ))}
 
-        <Button variant="ghost" size="sm" className="w-full gap-1.5 text-xs mt-1" onClick={onViewAll}>
-          View all themes
-          <ArrowRight className="w-3 h-3" />
+        <Button variant="ghost" size="sm" className="w-full gap-1.5 text-xs" onClick={onViewAll}>
+          Explore all themes <ArrowRight className="w-3 h-3" />
         </Button>
       </CardContent>
     </Card>

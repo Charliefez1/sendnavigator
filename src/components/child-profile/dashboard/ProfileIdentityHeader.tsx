@@ -12,48 +12,51 @@ export function ProfileIdentityHeader({ state }: Props) {
   const childName = overview.childName || "Your child";
   const mode = state.reportMode === "mini" ? "Mini" : "Full";
 
-  // Compact inline ring
-  const size = 40;
-  const strokeWidth = 4;
-  const radius = (size - strokeWidth) / 2;
-  const circumference = 2 * Math.PI * radius;
-  const offset = circumference - (depth / 100) * circumference;
+  // Ring
+  const size = 48;
+  const sw = 5;
+  const r = (size - sw) / 2;
+  const circ = 2 * Math.PI * r;
+  const offset = circ - (depth / 100) * circ;
 
   return (
-    <div className="flex flex-wrap items-center gap-4">
+    <div className="flex items-center gap-4 py-2">
       {/* Depth ring */}
       <div className="relative flex-shrink-0">
         <svg width={size} height={size} className="transform -rotate-90">
-          <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="hsl(var(--border))" strokeWidth={strokeWidth} />
-          <circle
-            cx={size / 2} cy={size / 2} r={radius} fill="none"
-            stroke="hsl(var(--primary))" strokeWidth={strokeWidth}
-            strokeDasharray={circumference} strokeDashoffset={offset}
+          <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="hsl(var(--border))" strokeWidth={sw} />
+          <circle cx={size / 2} cy={size / 2} r={r} fill="none"
+            stroke="hsl(var(--primary))" strokeWidth={sw}
+            strokeDasharray={circ} strokeDashoffset={offset}
             strokeLinecap="round" className="transition-all duration-700 ease-out"
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-[10px] font-bold text-foreground">{depth}%</span>
+          <span className="text-[11px] font-bold text-foreground">{depth}%</span>
         </div>
       </div>
 
-      {/* Name + pills */}
+      {/* Name */}
       <div className="flex-1 min-w-0">
-        <h1 className="text-xl font-display font-bold text-foreground leading-tight truncate">
+        <h1 className="text-2xl font-display font-bold text-foreground leading-tight truncate">
           {overview.childName ? `${childName}'s Profile` : "Your Child's Profile"}
         </h1>
+        {overview.reason && (
+          <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{overview.reason}</p>
+        )}
       </div>
 
-      <div className="flex flex-wrap items-center gap-2">
+      {/* Pills */}
+      <div className="flex items-center gap-2 flex-shrink-0">
         {overview.filledBy && (
-          <span className="inline-flex items-center gap-1 text-[11px] text-muted-foreground bg-muted rounded-full px-2.5 py-0.5">
+          <span className="inline-flex items-center gap-1 text-[11px] text-muted-foreground bg-muted rounded-full px-2.5 py-1">
             <User className="w-3 h-3" />
             {overview.filledBy}
           </span>
         )}
-        <span className="inline-flex items-center gap-1 text-[11px] text-muted-foreground bg-muted rounded-full px-2.5 py-0.5">
+        <span className="inline-flex items-center gap-1 text-[11px] text-muted-foreground bg-muted rounded-full px-2.5 py-1">
           <FileText className="w-3 h-3" />
-          {mode} report
+          {mode}
         </span>
       </div>
     </div>

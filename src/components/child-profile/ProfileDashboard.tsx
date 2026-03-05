@@ -24,6 +24,8 @@ import { ReadinessPanel } from "./dashboard/ReadinessPanel";
 import { StatCards } from "./dashboard/StatCards";
 import { DomainBars } from "./dashboard/DomainBars";
 import { PatternPreview } from "./dashboard/PatternPreview";
+import { SourceDiversity } from "./dashboard/SourceDiversity";
+import { EpisodeCycle } from "./dashboard/EpisodeCycle";
 
 interface ProfileDashboardProps {
   onBack: () => void;
@@ -59,6 +61,7 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
   };
 
   const topTheme = themeAnalysis.themes[0] ?? null;
+  const confirmedSignals = (derived.signals || []).filter((s) => s.confirmed).length;
 
   // ─── Themes sub-view ───
   if (showThemes) {
@@ -140,15 +143,21 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
       ) : (
         <>
           {/* 2. Stat cards row */}
-          <StatCards state={state} getSectionStatus={getSectionStatus} topTheme={topTheme} />
+          <StatCards state={state} getSectionStatus={getSectionStatus} topTheme={topTheme} totalSignals={confirmedSignals} />
 
-          {/* 3. Profile Shape + Domain Bars — side by side */}
+          {/* 3. Profile Shape + Domain Bars */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <ProfileWheel state={state} onNavigateToSection={onNavigateToSection} />
             <DomainBars onNavigateToSection={onNavigateToSection} />
           </div>
 
-          {/* 4. Detected Patterns + Next Steps — side by side */}
+          {/* 4. Source Diversity + Episode Cycle */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <SourceDiversity domainScores={derived.domain_scores} />
+            <EpisodeCycle signals={derived.signals} />
+          </div>
+
+          {/* 5. Detected Patterns + Next Steps */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <PatternPreview analysis={themeAnalysis} onViewAll={() => setShowThemes(true)} />
             <ReadinessPanel
@@ -159,7 +168,7 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
             />
           </div>
 
-          {/* 5. Child Voice — compact strip */}
+          {/* 6. Child Voice */}
           <ChildVoicePanel state={state} onNavigateToSection={onNavigateToSection} />
         </>
       )}
