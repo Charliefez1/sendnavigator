@@ -89,40 +89,20 @@ const Landing = () => {
       {/* ─── SECTION 1: SPLIT HERO ─── */}
       <section className="relative min-h-[85vh] flex flex-col overflow-hidden" style={{ backgroundColor: "hsl(222 35% 10%)" }}>
         {/* Hero background image */}
+        {/* Hero background image - no overlay */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage: `url(${heroChildren})`,
             backgroundSize: "cover",
             backgroundPosition: "center 30%",
-            opacity: 0.32,
           }}
         />
-        {/* Dark overlay for readability */}
+        {/* Subtle darkening only at bottom for footer readability */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: [
-              "linear-gradient(to bottom, hsl(222 35% 10% / 0.2) 0%, hsl(222 35% 10% / 0.5) 100%)",
-              "radial-gradient(ellipse 90% 50% at 50% -10%, hsl(175 60% 40% / 0.15), transparent 65%)",
-              "radial-gradient(ellipse 70% 60% at 85% 90%, hsl(262 50% 50% / 0.08), transparent 55%)",
-            ].join(", "),
-          }}
-        />
-        {/* Grain texture overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.035]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-            backgroundSize: "200px 200px",
-          }}
-        />
-        {/* Animated glow pulse */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: "radial-gradient(circle 600px at 50% 40%, hsl(175 60% 40% / 0.1), transparent 70%)",
-            animation: "hero-glow 8s ease-in-out infinite alternate",
+            background: "linear-gradient(to bottom, hsl(222 35% 10% / 0.15) 0%, hsl(222 35% 10% / 0.4) 100%)",
           }}
         />
 
