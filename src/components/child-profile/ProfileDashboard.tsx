@@ -3,7 +3,7 @@ import { useChildProfile } from "@/contexts/ChildProfileContext";
 import { hasAnyContent } from "@/lib/profile-dashboard-utils";
 import { analyseThemes, ThemeAnalysisResult } from "@/lib/theme-engine";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { ArrowLeft, Bug, Copy, Check, Activity, FlaskConical, Upload } from "lucide-react";
 import { analyseEpisodePatterns } from "@/lib/episode-pattern-engine";
@@ -21,6 +21,9 @@ import { ProfileWheel } from "./dashboard/ProfileWheel";
 import { ChildVoicePanel } from "./dashboard/ChildVoicePanel";
 import { EmergingThemes } from "./dashboard/EmergingThemes";
 import { ReadinessPanel } from "./dashboard/ReadinessPanel";
+import { StatCards } from "./dashboard/StatCards";
+import { DomainBars } from "./dashboard/DomainBars";
+import { PatternPreview } from "./dashboard/PatternPreview";
 
 interface ProfileDashboardProps {
   onBack: () => void;
@@ -31,12 +34,13 @@ interface ProfileDashboardProps {
 export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport }: ProfileDashboardProps) {
   const { state, getSectionStatus, derived, loadState } = useChildProfile();
   const hasContent = hasAnyContent(state);
+  const [showThemes, setShowThemes] = useState(false);
 
-  // Compute structured theme analysis from confirmed signals
   const themeAnalysis = useMemo<ThemeAnalysisResult>(() => {
     const confirmed = (derived.signals || []).filter((s) => s.confirmed);
     return analyseThemes(confirmed, state);
   }, [derived, state]);
+
   const [devMode, setDevMode] = useState(false);
   const [showPayload, setShowPayload] = useState(false);
   const [showEpisodeDebug, setShowEpisodeDebug] = useState(false);
@@ -44,13 +48,8 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
   const [copied, setCopied] = useState(false);
 
   const scoringPayload = JSON.stringify(
-    {
-      domain_scores: derived.domain_scores,
-      explainability: derived.explainability,
-      section_sources: (state as any).section_sources ?? {},
-    },
-    null,
-    2
+    { domain_scores: derived.domain_scores, explainability: derived.explainability, section_sources: (state as any).section_sources ?? {} },
+    null, 2
   );
 
   const handleCopy = async () => {
@@ -59,78 +58,62 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const topTheme = themeAnalysis.themes[0] ?? null;
+
+  // ─── Themes sub-view ───
+  if (showThemes) {
+    return (
+      <div className="max-w-4xl mx-auto py-8 px-4 space-y-4">
+        <Button variant="outline" size="sm" onClick={() => setShowThemes(false)} className="gap-1.5">
+          <ArrowLeft className="w-3.5 h-3.5" />
+          Back to dashboard
+        </Button>
+        <EmergingThemes analysis={themeAnalysis} onNavigateToSection={onNavigateToSection} />
+      </div>
+    );
+  }
+
+  // ─── Main dashboard ───
   return (
-    <div className="max-w-4xl mx-auto py-8 px-4 space-y-6">
-      {/* Back button + Dev toggle */}
+    <div className="max-w-4xl mx-auto py-8 px-4 space-y-5">
+      {/* Top bar */}
       <div className="flex items-center justify-between">
         <button
           onClick={() => setDevMode((d) => !d)}
           className={`text-[10px] px-1.5 py-0.5 rounded border transition-colors ${
-            devMode
-              ? "bg-primary/10 text-primary border-primary/30"
-              : "bg-muted text-muted-foreground border-border opacity-40 hover:opacity-100"
+            devMode ? "bg-primary/10 text-primary border-primary/30" : "bg-muted text-muted-foreground border-border opacity-40 hover:opacity-100"
           }`}
-        >
-          Dev
-        </button>
+        >Dev</button>
         <Button variant="outline" size="sm" onClick={onBack} className="gap-1.5">
           <ArrowLeft className="w-3.5 h-3.5" />
           Back to profile
         </Button>
       </div>
 
-      {/* Dev: Export Scoring Payload */}
+      {/* Dev tools */}
       {devMode && (
-        <div className="flex gap-2 justify-start">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setShowPayload(true)}
-            className="gap-1.5 text-xs border-dashed"
-          >
-            <Bug className="w-3.5 h-3.5" />
-            Export Scoring Payload
+        <div className="flex gap-2 justify-start flex-wrap">
+          <Button variant="outline" size="sm" onClick={() => setShowPayload(true)} className="gap-1.5 text-xs border-dashed">
+            <Bug className="w-3.5 h-3.5" /> Export Scoring Payload
           </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setShowEpisodeDebug(true)}
-            className="gap-1.5 text-xs border-dashed"
-          >
-            <Activity className="w-3.5 h-3.5" />
-            Episode Signal Debug
+          <Button variant="outline" size="sm" onClick={() => setShowEpisodeDebug(true)} className="gap-1.5 text-xs border-dashed">
+            <Activity className="w-3.5 h-3.5" /> Episode Signal Debug
           </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setShowDiagnostics(true)}
-            className="gap-1.5 text-xs border-dashed"
-          >
-            <FlaskConical className="w-3.5 h-3.5" />
-            Scoring Diagnostics
+          <Button variant="outline" size="sm" onClick={() => setShowDiagnostics(true)} className="gap-1.5 text-xs border-dashed">
+            <FlaskConical className="w-3.5 h-3.5" /> Scoring Diagnostics
           </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => {
-              const testData = createDevTestProfile();
-              loadState(testData);
-            }}
-            className="gap-1.5 text-xs border-dashed"
-          >
-            <Upload className="w-3.5 h-3.5" />
-            Load Test Profile
+          <Button variant="outline" size="sm" onClick={() => { loadState(createDevTestProfile()); }} className="gap-1.5 text-xs border-dashed">
+            <Upload className="w-3.5 h-3.5" /> Load Test Profile
           </Button>
         </div>
       )}
 
+      {/* Dev dialogs */}
       <Dialog open={showPayload} onOpenChange={setShowPayload}>
         <DialogContent className="max-w-2xl max-h-[80vh] flex flex-col">
           <DialogHeader>
             <DialogTitle className="text-sm">Scoring Payload</DialogTitle>
-            <DialogDescription className="text-xs">
-              Developer-only export — no personal data included.
-            </DialogDescription>
+            <DialogDescription className="text-xs">Developer-only export — no personal data included.</DialogDescription>
           </DialogHeader>
           <div className="flex justify-end">
             <Button variant="outline" size="sm" onClick={handleCopy} className="gap-1.5 text-xs">
@@ -138,50 +121,46 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
               {copied ? "Copied" : "Copy"}
             </Button>
           </div>
-          <pre className="flex-1 overflow-auto text-[11px] bg-muted p-3 rounded-md border border-border font-mono whitespace-pre-wrap break-words">
-            {scoringPayload}
-          </pre>
+          <pre className="flex-1 overflow-auto text-[11px] bg-muted p-3 rounded-md border border-border font-mono whitespace-pre-wrap break-words">{scoringPayload}</pre>
         </DialogContent>
       </Dialog>
 
-      <EpisodeDebugDialog
-        open={showEpisodeDebug}
-        onOpenChange={setShowEpisodeDebug}
-        signals={derived.signals}
-      />
+      <EpisodeDebugDialog open={showEpisodeDebug} onOpenChange={setShowEpisodeDebug} signals={derived.signals} />
+      <ScoringDiagnosticsDialog open={showDiagnostics} onOpenChange={setShowDiagnostics} domainScores={derived.domain_scores} />
 
-      <ScoringDiagnosticsDialog
-        open={showDiagnostics}
-        onOpenChange={setShowDiagnostics}
-        domainScores={derived.domain_scores}
-      />
-
-      {/* 1. Identity Header */}
+      {/* 1. Identity Header — compact */}
       <ProfileIdentityHeader state={state} />
 
       {!hasContent ? (
         <Card>
           <CardContent className="py-12 text-center">
-            <p className="text-sm text-muted-foreground">
-              Start filling in sections to see your child's profile come to life here.
-            </p>
+            <p className="text-sm text-muted-foreground">Start filling in sections to see your child's profile come to life here.</p>
           </CardContent>
         </Card>
       ) : (
         <>
-          {/* Profile Shape — own section */}
-          <ProfileWheel state={state} onNavigateToSection={onNavigateToSection} />
+          {/* 2. Stat cards row */}
+          <StatCards state={state} getSectionStatus={getSectionStatus} topTheme={topTheme} />
 
+          {/* 3. Profile Shape + Domain Bars — side by side */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ProfileWheel state={state} onNavigateToSection={onNavigateToSection} />
+            <DomainBars onNavigateToSection={onNavigateToSection} />
+          </div>
+
+          {/* 4. Detected Patterns + Next Steps — side by side */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <PatternPreview analysis={themeAnalysis} onViewAll={() => setShowThemes(true)} />
+            <ReadinessPanel
+              state={state}
+              getSectionStatus={getSectionStatus}
+              onNavigateToSection={onNavigateToSection}
+              onGenerateReport={onGenerateReport}
+            />
+          </div>
+
+          {/* 5. Child Voice — compact strip */}
           <ChildVoicePanel state={state} onNavigateToSection={onNavigateToSection} />
-          <EmergingThemes analysis={themeAnalysis} onNavigateToSection={onNavigateToSection} />
-
-          {/* Next Steps & Readiness — own section at bottom */}
-          <ReadinessPanel
-            state={state}
-            getSectionStatus={getSectionStatus}
-            onNavigateToSection={onNavigateToSection}
-            onGenerateReport={onGenerateReport}
-          />
         </>
       )}
     </div>
@@ -194,11 +173,7 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
 
 const PHASE_ORDER: EpisodePhase[] = ["early_warning", "trigger", "escalation", "shutdown", "recovery"];
 const PHASE_LABELS: Record<EpisodePhase, string> = {
-  early_warning: "Early Warning",
-  trigger: "Trigger",
-  escalation: "Escalation",
-  shutdown: "Shutdown",
-  recovery: "Recovery",
+  early_warning: "Early Warning", trigger: "Trigger", escalation: "Escalation", shutdown: "Shutdown", recovery: "Recovery",
 };
 const PHASE_COLORS: Record<EpisodePhase, string> = {
   early_warning: "bg-[hsl(var(--accent-amber-bg))] text-[hsl(var(--accent-amber))] border-[hsl(var(--accent-amber)/0.3)]",
@@ -216,7 +191,6 @@ interface EpisodeDebugDialogProps {
 
 function EpisodeDebugDialog({ open, onOpenChange, signals }: EpisodeDebugDialogProps) {
   const analysis = useMemo(() => analyseEpisodePatterns(signals as any), [signals]);
-
   const byPhase = useMemo(() => {
     const map = new Map<EpisodePhase, typeof signals>();
     for (const sig of signals) {
@@ -226,52 +200,35 @@ function EpisodeDebugDialog({ open, onOpenChange, signals }: EpisodeDebugDialogP
     }
     return map;
   }, [signals]);
-
   const unmapped = signals.filter((s) => !s.episodePhase);
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-2xl max-h-[80vh] flex flex-col">
         <DialogHeader>
-          <DialogTitle className="text-sm flex items-center gap-2">
-            <Activity className="w-4 h-4" />
-            Episode Signal Debug
-          </DialogTitle>
-          <DialogDescription className="text-xs">
-            Signals grouped by episode phase — developer view only.
-          </DialogDescription>
+          <DialogTitle className="text-sm flex items-center gap-2"><Activity className="w-4 h-4" /> Episode Signal Debug</DialogTitle>
+          <DialogDescription className="text-xs">Signals grouped by episode phase — developer view only.</DialogDescription>
         </DialogHeader>
-
         <div className="flex-1 overflow-auto space-y-4">
-          {/* Analysis summary */}
           <div className="text-xs bg-muted p-2 rounded-md border border-border space-y-1">
             <p><span className="font-medium">Detected patterns:</span> {analysis.detectedPatterns.length}</p>
             <p><span className="font-medium">Weak signals:</span> {analysis.weakSignals.length}</p>
             {analysis.weakSignals.map((ws, i) => (
-              <p key={i} className="text-muted-foreground pl-2">
-                → {PHASE_LABELS[ws.phase]}: {ws.reason} ({ws.signalCount} signal{ws.signalCount !== 1 ? "s" : ""})
-              </p>
+              <p key={i} className="text-muted-foreground pl-2">→ {PHASE_LABELS[ws.phase]}: {ws.reason} ({ws.signalCount} signal{ws.signalCount !== 1 ? "s" : ""})</p>
             ))}
           </div>
-
-          {/* Signals by phase */}
           {PHASE_ORDER.map((phase) => {
             const sigs = byPhase.get(phase) || [];
             if (sigs.length === 0) return (
               <div key={phase} className="text-xs">
-                <span className={`inline-flex px-1.5 py-0.5 rounded border text-[10px] font-medium ${PHASE_COLORS[phase]}`}>
-                  {PHASE_LABELS[phase]}
-                </span>
+                <span className={`inline-flex px-1.5 py-0.5 rounded border text-[10px] font-medium ${PHASE_COLORS[phase]}`}>{PHASE_LABELS[phase]}</span>
                 <span className="text-muted-foreground ml-2 italic">No signals mapped</span>
               </div>
             );
-
             return (
               <div key={phase} className="space-y-1.5">
                 <div className="flex items-center gap-2">
-                  <span className={`inline-flex px-1.5 py-0.5 rounded border text-[10px] font-medium ${PHASE_COLORS[phase]}`}>
-                    {PHASE_LABELS[phase]}
-                  </span>
+                  <span className={`inline-flex px-1.5 py-0.5 rounded border text-[10px] font-medium ${PHASE_COLORS[phase]}`}>{PHASE_LABELS[phase]}</span>
                   <span className="text-[10px] text-muted-foreground">{sigs.length} signal{sigs.length !== 1 ? "s" : ""}</span>
                 </div>
                 <div className="ml-4 space-y-0.5">
@@ -281,23 +238,17 @@ function EpisodeDebugDialog({ open, onOpenChange, signals }: EpisodeDebugDialogP
                       <span className="flex-1 truncate">{sig.label}</span>
                       <span className="text-muted-foreground text-[10px]">{sig.domain}</span>
                       <span className="text-muted-foreground text-[10px]">{sig.sourceType}</span>
-                      <span className={`text-[9px] px-1 rounded ${sig.confirmed ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"}`}>
-                        {sig.confirmed ? "✓" : "?"}
-                      </span>
+                      <span className={`text-[9px] px-1 rounded ${sig.confirmed ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"}`}>{sig.confirmed ? "✓" : "?"}</span>
                     </div>
                   ))}
                 </div>
               </div>
             );
           })}
-
-          {/* Unmapped signals */}
           {unmapped.length > 0 && (
             <div className="space-y-1.5">
               <div className="flex items-center gap-2">
-                <span className="inline-flex px-1.5 py-0.5 rounded border text-[10px] font-medium bg-muted text-muted-foreground border-border">
-                  No phase
-                </span>
+                <span className="inline-flex px-1.5 py-0.5 rounded border text-[10px] font-medium bg-muted text-muted-foreground border-border">No phase</span>
                 <span className="text-[10px] text-muted-foreground">{unmapped.length} signal{unmapped.length !== 1 ? "s" : ""}</span>
               </div>
               <div className="ml-4 space-y-0.5">
@@ -349,17 +300,10 @@ function ScoringDiagnosticsDialog({ open, onOpenChange, domainScores }: ScoringD
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl max-h-[85vh] flex flex-col">
         <DialogHeader>
-          <DialogTitle className="text-sm flex items-center gap-2">
-            <FlaskConical className="w-4 h-4" />
-            Scoring Model Diagnostics
-          </DialogTitle>
-          <DialogDescription className="text-xs">
-            Structural verification of scoring calibration, signal weights, and distribution.
-          </DialogDescription>
+          <DialogTitle className="text-sm flex items-center gap-2"><FlaskConical className="w-4 h-4" /> Scoring Model Diagnostics</DialogTitle>
+          <DialogDescription className="text-xs">Structural verification of scoring calibration, signal weights, and distribution.</DialogDescription>
         </DialogHeader>
-
         <div className="flex-1 overflow-auto space-y-6 text-xs">
-          {/* 1. Domain Distribution */}
           <section>
             <h3 className="font-semibold text-sm mb-2">1. Domain Distribution (50 simulated profiles)</h3>
             <div className="overflow-x-auto">
@@ -368,9 +312,7 @@ function ScoringDiagnosticsDialog({ open, onOpenChange, domainScores }: ScoringD
                   <tr className="border-b border-border">
                     <th className="text-left py-1 px-2 font-medium">Domain</th>
                     <th className="text-center py-1 px-1 font-medium">Unk</th>
-                    {[0, 1, 2, 3, 4].map((n) => (
-                      <th key={n} className="text-center py-1 px-1 font-medium">{n}</th>
-                    ))}
+                    {[0,1,2,3,4].map((n) => <th key={n} className="text-center py-1 px-1 font-medium">{n}</th>)}
                   </tr>
                 </thead>
                 <tbody>
@@ -378,124 +320,58 @@ function ScoringDiagnosticsDialog({ open, onOpenChange, domainScores }: ScoringD
                     <tr key={d.domain} className="border-b border-border/50">
                       <td className="py-1 px-2 truncate max-w-[120px]">{d.domain}</td>
                       <td className="text-center py-1 px-1 text-muted-foreground">{d.distribution.Unknown}</td>
-                      {[0, 1, 2, 3, 4].map((n) => {
+                      {[0,1,2,3,4].map((n) => {
                         const count = d.distribution[String(n)];
                         const pct = count / 50;
-                        return (
-                          <td key={n} className="text-center py-1 px-1">
-                            <span className={pct > 0.5 ? "text-destructive font-semibold" : ""}>
-                              {count}
-                            </span>
-                          </td>
-                        );
+                        return <td key={n} className="text-center py-1 px-1"><span className={pct > 0.5 ? "text-destructive font-semibold" : ""}>{count}</span></td>;
                       })}
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <p className="text-[10px] text-muted-foreground mt-1">
-              Red = more than 50% of profiles at that level (possible saturation).
-            </p>
+            <p className="text-[10px] text-muted-foreground mt-1">Red = more than 50% of profiles at that level (possible saturation).</p>
           </section>
 
-          {/* 2. Top Weighted Signals */}
           <section>
             <h3 className="font-semibold text-sm mb-2">2. Top 20 Weighted Signals</h3>
             <div className="space-y-0.5">
               {report.topSignals.map((sig, i) => (
                 <div key={i} className="flex items-center gap-2 py-0.5">
                   <span className="text-muted-foreground w-4 text-right">{i + 1}.</span>
-                  <span className={`px-1 rounded text-[9px] font-medium ${
-                    sig.isFreetext
-                      ? "bg-[hsl(var(--accent-amber-bg))] text-[hsl(var(--accent-amber))]"
-                      : "bg-[hsl(var(--accent-teal-bg))] text-[hsl(var(--accent-teal))]"
-                  }`}>
+                  <span className={`px-1 rounded text-[9px] font-medium ${sig.isFreetext ? "bg-[hsl(var(--accent-amber-bg))] text-[hsl(var(--accent-amber))]" : "bg-[hsl(var(--accent-teal-bg))] text-[hsl(var(--accent-teal))]"}`}>
                     {sig.isFreetext ? "free" : "opt"} w{sig.weight}
                   </span>
                   <span className="flex-1 truncate">{sig.label}</span>
-                  <span className="text-muted-foreground text-[10px]">{sig.domain}</span>
+                  <span className="text-muted-foreground">{sig.domain}</span>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* 3. Cross-Domain Signals */}
           <section>
-            <h3 className="font-semibold text-sm mb-2">3. Cross-Domain Signals ({report.crossDomain.length})</h3>
-            <div className="space-y-1">
-              {report.crossDomain.map((cd, i) => (
-                <div key={i} className="flex items-center gap-2 py-0.5">
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-primary/10 text-primary border border-primary/20">
-                    {cd.primaryDomain}
-                  </span>
-                  <span className="text-muted-foreground">→</span>
-                  {cd.crossDomains.map((d) => (
-                    <span key={d} className="text-[10px] px-1.5 py-0.5 rounded bg-muted text-muted-foreground border border-border">
-                      {d}
-                    </span>
-                  ))}
-                  <span className="text-[10px] text-muted-foreground ml-auto truncate max-w-[200px]">{cd.label}</span>
-                </div>
-              ))}
-            </div>
+            <h3 className="font-semibold text-sm mb-2">3. Cross-Domain Signals</h3>
+            {report.crossDomain.length === 0 ? (
+              <p className="text-muted-foreground">No cross-domain signals defined.</p>
+            ) : (
+              <div className="space-y-0.5">
+                {report.crossDomain.map((sig, i) => (
+                  <div key={i} className="flex items-center gap-2 py-0.5">
+                    <span className="flex-1 truncate">{sig.questionId}</span>
+                    <span className="text-muted-foreground">{sig.primaryDomain} → {sig.crossDomains.join(", ")}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </section>
 
-          {/* 4. Explainability Samples */}
           <section>
             <h3 className="font-semibold text-sm mb-2">4. Explainability Samples</h3>
-            <div className="space-y-1.5">
-              {report.explainability.map((ex) => (
-                <div key={ex.domain} className="bg-muted/50 rounded p-2 border border-border/50">
-                  <p className="font-medium text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">{ex.domain}</p>
-                  <p className="text-foreground">{ex.sentence}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* 5. Simulated Radar Shapes */}
-          <section>
-            <h3 className="font-semibold text-sm mb-2">5. Simulated Radar Shapes (10 profiles)</h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-[10px] border-collapse">
-                <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left py-1 px-1 font-medium">#</th>
-                    {DIAG_DOMAIN_KEYS.map((d) => (
-                      <th key={d} className="text-center py-1 px-0.5 font-medium" title={d}>
-                        {d.substring(0, 3)}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {report.radars.map((r) => (
-                    <tr key={r.id} className="border-b border-border/50">
-                      <td className="py-1 px-1 text-muted-foreground">{r.id}</td>
-                      {DIAG_DOMAIN_KEYS.map((d) => {
-                        const score = r.scores[d];
-                        const val = score?.intensity;
-                        return (
-                          <td key={d} className="text-center py-1 px-0.5">
-                            <span className={
-                              val === null ? "text-muted-foreground italic" :
-                              val === 4 ? "text-destructive font-semibold" :
-                              val === 0 ? "text-muted-foreground" : ""
-                            }>
-                              {val === null ? "?" : val}
-                            </span>
-                          </td>
-                        );
-                      })}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <p className="text-[10px] text-muted-foreground mt-1">
-              ? = Unknown (insufficient data). Red 4 = possible saturation.
-            </p>
+            {report.explainability.map((sample) => (
+              <div key={sample.domain} className="mb-3 border border-border rounded p-2">
+                <p className="font-medium">{sample.domain}: {sample.sentence}</p>
+              </div>
+            ))}
           </section>
         </div>
       </DialogContent>
