@@ -207,7 +207,7 @@ const Index = () => {
       </section>
 
       {/* ─── SECTION 2: FEATURE NAVIGATION (6 boxes from landing) ─── */}
-      <section className="bg-background">
+      <section className="bg-muted/60">
         <div className="content-wide py-10 sm:py-14">
           <div className="flex items-center justify-center gap-2 mb-2">
             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "hsl(175 65% 41%)" }} />
