@@ -2,47 +2,16 @@ import { useRef, useEffect, useState } from "react";
 import { Link, Navigate, useSearchParams } from "react-router-dom";
 import { SEOHead } from "@/components/SEOHead";
 import { AuthForm } from "@/components/AuthForm";
-import { AnimatedFeatureShowcase } from "@/components/landing/AnimatedFeatureShowcase";
-import { LandingAskRich } from "@/components/landing/LandingAskRich";
-import askRichCharacter from "@/assets/ask-rich-character.png";
-import { LandingContactForm } from "@/components/landing/LandingContactForm";
 import { PersistentNewsTicker } from "@/components/PersistentNewsTicker";
 import { useAuth } from "@/contexts/AuthContext";
-import { ArrowRight, Check, AlertCircle, Mail } from "lucide-react";
-import ndgLogo from "@/assets/neurodiversity-global-education-logo-full.png";
 import heroChildren from "@/assets/landing-hero-children.png";
-
-/* ── Fade-in on scroll ── */
-function useFadeIn() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.1 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
-  return {
-    ref,
-    className: visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
-    style: { transition: "opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1)" },
-  };
-}
+import ndgLogo from "@/assets/neurodiversity-global-education-logo-full.png";
+import beaconLogo from "@/assets/beacon-logo.png";
 
 const Landing = () => {
   const { user, loading } = useAuth();
   const [searchParams] = useSearchParams();
   const isPreview = searchParams.get("preview") === "true";
-
-  const fade2 = useFadeIn();
-  const fade3 = useFadeIn();
-  const fade4 = useFadeIn();
 
   if (!loading && user && !isPreview) {
     const savedQuestion = localStorage.getItem("landing_question");
@@ -54,7 +23,7 @@ const Landing = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-background">
+    <div className="relative min-h-screen flex flex-col">
       <SEOHead
         title="Neurodiversity Global SEND Navigator | Independent SEND reform guide for parents"
         description="Free independent guide helping parents understand SEND reform in England. EHCPs, the Schools White Paper, Individual Support Plans — explained clearly by a SEND parent."
@@ -71,290 +40,88 @@ const Landing = () => {
         }}
       />
 
-      {/* ─── BETA DISCLAIMER ─── */}
+      {/* ─── FULL-BLEED BACKGROUND ─── */}
       <div
-        className="w-full py-2.5 px-4 text-center text-xs sm:text-sm"
-        style={{
-          backgroundColor: "hsl(222 30% 14%)",
-          borderBottom: "1px solid hsl(222 20% 22%)",
-          color: "hsl(222 15% 65%)",
-        }}
-      >
-        <span className="inline-flex items-center gap-1.5 flex-wrap justify-center">
-          <AlertCircle className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "hsl(175 60% 52%)" }} />
-          This site is in beta. We are actively testing and improving, and your feedback helps us get it right.
-        </span>
-      </div>
+        className="fixed inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroChildren})` }}
+      />
+      {/* Dark overlay */}
+      <div className="fixed inset-0 bg-black/40" />
 
-      {/* ─── SECTION 1: SPLIT HERO ─── */}
-      <section className="relative min-h-[85vh] flex flex-col overflow-hidden" style={{ backgroundColor: "hsl(222 35% 10%)" }}>
-        {/* Hero background image */}
-        {/* Hero background image - no overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: `url(${heroChildren})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center 30%",
-          }}
-        />
-        {/* Subtle darkening only at bottom for footer readability */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: "linear-gradient(to bottom, hsl(222 35% 10% / 0.15) 0%, hsl(222 35% 10% / 0.4) 100%)",
-          }}
-        />
+      {/* ─── CONTENT LAYER ─── */}
+      <div className="relative z-10 flex flex-col min-h-screen">
 
-        {/* Split hero content */}
-        <div className="relative flex-1 flex items-center justify-center px-4 sm:px-8 py-12 sm:py-16">
-          <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* LEFT: Title & message */}
-            <div className="text-center lg:text-left">
-              <h1
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-display font-semibold mb-4"
-                style={{ color: "hsl(0 0% 96%)", lineHeight: "1.08" }}
-              >
-                SEND Navigator
-              </h1>
-              <p
-                className="text-base sm:text-lg max-w-md mx-auto lg:mx-0 mb-6"
-                style={{ color: "hsl(222 20% 62%)", lineHeight: "1.7" }}
-              >
-                A calm, independent place to understand SEND, use practical tools, and work out what to do next.
-              </p>
+        {/* ─── LOGO BAR ─── */}
+        <div className="flex items-center justify-between px-6 sm:px-10 py-5">
+          <img
+            src={ndgLogo}
+            alt="Neurodiversity Global"
+            className="h-10 sm:h-12 brightness-0 invert opacity-90"
+          />
+          <img
+            src={beaconLogo}
+            alt="Beacon"
+            className="h-8 sm:h-10 brightness-0 invert opacity-90"
+          />
+        </div>
 
-              {/* Value props */}
-              <ul className="space-y-2.5 mb-6 max-w-md mx-auto lg:mx-0">
-                {[
-                  "Clear explanations of the system.",
-                  "Practical tools to communicate needs and take action.",
-                  "Plain English answers to real questions, based on evidence and lived experience.",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-sm" style={{ color: "hsl(222 15% 72%)" }}>
-                    <Check className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: "hsl(175 60% 45%)" }} />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+        {/* ─── CENTER CARD ─── */}
+        <div className="flex-1 flex items-center justify-center px-4 sm:px-8 py-8">
+          <div
+            className="w-full max-w-5xl rounded-xl border shadow-2xl overflow-hidden"
+            style={{
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              backgroundColor: "rgba(0, 0, 0, 0.15)",
+              borderColor: "rgba(255, 255, 255, 0.15)",
+            }}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2">
 
-              {/* Trust badges */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-8">
-                {["Always free", "No ads", "A safe space", "Independent & fact-based", "Built by parents"].map((badge) => (
-                  <span key={badge} className="flex items-center gap-1.5 text-xs" style={{ color: "hsl(222 20% 58%)" }}>
-                    <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "hsl(175 60% 40%)" }} />
-                    {badge}
-                  </span>
-                ))}
-              </div>
-              <p className="text-xs max-w-md mx-auto lg:mx-0 mb-8" style={{ color: "hsl(222 20% 48%)", lineHeight: "1.6" }}>
-                Parent focused. Open and useful to teachers, SENCOs, professionals, and anyone supporting a child.
-              </p>
-
-              {/* NDG logo */}
-              <div className="flex flex-col items-center lg:items-start gap-1">
-                <img src={ndgLogo} alt="Neurodiversity Global" className="h-20 opacity-80" />
-                <p className="text-xs tracking-wide" style={{ color: "hsl(222 20% 50%)" }}>
-                  A free resource site by Neurodiversity Global
+              {/* LEFT: Hero text */}
+              <div className="flex flex-col justify-center p-8 sm:p-10 md:p-12">
+                <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
+                  SEND Navigator
+                </h1>
+                <p className="text-lg md:text-xl font-semibold mb-3" style={{ color: "hsl(175 60% 52%)" }}>
+                  A calm, independent place to understand SEND, use practical tools, and work out what to do next.
+                </p>
+                <p className="text-sm md:text-base italic text-white/60 leading-relaxed">
+                  Parent focused. Open and useful to teachers, SENCOs, professionals, and anyone supporting a child.
                 </p>
               </div>
-            </div>
 
-            {/* RIGHT: Auth form */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="w-full max-w-sm">
-                <p
-                  className="text-center text-lg font-display font-semibold mb-1"
-                  style={{ color: "hsl(0 0% 96%)" }}
-                >
-                  2,400+
-                </p>
-                <p className="text-center text-sm mb-4" style={{ color: "hsl(222 20% 60%)" }}>
-                  parents staying informed
-                </p>
+              {/* RIGHT: Login form card */}
+              <div className="p-6 sm:p-8 md:p-10 flex items-center justify-center">
                 <div
-                  className="rounded-xl overflow-hidden backdrop-blur-xl"
+                  className="w-full max-w-sm rounded-xl border p-6 sm:p-8"
                   style={{
-                    boxShadow: "0 0 40px hsl(175 60% 40% / 0.15), 0 8px 32px hsl(0 0% 0% / 0.4)",
-                    backgroundColor: "hsl(222 35% 12% / 0.65)",
+                    backdropFilter: "blur(12px)",
+                    WebkitBackdropFilter: "blur(12px)",
+                    backgroundColor: "rgba(255, 255, 255, 0.10)",
+                    borderColor: "rgba(255, 255, 255, 0.20)",
                   }}
                 >
-                  <AuthForm />
+                  <AuthForm variant="glass" />
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* ─── SECTION 2: FEATURE SHOWCASE ─── */}
-      <section
-        className="relative"
-        style={{ backgroundColor: "hsl(222 35% 18% / 0.04)" }}
-      >
-        <div
-          ref={fade2.ref}
-          className={`content-wide py-16 sm:py-20 ${fade2.className}`}
-          style={fade2.style}
-        >
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "hsl(175 60% 40%)" }} />
-            <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-              What's inside
-            </p>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-12 text-center">
-            Everything you need in one place
-          </h2>
-          <div className="max-w-4xl mx-auto">
-            <AnimatedFeatureShowcase />
-          </div>
+        {/* ─── FOOTER ─── */}
+        <div className="text-center py-4 pb-16">
+          <p className="text-sm text-white/70">
+            Need help?{" "}
+            <Link to="/about" className="underline hover:text-white transition-colors">
+              Contact us
+            </Link>
+          </p>
         </div>
-      </section>
-
-      {/* ─── SECTION 3: ASK RICH + CONTACT ─── */}
-      <section
-        className="relative overflow-hidden"
-        style={{ backgroundColor: "hsl(222 35% 8%)" }}
-      >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: "linear-gradient(135deg, transparent 30%, hsl(175 60% 40% / 0.06) 50%, transparent 70%)",
-          }}
-        />
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-            backgroundSize: "200px 200px",
-          }}
-        />
-        <div
-          ref={fade3.ref}
-          className={`content-wide relative py-12 sm:py-16 ${fade3.className}`}
-          style={fade3.style}
-        >
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-            {/* LEFT: Ask Rich */}
-            <div className="rounded-2xl border p-6 sm:p-8" style={{ borderColor: "hsl(222 20% 22%)", backgroundColor: "hsl(222 30% 12% / 0.5)" }}>
-              {/* Character + intro - matching site-wide style */}
-              <div className="flex flex-col sm:flex-row items-center gap-5 mb-6">
-                <img
-                  src={askRichCharacter}
-                  alt="Ask Rich"
-                  className="w-24 sm:w-28 rounded-2xl flex-shrink-0"
-                  style={{ border: "2px solid hsl(262 50% 50% / 0.3)" }}
-                />
-                <div className="text-center sm:text-left">
-                  <h2
-                    className="text-2xl sm:text-3xl font-display font-normal mb-2"
-                    style={{ color: "hsl(0 0% 96%)" }}
-                  >
-                    Got a question? Just ask.
-                  </h2>
-                  <p className="text-sm leading-relaxed" style={{ color: "hsl(222 20% 55%)" }}>
-                    I'm Rich, a SEND parent. Ask me anything about the reforms, EHCPs, or what to do right now. I'll give you a straight answer based on what we actually know.
-                  </p>
-                </div>
-              </div>
-              <LandingAskRich />
-            </div>
-
-            {/* RIGHT: Contact Us */}
-            <div className="rounded-2xl border p-6 sm:p-8" style={{ borderColor: "hsl(222 20% 22%)", backgroundColor: "hsl(222 30% 12% / 0.5)" }}>
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(175 60% 40% / 0.12)" }}>
-                  <Mail className="w-4 h-4" style={{ color: "hsl(175 60% 52%)" }} />
-                </div>
-                <h2 className="text-xl sm:text-2xl font-display font-semibold" style={{ color: "hsl(0 0% 96%)" }}>
-                  Contact us
-                </h2>
-              </div>
-              <p className="text-sm mb-6" style={{ color: "hsl(222 15% 70%)" }}>
-                Get in touch — we'd love to hear from you.
-              </p>
-              <LandingContactForm variant="dark" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── SECTION 5: RICH QUOTE (NAVY) ─── */}
-      <section
-        className="relative overflow-hidden"
-        style={{ backgroundColor: "hsl(222 35% 10%)" }}
-      >
-        <div
-          className="absolute inset-0 pointer-events-none opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-            backgroundSize: "200px 200px",
-          }}
-        />
-        <div
-          ref={fade4.ref}
-          className={`content-section py-16 sm:py-20 ${fade4.className}`}
-          style={fade4.style}
-        >
-          <div className="max-w-2xl mx-auto text-center relative">
-            <div
-              className="absolute -top-8 left-1/2 -translate-x-1/2 font-display select-none pointer-events-none"
-              style={{ fontSize: "10rem", lineHeight: "1", color: "hsl(175 60% 40% / 0.07)" }}
-              aria-hidden="true"
-            >
-              &ldquo;
-            </div>
-
-            <p
-              className="text-xl sm:text-2xl md:text-3xl font-display leading-snug mb-8"
-              style={{ fontStyle: "italic", color: "hsl(0 0% 90%)" }}
-            >
-              SEND reform is here. The White Paper is published. The consultation is open. And most parents still don't know what it means for their child.
-            </p>
-
-            <div className="flex items-center justify-center gap-3">
-              <div className="w-6 h-px" style={{ backgroundColor: "hsl(175 60% 40% / 0.5)" }} />
-              <p className="text-base sm:text-lg" style={{ color: "hsl(222 20% 65%)" }}>
-                This site breaks down every detail so you can act with clarity, not fear.
-              </p>
-            </div>
-            <p className="text-sm mt-2 tracking-wide" style={{ color: "hsl(222 20% 50%)" }}>
-              Rich Ferriman
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── FOOTER ─── */}
-      <footer className="relative py-5 pb-20" style={{ backgroundColor: "hsl(222 35% 10%)" }}>
-        <div
-          className="absolute top-0 left-0 right-0 h-px"
-          style={{
-            background: "linear-gradient(to right, transparent, hsl(175 60% 40% / 0.2), transparent)",
-          }}
-        />
-        <div className="content-section flex flex-col sm:flex-row items-center justify-between gap-2 text-xs" style={{ color: "hsl(222 20% 50%)" }}>
-          <p>&copy; 2026 Neurodiversity Global SEND Navigator</p>
-          <div className="flex items-center gap-4">
-            <Link to="/about" className="hover:text-white transition-colors">About</Link>
-            <Link to="/how-to-use" className="hover:text-white transition-colors">How to use</Link>
-            <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy</Link>
-            <Link to="/sources" className="hover:text-white transition-colors">Sources</Link>
-          </div>
-        </div>
-      </footer>
+      </div>
 
       {/* News ticker */}
       <PersistentNewsTicker />
-
-      {/* Animations */}
-      <style>{`
-        @keyframes hero-glow {
-          0% { opacity: 0.5; transform: scale(1); }
-          100% { opacity: 1; transform: scale(1.08); }
-        }
-      `}</style>
     </div>
   );
 };
