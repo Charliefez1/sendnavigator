@@ -366,6 +366,32 @@ export function extractReadinessSuggestions(
   return suggestions.sort((a, b) => a.priority - b.priority).slice(0, 3);
 }
 
+// =====================================================
+// NEW: Total Questions Answered counter
+// =====================================================
+
+export interface AnsweredCount {
+  answered: number;
+  total: number;
+}
+
+export function countTotalAnswers(state: ChildProfileState): AnsweredCount {
+  // Import dynamically would be circular; we hardcode the known total from audit (154)
+  const TOTAL_QUESTIONS = 154;
+  let answered = 0;
+
+  for (const section of Object.values(state.sections)) {
+    if (!section) continue;
+    for (const val of Object.values(section.answers)) {
+      if (Array.isArray(val) ? val.length > 0 : (val || "").trim().length > 0) {
+        answered++;
+      }
+    }
+  }
+
+  return { answered, total: TOTAL_QUESTIONS };
+}
+
 export type ReadinessLevel = "not-ready" | "minimal" | "good" | "strong";
 
 export interface ReadinessInfo {
