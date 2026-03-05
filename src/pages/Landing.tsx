@@ -6,7 +6,7 @@ import { PersistentNewsTicker } from "@/components/PersistentNewsTicker";
 import { useAuth } from "@/contexts/AuthContext";
 import heroChildren from "@/assets/landing-hero-children.png";
 import ndgLogo from "@/assets/neurodiversity-global-education-logo-full.png";
-import beaconLogo from "@/assets/beacon-logo.png";
+
 
 const Landing = () => {
   const { user, loading } = useAuth();
@@ -51,19 +51,6 @@ const Landing = () => {
       {/* ─── CONTENT LAYER ─── */}
       <div className="relative z-10 flex flex-col min-h-screen">
 
-        {/* ─── LOGO BAR ─── */}
-        <div className="flex items-center justify-between px-6 sm:px-10 py-5">
-          <img
-            src={ndgLogo}
-            alt="Neurodiversity Global"
-            className="h-10 sm:h-12 brightness-0 invert opacity-90"
-          />
-          <img
-            src={beaconLogo}
-            alt="Beacon"
-            className="h-8 sm:h-10 brightness-0 invert opacity-90"
-          />
-        </div>
 
         {/* ─── CENTER CARD ─── */}
         <div className="flex-1 flex items-center justify-center px-4 sm:px-8 py-8">
@@ -80,10 +67,10 @@ const Landing = () => {
 
               {/* LEFT: Hero text */}
               <div className="flex flex-col justify-center p-8 sm:p-10 md:p-12">
-                <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4">
+                <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight mb-4" style={{ fontFamily: "'Cooper Hewitt', sans-serif" }}>
                   SEND Navigator
                 </h1>
-                <p className="text-base sm:text-lg text-white/80 leading-relaxed mb-5">
+                <p className="text-base sm:text-lg text-white/80 leading-relaxed mb-5" style={{ fontFamily: "'Cooper Hewitt', sans-serif" }}>
                   A calm, independent place to understand SEND, use practical tools, and work out what to do next.
                 </p>
 
