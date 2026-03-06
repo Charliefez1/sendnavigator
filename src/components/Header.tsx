@@ -44,7 +44,7 @@ const navGroups: (NavGroup & { color: string })[] = [
       { path: "/post-16-and-transition", label: "Post-16 & Transition" },
       { path: "/what-to-do-right-now", label: "What to do right now" },
       { path: "/sendiass", label: "Free help - SENDIASS" },
-      { path: "/my-child-profile", label: "My Child: This is me" },
+      { path: "/my-child-profile", label: "This is me" },
     ],
   },
   {
@@ -158,7 +158,7 @@ export function Header() {
               }
               style={({ isActive }) => ({ color: isActive ? undefined : "hsl(42 87% 58%)" })}
             >
-              My Child: This is me
+              This is me
             </NavLink>
             <NavLink
               to="/what-to-do-right-now"

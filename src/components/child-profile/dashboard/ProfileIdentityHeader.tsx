@@ -39,7 +39,7 @@ export function ProfileIdentityHeader({ state }: Props) {
       {/* Name */}
       <div className="flex-1 min-w-0">
         <h1 className="text-2xl font-display font-bold text-foreground leading-tight truncate">
-          {overview.childName ? `This is ${childName}` : "My Child: This is me"}
+          {overview.childName ? `This is ${childName}` : "This is me"}
         </h1>
         {overview.reason && (
           <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{overview.reason}</p>

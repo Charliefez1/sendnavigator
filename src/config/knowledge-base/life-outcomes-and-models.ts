@@ -1,7 +1,7 @@
 /**
  * Knowledge base: Life Outcomes, Explanatory Models, and Perspectives
  * Source: Deep evidence-led review (2024–2026), multiple executive summaries
- * For use by Ask Rich Q&A and My Child: This is me report generation
+ * For use by Ask Rich Q&A and This is me report generation
  */
 
 export const lifeOutcomesAndModels = `

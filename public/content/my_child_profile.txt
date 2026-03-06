@@ -1,4 +1,4 @@
-Title: My Child: This is me
+Title: This is me
 Route: /my-child-profile
 Description: Build a document about your child to share with professionals.
 Last updated: 6th March 2026
