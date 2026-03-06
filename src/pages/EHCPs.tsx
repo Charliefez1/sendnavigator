@@ -66,7 +66,7 @@ export default function EHCPs() {
       </PageOrientation>
 
       <div className="content-section py-4">
-        <AskEHCP />
+        <SafeRender><AskEHCP /></SafeRender>
       </div>
 
       <SixtySecondSummary
@@ -77,7 +77,7 @@ export default function EHCPs() {
         }
       />
 
-      <LatestUpdatesStream />
+      <SafeRender><LatestUpdatesStream /></SafeRender>
 
       <OnThisPage sections={sections} />
       
@@ -168,7 +168,7 @@ export default function EHCPs() {
           <p>
             The EHCP process runs from initial identification of needs through to the final plan and annual reviews. The entire process from request to final plan <strong>should take no more than 20 weeks</strong>, though in practice over half of families wait longer.
           </p>
-          <EHCPProcessDiagram />
+          <SafeRender><EHCPProcessDiagram /></SafeRender>
           <div className="bg-muted/50 border border-border rounded-lg p-4 mt-4">
             <div className="flex items-start gap-2">
               <Clock className="w-4 h-4 mt-0.5 text-muted-foreground shrink-0" />
