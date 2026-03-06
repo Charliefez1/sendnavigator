@@ -148,7 +148,7 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
           I have. Many times. But sometimes I just wish I had a 'this is George' document that I could share, just to help others see him as I do.
         </p>
         <p>
-          This is me, is that.
+          <em>This is me</em> is that document.
         </p>
         <p>
           At Neurodiversity Global, we have built the ability for you to create a structured document about your child that YOU build, YOU own, and YOU share on your terms.
@@ -158,13 +158,37 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
         </p>
       </div>
 
+      {/* ── Important disclaimer ── */}
+      <div className="mt-8 rounded-2xl border border-amber-500/40 bg-amber-500/5 p-5 space-y-3">
+        <div className="flex items-center gap-2">
+          <div className="w-7 h-7 rounded-lg bg-amber-500/15 flex items-center justify-center flex-shrink-0">
+            <FlaskConical className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+          </div>
+          <p className="text-sm font-semibold text-foreground">Before you begin</p>
+        </div>
+        <div className="text-xs text-muted-foreground leading-relaxed space-y-2">
+          <p>
+            <strong className="text-foreground">This is not a diagnosis tool.</strong> It does not assess, screen, or identify any condition. It is a structured way for you to describe your child in your own words, so that the people around them can understand them better.
+          </p>
+          <p>
+            <strong className="text-foreground">This is not a legal document.</strong> It does not replace an EHCP, a medical report, or a professional assessment. It is a companion to those things — something you can bring into a meeting to make sure your child is seen as a whole person, not just a set of needs on a form.
+          </p>
+          <p>
+            <strong className="text-foreground">This is a guide only.</strong> The tool uses AI to help organise and present what you share. It draws on a large evidence base, but every child is different. Use what feels right, skip what does not, and always trust your own knowledge of your child above anything generated here.
+          </p>
+          <p>
+            <strong className="text-foreground">This tool is in beta.</strong> Content and questions are being refined daily. If something feels off, incomplete, or unhelpful, please <Link to="/feedback" className="text-primary underline underline-offset-2">tell us</Link>.
+          </p>
+        </div>
+      </div>
+
       {/* ── What it does ── */}
       <div className="mt-8">
         <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3">
           What this tool does
         </h2>
         <p className="text-sm text-foreground leading-relaxed">
-          It walks you through guided questions covering the areas that matter most when understanding a neurodivergent child: environment, sensory processing, executive function, masking, communication, identity, strengths, and more. At the end, you get a professional profile and report you can download as a PDF.
+          It walks you through guided questions covering the areas that matter most when understanding a neurodivergent child: environment, sensory processing, executive function, masking, communication, identity, strengths, and more. At the end, you get a profile and report you can download as a PDF.
         </p>
       </div>
 
@@ -255,17 +279,6 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
           Start a new profile
           <ArrowRight className="w-4 h-4" />
         </Button>
-      </div>
-
-      {/* ── Beta notice (below start button, smaller) ── */}
-      <div className="mt-6 bg-amber-500/15 border border-amber-500/50 rounded-lg p-4 space-y-1.5">
-        <div className="flex items-center gap-1.5">
-          <FlaskConical className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0" />
-          <p className="text-xs font-semibold text-foreground">Beta</p>
-        </div>
-        <p className="text-xs text-muted-foreground leading-relaxed">
-          This tool is in active development. Content and questions are being refined daily. Everything here is a guide only and should not be treated as medical advice, a diagnosis, or a legal document.
-        </p>
       </div>
 
       {/* ── Return with code ── */}
