@@ -1,7 +1,7 @@
 /**
  * Knowledge base: Family Experience and Parenting
  * Source: Deep evidence-led review (2024–2026), multiple executive summaries
- * For use by Ask Rich Q&A and My Child: A Profile report generation
+ * For use by Ask Rich Q&A and My Child: This is me report generation
  */
 
 export const familyExperience = `

@@ -42,7 +42,7 @@ Parent Guides:
 - /post-16-and-transition - "Post-16 and Transition" - Moving into adulthood
 - /what-to-do-right-now - "What to do right now" - Practical steps based on current law
 - /sendiass - "Free help: SENDIASS" - Free independent advice near you
-- /my-child-profile - "My Child: A Profile" - Build a document about your child
+- /my-child-profile - "My Child: This is me" - Build a document about your child
 
 System:
 - /local-variation - "Why where you live matters" - Local authority variation

@@ -1,7 +1,7 @@
-Title: My Child: A Profile
+Title: My Child: This is me
 Route: /my-child-profile
 Description: Build a document about your child to share with professionals.
-Last updated: 1st March 2026
+Last updated: 6th March 2026
 Status: Confirmed
 Key topics: Child profile, Evidence, Advocacy
 Key numbers: n/a
@@ -9,7 +9,7 @@ Key sources: n/a
 
 ---
 
-My Child: A Profile
+My Child: This is me
 
 Build a document about your child to share with professionals.
 
