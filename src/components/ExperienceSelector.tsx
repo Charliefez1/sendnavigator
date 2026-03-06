@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BookOpen, ScanLine, Headphones, Sun, Moon, Type, Heart, Zap, Compass, ExternalLink } from "lucide-react";
+import { BookOpen, ScanLine, Headphones, Sun, Moon, Type, Heart, Zap, ExternalLink } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
@@ -14,7 +14,7 @@ const experienceModes: {mode: ExperienceMode;label: string;icon: typeof BookOpen
 
 
 export function ExperienceSelector() {
-  const { mode, setMode, orientationOn, setOrientationOn } = useExperienceMode();
+  const { mode, setMode } = useExperienceMode();
   const { sections } = usePageSections();
   const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
@@ -95,25 +95,7 @@ export function ExperienceSelector() {
           <div className="w-px h-4 bg-white/10 mx-1.5" />
         </div>
 
-        {/* Orientation toggle */}
-        <div className="flex items-center gap-0.5 shrink-0">
-          <button
-            onClick={() => setOrientationOn(!orientationOn)}
-            className={cn(
-              "flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-medium transition-colors",
-              orientationOn
-                ? "bg-white/20 text-white"
-                : "text-white/50 hover:text-white hover:bg-white/10"
-            )}
-            aria-pressed={orientationOn}
-            aria-label="Toggle orientation bar"
-            title="Shows where you are on the site and helps you keep your place on long pages."
-          >
-            <Compass className="w-3 h-3" />
-            <span className="hidden sm:inline">Orientation</span>
-          </button>
-          <div className="w-px h-4 bg-white/10 mx-1.5" />
-        </div>
+
 
         {/* Accessibility */}
         <div className="flex items-center gap-0.5 shrink-0">
