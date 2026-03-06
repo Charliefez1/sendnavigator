@@ -373,6 +373,44 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
     await generateProfilePDF({ state, aiReport });
   };
 
+  const handleEmailFromDashboard = async () => {
+    if (!state.aiReport) return;
+
+    const emailAddress = prompt("Enter your email address to receive the report:");
+    if (!emailAddress || !emailAddress.includes("@")) return;
+
+    const structured = state.aiReport.structured && isStructuredReport(state.aiReport.structured)
+      ? state.aiReport.structured
+      : undefined;
+
+    toast({ title: "Preparing your email...", description: "Generating PDF and sending." });
+
+    try {
+      const emailAiReport = structured || state.aiReport.report;
+      const pdfBase64 = await generateProfilePDF({ state, aiReport: emailAiReport });
+
+      const { error } = await supabase.functions.invoke("email-profile-report", {
+        body: {
+          email: emailAddress,
+          childName: state.setup.childName || "your child",
+          report: state.aiReport.report,
+          structured,
+          pdfBase64,
+        },
+      });
+
+      if (error) {
+        console.error("Email send failed:", error);
+        toast({ title: "Email could not be sent", description: "Your report is still available to download.", variant: "destructive" });
+      } else {
+        toast({ title: "Report sent to your email", description: `A copy with the PDF attached has been sent to ${emailAddress}.` });
+      }
+    } catch (err) {
+      console.error("Email send failed:", err);
+      toast({ title: "Email could not be sent", description: "Your report is still available to download.", variant: "destructive" });
+    }
+  };
+
   const handleGenerateReport = async (email?: string) => {
     // If report is already cached, skip straight to preview
     if (state.aiReport) {
@@ -625,6 +663,7 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
             setStage("builder");
           }}
           onRegenerateSection={handleRegenerateSection}
+          onEmailReport={handleEmailFromDashboard}
         />
       )}
 
@@ -658,15 +697,15 @@ const MyChildProfile = () => {
   return (
     <Layout>
       <SEOHead
-        title="My Child: A Profile - SEND Reform Navigator"
+        title="My Child: This is me - SEND Reform Navigator"
         description="Build a personalised profile document about your neurodivergent child. Download as PDF. Nothing is stored."
         path="/my-child-profile"
       />
       {stage === "opening" && (
         <PageOrientation
           icon={UserRound}
-          sectionLabel="My Child: A Profile"
-          title="My Child: A Profile"
+          sectionLabel="My Child: This is me"
+          title="My Child: This is me"
           description="22 guided sections, an at-a-glance dashboard, a structured AI report you can preview in your browser, and a downloadable PDF. Nothing is stored."
           accentColor="hsl(42 87% 50%)"
           showSearch={false}
