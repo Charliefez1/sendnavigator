@@ -26,3 +26,12 @@ verify_jwt = false
 
 [functions.run-test-harness]
 verify_jwt = false
+
+[functions.qanda]
+verify_jwt = false
+
+[functions.email-profile-report]
+verify_jwt = false
+
+[functions.admin-moderate]
+verify_jwt = false
