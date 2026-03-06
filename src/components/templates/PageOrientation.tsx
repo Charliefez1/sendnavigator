@@ -1,5 +1,6 @@
 import { ReactNode, ElementType } from "react";
 import { Clock } from "lucide-react";
+import { SafeRender } from "@/components/SafeRender";
 import { PageSearch } from "@/components/PageSearch";
 
 interface PageOrientationProps {
@@ -91,7 +92,7 @@ export function PageOrientation({
 
         {showSearch && (
           <div className="mt-5 max-w-md mx-auto">
-            <PageSearch />
+            <SafeRender><PageSearch /></SafeRender>
           </div>
         )}
       </div>

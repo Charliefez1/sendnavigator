@@ -32,6 +32,7 @@ export function PageSearch({ label = "Search this page" }: PageSearchProps) {
       clearHighlights();
       if (!searchText || searchText.length < 2) return;
 
+      try {
       const contentArea = document.querySelector("main") || document.body;
       const walker = document.createTreeWalker(contentArea, NodeFilter.SHOW_TEXT, {
         acceptNode: (node) => {
@@ -84,6 +85,9 @@ export function PageSearch({ label = "Search this page" }: PageSearchProps) {
         setCurrentMatch(1);
         marks[0].scrollIntoView({ behavior: "smooth", block: "center" });
         marks[0].className = "bg-primary/60 text-foreground rounded-sm px-0.5 ring-2 ring-primary";
+      }
+      } catch (err) {
+        console.warn("PageSearch: highlight failed", err);
       }
     },
     [clearHighlights]

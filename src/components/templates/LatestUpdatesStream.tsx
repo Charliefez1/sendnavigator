@@ -40,13 +40,17 @@ export function LatestUpdatesStream() {
 
   useEffect(() => {
     const fetchNews = async () => {
-      const { data } = await (supabase as any)
-        .from("news_items")
-        .select("id, title, summary, source_name, discovered_at, published_at")
-        .eq("status", "published")
-        .order("discovered_at", { ascending: false })
-        .limit(20);
-      if (data) setDbItems(data);
+      try {
+        const { data } = await (supabase as any)
+          .from("news_items")
+          .select("id, title, summary, source_name, discovered_at, published_at")
+          .eq("status", "published")
+          .order("discovered_at", { ascending: false })
+          .limit(20);
+        if (data) setDbItems(data);
+      } catch (err) {
+        console.warn("LatestUpdatesStream: failed to fetch news", err);
+      }
     };
     fetchNews();
   }, []);
