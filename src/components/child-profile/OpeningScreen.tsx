@@ -137,7 +137,7 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
 
       {/* ── Title ── */}
       <h1 className="text-2xl font-display font-semibold text-foreground mb-3">
-        My Child: This is me
+        This is me
       </h1>
 
       <div className="text-sm text-foreground leading-relaxed space-y-3">
@@ -148,7 +148,7 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
           I have. Many times. But sometimes I just wish I had a 'this is George' document that I could share, just to help others see him as I do.
         </p>
         <p>
-          My Child: This is me, is that.
+          This is me, is that.
         </p>
         <p>
           At Neurodiversity Global, we have built the ability for you to create a structured document about your child that YOU build, YOU own, and YOU share on your terms.

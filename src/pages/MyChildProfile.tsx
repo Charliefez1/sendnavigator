@@ -697,15 +697,15 @@ const MyChildProfile = () => {
   return (
     <Layout>
       <SEOHead
-        title="My Child: This is me - SEND Reform Navigator"
+        title="This is me - SEND Reform Navigator"
         description="Build a personalised profile document about your neurodivergent child. Download as PDF. Nothing is stored."
         path="/my-child-profile"
       />
       {stage === "opening" && (
         <PageOrientation
           icon={UserRound}
-          sectionLabel="My Child: This is me"
-          title="My Child: This is me"
+          sectionLabel="This is me"
+          title="This is me"
           description="22 guided sections, an at-a-glance dashboard, a structured AI report you can preview in your browser, and a downloadable PDF. Nothing is stored."
           accentColor="hsl(42 87% 50%)"
           showSearch={false}

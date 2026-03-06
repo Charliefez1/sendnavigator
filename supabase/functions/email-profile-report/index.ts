@@ -104,7 +104,7 @@ function buildEmail(childName: string, report: string, structured?: StructuredRe
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width:640px;margin:0 auto;padding:32px 16px;">
     <!-- Header -->
     <tr><td style="padding:0 0 24px 0;border-bottom:2px solid #d4a843;">
-      <h1 style="margin:0;font-size:24px;color:#1a1a1a;">My Child: This is me</h1>
+      <h1 style="margin:0;font-size:24px;color:#1a1a1a;">This is me</h1>
       <p style="margin:4px 0 0 0;font-size:14px;color:#666;">A profile of ${escapeHtml(displayName)}</p>
     </td></tr>
 
@@ -160,14 +160,14 @@ function buildEmail(childName: string, report: string, structured?: StructuredRe
 
           <p style="margin:0 0 10px 0;font-size:12px;color:#444;line-height:1.7;"><strong>Your data.</strong> The answers you provided are stored temporarily (up to 14 days) and then automatically deleted. Your data is encrypted in transit and at rest. It is not used to train AI models and is not shared with third parties. This email and the attached PDF are the only copies sent outside your device.</p>
 
-          <p style="margin:0;font-size:12px;color:#444;line-height:1.7;"><strong>Who built this.</strong> The SEND Navigator and "My Child: This is me" tool are built by Neurodiversity Global Ltd — an independent, neurodivergent-led organisation. We are parents and practitioners, not a government body, a campaign group, or a medical provider. Everything here is offered in good faith, from lived experience, and should be used as a guide only.</p>
+          <p style="margin:0;font-size:12px;color:#444;line-height:1.7;"><strong>Who built this.</strong> The SEND Navigator and "This is me" tool are built by Neurodiversity Global Ltd — an independent, neurodivergent-led organisation. We are parents and practitioners, not a government body, a campaign group, or a medical provider. Everything here is offered in good faith, from lived experience, and should be used as a guide only.</p>
         </td></tr>
       </table>
     </td></tr>
 
     <!-- Footer -->
     <tr><td style="padding:16px 0 0 0;border-top:1px solid #e5e5e5;">
-      <p style="margin:0;font-size:11px;color:#999;line-height:1.5;">This report was generated using the "My Child: This is me" tool on SEND Navigator. © ${new Date().getFullYear()} Neurodiversity Global Ltd. All rights reserved.</p>
+      <p style="margin:0;font-size:11px;color:#999;line-height:1.5;">This report was generated using the "This is me" tool on SEND Navigator. © ${new Date().getFullYear()} Neurodiversity Global Ltd. All rights reserved.</p>
     </td></tr>
   </table>
 </body>

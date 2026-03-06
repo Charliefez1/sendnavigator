@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const FeatureMyChildProfile = () => (
   <div className="min-h-screen bg-background">
-    <SEOHead title="My Child: This is me | SEND Navigator" description="Build a professional, structured profile about your child to share with schools and professionals." path="/feature/my-child-profile" />
+    <SEOHead title="This is me | SEND Navigator" description="Build a professional, structured profile about your child to share with schools and professionals." path="/feature/my-child-profile" />
 
     <section className="relative py-16 sm:py-24 overflow-hidden" style={{ backgroundColor: "hsl(222 35% 10%)" }}>
       <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 30%, hsl(42 87% 48% / 0.15), transparent 70%)" }} />
@@ -14,7 +14,7 @@ const FeatureMyChildProfile = () => (
           <User className="w-7 h-7" style={{ color: "hsl(42 87% 48%)" }} />
         </div>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold mb-4" style={{ color: "hsl(0 0% 96%)" }}>
-          My Child: This is me
+          This is me
         </h1>
         <p className="text-lg max-w-2xl mx-auto" style={{ color: "hsl(222 20% 60%)" }}>
           Build a professional, structured profile about your child to share with schools and professionals.

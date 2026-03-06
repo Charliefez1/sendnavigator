@@ -37,7 +37,7 @@ const features: {
   },
   {
     icon: Heart,
-    label: "My Child: This is me",
+    label: "This is me",
     headline: "Build a profile to share with schools",
     description:
       "Create a professional, structured document about your child that you can share with schools and professionals.",

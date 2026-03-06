@@ -28,8 +28,8 @@ const routeMeta: Record<string, { section?: string; sectionColor?: string; title
   "/ehcp-health": { section: "EHCP Guide", sectionColor: "var(--accent-deep-blue)", title: "Health in EHCPs" },
   "/post-16-and-transition": { section: "EHCP Guide", sectionColor: "var(--accent-deep-blue)", title: "Post-16 & Transition" },
 
-  // My Child: This is me
-  "/my-child-profile": { section: "My Child: This is me", sectionColor: "var(--accent-amber)", title: "My Child: This is me" },
+  // This is me
+  "/my-child-profile": { section: "This is me", sectionColor: "var(--accent-amber)", title: "This is me" },
   "/understanding-your-child": { section: "Understanding Your Child", sectionColor: "var(--accent-amber)", title: "Understanding Your Child" },
   "/understanding-your-child/autism": { section: "Understanding Your Child", sectionColor: "var(--accent-amber)", title: "Understanding Autism", hub: "Understanding Your Child" },
   "/understanding-your-child/adhd": { section: "Understanding Your Child", sectionColor: "var(--accent-amber)", title: "Understanding ADHD", hub: "Understanding Your Child" },

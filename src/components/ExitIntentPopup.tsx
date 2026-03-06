@@ -23,7 +23,7 @@ const linkedSites = [
 
 const furtherReading = [
   { label: "Rich's Take", path: "/richs-take" },
-  { label: "My Child: This is me", path: "/my-child-profile" },
+  { label: "This is me", path: "/my-child-profile" },
   { label: "SEND Report 2026", path: "/state-of-send-2026" },
   { label: "The EHCP Guide", path: "/ehcps" },
 ];
