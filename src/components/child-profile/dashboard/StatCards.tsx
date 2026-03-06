@@ -11,7 +11,7 @@ interface Props {
 }
 
 /** SVG semi-circle gauge */
-function Gauge({ value, max, color = "hsl(var(--primary))" }: { value: number; max: number; color?: string }) {
+function Gauge({ value, max, color = "hsl(var(--accent-teal))" }: { value: number; max: number; color?: string }) {
   const size = 80;
   const sw = 6;
   const r = (size - sw) / 2;
@@ -36,7 +36,7 @@ function Gauge({ value, max, color = "hsl(var(--primary))" }: { value: number; m
 }
 
 /** SVG full ring */
-function Ring({ value, max, size = 56, color = "hsl(var(--accent-teal))" }: { value: number; max: number; size?: number; color?: string }) {
+function Ring({ value, max, size = 56, color = "hsl(var(--accent-coral))" }: { value: number; max: number; size?: number; color?: string }) {
   const sw = 5;
   const r = (size - sw) / 2;
   const circ = 2 * Math.PI * r;
@@ -55,9 +55,9 @@ function Ring({ value, max, size = 56, color = "hsl(var(--accent-teal))" }: { va
 }
 
 const CONFIDENCE_COLORS: Record<string, string> = {
-  emerging: "bg-muted text-muted-foreground",
+  emerging: "bg-secondary text-muted-foreground",
   developing: "bg-[hsl(var(--accent-amber-bg))] text-[hsl(var(--accent-amber))]",
-  established: "bg-primary/15 text-primary",
+  established: "bg-[hsl(var(--accent-teal-bg))] text-[hsl(var(--accent-teal))]",
 };
 
 export function StatCards({ state, getSectionStatus, topTheme, totalSignals }: Props) {
@@ -68,10 +68,10 @@ export function StatCards({ state, getSectionStatus, topTheme, totalSignals }: P
 
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-      {/* Questions answered — big gauge */}
+      {/* Questions answered — teal gauge */}
       <Card className="overflow-hidden border-0 shadow-md bg-gradient-to-br from-card to-card">
         <CardContent className="p-5 text-center space-y-0">
-          <Gauge value={answered} max={total} />
+          <Gauge value={answered} max={total} color="hsl(var(--accent-teal))" />
           <p className="text-3xl font-bold text-foreground -mt-3 tracking-tight">
             {answered}
           </p>
@@ -81,11 +81,11 @@ export function StatCards({ state, getSectionStatus, topTheme, totalSignals }: P
         </CardContent>
       </Card>
 
-      {/* Profile depth — ring with bold number */}
+      {/* Profile depth — coral ring */}
       <Card className="overflow-hidden border-0 shadow-md">
         <CardContent className="p-5 text-center space-y-0">
           <div className="relative w-14 h-14 mx-auto">
-            <Ring value={depth} max={100} color="hsl(var(--primary))" />
+            <Ring value={depth} max={100} color="hsl(var(--accent-coral))" />
             <div className="absolute inset-0 flex items-center justify-center">
               <span className="text-xs font-bold text-foreground">{depth}%</span>
             </div>
@@ -97,11 +97,11 @@ export function StatCards({ state, getSectionStatus, topTheme, totalSignals }: P
         </CardContent>
       </Card>
 
-      {/* Signals confirmed — bold count */}
+      {/* Signals confirmed — violet accent */}
       <Card className="overflow-hidden border-0 shadow-md">
         <CardContent className="p-5 text-center flex flex-col items-center justify-center h-full">
-          <div className="w-10 h-10 rounded-full bg-[hsl(var(--accent-teal-bg))] flex items-center justify-center mb-1">
-            <span className="text-lg font-bold text-[hsl(var(--accent-teal))]">{totalSignals}</span>
+          <div className="w-10 h-10 rounded-full bg-[hsl(var(--accent-violet-bg))] flex items-center justify-center mb-1">
+            <span className="text-lg font-bold text-[hsl(var(--accent-violet))]">{totalSignals}</span>
           </div>
           <p className="text-[11px] text-muted-foreground mt-1">signals confirmed</p>
           {childVoiceCount > 0 && (
@@ -112,7 +112,7 @@ export function StatCards({ state, getSectionStatus, topTheme, totalSignals }: P
         </CardContent>
       </Card>
 
-      {/* Top theme */}
+      {/* Top pattern — amber accent */}
       <Card className="overflow-hidden border-0 shadow-md">
         <CardContent className="p-5 flex flex-col items-center justify-center h-full text-center">
           {topTheme ? (
@@ -125,13 +125,13 @@ export function StatCards({ state, getSectionStatus, topTheme, totalSignals }: P
             </>
           ) : (
             <>
-              <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center mb-1.5">
-                <span className="text-muted-foreground text-lg">?</span>
+              <div className="w-10 h-10 rounded-full bg-[hsl(var(--accent-amber-bg))] flex items-center justify-center mb-1.5">
+                <span className="text-[hsl(var(--accent-amber))] text-lg">?</span>
               </div>
-              <p className="text-xs text-muted-foreground">No themes yet</p>
+              <p className="text-xs text-muted-foreground">No patterns yet</p>
             </>
           )}
-          <p className="text-[11px] text-muted-foreground mt-1">strongest theme</p>
+          <p className="text-[11px] text-muted-foreground mt-1">strongest pattern</p>
         </CardContent>
       </Card>
     </div>
