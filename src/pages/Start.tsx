@@ -69,7 +69,7 @@ const parentGuides: ContentLink[] = [
   { path: "/post-16-and-transition", title: "Post-16 & Transition", summary: "Moving into adulthood", icon: GraduationCap },
   { path: "/what-to-do-right-now", title: "What to do right now", summary: "Practical steps based on current law", icon: Scale },
   { path: "/sendiass", title: "Free help - SENDIASS", summary: "Free independent advice near you", icon: HandHeart },
-  { path: "/my-child-profile", title: "My Child: A Profile", summary: "Build a document about your child to share with professionals", icon: ClipboardList },
+  { path: "/my-child-profile", title: "My Child: This is me", summary: "Build a document about your child to share with professionals", icon: ClipboardList },
 ];
 
 const systemPages: ContentLink[] = [

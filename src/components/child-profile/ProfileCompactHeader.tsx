@@ -38,7 +38,7 @@ export function ProfileCompactHeader({ onViewDashboard, onSave, childName, showD
             </div>
             <div className="min-w-0">
               <p className="text-sm font-medium text-foreground truncate">
-                {childName ? `${childName}'s Profile` : "My Child: A Profile"}
+                {childName ? `This is ${childName}` : "My Child: This is me"}
               </p>
               <div className="flex items-center gap-2 mt-0.5">
                 <Progress value={percentage} className="h-1.5 w-24" />

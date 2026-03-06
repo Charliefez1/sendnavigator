@@ -137,7 +137,7 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
       {!hasContent ? (
         <Card>
           <CardContent className="py-12 text-center">
-            <p className="text-sm text-muted-foreground">Start filling in sections to see your child's profile come to life here.</p>
+            <p className="text-sm text-muted-foreground">Start filling in sections to see "This is me" come to life here.</p>
           </CardContent>
         </Card>
       ) : (

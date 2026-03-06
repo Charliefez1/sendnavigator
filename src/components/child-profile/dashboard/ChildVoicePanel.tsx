@@ -24,9 +24,9 @@ export function ChildVoicePanel({ state, onNavigateToSection }: Props) {
             <MessageSquareHeart className="w-6 h-6 text-[hsl(var(--accent-amber))]" />
           </div>
           <div>
-            <p className="text-sm font-semibold text-foreground">{childName}'s voice brings this profile to life</p>
+            <p className="text-sm font-semibold text-foreground">{childName}'s voice brings "This is me" to life</p>
             <p className="text-xs text-muted-foreground mt-0.5">
-              Look for the "child voice" questions in each section — even one answer changes how a school reads the profile.
+              Look for the "child voice" questions in each section — even one answer changes how a school reads "This is me".
             </p>
           </div>
         </CardContent>

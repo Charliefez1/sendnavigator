@@ -104,7 +104,7 @@ function buildEmail(childName: string, report: string, structured?: StructuredRe
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width:640px;margin:0 auto;padding:32px 16px;">
     <!-- Header -->
     <tr><td style="padding:0 0 24px 0;border-bottom:2px solid #d4a843;">
-      <h1 style="margin:0;font-size:24px;color:#1a1a1a;">My Child: A Profile</h1>
+      <h1 style="margin:0;font-size:24px;color:#1a1a1a;">My Child: This is me</h1>
       <p style="margin:4px 0 0 0;font-size:14px;color:#666;">A profile of ${escapeHtml(displayName)}</p>
     </td></tr>
 
@@ -146,7 +146,7 @@ function buildEmail(childName: string, report: string, structured?: StructuredRe
 
     <!-- Footer -->
     <tr><td style="padding:16px 0 0 0;border-top:1px solid #e5e5e5;">
-      <p style="margin:0;font-size:12px;color:#999;line-height:1.5;">This report was generated using the My Child: A Profile tool on SEND Navigator. It is not stored on our servers. This email is the only copy sent outside your device.</p>
+      <p style="margin:0;font-size:12px;color:#999;line-height:1.5;">This report was generated using the My Child: This is me tool on SEND Navigator. It is not stored on our servers. This email is the only copy sent outside your device.</p>
     </td></tr>
   </table>
 </body>
@@ -188,7 +188,7 @@ Deno.serve(async (req) => {
     const emailPayload: Record<string, unknown> = {
       from: "Rich Ferriman <rich@neurodiversityglobal.com>",
       to: [body.email],
-      subject: `${childName}'s Profile Report — from SEND Navigator`,
+      subject: `This is ${childName} — from SEND Navigator`,
       html,
     };
 

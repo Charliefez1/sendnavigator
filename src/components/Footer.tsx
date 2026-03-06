@@ -37,7 +37,7 @@ export function Footer() {
                 { to: "/ehcps", label: "EHCP Guide", icon: Shield },
                 { to: "/ehcp-health", label: "Health in EHCPs", icon: Stethoscope },
                 { to: "/what-to-do-right-now", label: "What to do now", icon: Scale },
-                { to: "/my-child-profile", label: "My Child: A Profile", icon: ClipboardList },
+                { to: "/my-child-profile", label: "My Child: This is me", icon: ClipboardList },
                 { to: "/exclusions", label: "Exclusions and rights", icon: AlertTriangle },
                 { to: "/alternative-provision", label: "Alternative Provision", icon: Building2 },
                 { to: "/post-16-and-transition", label: "Post-16 and Transition", icon: GraduationCap },
