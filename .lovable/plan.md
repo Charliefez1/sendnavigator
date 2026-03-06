@@ -1,84 +1,74 @@
 
 
-## Rename "Themes" → "Patterns" + Bold Up the Colour Palette
+## Rename "My Child: A Profile" → "My Child: This is me"
 
-### 1. Terminology Rename
+The name change is meaningful — it shifts the voice from clinical description to the child saying "this is who I am." The impact is wide but straightforward: it is a text rename across ~20 files with no route, type, or structural changes.
 
-The user chose **Patterns** for the top-level groupings. Since "Detected patterns" already exists as a sub-level (e.g. "After school crash"), that sub-level becomes **"Recognised sequences"** — a warm, parent-friendly term that distinguishes the two concepts.
+### What changes
 
-| Current | New |
+**UI-facing text (rename all instances):**
+
+| Location | Current | New |
+|---|---|---|
+| `OpeningScreen.tsx` | "My Child: A Profile" (title + body) | "My Child: This is me" |
+| `ProfileCompactHeader.tsx` | fallback "My Child: A Profile" | "My Child: This is me" |
+| `ProfileIdentityHeader.tsx` | "Your Child's Profile" / `childName's Profile` | "This is me" / `This is {childName}` |
+| `ChildVoicePanel.tsx` | "profile" references | "This is me" references |
+| `Header.tsx` | nav label "My Child: A Profile" | "My Child: This is me" |
+| `Footer.tsx` | link label | "My Child: This is me" |
+| `Start.tsx` | card title | "My Child: This is me" |
+| `OrientationBar.tsx` | section + title labels | "My Child: This is me" |
+| `AnimatedFeatureShowcase.tsx` | showcase label | "My Child: This is me" |
+| `FeatureMyChildProfile.tsx` | page title, heading, body text | "My Child: This is me" |
+| `ExitIntentPopup.tsx` | "My Child Profile" label | "My Child: This is me" |
+| `ProfileDashboard.tsx` | empty state text | updated copy |
+| `ReportDashboard.tsx` | heading references | updated copy |
+| `profile-dashboard-utils.ts` | "your child's profile" text | updated copy |
+
+**Edge functions (rename in visible text only):**
+
+| Location | Change |
 |---|---|
-| "Emerging themes" (page title) | **"Emerging patterns"** |
-| "Theme strength" (chart label) | **"Pattern strength"** |
-| "Theme details" (section heading) | **"Pattern details"** |
-| "Themes" (stat pill) | **"Patterns"** |
-| "What's driving the themes" | **"What's driving the patterns"** |
-| "X themes" (context heatmap) | **"X patterns"** |
-| "Detected patterns" (sub-level) | **"Recognised sequences"** |
-| `StructuredTheme.theme` field | Keep as-is internally — only change UI labels |
-| `ThemeKey` / `THEMES` config | Keep as-is — these are internal ontology keys |
+| `email-profile-report/index.ts` | Email subject + body: "My Child: A Profile" → "My Child: This is me" |
+| `guide-me/index.ts` | Description text in route list |
 
-**Files to update UI labels:**
-- `EmergingThemes.tsx` — heading, section headings, sub-headings
-- `ThemesSummaryHeader.tsx` — stat pill label, section labels, heatmap text
-- `PatternPreview.tsx` — card title "Detected patterns" → "Recognised sequences"
-- `ProfileDashboard.tsx` — any visible label text
+**Content files:**
 
-Internal type names (`StructuredTheme`, `DetectedPattern`, `ThemeAnalysisResult`) stay unchanged to avoid a large refactor with no user-facing benefit.
+| Location | Change |
+|---|---|
+| `public/content/my_child_profile.txt` | Title and body text |
+| `public/content/start.txt` | Navigation list entry |
+| `public/llms.txt` | Tool description |
 
----
+**Pages with incidental references:**
 
-### 2. Bolder Colour Palette Across Data Visualisations
+| Location | Change |
+|---|---|
+| `PrivacyPolicy.tsx` | "child's profile document" → "This is me document" |
+| `WhatWeOweOurChildren.tsx` | "child's profile" references — keep as-is (these refer to the concept of understanding a child's profile, not the tool name) |
 
-The problem: data visualisations currently use faint tints (`bg-primary/10`, `bg-status-discussed-bg/30`, `bg-accent/30`) that wash out the data. Each page has its own accent colour, but the *data within* each page should use the full palette boldly.
+**Knowledge base comments** (internal, low priority): ~8 files have `For use by Ask Rich Q&A and My Child: A Profile report generation` in code comments. These are developer-facing and can be updated for consistency.
 
-**Colour assignment system for data elements:**
+**What does NOT change:**
+- Route stays `/my-child-profile` (URL stability, bookmarks, SEO)
+- File names stay as-is (`MyChildProfile.tsx`, `child-profile/` directory)
+- Internal types (`ChildProfileState`, `ChildProfileContext`) unchanged
+- localStorage key `my-child-profile-draft` unchanged
+- Database table/column names unchanged
+- Export filename `my-child-profile-export.json` unchanged
 
-Each distinct data category gets its own strong colour from the existing palette:
+### Opening screen copy adjustment
 
-| Data element | Colour token | Current | Proposed |
-|---|---|---|---|
-| Stat pill icons | All `text-primary` | Monochrome | Each pill gets a different colour (teal, amber, coral, violet) |
-| Mechanism treemap blocks | Orange gradient only | All orange shades | Rotate through teal, blue, amber, coral, violet, sage, rose |
-| Context heatmap cells | `bg-primary` only | All terracotta | Hot = coral, warm = amber, cool = teal, empty = grey |
-| Theme/Pattern cards | `bg-card` uniform | All identical | Left border stripe coloured by confidence (teal = established, amber = developing, muted = emerging) |
-| Pattern sub-cards | `bg-status-discussed-bg/30` | Faint yellow | Solid `bg-accent-amber-bg` with `border-l-4 border-accent-amber` |
-| Contradiction cards | `bg-accent/30` | Barely visible | Solid `bg-accent-coral-bg` with `border-l-4 border-accent-coral` |
-| Chip variants | 3 variants, all faint | `bg-primary/10` etc. | Bold backgrounds: warm = coral-bg, muted = deep-blue-bg, accent = teal-bg |
-| Confidence legend dots | Correct colours but tiny | 2px dots | 3px dots with subtle glow ring |
+The narrative in `OpeningScreen.tsx` currently says: *"My Child: A Profile, is that."* This becomes: *"My Child: This is me, is that."* — which actually reads better given the new framing. The paragraph about the "quiet word" and "this is George" document naturally leads into "This is me" as a concept.
 
-**Specific changes by file:**
+### Contextual phrasing
 
-**`ThemesSummaryHeader.tsx`:**
-- Stat pills: assign `accent-teal`, `accent-amber`, `accent-coral`, `accent-violet` to each of the 4 pills
-- Mechanism treemap: rotate through 7 palette colours instead of orange gradient
-- Context heatmap: use a 3-colour heat scale (teal → amber → coral) instead of single-colour opacity
+Where we currently say `{childName}'s Profile`, the new name opens up warmer phrasing:
+- Profile header: **"This is {childName}"** instead of "{childName}'s Profile"
+- Email subject: **"This is {childName} — from SEND Navigator"**
+- Compact header fallback: **"My Child: This is me"**
 
-**`EmergingThemes.tsx`:**
-- Theme cards: add `border-l-4` with confidence colour (teal/amber/grey)
-- Pattern cards: use solid `bg-[hsl(var(--accent-amber-bg))]` with amber left border
-- Contradiction cards: use solid `bg-[hsl(var(--accent-coral-bg))]` with coral left border
-- Chip variants: bolder background fills using the palette accent-bg tokens
+### Scope
 
-**`DomainBars.tsx`:**
-- Assign each domain its own colour from the palette rather than the single `scoreColor` function
-
-**`StatCards.tsx`:**
-- Each of the 4 stat cards gets a distinct accent colour for its gauge/ring/icon
-
-**`SourceDiversity.tsx`:**
-- Already uses good colours — no change needed
-
-**`PatternPreview.tsx`:**
-- Rename heading + use bolder chip colours consistent with the above
-
----
-
-### Summary
-
-Two streams of work:
-1. **Rename**: Find-and-replace UI-facing "theme"→"pattern" and "Detected patterns"→"Recognised sequences" across ~4 files
-2. **Bold colours**: Update ~5 dashboard components to use strong, distinct colours from the full 7-colour palette instead of faint single-colour tints
-
-No new dependencies. No database changes. No new files — all edits to existing components.
+~25 files touched, all text-only changes. No migrations, no new components, no route changes. Edge functions will need redeployment (automatic).
 
