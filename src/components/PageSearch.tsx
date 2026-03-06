@@ -32,6 +32,7 @@ export function PageSearch({ label = "Search this page" }: PageSearchProps) {
       clearHighlights();
       if (!searchText || searchText.length < 2) return;
 
+      try {
       const contentArea = document.querySelector("main") || document.body;
       const walker = document.createTreeWalker(contentArea, NodeFilter.SHOW_TEXT, {
         acceptNode: (node) => {
