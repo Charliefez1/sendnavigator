@@ -1,7 +1,6 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { StatusBadge } from "@/components/StatusBadge";
-import { AlertTriangle, ChevronDown, ChevronRight, CheckCircle, HelpCircle, Newspaper } from "lucide-react";
-import { useExperienceMode } from "@/contexts/ExperienceModeContext";
+import { AlertTriangle, CheckCircle, HelpCircle, Newspaper } from "lucide-react";
 
 interface InformationLayerProps {
   children: ReactNode;
@@ -10,24 +9,14 @@ interface InformationLayerProps {
 }
 
 function ScanCollapseWrapper({ title, children, statusBadge, icon }: { title: string; children: ReactNode; statusBadge: ReactNode; icon: ReactNode }) {
-  const { mode } = useExperienceMode();
-  const [expanded, setExpanded] = useState(false);
-  const isScan = mode === "scan";
-  const showBody = !isScan || expanded;
-
   return (
     <div className="mb-6">
-      <button
-        onClick={() => isScan && setExpanded(!expanded)}
-        className={`flex items-center gap-3 mb-4 w-full text-left ${isScan ? "cursor-pointer hover:opacity-80" : ""}`}
-        disabled={!isScan}
-      >
+      <div className="flex items-center gap-3 mb-4 w-full text-left">
         {icon}
         <h3 className="text-sm font-display font-semibold text-foreground">{title}</h3>
         {statusBadge}
-        {isScan && (expanded ? <ChevronDown className="w-4 h-4 text-muted-foreground ml-auto" /> : <ChevronRight className="w-4 h-4 text-muted-foreground ml-auto" />)}
-      </button>
-      {showBody && children}
+      </div>
+      {children}
     </div>
   );
 }

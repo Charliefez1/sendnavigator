@@ -22,13 +22,11 @@ const HowToUse = lazy(() => import("./pages/HowToUse"));
 const WhereWeAreNow = lazy(() => import("./pages/WhereWeAreNow"));
 const WhatIsChanging = lazy(() => import("./pages/WhatIsChanging"));
 const WhatHasNotChanged = lazy(() => import("./pages/WhatHasNotChanged"));
-const WhatWeKnowSoFar = lazy(() => import("./pages/WhatWeKnowSoFar"));
+
 const WhatIsBeingDiscussed = lazy(() => import("./pages/WhatIsBeingDiscussed"));
 const WhatWeDoNotKnow = lazy(() => import("./pages/WhatWeDoNotKnow"));
 const WhatTheLeaksAreSaying = lazy(() => import("./pages/WhatTheLeaksAreSaying"));
 const WhatTheLeaksDoNotMean = lazy(() => import("./pages/WhatTheLeaksDoNotMean"));
-const WhatThisCouldMean = lazy(() => import("./pages/WhatThisCouldMean"));
-const WhatHappensNext = lazy(() => import("./pages/WhatHappensNext"));
 const Timeline = lazy(() => import("./pages/Timeline"));
 const QuestionsAndAnswers = lazy(() => import("./pages/QuestionsAndAnswers"));
 const Sources = lazy(() => import("./pages/Sources"));
