@@ -86,6 +86,9 @@ export function PageSearch({ label = "Search this page" }: PageSearchProps) {
         marks[0].scrollIntoView({ behavior: "smooth", block: "center" });
         marks[0].className = "bg-primary/60 text-foreground rounded-sm px-0.5 ring-2 ring-primary";
       }
+      } catch (err) {
+        console.warn("PageSearch: highlight failed", err);
+      }
     },
     [clearHighlights]
   );
