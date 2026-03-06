@@ -23,3 +23,4 @@ export { StatusSection } from "./StatusSection";
 export { OnThisPage } from "./OnThisPage";
 export type { PageSectionDef } from "./OnThisPage";
 export { ContentBox } from "./ContentBox";
+export { HighlightCard } from "./HighlightCard";

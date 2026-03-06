@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
@@ -71,6 +72,7 @@ function AgeTimeline() {
 
 export default function Post16AndTransition() {
   return (
+    <PageAccentProvider color="hsl(155 30% 42%)">
     <Layout>
       <SEOHead
         title="Young People Aged 16 to 25 | SEND Reform Navigator"
@@ -374,5 +376,6 @@ export default function Post16AndTransition() {
         </p>
       </section>
     </Layout>
+    </PageAccentProvider>
   );
 }

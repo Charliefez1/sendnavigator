@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
 
@@ -96,6 +97,7 @@ const sourceLinks: { category: string; sources: SourceLink[] }[] = [
 
 export default function StatisticsAndData() {
   return (
+    <PageAccentProvider color="hsl(175 65% 41%)">
     <Layout>
       <PageOrientation icon={BarChart3}
         sectionLabel="SEND Reform Report"
@@ -304,5 +306,6 @@ export default function StatisticsAndData() {
 
       <div className="content-section pb-16" />
     </Layout>
+    </PageAccentProvider>
   );
 }

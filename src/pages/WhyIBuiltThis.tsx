@@ -1,10 +1,12 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { PageOrientation } from "@/components/templates";
 import { Link } from "react-router-dom";
 import { Heart } from "lucide-react";
 
 const WhyIBuiltThis = () => {
   return (
+    <PageAccentProvider color="hsl(42 87% 48%)">
     <Layout>
       <PageOrientation icon={Heart}
         sectionLabel="About"
@@ -123,6 +125,7 @@ const WhyIBuiltThis = () => {
 
       <div className="content-section pb-16" />
     </Layout>
+    </PageAccentProvider>
   );
 };
 

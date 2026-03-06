@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { PageOrientation } from "@/components/templates";
 import { 
   Navigation2, 
@@ -16,6 +17,7 @@ import { Link } from "react-router-dom";
 
 export default function HowToUse() {
   return (
+    <PageAccentProvider color="hsl(42 87% 48%)">
     <Layout>
       <PageOrientation icon={BookOpen}
         sectionLabel="About"
@@ -216,5 +218,6 @@ export default function HowToUse() {
         </div>
       </section>
     </Layout>
+    </PageAccentProvider>
   );
 }

@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
 import { StatusBadge } from "@/components/StatusBadge";
@@ -23,6 +24,7 @@ function ResourceLink({ label, url }: { label: string; url: string }) {
 
 export default function HaveYourSay() {
   return (
+    <PageAccentProvider color="hsl(220 70% 45%)">
     <Layout>
       <SEOHead
         title="How To Have Your Say on SEND Reform | SEND Reform Navigator"
@@ -290,5 +292,6 @@ export default function HaveYourSay() {
         </div>
       </section>
     </Layout>
+    </PageAccentProvider>
   );
 }

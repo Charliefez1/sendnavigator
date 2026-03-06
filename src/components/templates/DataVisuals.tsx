@@ -9,24 +9,33 @@ import { type LucideIcon } from "lucide-react";
 // STAT CARD - Big number with label
 // =============================================================================
 
+type AccentColor = "primary" | "confirmed" | "discussed" | "unconfirmed" | "teal" | "blue" | "amber" | "coral" | "violet" | "sage" | "rose";
+
 interface StatCardProps {
   value: string;
   label: string;
   sublabel?: string;
   icon?: LucideIcon;
-  accentColor?: "primary" | "confirmed" | "discussed" | "unconfirmed";
+  accentColor?: AccentColor;
 }
 
-const accentMap = {
+const accentMap: Record<AccentColor, string> = {
   primary: "border-t-primary",
   confirmed: "border-t-[hsl(var(--status-confirmed))]",
   discussed: "border-t-[hsl(var(--status-discussed))]",
   unconfirmed: "border-t-[hsl(var(--status-unconfirmed))]",
+  teal: "border-t-[hsl(var(--accent-teal))]",
+  blue: "border-t-[hsl(var(--accent-deep-blue))]",
+  amber: "border-t-[hsl(var(--accent-amber))]",
+  coral: "border-t-[hsl(var(--accent-coral))]",
+  violet: "border-t-[hsl(var(--accent-violet))]",
+  sage: "border-t-[hsl(var(--accent-sage))]",
+  rose: "border-t-[hsl(var(--accent-rose))]",
 };
 
 export function StatCard({ value, label, sublabel, icon: Icon, accentColor = "primary" }: StatCardProps) {
   return (
-    <div className={`bg-card border border-border rounded-lg p-4 sm:p-5 border-t-[3px] ${accentMap[accentColor]} shadow-lg`}>
+    <div className={`bg-card border border-border/50 rounded-2xl p-4 sm:p-5 border-t-[3px] ${accentMap[accentColor]} shadow-card hover:shadow-card-hover transition-shadow duration-200`}>
       <div className="flex items-start gap-3">
         {Icon && (
           <div className="p-2 rounded-lg bg-muted flex-shrink-0">
@@ -56,14 +65,21 @@ interface PercentageRingProps {
   label: string;
   sublabel?: string;
   size?: number;
-  color?: "primary" | "confirmed" | "discussed" | "unconfirmed";
+  color?: AccentColor;
 }
 
-const ringColorMap = {
+const ringColorMap: Record<AccentColor, string> = {
   primary: "hsl(var(--primary))",
   confirmed: "hsl(var(--status-confirmed))",
   discussed: "hsl(var(--status-discussed))",
   unconfirmed: "hsl(var(--status-unconfirmed))",
+  teal: "hsl(var(--accent-teal))",
+  blue: "hsl(var(--accent-deep-blue))",
+  amber: "hsl(var(--accent-amber))",
+  coral: "hsl(var(--accent-coral))",
+  violet: "hsl(var(--accent-violet))",
+  sage: "hsl(var(--accent-sage))",
+  rose: "hsl(var(--accent-rose))",
 };
 
 const trackColor = "hsl(var(--border))";
@@ -121,7 +137,7 @@ interface BarItem {
   label: string;
   value: number;
   displayValue: string;
-  color?: "primary" | "confirmed" | "discussed" | "unconfirmed";
+  color?: AccentColor;
 }
 
 interface HorizontalBarChartProps {
@@ -129,11 +145,18 @@ interface HorizontalBarChartProps {
   title?: string;
 }
 
-const barColorMap = {
+const barColorMap: Record<AccentColor, string> = {
   primary: "bg-primary",
   confirmed: "bg-[hsl(var(--status-confirmed))]",
   discussed: "bg-[hsl(var(--status-discussed))]",
   unconfirmed: "bg-[hsl(var(--status-unconfirmed))]",
+  teal: "bg-[hsl(var(--accent-teal))]",
+  blue: "bg-[hsl(var(--accent-deep-blue))]",
+  amber: "bg-[hsl(var(--accent-amber))]",
+  coral: "bg-[hsl(var(--accent-coral))]",
+  violet: "bg-[hsl(var(--accent-violet))]",
+  sage: "bg-[hsl(var(--accent-sage))]",
+  rose: "bg-[hsl(var(--accent-rose))]",
 };
 
 export function HorizontalBarChart({ items, title }: HorizontalBarChartProps) {
@@ -168,7 +191,7 @@ interface TierItem {
   tier: string;
   title: string;
   description: string;
-  color: "confirmed" | "discussed" | "unconfirmed" | "primary";
+  color: AccentColor;
 }
 
 interface TierDiagramProps {

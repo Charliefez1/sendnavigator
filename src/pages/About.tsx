@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
 import {
@@ -47,6 +48,7 @@ function SectionBox({ id, icon: Icon, title, children }: {
 
 export default function About() {
   return (
+    <PageAccentProvider color="hsl(42 87% 48%)">
     <Layout>
       <SEOHead title="About" description="Independence, governance, scope, and accountability of SEND Reform Navigator." path="/about" />
       <PageOrientation icon={BookOpen}
@@ -189,5 +191,6 @@ export default function About() {
 
       <div className="content-section pb-16" />
     </Layout>
+    </PageAccentProvider>
   );
 }

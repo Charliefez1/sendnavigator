@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
@@ -31,6 +32,7 @@ function SectionHeading({ id, children }: { id: string; children: React.ReactNod
 
 export default function Exclusions() {
   return (
+    <PageAccentProvider color="hsl(8 75% 55%)">
     <Layout>
       <SEOHead
         title="Exclusions and Your Child's Rights | SEND Navigator"
@@ -163,7 +165,7 @@ export default function Exclusions() {
 
       {/* Informal exclusions — highlighted */}
       <section className="content-section py-4">
-        <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-6 shadow-lg">
+        <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(8_75%_55%)] bg-card p-6 shadow-card">
           <SectionHeading id="informal">The informal exclusion problem</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p>The most common form of exclusion for SEND children <strong>does not appear in any official data</strong>.</p>
@@ -280,5 +282,6 @@ export default function Exclusions() {
         </div>
       </section>
     </Layout>
+    </PageAccentProvider>
   );
 }

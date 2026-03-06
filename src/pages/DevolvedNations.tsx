@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
@@ -40,6 +41,7 @@ const tableData = [
 
 export default function DevolvedNations() {
   return (
+    <PageAccentProvider color="hsl(155 30% 42%)">
     <Layout>
       <SEOHead
         title="If You Are in Wales, Scotland, or Northern Ireland - SEND Navigator"
@@ -156,7 +158,7 @@ export default function DevolvedNations() {
           </div>
 
           {/* CSP threshold callout */}
-          <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-5 mt-4">
+          <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(155_30%_42%)] bg-card p-5 mt-4">
             <div className="flex items-start gap-3">
               <AlertTriangle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
               <div>
@@ -229,7 +231,7 @@ export default function DevolvedNations() {
 
       {/* Moving between nations */}
       <section className="content-section py-4">
-        <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-6 shadow-lg">
+        <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(155_30%_42%)] bg-card p-6 shadow-card">
           <SH id="moving-between">If you are moving between nations</SH>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p><strong>Your child's existing plan does not automatically transfer.</strong> Each nation's legislation is different and the receiving authority will assess needs under its own framework.</p>
@@ -267,5 +269,6 @@ export default function DevolvedNations() {
         </div>
       </section>
     </Layout>
+    </PageAccentProvider>
   );
 }

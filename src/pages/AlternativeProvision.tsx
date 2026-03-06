@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
@@ -39,6 +40,7 @@ function ExtLink({ href, children }: { href: string; children: React.ReactNode }
 
 export default function AlternativeProvision() {
   return (
+    <PageAccentProvider color="hsl(8 75% 55%)">
     <Layout>
       <SEOHead
         title="Alternative Provision: What It Is and What Your Rights Are - SEND Navigator"
@@ -86,7 +88,7 @@ export default function AlternativeProvision() {
 
       {/* Who is in AP - prominent stats */}
       <section className="content-section py-4">
-        <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-6 shadow-lg">
+        <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(8_75%_55%)] bg-card p-6 shadow-card">
           <SectionHeading id="who-is-in-ap">Who is in Alternative Provision</SectionHeading>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
@@ -142,7 +144,7 @@ export default function AlternativeProvision() {
           <SectionHeading id="rights-ehcp">Your rights if your child is placed in Alternative Provision</SectionHeading>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-5">
+            <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(8_75%_55%)] bg-card p-5">
               <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">If your child has an EHC plan</p>
               <div className="space-y-2 text-sm text-muted-foreground leading-relaxed">
                 <p>The EHC plan <strong>continues to apply</strong>. The provision specified in the plan must be delivered, regardless of the setting.</p>
@@ -183,7 +185,7 @@ export default function AlternativeProvision() {
 
       {/* Directed off-site - highlighted */}
       <section className="content-section py-4">
-        <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-6 shadow-lg">
+        <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(8_75%_55%)] bg-card p-6 shadow-card">
           <SectionHeading id="off-site">Directed off-site provision by schools</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p>Schools can direct pupils to off-site provision <strong>without formally excluding them</strong>. This is legal in specific, limited circumstances.</p>
@@ -312,5 +314,6 @@ export default function AlternativeProvision() {
         </div>
       </section>
     </Layout>
+    </PageAccentProvider>
   );
 }

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { PageOrientation } from "@/components/templates";
 import { ContactDetails } from "@/components/ContactDetails";
 import { User } from "lucide-react";
@@ -8,6 +9,7 @@ import richPhoto from "@/assets/rich-ferriman-photo.png";
 
 export default function RichFerriman() {
   return (
+    <PageAccentProvider color="hsl(42 87% 48%)">
     <Layout>
       <PageOrientation icon={User}
         sectionLabel="About"
@@ -89,5 +91,6 @@ export default function RichFerriman() {
 
       <div className="content-section pb-16" />
     </Layout>
+    </PageAccentProvider>
   );
 }

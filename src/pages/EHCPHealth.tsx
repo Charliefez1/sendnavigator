@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
@@ -40,6 +41,7 @@ function ExtLink({ href, children }: { href: string; children: React.ReactNode }
 
 export default function EHCPHealth() {
   return (
+    <PageAccentProvider color="hsl(220 70% 45%)">
     <Layout>
       <SEOHead
         title="The Health Side of Your Child's EHCP - SEND Navigator"
@@ -74,7 +76,7 @@ export default function EHCPHealth() {
                 <p>In practice, Section C is <strong>frequently thin, vague, or incomplete</strong>. This is partly because health professionals contributing to assessments are often cautious about their language. It is also because there is no strong system-level accountability for the quality of Section C content.</p>
               </div>
             </div>
-            <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-5">
+            <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(220_70%_45%)] bg-card p-5">
               <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Section G — Health Provision</p>
               <div className="space-y-2 text-sm text-muted-foreground leading-relaxed">
                 <p>Sets out the <strong>health care provision your child needs</strong> as a result of the needs described in Section C. Therapy input, specialist assessments, mental health support. Where it is linked to SEND, it belongs in Section G.</p>
@@ -213,7 +215,7 @@ export default function EHCPHealth() {
 
       {/* NHS restructure */}
       <section className="content-section py-4">
-        <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-6 shadow-lg">
+        <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(220_70%_45%)] bg-card p-6 shadow-card">
           <SectionHeading id="nhs-restructure">NHS restructure and what it means for SEND families right now</SectionHeading>
 
           <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
@@ -254,7 +256,7 @@ export default function EHCPHealth() {
 
       {/* Extended appeals */}
       <section className="content-section py-4">
-        <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-6 shadow-lg">
+        <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(220_70%_45%)] bg-card p-6 shadow-card">
           <SectionHeading id="extended-appeals">Extended appeals: taking health provision to tribunal</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p>If you appeal to the SEND Tribunal over your child's EHC plan, you can — and in many cases should — <strong>include an extended appeal covering Sections C and G</strong>.</p>
@@ -297,5 +299,6 @@ export default function EHCPHealth() {
         </div>
       </section>
     </Layout>
+    </PageAccentProvider>
   );
 }

@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
@@ -56,6 +57,7 @@ function HelpCard({ name, description, url, icon: Icon }: {
 
 export default function Sendiass() {
   return (
+    <PageAccentProvider color="hsl(8 75% 55%)">
     <Layout>
       <SEOHead
         title="Free Help in Your Area - SENDIASS | SEND Reform Navigator"
@@ -260,5 +262,6 @@ export default function Sendiass() {
         <StatusBadge status="confirmed" />
       </section>
     </Layout>
+    </PageAccentProvider>
   );
 }
