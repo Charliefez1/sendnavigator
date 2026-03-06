@@ -5,6 +5,7 @@ import { Lightbulb, AlertTriangle, Zap, ChevronRight } from "lucide-react";
 import { StructuredTheme, DetectedPattern, ContradictionFlag, ThemeAnalysisResult } from "@/lib/theme-engine";
 import type { ThemeConfidence } from "@/config/theme-ontology";
 import { ThemesSummaryHeader } from "./ThemesSummaryHeader";
+import { InfoTip } from "../InfoTip";
 
 interface Props {
   analysis: ThemeAnalysisResult;
@@ -49,7 +50,7 @@ function ThemeCard({
 
       {/* Mechanisms */}
       {theme.mechanisms.length > 0 && (
-        <ChipRow label="Mechanisms">
+        <ChipRow label="What's driving this" tip="These are the underlying reasons we think this pattern is happening — like sensory processing or how the nervous system responds to stress. Understanding the 'why' helps you explain your child's needs to school.">
           {theme.mechanisms.map((m) => (
             <Chip key={m.mechanism} variant="warm">
               {m.mechanism} ({m.signalCount})
@@ -60,7 +61,7 @@ function ThemeCard({
 
       {/* Contexts */}
       {theme.contexts.length > 0 && (
-        <ChipRow label="Contexts">
+        <ChipRow label="Where this shows up" tip="The places and times of day where this pattern is most noticeable. If something only happens at school but not at home, that's important information for understanding your child.">
           {theme.contexts.map((c) => (
             <Chip key={c} variant="muted">{c}</Chip>
           ))}
@@ -69,7 +70,7 @@ function ThemeCard({
 
       {/* Evidence */}
       {theme.topSignals.length > 0 && (
-        <ChipRow label="Evidence">
+        <ChipRow label="Based on" tip="These are the specific things you told us that led to this pattern being identified. The more you share, the clearer the picture becomes.">
           {theme.topSignals.slice(0, 3).map((s) => (
             <Chip key={s.id} variant="accent">{s.label}</Chip>
           ))}
@@ -157,6 +158,7 @@ export function EmergingThemes({ analysis, onNavigateToSection }: Props) {
             <Lightbulb className="w-4 h-4 text-[hsl(var(--accent-violet))]" />
           </div>
           Emerging patterns
+          <InfoTip content="As you answer questions, we look for repeating themes across what you share. These are not diagnoses — they are patterns that can help you describe your child's experience to school, a SENCO, or in an EHCP assessment." />
         </CardTitle>
         <p className="text-xs text-muted-foreground">
           Structured patterns detected across what you have shared so far
@@ -173,7 +175,7 @@ export function EmergingThemes({ analysis, onNavigateToSection }: Props) {
         {/* Pattern cards (formerly Theme cards) */}
         {themes.length > 0 && (
           <div className="space-y-2">
-            <SectionHeading>Pattern details</SectionHeading>
+            <SectionHeading tip="Each card below represents a theme that has come up more than once across your answers. The coloured dot shows how much evidence supports it — grey means early signs, amber means growing, and teal means well-supported.">Pattern details</SectionHeading>
             <div className="grid gap-3 sm:grid-cols-2">
               {themes.map((t) => (
                 <ThemeCard key={t.theme} theme={t} onNavigateToSection={onNavigateToSection} />
@@ -185,7 +187,7 @@ export function EmergingThemes({ analysis, onNavigateToSection }: Props) {
         {/* Recognised sequences (formerly Detected patterns) */}
         {patterns.length > 0 && (
           <div className="space-y-2">
-            <SectionHeading>Recognised sequences</SectionHeading>
+            <SectionHeading tip="These are well-known patterns that many neurodivergent children experience — like the 'after school crash' where a child holds everything together at school and falls apart at home. We have matched what you described to these recognised experiences.">Recognised sequences</SectionHeading>
             <div className="space-y-2">
               {patterns.map((p) => (
                 <SequenceCard key={p.pattern.id} detected={p} />
@@ -197,7 +199,7 @@ export function EmergingThemes({ analysis, onNavigateToSection }: Props) {
         {/* Contradictions */}
         {contradictions.length > 0 && (
           <div className="space-y-2">
-            <SectionHeading>Environment sensitivity</SectionHeading>
+            <SectionHeading tip="This means your child's experience looks different depending on where they are — for example, calm at school but overwhelmed at home, or the other way around. This is not a contradiction — it is useful information that helps explain what is really going on.">Environment sensitivity</SectionHeading>
             <div className="space-y-2">
               {contradictions.map((c, i) => (
                 <ContradictionCard key={i} flag={c} />
@@ -212,19 +214,21 @@ export function EmergingThemes({ analysis, onNavigateToSection }: Props) {
 
 /* ── Shared UI primitives ── */
 
-function SectionHeading({ children }: { children: React.ReactNode }) {
+function SectionHeading({ children, tip }: { children: React.ReactNode; tip?: string }) {
   return (
-    <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
+    <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest flex items-center gap-1.5">
       {children}
+      {tip && <InfoTip content={tip} />}
     </p>
   );
 }
 
-function ChipRow({ label, children }: { label: string; children: React.ReactNode }) {
+function ChipRow({ label, children, tip }: { label: string; children: React.ReactNode; tip?: string }) {
   return (
     <div className="space-y-1">
-      <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
+      <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
         {label}
+        {tip && <InfoTip content={tip} />}
       </p>
       <div className="flex flex-wrap gap-1">{children}</div>
     </div>

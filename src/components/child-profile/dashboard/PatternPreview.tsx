@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Zap, AlertTriangle, ArrowRight, Lightbulb, Network } from "lucide-react";
+import { InfoTip } from "../InfoTip";
 import type { ThemeAnalysisResult } from "@/lib/theme-engine";
 import type { ThemeConfidence } from "@/config/theme-ontology";
 
@@ -43,6 +44,7 @@ export function PatternPreview({ analysis, onViewAll }: Props) {
         <CardTitle className="flex items-center gap-2 text-sm font-medium">
           <Lightbulb className="w-4 h-4 text-[hsl(var(--accent-violet))]" />
           Recognised sequences
+          <InfoTip content="These are repeating patterns we have spotted in your answers — things like the 'after school crash' or sensory overload in busy places. Many neurodivergent children share these experiences. Tap 'Explore all patterns' to see the full breakdown." />
           <Badge variant="secondary" className="text-[10px] ml-auto border-0">{totalItems}</Badge>
         </CardTitle>
       </CardHeader>
