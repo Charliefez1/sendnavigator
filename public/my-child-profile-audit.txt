@@ -1,4 +1,4 @@
-My Child: A Profile — Complete Technical and Functional Specification
+My Child: This Is Me — Complete Technical and Functional Specification
 =====================================================================
 Generated: 1st March 2026
 Version: Pre-upgrade baseline

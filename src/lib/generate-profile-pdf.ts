@@ -476,7 +476,7 @@ export async function generateProfilePDF({ state, aiReport }: ReportData): Promi
   doc.setFontSize(TYPE.H2);
   doc.setFont("helvetica", "normal");
   setColor(MID_TEXT);
-  doc.text("A Profile", pageWidth / 2, 92, { align: "center" });
+  doc.text("This is me", pageWidth / 2, 92, { align: "center" });
 
   // Date
   doc.setFontSize(TYPE.BODY);

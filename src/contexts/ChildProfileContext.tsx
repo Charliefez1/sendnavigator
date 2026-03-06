@@ -135,7 +135,18 @@ export function ChildProfileProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<ChildProfileState>(() => {
     return loadFromLocalStorage() || { ...defaultState };
   });
-  const [accessCode, setAccessCode] = useState<string | null>(null);
+  const [accessCode, setAccessCodeRaw] = useState<string | null>(() => {
+    try {
+      return localStorage.getItem("my-child-profile-access-code") || null;
+    } catch { return null; }
+  });
+  const setAccessCode = useCallback((code: string | null) => {
+    setAccessCodeRaw(code);
+    try {
+      if (code) localStorage.setItem("my-child-profile-access-code", code);
+      else localStorage.removeItem("my-child-profile-access-code");
+    } catch {}
+  }, []);
   const [isDirty, setIsDirty] = useState(false);
   const [derivedNeedsSave, setDerivedNeedsSave] = useState(false);
 

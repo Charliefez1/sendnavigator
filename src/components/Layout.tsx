@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import { Header } from "./Header";
 import { ReportLayout } from "./ReportLayout";
@@ -8,15 +8,12 @@ import { Footer } from "./Footer";
 import { PreFooter } from "./PreFooter";
 import { SkipLink } from "./SkipLink";
 import { AskQuestionCompact } from "./AskQuestionCompact";
-import { ListenModePlayer } from "./ListenModePlayer";
-import { ScanModeBanner } from "./ScanModeBanner";
 import { ExitIntentPopup } from "./ExitIntentPopup";
 import { CookieConsent } from "./CookieConsent";
 import { AskSendFloating } from "./AskSendFloating";
 import { AnnouncementBanner } from "./AnnouncementBanner";
 import { PersistentNewsTicker } from "./PersistentNewsTicker";
 import { OrientationBar } from "./OrientationBar";
-
 
 interface LayoutProps {
   children: ReactNode;
@@ -35,10 +32,8 @@ export function Layout({ children }: LayoutProps) {
       <AnnouncementBanner />
       <JourneyNavigation />
       <OrientationBar />
-      <ScanModeBanner />
 
       {isReportPage ? (
-        // Report pages get sidebar layout
         <ReportLayout>
           <main id="main-content" className="flex-1 pb-8" role="main" tabIndex={-1}>
             {children}
@@ -48,7 +43,6 @@ export function Layout({ children }: LayoutProps) {
           </main>
         </ReportLayout>
       ) : (
-        // Non-report pages get standard layout
         <>
           <main id="main-content" className={`flex-1 ${isStartPage ? 'pb-0' : 'pb-32'}`} role="main" tabIndex={-1}>
             {children}
@@ -57,7 +51,6 @@ export function Layout({ children }: LayoutProps) {
                 <AskQuestionCompact />
               </div>
             )}
-            
           </main>
         </>
       )}
@@ -66,7 +59,6 @@ export function Layout({ children }: LayoutProps) {
       <Footer />
       {!isReportPage && <JourneyFloatingBar />}
       <AskSendFloating />
-      <ListenModePlayer />
       <ExitIntentPopup />
       <CookieConsent />
       <PersistentNewsTicker />

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { ChevronRight, ArrowUp } from "lucide-react";
-import { useExperienceMode } from "@/contexts/ExperienceModeContext";
+
 import { useIsMobile } from "@/hooks/use-mobile";
 
 /**
@@ -60,7 +60,6 @@ const routeMeta: Record<string, { section?: string; sectionColor?: string; title
 };
 
 export function OrientationBar() {
-  const { orientationOn } = useExperienceMode();
   const location = useLocation();
   const isMobile = useIsMobile();
   const [expanded, setExpanded] = useState(false);
@@ -79,7 +78,7 @@ export function OrientationBar() {
     setExpanded(false);
   }, [location.pathname]);
 
-  if (!orientationOn || !meta) return null;
+  if (!meta) return null;
 
   const sectionColorHsl = meta.sectionColor ? `hsl(${meta.sectionColor})` : undefined;
 

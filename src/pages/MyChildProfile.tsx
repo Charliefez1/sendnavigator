@@ -682,11 +682,22 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
   );
 }
 
+const STAGE_STORAGE_KEY = "my-child-profile-stage";
+
 const MyChildProfile = () => {
-  const [stage, setStageRaw] = useState<Stage>("opening");
+  const [stage, setStageRaw] = useState<Stage>(() => {
+    try {
+      const saved = localStorage.getItem(STAGE_STORAGE_KEY) as Stage | null;
+      if (saved && ["opening", "setup", "mode-select", "builder", "dashboard", "final", "report-loading", "report-preview"].includes(saved)) {
+        return saved;
+      }
+    } catch {}
+    return "opening";
+  });
 
   const setStage = useCallback((s: Stage) => {
     setStageRaw(s);
+    try { localStorage.setItem(STAGE_STORAGE_KEY, s); } catch {}
     requestAnimationFrame(() => {
       window.scrollTo({ top: 0 });
       document.documentElement.scrollTop = 0;
@@ -706,7 +717,7 @@ const MyChildProfile = () => {
           icon={UserRound}
           sectionLabel="This is me"
           title="This is me"
-          description="22 guided sections, an at-a-glance dashboard, a structured AI report you can preview in your browser, and a downloadable PDF. Nothing is stored."
+          description="22 guided sections, an at-a-glance dashboard, a structured AI report you can preview in your browser, and a downloadable PDF. Your data is saved locally and only stored with your explicit consent."
           accentColor="hsl(42 87% 50%)"
           showSearch={false}
         />
