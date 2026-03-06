@@ -1,22 +1,37 @@
 import { useMemo } from "react";
 import { ThemeAnalysisResult } from "@/lib/theme-engine";
 import { CONTEXT_TAGS, type ContextTag, type ThemeConfidence } from "@/config/theme-ontology";
+import { BarChart3, Layers, MapPin, Activity } from "lucide-react";
 
 interface Props {
   analysis: ThemeAnalysisResult;
 }
 
-const CONFIDENCE_COLORS: Record<ThemeConfidence, string> = {
-  emerging: "bg-muted",
-  developing: "bg-amber-400 dark:bg-amber-500",
+/* Confidence → bar fill colour using design tokens */
+const BAR_COLORS: Record<ThemeConfidence, string> = {
+  emerging: "bg-muted-foreground/40",
+  developing: "bg-status-discussed",
   established: "bg-primary",
 };
 
-const CONFIDENCE_TEXT: Record<ThemeConfidence, string> = {
-  emerging: "text-muted-foreground",
-  developing: "text-amber-700 dark:text-amber-300",
-  established: "text-primary",
+const CONFIDENCE_DOT: Record<ThemeConfidence, string> = {
+  emerging: "bg-muted-foreground/50",
+  developing: "bg-status-discussed",
+  established: "bg-primary",
 };
+
+/* Orange gradient shades for mechanism treemap blocks */
+const MECHANISM_SHADES = [
+  "hsl(16 65% 52% / 0.85)",  // primary-derived strong
+  "hsl(16 65% 52% / 0.65)",
+  "hsl(25 85% 52% / 0.55)",  // unconfirmed-derived
+  "hsl(42 87% 48% / 0.50)",  // discussed-derived
+  "hsl(16 65% 52% / 0.40)",
+  "hsl(25 85% 52% / 0.35)",
+  "hsl(42 87% 48% / 0.30)",
+  "hsl(16 65% 52% / 0.22)",
+  "hsl(25 55% 52% / 0.18)",
+];
 
 export function ThemesSummaryHeader({ analysis }: Props) {
   const { themes, patterns, contradictions } = analysis;
@@ -26,7 +41,6 @@ export function ThemesSummaryHeader({ analysis }: Props) {
     [themes]
   );
 
-  // Deduplicated mechanism counts
   const mechanisms = useMemo(() => {
     const map = new Map<string, number>();
     for (const t of themes) {
@@ -40,11 +54,10 @@ export function ThemesSummaryHeader({ analysis }: Props) {
   }, [themes]);
 
   const totalMechanismSignals = useMemo(
-    () => mechanisms.reduce((s, m) => s + m.count, 0),
+    () => Math.max(mechanisms.reduce((s, m) => s + m.count, 0), 1),
     [mechanisms]
   );
 
-  // Context occurrence counts
   const contextCounts = useMemo(() => {
     const map = new Map<ContextTag, number>();
     for (const tag of CONTEXT_TAGS) map.set(tag, 0);
@@ -61,42 +74,46 @@ export function ThemesSummaryHeader({ analysis }: Props) {
     [contextCounts]
   );
 
-  const totalSignals = useMemo(() => {
-    const ids = new Set<string>();
-    for (const t of themes) {
-      for (const s of t.topSignals) ids.add(s.id);
-    }
-    // Use the sum of totalSignalCount as a better approximation
-    return themes.reduce((s, t) => s + t.totalSignalCount, 0);
-  }, [themes]);
+  const totalSignals = useMemo(
+    () => themes.reduce((s, t) => s + t.totalSignalCount, 0),
+    [themes]
+  );
 
   if (themes.length === 0) return null;
 
   return (
-    <div className="space-y-4">
-      {/* 3-panel grid */}
-      <div className="grid gap-4 sm:grid-cols-3">
-        {/* 1. Theme Strength Bars */}
-        <div className="rounded-lg border border-border bg-card p-4 space-y-3">
-          <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
-            Theme strength
-          </p>
-          <div className="space-y-2">
+    <div className="space-y-3 animate-fade-in">
+      {/* ── Stat strip ── */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <StatPill icon={<Layers className="w-3.5 h-3.5" />} value={themes.length} label="Themes" />
+        <StatPill icon={<Activity className="w-3.5 h-3.5" />} value={patterns.length} label="Patterns" />
+        <StatPill icon={<MapPin className="w-3.5 h-3.5" />} value={contradictions.length} label={contradictions.length === 1 ? "Env. sensitivity" : "Env. sensitivities"} />
+        <StatPill icon={<BarChart3 className="w-3.5 h-3.5" />} value={totalSignals} label="Signals mapped" />
+      </div>
+
+      {/* ── 3-panel visualisations ── */}
+      <div className="grid gap-3 lg:grid-cols-3">
+
+        {/* 1 ─ Theme Strength */}
+        <div className="rounded-xl border border-border bg-card p-4 shadow-card space-y-3">
+          <SectionLabel>Theme strength</SectionLabel>
+          <div className="space-y-2.5">
             {themes.map((t) => {
               const pct = Math.round((t.totalSignalCount / maxSignals) * 100);
               return (
-                <div key={t.theme} className="space-y-0.5">
-                  <div className="flex items-center justify-between">
-                    <span className={`text-[11px] font-medium ${CONFIDENCE_TEXT[t.confidence]}`}>
+                <div key={t.theme} className="group space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${CONFIDENCE_DOT[t.confidence]}`} />
+                    <span className="text-[11px] font-medium text-foreground truncate flex-1">
                       {t.theme}
                     </span>
-                    <span className="text-[10px] text-muted-foreground">
+                    <span className="text-[10px] tabular-nums text-muted-foreground font-medium">
                       {t.totalSignalCount}
                     </span>
                   </div>
-                  <div className="h-2 rounded-full bg-muted/50 overflow-hidden">
+                  <div className="h-1.5 rounded-full bg-secondary overflow-hidden ml-3.5">
                     <div
-                      className={`h-full rounded-full transition-all ${CONFIDENCE_COLORS[t.confidence]}`}
+                      className={`h-full rounded-full transition-all duration-500 ease-out ${BAR_COLORS[t.confidence]}`}
                       style={{ width: `${pct}%` }}
                     />
                   </div>
@@ -104,40 +121,44 @@ export function ThemesSummaryHeader({ analysis }: Props) {
               );
             })}
           </div>
+          {/* Confidence legend */}
+          <div className="flex gap-3 pt-1 border-t border-border">
+            {(["emerging", "developing", "established"] as ThemeConfidence[]).map((c) => (
+              <div key={c} className="flex items-center gap-1">
+                <span className={`w-2 h-2 rounded-full ${CONFIDENCE_DOT[c]}`} />
+                <span className="text-[9px] text-muted-foreground capitalize">{c}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* 2. Mechanism Treemap */}
-        <div className="rounded-lg border border-border bg-card p-4 space-y-3">
-          <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
-            What's driving the themes
-          </p>
+        {/* 2 ─ Mechanism Treemap */}
+        <div className="rounded-xl border border-border bg-card p-4 shadow-card space-y-3">
+          <SectionLabel>What's driving the themes</SectionLabel>
           {mechanisms.length > 0 && (
-            <div
-              className="grid gap-1"
-              style={{
-                gridTemplateColumns: `repeat(auto-fill, minmax(0, 1fr))`,
-                gridAutoRows: "1fr",
-              }}
-            >
-              {mechanisms.map((m) => {
+            <div className="flex flex-wrap gap-1">
+              {mechanisms.map((m, i) => {
                 const fraction = m.count / totalMechanismSignals;
-                // min 1 col span, proportional sizing via flex
-                const intensity = Math.round(fraction * 100);
+                const shade = MECHANISM_SHADES[Math.min(i, MECHANISM_SHADES.length - 1)];
+                // Width proportional to fraction, min 30%
+                const widthPct = Math.max(30, Math.round(fraction * 100));
                 return (
                   <div
                     key={m.name}
-                    className="rounded-md flex items-center justify-center text-center p-2 min-h-[48px]"
+                    className="rounded-lg flex items-center justify-center text-center px-3 py-3 transition-shadow hover:shadow-warm"
                     style={{
-                      gridColumn: `span ${Math.max(1, Math.round(fraction * mechanisms.length * 1.5))}`,
-                      backgroundColor: `hsl(25 80% 55% / ${Math.max(0.15, fraction * 1.2)})`,
+                      backgroundColor: shade,
+                      flexBasis: `calc(${widthPct}% - 4px)`,
+                      flexGrow: 1,
+                      minHeight: "52px",
                     }}
                   >
                     <div>
-                      <p className="text-[10px] font-medium text-orange-900 dark:text-orange-100 leading-tight">
+                      <p className="text-[10px] font-semibold text-card leading-tight drop-shadow-sm">
                         {m.name}
                       </p>
-                      <p className="text-[9px] text-orange-700/70 dark:text-orange-200/70">
-                        {m.count} signals
+                      <p className="text-[9px] text-card/70 mt-0.5">
+                        {m.count} signal{m.count !== 1 ? "s" : ""}
                       </p>
                     </div>
                   </div>
@@ -147,35 +168,35 @@ export function ThemesSummaryHeader({ analysis }: Props) {
           )}
         </div>
 
-        {/* 3. Context Heatmap */}
-        <div className="rounded-lg border border-border bg-card p-4 space-y-3">
-          <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
-            Where challenges appear
-          </p>
+        {/* 3 ─ Context Heatmap */}
+        <div className="rounded-xl border border-border bg-card p-4 shadow-card space-y-3">
+          <SectionLabel>Where challenges appear</SectionLabel>
           <div className="grid grid-cols-3 gap-1.5">
             {CONTEXT_TAGS.map((tag) => {
               const count = contextCounts.get(tag) || 0;
               const intensity = count / maxContextCount;
+              const isHot = intensity > 0.5;
+              const isWarm = intensity > 0.25;
               return (
                 <div
                   key={tag}
-                  className="rounded-md px-2 py-2 text-center transition-colors"
-                  style={{
-                    backgroundColor: `hsl(var(--primary) / ${Math.max(0.05, intensity * 0.6)})`,
-                  }}
+                  className={`
+                    rounded-lg px-2 py-2.5 text-center transition-all duration-300
+                    ${isHot
+                      ? "bg-primary text-primary-foreground shadow-warm"
+                      : isWarm
+                        ? "bg-primary/20 text-foreground"
+                        : count > 0
+                          ? "bg-primary/8 text-muted-foreground"
+                          : "bg-secondary text-muted-foreground/60"
+                    }
+                  `}
                 >
-                  <p
-                    className="text-[10px] font-medium leading-tight"
-                    style={{
-                      color: intensity > 0.4
-                        ? "hsl(var(--primary-foreground))"
-                        : "hsl(var(--muted-foreground))",
-                    }}
-                  >
-                    {tag}
-                  </p>
+                  <p className="text-[10px] font-semibold leading-tight">{tag}</p>
                   {count > 0 && (
-                    <p className="text-[9px] text-muted-foreground mt-0.5">{count}</p>
+                    <p className={`text-[9px] mt-0.5 tabular-nums ${isHot ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
+                      {count} theme{count !== 1 ? "s" : ""}
+                    </p>
                   )}
                 </div>
               );
@@ -183,25 +204,27 @@ export function ThemesSummaryHeader({ analysis }: Props) {
           </div>
         </div>
       </div>
+    </div>
+  );
+}
 
-      {/* Summary strip */}
-      <div className="rounded-lg border border-border bg-muted/30 px-4 py-2.5 flex items-center gap-1.5 flex-wrap text-xs text-muted-foreground">
-        <span className="font-medium text-foreground">At a glance</span>
-        <span>·</span>
-        <span>{themes.length} theme{themes.length !== 1 ? "s" : ""}</span>
-        <span>·</span>
-        <span>{patterns.length} pattern{patterns.length !== 1 ? "s" : ""}</span>
-        {contradictions.length > 0 && (
-          <>
-            <span>·</span>
-            <span>
-              {contradictions.length} environment{" "}
-              {contradictions.length !== 1 ? "sensitivities" : "sensitivity"}
-            </span>
-          </>
-        )}
-        <span>·</span>
-        <span>{totalSignals} signals mapped</span>
+/* ── Small helpers ── */
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest">
+      {children}
+    </p>
+  );
+}
+
+function StatPill({ icon, value, label }: { icon: React.ReactNode; value: number; label: string }) {
+  return (
+    <div className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 shadow-sm">
+      <div className="text-primary">{icon}</div>
+      <div className="min-w-0">
+        <p className="text-sm font-bold text-foreground tabular-nums leading-none">{value}</p>
+        <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">{label}</p>
       </div>
     </div>
   );
