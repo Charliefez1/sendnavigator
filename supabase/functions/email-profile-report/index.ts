@@ -141,12 +141,33 @@ function buildEmail(childName: string, report: string, structured?: StructuredRe
     <tr><td style="padding:16px 0;background:#f8f5f0;border-radius:6px;">
       <p style="margin:0 16px 8px 16px;font-size:13px;color:#333;line-height:1.6;font-weight:600;">A note about what this is</p>
       <p style="margin:0 16px 8px 16px;font-size:12px;color:#555;line-height:1.6;">This profile was created by a parent, for their child. It is not a clinical assessment, a diagnosis, or professional advice. It is a practical document built from lived experience, designed to help you describe your child in your own words.</p>
-      <p style="margin:0 16px;font-size:12px;color:#555;line-height:1.6;">The SEND Navigator is built by parents who have been through the system themselves. We share guidance, strategies, and ideas that work for families in our community. We always recommend working alongside qualified professionals — SENDCOs, educational psychologists, speech and language therapists, and your child's school team — for formal assessments and decisions about provision.</p>
+      <p style="margin:0 16px 8px 16px;font-size:12px;color:#555;line-height:1.6;">The SEND Navigator is built by parents who have been through the system themselves. We share guidance, strategies, and ideas that work for families in our community. We always recommend working alongside qualified professionals — SENDCOs, educational psychologists, speech and language therapists, and your child's school team — for formal assessments and decisions about provision.</p>
+    </td></tr>
+
+    <!-- Comprehensive disclaimer -->
+    <tr><td style="padding:20px 0;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="border:2px solid #c9a227;border-radius:8px;overflow:hidden;">
+        <tr><td style="padding:20px 16px;background:#faf6ed;">
+          <p style="margin:0 0 10px 0;font-size:14px;color:#1a1a1a;font-weight:700;">Important information about this document</p>
+
+          <p style="margin:0 0 10px 0;font-size:12px;color:#444;line-height:1.7;"><strong>This is not a legal, medical, or clinical document.</strong> It cannot be used as evidence in legal proceedings, tribunal hearings, or formal assessments. It does not constitute a diagnosis, a clinical opinion, or a professional recommendation. It should not be treated as a substitute for advice from qualified professionals including educational psychologists, speech and language therapists, community paediatricians, or your child's school SENCO.</p>
+
+          <p style="margin:0 0 10px 0;font-size:12px;color:#444;line-height:1.7;"><strong>How AI is used.</strong> Parts of this report were generated using artificial intelligence. The AI draws on a curated knowledge base built by the SEND Navigator team. It uses observational language based on what you told us — it does not diagnose, label, or make clinical judgements. AI can make mistakes. You should always review the content and remove or correct anything that does not accurately reflect your child.</p>
+
+          <p style="margin:0 0 10px 0;font-size:12px;color:#444;line-height:1.7;"><strong>Language and tone.</strong> This report uses careful, observational language. It describes what a child tends to do, what appears to help, and what has been observed — not what a child "is". If any phrasing feels inaccurate, negative, or does not reflect your child fairly, please amend it before sharing. The report should always represent your child honestly and with dignity.</p>
+
+          <p style="margin:0 0 10px 0;font-size:12px;color:#444;line-height:1.7;"><strong>How to use this document.</strong> This profile is designed to help you communicate with schools, SENCOs, and professionals. It is an informational starting point — a way to share who your child is, what helps, and what they find difficult. It works best when used alongside professional assessments and advice, not instead of them.</p>
+
+          <p style="margin:0 0 10px 0;font-size:12px;color:#444;line-height:1.7;"><strong>Your data.</strong> The answers you provided are stored temporarily (up to 14 days) and then automatically deleted. Your data is encrypted in transit and at rest. It is not used to train AI models and is not shared with third parties. This email and the attached PDF are the only copies sent outside your device.</p>
+
+          <p style="margin:0;font-size:12px;color:#444;line-height:1.7;"><strong>Who built this.</strong> The SEND Navigator and "My Child: This is me" tool are built by Neurodiversity Global Ltd — an independent, neurodivergent-led organisation. We are parents and practitioners, not a government body, a campaign group, or a medical provider. Everything here is offered in good faith, from lived experience, and should be used as a guide only.</p>
+        </td></tr>
+      </table>
     </td></tr>
 
     <!-- Footer -->
     <tr><td style="padding:16px 0 0 0;border-top:1px solid #e5e5e5;">
-      <p style="margin:0;font-size:12px;color:#999;line-height:1.5;">This report was generated using the My Child: This is me tool on SEND Navigator. It is not stored on our servers. This email is the only copy sent outside your device.</p>
+      <p style="margin:0;font-size:11px;color:#999;line-height:1.5;">This report was generated using the "My Child: This is me" tool on SEND Navigator. © ${new Date().getFullYear()} Neurodiversity Global Ltd. All rights reserved.</p>
     </td></tr>
   </table>
 </body>
