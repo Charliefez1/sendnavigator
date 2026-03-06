@@ -1,10 +1,12 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
 import { Shield } from "lucide-react";
 
 export default function PrivacyPolicy() {
   return (
+    <PageAccentProvider color="hsl(42 87% 48%)">
     <Layout>
       <SEOHead
         title="Privacy Policy"
@@ -102,5 +104,6 @@ export default function PrivacyPolicy() {
         </div>
       </div>
     </Layout>
+    </PageAccentProvider>
   );
 }

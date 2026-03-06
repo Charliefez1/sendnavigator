@@ -38,10 +38,11 @@ export function ContentBox({ id, icon: Icon, title, children, accentColor: accen
   return (
     <section id={id} className={cn("content-section scroll-mt-24", isScan ? "py-1" : "py-2")}>
       <div className={cn(
-        "rounded-xl border bg-card transition-shadow duration-200",
-        isScan && !expanded ? "p-3 shadow-sm" : "p-5 shadow-card hover:shadow-card-hover"
+        "rounded-2xl border border-border/50 bg-card transition-shadow duration-200",
+        isScan && !expanded ? "p-3 shadow-sm" : "p-5 shadow-card hover:shadow-card-hover",
+        accentColor && "border-l-4"
       )}
-        style={accentColor ? { borderColor: hslWithAlpha(accentColor, 0.15) } : undefined}
+        style={accentColor ? { borderLeftColor: accentColor } : undefined}
       >
         <button
           onClick={() => isScan && setExpanded(!expanded)}

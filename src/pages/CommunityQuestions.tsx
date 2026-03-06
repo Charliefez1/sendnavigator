@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { PageOrientation } from "@/components/templates";
 import { AskQuestionCompact } from "@/components/AskQuestionCompact";
 import { supabase } from "@/integrations/supabase/client";
@@ -27,6 +28,7 @@ export default function CommunityQuestions() {
   });
 
   return (
+    <PageAccentProvider color="hsl(220 70% 45%)">
     <Layout>
       <PageOrientation icon={MessageCircleQuestion}
         sectionLabel="Take Action"
@@ -72,5 +74,6 @@ export default function CommunityQuestions() {
         )}
       </div>
     </Layout>
+    </PageAccentProvider>
   );
 }

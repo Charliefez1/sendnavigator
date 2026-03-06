@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
@@ -49,6 +50,7 @@ function ResourceLink({ label, url, description }: { label: string; url: string;
 
 export default function ForParents() {
   return (
+    <PageAccentProvider color="hsl(8 75% 55%)">
     <Layout>
       <SEOHead
         title="You Are Carrying a Lot | SEND Navigator"
@@ -175,7 +177,7 @@ export default function ForParents() {
 
       {/* Carer's assessment */}
       <section id="carer-rights" className="content-section py-4 scroll-mt-20">
-        <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-6 shadow-lg">
+        <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(8_75%_55%)] bg-card p-6 shadow-card">
           <SectionHeading>Your rights as a carer</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p>
@@ -324,5 +326,6 @@ export default function ForParents() {
         </div>
       </section>
     </Layout>
+    </PageAccentProvider>
   );
 }

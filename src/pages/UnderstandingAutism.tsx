@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
 import { Link } from "react-router-dom";
@@ -16,6 +17,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 
 export default function UnderstandingAutism() {
   return (
+    <PageAccentProvider color="hsl(262 60% 55%)">
     <Layout>
       <SEOHead
         title="Autism - Understanding Your Child"
@@ -203,5 +205,6 @@ export default function UnderstandingAutism() {
         </Link>
       </section>
     </Layout>
+    </PageAccentProvider>
   );
 }

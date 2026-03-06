@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation, OnThisPage } from "@/components/templates";
 import type { PageSectionDef } from "@/components/templates";
@@ -35,6 +36,7 @@ function EL({ href, children }: { href: string; children: React.ReactNode }) {
 
 export default function LocalVariation() {
   return (
+    <PageAccentProvider color="hsl(8 75% 55%)">
     <Layout>
       <SEOHead
         title="Why Where You Live Matters: Local Authority Variation in SEND - SEND Navigator"
@@ -128,7 +130,7 @@ export default function LocalVariation() {
           </div>
 
           {/* Budget announcement callout */}
-          <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-5 mt-4">
+          <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(8_75%_55%)] bg-card p-5 mt-4">
             <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2">
               <Clock className="w-3.5 h-3.5" />
               <span>November 2025 Budget</span>
@@ -143,7 +145,7 @@ export default function LocalVariation() {
 
       {/* Safety Valve */}
       <section className="content-section py-4">
-        <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-6 shadow-lg">
+        <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(8_75%_55%)] bg-card p-6 shadow-card">
           <SH id="safety-valve">Safety Valve agreements</SH>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p>The DfE has operated a programme of <strong>Safety Valve agreements</strong> with local authorities carrying very high deficits. Under these agreements, the DfE provides additional funding in exchange for the local authority making structural reforms to reduce SEND spending over time.</p>
@@ -211,7 +213,7 @@ export default function LocalVariation() {
 
       {/* Legal rights — Tandy callout */}
       <section className="content-section py-4">
-        <div className="rounded-xl border-2 border-primary/30 bg-primary/5 p-6 shadow-lg">
+        <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(8_75%_55%)] bg-card p-6 shadow-card">
           <SH id="legal-rights">Local authority financial pressure does not reduce your legal rights</SH>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
             <p><strong>This is important.</strong> A local authority cannot lawfully refuse to issue an EHC plan, reduce the provision specified in a plan, or fail to carry out a statutory assessment on the grounds of cost or budget pressure alone.</p>
@@ -219,7 +221,7 @@ export default function LocalVariation() {
             <p>If you are told that support cannot be provided because the LA does not have the budget, <strong>that is not a legally sound basis for refusal</strong>. The rights under the Children and Families Act 2014 are not qualified by local authority financial circumstances.</p>
           </div>
 
-          <div className="rounded-lg bg-card border border-primary/30 p-4 mt-4">
+          <div className="rounded-lg bg-card border border-border/50 border-l-4 border-l-[hsl(8_75%_55%)] p-4 mt-4">
             <p className="text-xs font-bold uppercase tracking-wider text-primary mb-1">Key legal principle</p>
             <p className="text-sm text-foreground font-semibold leading-snug">R v East Sussex County Council ex parte Tandy [1998]</p>
             <p className="text-sm text-muted-foreground leading-relaxed mt-1">Established that local authorities cannot reduce provision to a level below what is needed to meet statutory duty purely on cost grounds. <strong>This remains good law.</strong></p>
@@ -297,5 +299,6 @@ export default function LocalVariation() {
         </div>
       </section>
     </Layout>
+    </PageAccentProvider>
   );
 }

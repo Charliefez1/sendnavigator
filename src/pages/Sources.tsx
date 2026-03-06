@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { PageOrientation } from "@/components/templates";
 import { SourceCard } from "@/components/SourceCard";
 import { StatusBadge } from "@/components/StatusBadge";
@@ -50,6 +51,7 @@ export default function Sources() {
   const totalResults = filteredGroups.reduce((sum, g) => sum + g.sources.length, 0);
 
   return (
+    <PageAccentProvider color="hsl(42 87% 48%)">
     <Layout>
       <PageOrientation icon={BookOpen}
         sectionLabel="About"
@@ -187,5 +189,6 @@ export default function Sources() {
         </p>
       </section>
     </Layout>
+    </PageAccentProvider>
   );
 }

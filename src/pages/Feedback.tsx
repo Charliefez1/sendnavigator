@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { Layout } from "@/components/Layout";
+import { PageAccentProvider } from "@/contexts/PageAccentContext";
 import { SEOHead } from "@/components/SEOHead";
 import { PageOrientation } from "@/components/templates";
 import { supabase } from "@/integrations/supabase/client";
@@ -120,6 +121,7 @@ export default function Feedback() {
   };
 
   return (
+    <PageAccentProvider color="hsl(220 70% 45%)">
     <Layout>
       <SEOHead title="Feedback, Suggestions and Issues" description="Share your thoughts, suggest improvements, or report issues. All submissions are reviewed." path="/feedback" />
       <div className="content-section py-8 space-y-8">
@@ -217,5 +219,6 @@ export default function Feedback() {
         )}
       </div>
     </Layout>
+    </PageAccentProvider>
   );
 }
