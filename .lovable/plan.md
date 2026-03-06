@@ -1,74 +1,83 @@
 
 
-## Rename "My Child: A Profile" → "My Child: This is me"
+## Site-Wide Visual Refresh: Elevated Cards + Bold Colour Palette
 
-The name change is meaningful — it shifts the voice from clinical description to the child saying "this is who I am." The impact is wide but straightforward: it is a text rename across ~20 files with no route, type, or structural changes.
+The reference design shows cards with strong visual definition — clean white surfaces that "float" off the background with pronounced shadows, generous rounding, and subtle coloured accents that give each card its own identity. Combined with the already-approved colour boldness plan, this becomes a single visual refresh.
 
 ### What changes
 
-**UI-facing text (rename all instances):**
+**1. Foundation: stronger card elevation (3 files)**
 
-| Location | Current | New |
+The core `Card` component and shadow tokens get updated to produce the lifted, defined look from the reference:
+
+| Token | Current | New |
 |---|---|---|
-| `OpeningScreen.tsx` | "My Child: A Profile" (title + body) | "My Child: This is me" |
-| `ProfileCompactHeader.tsx` | fallback "My Child: A Profile" | "My Child: This is me" |
-| `ProfileIdentityHeader.tsx` | "Your Child's Profile" / `childName's Profile` | "This is me" / `This is {childName}` |
-| `ChildVoicePanel.tsx` | "profile" references | "This is me" references |
-| `Header.tsx` | nav label "My Child: A Profile" | "My Child: This is me" |
-| `Footer.tsx` | link label | "My Child: This is me" |
-| `Start.tsx` | card title | "My Child: This is me" |
-| `OrientationBar.tsx` | section + title labels | "My Child: This is me" |
-| `AnimatedFeatureShowcase.tsx` | showcase label | "My Child: This is me" |
-| `FeatureMyChildProfile.tsx` | page title, heading, body text | "My Child: This is me" |
-| `ExitIntentPopup.tsx` | "My Child Profile" label | "My Child: This is me" |
-| `ProfileDashboard.tsx` | empty state text | updated copy |
-| `ReportDashboard.tsx` | heading references | updated copy |
-| `profile-dashboard-utils.ts` | "your child's profile" text | updated copy |
+| `shadow-card` | Subtle 2-layer, max 12px blur | Deeper 3-layer: soft ambient + directional + subtle colour tint |
+| `shadow-card-hover` | Slightly stronger version | Pronounced lift with translateY(-2px) feel via deeper shadow |
+| `--card` (light) | `0 0% 100%` (pure white) | Keep — but border goes softer (`border-border/60`) |
+| `--radius` | `0.75rem` | `1rem` — rounder corners match the reference |
+| Card border | `border border-border` | `border border-border/50` — softer border lets shadow do the work |
 
-**Edge functions (rename in visible text only):**
+Files: `tailwind.config.ts` (shadow tokens, radius), `src/components/ui/card.tsx` (border classes), `src/index.css` (radius variable)
 
-| Location | Change |
-|---|---|
-| `email-profile-report/index.ts` | Email subject + body: "My Child: A Profile" → "My Child: This is me" |
-| `guide-me/index.ts` | Description text in route list |
+**2. ContentBox gets the lifted treatment (1 file)**
 
-**Content files:**
+`ContentBox.tsx` currently uses inline `shadow-card`. Update to use the new stronger shadow + increase rounding to `rounded-2xl`. The accent border becomes a left-edge stripe (`border-l-4`) instead of a full-border tint — matching the reference's card accent pattern.
 
-| Location | Change |
-|---|---|
-| `public/content/my_child_profile.txt` | Title and body text |
-| `public/content/start.txt` | Navigation list entry |
-| `public/llms.txt` | Tool description |
+**3. InfoCard alignment (1 file)**
 
-**Pages with incidental references:**
+`InfoCard.tsx` gets the same `rounded-2xl` + stronger shadow + page-accent-aware icon box (replacing hardcoded `bg-primary/10`).
 
-| Location | Change |
-|---|---|
-| `PrivacyPolicy.tsx` | "child's profile document" → "This is me document" |
-| `WhatWeOweOurChildren.tsx` | "child's profile" references — keep as-is (these refer to the concept of understanding a child's profile, not the tool name) |
+**4. DataVisuals colour expansion (1 file)**
 
-**Knowledge base comments** (internal, low priority): ~8 files have `For use by Ask Rich Q&A and My Child: A Profile report generation` in code comments. These are developer-facing and can be updated for consistency.
+Expand `StatCard`, `PercentageRing`, `HorizontalBarChart`, `TierDiagram` accent maps from 4 options to 9 (adding teal, blue, amber, coral, violet, sage, rose). Update the StatCard template to use `rounded-2xl` and the new shadow.
 
-**What does NOT change:**
-- Route stays `/my-child-profile` (URL stability, bookmarks, SEO)
-- File names stay as-is (`MyChildProfile.tsx`, `child-profile/` directory)
-- Internal types (`ChildProfileState`, `ChildProfileContext`) unchanged
-- localStorage key `my-child-profile-draft` unchanged
-- Database table/column names unchanged
-- Export filename `my-child-profile-export.json` unchanged
+**5. Page accent wiring (~20 pages)**
 
-### Opening screen copy adjustment
+Wrap remaining pages in `PageAccentProvider`:
 
-The narrative in `OpeningScreen.tsx` currently says: *"My Child: A Profile, is that."* This becomes: *"My Child: This is me, is that."* — which actually reads better given the new framing. The paragraph about the "quiet word" and "this is George" document naturally leads into "This is me" as a concept.
+| Section | Colour | Pages |
+|---|---|---|
+| SEND Reform | Teal | Already handled via ReportLayout |
+| EHCPs | Blue | Already done |
+| Actions | Coral | Exclusions, AlternativeProvision, ForParents, Sendiass, LocalVariation |
+| Understanding | Violet | UnderstandingYourChild, UnderstandingAutism, UnderstandingADHD |
+| About/Meta | Amber | About, HowToUse, Sources, RichFerriman, WhyIBuiltThis, PrivacyPolicy |
+| Community | Deep Blue | HaveYourSay, CommunityQuestions, Feedback |
+| Other | Sage | DevolvedNations, Post16AndTransition |
 
-### Contextual phrasing
+Each page: one-line `<PageAccentProvider color="hsl(...)">` wrapper.
 
-Where we currently say `{childName}'s Profile`, the new name opens up warmer phrasing:
-- Profile header: **"This is {childName}"** instead of "{childName}'s Profile"
-- Email subject: **"This is {childName} — from SEND Navigator"**
-- Compact header fallback: **"My Child: This is me"**
+**6. Callout card refactor (~6 pages, 65 instances)**
 
-### Scope
+Replace `border-2 border-primary/30 bg-primary/5` with a new `HighlightCard` component:
+- `rounded-2xl border-l-4 border-l-[accent] bg-[accent-bg] shadow-card`
+- Reads `usePageAccent()` for automatic section colouring
+- Falls back to primary if no accent set
 
-~25 files touched, all text-only changes. No migrations, no new components, no route changes. Edge functions will need redeployment (automatic).
+Pages: Exclusions, EHCPHealth, DevolvedNations, AlternativeProvision, ForParents, LocalVariation.
+
+**7. Icon box accent swap (~33 files, 245 instances)**
+
+The `bg-primary/10` icon boxes become page-accent-aware. Two approaches:
+- Components that already use `usePageAccent()` (ContentBox) — already handled
+- Standalone icon boxes in pages — replace `bg-primary/10 text-primary` with a small utility that reads the page accent, or inline style matching the ContentBox pattern
+
+This is the largest stream — systematic find-and-replace across all content pages.
+
+### Execution order
+
+1. **Tailwind tokens + Card component** — foundation that everything inherits
+2. **HighlightCard component** — new shared component
+3. **DataVisuals expansion** — colour maps
+4. **ContentBox + InfoCard** — updated styling
+5. **Page accent wiring** — 20 pages get providers
+6. **Callout card migration** — 6 pages swap to HighlightCard
+7. **Icon box sweep** — 33 files get accent-aware icons
+
+### What does NOT change
+- No route changes
+- No database changes
+- No new dependencies
+- Dark mode tokens scale automatically (existing `--card`, `--border` dark variants apply)
 
