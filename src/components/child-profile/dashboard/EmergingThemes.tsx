@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Lightbulb, AlertTriangle, Zap } from "lucide-react";
 import { StructuredTheme, DetectedPattern, ContradictionFlag, ThemeAnalysisResult } from "@/lib/theme-engine";
 import type { ThemeConfidence } from "@/config/theme-ontology";
+import { ThemesSummaryHeader } from "./ThemesSummaryHeader";
 
 interface Props {
   analysis: ThemeAnalysisResult;
@@ -180,6 +181,9 @@ export function EmergingThemes({ analysis, onNavigateToSection }: Props) {
         </p>
       </CardHeader>
       <CardContent className="space-y-4">
+        {/* Visual summary header */}
+        <ThemesSummaryHeader analysis={analysis} />
+
         {/* Themes */}
         {themes.length > 0 && (
           <div className="grid gap-3 sm:grid-cols-2">
