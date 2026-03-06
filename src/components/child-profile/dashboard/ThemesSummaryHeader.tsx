@@ -10,27 +10,25 @@ interface Props {
 /* Confidence → bar fill colour using design tokens */
 const BAR_COLORS: Record<ThemeConfidence, string> = {
   emerging: "bg-muted-foreground/40",
-  developing: "bg-status-discussed",
-  established: "bg-primary",
+  developing: "bg-[hsl(var(--accent-amber))]",
+  established: "bg-[hsl(var(--accent-teal))]",
 };
 
 const CONFIDENCE_DOT: Record<ThemeConfidence, string> = {
   emerging: "bg-muted-foreground/50",
-  developing: "bg-status-discussed",
-  established: "bg-primary",
+  developing: "bg-[hsl(var(--accent-amber))]",
+  established: "bg-[hsl(var(--accent-teal))]",
 };
 
-/* Orange gradient shades for mechanism treemap blocks */
-const MECHANISM_SHADES = [
-  "hsl(16 65% 52% / 0.85)",  // primary-derived strong
-  "hsl(16 65% 52% / 0.65)",
-  "hsl(25 85% 52% / 0.55)",  // unconfirmed-derived
-  "hsl(42 87% 48% / 0.50)",  // discussed-derived
-  "hsl(16 65% 52% / 0.40)",
-  "hsl(25 85% 52% / 0.35)",
-  "hsl(42 87% 48% / 0.30)",
-  "hsl(16 65% 52% / 0.22)",
-  "hsl(25 55% 52% / 0.18)",
+/* Multi-colour palette for mechanism treemap blocks */
+const MECHANISM_COLORS = [
+  "hsl(var(--accent-teal))",
+  "hsl(var(--accent-coral))",
+  "hsl(var(--accent-violet))",
+  "hsl(var(--accent-amber))",
+  "hsl(var(--accent-deep-blue))",
+  "hsl(var(--accent-sage))",
+  "hsl(var(--primary))",
 ];
 
 export function ThemesSummaryHeader({ analysis }: Props) {
@@ -85,25 +83,29 @@ export function ThemesSummaryHeader({ analysis }: Props) {
     <div className="space-y-3 animate-fade-in">
       {/* ── Stat strip ── */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-        <StatPill icon={<Layers className="w-3.5 h-3.5" />} value={themes.length} label="Themes" />
-        <StatPill icon={<Activity className="w-3.5 h-3.5" />} value={patterns.length} label="Patterns" />
-        <StatPill icon={<MapPin className="w-3.5 h-3.5" />} value={contradictions.length} label={contradictions.length === 1 ? "Env. sensitivity" : "Env. sensitivities"} />
-        <StatPill icon={<BarChart3 className="w-3.5 h-3.5" />} value={totalSignals} label="Signals mapped" />
+        <StatPill icon={<Layers className="w-3.5 h-3.5" />} value={themes.length} label="Patterns" color="text-[hsl(var(--accent-teal))]" />
+        <StatPill icon={<Activity className="w-3.5 h-3.5" />} value={patterns.length} label="Sequences" color="text-[hsl(var(--accent-amber))]" />
+        <StatPill icon={<MapPin className="w-3.5 h-3.5" />} value={contradictions.length} label={contradictions.length === 1 ? "Env. sensitivity" : "Env. sensitivities"} color="text-[hsl(var(--accent-coral))]" />
+        <StatPill icon={<BarChart3 className="w-3.5 h-3.5" />} value={totalSignals} label="Signals mapped" color="text-[hsl(var(--accent-violet))]" />
       </div>
 
       {/* ── 3-panel visualisations ── */}
       <div className="grid gap-3 lg:grid-cols-3">
 
-        {/* 1 ─ Theme Strength */}
+        {/* 1 ─ Pattern Strength */}
         <div className="rounded-xl border border-border bg-card p-4 shadow-card space-y-3">
-          <SectionLabel>Theme strength</SectionLabel>
+          <SectionLabel>Pattern strength</SectionLabel>
           <div className="space-y-2.5">
             {themes.map((t) => {
               const pct = Math.round((t.totalSignalCount / maxSignals) * 100);
               return (
                 <div key={t.theme} className="group space-y-1">
                   <div className="flex items-center gap-2">
-                    <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${CONFIDENCE_DOT[t.confidence]}`} />
+                    <span className={`w-2 h-2 rounded-full shrink-0 ring-2 ring-offset-1 ring-offset-card ${
+                      t.confidence === "established" ? "bg-[hsl(var(--accent-teal))] ring-[hsl(var(--accent-teal)/0.3)]"
+                      : t.confidence === "developing" ? "bg-[hsl(var(--accent-amber))] ring-[hsl(var(--accent-amber)/0.3)]"
+                      : "bg-muted-foreground/50 ring-muted-foreground/20"
+                    }`} />
                     <span className="text-[11px] font-medium text-foreground truncate flex-1">
                       {t.theme}
                     </span>
@@ -125,7 +127,7 @@ export function ThemesSummaryHeader({ analysis }: Props) {
           <div className="flex gap-3 pt-1 border-t border-border">
             {(["emerging", "developing", "established"] as ThemeConfidence[]).map((c) => (
               <div key={c} className="flex items-center gap-1">
-                <span className={`w-2 h-2 rounded-full ${CONFIDENCE_DOT[c]}`} />
+                <span className={`w-2.5 h-2.5 rounded-full ${CONFIDENCE_DOT[c]}`} />
                 <span className="text-[9px] text-muted-foreground capitalize">{c}</span>
               </div>
             ))}
@@ -134,30 +136,29 @@ export function ThemesSummaryHeader({ analysis }: Props) {
 
         {/* 2 ─ Mechanism Treemap */}
         <div className="rounded-xl border border-border bg-card p-4 shadow-card space-y-3">
-          <SectionLabel>What's driving the themes</SectionLabel>
+          <SectionLabel>What's driving the patterns</SectionLabel>
           {mechanisms.length > 0 && (
             <div className="flex flex-wrap gap-1">
               {mechanisms.map((m, i) => {
                 const fraction = m.count / totalMechanismSignals;
-                const shade = MECHANISM_SHADES[Math.min(i, MECHANISM_SHADES.length - 1)];
-                // Width proportional to fraction, min 30%
+                const color = MECHANISM_COLORS[i % MECHANISM_COLORS.length];
                 const widthPct = Math.max(30, Math.round(fraction * 100));
                 return (
                   <div
                     key={m.name}
-                    className="rounded-lg flex items-center justify-center text-center px-3 py-3 transition-shadow hover:shadow-warm"
+                    className="rounded-lg flex items-center justify-center text-center px-3 py-3 transition-shadow hover:shadow-card-hover"
                     style={{
-                      backgroundColor: shade,
+                      backgroundColor: color,
                       flexBasis: `calc(${widthPct}% - 4px)`,
                       flexGrow: 1,
                       minHeight: "52px",
                     }}
                   >
                     <div>
-                      <p className="text-[10px] font-semibold text-card leading-tight drop-shadow-sm">
+                      <p className="text-[10px] font-semibold text-white leading-tight drop-shadow-sm">
                         {m.name}
                       </p>
-                      <p className="text-[9px] text-card/70 mt-0.5">
+                      <p className="text-[9px] text-white/70 mt-0.5">
                         {m.count} signal{m.count !== 1 ? "s" : ""}
                       </p>
                     </div>
@@ -183,19 +184,19 @@ export function ThemesSummaryHeader({ analysis }: Props) {
                   className={`
                     rounded-lg px-2 py-2.5 text-center transition-all duration-300
                     ${isHot
-                      ? "bg-primary text-primary-foreground shadow-warm"
+                      ? "bg-[hsl(var(--accent-coral))] text-white shadow-sm"
                       : isWarm
-                        ? "bg-primary/20 text-foreground"
+                        ? "bg-[hsl(var(--accent-amber-bg))] text-[hsl(var(--accent-amber))]"
                         : count > 0
-                          ? "bg-primary/8 text-muted-foreground"
+                          ? "bg-[hsl(var(--accent-teal-bg))] text-[hsl(var(--accent-teal))]"
                           : "bg-secondary text-muted-foreground/60"
                     }
                   `}
                 >
                   <p className="text-[10px] font-semibold leading-tight">{tag}</p>
                   {count > 0 && (
-                    <p className={`text-[9px] mt-0.5 tabular-nums ${isHot ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
-                      {count} theme{count !== 1 ? "s" : ""}
+                    <p className={`text-[9px] mt-0.5 tabular-nums ${isHot ? "text-white/80" : ""}`}>
+                      {count} pattern{count !== 1 ? "s" : ""}
                     </p>
                   )}
                 </div>
@@ -218,10 +219,10 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   );
 }
 
-function StatPill({ icon, value, label }: { icon: React.ReactNode; value: number; label: string }) {
+function StatPill({ icon, value, label, color }: { icon: React.ReactNode; value: number; label: string; color: string }) {
   return (
     <div className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 shadow-sm">
-      <div className="text-primary">{icon}</div>
+      <div className={color}>{icon}</div>
       <div className="min-w-0">
         <p className="text-sm font-bold text-foreground tabular-nums leading-none">{value}</p>
         <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">{label}</p>

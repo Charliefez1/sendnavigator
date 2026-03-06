@@ -7,12 +7,16 @@ interface Props {
   onNavigateToSection?: (index: number) => void;
 }
 
-function scoreColor(score: number): string {
-  if (score >= 3) return "hsl(var(--primary))";
-  if (score >= 2) return "hsl(var(--accent-amber))";
-  if (score >= 1) return "hsl(var(--accent-teal))";
-  return "hsl(var(--muted-foreground) / 0.3)";
-}
+/* Rotate through the full palette per domain */
+const DOMAIN_COLORS = [
+  "hsl(var(--accent-teal))",
+  "hsl(var(--accent-coral))",
+  "hsl(var(--accent-amber))",
+  "hsl(var(--accent-violet))",
+  "hsl(var(--accent-deep-blue))",
+  "hsl(var(--accent-sage))",
+  "hsl(var(--primary))",
+];
 
 export function DomainBars({ onNavigateToSection }: Props) {
   const { derived } = useChildProfile();
@@ -39,13 +43,14 @@ export function DomainBars({ onNavigateToSection }: Props) {
     <Card className="border-0 shadow-md">
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-sm font-medium">
-          <BarChart3 className="w-4 h-4 text-primary" />
+          <BarChart3 className="w-4 h-4 text-[hsl(var(--accent-deep-blue))]" />
           Domain breakdown
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-1">
-        {withData.map((d) => {
+        {withData.map((d, i) => {
           const barWidth = Math.max((d.evidence / SCORE_SCALE_MAX) * 100, 8);
+          const color = DOMAIN_COLORS[i % DOMAIN_COLORS.length];
           return (
             <button
               key={d.domain}
@@ -58,7 +63,7 @@ export function DomainBars({ onNavigateToSection }: Props) {
               <div className="flex-1 h-2.5 bg-muted rounded-full overflow-hidden">
                 <div
                   className="h-full rounded-full transition-all duration-700"
-                  style={{ width: `${barWidth}%`, backgroundColor: scoreColor(d.evidence) }}
+                  style={{ width: `${barWidth}%`, backgroundColor: color }}
                 />
               </div>
               {d.intensity !== null && (
