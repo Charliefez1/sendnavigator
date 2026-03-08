@@ -110,12 +110,12 @@ export default function HowThisSiteWorks() {
           <div>
             <h3 className="font-semibold text-foreground mb-1">What we collect</h3>
             <ul className="list-disc pl-5 space-y-1">
-              <li><strong>Analytics</strong> — anonymous page views, device type, and referrer. No cookies are used for tracking. No personal data is captured.</li>
-              <li><strong>Contact form</strong> — your name, email, and message when you choose to contact us.</li>
-              <li><strong>Feedback</strong> — any feedback you submit through the site.</li>
-              <li><strong>Questions</strong> — questions submitted to Ask Rich (text only, no personal identifiers).</li>
-              <li><strong>Child profile</strong> — answers you provide when building a "This is me" profile (see below).</li>
-              <li><strong>Authentication</strong> — email and password if you create an account.</li>
+              <li><strong>Analytics:</strong> anonymous page views, device type, and referrer. No cookies are used for tracking. No personal data is captured.</li>
+              <li><strong>Contact form:</strong> your name, email, and message when you choose to contact us.</li>
+              <li><strong>Feedback:</strong> any feedback you submit through the site.</li>
+              <li><strong>Questions:</strong> questions submitted to Ask Rich (text only, no personal identifiers).</li>
+              <li><strong>Child profile:</strong> answers you provide when building a "This is me" profile (see below).</li>
+              <li><strong>Authentication:</strong> email and password if you create an account.</li>
             </ul>
           </div>
           <div>
