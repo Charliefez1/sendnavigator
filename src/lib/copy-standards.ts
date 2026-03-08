@@ -40,7 +40,7 @@ const AMERICAN_TO_UK: Array<[string, string]> = [
   ["counseling", "counselling"],
   ["catalog", "catalogue"],
   ["aging", "ageing"],
-  ["pediatrician", "community paediatrician"],
+  ["pediatrician", "paediatrician"],
   ["pediatric", "paediatric"],
   ["pediatrics", "paediatrics"],
   ["specialized", "specialised"],

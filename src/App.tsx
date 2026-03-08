@@ -12,7 +12,7 @@ import { PageSectionsProvider } from "@/contexts/PageSectionsContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ExperienceSelector } from "@/components/ExperienceSelector";
 
-import { CopyStandardsEnforcer } from "@/components/CopyStandardsEnforcer";
+
 import { ScrollToTop } from "@/components/ScrollToTop";
 
 // Lazy-loaded pages
