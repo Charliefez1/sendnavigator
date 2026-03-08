@@ -165,7 +165,7 @@ export default function WhatToDoRightNow() {
     <PageAccentProvider color="hsl(8 75% 55%)">
     <Layout>
       <SEOHead
-        title="What To Do Right Now — SEND Action Guide"
+        title="What To Do Right Now | SEND Action Guide"
         description="Practical steps if your child is not getting the SEND support they need today. Based on current law and established process."
         path="/what-to-do-right-now"
         article

@@ -108,7 +108,7 @@ export default function EHCPs() {
 
 
       {/* ── What is an EHCP ── */}
-      <ContentBox id="what-is-ehcp" icon={FileText} title="What is an EHCP" tooltip="Education, Health and Care Plan — the legal document that guarantees your child's support">
+      <ContentBox id="what-is-ehcp" icon={FileText} title="What is an EHCP" tooltip="Education, Health and Care Plan: the legal document that guarantees your child's support">
         <div className="space-y-3">
           <p>
             An Education, Health and Care Plan (EHCP) is a statutory document introduced by the <strong>Children and Families Act 2014</strong>, replacing the older Statement of SEN system. It is the only legal mechanism in England that guarantees coordinated, funded support across education, health, and social care for a child or young person with significant special educational needs.
