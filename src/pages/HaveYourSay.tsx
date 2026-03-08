@@ -108,7 +108,7 @@ export default function HaveYourSay() {
               Now that the White Paper has been published, the government will open a formal consultation on its proposals. Based on the DfE's own statements, that consultation will run for <strong>12 weeks</strong>.
             </p>
             <p>
-              During that window, you can submit a written response. Responses are read. They are counted. <strong>Well-evidenced responses from parents and families carry weight</strong> — particularly when they describe specific, concrete experience rather than general opinion.
+              During that window, you can submit a written response. Responses are read. They are counted. <strong>Well-evidenced responses from parents and families carry weight</strong>, particularly when they describe specific, concrete experience rather than general opinion.
             </p>
             <p>Based on the published White Paper, the consultation is likely to cover:</p>
             <ul className="space-y-2">
