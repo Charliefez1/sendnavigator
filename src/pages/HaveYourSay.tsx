@@ -230,7 +230,7 @@ export default function HaveYourSay() {
                 Your MP can raise SEND issues in Parliament, in debates, in written questions, and in letters to ministers. MPs are most useful when they have <strong>concrete, local evidence</strong>.
               </p>
               <p>
-                When you write, include the specific issue you are raising, what you have already tried, and <strong>what you want the MP to do</strong>. A clear ask — "will you raise this with the Minister?" — is more likely to get a useful response than a general expression of concern.
+                When you write, include the specific issue you are raising, what you have already tried, and <strong>what you want the MP to do</strong>. A clear ask ("will you raise this with the Minister?") is more likely to get a useful response than a general expression of concern.
               </p>
               <ResourceLink label="writetothem.com" url="https://www.writetothem.com" />
             </div>

@@ -118,9 +118,9 @@ export default function WhatWeOweOurChildren() {
           <SectionHeading>Understand what is happening at home</SectionHeading>
           <div className="space-y-4 text-sm text-muted-foreground leading-relaxed max-w-2xl">
             <p>Your child is almost certainly <strong>masking</strong> at school.</p>
-            <p>Masking is the effort of suppressing natural neurological responses — the stims, the shutdowns, the distress signals — in order to appear to cope in an environment that does not accommodate how their nervous system works. It is exhausting work. And it tends to collapse the moment they reach somewhere they feel safe.</p>
+            <p>Masking is the effort of suppressing natural neurological responses (the stims, the shutdowns, the distress signals) in order to appear to cope in an environment that does not accommodate how their nervous system works. It is exhausting work. And it tends to collapse the moment they reach somewhere they feel safe.</p>
             <p>Which is home.</p>
-            <p>The explosion at the school gate, the meltdown after what looked like a normal day, the refusal to do anything by early evening — this is usually the <strong>accumulated cost of hours spent masking</strong>. It is not bad behaviour. It is a child running on empty, finally in a place where they do not have to pretend.</p>
+            <p>The explosion at the school gate, the meltdown after what looked like a normal day, the refusal to do anything by early evening: this is usually the <strong>accumulated cost of hours spent masking</strong>. It is not bad behaviour. It is a child running on empty, finally in a place where they do not have to pretend.</p>
             <p>Understanding this changes how you respond to it at home. It also changes how you describe your child's needs to the school.</p>
           </div>
         </div>
