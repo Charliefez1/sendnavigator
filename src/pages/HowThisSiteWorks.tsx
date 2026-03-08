@@ -47,7 +47,7 @@ export default function HowThisSiteWorks() {
       <ContentBox icon={Bot} title="How we use AI" accentColor={ACCENT}>
         <p>
           We have used AI tools to help us build this site and to assist in conducting our
-          research across more than 1,000 sources. AI helps us work faster — but every piece
+          research across more than 1,000 sources. AI helps us work faster, but every piece
           of information published here has been <strong>researched and written by Charlie
           and Rich personally</strong>.
         </p>
