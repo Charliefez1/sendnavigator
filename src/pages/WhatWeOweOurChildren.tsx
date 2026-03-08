@@ -146,7 +146,7 @@ export default function WhatWeOweOurChildren() {
           <SectionHeading>Screens, sleep, and dopamine</SectionHeading>
           <div className="space-y-4 text-sm text-muted-foreground leading-relaxed max-w-2xl">
             <p><strong>This part is harder to hear.</strong></p>
-            <p>Many of the behaviours that look like SEND in the classroom — poor concentration, impulsivity, difficulty regulating, emotional volatility — are significantly worsened by sleep deprivation and dopamine dysregulation driven by screens.</p>
+            <p>Many of the behaviours that look like SEND in the classroom (poor concentration, impulsivity, difficulty regulating, emotional volatility) are significantly worsened by sleep deprivation and dopamine dysregulation driven by screens.</p>
             <p>This is not about blame. It is about cause and effect.</p>
             <p>Neurodivergent children are particularly vulnerable to the dopamine reward loops built into gaming, social media, and smartphones. The ADHD brain is specifically built to seek novelty and immediate reward. The platforms our children use are <strong>engineered to deliver exactly that, endlessly, without pause</strong>.</p>
             <p>A child who has spent hours on a device before school arrives with their dopamine system already spiked and crashing, their sleep debt carried from the night before, their capacity for sustained attention depleted before the day starts.</p>
