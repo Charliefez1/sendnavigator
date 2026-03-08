@@ -129,7 +129,7 @@ function ContradictionCard({ flag }: { flag: ContradictionFlag }) {
       </div>
       <div className="min-w-0">
         <p className="text-xs font-semibold text-foreground">
-          Environment sensitivity — {flag.domain}
+          Environment sensitivity: {flag.domain}
         </p>
         <p className="text-[11px] text-muted-foreground mt-0.5 leading-relaxed">
           {flag.message}
