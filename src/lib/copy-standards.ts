@@ -100,8 +100,7 @@ const AMERICAN_TO_UK: Array<[string, string]> = [
 const SEND_VOCABULARY: Array<[RegExp, string]> = [
   // Education system terms
   [/\bspecial education\b/gi, "SEND"],
-  [/\bspecial educational needs\b/gi, "special educational needs and disabilities"],
-  [/\bkindergarten\b/gi, "reception"],
+  [/\bspecial educational needs\b(?!\s+and\s+disabilities\b)/gi, "special educational needs and disabilities"],
   [/\bgrade school\b/gi, "primary school"],
   [/\belementary school\b/gi, "primary school"],
   [/\bmiddle school\b/gi, "secondary school"],
