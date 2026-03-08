@@ -42,6 +42,7 @@ const REASON_OPTIONS = [
 ];
 
 export function SetupFlow({ onComplete }: SetupFlowProps) {
+  const navigate = useNavigate();
   const { state, updateSetup } = useChildProfile();
   const [step, setStep] = useState(0);
 
