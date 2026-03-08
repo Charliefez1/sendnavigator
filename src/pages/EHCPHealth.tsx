@@ -121,7 +121,7 @@ export default function EHCPHealth() {
         <div className="rounded-xl border border-border bg-card p-6 shadow-lg">
           <SectionHeading id="nhs-duties">The NHS's legal duties in the EHCP process</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-            <p>When a local authority carries out an EHCP needs assessment, NHS bodies — in practice, the local ICB and its commissioned services — have a legal duty to respond.</p>
+            <p>When a local authority carries out an EHCP needs assessment, NHS bodies (in practice, the local ICB and its commissioned services) have a legal duty to respond.</p>
             <p className="font-medium text-foreground">Specifically:</p>
             <ul className="space-y-2 ml-1">
               <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>The NHS must provide advice to the LA <strong>within six weeks</strong> of a request as part of an EHCP needs assessment. This is a legal requirement.</span></li>
