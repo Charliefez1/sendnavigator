@@ -1,34 +1,22 @@
-import { Bot, Database, HelpCircle, ShieldX } from "lucide-react";
-import { aiTrustSignals } from "@/config/feedback";
+import { Bot, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export function AITrustNotice() {
   return (
     <div className="bg-card border border-border rounded-lg p-4 shadow-lg">
-      <div className="flex items-start gap-2 mb-3">
+      <div className="flex items-start gap-2 mb-2">
         <Bot className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
         <div className="text-sm text-foreground space-y-2">
-          <p className="font-medium">Ask Rich uses AI to help us get answers to you quickly, but every piece of information it draws on has been researched and written by Charlie and I personally.</p>
-          <p>Everything we tell you comes from the content we have researched and published on this site. Nothing else.</p>
-          <p>If we do not know something or the picture is incomplete, we will tell you that straight.</p>
-          <p>We cannot comment on individual cases, give legal advice, or predict what is going to happen. But we can help you understand what we know right now.</p>
-          <p>We have used AI tools to help us build this site and conduct the research of over 1,000 separate information sources. We are trying our very best to make sure everything is up to date in a period where a lot is happening in SEND. If you feel we have something wrong, go to <a href="/feedback" className="underline text-primary hover:text-primary/80">feedback</a> and submit it there, or contact us directly on LinkedIn.</p>
+          <p className="font-medium">Every answer comes from content Charlie and I have personally researched. Nothing else.</p>
+          <p>If we do not know something, we will tell you straight. We cannot comment on individual cases or give legal advice.</p>
         </div>
       </div>
-      
-      <ul className="space-y-2 text-sm text-muted-foreground">
-        <li className="flex items-start gap-2">
-          <Database className="w-4 h-4 flex-shrink-0 mt-0.5 text-primary" />
-          <span>{aiTrustSignals.grounding}</span>
-        </li>
-        <li className="flex items-start gap-2">
-          <HelpCircle className="w-4 h-4 flex-shrink-0 mt-0.5 text-primary" />
-          <span>{aiTrustSignals.uncertaintyHandling}</span>
-        </li>
-        <li className="flex items-start gap-2">
-          <ShieldX className="w-4 h-4 flex-shrink-0 mt-0.5 text-primary" />
-          <span>{aiTrustSignals.refusalExplanation}</span>
-        </li>
-      </ul>
+      <Link
+        to="/how-this-site-works"
+        className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:text-primary/80 transition-colors ml-7"
+      >
+        How this site works — AI, data and security <ArrowRight className="w-3 h-3" />
+      </Link>
     </div>
   );
 }
