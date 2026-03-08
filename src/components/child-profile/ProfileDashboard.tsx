@@ -116,7 +116,7 @@ export function ProfileDashboard({ onBack, onNavigateToSection, onGenerateReport
         <DialogContent className="max-w-2xl max-h-[80vh] flex flex-col">
           <DialogHeader>
             <DialogTitle className="text-sm">Scoring Payload</DialogTitle>
-            <DialogDescription className="text-xs">Developer-only export — no personal data included.</DialogDescription>
+            <DialogDescription className="text-xs">Developer-only export. No personal data included.</DialogDescription>
           </DialogHeader>
           <div className="flex justify-end">
             <Button variant="outline" size="sm" onClick={handleCopy} className="gap-1.5 text-xs">
