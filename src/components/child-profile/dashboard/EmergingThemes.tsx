@@ -50,7 +50,7 @@ function ThemeCard({
 
       {/* Mechanisms */}
       {theme.mechanisms.length > 0 && (
-        <ChipRow label="What's driving this" tip="These are the underlying reasons we think this pattern is happening — like sensory processing or how the nervous system responds to stress. Understanding the 'why' helps you explain your child's needs to school.">
+        <ChipRow label="What's driving this" tip="These are the underlying reasons we think this pattern is happening, such as sensory processing or how the nervous system responds to stress. Understanding the 'why' helps you explain your child's needs to school.">
           {theme.mechanisms.map((m) => (
             <Chip key={m.mechanism} variant="warm">
               {m.mechanism} ({m.signalCount})
