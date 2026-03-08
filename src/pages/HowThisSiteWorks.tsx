@@ -87,10 +87,10 @@ export default function HowThisSiteWorks() {
           <div>
             <h3 className="font-semibold text-foreground mb-2">How it works, step by step</h3>
             <ol className="list-decimal pl-5 space-y-2">
-              <li><strong>You ask a question</strong> — type anything about SEND reform, EHCPs, or your rights.</li>
-              <li><strong>AI searches our knowledge base</strong> — it looks through the content we have published on this site.</li>
-              <li><strong>You receive an answer grounded in our research</strong> — every response is drawn from what we have written, not from the open internet.</li>
-              <li><strong>Uncertainty is flagged</strong> — if the answer touches something unconfirmed or incomplete, we tell you.</li>
+              <li><strong>You ask a question.</strong> Type anything about SEND reform, EHCPs, or your rights.</li>
+              <li><strong>AI searches our knowledge base.</strong> It looks through the content we have published on this site.</li>
+              <li><strong>You receive an answer grounded in our research.</strong> Every response is drawn from what we have written, not from the open internet.</li>
+              <li><strong>Uncertainty is flagged.</strong> If the answer touches something unconfirmed or incomplete, we tell you.</li>
             </ol>
           </div>
         </div>
