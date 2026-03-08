@@ -231,7 +231,7 @@ export default function EHCPHealth() {
             <ul className="space-y-2 ml-1">
               <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>ICBs are under <strong>significant financial pressure</strong>. Decisions about commissioning and service provision are being made in a context of cost reduction.</span></li>
               <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>Staffing reductions within ICBs may affect the <strong>dedicated SEND functions</strong> some ICBs currently have.</span></li>
-              <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>The shift to neighbourhood-based services may eventually change <strong>how health provision for children with SEND is commissioned</strong> and delivered — but this is not confirmed.</span></li>
+              <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>The shift to neighbourhood-based services may eventually change <strong>how health provision for children with SEND is commissioned</strong> and delivered, but this is not confirmed.</span></li>
               <li className="flex gap-2"><span className="text-primary font-bold">·</span><span>The boundary between what ICBs retain and what is transferred elsewhere is <strong>still being worked out</strong>.</span></li>
             </ul>
             <p>If you are currently in the middle of an EHCP assessment or annual review, <strong>the restructure does not change your rights</strong>. The statutory duties remain. What may be less certain is who within the NHS is responsible for fulfilling them in your area over the coming year.</p>
