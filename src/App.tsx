@@ -12,7 +12,7 @@ import { PageSectionsProvider } from "@/contexts/PageSectionsContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ExperienceSelector } from "@/components/ExperienceSelector";
 
-import { CopyStandardsEnforcer } from "@/components/CopyStandardsEnforcer";
+
 import { ScrollToTop } from "@/components/ScrollToTop";
 
 // Lazy-loaded pages
@@ -89,7 +89,7 @@ const App = () => (
                 <Sonner />
                 <BrowserRouter>
                   <ScrollToTop />
-                  <CopyStandardsEnforcer />
+                  
                   <ExperienceSelector />
                   <PageViewTracker />
                   <Suspense fallback={<LoadingFallback />}>

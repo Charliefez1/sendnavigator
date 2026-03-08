@@ -40,7 +40,7 @@ const AMERICAN_TO_UK: Array<[string, string]> = [
   ["counseling", "counselling"],
   ["catalog", "catalogue"],
   ["aging", "ageing"],
-  ["pediatrician", "community paediatrician"],
+  ["pediatrician", "paediatrician"],
   ["pediatric", "paediatric"],
   ["pediatrics", "paediatrics"],
   ["specialized", "specialised"],
@@ -100,7 +100,7 @@ const AMERICAN_TO_UK: Array<[string, string]> = [
 const SEND_VOCABULARY: Array<[RegExp, string]> = [
   // Education system terms
   [/\bspecial education\b/gi, "SEND"],
-  [/\bspecial educational needs\b/gi, "special educational needs and disabilities"],
+  [/\bspecial educational needs\b(?!\s+and\s+disabilities\b)/gi, "special educational needs and disabilities"],
   [/\bkindergarten\b/gi, "reception"],
   [/\bgrade school\b/gi, "primary school"],
   [/\belementary school\b/gi, "primary school"],
@@ -110,7 +110,6 @@ const SEND_VOCABULARY: Array<[RegExp, string]> = [
   [/\bschool board\b/gi, "local authority"],
   [/\baccommodations?\b/gi, "adjustments"],
   [/\breasonable accommodations?\b/gi, "reasonable adjustments"],
-
   // US plan types → UK equivalents
   [/\bIEP\b/g, "EHCP"],
   [/\b504 plan\b/gi, "SEN Support"],
@@ -129,8 +128,7 @@ const SEND_VOCABULARY: Array<[RegExp, string]> = [
   [/\bphysical therapist\b/gi, "physiotherapist"],
   [/\bphysical therapy\b/gi, "physiotherapy"],
 
-  // Standalone "paediatrician" → "community paediatrician"
-  [/\bpaediatrician\b(?!\s+services)(?!\s+team)/gi, "community paediatrician"],
+  // Standalone "paediatrician" kept unchanged here to avoid recursive observer rewrites
 
   // US role terms
   [/\bschool psychologist\b/gi, "educational psychologist"],
@@ -179,7 +177,9 @@ export function normaliseCopyToUkEnglish(input: string): string {
 
   return output
     .replace(/\s{2,}/g, " ")
-    .replace(/\s+([,.;:!?])/g, "$1");
+    .replace(/\s+([,.;:!?])/g, "$1")
+    .replace(/\b(and disabilities)(?:\s+and disabilities)+\b/gi, "$1")
+    .replace(/\bcommunity(?:\s+community)+\s+paediatrician\b/gi, "community paediatrician");
 }
 
 function normaliseUnknownValue(value: unknown): unknown {
