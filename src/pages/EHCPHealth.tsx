@@ -77,7 +77,7 @@ export default function EHCPHealth() {
               </div>
             </div>
             <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(220_70%_45%)] bg-card p-5">
-              <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Section G — Health Provision</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Section G: Health Provision</p>
               <div className="space-y-2 text-sm text-muted-foreground leading-relaxed">
                 <p>Sets out the <strong>health care provision your child needs</strong> as a result of the needs described in Section C. Therapy input, specialist assessments, mental health support. Where it is linked to SEND, it belongs in Section G.</p>
                 <p>This is where it gets <strong>legally significant</strong>.</p>
