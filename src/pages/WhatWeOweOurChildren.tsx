@@ -92,7 +92,7 @@ export default function WhatWeOweOurChildren() {
           <SectionHeading>Prepare before you ask</SectionHeading>
           <div className="space-y-4 text-sm text-muted-foreground leading-relaxed max-w-2xl">
             <p>Before you contact the school. Before you write to the LA. Before any meeting.</p>
-            <p>Know what you believe your child needs. Not just that something is wrong — but <strong>what specifically is happening, when, and what you think is driving it</strong>.</p>
+            <p>Know what you believe your child needs. Not just that something is wrong, but <strong>what specifically is happening, when, and what you think is driving it</strong>.</p>
             <p>This means doing your research. Understanding your child's profile. Their strengths, their flash points, the settings and situations that push them past what they can manage. And writing it down.</p>
           </div>
         </div>
