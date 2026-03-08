@@ -191,7 +191,7 @@ export default function WhatWeOweOurChildren() {
             <p>Standard behaviour management strategies (consequences, reward charts, escalating pressure) usually make things significantly worse for a child with a PDA profile. The approaches that help are <strong>low demand, high autonomy, and predictability</strong>. Offering choice rather than instruction. Framing requests as options. Reducing the number of direct demands in a day.</p>
             <p>If this sounds like your child, the PDA Society has detailed guidance. Sharing it with the school is a reasonable starting point.</p>
             <div className="pt-1">
-              <ResourceLink label="PDA Society — guidance for families and schools" url="https://www.pdasociety.org.uk" />
+              <ResourceLink label="PDA Society: guidance for families and schools" url="https://www.pdasociety.org.uk" />
             </div>
           </ProfileSection>
 
