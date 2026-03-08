@@ -25,8 +25,10 @@ import {
   FileText, BarChart3, Users, ClipboardList, Scale, School,
   RefreshCw, AlertTriangle, Gavel, Search, PoundSterling, Clock, ShieldCheck, ChevronDown, Shield
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const sections: PageSectionDef[] = [
+  { id: "related-pages", icon: FileText, title: "Connected pages" },
   { id: "what-is-ehcp", icon: FileText, title: "What is an EHCP" },
   { id: "who-qualifies", icon: Users, title: "Who qualifies" },
   { id: "statistics", icon: BarChart3, title: "Statistics dashboard" },
@@ -80,7 +82,30 @@ export default function EHCPs() {
       <SafeRender><LatestUpdatesStream /></SafeRender>
 
       <OnThisPage sections={sections} />
-      
+
+      <ContentBox id="related-pages" icon={FileText} title="All pages connected with EHCP" tooltip="Quick links to every EHCP page on this site">
+        <div className="space-y-3">
+          <h3 className="text-base font-display font-semibold text-foreground">EHCP guide pages</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link to="/ehcps" className="text-primary hover:underline font-medium">
+                EHCPs: a complete guide for parents
+              </Link>
+            </li>
+            <li>
+              <Link to="/ehcp-health" className="text-primary hover:underline font-medium">
+                The Health Side of Your Child's EHCP
+              </Link>
+            </li>
+            <li>
+              <Link to="/post-16-and-transition" className="text-primary hover:underline font-medium">
+                Young People Aged 16 to 25
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </ContentBox>
+
 
       {/* ── What is an EHCP ── */}
       <ContentBox id="what-is-ehcp" icon={FileText} title="What is an EHCP" tooltip="Education, Health and Care Plan — the legal document that guarantees your child's support">
