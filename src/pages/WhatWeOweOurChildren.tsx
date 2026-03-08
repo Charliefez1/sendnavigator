@@ -133,9 +133,9 @@ export default function WhatWeOweOurChildren() {
           <div className="space-y-4 text-sm text-muted-foreground leading-relaxed max-w-2xl">
             <p>Stimming is self-stimulatory behaviour. Repetitive movements, sounds, or actions that <strong>regulate the nervous system</strong>.</p>
             <p>Rocking. Flapping. Tapping. Humming. Pacing. Picking. Spinning.</p>
-            <p>Stimming is not a problem to be stopped. It is a regulatory tool. When a child stims they are actively managing their internal state — processing sensory input, managing anxiety, maintaining enough focus to stay in the room.</p>
-            <p>When stimming is suppressed — when a child is told to sit still, stop tapping, stop making that noise — the regulatory need does not disappear. <strong>It accumulates.</strong> It finds another outlet, usually a louder and less manageable one.</p>
-            <p>Ask the school what their approach is to stimming. If your child is being routinely stopped from regulating themselves, that is worth raising — not as a confrontation, but as a direct and reasonable question. <strong>"What are they allowed to do when they feel overwhelmed?"</strong> is a question every school should be able to answer.</p>
+            <p>Stimming is not a problem to be stopped. It is a regulatory tool. When a child stims they are actively managing their internal state, processing sensory input, managing anxiety, maintaining enough focus to stay in the room.</p>
+            <p>When stimming is suppressed, when a child is told to sit still, stop tapping, stop making that noise, the regulatory need does not disappear. <strong>It accumulates.</strong> It finds another outlet, usually a louder and less manageable one.</p>
+            <p>Ask the school what their approach is to stimming. If your child is being routinely stopped from regulating themselves, that is worth raising. Not as a confrontation, but as a direct and reasonable question. <strong>"What are they allowed to do when they feel overwhelmed?"</strong> is a question every school should be able to answer.</p>
           </div>
         </div>
       </section>
