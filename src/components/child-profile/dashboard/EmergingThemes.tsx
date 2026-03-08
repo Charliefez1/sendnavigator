@@ -158,7 +158,7 @@ export function EmergingThemes({ analysis, onNavigateToSection }: Props) {
             <Lightbulb className="w-4 h-4 text-[hsl(var(--accent-violet))]" />
           </div>
           Emerging patterns
-          <InfoTip content="As you answer questions, we look for repeating themes across what you share. These are not diagnoses — they are patterns that can help you describe your child's experience to school, a SENCO, or in an EHCP assessment." />
+          <InfoTip content="As you answer questions, we look for repeating themes across what you share. These are not diagnoses. They are patterns that can help you describe your child's experience to school, a SENCO, or in an EHCP assessment." />
         </CardTitle>
         <p className="text-xs text-muted-foreground">
           Structured patterns detected across what you have shared so far
