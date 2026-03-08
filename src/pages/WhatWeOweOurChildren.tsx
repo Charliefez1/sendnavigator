@@ -153,7 +153,7 @@ export default function WhatWeOweOurChildren() {
             <p><strong>We cannot put all of that on the school to manage.</strong></p>
             <p>Sleep is not optional. It is nervous system care. Screens before bed disrupt melatonin and fragment rest. A child who consistently sleeps poorly will struggle to learn, regulate, and cope with the ordinary demands of a school day. That is not an opinion. It is well-documented neuroscience.</p>
             <p>This is one of the most difficult conversations to have with yourself as a parent. It is also one of the most important.</p>
-            <p>The question is not whether to remove screens. The question is whether your child can sleep without them nearby, can stop with support, can return to calm after use, and whether real life can still compete with what the screen offers. <strong>If the answer to those questions is no — something needs adjusting.</strong></p>
+            <p>The question is not whether to remove screens. The question is whether your child can sleep without them nearby, can stop with support, can return to calm after use, and whether real life can still compete with what the screen offers. <strong>If the answer to those questions is no, something needs adjusting.</strong></p>
             <p>Not punishing. Adjusting.</p>
             <div className="pt-2">
               <ResourceLink label="The Day We Gave Children Dopamine on Demand" url="https://smartphonefree.neurodiversityglobal.com/" note="written by Rich Ferriman" />
