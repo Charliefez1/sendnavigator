@@ -57,6 +57,7 @@ const EHCPHealth = lazy(() => import("./pages/EHCPHealth"));
 const AlternativeProvision = lazy(() => import("./pages/AlternativeProvision"));
 const LocalVariation = lazy(() => import("./pages/LocalVariation"));
 const DevolvedNations = lazy(() => import("./pages/DevolvedNations"));
+const HowThisSiteWorks = lazy(() => import("./pages/HowThisSiteWorks"));
 const MyChildProfile = lazy(() => import("./pages/MyChildProfile"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const NotFound = lazy(() => import("./pages/NotFound"));
