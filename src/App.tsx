@@ -124,7 +124,7 @@ const App = () => (
                       <Route path="/alternative-provision" element={<AlternativeProvision />} />
                       <Route path="/local-variation" element={<LocalVariation />} />
                       <Route path="/devolved-nations" element={<DevolvedNations />} />
-                      <Route path="/my-child-profile" element={<ProtectedRoute><MyChildProfile /></ProtectedRoute>} />
+                      <Route path="/my-child-profile" element={<MyChildProfile />} />
                       <Route path="/reset-password" element={<ResetPassword />} />
 
                       {/* Protected routes */}
