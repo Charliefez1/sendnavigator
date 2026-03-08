@@ -11,7 +11,7 @@ import { ExperienceModeProvider } from "@/contexts/ExperienceModeContext";
 import { PageSectionsProvider } from "@/contexts/PageSectionsContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ExperienceSelector } from "@/components/ExperienceSelector";
-import { ProtectedRoute } from "@/components/ProtectedRoute";
+
 import { CopyStandardsEnforcer } from "@/components/CopyStandardsEnforcer";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
@@ -124,43 +124,30 @@ const App = () => (
                       <Route path="/alternative-provision" element={<AlternativeProvision />} />
                       <Route path="/local-variation" element={<LocalVariation />} />
                       <Route path="/devolved-nations" element={<DevolvedNations />} />
-                      <Route path="/my-child-profile" element={<ProtectedRoute><MyChildProfile /></ProtectedRoute>} />
+                      <Route path="/my-child-profile" element={<MyChildProfile />} />
                       <Route path="/reset-password" element={<ResetPassword />} />
 
                       {/* Protected routes */}
-                      <Route path="/" element={<ProtectedRoute><Start /></ProtectedRoute>} />
-                      <Route path="/quick-read" element={<ProtectedRoute><QuickRead /></ProtectedRoute>} />
+                      <Route path="/" element={<Start />} />
+                      <Route path="/quick-read" element={<QuickRead />} />
                       <Route path="/ehcps" element={<EHCPs />} />
-                      <Route path="/post-16-and-transition" element={<ProtectedRoute><Post16AndTransition /></ProtectedRoute>} />
-                      <Route path="/what-to-do-right-now" element={<ProtectedRoute><WhatToDoRightNow /></ProtectedRoute>} />
+                      <Route path="/post-16-and-transition" element={<Post16AndTransition />} />
+                      <Route path="/what-to-do-right-now" element={<WhatToDoRightNow />} />
 
                       {/* State of SEND 2026 — report hub and sections */}
-                      <Route path="/state-of-send-2026" element={<ProtectedRoute><StateOfSend2026 /></ProtectedRoute>} />
-                      <Route path="/state-of-send-2026/where-we-are-now" element={<ProtectedRoute><WhereWeAreNow /></ProtectedRoute>} />
-                      <Route path="/state-of-send-2026/what-is-changing" element={<ProtectedRoute><WhatIsChanging /></ProtectedRoute>} />
-                      <Route path="/state-of-send-2026/what-has-not-changed" element={<ProtectedRoute><WhatHasNotChanged /></ProtectedRoute>} />
-                      <Route path="/state-of-send-2026/what-is-being-discussed" element={<ProtectedRoute><WhatIsBeingDiscussed /></ProtectedRoute>} />
-                      <Route path="/state-of-send-2026/what-we-do-not-know" element={<ProtectedRoute><WhatWeDoNotKnow /></ProtectedRoute>} />
-                      <Route path="/state-of-send-2026/what-the-leaks-are-saying" element={<ProtectedRoute><WhatTheLeaksAreSaying /></ProtectedRoute>} />
-                      <Route path="/state-of-send-2026/what-the-leaks-do-not-mean" element={<ProtectedRoute><WhatTheLeaksDoNotMean /></ProtectedRoute>} />
-                      <Route path="/state-of-send-2026/timeline" element={<ProtectedRoute><Timeline /></ProtectedRoute>} />
+                      <Route path="/state-of-send-2026" element={<StateOfSend2026 />} />
+                      <Route path="/state-of-send-2026/where-we-are-now" element={<WhereWeAreNow />} />
+                      <Route path="/state-of-send-2026/what-is-changing" element={<WhatIsChanging />} />
+                      <Route path="/state-of-send-2026/what-has-not-changed" element={<WhatHasNotChanged />} />
+                      <Route path="/state-of-send-2026/what-is-being-discussed" element={<WhatIsBeingDiscussed />} />
+                      <Route path="/state-of-send-2026/what-we-do-not-know" element={<WhatWeDoNotKnow />} />
+                      <Route path="/state-of-send-2026/what-the-leaks-are-saying" element={<WhatTheLeaksAreSaying />} />
+                      <Route path="/state-of-send-2026/what-the-leaks-do-not-mean" element={<WhatTheLeaksDoNotMean />} />
+                      <Route path="/state-of-send-2026/timeline" element={<Timeline />} />
 
-                      {/* Redirects from old paths */}
-                      <Route path="/where-we-are-now" element={<Navigate to="/state-of-send-2026/where-we-are-now" replace />} />
-                      <Route path="/what-is-changing" element={<Navigate to="/state-of-send-2026/what-is-changing" replace />} />
-                      <Route path="/what-has-not-changed" element={<Navigate to="/state-of-send-2026/what-has-not-changed" replace />} />
-                      <Route path="/what-we-know-so-far" element={<Navigate to="/state-of-send-2026/where-we-are-now" replace />} />
-                      <Route path="/what-is-being-discussed" element={<Navigate to="/state-of-send-2026/what-is-being-discussed" replace />} />
-                      <Route path="/what-we-do-not-know" element={<Navigate to="/state-of-send-2026/what-we-do-not-know" replace />} />
-                      <Route path="/what-the-leaks-are-saying" element={<Navigate to="/state-of-send-2026/what-the-leaks-are-saying" replace />} />
-                      <Route path="/what-the-leaks-do-not-mean" element={<Navigate to="/state-of-send-2026/what-the-leaks-do-not-mean" replace />} />
-                      <Route path="/what-this-could-mean" element={<Navigate to="/state-of-send-2026/what-is-being-discussed" replace />} />
-                      <Route path="/what-happens-next" element={<Navigate to="/state-of-send-2026/timeline" replace />} />
-                      <Route path="/timeline" element={<Navigate to="/state-of-send-2026/timeline" replace />} />
-
-                      <Route path="/questions-and-answers" element={<ProtectedRoute><QuestionsAndAnswers /></ProtectedRoute>} />
-                      <Route path="/community-questions" element={<ProtectedRoute><CommunityQuestions /></ProtectedRoute>} />
-                      <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+                      <Route path="/questions-and-answers" element={<QuestionsAndAnswers />} />
+                      <Route path="/community-questions" element={<CommunityQuestions />} />
+                      <Route path="/admin" element={<Admin />} />
 
                       <Route path="*" element={<NotFound />} />
                     </Routes>
