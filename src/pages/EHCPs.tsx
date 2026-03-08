@@ -349,7 +349,7 @@ export default function EHCPs() {
             When disagreements cannot be resolved, families can appeal to the <strong>First-tier Tribunal (SEND Tribunal)</strong>. You can appeal if the LA refuses to assess, refuses to issue, if you dispute the contents (Sections B, F, or I), or if the LA decides to cease your child's plan.
           </p>
           <p>
-            Before appealing, you must obtain a <strong>mediation certificate</strong> (by contacting a mediation adviser). Mediation itself is voluntary — you can proceed directly to appeal after getting the certificate.
+            Before appealing, you must obtain a <strong>mediation certificate</strong> (by contacting a mediation adviser). Mediation itself is voluntary. You can proceed directly to appeal after getting the certificate.
           </p>
           <p>
             The statistics are striking. In 2023/24, there were <strong>21,000 appeals, up 55% on the previous year</strong>. Parents win approximately 95% of cases, and 5,569 cases were conceded before the hearing. The number of appeals has grown sixfold since EHCPs were introduced in 2014.
