@@ -79,7 +79,7 @@ export default function WhatWeOweOurChildren() {
             <p>They are working inside a system with shrinking budgets, growing caseloads, and not enough of anything. That does not excuse failure when it happens. When the system fails your child, you have every right to challenge it and this site will help you do that.</p>
             <p>But walking in assuming everyone is your adversary makes things harder. For your child, and for you.</p>
             <p><strong>This should never be a battle.</strong></p>
-            <p>Your child is on a long list. Every parent on that list is calling, emailing, sometimes standing outside offices until someone sees them. I know — I was one of them.</p>
+            <p>Your child is on a long list. Every parent on that list is calling, emailing, sometimes standing outside offices until someone sees them. I know. I was one of them.</p>
             <p>The difference between being heard and being managed is usually <strong>preparation</strong>. Not volume. Not aggression. Preparation.</p>
             <p>Be assertive when you need to be. Push back when the system fails. But build relationships where you can. The parent who is known, trusted, and clear gets further than the parent who is feared or avoided.</p>
           </div>
