@@ -21,7 +21,7 @@ export default function HowThisSiteWorks() {
 
       <PageOrientation
         title="How this site works"
-        description="How we research, build, and protect your information — and what Ask Rich can and cannot do."
+        description="How we research, build, and protect your information, and what Ask Rich can and cannot do."
         sectionLabel="Transparency"
         icon={Eye}
         accentColor={ACCENT}
