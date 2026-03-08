@@ -89,7 +89,7 @@ export default function Sources() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" aria-hidden="true" />
             <Input
               type="text"
-              placeholder="Search sources — e.g. 'EHCP', 'tribunal', 'Schools White Paper', 'EEF'…"
+              placeholder="Search sources, e.g. 'EHCP', 'tribunal', 'Schools White Paper', 'EEF'…"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-9 text-sm"
