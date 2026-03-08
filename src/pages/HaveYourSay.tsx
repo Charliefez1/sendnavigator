@@ -145,7 +145,7 @@ export default function HaveYourSay() {
               A consultation that receives tens of thousands of responses from parents describing specific failures gets noticed differently from one that receives a few hundred responses from professional bodies.
             </p>
             <p>
-              The 2022 SEND Green Paper consultation received <strong>over 22,000 responses</strong>. The response from families and disabled people's organisations shaped the subsequent Improvement Plan. It did not stop all harmful proposals — but it shifted some of them.
+              The 2022 SEND Green Paper consultation received <strong>over 22,000 responses</strong>. The response from families and disabled people's organisations shaped the subsequent Improvement Plan. It did not stop all harmful proposals, but it shifted some of them.
             </p>
             <p>
               Over <strong>132,000 people</strong> have already signed the Save Our Children's Rights petition. Over 130 organisations have written to ministers with four red lines. <strong>The momentum is there. Your individual response adds to it.</strong>
