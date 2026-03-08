@@ -106,8 +106,8 @@ const SEND_VOCABULARY: Array<[RegExp, string]> = [
   [/\belementary school\b/gi, "primary school"],
   [/\bmiddle school\b/gi, "secondary school"],
   [/\bhigh school\b/gi, "secondary school"],
+  [/\bschool district\b/gi, "local authority"],
   [/\bschool board\b/gi, "local authority"],
-  [/\baccommodations?\b/gi, "adjustments"],
   [/\breasonable accommodations?\b/gi, "reasonable adjustments"],
 
   // US plan types → UK equivalents
