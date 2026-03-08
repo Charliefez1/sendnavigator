@@ -23,7 +23,7 @@ import { AskEHCP } from "@/components/AskEHCP";
 import { LatestUpdatesStream } from "@/components/templates/LatestUpdatesStream";
 import {
   FileText, BarChart3, Users, ClipboardList, Scale, School,
-  RefreshCw, AlertTriangle, Gavel, Search, PoundSterling, Clock, ShieldCheck, ChevronDown, Shield
+  RefreshCw, AlertTriangle, Gavel, Search, PoundSterling, Clock, ChevronDown, Shield
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
