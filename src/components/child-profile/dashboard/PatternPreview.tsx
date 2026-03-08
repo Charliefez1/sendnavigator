@@ -44,7 +44,7 @@ export function PatternPreview({ analysis, onViewAll }: Props) {
         <CardTitle className="flex items-center gap-2 text-sm font-medium">
           <Lightbulb className="w-4 h-4 text-[hsl(var(--accent-violet))]" />
           Recognised sequences
-          <InfoTip content="These are repeating patterns we have spotted in your answers — things like the 'after school crash' or sensory overload in busy places. Many neurodivergent children share these experiences. Tap 'Explore all patterns' to see the full breakdown." />
+          <InfoTip content="These are repeating patterns we have spotted in your answers, things like the 'after school crash' or sensory overload in busy places. Many neurodivergent children share these experiences. Tap 'Explore all patterns' to see the full breakdown." />
           <Badge variant="secondary" className="text-[10px] ml-auto border-0">{totalItems}</Badge>
         </CardTitle>
       </CardHeader>

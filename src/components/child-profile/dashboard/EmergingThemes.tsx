@@ -199,7 +199,7 @@ export function EmergingThemes({ analysis, onNavigateToSection }: Props) {
         {/* Contradictions */}
         {contradictions.length > 0 && (
           <div className="space-y-2">
-            <SectionHeading tip="This means your child's experience looks different depending on where they are — for example, calm at school but overwhelmed at home, or the other way around. This is not a contradiction — it is useful information that helps explain what is really going on.">Environment sensitivity</SectionHeading>
+            <SectionHeading tip="This means your child's experience looks different depending on where they are, for example calm at school but overwhelmed at home, or the other way around. This is not a contradiction. It is useful information that helps explain what is really going on.">Environment sensitivity</SectionHeading>
             <div className="space-y-2">
               {contradictions.map((c, i) => (
                 <ContradictionCard key={i} flag={c} />
