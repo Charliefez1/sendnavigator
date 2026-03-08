@@ -187,8 +187,8 @@ export default function WhatWeOweOurChildren() {
             <p>PDA describes a profile, most commonly within autism, where everyday demands — including ordinary, low-stakes requests — <strong>trigger extreme anxiety</strong> and a need to avoid or control them.</p>
             <p>The term is debated clinically. The lived experience is not.</p>
             <p>On the surface this looks like refusal, negotiation, distraction, deflection, sudden shutdown or meltdown. To people who do not understand it, it looks like deliberate manipulation or defiance.</p>
-            <p>What is actually happening is simpler. The child's nervous system reads demands as threat. Not minor inconvenience — <strong>threat</strong>. And their whole body responds accordingly before they have any ability to respond calmly.</p>
-            <p>Standard behaviour management strategies — consequences, reward charts, escalating pressure — usually make things significantly worse for a child with a PDA profile. The approaches that help are <strong>low demand, high autonomy, and predictability</strong>. Offering choice rather than instruction. Framing requests as options. Reducing the number of direct demands in a day.</p>
+            <p>What is actually happening is simpler. The child's nervous system reads demands as threat. Not minor inconvenience, but <strong>threat</strong>. And their whole body responds accordingly before they have any ability to respond calmly.</p>
+            <p>Standard behaviour management strategies (consequences, reward charts, escalating pressure) usually make things significantly worse for a child with a PDA profile. The approaches that help are <strong>low demand, high autonomy, and predictability</strong>. Offering choice rather than instruction. Framing requests as options. Reducing the number of direct demands in a day.</p>
             <p>If this sounds like your child, the PDA Society has detailed guidance. Sharing it with the school is a reasonable starting point.</p>
             <div className="pt-1">
               <ResourceLink label="PDA Society — guidance for families and schools" url="https://www.pdasociety.org.uk" />
