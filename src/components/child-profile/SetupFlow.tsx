@@ -3,7 +3,7 @@ import { useChildProfile } from "@/contexts/ChildProfileContext";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface SetupFlowProps {
