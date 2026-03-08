@@ -1,4 +1,4 @@
-import { Bot, ArrowRight } from "lucide-react";
+import { Heart, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export function AITrustNotice() {
