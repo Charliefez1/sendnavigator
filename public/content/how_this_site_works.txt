@@ -1,0 +1,42 @@
+How this site works — Transparency, AI, Data and Security
+
+This page explains how SEND Navigator works, who built it, how we use AI, how we handle your data, and what security measures protect your information.
+
+WHO WE ARE
+SEND Navigator is built by Rich and Charlie Ferriman through Neurodiversity Global Ltd. We are a father-and-son team with lived experience of the SEND system. This is an independent, free resource. We are not affiliated with government, any political party, or any advocacy organisation. We have personally researched and reviewed over 1,000 separate information sources.
+
+HOW WE USE AI
+We have used AI tools to help build this site and conduct research across more than 1,000 sources. Every piece of information published here has been researched and written by Charlie and Rich personally. AI features such as Ask Rich and the child profile report generator draw only from content published on this site. Nothing else. If something is unknown or incomplete, we say so straight.
+
+WHAT ASK RICH CAN DO
+Ask Rich can explain the big picture of SEND reform, help you understand what we know right now, point you to relevant sections of the site, and flag when information is unconfirmed or incomplete.
+
+WHAT ASK RICH CANNOT DO
+Ask Rich cannot comment on individual cases, give legal advice, make clinical recommendations, or predict what the government will do next. It is not a replacement for professional support.
+
+HOW ASK RICH WORKS
+1. You ask a question about SEND reform, EHCPs, or your rights.
+2. AI searches the knowledge base of content published on this site.
+3. You receive an answer grounded in our research, not from the open internet.
+4. Uncertainty is flagged when the answer touches unconfirmed or incomplete information.
+
+HOW WE LABEL INFORMATION
+All information is categorised as Confirmed (official policy formally announced by government), Being Discussed (proposals under consideration or consultation), or Unconfirmed (leaked or speculative, may never happen). We never blur these categories.
+
+HOW WE HANDLE YOUR DATA
+We collect anonymous analytics (page views, device type, referrer — no cookies, no personal data), contact form submissions, feedback, questions to Ask Rich (text only), child profile answers, and authentication details if you create an account.
+
+DATA RETENTION
+Child profiles are automatically deleted after 14 days. Analytics are retained for up to 12 months. Contact submissions and feedback are retained until resolved.
+
+DATA PROCESSING
+The site is hosted on secure cloud infrastructure. AI features use models that do not train on your data. Your data is not sold, shared, or monetised.
+
+CHILD PROFILE DATA
+The This is me profile builder requires explicit consent before any data is stored. You enter information about your child, which stays in your browser until you save. Saved data is encrypted in transit and at rest. AI generates a report using only the information you provided. You receive an 8-character access code not linked to your name. Profiles are automatically deleted after 14 days. GDPR lawful basis is consent.
+
+SECURITY MEASURES
+All data encrypted in transit (HTTPS/TLS) and at rest. Row Level Security policies on every database table. Admin access protected by PIN with rate limiting. CORS origin validation on backend functions. Honeypot and timing-based spam protection on forms. Passwords checked against breach databases. No advertising or data sales.
+
+HOW TO CHALLENGE US
+If you believe we have something wrong, use the feedback form or contact Rich on LinkedIn. We correct errors transparently with dates noted.

@@ -57,6 +57,7 @@ const EHCPHealth = lazy(() => import("./pages/EHCPHealth"));
 const AlternativeProvision = lazy(() => import("./pages/AlternativeProvision"));
 const LocalVariation = lazy(() => import("./pages/LocalVariation"));
 const DevolvedNations = lazy(() => import("./pages/DevolvedNations"));
+const HowThisSiteWorks = lazy(() => import("./pages/HowThisSiteWorks"));
 const MyChildProfile = lazy(() => import("./pages/MyChildProfile"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -124,6 +125,7 @@ const App = () => (
                       <Route path="/alternative-provision" element={<AlternativeProvision />} />
                       <Route path="/local-variation" element={<LocalVariation />} />
                       <Route path="/devolved-nations" element={<DevolvedNations />} />
+                      <Route path="/how-this-site-works" element={<HowThisSiteWorks />} />
                       <Route path="/my-child-profile" element={<MyChildProfile />} />
                       <Route path="/reset-password" element={<ResetPassword />} />
 

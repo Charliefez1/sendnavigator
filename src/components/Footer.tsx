@@ -104,6 +104,7 @@ export function Footer() {
               {[
                 { to: "/about", label: "About this resource" },
                 { to: "/how-to-use", label: "How to use this site" },
+                { to: "/how-this-site-works", label: "How this site works" },
                 { to: "/why-i-built-this", label: "Why I built this" },
                 { to: "/rich-ferriman", label: "Rich Ferriman" },
                 { to: "/richs-take", label: "Rich's Take" },
