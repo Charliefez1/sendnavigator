@@ -175,7 +175,7 @@ export function EmergingThemes({ analysis, onNavigateToSection }: Props) {
         {/* Pattern cards (formerly Theme cards) */}
         {themes.length > 0 && (
           <div className="space-y-2">
-            <SectionHeading tip="Each card below represents a theme that has come up more than once across your answers. The coloured dot shows how much evidence supports it — grey means early signs, amber means growing, and teal means well-supported.">Pattern details</SectionHeading>
+            <SectionHeading tip="Each card below represents a theme that has come up more than once across your answers. The coloured dot shows how much evidence supports it: grey means early signs, amber means growing, and teal means well-supported.">Pattern details</SectionHeading>
             <div className="grid gap-3 sm:grid-cols-2">
               {themes.map((t) => (
                 <ThemeCard key={t.theme} theme={t} onNavigateToSection={onNavigateToSection} />
