@@ -275,7 +275,7 @@ export default function EHCPs() {
               "You have at least 15 days to comment on a draft EHCP",
               "You can request a specific school to be named in Section I",
               "You can appeal any refusal to assess, refusal to issue, plan contents, or ceasing of the plan",
-              "The LA must deliver every provision specified in Section F — it is legally binding",
+              "The LA must deliver every provision specified in Section F. It is legally binding",
               "You can request an emergency review if circumstances change significantly",
               "Your child must be admitted to any school named in the final EHCP",
               "You can request a personal budget to arrange some services yourself",
