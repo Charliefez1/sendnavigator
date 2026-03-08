@@ -11,7 +11,7 @@ import { ExperienceModeProvider } from "@/contexts/ExperienceModeContext";
 import { PageSectionsProvider } from "@/contexts/PageSectionsContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ExperienceSelector } from "@/components/ExperienceSelector";
-import { ProtectedRoute } from "@/components/ProtectedRoute";
+
 import { CopyStandardsEnforcer } from "@/components/CopyStandardsEnforcer";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
