@@ -145,7 +145,7 @@ export default function HowThisSiteWorks() {
       </ContentBox>
 
       {/* F — Child profile data */}
-      <ContentBox icon={Baby} title="Child profile ("This is me") — your data, step by step" accentColor={ACCENT}>
+      <ContentBox icon={Baby} title='Child profile ("This is me") — your data, step by step' accentColor={ACCENT}>
         <ol className="list-decimal pl-5 space-y-2">
           <li><strong>Consent</strong> — before anything is stored, you must read and accept our data notice. Nothing is saved until you do.</li>
           <li><strong>You enter information</strong> — you answer questions about your child. This stays in your browser until you choose to save.</li>
