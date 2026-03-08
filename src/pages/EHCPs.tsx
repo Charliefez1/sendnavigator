@@ -331,7 +331,7 @@ export default function EHCPs() {
             <li><strong>Delays at every stage:</strong> Only half of plans are issued within 20 weeks. Some children wait over a year. Statutory timeframes are routinely missed.</li>
             <li><strong>Vague provision:</strong> Many EHCPs lack specific, quantified provision. Phrases like "access to" or "as needed" make support unenforceable.</li>
             <li><strong>Missing health and social care:</strong> Sections C, D, G, H are often blank. The system remains education-dominated despite being designed as multi-agency.</li>
-            <li><strong>Private reports excluded:</strong> Some LAs refuse to consider independently obtained assessments, which is unlawful — any relevant evidence must inform the plan.</li>
+            <li><strong>Private reports excluded:</strong> Some LAs refuse to consider independently obtained assessments, which is unlawful. Any relevant evidence must inform the plan.</li>
             <li><strong>Poor communication:</strong> High staff turnover, unanswered messages, and lack of updates are commonly reported by families.</li>
             <li><strong>Resource-driven decisions:</strong> Financial pressures lead some LAs to ration support based on budget rather than need, which the law does not permit.</li>
             <li><strong>Children out of school:</strong> Thousands of children with EHCPs are recorded as "awaiting provision." If your child has an EHCP but no school place, the LA must arrange suitable education.</li>
