@@ -105,7 +105,7 @@ const SEND_VOCABULARY: Array<[RegExp, string]> = [
   [/\bgrade school\b/gi, "primary school"],
   [/\belementary school\b/gi, "primary school"],
   [/\bmiddle school\b/gi, "secondary school"],
-  [/\bschool district\b/gi, "local authority"],
+  [/\bhigh school\b/gi, "secondary school"],
   [/\bschool board\b/gi, "local authority"],
   [/\baccommodations?\b/gi, "adjustments"],
   [/\breasonable accommodations?\b/gi, "reasonable adjustments"],
