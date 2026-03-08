@@ -206,7 +206,7 @@ export default function EHCPs() {
       </ContentBox>
 
       {/* ── What an EHCP contains ── */}
-      <ContentBox id="sections" icon={FileText} title="What an EHCP contains" tooltip="Sections A through K explained — what each part of the plan does">
+      <ContentBox id="sections" icon={FileText} title="What an EHCP contains" tooltip="Sections A through K explained: what each part of the plan does">
         <div className="space-y-3">
           <p>
             An EHCP is a comprehensive document with <strong>prescribed sections labelled A through K</strong>. Each section serves a specific legal purpose:
