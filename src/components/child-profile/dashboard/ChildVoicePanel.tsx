@@ -26,7 +26,7 @@ export function ChildVoicePanel({ state, onNavigateToSection }: Props) {
           <div>
             <p className="text-sm font-semibold text-foreground">{childName}'s voice brings "This is me" to life</p>
             <p className="text-xs text-muted-foreground mt-0.5">
-              Look for the "child voice" questions in each section — even one answer changes how a school reads "This is me".
+              Look for the "child voice" questions in each section. Even one answer changes how a school reads "This is me".
             </p>
           </div>
         </CardContent>

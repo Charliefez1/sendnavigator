@@ -108,7 +108,7 @@ export default function EHCPs() {
 
 
       {/* ── What is an EHCP ── */}
-      <ContentBox id="what-is-ehcp" icon={FileText} title="What is an EHCP" tooltip="Education, Health and Care Plan — the legal document that guarantees your child's support">
+      <ContentBox id="what-is-ehcp" icon={FileText} title="What is an EHCP" tooltip="Education, Health and Care Plan: the legal document that guarantees your child's support">
         <div className="space-y-3">
           <p>
             An Education, Health and Care Plan (EHCP) is a statutory document introduced by the <strong>Children and Families Act 2014</strong>, replacing the older Statement of SEN system. It is the only legal mechanism in England that guarantees coordinated, funded support across education, health, and social care for a child or young person with significant special educational needs.
@@ -206,7 +206,7 @@ export default function EHCPs() {
       </ContentBox>
 
       {/* ── What an EHCP contains ── */}
-      <ContentBox id="sections" icon={FileText} title="What an EHCP contains" tooltip="Sections A through K explained — what each part of the plan does">
+      <ContentBox id="sections" icon={FileText} title="What an EHCP contains" tooltip="Sections A through K explained: what each part of the plan does">
         <div className="space-y-3">
           <p>
             An EHCP is a comprehensive document with <strong>prescribed sections labelled A through K</strong>. Each section serves a specific legal purpose:
@@ -275,7 +275,7 @@ export default function EHCPs() {
               "You have at least 15 days to comment on a draft EHCP",
               "You can request a specific school to be named in Section I",
               "You can appeal any refusal to assess, refusal to issue, plan contents, or ceasing of the plan",
-              "The LA must deliver every provision specified in Section F — it is legally binding",
+              "The LA must deliver every provision specified in Section F. It is legally binding",
               "You can request an emergency review if circumstances change significantly",
               "Your child must be admitted to any school named in the final EHCP",
               "You can request a personal budget to arrange some services yourself",
@@ -327,11 +327,11 @@ export default function EHCPs() {
             The EHCP system faces significant pressures. Understanding where things commonly go wrong helps you <strong>prepare and respond effectively</strong>.
           </p>
           <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-            <li><strong>Threshold disputes:</strong> LAs frequently refuse initial assessments. About 24% of requests are refused, yet 95% of those assessed get a plan — suggesting many refusals are inappropriate.</li>
+            <li><strong>Threshold disputes:</strong> LAs frequently refuse initial assessments. About 24% of requests are refused, yet 95% of those assessed get a plan, suggesting many refusals are inappropriate.</li>
             <li><strong>Delays at every stage:</strong> Only half of plans are issued within 20 weeks. Some children wait over a year. Statutory timeframes are routinely missed.</li>
             <li><strong>Vague provision:</strong> Many EHCPs lack specific, quantified provision. Phrases like "access to" or "as needed" make support unenforceable.</li>
             <li><strong>Missing health and social care:</strong> Sections C, D, G, H are often blank. The system remains education-dominated despite being designed as multi-agency.</li>
-            <li><strong>Private reports excluded:</strong> Some LAs refuse to consider independently obtained assessments, which is unlawful — any relevant evidence must inform the plan.</li>
+            <li><strong>Private reports excluded:</strong> Some LAs refuse to consider independently obtained assessments, which is unlawful. Any relevant evidence must inform the plan.</li>
             <li><strong>Poor communication:</strong> High staff turnover, unanswered messages, and lack of updates are commonly reported by families.</li>
             <li><strong>Resource-driven decisions:</strong> Financial pressures lead some LAs to ration support based on budget rather than need, which the law does not permit.</li>
             <li><strong>Children out of school:</strong> Thousands of children with EHCPs are recorded as "awaiting provision." If your child has an EHCP but no school place, the LA must arrange suitable education.</li>
@@ -349,16 +349,16 @@ export default function EHCPs() {
             When disagreements cannot be resolved, families can appeal to the <strong>First-tier Tribunal (SEND Tribunal)</strong>. You can appeal if the LA refuses to assess, refuses to issue, if you dispute the contents (Sections B, F, or I), or if the LA decides to cease your child's plan.
           </p>
           <p>
-            Before appealing, you must obtain a <strong>mediation certificate</strong> (by contacting a mediation adviser). Mediation itself is voluntary — you can proceed directly to appeal after getting the certificate.
+            Before appealing, you must obtain a <strong>mediation certificate</strong> (by contacting a mediation adviser). Mediation itself is voluntary. You can proceed directly to appeal after getting the certificate.
           </p>
           <p>
             The statistics are striking. In 2023/24, there were <strong>21,000 appeals, up 55% on the previous year</strong>. Parents win approximately 95% of cases, and 5,569 cases were conceded before the hearing. The number of appeals has grown sixfold since EHCPs were introduced in 2014.
           </p>
           <p>
-            LAs spent an estimated <strong>£153 million in 2023-24 on defending SEND appeals</strong>, and cumulatively over £580 million since 2014. Many LAs settle or concede before the hearing — about a third of appeals are resolved without a full hearing, usually because the LA agrees to what was sought.
+            LAs spent an estimated <strong>£153 million in 2023-24 on defending SEND appeals</strong>, and cumulatively over £580 million since 2014. Many LAs settle or concede before the hearing. About a third of appeals are resolved without a full hearing, usually because the LA agrees to what was sought.
           </p>
           <p>
-            Since 2018, the tribunal can also make <strong>recommendations about health and social care</strong> aspects of EHCPs. These are not legally binding but are expected to be followed. The tribunal process, while stressful, is <strong>relatively parent-friendly</strong> — most parents self-represent and still prevail overwhelmingly.
+            Since 2018, the tribunal can also make <strong>recommendations about health and social care</strong> aspects of EHCPs. These are not legally binding but are expected to be followed. The tribunal process, while stressful, is <strong>relatively parent-friendly</strong>. Most parents self-represent and still prevail overwhelmingly.
           </p>
         </div>
       </ContentBox>

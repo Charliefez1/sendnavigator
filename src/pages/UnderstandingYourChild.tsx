@@ -20,7 +20,7 @@ export default function UnderstandingYourChild() {
         icon={Heart}
         sectionLabel="Understanding Your Child"
         title="Understanding Your Child"
-        description="You do not need a diagnosis to start understanding your child. A diagnosis can open doors — but understanding what is happening right now is both possible and useful, regardless of where you are in that process."
+        description="You do not need a diagnosis to start understanding your child. A diagnosis can open doors, but understanding what is happening right now is both possible and useful, regardless of where you are in that process."
         accentColor="hsl(330 60% 52%)"
       />
 

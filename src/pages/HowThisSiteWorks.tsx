@@ -15,13 +15,13 @@ export default function HowThisSiteWorks() {
   return (
     <Layout>
       <SEOHead
-        title="How this site works — SEND Navigator"
-        description="How we research, build, and protect your information — and what Ask Rich can and cannot do."
+        title="How this site works | SEND Navigator"
+        description="How we research, build, and protect your information, and what Ask Rich can and cannot do."
       />
 
       <PageOrientation
         title="How this site works"
-        description="How we research, build, and protect your information — and what Ask Rich can and cannot do."
+        description="How we research, build, and protect your information, and what Ask Rich can and cannot do."
         sectionLabel="Transparency"
         icon={Eye}
         accentColor={ACCENT}
@@ -47,7 +47,7 @@ export default function HowThisSiteWorks() {
       <ContentBox icon={Bot} title="How we use AI" accentColor={ACCENT}>
         <p>
           We have used AI tools to help us build this site and to assist in conducting our
-          research across more than 1,000 sources. AI helps us work faster — but every piece
+          research across more than 1,000 sources. AI helps us work faster, but every piece
           of information published here has been <strong>researched and written by Charlie
           and Rich personally</strong>.
         </p>
@@ -87,10 +87,10 @@ export default function HowThisSiteWorks() {
           <div>
             <h3 className="font-semibold text-foreground mb-2">How it works, step by step</h3>
             <ol className="list-decimal pl-5 space-y-2">
-              <li><strong>You ask a question</strong> — type anything about SEND reform, EHCPs, or your rights.</li>
-              <li><strong>AI searches our knowledge base</strong> — it looks through the content we have published on this site.</li>
-              <li><strong>You receive an answer grounded in our research</strong> — every response is drawn from what we have written, not from the open internet.</li>
-              <li><strong>Uncertainty is flagged</strong> — if the answer touches something unconfirmed or incomplete, we tell you.</li>
+              <li><strong>You ask a question.</strong> Type anything about SEND reform, EHCPs, or your rights.</li>
+              <li><strong>AI searches our knowledge base.</strong> It looks through the content we have published on this site.</li>
+              <li><strong>You receive an answer grounded in our research.</strong> Every response is drawn from what we have written, not from the open internet.</li>
+              <li><strong>Uncertainty is flagged.</strong> If the answer touches something unconfirmed or incomplete, we tell you.</li>
             </ol>
           </div>
         </div>
@@ -110,12 +110,12 @@ export default function HowThisSiteWorks() {
           <div>
             <h3 className="font-semibold text-foreground mb-1">What we collect</h3>
             <ul className="list-disc pl-5 space-y-1">
-              <li><strong>Analytics</strong> — anonymous page views, device type, and referrer. No cookies are used for tracking. No personal data is captured.</li>
-              <li><strong>Contact form</strong> — your name, email, and message when you choose to contact us.</li>
-              <li><strong>Feedback</strong> — any feedback you submit through the site.</li>
-              <li><strong>Questions</strong> — questions submitted to Ask Rich (text only, no personal identifiers).</li>
-              <li><strong>Child profile</strong> — answers you provide when building a "This is me" profile (see below).</li>
-              <li><strong>Authentication</strong> — email and password if you create an account.</li>
+              <li><strong>Analytics:</strong> anonymous page views, device type, and referrer. No cookies are used for tracking. No personal data is captured.</li>
+              <li><strong>Contact form:</strong> your name, email, and message when you choose to contact us.</li>
+              <li><strong>Feedback:</strong> any feedback you submit through the site.</li>
+              <li><strong>Questions:</strong> questions submitted to Ask Rich (text only, no personal identifiers).</li>
+              <li><strong>Child profile:</strong> answers you provide when building a "This is me" profile (see below).</li>
+              <li><strong>Authentication:</strong> email and password if you create an account.</li>
             </ul>
           </div>
           <div>
@@ -145,14 +145,14 @@ export default function HowThisSiteWorks() {
       </ContentBox>
 
       {/* F — Child profile data */}
-      <ContentBox icon={Baby} title='Child profile ("This is me") — your data, step by step' accentColor={ACCENT}>
+      <ContentBox icon={Baby} title='Child profile ("This is me"): your data, step by step' accentColor={ACCENT}>
         <ol className="list-decimal pl-5 space-y-2">
-          <li><strong>Consent</strong> — before anything is stored, you must read and accept our data notice. Nothing is saved until you do.</li>
-          <li><strong>You enter information</strong> — you answer questions about your child. This stays in your browser until you choose to save.</li>
-          <li><strong>Data is stored securely</strong> — when you save, your answers are encrypted in transit and at rest in our database.</li>
-          <li><strong>AI generates a report</strong> — a profile document is created using only the information you provided, matched against our published content.</li>
-          <li><strong>Access code</strong> — you receive a unique 8-character code to retrieve your profile. We do not link this to your name in analytics.</li>
-          <li><strong>Automatic deletion</strong> — your profile is automatically deleted after <strong>14 days</strong>. You can also delete it manually at any time.</li>
+          <li><strong>Consent.</strong> Before anything is stored, you must read and accept our data notice. Nothing is saved until you do.</li>
+          <li><strong>You enter information.</strong> You answer questions about your child. This stays in your browser until you choose to save.</li>
+          <li><strong>Data is stored securely.</strong> When you save, your answers are encrypted in transit and at rest in our database.</li>
+          <li><strong>AI generates a report.</strong> A profile document is created using only the information you provided, matched against our published content.</li>
+          <li><strong>Access code.</strong> You receive a unique 8-character code to retrieve your profile. We do not link this to your name in analytics.</li>
+          <li><strong>Automatic deletion.</strong> Your profile is automatically deleted after <strong>14 days</strong>. You can also delete it manually at any time.</li>
         </ol>
         <p className="mt-3">
           <strong>GDPR lawful basis:</strong> consent. You choose to provide this data, and you
@@ -163,13 +163,13 @@ export default function HowThisSiteWorks() {
       {/* G — Security */}
       <ContentBox icon={ShieldCheck} title="Security measures" accentColor={ACCENT}>
         <ul className="list-disc pl-5 space-y-2">
-          <li><strong>Encryption</strong> — all data is encrypted in transit (HTTPS/TLS) and at rest in the database.</li>
-          <li><strong>Row Level Security</strong> — every database table has access policies that prevent unauthorised reads or writes.</li>
-          <li><strong>Admin access</strong> — protected by PIN code with per-IP rate limiting (5 attempts per 10 minutes). No default codes.</li>
-          <li><strong>CORS validation</strong> — backend functions only accept requests from our verified domains.</li>
-          <li><strong>Spam protection</strong> — all public forms include honeypot fields and timing-based checks to block automated submissions.</li>
-          <li><strong>Password security</strong> — passwords are checked against known breach databases (Have I Been Pwned) during signup.</li>
-          <li><strong>No advertising or data sales</strong> — we do not sell, share, or monetise your data in any way. There are no advertisers on this site.</li>
+          <li><strong>Encryption:</strong> all data is encrypted in transit (HTTPS/TLS) and at rest in the database.</li>
+          <li><strong>Row Level Security:</strong> every database table has access policies that prevent unauthorised reads or writes.</li>
+          <li><strong>Admin access:</strong> protected by PIN code with per-IP rate limiting (5 attempts per 10 minutes). No default codes.</li>
+          <li><strong>CORS validation:</strong> backend functions only accept requests from our verified domains.</li>
+          <li><strong>Spam protection:</strong> all public forms include honeypot fields and timing-based checks to block automated submissions.</li>
+          <li><strong>Password security:</strong> passwords are checked against known breach databases (Have I Been Pwned) during signup.</li>
+          <li><strong>No advertising or data sales:</strong> we do not sell, share, or monetise your data in any way. There are no advertisers on this site.</li>
         </ul>
       </ContentBox>
 

@@ -44,7 +44,7 @@ export function PatternPreview({ analysis, onViewAll }: Props) {
         <CardTitle className="flex items-center gap-2 text-sm font-medium">
           <Lightbulb className="w-4 h-4 text-[hsl(var(--accent-violet))]" />
           Recognised sequences
-          <InfoTip content="These are repeating patterns we have spotted in your answers — things like the 'after school crash' or sensory overload in busy places. Many neurodivergent children share these experiences. Tap 'Explore all patterns' to see the full breakdown." />
+          <InfoTip content="These are repeating patterns we have spotted in your answers, things like the 'after school crash' or sensory overload in busy places. Many neurodivergent children share these experiences. Tap 'Explore all patterns' to see the full breakdown." />
           <Badge variant="secondary" className="text-[10px] ml-auto border-0">{totalItems}</Badge>
         </CardTitle>
       </CardHeader>
@@ -75,7 +75,7 @@ export function PatternPreview({ analysis, onViewAll }: Props) {
         {contradictions.slice(0, 1).map((c, i) => (
           <div key={i} className="flex items-center gap-2 text-xs rounded-lg p-2 border-l-4 border-l-[hsl(var(--accent-coral))] bg-[hsl(var(--accent-coral-bg))]">
             <AlertTriangle className="w-3.5 h-3.5 text-[hsl(var(--accent-coral))] shrink-0" />
-            <span className="text-foreground">Environment sensitivity — {c.domain}</span>
+            <span className="text-foreground">Environment sensitivity: {c.domain}</span>
           </div>
         ))}
 

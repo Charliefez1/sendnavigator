@@ -50,7 +50,7 @@ function ThemeCard({
 
       {/* Mechanisms */}
       {theme.mechanisms.length > 0 && (
-        <ChipRow label="What's driving this" tip="These are the underlying reasons we think this pattern is happening — like sensory processing or how the nervous system responds to stress. Understanding the 'why' helps you explain your child's needs to school.">
+        <ChipRow label="What's driving this" tip="These are the underlying reasons we think this pattern is happening, such as sensory processing or how the nervous system responds to stress. Understanding the 'why' helps you explain your child's needs to school.">
           {theme.mechanisms.map((m) => (
             <Chip key={m.mechanism} variant="warm">
               {m.mechanism} ({m.signalCount})
@@ -129,7 +129,7 @@ function ContradictionCard({ flag }: { flag: ContradictionFlag }) {
       </div>
       <div className="min-w-0">
         <p className="text-xs font-semibold text-foreground">
-          Environment sensitivity — {flag.domain}
+          Environment sensitivity: {flag.domain}
         </p>
         <p className="text-[11px] text-muted-foreground mt-0.5 leading-relaxed">
           {flag.message}
@@ -158,7 +158,7 @@ export function EmergingThemes({ analysis, onNavigateToSection }: Props) {
             <Lightbulb className="w-4 h-4 text-[hsl(var(--accent-violet))]" />
           </div>
           Emerging patterns
-          <InfoTip content="As you answer questions, we look for repeating themes across what you share. These are not diagnoses — they are patterns that can help you describe your child's experience to school, a SENCO, or in an EHCP assessment." />
+          <InfoTip content="As you answer questions, we look for repeating themes across what you share. These are not diagnoses. They are patterns that can help you describe your child's experience to school, a SENCO, or in an EHCP assessment." />
         </CardTitle>
         <p className="text-xs text-muted-foreground">
           Structured patterns detected across what you have shared so far
@@ -175,7 +175,7 @@ export function EmergingThemes({ analysis, onNavigateToSection }: Props) {
         {/* Pattern cards (formerly Theme cards) */}
         {themes.length > 0 && (
           <div className="space-y-2">
-            <SectionHeading tip="Each card below represents a theme that has come up more than once across your answers. The coloured dot shows how much evidence supports it — grey means early signs, amber means growing, and teal means well-supported.">Pattern details</SectionHeading>
+            <SectionHeading tip="Each card below represents a theme that has come up more than once across your answers. The coloured dot shows how much evidence supports it: grey means early signs, amber means growing, and teal means well-supported.">Pattern details</SectionHeading>
             <div className="grid gap-3 sm:grid-cols-2">
               {themes.map((t) => (
                 <ThemeCard key={t.theme} theme={t} onNavigateToSection={onNavigateToSection} />
@@ -187,7 +187,7 @@ export function EmergingThemes({ analysis, onNavigateToSection }: Props) {
         {/* Recognised sequences (formerly Detected patterns) */}
         {patterns.length > 0 && (
           <div className="space-y-2">
-            <SectionHeading tip="These are well-known patterns that many neurodivergent children experience — like the 'after school crash' where a child holds everything together at school and falls apart at home. We have matched what you described to these recognised experiences.">Recognised sequences</SectionHeading>
+            <SectionHeading tip="These are well-known patterns that many neurodivergent children experience, such as the 'after school crash' where a child holds everything together at school and falls apart at home. We have matched what you described to these recognised experiences.">Recognised sequences</SectionHeading>
             <div className="space-y-2">
               {patterns.map((p) => (
                 <SequenceCard key={p.pattern.id} detected={p} />
@@ -199,7 +199,7 @@ export function EmergingThemes({ analysis, onNavigateToSection }: Props) {
         {/* Contradictions */}
         {contradictions.length > 0 && (
           <div className="space-y-2">
-            <SectionHeading tip="This means your child's experience looks different depending on where they are — for example, calm at school but overwhelmed at home, or the other way around. This is not a contradiction — it is useful information that helps explain what is really going on.">Environment sensitivity</SectionHeading>
+            <SectionHeading tip="This means your child's experience looks different depending on where they are, for example calm at school but overwhelmed at home, or the other way around. This is not a contradiction. It is useful information that helps explain what is really going on.">Environment sensitivity</SectionHeading>
             <div className="space-y-2">
               {contradictions.map((c, i) => (
                 <ContradictionCard key={i} flag={c} />
