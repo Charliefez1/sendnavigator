@@ -176,7 +176,7 @@ export default function HaveYourSay() {
               },
               {
                 title: "Use evidence where you have it",
-                body: "Dates, letters, decisions. If you have documentary evidence of a failure — a missed deadline, a provision not delivered, a refusal without grounds — reference it. You do not need to attach the documents. You need to describe them clearly.",
+                body: "Dates, letters, decisions. If you have documentary evidence of a failure (a missed deadline, a provision not delivered, a refusal without grounds) reference it. You do not need to attach the documents. You need to describe them clearly.",
               },
               {
                 title: "Keep it readable",

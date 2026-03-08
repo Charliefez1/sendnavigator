@@ -29,7 +29,7 @@ export default function UnderstandingADHD() {
         icon={Zap}
         sectionLabel="Understanding Your Child"
         title="ADHD"
-        description="ADHD is a difference in how the brain manages attention, motivation, impulse control, and emotional regulation. It is a lifelong neurological profile — not caused by bad parenting, too much screen time, or lack of effort."
+        description="ADHD is a difference in how the brain manages attention, motivation, impulse control, and emotional regulation. It is a lifelong neurological profile, not caused by bad parenting, too much screen time, or lack of effort."
         accentColor="hsl(330 60% 52%)"
       />
 

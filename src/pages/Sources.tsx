@@ -155,7 +155,7 @@ export default function Sources() {
       {isSearching && filteredGroups.length === 0 && (
         <section className="content-section py-8">
           <p className="text-sm text-muted-foreground">
-            No sources found for "<strong>{searchQuery}</strong>". Try a different term — for example "tribunal", "EHCP", or "White Paper".
+            No sources found for "<strong>{searchQuery}</strong>". Try a different term, for example "tribunal", "EHCP", or "White Paper".
           </p>
         </section>
       )}

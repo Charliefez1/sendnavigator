@@ -26,7 +26,7 @@ const Landing = () => {
     <div className="relative min-h-screen flex flex-col">
       <SEOHead
         title="Neurodiversity Global SEND Navigator | Independent SEND reform guide for parents"
-        description="Free independent guide helping parents understand SEND reform in England. EHCPs, the Schools White Paper, Individual Support Plans — explained clearly by a SEND parent."
+        description="Free independent guide helping parents understand SEND reform in England. EHCPs, the Schools White Paper, and Individual Support Plans, explained clearly by a SEND parent."
         path="/landing"
         jsonLd={{
           "@context": "https://schema.org",

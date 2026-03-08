@@ -190,7 +190,7 @@ const Index = () => {
               <div className="relative w-full flex justify-center">
                 <img
                   src={creatorsDuo}
-                  alt="Charlie and Rich — the team behind SEND Navigator"
+                  alt="Charlie and Rich, the team behind SEND Navigator"
                   className="w-full h-auto"
                 />
                 {/* Bottom fade */}

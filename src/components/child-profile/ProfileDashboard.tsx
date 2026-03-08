@@ -216,7 +216,7 @@ function EpisodeDebugDialog({ open, onOpenChange, signals }: EpisodeDebugDialogP
       <DialogContent className="max-w-2xl max-h-[80vh] flex flex-col">
         <DialogHeader>
           <DialogTitle className="text-sm flex items-center gap-2"><Activity className="w-4 h-4" /> Episode Signal Debug</DialogTitle>
-          <DialogDescription className="text-xs">Signals grouped by episode phase — developer view only.</DialogDescription>
+          <DialogDescription className="text-xs">Signals grouped by episode phase. Developer view only.</DialogDescription>
         </DialogHeader>
         <div className="flex-1 overflow-auto space-y-4">
           <div className="text-xs bg-muted p-2 rounded-md border border-border space-y-1">

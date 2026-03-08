@@ -224,7 +224,7 @@ export default function WhatWeOweOurChildren() {
             <p>Protecting sleep. Adjusting screen use. Building routines that provide predictability without rigidity.</p>
             <p><strong>These are not small things. They are the foundation everything else sits on.</strong></p>
             <div className="pt-2">
-              <ResourceLink label="Are We Bad Parents? — An Open Letter" url="https://awbp.neuro.support/" note="written by Rich Ferriman" />
+              <ResourceLink label="Are We Bad Parents? An Open Letter" url="https://awbp.neuro.support/" note="written by Rich Ferriman" />
             </div>
           </div>
         </div>
