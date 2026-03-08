@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useChildProfile } from "@/contexts/ChildProfileContext";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface SetupFlowProps {
@@ -41,6 +42,7 @@ const REASON_OPTIONS = [
 ];
 
 export function SetupFlow({ onComplete }: SetupFlowProps) {
+  const navigate = useNavigate();
   const { state, updateSetup } = useChildProfile();
   const [step, setStep] = useState(0);
 
@@ -162,6 +164,11 @@ export function SetupFlow({ onComplete }: SetupFlowProps) {
       )}
 
       <div className="mt-8 flex items-center gap-3">
+        <Button variant="ghost" size="sm" onClick={() => navigate("/")} className="gap-1.5 text-muted-foreground">
+          <Home className="w-4 h-4" />
+          Home
+        </Button>
+        <div className="flex-1" />
         {step > 0 && (
           <Button variant="outline" onClick={() => setStep(step - 1)}>
             Back
