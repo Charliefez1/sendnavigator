@@ -130,7 +130,7 @@ const App = () => (
                       {/* Protected routes */}
                       <Route path="/" element={<ProtectedRoute><Start /></ProtectedRoute>} />
                       <Route path="/quick-read" element={<ProtectedRoute><QuickRead /></ProtectedRoute>} />
-                      <Route path="/ehcps" element={<ProtectedRoute><EHCPs /></ProtectedRoute>} />
+                      <Route path="/ehcps" element={<EHCPs />} />
                       <Route path="/post-16-and-transition" element={<ProtectedRoute><Post16AndTransition /></ProtectedRoute>} />
                       <Route path="/what-to-do-right-now" element={<ProtectedRoute><WhatToDoRightNow /></ProtectedRoute>} />
 
