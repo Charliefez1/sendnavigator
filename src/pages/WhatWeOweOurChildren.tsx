@@ -168,7 +168,7 @@ export default function WhatWeOweOurChildren() {
           <SectionHeading>Understanding your child's profile</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed max-w-2xl">
             <p>A diagnosis tells you something. It rarely tells you everything.</p>
-            <p>The profiles below are not boxes to squeeze your child into. They are tools — patterns that appear again and again in neurodivergent children, that can help you <strong>understand what your child is experiencing and describe it clearly</strong> to the people trying to support them.</p>
+            <p>The profiles below are not boxes to squeeze your child into. They are tools, patterns that appear again and again in neurodivergent children, that can help you <strong>understand what your child is experiencing and describe it clearly</strong> to the people trying to support them.</p>
             <p>Use what helps. Leave the rest.</p>
           </div>
         </div>
