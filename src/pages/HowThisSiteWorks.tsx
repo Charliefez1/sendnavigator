@@ -15,8 +15,8 @@ export default function HowThisSiteWorks() {
   return (
     <Layout>
       <SEOHead
-        title="How this site works — SEND Navigator"
-        description="How we research, build, and protect your information — and what Ask Rich can and cannot do."
+        title="How this site works | SEND Navigator"
+        description="How we research, build, and protect your information, and what Ask Rich can and cannot do."
       />
 
       <PageOrientation
