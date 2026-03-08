@@ -259,7 +259,7 @@ export default function EHCPHealth() {
         <div className="rounded-2xl border border-border/50 border-l-4 border-l-[hsl(220_70%_45%)] bg-card p-6 shadow-card">
           <SectionHeading id="extended-appeals">Extended appeals: taking health provision to tribunal</SectionHeading>
           <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
-            <p>If you appeal to the SEND Tribunal over your child's EHC plan, you can — and in many cases should — <strong>include an extended appeal covering Sections C and G</strong>.</p>
+            <p>If you appeal to the SEND Tribunal over your child's EHC plan, you can, and in many cases should, <strong>include an extended appeal covering Sections C and G</strong>.</p>
             <p>An extended appeal allows the Tribunal to consider health and social care provision, not just educational provision. This is <strong>relatively underused by families</strong> but can be the most effective route where health provision has not been delivered or where Section G is inadequate.</p>
             <p>If you are considering an appeal and health provision is an issue, <strong>raise this with IPSEA or your legal representative at the earliest stage</strong>.</p>
           </div>

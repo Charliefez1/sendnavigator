@@ -358,7 +358,7 @@ export default function EHCPs() {
             LAs spent an estimated <strong>£153 million in 2023-24 on defending SEND appeals</strong>, and cumulatively over £580 million since 2014. Many LAs settle or concede before the hearing. About a third of appeals are resolved without a full hearing, usually because the LA agrees to what was sought.
           </p>
           <p>
-            Since 2018, the tribunal can also make <strong>recommendations about health and social care</strong> aspects of EHCPs. These are not legally binding but are expected to be followed. The tribunal process, while stressful, is <strong>relatively parent-friendly</strong> — most parents self-represent and still prevail overwhelmingly.
+            Since 2018, the tribunal can also make <strong>recommendations about health and social care</strong> aspects of EHCPs. These are not legally binding but are expected to be followed. The tribunal process, while stressful, is <strong>relatively parent-friendly</strong>. Most parents self-represent and still prevail overwhelmingly.
           </p>
         </div>
       </ContentBox>
