@@ -327,7 +327,7 @@ export default function EHCPs() {
             The EHCP system faces significant pressures. Understanding where things commonly go wrong helps you <strong>prepare and respond effectively</strong>.
           </p>
           <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-            <li><strong>Threshold disputes:</strong> LAs frequently refuse initial assessments. About 24% of requests are refused, yet 95% of those assessed get a plan — suggesting many refusals are inappropriate.</li>
+            <li><strong>Threshold disputes:</strong> LAs frequently refuse initial assessments. About 24% of requests are refused, yet 95% of those assessed get a plan, suggesting many refusals are inappropriate.</li>
             <li><strong>Delays at every stage:</strong> Only half of plans are issued within 20 weeks. Some children wait over a year. Statutory timeframes are routinely missed.</li>
             <li><strong>Vague provision:</strong> Many EHCPs lack specific, quantified provision. Phrases like "access to" or "as needed" make support unenforceable.</li>
             <li><strong>Missing health and social care:</strong> Sections C, D, G, H are often blank. The system remains education-dominated despite being designed as multi-agency.</li>
