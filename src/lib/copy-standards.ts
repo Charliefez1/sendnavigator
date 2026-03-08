@@ -128,8 +128,7 @@ const SEND_VOCABULARY: Array<[RegExp, string]> = [
   [/\bphysical therapist\b/gi, "physiotherapist"],
   [/\bphysical therapy\b/gi, "physiotherapy"],
 
-  // Standalone "paediatrician" → "community paediatrician"
-  [/\bpaediatrician\b(?!\s+services)(?!\s+team)/gi, "community paediatrician"],
+  // Standalone "paediatrician" kept unchanged here to avoid recursive observer rewrites
 
   // US role terms
   [/\bschool psychologist\b/gi, "educational psychologist"],
