@@ -43,8 +43,8 @@ export default function WhatWeOweOurChildren() {
   return (
     <Layout>
       <SEOHead
-        title="What We Owe Our Children — Reality Bites"
-        description="An honest look at what parents can do for their neurodivergent children — regardless of what the system does next. Direct, practical, uncomfortable."
+        title="What We Owe Our Children | Reality Bites"
+        description="An honest look at what parents can do for their neurodivergent children, regardless of what the system does next. Direct, practical, uncomfortable."
         path="/what-we-owe-our-children"
       />
 
