@@ -227,7 +227,7 @@ export default function HaveYourSay() {
             <h3 className="text-sm font-display font-bold text-foreground">Contact your MP</h3>
             <div className="text-sm text-muted-foreground leading-relaxed space-y-3">
               <p>
-                Your MP can raise SEND issues in Parliament — in debates, in written questions, and in letters to ministers. MPs are most useful when they have <strong>concrete, local evidence</strong>.
+                Your MP can raise SEND issues in Parliament, in debates, in written questions, and in letters to ministers. MPs are most useful when they have <strong>concrete, local evidence</strong>.
               </p>
               <p>
                 When you write, include the specific issue you are raising, what you have already tried, and <strong>what you want the MP to do</strong>. A clear ask — "will you raise this with the Minister?" — is more likely to get a useful response than a general expression of concern.
