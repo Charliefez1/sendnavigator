@@ -89,7 +89,7 @@ const App = () => (
                 <Sonner />
                 <BrowserRouter>
                   <ScrollToTop />
-                  <CopyStandardsEnforcer />
+                  
                   <ExperienceSelector />
                   <PageViewTracker />
                   <Suspense fallback={<LoadingFallback />}>

@@ -177,7 +177,9 @@ export function normaliseCopyToUkEnglish(input: string): string {
 
   return output
     .replace(/\s{2,}/g, " ")
-    .replace(/\s+([,.;:!?])/g, "$1");
+    .replace(/\s+([,.;:!?])/g, "$1")
+    .replace(/\b(and disabilities)(?:\s+and disabilities)+\b/gi, "$1")
+    .replace(/\bcommunity(?:\s+community)+\s+paediatrician\b/gi, "community paediatrician");
 }
 
 function normaliseUnknownValue(value: unknown): unknown {
