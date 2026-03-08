@@ -175,7 +175,7 @@ export default function WhatWeOweOurChildren() {
 
         <div className="space-y-4">
           <ProfileSection title="Rejection Sensitive Dysphoria (RSD)">
-            <p>RSD is not a formal diagnosis. It is a pattern — intense, often overwhelming emotional pain triggered by real or perceived rejection, criticism, or failure. It appears frequently in ADHD and autism, and it is widely recognised by clinicians and researchers even without a diagnostic category of its own.</p>
+            <p>RSD is not a formal diagnosis. It is a pattern: intense, often overwhelming emotional pain triggered by real or perceived rejection, criticism, or failure. It appears frequently in ADHD and autism, and it is widely recognised by clinicians and researchers even without a diagnostic category of its own.</p>
             <p>By the age of ten, a neurodivergent child has typically received around <strong>20,000 more negative comments</strong> than their neurotypical peers. Every correction. Every sigh. Every red pen. Every moment of being told to sit down, slow down, stop, try harder, pay attention, behave.</p>
             <p>Those comments land as meaning. To the child they translate as: you are wrong, you have failed, you are the problem.</p>
             <p>RSD grows in that soil. It is not fragility. It is a nervous system that has spent years braced for criticism, building a <strong>hair-trigger response to anything that feels like rejection</strong>.</p>
