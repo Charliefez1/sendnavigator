@@ -107,7 +107,7 @@ export default function WhatWeOweOurChildren() {
             <p>Date. Situation. What happened. What came before it. How your child described it. How they recovered.</p>
             <p>Words work. So do photos where relevant, video where your child is comfortable with it, drawings from younger children, your child's own account in their own words.</p>
             <p>Over time a pattern becomes visible. A pattern is evidence. <strong>Evidence is what moves things forward</strong> in reviews, assessments, and meetings.</p>
-            <p>When you can say "here are twelve documented incidents over six weeks, all during unstructured transition times, all involving the same trigger" — that changes the conversation.</p>
+            <p>When you can say "here are twelve documented incidents over six weeks, all during unstructured transition times, all involving the same trigger", that changes the conversation.</p>
           </div>
         </div>
       </section>
