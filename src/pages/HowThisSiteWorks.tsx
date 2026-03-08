@@ -145,14 +145,14 @@ export default function HowThisSiteWorks() {
       </ContentBox>
 
       {/* F — Child profile data */}
-      <ContentBox icon={Baby} title='Child profile ("This is me") — your data, step by step' accentColor={ACCENT}>
+      <ContentBox icon={Baby} title='Child profile ("This is me"): your data, step by step' accentColor={ACCENT}>
         <ol className="list-decimal pl-5 space-y-2">
-          <li><strong>Consent</strong> — before anything is stored, you must read and accept our data notice. Nothing is saved until you do.</li>
-          <li><strong>You enter information</strong> — you answer questions about your child. This stays in your browser until you choose to save.</li>
-          <li><strong>Data is stored securely</strong> — when you save, your answers are encrypted in transit and at rest in our database.</li>
-          <li><strong>AI generates a report</strong> — a profile document is created using only the information you provided, matched against our published content.</li>
-          <li><strong>Access code</strong> — you receive a unique 8-character code to retrieve your profile. We do not link this to your name in analytics.</li>
-          <li><strong>Automatic deletion</strong> — your profile is automatically deleted after <strong>14 days</strong>. You can also delete it manually at any time.</li>
+          <li><strong>Consent.</strong> Before anything is stored, you must read and accept our data notice. Nothing is saved until you do.</li>
+          <li><strong>You enter information.</strong> You answer questions about your child. This stays in your browser until you choose to save.</li>
+          <li><strong>Data is stored securely.</strong> When you save, your answers are encrypted in transit and at rest in our database.</li>
+          <li><strong>AI generates a report.</strong> A profile document is created using only the information you provided, matched against our published content.</li>
+          <li><strong>Access code.</strong> You receive a unique 8-character code to retrieve your profile. We do not link this to your name in analytics.</li>
+          <li><strong>Automatic deletion.</strong> Your profile is automatically deleted after <strong>14 days</strong>. You can also delete it manually at any time.</li>
         </ol>
         <p className="mt-3">
           <strong>GDPR lawful basis:</strong> consent. You choose to provide this data, and you
