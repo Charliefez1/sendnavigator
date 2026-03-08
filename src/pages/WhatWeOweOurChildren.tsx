@@ -51,7 +51,7 @@ export default function WhatWeOweOurChildren() {
       <PageOrientation icon={FileText}
         sectionLabel="Reality Bites"
         title="What We Owe Our Children"
-        description="This is the first in a series called Reality Bites. These pieces tell you what we owe our children — regardless of what the system does next."
+        description="This is the first in a series called Reality Bites. These pieces tell you what we owe our children, regardless of what the system does next."
         accentColor="hsl(262 60% 55%)"
         showSearch={false}
       />
