@@ -171,7 +171,7 @@ export function OpeningScreen({ onStart, onRestore, onLoadTestData }: OpeningScr
             <strong className="text-foreground">This is not a diagnosis tool.</strong> It does not assess, screen, or identify any condition. It is a structured way for you to describe your child in your own words, so that the people around them can understand them better.
           </p>
           <p>
-            <strong className="text-foreground">This is not a legal document.</strong> It does not replace an EHCP, a medical report, or a professional assessment. It is a companion to those things — something you can bring into a meeting to make sure your child is seen as a whole person, not just a set of needs on a form.
+            <strong className="text-foreground">This is not a legal document.</strong> It does not replace an EHCP, a medical report, or a professional assessment. It is a companion to those things, something you can bring into a meeting to make sure your child is seen as a whole person, not just a set of needs on a form.
           </p>
           <p>
             <strong className="text-foreground">This is a guide only.</strong> The tool uses AI to help organise and present what you share. It draws on a large evidence base, but every child is different. Use what feels right, skip what does not, and always trust your own knowledge of your child above anything generated here.

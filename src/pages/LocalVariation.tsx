@@ -255,7 +255,7 @@ export default function LocalVariation() {
               ))}
             </div>
             <p className="mt-3">The government's decision to <strong>centralise high needs funding from 2028/29</strong> is a structural change that may reduce the extent to which financial variation drives variation in provision.</p>
-            <p>None of these changes are yet in force. The Schools White Paper — Every Child Achieving and Thriving — was <strong>published on 23 February 2026</strong> and sets out the legislative framework.</p>
+            <p>None of these changes are yet in force. The Schools White Paper, Every Child Achieving and Thriving, was <strong>published on 23 February 2026</strong> and sets out the legislative framework.</p>
             <Link to="/state-of-send-2026" className="inline-flex items-center gap-2 text-primary hover:underline font-medium text-sm mt-2">
               → Track reform progress <ArrowRight className="w-3 h-3" />
             </Link>

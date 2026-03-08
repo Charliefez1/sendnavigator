@@ -75,7 +75,7 @@ export function PatternPreview({ analysis, onViewAll }: Props) {
         {contradictions.slice(0, 1).map((c, i) => (
           <div key={i} className="flex items-center gap-2 text-xs rounded-lg p-2 border-l-4 border-l-[hsl(var(--accent-coral))] bg-[hsl(var(--accent-coral-bg))]">
             <AlertTriangle className="w-3.5 h-3.5 text-[hsl(var(--accent-coral))] shrink-0" />
-            <span className="text-foreground">Environment sensitivity — {c.domain}</span>
+            <span className="text-foreground">Environment sensitivity: {c.domain}</span>
           </div>
         ))}
 

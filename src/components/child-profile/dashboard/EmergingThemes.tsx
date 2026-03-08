@@ -187,7 +187,7 @@ export function EmergingThemes({ analysis, onNavigateToSection }: Props) {
         {/* Recognised sequences (formerly Detected patterns) */}
         {patterns.length > 0 && (
           <div className="space-y-2">
-            <SectionHeading tip="These are well-known patterns that many neurodivergent children experience — like the 'after school crash' where a child holds everything together at school and falls apart at home. We have matched what you described to these recognised experiences.">Recognised sequences</SectionHeading>
+            <SectionHeading tip="These are well-known patterns that many neurodivergent children experience, such as the 'after school crash' where a child holds everything together at school and falls apart at home. We have matched what you described to these recognised experiences.">Recognised sequences</SectionHeading>
             <div className="space-y-2">
               {patterns.map((p) => (
                 <SequenceCard key={p.pattern.id} detected={p} />

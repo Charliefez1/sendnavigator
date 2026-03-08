@@ -163,13 +163,13 @@ export default function HowThisSiteWorks() {
       {/* G — Security */}
       <ContentBox icon={ShieldCheck} title="Security measures" accentColor={ACCENT}>
         <ul className="list-disc pl-5 space-y-2">
-          <li><strong>Encryption</strong> — all data is encrypted in transit (HTTPS/TLS) and at rest in the database.</li>
-          <li><strong>Row Level Security</strong> — every database table has access policies that prevent unauthorised reads or writes.</li>
-          <li><strong>Admin access</strong> — protected by PIN code with per-IP rate limiting (5 attempts per 10 minutes). No default codes.</li>
-          <li><strong>CORS validation</strong> — backend functions only accept requests from our verified domains.</li>
-          <li><strong>Spam protection</strong> — all public forms include honeypot fields and timing-based checks to block automated submissions.</li>
-          <li><strong>Password security</strong> — passwords are checked against known breach databases (Have I Been Pwned) during signup.</li>
-          <li><strong>No advertising or data sales</strong> — we do not sell, share, or monetise your data in any way. There are no advertisers on this site.</li>
+          <li><strong>Encryption:</strong> all data is encrypted in transit (HTTPS/TLS) and at rest in the database.</li>
+          <li><strong>Row Level Security:</strong> every database table has access policies that prevent unauthorised reads or writes.</li>
+          <li><strong>Admin access:</strong> protected by PIN code with per-IP rate limiting (5 attempts per 10 minutes). No default codes.</li>
+          <li><strong>CORS validation:</strong> backend functions only accept requests from our verified domains.</li>
+          <li><strong>Spam protection:</strong> all public forms include honeypot fields and timing-based checks to block automated submissions.</li>
+          <li><strong>Password security:</strong> passwords are checked against known breach databases (Have I Been Pwned) during signup.</li>
+          <li><strong>No advertising or data sales:</strong> we do not sell, share, or monetise your data in any way. There are no advertisers on this site.</li>
         </ul>
       </ContentBox>
 
