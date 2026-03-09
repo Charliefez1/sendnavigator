@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
-import { Sun, Moon, Type, Heart, Zap, ExternalLink } from "lucide-react";
+import { Sun, Moon, Type, Heart, Zap, ExternalLink, Volume2, ScanLine } from "lucide-react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import { usePageSections } from "@/contexts/PageSectionsContext";
+import { useExperienceMode } from "@/contexts/ExperienceModeContext";
 
 export function ExperienceSelector() {
   const { sections } = usePageSections();
   const { theme, setTheme } = useTheme();
+  const { mode, setMode } = useExperienceMode();
   const navigate = useNavigate();
   const location = useLocation();
   const [largeText, setLargeText] = useState(false);
