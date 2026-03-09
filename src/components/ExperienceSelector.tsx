@@ -50,7 +50,7 @@ export function ExperienceSelector() {
             </div>
           )}
 
-          {/* Quick Read */}
+          {/* Mode buttons */}
           <div className="flex items-center gap-0.5 shrink-0">
             <button
               onClick={() => navigate("/quick-read")}
@@ -65,6 +65,34 @@ export function ExperienceSelector() {
             >
               <Zap className="w-3 h-3" />
               <span className="hidden sm:inline">Quick Read</span>
+            </button>
+            <button
+              onClick={() => setMode(mode === "listen" ? "read" : "listen")}
+              className={cn(
+                "flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-medium transition-colors",
+                mode === "listen"
+                  ? "bg-white/20 text-white"
+                  : "text-white/50 hover:text-white hover:bg-white/10"
+              )}
+              aria-pressed={mode === "listen"}
+              aria-label="Listen mode: adds audio buttons to sections"
+            >
+              <Volume2 className="w-3 h-3" />
+              <span className="hidden sm:inline">Listen</span>
+            </button>
+            <button
+              onClick={() => setMode(mode === "scan" ? "read" : "scan")}
+              className={cn(
+                "flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-medium transition-colors",
+                mode === "scan"
+                  ? "bg-white/20 text-white"
+                  : "text-white/50 hover:text-white hover:bg-white/10"
+              )}
+              aria-pressed={mode === "scan"}
+              aria-label="Scan mode: shows headings and summaries only"
+            >
+              <ScanLine className="w-3 h-3" />
+              <span className="hidden sm:inline">Scan</span>
             </button>
             <div className="w-px h-4 bg-white/10 mx-1.5" />
           </div>
