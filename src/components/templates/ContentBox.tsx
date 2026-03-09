@@ -1,6 +1,8 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef } from "react";
 import { LucideIcon, Info } from "lucide-react";
 import { usePageAccent } from "@/contexts/PageAccentContext";
+import { useExperienceMode } from "@/contexts/ExperienceModeContext";
+import { SectionAudio } from "@/components/SectionAudio";
 import { cn } from "@/lib/utils";
 import {
   Tooltip,
