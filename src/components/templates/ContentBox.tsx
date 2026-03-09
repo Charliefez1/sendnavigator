@@ -1,6 +1,8 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef } from "react";
 import { LucideIcon, Info } from "lucide-react";
 import { usePageAccent } from "@/contexts/PageAccentContext";
+import { useExperienceMode } from "@/contexts/ExperienceModeContext";
+import { SectionAudio } from "@/components/SectionAudio";
 import { cn } from "@/lib/utils";
 import {
   Tooltip,
@@ -27,6 +29,11 @@ interface ContentBoxProps {
 export function ContentBox({ id, icon: Icon, title, children, accentColor: accentColorProp, tooltip }: ContentBoxProps) {
   const pageAccent = usePageAccent();
   const accentColor = accentColorProp || pageAccent;
+  const { mode } = useExperienceMode();
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const isScan = mode === "scan";
+  const isListen = mode === "listen";
 
   return (
     <section id={id} className="content-section scroll-mt-24 py-2">
@@ -65,9 +72,26 @@ export function ContentBox({ id, icon: Icon, title, children, accentColor: accen
             </TooltipProvider>
           )}
         </div>
-        <div className="prose-calm text-sm text-muted-foreground leading-relaxed mt-2">
+        {isListen && (
+          <div className="mb-3">
+            <SectionAudio
+              sectionText={contentRef.current?.textContent || title}
+              label={`Listen: ${title}`}
+            />
+          </div>
+        )}
+        <div
+          ref={contentRef}
+          className={cn(
+            "prose-calm text-sm text-muted-foreground leading-relaxed mt-2",
+            isScan && "line-clamp-3"
+          )}
+        >
           {children}
         </div>
+        {isScan && (
+          <p className="text-xs text-muted-foreground/50 mt-2 italic">Switch off Scan mode to read the full section.</p>
+        )}
       </div>
     </section>
   );
