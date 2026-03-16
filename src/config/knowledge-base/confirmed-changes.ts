@@ -1,6 +1,6 @@
 /**
  * Confirmed Changes — SEND Reform Navigator
- * Last updated: 25th February 2026
+ * Last updated: 16th March 2026
  */
 
 export const confirmedChanges = {
@@ -22,8 +22,9 @@ CONSULTATION — URGENT FOR PARENTS:
 - Parents can respond online via the Citizen Space portal on the DfE consultation page
 - Parents can respond by email to send.reform@education.gov.uk
 - Parents can respond by post to: SEND Reform Consultation Team, Department for Education, Sanctuary Buildings, Great Smith Street, London, SW1P 3BT
-- You do not need to answer every question — partial responses carry weight
+- You do not need to answer every question: partial responses carry weight
 - Nothing in the white paper changes existing law until the consultation closes and legislation passes Parliament
+- A legal challenge argues the consultation is unlawful for failing to ask about two major proposed changes (4 March 2026)
 
 The five core principles of the white paper:
 - Early: support at the first sign of need
@@ -64,9 +65,9 @@ EHCP trajectory numbers:
 
 Refreshed SEND Code of Practice:
 - Proposes new areas of development: executive function, motor and physical, sensory, speech language and communication, and social and emotional
-- Executive function is named as a specific policy area — it determines what statutory provision a child receives
+- Executive function is named as a specific policy area: it determines what statutory provision a child receives
 - Specialist provision packages include: profound and learning difficulties, significant executive function, complex executive function and communication, social and emotional development, sensory impairment, and physical disability
-- ADHD is being reclassified out of SEMH (Social, Emotional and Mental Health) — this is a meaningful shift in how the system categorises and responds to ADHD children
+- ADHD is being reclassified out of SEMH (Social, Emotional and Mental Health): this is a meaningful shift in how the system categorises and responds to ADHD children
 
 Early years specific provisions:
 - Early years settings will receive a share of the Inclusive Mainstream Fund
@@ -93,6 +94,15 @@ School choice changes:
 - Families will be asked to express a preference from that list
 - The local authority will have greater control over the final decision
 - This is a direct change to an existing right
+- IPSEA warns the Tribunal's power to name a specific school may be removed (BBC, 9 March 2026)
+
+Post-White Paper developments (March 2026):
+- A legal challenge (judicial review pre-action) has been launched against the consultation (4 March 2026)
+- IPSEA warned reforms would "strip away" legal protections (BBC, 9 March 2026)
+- Plans to remove tribunal rights for assessment refusal were scrapped at the 11th hour (The Times, 11 March 2026)
+- National demonstrations are being planned by the Save Our Children's Rights coalition
+- Commons debate on SEND Provision: Local Authorities held on 3 March 2026
+- Legal aid cuts have been highlighted as a barrier to accessing retained rights (SNJ, 12 March 2026)
 
 Operational direction to local areas (reported by Schools Week, 05 February 2026):
 - Councils and Integrated Care Boards have been instructed to begin drafting local SEND reform plans now

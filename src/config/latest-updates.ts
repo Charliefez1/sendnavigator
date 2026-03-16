@@ -28,6 +28,36 @@ export interface UpdateEntry {
 
 export const latestUpdates: UpdateEntry[] = [
   {
+    date: "16 March 2026",
+    headline: "SNJ publishes accountability analysis: 'a system that marks its own homework'",
+    body: "Special Needs Jungle publishes a detailed analysis of the accountability gap in the proposed SEND reform system. The piece argues that without independent oversight of ISP decisions, the system effectively allows the bodies responsible for delivering support to also judge whether that support is adequate. This echoes IPSEA's concerns about ISPs lacking enforceable provision and independent challenge routes.",
+  },
+  {
+    date: "12 March 2026",
+    headline: "SNJ warns legal aid cuts undermine 'rights on paper' promised by reforms",
+    body: "Special Needs Jungle highlights how recent legal aid cuts risk making the rights retained in the reformed system unenforceable in practice. If families cannot access legal representation, the right to appeal to the SEND Tribunal becomes theoretical rather than real. This is particularly relevant for families on low incomes who cannot afford private legal advice.",
+  },
+  {
+    date: "11 March 2026",
+    headline: "Plans to remove tribunal rights for assessment refusal scrapped at the last minute",
+    body: "The Times reports that ministers abandoned proposals at the 11th hour that would have removed the right to appeal to the SEND Tribunal when families are denied an EHC needs assessment. This would have affected thousands of families each year. The proposals were scrapped before the consultation document was finalised. Parents retain the right to appeal assessment refusal decisions to the Tribunal.",
+  },
+  {
+    date: "9 March 2026",
+    headline: "IPSEA warns reforms will 'strip away' children's legal protections",
+    body: "The Independent Provider of Special Education Advice (IPSEA) has warned that the proposed reforms would weaken individual rights to support. Key concerns: ISPs lack enforceable duties to deliver provision (a plan without enforceable provision is not protection), Tribunal power to name specific schools may be removed, and Specialist Provision Packages would mean support depends on which band a child qualifies for rather than individual needs. Over 95% of the 25,000 tribunal cases in 2024/25 were won by parents.",
+  },
+  {
+    date: "4 March 2026",
+    headline: "Legal challenge launched against SEND consultation",
+    body: "The family of a child with complex SEND has instructed lawyers (Rook Irwin Sweeney) to send a formal pre-action letter to the Secretary of State, arguing the consultation is unlawful. Two key issues: (1) the proposed weakening of SEND Tribunal powers to name schools in Section I of EHCPs, and (2) the shift in legal duties from local authorities to schools. The consultation contains no questions on either of these major changes. Barrister Steve Broach KC is providing pro bono support. A response was requested by 13 March 2026.",
+  },
+  {
+    date: "3 March 2026",
+    headline: "Commons debate on SEND Provision and Local Authorities",
+    body: "An adjournment debate was held in the House of Commons on SEND Provision: Local Authorities, led by Chris Coghlan MP (Liberal Democrat, Dorking and Horley). The debate welcomed aspects of the reforms while raising concerns about local authority capacity and the transition timeline. This is in addition to the Westminster Hall petition debate on children's rights.",
+  },
+  {
     date: "23 February 2026",
     headline: "Schools White Paper published: Every Child Achieving and Thriving",
     body: "The government published its Schools White Paper today alongside a 12-week SEND consultation, proposing the most significant reform since the Children and Families Act 2014. A new four-tier support system, Individual Support Plans, £4bn in new funding, and a significant narrowing of who qualifies for an EHCP. Nothing in this white paper changes any parent's legal rights today. The consultation runs until 18 May 2026.",

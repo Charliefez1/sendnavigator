@@ -28,7 +28,7 @@ import { whatWorksWhatDoesnt } from "./what-works-what-doesnt";
 import { lifeOutcomesAndModels } from "./life-outcomes-and-models";
 
 export const KNOWLEDGE_BASE = {
-  lastUpdated: "2nd March 2026",
+  lastUpdated: "16th March 2026",
   
   currentLegalPosition,
   confirmedChanges,

@@ -1,34 +1,45 @@
 Title: Statistics and data
 Route: /statistics-and-data
 Description: Key SEND statistics for England, using the most recent official data available.
-Last updated: 1st March 2026
+Last updated: 16th March 2026
 Status: Confirmed
 Key topics: Statistics, Data, Funding, Tribunals
-Key numbers: 638,700 EHCPs, 25,000 appeals, £9.4bn funding
+Key numbers: 638,745 EHCPs, 97,747 new plans, 25,000 appeals, £9.4bn funding
 Key sources: DfE Statistics, Ministry of Justice
 
 ---
 
 Statistics and data
 
-Key SEND statistics for England as of 07 February 2026.
+Key SEND statistics for England as of 16 March 2026.
 
 Summary facts
 - SEND demand continues to rise (1.7m+ pupils).
-- EHCPs increased by over 10% in one year.
-- Fewer than half of new EHCPs completed within 20 weeks.
-- Tribunal activity remains high (25,000 appeals).
+- 638,745 active EHC plans as at January 2025.
+- 97,747 new EHC plans started during 2024, a 15.8% increase on 2023.
+- 154,489 requests for EHC needs assessment during 2024, an 11.8% increase.
+- Fewer than half of new EHCPs completed within 20 weeks (46.4%).
+- Tribunal activity at record levels: 25,000 appeals in 2024/25, over 95% won by parents.
 - SEND spending increased, but funding gaps remain.
 
 Confirmed position
-- 638,700 Active EHC plans (Jan 2025)
-- 10.8% Annual increase
-- 46% Issued within 20 weeks (2024)
+- 638,745 Active EHC plans (Jan 2025)
+- 10.8% Annual increase in active plans
+- 97,747 New EHC plans started (2024)
+- 15.8% Increase in new plans year-on-year
+- 154,489 Assessment requests received (2024)
+- 105,340 Assessments carried out (2024)
+- 46.4% Issued within 20 weeks (2024), down from 50.3% (2023)
 - 25,000 Appeals registered (2024/25)
+- Over 95% Tribunal cases won by parents
+- 639,000 Total young people (0-25) with EHCPs
 
 Funding
 - High needs funding: £9.4bn (2024/25) vs £5.3bn (2014/15)
 - Local authorities spent £950m additional on top of allocation.
+- Councils hold an estimated £6bn in high needs deficits.
 
 Projected figures
 - Annual DSG deficit projected to exceed £6bn in 2028/29.
+- EHCP rate projected to rise to 7.7% by 2029, then fall to 4.7% by 2034-35.
+- Around 1 in 8 children currently on EHCPs projected to transition to ISPs between 2030 and 2035.
