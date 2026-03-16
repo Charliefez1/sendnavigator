@@ -1,7 +1,7 @@
 Title: About this resource
 Route: /about
 Description: Independence, governance, scope, and accountability of SEND Reform Navigator.
-Last updated: 1st March 2026
+Last updated: 16th March 2026
 Status: Confirmed
 Key topics: Governance, Independence, Authorship
 Key numbers: n/a

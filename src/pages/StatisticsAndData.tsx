@@ -112,7 +112,7 @@ export default function StatisticsAndData() {
       {/* Introduction */}
       <section className="content-section py-8">
         <p className="text-muted-foreground leading-relaxed max-w-3xl">
-          This page brings together the key SEND statistics for England, using the most recent official data available as of 07 February 2026. It shows how many children and young people are receiving support, how the system is performing against legal timescales, how often disputes reach tribunal, and how funding is changing. The figures are presented to give a clear picture of the current scale and pressures in the system, and to distinguish between what is happening now and what has been projected for the future.
+          This page brings together the key SEND statistics for England, using the most recent official data available as of 16 March 2026. It shows how many children and young people are receiving support, how the system is performing against legal timescales, how often disputes reach tribunal, and how funding is changing. The figures are presented to give a clear picture of the current scale and pressures in the system, and to distinguish between what is happening now and what has been projected for the future.
         </p>
       </section>
 
@@ -131,7 +131,7 @@ export default function StatisticsAndData() {
 
       {/* Confirmed position */}
       <section id="confirmed-position" className="content-section py-8 border-t border-border scroll-mt-20">
-        <h2 className="text-lg font-display font-semibold text-foreground mb-6">Confirmed position as of 23 February 2026</h2>
+        <h2 className="text-lg font-display font-semibold text-foreground mb-6">Confirmed position as of 16 March 2026</h2>
 
         <div className="space-y-8">
           {/* Legal framework */}
@@ -146,7 +146,7 @@ export default function StatisticsAndData() {
           <div>
             <h3 className="text-lg font-display font-medium text-foreground mb-3">Children and young people with SEND</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
-              <StatCard value="638,700" label="Active EHC plans" sublabel="January 2025" icon={Users} accentColor="confirmed" />
+              <StatCard value="638,745" label="Active EHC plans" sublabel="January 2025" icon={Users} accentColor="confirmed" />
               <StatCard value="10.8%" label="Annual increase" sublabel="From 576,500 in 2024" icon={TrendingUp} accentColor="discussed" />
               <StatCard value="1.7m+" label="Total pupils with SEN" sublabel="2024/25 academic year" icon={Users} accentColor="confirmed" />
             </div>

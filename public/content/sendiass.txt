@@ -1,7 +1,7 @@
 Title: Free Help in Your Area - SENDIASS
 Route: /sendiass
 Description: Every local authority in England is legally required to fund a free, impartial Information, Advice and Support Service for families with SEND children and young people.
-Last updated: 1st March 2026
+Last updated: 16th March 2026
 Status: Confirmed
 Key topics: SENDIASS, Independent advice, Support
 Key numbers: n/a

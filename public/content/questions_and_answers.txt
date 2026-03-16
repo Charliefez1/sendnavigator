@@ -1,7 +1,7 @@
 Title: Ask Rich - SEND Reform Q&A
 Route: /questions-and-answers
 Description: Ask Rich a question about SEND reform and get a grounded, plain English answer based on confirmed information.
-Last updated: 1st March 2026
+Last updated: 16th March 2026
 Status: Confirmed
 Key topics: Q&A, Advice
 Key numbers: n/a

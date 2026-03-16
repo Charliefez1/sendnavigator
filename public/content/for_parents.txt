@@ -1,7 +1,7 @@
 Title: You Are Carrying a Lot
 Route: /for-parents
 Description: An honest acknowledgement of what parenting a neurodivergent child through a broken system actually costs. Practical support, carer rights, and where to find people who understand.
-Last updated: 1st March 2026
+Last updated: 16th March 2026
 Status: Confirmed
 Key topics: Mental health, Burnout, Carer rights, Support
 Key numbers: n/a

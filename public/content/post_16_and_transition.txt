@@ -1,7 +1,7 @@
 Title: Young People Aged 16 to 25
 Route: /post-16-and-transition
 Description: EHCP rights beyond school age. What changes at 16, 18, and 19, transition planning, and what to do if the LA tries to end the plan.
-Last updated: 1st March 2026
+Last updated: 16th March 2026
 Status: Confirmed
 Key topics: Post-16, Transition, EHCP ceasing, Care Act
 Key numbers: Age 16, 18, 19, 25 milestones
