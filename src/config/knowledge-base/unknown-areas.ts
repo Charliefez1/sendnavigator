@@ -1,6 +1,6 @@
 /**
  * Unknown Areas — SEND Reform Navigator
- * Last updated: 25th February 2026
+ * Last updated: 16th March 2026
  */
 
 export const unknownAreas = {
@@ -23,6 +23,16 @@ What is changing:
 - Whether ISPs follow a child into home education or online schooling, or whether leaving mainstream means losing statutory protection entirely
 - Whether the new system will address the culturally biased identification patterns that currently exist
 
+Legal and rights outcomes (updated March 2026):
+- The outcome of the legal challenge to the consultation (Rook Irwin Sweeney, pre-action letter sent 4 March 2026)
+- Whether the consultation will be amended to include questions on Tribunal powers and the duty shift from LAs to schools
+- Whether the consultation period will be extended as a result of the legal challenge
+- The government's final position on Tribunal powers to name specific schools in Section I of EHCPs
+- Whether the scrapped proposal to remove assessment appeal rights will resurface in draft legislation
+- How the government will respond to IPSEA's concerns about ISP enforceability
+- Whether the DfE's stated position that parents will "never be left without a route to challenge" will be reflected in legislation
+- The impact of planned national demonstrations on the consultation outcome
+
 Identification quality:
 - The white paper assumes that once a child is identified as having SEND, appropriate support follows
 - The gap between a nominal specialist and a genuinely experienced one is enormous
@@ -40,18 +50,20 @@ Online and alternative education:
 
 Timeline:
 - Specialist Provision Package thresholds (not yet defined)
-- Exact consultation duration and responses
+- Exact consultation responses received and government response to them
 - Content of draft legislation
 - Implementation dates beyond September 2030 commitment
 - Criteria by which managed placements will be decided
 - Whether tribunal rights extend to placement decisions under the new system
 
 Key unresolved questions:
-- Will the three tier model change the legal test for EHC needs assessment (Section 36)?
+- Will the four-level model change the legal test for EHC needs assessment (Section 36)?
 - Will there be mandated reassessment triggers at transition points?
 - Will funding mechanism changes be tied to tier progression?
-- Will appeal rights or tribunal routes be altered?
+- Will appeal rights or tribunal routes be altered in the final legislation?
 - Will the managed placement model have an independent challenge route?
+- Will ISPs carry any enforceable duty to deliver the provision they describe?
+- How will accountability for ISP quality work in practice if the system marks its own homework?
 
 We do not speculate on these matters. When information becomes available through official sources, this resource will be updated.
   `.trim(),
