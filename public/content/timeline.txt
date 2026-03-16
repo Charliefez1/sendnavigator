@@ -1,7 +1,7 @@
 Title: What happens next
 Route: /timeline
 Description: Key milestones, consultation windows, and decision points. Grounded and date-stamped.
-Last updated: 1st March 2026
+Last updated: 16th March 2026
 Status: Discussed
 Key topics: Milestones, White Paper, Consultation, Implementation
 Key numbers: n/a

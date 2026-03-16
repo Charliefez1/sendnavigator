@@ -1,7 +1,7 @@
 Title: About Neurodiversity Global
 Route: /neurodiversity-global
 Description: The organisation behind SEND Reform Navigator.
-Last updated: 1st March 2026
+Last updated: 16th March 2026
 Status: Confirmed
 Key topics: Neurodiversity Global, Consultancy
 Key numbers: n/a
