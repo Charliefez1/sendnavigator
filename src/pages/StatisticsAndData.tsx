@@ -112,7 +112,7 @@ export default function StatisticsAndData() {
       {/* Introduction */}
       <section className="content-section py-8">
         <p className="text-muted-foreground leading-relaxed max-w-3xl">
-          This page brings together the key SEND statistics for England, using the most recent official data available as of 07 February 2026. It shows how many children and young people are receiving support, how the system is performing against legal timescales, how often disputes reach tribunal, and how funding is changing. The figures are presented to give a clear picture of the current scale and pressures in the system, and to distinguish between what is happening now and what has been projected for the future.
+          This page brings together the key SEND statistics for England, using the most recent official data available as of 16 March 2026. It shows how many children and young people are receiving support, how the system is performing against legal timescales, how often disputes reach tribunal, and how funding is changing. The figures are presented to give a clear picture of the current scale and pressures in the system, and to distinguish between what is happening now and what has been projected for the future.
         </p>
       </section>
 

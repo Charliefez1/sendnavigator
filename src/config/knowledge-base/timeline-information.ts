@@ -44,7 +44,7 @@ EHCP trajectory:
 - Expected to fall to 4.7% by 2034 to 2035
 - By 2030 an estimated 15 to 20% of pupils will have an ISP
 
-Structural position as of 25 February 2026:
+Structural position as of 16 March 2026:
 Three parallel tracks are now visible:
 1. Operational preparation at local level (councils drafting reform plans)
 2. Legislative framework set out in the Schools White Paper
