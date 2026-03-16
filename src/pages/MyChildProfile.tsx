@@ -617,7 +617,7 @@ function ProfileContent({ stage, setStage }: { stage: Stage; setStage: (s: Stage
           onLoadTestData={handleLoadTestData}
         />
       )}
-      {stage === "setup" && <SetupFlow onComplete={() => setStage("mode-select")} />}
+      {stage === "setup" && <SetupFlow onComplete={() => setStage("mode-select")} onBack={() => setStage("opening")} />}
       {stage === "mode-select" && <ModeSelectScreen onSelect={handleModeSelect} />}
       {stage === "builder" && (
         <ProfileBuilder

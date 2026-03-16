@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useChildProfile } from "@/contexts/ChildProfileContext";
-import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, Home } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface SetupFlowProps {
   onComplete: () => void;
+  onBack: () => void;
 }
 
 const FILLED_BY_OPTIONS = [
@@ -41,8 +41,7 @@ const REASON_OPTIONS = [
   "Other",
 ];
 
-export function SetupFlow({ onComplete }: SetupFlowProps) {
-  const navigate = useNavigate();
+export function SetupFlow({ onComplete, onBack }: SetupFlowProps) {
   const { state, updateSetup } = useChildProfile();
   const [step, setStep] = useState(0);
 
@@ -164,16 +163,16 @@ export function SetupFlow({ onComplete }: SetupFlowProps) {
       )}
 
       <div className="mt-8 flex items-center gap-3">
-        <Button variant="ghost" size="sm" onClick={() => navigate("/")} className="gap-1.5 text-muted-foreground">
-          <Home className="w-4 h-4" />
-          Home
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => step > 0 ? setStep(step - 1) : onBack()}
+          className="gap-1.5"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back
         </Button>
         <div className="flex-1" />
-        {step > 0 && (
-          <Button variant="outline" onClick={() => setStep(step - 1)}>
-            Back
-          </Button>
-        )}
         <Button onClick={next} disabled={!canProceed()} className="gap-2">
           {step < 3 ? "Next" : "Let's build the profile"}
           <ArrowRight className="w-4 h-4" />
