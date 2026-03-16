@@ -146,7 +146,7 @@ export default function StatisticsAndData() {
           <div>
             <h3 className="text-lg font-display font-medium text-foreground mb-3">Children and young people with SEND</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4">
-              <StatCard value="638,700" label="Active EHC plans" sublabel="January 2025" icon={Users} accentColor="confirmed" />
+              <StatCard value="638,745" label="Active EHC plans" sublabel="January 2025" icon={Users} accentColor="confirmed" />
               <StatCard value="10.8%" label="Annual increase" sublabel="From 576,500 in 2024" icon={TrendingUp} accentColor="discussed" />
               <StatCard value="1.7m+" label="Total pupils with SEN" sublabel="2024/25 academic year" icon={Users} accentColor="confirmed" />
             </div>
