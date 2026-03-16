@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 
 interface SetupFlowProps {
   onComplete: () => void;
+  onBack: () => void;
 }
 
 const FILLED_BY_OPTIONS = [
