@@ -131,7 +131,7 @@ export default function StatisticsAndData() {
 
       {/* Confirmed position */}
       <section id="confirmed-position" className="content-section py-8 border-t border-border scroll-mt-20">
-        <h2 className="text-lg font-display font-semibold text-foreground mb-6">Confirmed position as of 23 February 2026</h2>
+        <h2 className="text-lg font-display font-semibold text-foreground mb-6">Confirmed position as of 16 March 2026</h2>
 
         <div className="space-y-8">
           {/* Legal framework */}
