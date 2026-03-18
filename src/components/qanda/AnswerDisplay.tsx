@@ -6,6 +6,7 @@ import {
   QandAResponse,
   confidenceLabels
 } from "./types";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   CheckCircle,
   HelpCircle,
@@ -13,7 +14,10 @@ import {
   Clock,
   ArrowRight,
   ShieldAlert,
-  Shield
+  Shield,
+  Heart,
+  Lightbulb,
+  XCircle
 } from "lucide-react";
 
 interface AnswerDisplayProps {
@@ -76,7 +80,77 @@ function RefusalDisplay({ refusal, question }: { refusal: QandARefusal; question
   );
 }
 
-function AnswerContent({ answer, question }: { answer: QandAAnswer; question: string }) {
+function ParentGuideContent({ guide }: { guide: NonNullable<QandAAnswer["parentGuide"]> }) {
+  return (
+    <div className="bg-card border border-border rounded-xl divide-y divide-border shadow-lg overflow-hidden">
+      {/* Title */}
+      <div className="p-4 sm:p-5" style={{ backgroundColor: "hsl(175 30% 96%)" }}>
+        <h3 className="font-semibold text-base sm:text-lg text-foreground flex items-center gap-2">
+          <Heart className="w-5 h-5 flex-shrink-0" style={{ color: "hsl(175 65% 41%)" }} />
+          {guide.title}
+        </h3>
+      </div>
+
+      {/* Overview */}
+      <div className="p-4 sm:p-5 space-y-3">
+        {guide.overview.map((para, i) => (
+          <p key={i} className="text-sm leading-relaxed text-foreground">{para}</p>
+        ))}
+      </div>
+
+      {/* What helps */}
+      {guide.whatHelps.length > 0 && (
+        <div className="p-4 sm:p-5 space-y-3">
+          <h4 className="font-medium text-sm sm:text-base text-foreground flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "hsl(175 65% 41% / 0.1)" }}>
+              <Lightbulb className="w-3.5 h-3.5" style={{ color: "hsl(175 65% 41%)" }} />
+            </div>
+            What helps
+          </h4>
+          <ul className="space-y-2">
+            {guide.whatHelps.map((point, i) => (
+              <li key={i} className="flex gap-3 text-foreground text-sm leading-relaxed">
+                <span className="flex-shrink-0 mt-1" style={{ color: "hsl(175 65% 41%)" }}>&#x2022;</span>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* What to avoid */}
+      {guide.whatToAvoid.length > 0 && (
+        <div className="p-4 sm:p-5 space-y-3">
+          <h4 className="font-medium text-sm sm:text-base text-foreground flex items-center gap-2">
+            <div className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0 bg-muted">
+              <XCircle className="w-3.5 h-3.5 text-muted-foreground" />
+            </div>
+            What to avoid
+          </h4>
+          <ul className="space-y-2">
+            {guide.whatToAvoid.map((point, i) => (
+              <li key={i} className="flex gap-3 text-muted-foreground text-sm leading-relaxed">
+                <span className="flex-shrink-0 mt-1">✕</span>
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* Encouragement */}
+      {guide.encouragement && (
+        <div className="p-4 sm:p-5" style={{ backgroundColor: "hsl(175 30% 96%)" }}>
+          <p className="text-sm leading-relaxed text-foreground italic">
+            {guide.encouragement}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function PolicyContent({ answer, question }: { answer: QandAAnswer; question: string }) {
   const isLeaksRelated = answer.confidence === "unconfirmed";
 
   return (
@@ -209,6 +283,53 @@ function AnswerContent({ answer, question }: { answer: QandAAnswer; question: st
 
       {/* 7. Last updated */}
       <div className="p-4 sm:p-5" style={{ backgroundColor: "hsl(262 30% 97% / 0.5)" }}>
+        <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+          <Clock className="w-3.5 h-3.5" />
+          Answer based on information last updated: {answer.lastUpdated}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function AnswerContent({ answer, question }: { answer: QandAAnswer; question: string }) {
+  const hasParentGuide = answer.parentGuide && answer.parentGuide.title;
+
+  if (!hasParentGuide) {
+    return <PolicyContent answer={answer} question={question} />;
+  }
+
+  return (
+    <div className="space-y-4">
+      {/* Question echo above tabs */}
+      <div className="bg-card border border-border rounded-xl p-4 sm:p-5 shadow-lg" style={{ backgroundColor: "hsl(262 30% 97% / 0.5)" }}>
+        <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Your question</p>
+        <p className="font-medium text-foreground text-sm">{question}</p>
+      </div>
+
+      <Tabs defaultValue="understanding" className="w-full">
+        <TabsList className="w-full grid grid-cols-2 h-auto p-1">
+          <TabsTrigger value="understanding" className="text-xs sm:text-sm py-2.5 data-[state=active]:bg-background">
+            <Heart className="w-3.5 h-3.5 mr-1.5 flex-shrink-0" />
+            Understanding this
+          </TabsTrigger>
+          <TabsTrigger value="reforms" className="text-xs sm:text-sm py-2.5 data-[state=active]:bg-background">
+            <Shield className="w-3.5 h-3.5 mr-1.5 flex-shrink-0" />
+            What the reforms say
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="understanding" className="mt-3">
+          <ParentGuideContent guide={answer.parentGuide!} />
+        </TabsContent>
+
+        <TabsContent value="reforms" className="mt-3">
+          <PolicyContent answer={answer} question={question} />
+        </TabsContent>
+      </Tabs>
+
+      {/* Last updated below tabs */}
+      <div className="bg-card border border-border rounded-xl p-4 sm:p-5 shadow-lg" style={{ backgroundColor: "hsl(262 30% 97% / 0.5)" }}>
         <p className="text-xs text-muted-foreground flex items-center gap-1.5">
           <Clock className="w-3.5 h-3.5" />
           Answer based on information last updated: {answer.lastUpdated}

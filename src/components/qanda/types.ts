@@ -35,6 +35,15 @@ export interface QandAAnswer {
   
   // 7. Last updated
   lastUpdated: string;
+
+  // 8. Optional parent guide for neurodiversity topics
+  parentGuide?: {
+    title: string;
+    overview: string[];
+    whatHelps: string[];
+    whatToAvoid: string[];
+    encouragement: string;
+  } | null;
 }
 
 // Refusal response for questions that cannot be answered safely

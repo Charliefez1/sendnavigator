@@ -128,8 +128,34 @@ You MUST respond with valid JSON in this exact format:
     "doesMean": ["clarification 1"],
     "doesNotMean": ["clarification 1"]
   },
-  "readMore": [{"label": "Page name", "path": "/path"}]
+  "readMore": [{"label": "Page name", "path": "/path"}],
+  "parentGuide": null
 }
+
+### PARENT GUIDE - CRITICAL INSTRUCTION
+
+When the question is about understanding a neurodivergent condition, profile, trait, or lived experience (e.g. "Tell me about PDA", "What is ADHD?", "Why does my child meltdown?", "What is masking?", "What is RSD?", "What is sensory processing?", "Why won't my child go to school?"), you MUST ALSO include a "parentGuide" object alongside the standard answer.
+
+The parentGuide is a warm, empathetic, positive explanation written directly to a parent. It should:
+- Explain the condition/concept in plain, compassionate language
+- Help the parent understand what their child might be experiencing
+- Focus on strengths and understanding, not deficits
+- Provide practical strategies that help
+- Include things to avoid doing
+- End with genuine encouragement
+
+Format:
+{
+  "parentGuide": {
+    "title": "Understanding [topic]",
+    "overview": ["paragraph 1 - what this is in plain language", "paragraph 2 - what the child experiences"],
+    "whatHelps": ["strategy 1", "strategy 2", "strategy 3"],
+    "whatToAvoid": ["approach to avoid 1", "approach to avoid 2"],
+    "encouragement": "A warm closing message of support and hope"
+  }
+}
+
+If the question is purely about reform policy, funding, or legislation (not about understanding a condition), set "parentGuide": null.
 
 Write the plainAnswer in your natural, conversational voice. Bullet points can be more concise but still human.
 
@@ -152,6 +178,9 @@ Lead with current law. Separate confirmed from discussed. Never imply inevitabil
 - /exclusions - Exclusions and SEND
 - /for-parents - Supporting yourself
 - /about - About me and this resource
+- /understanding-adhd - Understanding ADHD
+- /understanding-autism - Understanding autism
+- /understanding-your-child - Understanding your child
 
 ## KNOWLEDGE BASE
 
@@ -230,7 +259,7 @@ serve(async (req) => {
         model: "google/gemini-3-flash-preview",
         messages: [
           { role: "system", content: systemPrompt },
-          { role: "user", content: `Question: ${question}\n\nRespond with valid JSON only, following the exact format specified. IMPORTANT: Never use em dashes in your response. Use hyphens, commas, or full stops instead.` },
+          { role: "user", content: `Question: ${question}\n\nRespond with valid JSON only, following the exact format specified. IMPORTANT: Never use em dashes in your response. Use hyphens, commas, or full stops instead. If the question is about understanding a condition or profile, you MUST include the parentGuide object. If not, set parentGuide to null.` },
         ],
         temperature: 0.2,
       }),
@@ -282,7 +311,7 @@ serve(async (req) => {
       }
 
       const sanitisedAnswer = normaliseResponse(parsedAnswer) as Record<string, unknown>;
-      sanitisedAnswer.lastUpdated = "23rd February 2026";
+      sanitisedAnswer.lastUpdated = "18th March 2026";
 
       console.log(`Q&A response generated with confidence: ${sanitisedAnswer.confidence}`);
 
@@ -312,7 +341,7 @@ serve(async (req) => {
               { label: "Where we are now", path: "/where-we-are-now" },
               { label: "What is changing", path: "/what-is-changing" }
             ],
-            lastUpdated: "23rd February 2026"
+            lastUpdated: "18th March 2026"
           }
         }),
         { headers: { ...corsHeaders, "Content-Type": "application/json" } }
