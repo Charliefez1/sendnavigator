@@ -27,7 +27,7 @@ const FeatureAskRich = () => (
         <div>
           <h2 className="text-2xl font-display font-semibold text-foreground mb-4">What you will find</h2>
           <p className="text-muted-foreground leading-relaxed mb-6">
-            Ask Rich is our AI-powered question and answer tool. It is trained on confirmed SEND reform sources, government publications, and legal frameworks. Unlike generic AI, it will tell you when it does not know something, and it always explains where its answer comes from.
+            Ask Rich is our AI-powered question and answer tool. It covers SEND reform, neurodivergent conditions, behaviour, school experience, and family life. It draws on confirmed sources, government publications, and practical experience. Unlike generic AI, it will tell you when it does not know something, and it always explains where its answer comes from.
           </p>
         </div>
 
