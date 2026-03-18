@@ -20,7 +20,7 @@ export function AskAICompact() {
       <form onSubmit={handleSubmit} className="space-y-3">
         <div className="flex items-center gap-2 text-primary">
           <MessageCircle className="h-5 w-5" />
-          <span className="font-semibold text-sm">Ask Rich about SEND reform</span>
+          <span className="font-semibold text-sm">Ask Rich about SEND and neurodiversity</span>
         </div>
         <div className="flex gap-2">
           <div className="relative flex-1">
