@@ -33,7 +33,7 @@ export function AskSendFloating() {
             </button>
           </div>
           <p className="text-xs text-muted-foreground mb-3">
-            Ask me anything about SEND reform. I'll give you a straight answer.
+            Ask me anything about SEND, neurodiversity, and children. I'll give you a straight answer.
           </p>
           <form onSubmit={handleSubmit} className="flex gap-2">
             <Input
@@ -43,7 +43,7 @@ export function AskSendFloating() {
               placeholder="Type your question..."
               className="text-sm"
               maxLength={500}
-              aria-label="Ask a question about SEND reform"
+              aria-label="Ask about SEND, neurodiversity, or your child"
             />
             <Button
               type="submit"

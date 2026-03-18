@@ -88,7 +88,7 @@ export function HomeAskRich() {
             type="text"
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
-            placeholder="Ask a question about SEND reform..."
+            placeholder="Ask about SEND, neurodiversity, or your child..."
             className="w-full pl-12 pr-4 py-4 min-h-[52px] rounded-xl text-sm transition-all duration-200 focus:outline-none"
             style={{
               backgroundColor: "hsl(222 28% 14%)",

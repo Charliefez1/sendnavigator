@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const FeatureAskRich = () => (
   <div className="min-h-screen bg-background">
-    <SEOHead title="Ask Rich | SEND Navigator" description="Ask any question about SEND reform and get a grounded, honest answer drawn from confirmed sources." path="/feature/ask-rich" />
+    <SEOHead title="Ask Rich | SEND Navigator" description="Ask any question about SEND, neurodiversity, or your child and get a grounded, honest answer drawn from confirmed sources." path="/feature/ask-rich" />
 
     <section className="relative py-16 sm:py-24 overflow-hidden" style={{ backgroundColor: "hsl(222 35% 10%)" }}>
       <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 30%, hsl(262 50% 50% / 0.15), transparent 70%)" }} />
@@ -17,7 +17,7 @@ const FeatureAskRich = () => (
           Ask Rich
         </h1>
         <p className="text-lg max-w-2xl mx-auto" style={{ color: "hsl(222 20% 60%)" }}>
-          Ask any question about SEND reform and get a grounded, honest answer drawn from confirmed sources.
+          Ask any question about SEND, neurodiversity, or your child and get a grounded, honest answer drawn from confirmed sources.
         </p>
       </div>
     </section>
@@ -27,18 +27,18 @@ const FeatureAskRich = () => (
         <div>
           <h2 className="text-2xl font-display font-semibold text-foreground mb-4">What you will find</h2>
           <p className="text-muted-foreground leading-relaxed mb-6">
-            Ask Rich is our AI-powered question and answer tool. It is trained on confirmed SEND reform sources, government publications, and legal frameworks. Unlike generic AI, it will tell you when it does not know something, and it always explains where its answer comes from.
+            Ask Rich is our AI-powered question and answer tool. It covers SEND reform, neurodivergent conditions, behaviour, school experience, and family life. It draws on confirmed sources, government publications, and practical experience. Unlike generic AI, it will tell you when it does not know something, and it always explains where its answer comes from.
           </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
           {[
-            "Answers grounded in confirmed government sources",
+            "Answers grounded in confirmed sources and practical experience",
             "Clear distinction between fact and speculation",
             "Source references included with every answer",
-            "Written in plain English, not legal jargon",
+            "Written in plain English, not jargon",
             "Honest about what is not yet known",
-            "Covers EHCPs, ISPs, mainstream support, and more",
+            "Covers neurodivergent conditions, behaviour, school, and family life",
           ].map((item) => (
             <div key={item} className="flex items-start gap-3 p-4 rounded-lg border bg-card">
               <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "hsl(262 50% 50%)" }} />
@@ -50,7 +50,7 @@ const FeatureAskRich = () => (
         <div>
           <h2 className="text-2xl font-display font-semibold text-foreground mb-4">Why it matters</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Parents are drowning in misinformation about SEND reform. Social media is full of panic and half-truths. Ask Rich gives you a calm, grounded place to ask your questions and get an honest answer, even if that answer is "we don't know yet."
+            Parents, teachers, and SENCOs are drowning in misinformation about SEND and neurodiversity. Social media is full of panic and half-truths. Ask Rich gives you a calm, grounded place to ask your questions and get an honest answer, whether that is about your child's behaviour, their rights, or what to say to school.
           </p>
         </div>
 

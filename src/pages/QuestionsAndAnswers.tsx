@@ -11,7 +11,7 @@ export default function QuestionsAndAnswers() {
 
   return (
     <Layout>
-      <SEOHead title="Ask Rich - SEND Reform Q&A" description="Ask Rich a question about SEND reform and get a grounded, plain English answer based on confirmed information." path="/questions-and-answers" />
+      <SEOHead title="Ask Rich | SEND and Neurodiversity Q&A" description="Ask Rich a question about SEND, neurodiversity, and children. Get a grounded, plain English answer based on confirmed information." path="/questions-and-answers" />
 
       {/* ─── Hero ─── */}
       <section className="relative overflow-hidden bg-background">
@@ -41,7 +41,7 @@ export default function QuestionsAndAnswers() {
                 Got a question? Just ask.
               </h1>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">
-                I set this up because the most useful thing I can do is answer the actual question someone has right now. Not the theoretical question. The one that is keeping them awake at three in the morning.
+                I set this up because the most useful thing I can do is answer the actual question someone has right now. About SEND, about neurodiversity, about your child. Not the theoretical question. The one that is keeping them awake at three in the morning.
               </p>
             </div>
           </div>
