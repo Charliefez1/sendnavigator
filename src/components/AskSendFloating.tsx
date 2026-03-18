@@ -43,7 +43,7 @@ export function AskSendFloating() {
               placeholder="Type your question..."
               className="text-sm"
               maxLength={500}
-              aria-label="Ask a question about SEND reform"
+              aria-label="Ask about SEND, neurodiversity, or your child"
             />
             <Button
               type="submit"

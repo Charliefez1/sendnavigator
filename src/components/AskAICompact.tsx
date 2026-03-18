@@ -32,7 +32,7 @@ export function AskAICompact() {
               placeholder="Type your question..."
               className="pl-9"
               maxLength={500}
-              aria-label="Ask a question about SEND reform"
+              aria-label="Ask about SEND, neurodiversity, or your child"
             />
           </div>
           <Button

@@ -62,7 +62,7 @@ const features: {
     label: "Ask Rich",
     headline: "Get plain-English answers",
     description:
-      "Ask any question about SEND reform and get a grounded, honest answer drawn from confirmed sources.",
+      "Ask any question about SEND, neurodiversity, or your child and get a grounded, honest answer drawn from confirmed sources.",
     accentVar: "--accent-violet",
     accentBgVar: "--accent-violet-bg",
     href: "/feature/ask-rich",

@@ -50,7 +50,7 @@ const FeatureAskRich = () => (
         <div>
           <h2 className="text-2xl font-display font-semibold text-foreground mb-4">Why it matters</h2>
           <p className="text-muted-foreground leading-relaxed">
-            Parents are drowning in misinformation about SEND reform. Social media is full of panic and half-truths. Ask Rich gives you a calm, grounded place to ask your questions and get an honest answer, even if that answer is "we don't know yet."
+            Parents, teachers, and SENCOs are drowning in misinformation about SEND and neurodiversity. Social media is full of panic and half-truths. Ask Rich gives you a calm, grounded place to ask your questions and get an honest answer, whether that is about your child's behaviour, their rights, or what to say to school.
           </p>
         </div>
 

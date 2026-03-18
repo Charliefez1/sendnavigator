@@ -37,7 +37,7 @@ export function QuestionInput({ onSubmit, isLoading, initialValue }: QuestionInp
             className="w-full pl-11 pr-4 py-3.5 min-h-[48px] bg-card border border-border rounded-lg text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent shadow-sm"
             disabled={isLoading}
             maxLength={500}
-            aria-label="Ask a question about SEND reform"
+            aria-label="Ask about SEND, neurodiversity, or your child"
           />
         </div>
         <Button
