@@ -17,7 +17,7 @@ const FeatureAskRich = () => (
           Ask Rich
         </h1>
         <p className="text-lg max-w-2xl mx-auto" style={{ color: "hsl(222 20% 60%)" }}>
-          Ask any question about SEND reform and get a grounded, honest answer drawn from confirmed sources.
+          Ask any question about SEND, neurodiversity, or your child and get a grounded, honest answer drawn from confirmed sources.
         </p>
       </div>
     </section>
