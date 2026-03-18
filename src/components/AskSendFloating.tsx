@@ -33,7 +33,7 @@ export function AskSendFloating() {
             </button>
           </div>
           <p className="text-xs text-muted-foreground mb-3">
-            Ask me anything about SEND reform. I'll give you a straight answer.
+            Ask me anything about SEND, neurodiversity, and children. I'll give you a straight answer.
           </p>
           <form onSubmit={handleSubmit} className="flex gap-2">
             <Input
