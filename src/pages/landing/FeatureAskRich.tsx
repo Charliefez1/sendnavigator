@@ -33,12 +33,12 @@ const FeatureAskRich = () => (
 
         <div className="grid gap-4 sm:grid-cols-2">
           {[
-            "Answers grounded in confirmed government sources",
+            "Answers grounded in confirmed sources and practical experience",
             "Clear distinction between fact and speculation",
             "Source references included with every answer",
-            "Written in plain English, not legal jargon",
+            "Written in plain English, not jargon",
             "Honest about what is not yet known",
-            "Covers EHCPs, ISPs, mainstream support, and more",
+            "Covers neurodivergent conditions, behaviour, school, and family life",
           ].map((item) => (
             <div key={item} className="flex items-start gap-3 p-4 rounded-lg border bg-card">
               <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "hsl(262 50% 50%)" }} />
