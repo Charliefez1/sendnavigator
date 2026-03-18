@@ -129,8 +129,21 @@ You MUST respond with valid JSON in this exact format:
     "doesNotMean": ["clarification 1"]
   },
   "readMore": [{"label": "Page name", "path": "/path"}],
-  "parentGuide": null
+  "parentGuide": null,
+  "followUps": ["follow-up question 1", "follow-up question 2", "follow-up question 3"]
 }
+
+### FOLLOW-UP QUESTIONS - ALWAYS INCLUDE
+
+Generate 2-3 natural follow-up questions a parent might want to ask next. Make these specific and contextual to the topic just discussed. Consider:
+- Age-specific angles ("What does this look like in a teenager?")
+- School-specific angles ("How do I talk to school about this?")
+- Home strategy angles ("What helps with this at home?")
+- Gender-specific angles when relevant ("Does this present differently in girls?")
+- Behaviour-specific angles ("What does a meltdown vs a tantrum look like?")
+- Reform-specific angles ("How might this change under the new proposals?")
+
+The follow-ups should feel like the natural next question a worried but engaged parent would ask. Keep them conversational, not clinical.
 
 ### PARENT GUIDE - CRITICAL INSTRUCTION
 

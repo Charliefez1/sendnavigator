@@ -36,7 +36,10 @@ export interface QandAAnswer {
   // 7. Last updated
   lastUpdated: string;
 
-  // 8. Optional parent guide for neurodiversity topics
+  // 8. Follow-up questions
+  followUps?: string[];
+
+  // 9. Optional parent guide for neurodiversity topics
   parentGuide?: {
     title: string;
     overview: string[];
