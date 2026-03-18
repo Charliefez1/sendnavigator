@@ -143,7 +143,7 @@ export function QandAComponent({ initialQuestion }: QandAComponentProps) {
 
       {response && currentQuestion && !isLoading && (
         <div className="mt-6 space-y-4">
-          <AnswerDisplay response={response} question={currentQuestion} />
+          <AnswerDisplay response={response} question={currentQuestion} onFollowUp={handleSubmit} />
           
           <button
             onClick={handleClear}
