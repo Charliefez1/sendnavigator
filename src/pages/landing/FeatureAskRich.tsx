@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const FeatureAskRich = () => (
   <div className="min-h-screen bg-background">
-    <SEOHead title="Ask Rich | SEND Navigator" description="Ask any question about SEND reform and get a grounded, honest answer drawn from confirmed sources." path="/feature/ask-rich" />
+    <SEOHead title="Ask Rich | SEND Navigator" description="Ask any question about SEND, neurodiversity, or your child and get a grounded, honest answer drawn from confirmed sources." path="/feature/ask-rich" />
 
     <section className="relative py-16 sm:py-24 overflow-hidden" style={{ backgroundColor: "hsl(222 35% 10%)" }}>
       <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 30%, hsl(262 50% 50% / 0.15), transparent 70%)" }} />
