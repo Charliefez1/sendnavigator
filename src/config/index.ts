@@ -3,4 +3,4 @@
 
 export * from "./guardrails";
 export * from "./sources";
-export * from "./ai-prompts";
+// ai-prompts.ts removed — the active prompt lives in supabase/functions/qanda/index.ts
