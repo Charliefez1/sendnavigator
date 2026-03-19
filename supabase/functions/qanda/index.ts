@@ -259,31 +259,83 @@ serve(async (req) => {
       );
     }
 
-    // Fetch knowledge base from database
+    // Fetch knowledge base from database with relevance filtering
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
     );
 
-    const { data: kbEntries, error: kbError } = await supabase
+    // Build search terms from the question for text-based relevance filtering
+    const searchWords = question
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, "")
+      .split(/\s+/)
+      .filter((w: string) => w.length > 2 && !["the", "what", "how", "why", "who", "when", "where", "does", "have", "has", "are", "was", "were", "will", "can", "could", "would", "should", "this", "that", "with", "for", "from", "they", "their", "them", "been", "being", "about", "not", "but", "its", "his", "her", "our", "your", "you", "and", "done", "wrong", "still"].includes(w));
+
+    // Always include the deep research modules (these are the richest content)
+    const coreTopics = [
+      "Neurodivergent Children Overview",
+      "Behaviour as Communication",
+      "School Experience",
+      "Family Experience",
+      "Co-occurring Profiles",
+      "What Works What Doesnt",
+      "Life Outcomes and Models",
+    ];
+
+    // Fetch core research modules (always included)
+    const { data: coreEntries, error: coreError } = await supabase
       .from("knowledge_base")
       .select("topic, content")
       .eq("status", "active")
-      .order("topic");
+      .in("topic", coreTopics);
+
+    if (coreError) {
+      console.error("Failed to fetch core knowledge:", coreError);
+    }
+
+    // Fetch remaining entries and score by relevance
+    const { data: allEntries, error: kbError } = await supabase
+      .from("knowledge_base")
+      .select("topic, content")
+      .eq("status", "active")
+      .not("topic", "in", `(${coreTopics.map(t => `"${t}"`).join(",")})`);
 
     if (kbError) {
       console.error("Failed to fetch knowledge base:", kbError);
     }
 
-    // Build knowledge base text from DB entries
+    // Score non-core entries by keyword relevance
+    const scoredEntries = (allEntries || []).map((entry: { topic: string; content: string }) => {
+      const text = `${entry.topic} ${entry.content}`.toLowerCase();
+      let score = 0;
+      for (const word of searchWords) {
+        if (text.includes(word)) score++;
+      }
+      return { ...entry, score };
+    });
+
+    // Take top 15 most relevant non-core entries
+    scoredEntries.sort((a: { score: number }, b: { score: number }) => b.score - a.score);
+    const topEntries = scoredEntries.slice(0, 15).filter((e: { score: number }) => e.score > 0);
+
+    // Combine: core research always + top relevant policy/reform entries
+    const selectedEntries = [
+      ...(coreEntries || []),
+      ...topEntries,
+    ];
+
+    // Build knowledge base text
     let knowledgeText = "";
-    if (kbEntries && kbEntries.length > 0) {
-      knowledgeText = kbEntries
+    if (selectedEntries.length > 0) {
+      knowledgeText = selectedEntries
         .map((entry: { topic: string; content: string }) => `## ${entry.topic}\n\n${entry.content}`)
         .join("\n\n");
     } else {
       knowledgeText = "No knowledge base entries available. Please inform the user that the knowledge base is being updated.";
     }
+
+    console.log(`Knowledge context: ${(coreEntries || []).length} core + ${topEntries.length} relevant entries (from ${searchWords.length} search terms: ${searchWords.join(", ")})`);
 
     const systemPrompt = SYSTEM_PROMPT_TEMPLATE + knowledgeText;
 
