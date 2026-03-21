@@ -152,6 +152,7 @@ const App = () => (
                       <Route path="/community-questions" element={<CommunityQuestions />} />
                       <Route path="/admin" element={<Admin />} />
 
+                      <Route path="/home-test" element={<HomeTest />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </Suspense>
