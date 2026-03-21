@@ -61,6 +61,7 @@ const HowThisSiteWorks = lazy(() => import("./pages/HowThisSiteWorks"));
 const MyChildProfile = lazy(() => import("./pages/MyChildProfile"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const HomeTest = lazy(() => import("./pages/HomeTest"));
 const FeatureSendReform = lazy(() => import("./pages/landing/FeatureSendReform"));
 const FeatureEHCPGuide = lazy(() => import("./pages/landing/FeatureEHCPGuide"));
 const FeatureMyChildProfile = lazy(() => import("./pages/landing/FeatureMyChildProfile"));
@@ -151,6 +152,7 @@ const App = () => (
                       <Route path="/community-questions" element={<CommunityQuestions />} />
                       <Route path="/admin" element={<Admin />} />
 
+                      <Route path="/home-test" element={<HomeTest />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </Suspense>
