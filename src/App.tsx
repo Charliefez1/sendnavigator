@@ -61,6 +61,7 @@ const HowThisSiteWorks = lazy(() => import("./pages/HowThisSiteWorks"));
 const MyChildProfile = lazy(() => import("./pages/MyChildProfile"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const HomeTest = lazy(() => import("./pages/HomeTest"));
 const FeatureSendReform = lazy(() => import("./pages/landing/FeatureSendReform"));
 const FeatureEHCPGuide = lazy(() => import("./pages/landing/FeatureEHCPGuide"));
 const FeatureMyChildProfile = lazy(() => import("./pages/landing/FeatureMyChildProfile"));
