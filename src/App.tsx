@@ -97,64 +97,8 @@ const App = () => (
                   <PageViewTracker />
                   <Suspense fallback={<LoadingFallback />}>
                     <Routes>
-                      {/* Public routes */}
-                      <Route path="/landing" element={<Landing />} />
-                      <Route path="/feature/send-reform" element={<FeatureSendReform />} />
-                      <Route path="/feature/ehcp-guide" element={<FeatureEHCPGuide />} />
-                      <Route path="/feature/my-child-profile" element={<FeatureMyChildProfile />} />
-                      <Route path="/feature/what-to-do-now" element={<FeatureWhatToDoNow />} />
-                      <Route path="/feature/ask-rich" element={<FeatureAskRich />} />
-                      <Route path="/feature/sources" element={<FeatureSources />} />
-                      <Route path="/about" element={<About />} />
-                      <Route path="/sources" element={<Sources />} />
-                      <Route path="/statistics-and-data" element={<StatisticsAndData />} />
-                      <Route path="/how-to-use" element={<HowToUse />} />
-                      <Route path="/why-i-built-this" element={<WhyIBuiltThis />} />
-                      <Route path="/rich-ferriman" element={<RichFerriman />} />
-                      <Route path="/richs-take" element={<RichsTake />} />
-                      <Route path="/neurodiversity-global" element={<NeurodiversityGlobal />} />
-                      <Route path="/feedback" element={<Feedback />} />
-                      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                      <Route path="/sendiass" element={<Sendiass />} />
-                      <Route path="/have-your-say" element={<HaveYourSay />} />
-                      <Route path="/what-we-owe-our-children" element={<WhatWeOweOurChildren />} />
-                      <Route path="/understanding-your-child" element={<UnderstandingYourChild />} />
-                      <Route path="/understanding-your-child/autism" element={<UnderstandingAutism />} />
-                      <Route path="/understanding-your-child/adhd" element={<UnderstandingADHD />} />
-                      <Route path="/for-parents" element={<ForParents />} />
-                      <Route path="/exclusions" element={<Exclusions />} />
-                      <Route path="/ehcp-health" element={<EHCPHealth />} />
-                      <Route path="/alternative-provision" element={<AlternativeProvision />} />
-                      <Route path="/local-variation" element={<LocalVariation />} />
-                      <Route path="/devolved-nations" element={<DevolvedNations />} />
-                      <Route path="/how-this-site-works" element={<HowThisSiteWorks />} />
-                      <Route path="/my-child-profile" element={<MyChildProfile />} />
-                      <Route path="/reset-password" element={<ResetPassword />} />
-
-                      {/* Protected routes */}
-                      <Route path="/" element={<Start />} />
-                      <Route path="/quick-read" element={<QuickRead />} />
-                      <Route path="/ehcps" element={<EHCPs />} />
-                      <Route path="/post-16-and-transition" element={<Post16AndTransition />} />
-                      <Route path="/what-to-do-right-now" element={<WhatToDoRightNow />} />
-
-                      {/* State of SEND 2026 — report hub and sections */}
-                      <Route path="/state-of-send-2026" element={<StateOfSend2026 />} />
-                      <Route path="/state-of-send-2026/where-we-are-now" element={<WhereWeAreNow />} />
-                      <Route path="/state-of-send-2026/what-is-changing" element={<WhatIsChanging />} />
-                      <Route path="/state-of-send-2026/what-has-not-changed" element={<WhatHasNotChanged />} />
-                      <Route path="/state-of-send-2026/what-is-being-discussed" element={<WhatIsBeingDiscussed />} />
-                      <Route path="/state-of-send-2026/what-we-do-not-know" element={<WhatWeDoNotKnow />} />
-                      <Route path="/state-of-send-2026/what-the-leaks-are-saying" element={<WhatTheLeaksAreSaying />} />
-                      <Route path="/state-of-send-2026/what-the-leaks-do-not-mean" element={<WhatTheLeaksDoNotMean />} />
-                      <Route path="/state-of-send-2026/timeline" element={<Timeline />} />
-
-                      <Route path="/questions-and-answers" element={<QuestionsAndAnswers />} />
-                      <Route path="/community-questions" element={<CommunityQuestions />} />
-                      <Route path="/admin" element={<Admin />} />
-
-                      <Route path="/home-test" element={<HomeTest />} />
-                      <Route path="*" element={<NotFound />} />
+                      {/* Coming soon gate — blocks all access */}
+                      <Route path="*" element={<ComingSoon />} />
                     </Routes>
                   </Suspense>
                 </BrowserRouter>
