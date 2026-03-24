@@ -16,6 +16,7 @@ import { ExperienceSelector } from "@/components/ExperienceSelector";
 import { ScrollToTop } from "@/components/ScrollToTop";
 
 // Lazy-loaded pages
+const ComingSoon = lazy(() => import("./pages/ComingSoon"));
 const Landing = lazy(() => import("./pages/Landing"));
 const Start = lazy(() => import("./pages/Start"));
 const HowToUse = lazy(() => import("./pages/HowToUse"));
