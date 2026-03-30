@@ -80,6 +80,79 @@ function LoadingFallback() {
   );
 }
 
+function AppRoutes() {
+  // Dev bypass: add ?bypass=dev to any URL to skip the coming soon gate
+  // Once bypassed, it persists for the session
+  const bypass = new URLSearchParams(window.location.search).get("bypass") === "dev";
+  if (bypass) sessionStorage.setItem("dev_bypass", "true");
+  const hasBypass = bypass || sessionStorage.getItem("dev_bypass") === "true" || import.meta.env.DEV;
+
+  if (!hasBypass) {
+    return (
+      <Routes>
+        <Route path="*" element={<ComingSoon />} />
+      </Routes>
+    );
+  }
+
+  return (
+    <Routes>
+      <Route path="/" element={<Navigate to="/landing" replace />} />
+      <Route path="/landing" element={<Landing />} />
+      <Route path="/start" element={<Start />} />
+      <Route path="/how-to-use" element={<HowToUse />} />
+      <Route path="/where-we-are-now" element={<WhereWeAreNow />} />
+      <Route path="/what-is-changing" element={<WhatIsChanging />} />
+      <Route path="/what-has-not-changed" element={<WhatHasNotChanged />} />
+      <Route path="/what-is-being-discussed" element={<WhatIsBeingDiscussed />} />
+      <Route path="/what-we-do-not-know" element={<WhatWeDoNotKnow />} />
+      <Route path="/what-the-leaks-are-saying" element={<WhatTheLeaksAreSaying />} />
+      <Route path="/what-the-leaks-do-not-mean" element={<WhatTheLeaksDoNotMean />} />
+      <Route path="/timeline" element={<Timeline />} />
+      <Route path="/questions-and-answers" element={<QuestionsAndAnswers />} />
+      <Route path="/sources" element={<Sources />} />
+      <Route path="/statistics-and-data" element={<StatisticsAndData />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/what-to-do-right-now" element={<WhatToDoRightNow />} />
+      <Route path="/neurodiversity-global" element={<NeurodiversityGlobal />} />
+      <Route path="/rich-ferriman" element={<RichFerriman />} />
+      <Route path="/richs-take" element={<RichsTake />} />
+      <Route path="/why-i-built-this" element={<WhyIBuiltThis />} />
+      <Route path="/community-questions" element={<CommunityQuestions />} />
+      <Route path="/feedback" element={<Feedback />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/admin" element={<Admin />} />
+      <Route path="/quick-read" element={<QuickRead />} />
+      <Route path="/ehcps" element={<EHCPs />} />
+      <Route path="/post-16-and-transition" element={<Post16AndTransition />} />
+      <Route path="/sendiass" element={<Sendiass />} />
+      <Route path="/have-your-say" element={<HaveYourSay />} />
+      <Route path="/what-we-owe-our-children" element={<WhatWeOweOurChildren />} />
+      <Route path="/state-of-send-2026" element={<StateOfSend2026 />} />
+      <Route path="/understanding-your-child" element={<UnderstandingYourChild />} />
+      <Route path="/understanding-autism" element={<UnderstandingAutism />} />
+      <Route path="/understanding-adhd" element={<UnderstandingADHD />} />
+      <Route path="/for-parents" element={<ForParents />} />
+      <Route path="/exclusions" element={<Exclusions />} />
+      <Route path="/ehcp-health" element={<EHCPHealth />} />
+      <Route path="/alternative-provision" element={<AlternativeProvision />} />
+      <Route path="/local-variation" element={<LocalVariation />} />
+      <Route path="/devolved-nations" element={<DevolvedNations />} />
+      <Route path="/how-this-site-works" element={<HowThisSiteWorks />} />
+      <Route path="/my-child-profile" element={<MyChildProfile />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/home-test" element={<HomeTest />} />
+      <Route path="/feature/send-reform" element={<FeatureSendReform />} />
+      <Route path="/feature/ehcp-guide" element={<FeatureEHCPGuide />} />
+      <Route path="/feature/my-child-profile" element={<FeatureMyChildProfile />} />
+      <Route path="/feature/what-to-do-now" element={<FeatureWhatToDoNow />} />
+      <Route path="/feature/ask-rich" element={<FeatureAskRich />} />
+      <Route path="/feature/sources" element={<FeatureSources />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+}
+
 const App = () => (
   <ErrorBoundary>
     <HelmetProvider>
@@ -92,14 +165,10 @@ const App = () => (
                 <Sonner />
                 <BrowserRouter>
                   <ScrollToTop />
-                  
                   <ExperienceSelector />
                   <PageViewTracker />
                   <Suspense fallback={<LoadingFallback />}>
-                    <Routes>
-                      {/* Coming soon gate — blocks all access */}
-                      <Route path="*" element={<ComingSoon />} />
-                    </Routes>
+                    <AppRoutes />
                   </Suspense>
                 </BrowserRouter>
               </PageSectionsProvider>
