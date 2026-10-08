@@ -13,6 +13,12 @@ const Landing = () => {
   const [searchParams] = useSearchParams();
   const isPreview = searchParams.get("preview") === "true";
 
+  // Dev bypass: skip the signup wall entirely and go straight into the site
+  const hasBypass = sessionStorage.getItem("dev_bypass") === "true" || import.meta.env.DEV;
+  if (hasBypass && !isPreview) {
+    return <Navigate to="/start" replace />;
+  }
+
   if (!loading && user && !isPreview) {
     const savedQuestion = localStorage.getItem("landing_question");
     if (savedQuestion) {
